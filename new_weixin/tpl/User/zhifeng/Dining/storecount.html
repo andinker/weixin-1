@@ -1,0 +1,87 @@
+<include file="Public:head"/>  
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+<script src="{ZF::RES}/js/date/WdatePicker.js"></script>
+<div class="content" style="" >
+<div class="cLineB">
+<h4 class="left">订单管理（<a href="{ZF::U('Dining/orders',array('token'=>$token,'handled'=>0,'storeid'=>$storeid))}">未处理订单<span style="color:#f00">{ZF:$unhandledCount}</span>个</a>） ({ZF:$page}) </h4>
+<div class="searchbar right">
+<script language=javascript>
+function gourl(v)
+{
+	window.location.href ="{ZF::U('Dining/storecount',array('token'=>$token))}&storeid="+v;
+}
+</script>
+<b>切换店铺：</b><select name="storeid" onchange="gourl(this.value);">
+<option value="0">所有店铺</option>
+<volist name="stores" id="st">
+<option value="{ZF:$st.id}" <if condition="$storeid eq $st['id']">selected</if>>{ZF:$st.name}</option>
+</volist>
+</select>
+</div>
+<div class="clr"></div>
+</div>
+<include file="menu"/>
+<div class="msgWrap">
+<form method="post" action="" id="info"  name="setime">
+<div class="cLine">
+		<div class="pageNavigator left">    
+		   <span>
+            开始日期
+                <input type="input" class="px" id="starttime" value='{ZF:$starttime|date="Y-m-d",###}' name="starttime" onclick="WdatePicker()"> （含）到 
+                结束日期<input type="input" class="px" id="endtime" value='{ZF:$endtime|date="Y-m-d",###}' name="endtime" onclick="WdatePicker()">（含）
+				<input type="button" value="搜索" id="comSearchBtn" class="btnGrayS" title="搜索">
+			</span>
+			<span>（查看单店铺，需切换店铺，请点击右上角选项框切换）</span>
+        </div>
+<div class="clr"></div>
+</div>
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+<tr>
+<th width="80">店铺名称</th>
+<th width="60">销售额</th>
+<th width="120">开始时间</th>
+<th width="120">结束时间</th>
+</tr>
+</thead>
+<tbody style=" text-align:center;">
+<volist name="storescount" id="o"> 
+<tr>
+<td>{ZF:$o.name}</td>
+<td>{ZF:$o.totalprice|default='0'}元</td>
+<td>{ZF:$o.starttime|date="Y-m-d H:i:s",###}</td> 
+<td>{ZF:$o.endtime|date="Y-m-d H:i:s",###}</td> 
+</tr>
+</volist>
+</tbody>
+</table>
+<input type="hidden" name="token" value="{ZF:$_GET['token']}" />
+</form>
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{ZF:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<script>
+$("#comSearchBtn").click(function(){
+	if($("#starttime").val() && $("#endtime").val()){
+		var starttime= $("#starttime").val();
+		var endtime = $("#endtime").val();
+		if(endtime<starttime){
+			alert("开始时间大于结束时间请填写正确!");
+		}else{
+			document.setime.submit();
+		}
+	}else{
+		alert("开始结束时间不能为空!");
+	}
+	
+});
+</script>
+<include file="Public:footer"/>

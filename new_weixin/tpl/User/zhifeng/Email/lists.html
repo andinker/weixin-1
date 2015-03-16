@@ -1,0 +1,90 @@
+<include file="Public:head"/>  
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+<div class="content" style="" >
+<div class="cLineB">
+<h4 class="left">邮箱列表</h4>
+<span class="FAQ">填写错误将不能接收到邮件提醒</span>
+</div>
+<!--tab start-->
+<include file="Email:menu"/>
+<!--tab end-->
+<div class="msgWrap">
+<form method="post" action="" id="info">
+<div class="cLine">
+<div class="pageNavigator left"> <a href="{ZF::U('Email/index',array('token'=>$token))}" title="添加邮箱" class="btnGrayS vm bigbtn"><img src="{ZF::RES}/images/product/arrow_switch.png" class="vm">添加邮箱</a>
+<a href="{ZF::U('Inform/index',array('token'=>$token))}" title="通知设置" class="btnGrayS vm bigbtn"><img src="{ZF::RES}/images/product/arrow_switch.png" class="vm">通知设置</a> (<span>邮箱调用顺序：先调用下单店铺的邮件设置，若下单店铺没有设置，则调用所有店铺的邮件设置！</span>)</div>
+<div class="clr"></div>
+</div>
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+<tr>
+<th class="select"><input type="checkbox" value="" id="check_box"></th>
+<th width="50">ID</th>
+<th width="150">接收邮件邮箱：</th>
+<th width="150">SMTP服务器：</th>
+<th width="80">SMTP端口：</th>
+<th class="160">发件帐号：</th>
+<th width="120">店铺</th>
+<th class="60">状态</th>
+<th width="100" class="norightborder">操作</th>
+</tr>
+</thead>
+<tbody style=" text-align:center;">
+<volist name="lists" id="o"> 
+<tr>
+<td><input type="checkbox" value="{ZF:$o.id}" class="cbitem" name="id_{ZF:$o.id}"></td>
+<td>{ZF:$o.id}</td>
+<td>{ZF:$o.emails}</td>
+<td>{ZF:$o.server}</td>
+<td>{ZF:$o.port|default=25}</td>
+<td>{ZF:$o.account}</td>
+<td><if condition="$o['storeid']">
+<volist name="stores" id="v">
+<eq name="o.storeid" value="$v['id']">{ZF:$v.name|default=所有}</eq>
+</volist>
+<else/>所有</if>
+</td> 
+<td><if condition="$o.status eq 1"><span style="color:green">开启</span><else/><span style="color:red">关闭</span></if></td>
+<td class="norightborder"><a href="{ZF::U('Email/index',array('token'=>$token,'id'=>$o['id']))}">修改</a>
+<a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('Email/delete',array('token'=>$token,'id'=>$o['id']))}');">删除</a></td>
+</tr>
+</volist>
+</tbody>
+</table>
+<input type="hidden" name="token" value="{ZF:$_GET['token']}" />
+</form>
+<script type="text/javascript">
+/*$(document).ready(function (){
+$("#check_box").click(function(){
+alert(1);
+		var checkItems=$('.cbitem');
+		if ($("#check_box").attr('checked')==false) {
+			$.each(checkItems, function(i,val){
+				val.checked=false;
+			});
+			
+		} else {
+			$.each(checkItems, function(i,val){
+				val.checked=true;
+			});
+		}
+	});
+});*/
+$(function(){
+	$("#check_box").click(function(){
+		$(this).attr('checked')!="checked"?$('.cbitem').attr("checked",false):$('.cbitem').attr("checked",true);
+	});
+});
+</script>
+</div>
+<!--<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{ZF:$page}</div>
+</div>
+<div class="clr"></div>
+</div>-->
+</div>
+<include file="Public:footer"/>

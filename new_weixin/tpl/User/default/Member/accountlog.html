@@ -1,0 +1,118 @@
+<include file="Public:head"/>
+<script src="{ZF::RES}/js/date/WdatePicker.js"></script>  
+<style>.ListProduct tr{text-align:center;}</style>
+<div class="content" style="" >
+         
+          <div class="cLineB">
+              <h4 class="left">当前位置：<a href="{ZF::U('Member_card/index',array('token'=>$token))}">会员卡</a> >> <a href="{ZF::U('Member_card/members',array('token'=>$token,'id'=>$thisCard['id']))}">{ZF:$thisCard.cardname}会员管理</a> >> {ZF:$thisUser.truename}</h4>
+                 
+              <div class="clr"></div>
+          </div>
+      
+          <div class="msgWrap">
+          
+         
+          <input name="delall"  type="hidden" value="del" />
+           <input name="wxid"  type="hidden" value="gh_423dwjkewad" />
+           <h5 style="margin-top:20px;">会员资料</h5>
+            <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+              <THEAD>
+                <TR>
+				<TH>微信名</TH>
+				<TH>姓名</TH>
+				<TH>联系电话</TH>
+				<TH>QQ号码</TH> 
+				<TH>领卡时间</TH>
+				<TH>积分</TH>
+				<TH>消费总额(元)</TH>
+				<TH>账户余额（元）</TH> 
+                </TR>
+              </THEAD>
+              <TBODY>
+                <TR></TR>
+                <TR>
+                  <TD>{ZF:$members.wechaname}</TD>
+                  <TD>{ZF:$members.truename}</TD>
+                  <TD>{ZF:$members.tel}</TD>
+                  <TD>{ZF:$members.qq}</TD> 
+                  <TD>
+                   <if condition="$list['getcardtime'] gt 0">
+                        {ZF:$members.getcardtime|date='Y-m-d',###}
+                    <else/>
+                    无时间记录
+                    </if>                      
+                  </TD>
+                  <TD>{ZF:$members.total_score}</TD> 
+                  <TD>{ZF:$members.expensetotal}</TD> 
+				  <TD>{ZF:$members.account}</TD> 
+                </TR>
+				
+
+
+              </TBODY>
+            </TABLE>
+          
+<h5 style="margin-top:20px;">账户记录</h5>
+            <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+              <THEAD>
+                <TR>
+				<TH>日期</TH>
+				<TH>金额(元)</TH>
+				<TH>操作方式</TH>
+				<TH>操作员</TH>
+				<TH>备注</TH>
+				<TH>操作</TH>
+                </TR>
+              </THEAD>
+              <TBODY>
+				<volist id="r" name="logs">
+					<TR>
+					  <TD>{ZF:$r.time|date='Y-m-d',###}</TD>
+					  <TD>{ZF:$r.price}</TD>
+					  <TD>
+						<switch name="r.retype">
+              <case value="1">管理员充值</case>
+              <case value="2">管理员扣除</case>
+              <case value="3">支付宝充值</case>
+              <case value="4">财付通充值</case>
+              <default />默认操作
+						</switch>
+					  </TD>
+					  <TD>{ZF:$r.reuser}</TD>
+					  <TD>{ZF:$r.info}</TD>
+					  <TD><a href="javascript:drop_confirm('您确定要删除此记录吗?', '{ZF::U('Member/accountlog_del',array('token'=>$r['token'],'wecha_id'=>$r['wecha_id'],'id'=>$r['id']))}');"><strong>删除记录</strong></a></TD> 
+					</TR>
+				</volist>
+              </TBODY>
+            </TABLE>
+          </div>
+            
+
+ 
+ 
+          <div class="cLine">
+            <div class="pageNavigator right">
+                <div class="pages">{ZF:$page}</div>
+              </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+function checkAll(form, name) {
+for(var i = 0; i < form.elements.length; i++) {
+var e = form.elements[i];
+if(e.name.match(name)) {
+e.checked = form.elements['chkall'].checked;
+}
+}
+}
+  </script>
+  <!--底部-->
+  	</div>
+<include file="Public:footer"/>  

@@ -1,0 +1,51 @@
+<include file="Public:head"/>  
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+
+<div class="content" style="" >
+<div class="cLineB">
+<h4 class="left">店铺列表</h4>
+<div class="clr"></div>
+</div>
+<include file="menu"/>
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+<tr>
+<th width="200">店铺名称</th>
+<th width="100">店铺状态</th>
+<th width="150">店铺分类</th>
+<th width="150">店铺区域</th>
+<th width="150">营业时间</th>
+<th>配送区域</th>
+<th width="150" class="norightborder">操作</th>
+</tr>
+</thead>
+<tbody style="text-align:center;">
+<volist name="stores" id="c"> 
+<tr>
+<td>{ZF:$c.name}</td>
+<td><if condition="$c.status eq 1"><span style="color:green">营业中</span><else/><span style="color:red">歇业中</span></if></td>
+<td><volist name="category" id='vo'>
+	<eq name="c.category" value="$vo.id">{ZF:$vo.name}</eq>
+	</volist></td>
+<td><volist name="storearea" id='vo'>
+ <eq name="c.areaid" value="$vo.id">{ZF:$vo.name}</eq>
+	</volist></td>
+<td>{ZF:$c.time}</td>
+<td>{ZF:$c.scope}</td>
+<td class="norightborder"><a href="{ZF::U('Dining/storeset',array('token'=>$token,'id'=>$c['id'],'storeid'=>$storeid))}">修改</a></td>
+</tr>
+</volist>
+</tbody>
+</table>
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{ZF:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<include file="Public:footer"/>

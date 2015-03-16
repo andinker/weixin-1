@@ -1,0 +1,83 @@
+<include file="Public:head"/>
+<script src="{ZF::RES}/js/date/WdatePicker.js"></script>  
+<style>.ListProduct tr{text-align:center;}</style>
+<div class="content" style="" >
+
+<div class="cLineB">
+<h4 class="left">当前位置：<a href="{ZF::U('Member_card/index',array('token'=>$token))}">会员卡</a> >> {ZF:$thisCard.cardname}会员管理</h4>
+
+<div class="clr"></div>
+</div>
+<div class="cLineD">
+查询资料[仅支持按照会员卡号查询]
+<form method="post" action="">
+<input size="80" value="" name="searchkey" class="px">
+<button type="submit" name="appidsubmit" value="true" class="btnGreen vm" ><strong>查询</strong></button>
+</form>
+</div>
+<div class="msgWrap">
+<div style="background:#fefbe4;border:1px solid #f3ecb9;color:#993300;padding:10px;margin-top:5px;">注意:在每行的输入框里可以通过输入消费金额（可以填写负数）来增减会员积分</div>
+<input name="delall"  type="hidden" value="del" />
+<TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+<THEAD>
+<TR>
+<TH>卡号</TH>
+<TH>微信名</TH>
+<TH>姓名</TH>
+<TH>联系电话</TH>
+<TH>QQ号码</TH> 
+<TH>积分</TH>
+<TH>消费总额(元)</TH>
+<TH>账户余额（元）</TH>              
+<TH >操作</TH>
+</TR>
+</THEAD>
+<TBODY>
+<TR></TR>
+
+<volist id="list" name="members">
+<TR>
+<TD>{ZF:$list.number}</TD>
+<TD>{ZF:$list.wechaname}</TD>
+<TD>{ZF:$list.truename}</TD>
+<TD>{ZF:$list.tel}</TD>
+<TD>{ZF:$list.qq}</TD> 
+<TD>{ZF:$list.total_score}</TD> 
+<TD>{ZF:$list.expensetotal}</TD> 
+<TD>{ZF:$list.account}</TD> 
+<TD class="norightborder">				  
+<a href="{ZF::U('Member/recharge',array('token'=>$token,'wecha_id'=>$list['wecha_id'],'id'=>$list['id']))}"><strong>余额操作</strong></a>|
+<a href="{ZF::U('Member/accountlog',array('token'=>$token,'wecha_id'=>$list['wecha_id']))}"><strong>操作记录</strong></a>
+</TD>
+</TR>
+</volist>
+
+</TBODY>
+</TABLE>
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{ZF:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+
+<div class="clr"></div>
+</div>
+</div>
+</div>
+<script>
+
+function checkAll(form, name) {
+for(var i = 0; i < form.elements.length; i++) {
+var e = form.elements[i];
+if(e.name.match(name)) {
+e.checked = form.elements['chkall'].checked;
+}
+}
+}
+</script>
+<!--底部-->
+</div>
+<include file="Public:footer"/>  

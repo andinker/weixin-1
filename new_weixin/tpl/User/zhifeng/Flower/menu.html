@@ -1,0 +1,13 @@
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+<div class="tab">
+<ul>
+<li class="<if condition="ACTION_NAME EQ 'index'">current</if> tabli" id="tab0"><a href="{ZF::U('Flower/index',array('token'=>$token))}">花店简介</a></li>
+<li class="<if condition="ACTION_NAME EQ 'son' OR ACTION_NAME EQ 'son_add'">current</if> tabli" id="tab2"><a href="{ZF::U('Flower/son',array('token'=>$token))}">分店</a></li>
+<li class="<if condition="ACTION_NAME EQ 'housetype' OR ACTION_NAME EQ 'housetype_add'">current</if> tabli" id="tab2"><a href="{ZF::U('Flower/housetype',array('token'=>$token))}">特色花卉</a></li>
+<li class="<if condition="ACTION_NAME EQ 'album' OR ACTION_NAME EQ 'album_add'">current</if> tabli" id="tab5"><a href="{ZF::U('Flower/album',array('token'=>$token))}">宣传海报/相册</a></li>
+<li class="<if condition="ACTION_NAME EQ 'expert' OR ACTION_NAME EQ 'expert_add'">current</if> tabli" id="tab6"><a href="{ZF::U('Flower/expert',array('token'=>$token))}">客户点评</a></li>
+<li class="<if condition="MODULE_NAME EQ 'Yuyue'">current</if> tabli" id="tab7"><a href="{ZF::U('Yuyue/index',array('token'=>$token,'type'=>'Flower'))}">预定鲜花</a></li>
+
+<li class="<if condition="ACTION_NAME EQ 'aboutus'">current</if> tabli" id="tab7"><a href="{ZF::U('Flower/aboutus',array('token'=>$token))}">关于我们</a></li>
+</ul>
+</div>

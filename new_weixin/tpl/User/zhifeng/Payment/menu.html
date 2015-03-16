@@ -1,0 +1,11 @@
+<!--tab start-->
+<div class="tab">
+<ul>
+<li class='<if condition="ACTION_NAME EQ 'index'">current</if> tabli' id="tab1"><a href="{ZF::U('Payment/index')}">微信支付</a></li>
+<li class='<if condition="ACTION_NAME EQ 'wapalipay'">current</if> tabli' id="tab2"><a href="{ZF::U('Payment/wapalipay')}">手机支付宝</a></li>
+<li class='<if condition="ACTION_NAME EQ 'zfalipay'">current</if> tabli' id="tab3"><a href="{ZF::U('Payment/zfalipay')}">免签支付宝</a></li>
+<li class='<if condition="ACTION_NAME EQ 'tenpay'">current</if> tabli' id="tab1"><a href="{ZF::U('Payment/tenpay')}">财付通</a></li>
+<li class='<if condition="ACTION_NAME EQ 'waptenpay'">current</if> tabli' id="tab1"><a href="{ZF::U('Payment/waptenpay')}">手机财付通</a></li>
+</ul>
+</div>
+<!--tab end-->        

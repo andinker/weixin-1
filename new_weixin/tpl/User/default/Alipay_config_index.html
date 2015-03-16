@@ -1,0 +1,73 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{lanrain::RES}/css/cymain.css" />
+<div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;" >
+
+<div class="cLineB">
+  <h4>支付宝配置 </h4>
+ </div>
+ <!--tab start-->
+
+<!--tab end-->        
+    <div class="msgWrap bgfc" style="margin-top:10px;">
+	  <form class="form" method="post" action="" target="_top" enctype="multipart/form-data">	 
+	  
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+			<tr>
+					<th>支付开关：</th>
+					<td><select name="open"><option value="0" <if condition="$config.open eq 0">selected</if>>关闭支付</option><option value="1" <if condition="$config.open eq 1"> selected</if>>开启支付</option></select> 开启支付后，商城等b2c功能将有支付功能</td>
+				</tr>
+                <tr>
+					<th>申请接口类型：</th>
+					<td><select name="faceType" id="facetype"><option value="0" <if condition="$config.faceType eq 0">selected</if>>手机支付宝</option><option value="1" <if condition="$config.faceType eq 1">selected</if>>免签支付宝</option></select> <span class="jssh2">您只需要填写支付宝账号即可。</span><span class="jssh1">请根据自己需要选择，手机支付宝接口需前往支付宝申请。</span></td>
+         		</tr>
+               
+				<tr>
+					<th width="120">支付宝帐号：</th>
+					<td><input type="text" name="name" value="{lanrain:$config.name}" class="px" style="width:550px;"></td>
+				</tr>
+				
+                <tr class="jssh1"<if condition="$config.faceType neq 0"> style="display:none;"</if>>
+					<th width="120">支付宝PID：</th>
+					<td><input type="text" name="pid" value="{lanrain:$config.pid}" class="px" style="width:550px;"></td>
+				</tr>
+				<tr class="jssh1"<if condition="$config.faceType neq 0">style="display:none;"</if>>
+					<th>支付宝KEY：</th>
+					<td><input type="text" name="key" value="{lanrain:$config.key}" class="px" style="width:550px;"></td>
+				</tr>
+    
+              
+                <tr class="jssh2"  <if condition="$config.faceType neq 1">style="display:none;"</if> >
+                	<th style="font-size:16px;font-weight:bold;color:red;">免签接口说明：</th>
+                    <td style="font-size:13px;color:red;">使用免签接口，只需要输入您的支付宝账号即可，免签接口手续费为1.5%，此收款接口由本平台提供。<br />注意：购买物品时付款账号不能与此处填写的免签账号相同，否则支付宝会认为违规，导致收款不成功<br />因不符合上述规定造成的经济损失，概不负责！<td>
+                </tr>
+                <tr><th>&nbsp;</th>
+					<td>
+					<input type="hidden" name="token" value="{lanrain:$token}" />
+						<button type="submit" name="button" class="btnGreen">保存</button>
+						<a href="javascript:history.go(-1);" class="btnGray vm">取消</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+  </div> 
+ 
+  <script>
+ 	  $(function(){
+		  $('#facetype').change(function(){
+			var p1=$(this).children('option:selected').val();//这就是selected的值
+			if(p1==1){
+	 			$(".jssh1").hide();
+			 	$(".jssh2").show();
+			}else{
+		   		$(".jssh1").show();
+			   	$(".jssh2").hide();
+			}
+//var p2=$('#param2').val();//获取本页面其他标签的值
+//window.location.href="xx.php?param1="+p1+"¶m2="+p2+"";//页面跳转并传参
+		}) 
+ })
+  </script>
+        </div>
+<include file="Public:footer"/>

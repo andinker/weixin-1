@@ -1,0 +1,12 @@
+
+<div class="tab">
+	<ul>
+	<li class="tabli" id="tab0"><a href="{ZF::U('Recommend/index',array('token'=>$token))}">推荐活动</a></li>
+	<li class="<if condition="(ACTION_NAME eq rule OR ACTION_NAME eq rule_set) and MODULE_NAME eq Recommend">current </if> tabli" id="tab0"><a href="{ZF::U('Recommend/rule',array('token'=>$token,'acid'=>$_GET['acid']))}">推荐策略</a></li>
+	<li class="<if condition="ACTION_NAME eq tj_logs and MODULE_NAME eq Recommend">current </if> tabli" id="tab0"><a href="{ZF::U('Recommend/tj_logs',array('token'=>$token,'acid'=>$_GET['acid']))}">推荐记录</a></li>
+	<!--<li class="<if condition="(ACTION_NAME eq forminfo OR ACTION_NAME eq setinfo) and MODULE_NAME eq Recommend">current </if> tabli" id="tab0"><a href="{ZF::U('Recommend/forminfo',array('token'=>$token,'acid'=>$_GET['acid']))}">表单设置</a></li>
+	<li class="<if condition="(ACTION_NAME eq item OR ACTION_NAME eq item_set) and MODULE_NAME eq Scoregift">current </if> tabli" id="tab0"><a href="{ZF::U('Scoregift/lists',array('token'=>$token,'acid'=>$_GET['acid']))}">推荐奖品</a></li>
+	<li class="<if condition="ACTION_NAME eq exchange_user and MODULE_NAME eq Scoregift">current </if> tabli" id="tab0"><a href="{ZF::U('Scoregift/exchange_user',array('token'=>$token))}">奖品兑换</a></li>
+	<li class="<if condition="ACTION_NAME eq exchange_logs">current </if> tabli" id="tab0"><a href="{ZF::U('Scoregift/logs',array('token'=>$token))}">奖品兑换记录</a></li>-->
+	</ul>
+</div>

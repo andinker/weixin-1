@@ -1,0 +1,11 @@
+
+<!--tab start-->
+<div class="tab">
+<ul>
+<li class="<if condition="ACTION_NAME EQ 'index' and $isBranch neq 1">current</if> tabli" id="tab0"><a href="{ZF::U('Company/index',array('token'=>$token))}">公司信息</a></li>
+<li class="<if condition="ACTION_NAME EQ 'branches' OR $isBranch eq 1"> current</if> tabli" id="tab2"><a href="{ZF::U('Company/branches',array('token'=>$token,'isBranch'=>1))}">分支机构</a></li>
+<li class="<if condition="ACTION_NAME EQ 'company_cate' OR ACTION_NAME EQ 'company_cate_set'"> current </if> tabli" id="tab3"><a href="{ZF::U('Company/company_cate',array('token'=>$token))}">店铺分类列表</a></li>
+<li class="<if condition="ACTION_NAME EQ 'company_area' OR ACTION_NAME EQ 'company_area_set'"> current </if> tabli" id="tab4"><a href="{ZF::U('Company/company_area',array('token'=>$token))}">店铺区域设置</a></li>
+</ul>
+</div>
+<!--tab end-->

@@ -1,0 +1,49 @@
+<include file="Public:head"/>  
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+
+<div class="content" style="" >
+<div class="cLineB">
+<h4 class="left">店铺列表</h4>
+<div class="clr"></div>
+</div>
+<!--tab start-->
+<div class="tab">
+<ul>
+<li class="current tabli" id="tab2"><a href="{ZF::U('Zuche/stores',array('token'=>$token,'storeid'=>$storeid))}">店铺信息</a></li>
+<li class="tabli" id="tab0"><a href="{ZF::U('Zuche/index',array('token'=>$token,'storeid'=>$storeid))}">车型管理</a></li>
+<li class="tabli" id="tab2"><a href="{ZF::U('Zuche/cats',array('token'=>$token,'storeid'=>$storeid))}">车型分类管理</a></li>
+<li class="tabli" id="tab5"><a href="{ZF::U('Reply_info/set',array('token'=>$token,'infotype'=>'Zuche'))}">租车回复配置</a></li>
+</ul>
+</div>
+<!--tab end-->  
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+<tr>
+<th>排序</th>
+<th width="200">店铺名称</th>
+<th>店铺地址</th>
+<th width="150" class="norightborder">操作</th>
+</tr>
+</thead>
+<tbody style="text-align:center;">
+<volist name="stores" id="c"> 
+<tr>
+<td>{ZF:$c.taxis}</td>
+<td>{ZF:$c.name}</td>
+<td>{ZF:$c.address}</td>
+<td class="norightborder"><a href="{ZF::U('Company/index',array('token'=>$token,'id'=>$c['id'],isBranch=>$c['isbranch']))}">修改</a></td>
+</tr>
+</volist>
+</tbody>
+</table>
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{ZF:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<include file="Public:footer"/>

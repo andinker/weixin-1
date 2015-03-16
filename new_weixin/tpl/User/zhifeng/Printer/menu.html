@@ -1,0 +1,10 @@
+<!--tab start-->
+<div class="tab">
+<ul>
+<li class="<if condition="MODULE_NAME eq Email and (ACTION_NAME eq lists or ACTION_NAME eq index)">current</if> tabli" id="tab2"><a href="{ZF::U('Email/lists',array('token'=>$token,'storeid'=>$storeid))}">邮箱列表</a></li>
+<!--<li class="<if condition="MODULE_NAME eq Email and ACTION_NAME eq index">current</if> tabli" id="tab5"><a href="{ZF::U('Email/index',array('token'=>$token))}">邮箱设置</a></li>-->
+<!--<li class="<if condition="MODULE_NAME eq Sms and ACTION_NAME eq lists">current</if> tabli" id="tab2"><a href="{ZF::U('Sms/lists',array('token'=>$token,'storeid'=>$storeid))}">短信列表</a></li>-->
+<li class="<if condition="MODULE_NAME eq Printer and (ACTION_NAME eq lists OR ACTION_NAME eq index)">current</if> tabli" id="tab2"><a href="{ZF::U('Printer/lists',array('token'=>$token,'storeid'=>$storeid))}">打印机列表</a></li>
+</ul>
+</div>
+<!--tab end-->

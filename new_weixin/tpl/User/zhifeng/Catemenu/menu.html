@@ -1,0 +1,6 @@
+<ul id="tags">
+	<li <if condition="ACTION_NAME eq add or ACTION_NAME eq 'edit' or(ACTION_NAME eq 'index' AND MODULE_NAME eq Catemenu)"> class="selectTag" </if> ><a href="{ZF::U('Catemenu/index',array('token'=>$token))}">底部菜单分类设置</a> </li>
+	<li <if condition="ACTION_NAME eq 'styleSet'"> class="selectTag" </if> ><a href="{ZF::U('Catemenu/styleSet',array('token'=>$token))}">底部菜单风格选择</a> </li>
+	<!--<li <if condition="MODULE_NAME eq Plugmenu"> class="selectTag" </if> ><a href="{ZF::U('Plugmenu/index',array('token'=>$token))}">老版导航</a> </li>-->
+	<div class="clr"></div>
+</ul>

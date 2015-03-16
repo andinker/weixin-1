@@ -1,0 +1,67 @@
+<include file="Public:head"/> 
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+<div class="content" style="" >
+
+<div class="cLineB">
+<h4 class="left">礼品管理</h4>
+<div class="clr"></div>
+</div>
+<include file="Scoregift:menu"/>
+
+<div class="cLine">
+<div class="pageNavigator left"> <a href="{ZF::U('Scoregift/gift_set',array('token'=>$token,'acid'=>$acid))}" title="添加礼品" class="btnGrayS vm bigbtn"><img src="{ZF::RES}/images/product/add.png" width="16" class="vm">添加积分礼品</a></div>
+
+<div class="clr"></div>
+
+</div>
+
+<div class="msgWrap">
+
+<form method="post" action="" id="info">
+
+<input name="delall" type="hidden" value="">
+
+<input name="wxid" type="hidden" value="">
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+<thead>
+
+<tr>
+
+<th width="100">礼品名称</th>
+<th width="100">礼品图片</th>
+<th width="100">需要积分</th>
+<th width="100">剩余数量</th>
+<th width="100">状态</th>
+<th width="250" class="norightborder">操作</th>
+
+</tr>
+
+</thead>
+
+<tbody style="text-align:center;">
+<volist name="data" id="item"> 
+
+<tr>
+<td>{ZF:$item.name}</td>
+<td><div class="cateimg"><if condition="$item['img']"><img src="{ZF:$item['img']}" class="cateimg_big2"><img src="{ZF:$item['img']}" width="48" style="vertical-align:middle;"/><else/>未设置礼品图</if></div></td>
+<td>{ZF:$item.score}</td>
+<td>{ZF:$item.num}</td>
+<td><if condition="$item.status eq 0"><span class="red">关闭</span><else/><span class="green">启用</span></if></td>
+<td class="norightborder"><a href="{ZF::U('Scoregift/gift_set',array('id'=>$item['id'],'token'=>$token))}">修改</a>&nbsp;&nbsp; <a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('Scoregift/gift_del',array('id'=>$item['id'],'token'=>$token))}');">删除</a></td>
+
+</tr>
+</volist>
+</tbody>
+</table>
+</form>
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{ZF:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<include file="Public:footer"/>

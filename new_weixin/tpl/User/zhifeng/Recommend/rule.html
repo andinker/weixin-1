@@ -1,0 +1,63 @@
+<include file="Public:head"/> 
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+<div class="content" style="" >
+
+<div class="cLineB">
+<h4 class="left">此活动规则管理</h4>
+<div class="clr"></div>
+</div>
+<include file="Recommend:menu"/>
+
+<div class="cLine">
+<div class="pageNavigator left"> <a href="{ZF::U('Recommend/rule_set',array('token'=>$token,'acid'=>$acid))}" title="添加规则" class="btnGrayS vm bigbtn"><img src="{ZF::RES}/images/product/add.png" width="16" class="vm">添加活动规则</a></div>
+
+<div class="clr"></div>
+
+</div>
+
+<div class="msgWrap">
+
+<form method="post" action="" id="info">
+
+<input name="delall" type="hidden" value="">
+
+<input name="wxid" type="hidden" value="">
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+<thead>
+
+<tr>
+
+<th width="100">规则名称</th>
+<th width="100">奖励积分</th>
+<th width="100">状态</th>
+<th width="250" class="norightborder">操作</th>
+
+</tr>
+
+</thead>
+
+<tbody style="text-align:center;">
+<volist name="data" id="item"> 
+
+<tr>
+<td>{ZF:$item.name}</td>
+<td>{ZF:$item.score}</td>
+<td><if condition="$item.status eq 0"><span class="red">关闭</span><else/><span class="green">启用</span></if></td>
+<td class="norightborder"><a href="{ZF::U('Recommend/rule_set',array('id'=>$item['id'],'token'=>$token,'acid'=>$item['acid']))}">修改</a>&nbsp;&nbsp; <a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('Recommend/rule_del',array('id'=>$item['id'],'token'=>$token,'acid'=>$item['acid']))}');">删除</a></td>
+
+</tr>
+</volist>
+</tbody>
+</table>
+</form>
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{ZF:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<include file="Public:footer"/>

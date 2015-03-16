@@ -1,0 +1,71 @@
+<include file="Public:head"/> 
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+<div class="content" style="" >
+
+<div class="cLineB">
+<h4 class="left">推荐活动管理</h4>
+</div>
+<div class="cLine">
+
+<div class="pageNavigator left"> <a href="{ZF::U('Recommend/add',array('token'=>$token))}" title="添加" class="btnGrayS vm bigbtn"><img src="{ZF::RES}/images/product/add.png" width="16" class="vm">添加推荐活动</a></div>
+
+<div class="clr"></div>
+
+</div>
+
+<div class="msgWrap">
+
+<form method="post" action="" id="info">
+
+<input name="delall" type="hidden" value="">
+
+<input name="wxid" type="hidden" value="">
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+<thead>
+
+<tr>
+<th width="100">活动id</th>
+<th width="100">关键词</th>
+<th width="100">标题</th>
+<th width="100">发起人</th>
+<th width="100">内容(无样式显示)</th>
+<th width="150">版权信息(无样式显示)</th>
+<th width="150">成功推荐次数</th>
+<th width="150">已查看次数</th>
+<th width="250" class="norightborder">操作</th>
+
+</tr>
+
+</thead>
+
+<tbody style="text-align:center;">
+<volist name="data" id="item"> 
+
+<tr>
+<td>{ZF:$item.id}</td>
+<td>{ZF:$item.keyword}</td>
+<td>{ZF:$item.title}</td>
+<td>{ZF:$item.author|default="管理员"}</td>
+<td>{ZF:$item.content|html_entity_decode|strip_tags|mb_substr=0,100|default="无"}</td>
+<td>{ZF:$item.copyright|html_entity_decode|strip_tags|mb_substr=0,100|default="无"}</td>
+<td>{ZF:$item.tjnum|default="0"}</td>
+<td>{ZF:$item.seenum|default="0"}</td>
+<td class="norightborder"><a href="{ZF::U('Recommend/rule',array('acid'=>$item['id'],'token'=>$token))}">推荐策略</a>&nbsp;&nbsp;<a href="{ZF::U('Recommend/tj_logs',array('acid'=>$item['id'],'token'=>$token))}">推荐记录</a>&nbsp;&nbsp;<a href="{ZF::U('Recommend/set',array('id'=>$item['id'],'token'=>$token))}">修改</a>&nbsp;<a href="javascript:drop_confirm('您确定要删除吗?需先删除此活动的积分策略！！', '{ZF::U('Recommend/del',array('id'=>$item['id'],'token'=>$token))}');">删除</a>
+</td>
+
+</tr>
+</volist>
+</tbody>
+</table>
+</form>
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{ZF:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<include file="Public:footer"/>

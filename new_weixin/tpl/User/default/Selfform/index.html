@@ -1,0 +1,50 @@
+<include file="Public:head"/> 
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+        <div class="content" style="" >
+<div class="cLineB">
+<h4 class="left">自定义表单 ({ZF:$page}) </h4>
+<div class="clr"></div>
+</div>
+
+<div class="cLine">
+<div class="pageNavigator left"> <a href="{ZF::U('Selfform/add',array('token'=>$token))}" title="添加" class="btnGrayS vm bigbtn"><img src="{ZF::RES}/images/product/add.png" width="16" class="vm">添加</a></div>
+<div class="clr"></div>
+</div>
+<div class="msgWrap">
+<form method="post" action="" id="info">
+<input name="delall" type="hidden" value="">
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+<tr>
+<th class="select"></th>
+<th>名称</th>
+<th width="160">关键词</th>
+<th width="130">创建时间</th>
+ <th width="100">外链代码</th>
+<th width="250" class="norightborder">操作</th>
+</tr>
+</thead>
+<tbody style="text-align:center;">
+<volist name="list" id="item"> 
+<tr>
+<td><input type="checkbox" name="del_id[{ZF:$i}]" value="285" class="checkitem"></td>
+<td>{ZF:$item.name}</td>
+<td>{ZF:$item.keyword}</td>
+<td>{ZF:$item.time|date="Y-m-d H:i:s",###}</td> 
+<td>万能表单 {ZF:$item.id}</td> 
+<td class="norightborder"><a href="{ZF::U('Selfform/infos',array('id'=>$item['id'],'token'=>$token))}">提交信息管理</a>&nbsp;&nbsp;<a href="{ZF::U('User/Selfform/inputs',array('id'=>$item['id'],'token'=>$token))}">输入项管理</a>&nbsp;&nbsp;<a href="{ZF::U('Selfform/set',array('id'=>$item['id'],'token'=>$token))}">修改</a>&nbsp;&nbsp;<a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('Selfform/del',array('id'=>$item['id'],'token'=>$token))}');">删除</a></td>
+</tr>
+</volist>
+</tbody>
+</table>
+</form>
+
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{ZF:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<include file="Public:footer"/>

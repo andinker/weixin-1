@@ -1,0 +1,11 @@
+<!--tab start-->
+<div class="tab">
+<ul>
+<li class="<if condition="$action eq 'index'">current</if> tabli" id="tab0"><a href="{ZF::U('Product/index',array('token'=>$token,'catid'=>$catid))}">商品管理</a></li>
+<li class="<if condition="$action eq 'cats'">current</if> tabli" id="tab1"><a href="{ZF::U('Product/cats',array('token'=>$token))}">分类管理</a></li>
+<li class="<if condition="$action eq 'orders'">current</if> tabli" id="tab2"><a href="{ZF::U('Product/orders',array('token'=>$token))}">订单管理</a></li>
+<li class="<if condition="$action eq 'setting'">current</if> tabli" id="tab3"><a href="{ZF::U('Product/setting',array('token'=>$token))}">商城设置</a></li>
+<li class="tabli" id="tab4"><a href="{ZF::U('Reply_info/set',array('token'=>$token,'infotype'=>'Shop'))}">商城回复配置</a></li>
+</ul>
+</div>
+<!--tab end-->

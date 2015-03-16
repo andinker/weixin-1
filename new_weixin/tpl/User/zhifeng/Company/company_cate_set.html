@@ -1,0 +1,87 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+<link rel="stylesheet" href="{ZF::STATICS}/kindeditor/themes/default/default.css" />
+<script src="{ZF::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+<script src="{ZF::STATICS}/upyun.js"></script>
+  <div class="content" style="" > 
+   <div class="cLineB"> 
+    <h4>店铺类型设置</h4> 
+    <a href="{ZF::U('Company/company_cate',array('token'=>$token))}" class="right  btnGreen" style="margin-top:-27px">返回</a> 
+   </div> 
+   <include file="Company:menu"/>
+   <form class="form" method="post" action="" enctype="multipart/form-data"> 
+    <input type="hidden" name="id" value="{ZF:$set.id}" /> 
+     
+    <div class="msgWrap bgfc"> 
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+      <tbody> 
+       <tr> 
+        <th><span class="red">*</span>名称：</th> 
+        <td><input type="text" name="name" value="{ZF:$set.name}" class="px" style="width:400px;" /></td> 
+       </tr>
+      <!--<tr> 
+        <th><span class="red">*</span>上级分类：</th> 
+        <td><select class="J_cate_select px" data-pid="0" data-uri="{ZF::U('Dining/ajaxCatOptions', array('token'=>$token,'storeid'=>$storeid))}" data-selected="{ZF:$selected_ids}" onchange="chkstore(this.value);"></select>
+		<input type="hidden" name="parentid" id="J_cate_id" value="{ZF:$set.parentid}" /></td> 
+       </tr>-->
+        <tr id="storediv"> 
+        <th><span class="red">*</span>指定类型：</th> 
+        <td>
+		<select id="type" name="type" class="px"> 
+			<option value="">请选择...</option>        
+			<option value="shop" <eq name="set['type']" value="shop">selected</eq>>商城</option>
+			<option value="dining" <eq name="set['type']" value="dining">selected</eq>>订餐</option>
+			<option value="group" <eq name="set['type']" value="group">selected</eq>>团购</option>
+			<option value="group" <eq name="set['type']" value="market">selected</eq>>商圈</option>
+        </select>
+		</td> 
+       </tr>
+	    <tr id=""> 
+        <th><span class="red">*</span>支持类型：</th> 
+        <td>
+		<input type="checkbox" id="isMarket" name="isMarket"  value="1" <if condition="$set['isMarket'] eq 1"> checked </if>><label for="isMarket">支持商圈&nbsp </label>
+        <input type="checkbox" id="isProduct" name="isProduct"  value="1" <if condition="$set['isProduct'] eq 1"> checked </if>><label for="isProduct">支持商城&nbsp </label>
+		<input type="checkbox" id="isDining" name="isDining"  value="1" <if condition="$set['isDining'] eq 1"> checked </if>><label for="isDining">支持订餐&nbsp </label>
+		<input type="checkbox" id="isGroup" name="isGroup" value="1"  <if condition="$set['isGroup'] eq 1"> checked </if>><label for="isGroup">支持团购&nbsp </label>
+        (目前只有商圈支持此项选择，订餐商城团购此项暂不生效，目前仍未老设置，后续将逐步升级替代原有设置，预计周期为一月，请尽快升级避免后续无法正常使用！)
+       </td> 
+       </tr>
+       <tr> 
+        <th>Logo地址：</th>
+        <td><input type="text" name="logourl" value="{ZF:$set.logourl}" class="px" id="pic" style="width:400px;" /> <a href="###" onclick="upyunPicUpload('pic',700,700,'{ZF:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic')">预览</a></td> 
+       </tr>
+       
+        <tr> 
+        <th>简介：</th> 
+        <td><textarea name="info" class="px" style="width:400px;height:80px;">{ZF:$set.info}</textarea></td> 
+       </tr>
+	    <tr> 
+        <th>状态：</th> 
+        <td><input type="radio" name="status" value="1" <neq name="set.status" value='0'>checked</neq> /> 启用 <input type="radio" name="status" value="0" <eq name="set.status" value="0" >checked</eq>/> 禁用</td> 
+       </tr>
+       <tr>         
+       <th>&nbsp;</th>
+       <td>
+       <button type="submit" name="button" class="btnGreen">保存</button> &nbsp; <a href="{ZF::U('Company/company_cate',array('token'=>$token))}" class="btnGray vm">取消</a></td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     </div>
+    
+   </form> 
+  </div> 
+  <include file="Public:footer" />
+  <script src="{ZF::RES}/js/cate_select.js"></script>
+<script type="text/javascript">
+	$('.J_cate_select').cate_select();
+	function chkstore(v){
+		if(v){
+			$('#storediv').hide();
+		}else{
+			$('#storediv').show();
+		}
+	}
+</script>

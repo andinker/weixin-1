@@ -1,0 +1,225 @@
+<include file="Public:head"/>
+<link rel="stylesheet" href="{ZF::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{ZF::STATICS}/kindeditor/plugins/code/prettify.css" />
+<script src="{ZF::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+<style>
+li .mbtip {display: none;} 
+
+.cateradio li:hover .mbtip {
+    background-color: #000000;    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 7px;    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.15);
+    color: #FFFFFF;    display: block;    padding: 6px;    float:right;   position:relative;    right:-140px;
+    top:-325px;    width: 130px;    text-align: left;    z-index: 999;
+}
+</style>
+
+<div class="content"  >
+
+    <div class="cLineB">
+        <h4>模板管理 <span class="FAQ">选择适合您的模版风格，手机输入“首页”测试效果。</span></h4>
+    </div>
+
+    <div class="msgWrap form">
+        <ul id="tags" style="width:920px;">
+            <li class="selectTag"><a onclick="selectTag('tagContent0',this)" href="javascript:void(0)">1. 首页模板风格(老模版对比查看用)</a> </li>
+            <div class="clr"></div>
+        </ul>
+
+        <div id="tagContent">
+            <div class="tagContent selectTag" id="tagContent0">
+                <fieldset>
+				 <div class="g filterBox">
+                  <h1>筛选条件:</h1>
+                  <ul class="filterBtn">
+					<li class="filter on active" data-filter=""><p>全部模版</p><i></i></li>
+                   <li class="filter" data-filter="zzfootmenu"><p>支持底部导航</p><i></i></li>
+                    <li class="filter" data-filter="nofootmenu"><p>不支持新版底部导航</p><i></i></li>
+					<li class="filter" data-filter="zzsubmenu"><p>支持二级分类</p><i></i></li>
+					<li class="filter" data-filter="slide"><p>支持幻灯片</p><i></i></li>
+                  </ul>
+                </div><div class="clr"></div>
+					<ul class="cateradio">
+					<volist name="indextpl" id="tpl">
+					<li class='{ZF:$tpl.attr} <eq name="info.tpltypeid" value="$tpl.tplid"> active </eq> '>
+                            <label>
+                                <img src="{ZF::RES}/{ZF:$tpl.imgurl}"/> {ZF:$tpl.name}
+                            </label>
+                             <notempty name="tpl.info"><p class="mbtip">{ZF:$tpl.info}</p></notempty>
+                        </li>
+                    </volist>				
+                    </ul>
+                </fieldset>
+            </div>
+            <div class="tagContent" id="tagContent1">
+                <fieldset>
+				<p class="mbbh" style="line-height:1.5em; color:red; padding:5px 10px;">说明：此选项仅在分类未单独设置详情模板时，才会生效！</p>
+				<ul class="cateradio2">				
+				<volist name="liststpl" id="listtpl">
+				<li class='{ZF:$listtpl.attr} <eq name="info.tpllistid" value="$listtpl.tplid"> active </eq> '>
+					<label>
+					<img src="{ZF::RES}/{ZF:$listtpl.imgurl}" onclick="javascript:alert('已选择列表{ZF:$listtpl.tplid}')" />
+					<input class="radio2" type="radio" views="{ZF:$listtpl.views}" name="optype2" value="{ZF:$listtpl.tplid}" <eq name="info.tpllistid" value="$listtpl.tplid">checked</eq> /> {ZF:$listtpl.name}
+					</label>
+					 <notempty name="listtpl.info"><p class="mbtip">{ZF:$listtpl.info}</p></notempty>
+				</li>
+				</volist>
+				</ul>
+                </fieldset>
+            </div>
+            <div class="tagContent" id="tagContent2">
+			<fieldset>
+			<p class="mbbh" style="line-height:1.5em; color:red; padding:5px 10px;">说明：此选项仅在分类未单独设置详情模板时，才会生效！</p>
+			<div class="g filterBox" style="margin-top:0;" >
+                <h1 style="width:100px;padding-right:5px;">当前模板: <span class="contid"> {ZF:$info['tplcontentid']|default="请更换浏览器"} </span> </h1>
+                <ul class="filterBtn">
+					<li class="filter" data-filter="active"><p>选中的</p><i></i></li>
+					<li class="filter on active" data-filter=""><p>全部详情</p><i></i></li>
+                    <li class="filter" data-filter="nohead"><p>无头像</p><i></i></li>
+                    <li class="filter" data-filter="head"><p>有头像</p><i></i></li>
+                    <li class="filter" data-filter="topnav"><p>有顶部菜单</p><i></i></li>
+					<li class="filter" data-filter="fnav"><p>支持底部导航</p><i></i></li>
+					<li class="filter" data-filter="nofnav"><p>不支持底部导航</p><i></i></li>
+                </ul>
+            </div>
+			<div class="clr"></div>
+			<ul class="cateradio3">
+			<volist name="contenttpl" id="contpl">
+				<li class='{ZF:$contpl.attr} <eq name="info.tplcontentid" value="$contpl.tplid"> active </eq> '>
+					<label><img src="{ZF::RES}/{ZF:$contpl.imgurl}" onclick="javascript:alert('已选择详情模板{ZF:$contpl.tplid}')" />
+					<input class="radio3" type="radio" name="optype3" value="{ZF:$contpl.tplid}" <eq name="info.tplcontentid" value="$contpl.tplid">checked</eq>/>{ZF:$contpl.name}
+					</label>
+					 <notempty name="contpl.info"><p class="mbtip">{ZF:$contpl.info}</p></notempty>
+				</li>
+			</volist>
+			</ul>
+			</fieldset>
+            </div>
+			<!--<div class="tagContent" id="tagContent5">
+			<fieldset>
+			  <ul class="cateradio5">
+				<li <eq name="info.tplcontentid" value="0">class="active"</eq> style="margin:10px 30px 30px 30px;"   >
+				<label><img src="{ZF::RES}/tmplimg/menu-0.png" onclick="javascript:alert('已选择导航1')" /><input class="radio5" type="radio" name="optype5" value="0" 
+				  <eq name="info.tplcontentid" value="0">checked</eq> />导航1</label>
+				</li>
+				<li <eq name="info.tplcontentid" value="1">class="active"</eq> style="margin:10px 30px 30px 30px;"   >
+				<label><img src="{ZF::RES}/tmplimg/menu-1.png" onclick="javascript:alert('已选择导航2')" /><input class="radio5" type="radio" name="optype5" value="1" 
+				  <eq name="info.tplcontentid" value="1">checked</eq> />导航2</label>
+				</li>
+				<li <eq name="info.tplcontentid" value="2">class="active"</eq> style="margin:10px 30px 30px 30px;"   >
+				<label><img src="{ZF::RES}/tmplimg/menu-2.png" onclick="javascript:alert('已选择导航3')"/ ><input class="radio5" type="radio" name="optype5" value="2" 
+				  <eq name="info.tplcontentid" value="2">checked</eq> />导航3</label>
+				</li>
+				<li <eq name="info.tplcontentid" value="3">class="active"</eq> style="margin:10px 30px 30px 30px;"   >
+				<label><img src="{ZF::RES}/tmplimg/menu-3.png" onclick="javascript:alert('已选择导航4')"/ ><input class="radio5" type="radio" name="optype5" value="3" 
+				  <eq name="info.tplcontentid" value="3">checked</eq>/>导航4</label>
+				</li>
+			  </ul>
+			</fieldset>
+		  </div>-->
+          
+        </div>
+
+        <script type="text/javascript">
+            function selectTag(showContent,selfObj){
+                // 操作标签
+                var tag = document.getElementById("tags").getElementsByTagName("li");
+                var taglength = tag.length;
+                for(i=0; i<taglength; i++){
+                    tag[i].className = "";
+                }
+                selfObj.parentNode.className = "selectTag";
+                // 操作内容
+                for(i=0; j=document.getElementById("tagContent"+i); i++){
+                    j.style.display = "none";
+                }
+                document.getElementById(showContent).style.display = "block";
+
+
+            }
+        </script>
+
+
+        <script>
+			var $ = jQuery;
+           jQuery("#tagContent0 .filter").click(function(){
+               jQuery("#tagContent0 .filterBtn li").each(function(){
+                   jQuery(this).removeClass("active");
+                });
+                jQuery(this).addClass("active");
+			    jQuery(".cateradio li").each(function(){
+				 jQuery(this).hide();
+				});
+				switch (jQuery(this).attr('data-filter')){
+				case('nofootmenu'):
+					jQuery("li.nomenutpl").show('slow');
+					break;
+				case('zzfootmenu'):
+					jQuery("li.yesmenutpl").show('slow');
+					break;
+				case('active'):
+					jQuery("li.active").show('slow');
+					break;					
+				case('zzsubmenu'):
+					jQuery("li.zzsubmenu").show('slow');
+					break;
+				case('slide'):
+					jQuery("li.slide").show('slow');
+					break;
+				default:
+					jQuery(".cateradio li").show('slow');
+				}
+            });
+
+           
+            function changeapp(obj,gid){
+                if(obj.checked==true){
+                    //var image=new Image();   
+                    var myurl='index.php?ac=app&op=open&value=1&id=9379&wxid=gh_858dwjkeww5&openid='+gid+'&r='+Math.random(); 
+                    $.ajax({url:myurl,async:false});
+
+                }else{
+ 
+                    var myurl='index.php?ac=app&op=open&value=0&id=9379&wxid=gh_858dwjkeww5&openid='+gid+'&r='+Math.random(); 
+                    $.ajax({url:myurl,async:false});
+
+                }
+            }
+			//jQuery.noConflict(); 
+        </script>
+
+
+        <div class="clr"></div>
+    </div>
+
+</div>
+
+<div class="clr"></div>
+</div>
+</div>
+</div> 
+<!--底部-->
+</div><script>
+    KindEditor.ready(function(K) {
+        var editor = K.editor({
+            allowFileManager : true
+        });
+
+        K('#image').click(function() {
+            editor.loadPlugin('image', function() {
+                editor.plugin.imageDialog({
+                    showRemote : false,
+                    imageUrl : K('#img').val(),
+                    clickFn : function(url, title, width, height, border, align) {
+                        K('#img').val(url);
+                        var show_img = '<img src = "' + url + '" width="80" height="80" />';
+                        $('#show_img').html(show_img);
+                        editor.hideDialog();
+                    }
+                });
+            });
+        });
+    });
+</script>
+<include file="Public:footer"/>

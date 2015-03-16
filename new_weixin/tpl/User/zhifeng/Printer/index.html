@@ -1,0 +1,69 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+<div class="content" style="" >
+<div class="cLineB">
+<h4 class="left">无线打印设置</h4>
+<span class="FAQ">填写错误将不能打印,接口请向管理员申请！</span>
+<div class="right">
+<a href="{ZF::U('Printer/lists',array('token'=>$token))}" class="btnGrayS" style="margin-top:-5px">返回</a>
+</div>
+<div class="clr"></div>
+</div>
+<include file="Email:menu"/>
+<div class="msgWrap">
+<form method="post"  action="">
+<table class="userinfoArea" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+ <tr><th><span class="red">*</span>打印机类型</th>
+    <td><select name='type' class="ptype">
+		<option value="1" <eq name="set.type" value="1">selected</eq> >飞印打印机</option>
+		<option value="2" <eq name="set.type" value="2">selected</eq> >飞鹅打印机</option>		
+	</select></td>
+</tr>
+<tr><th class="snORqr"><if condition="$set['type'] eq '1'"><span class="red">*</span>商户代码：<else/>二维码链接：</if></th><td><input type="text" required="" class="px" name="memberCode" value="{ZF:$set.memberCode}" tabindex="1" size="35"><span class="red qrjieshao" <neq name="set.type" value="2"> style="display:none" </neq>> 需打印机支持:如www.zfweixin.com </span></td></tr>
+<tr><th><span class="red">*</span>API 密钥：</th><td><input type="text" required="" class="px" name="feiyin_key" value="{ZF:$set.feiyin_key}" tabindex="1" size="25"></td></tr>
+<tr><th><span class="red">*</span>打印机设备编码：</th><td><input type="text" required="" class="px" name="deviceNo" value="{ZF:$set.deviceNo}" tabindex="1" size="25"> <span class="red">一般在打印机后面或需要按照步骤激活获取</span></td></tr>
+<tr><th><span class="red">*</span>订单尾注：</th><td><input type="text" required="" class="px" name="head" value="{ZF:$set.head}" tabindex="1" size="25"> <span class="red">订单尾注，如"【王氏家常菜】"</span></td></tr>
+ <tr><th><span class="red">*</span>店铺选择</th>
+    <td><select name='storeid'>
+		<option value=" ">所有</value>
+		<volist name="stores" id='vo'>
+		<option value="{ZF:$vo.id}" <eq name="set.storeid" value="$vo.id">selected</eq> >{ZF:$vo.name}</option>
+		</volist>
+	</select></td>
+</tr>
+ <tr>
+    <th><span class="red">*</span>是否开启：</th>
+    <td>
+    <label for="statu-1">
+    开启
+    </label>
+    <input type="radio" name="status" <if condition="$set.status eq 1">checked</if> id="statu-1" value="1">
+    &nbsp;&nbsp;
+    <label for="statu-0">
+    关闭
+    </label>
+    <input type="radio" name="status" <if condition="$set.status eq 0">checked</if> id="statu-0" value="0">
+    </td>	
+    </tr>
+    <tr>
+    <td height="50" colspan="2">
+    <input type="submit" value="保存"  name="sbmt"  class="btnGreen"  style="float:left; margin-right:20px;" /> <if condition="$set['id']"><a href="{ZF::U('Printer/test',array('token'=>$token,'id'=>$set['id']))}" class="btnGray">测试打印</a></if></td>
+    </tr></tbody></table></div>
+</form>
+
+</div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$("select[name='type']").change(function(){
+		var value= $(this).val();
+		if(value==1){
+			$(".snORqr").html('<span class="red">*</span>商户代码：');$(".qrjieshao").hide();
+		}else{
+			$(".snORqr").text(" 二维码链接：");$(".qrjieshao").show();
+		}		
+	})
+})
+</script>
+<include file="Public:footer"/>	

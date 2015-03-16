@@ -1,0 +1,50 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />  
+<div class="content">
+<include file="tabnav"/> 
+<div class="cLine">
+<div class="left">
+	<a href="{ZF::U('Product/normsAdd',array('token' => $token, 'catid' => $catid, 'type' => $type))}" class="btnGrayS vm bigbtn">
+	<img src="{ZF::RES}/images/product/add.png" class="vm">新增<span class="red">{ZF:$catData.name}</span>的<if condition="$type eq 0">规格<else />外观</if>属性</a>
+</div>
+<div class="right">
+	<a href="{ZF::U('Product/cats',array('token' => $token, 'catid' => $catid))}" class="btnGreens vm bigbtn">返回</a>
+</div>
+<div class="clr"></div>
+</div>
+<div class="msgWrap">
+<form method="post" action="" id="info">
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+<tr>
+<th class="select">排序</th>
+<th width="160">名称</th>
+<th width="130">值</th>
+<th width="250" class="norightborder">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr></tr>
+<volist name="list" id="hostlist"> 
+<tr>
+<td>{ZF:$hostlist.ordid}</td>
+<td><if condition="$type eq 0">{ZF:$catData[norms]}<else />{ZF:$catData['color']}</if></td>
+<td>{ZF:$hostlist.value}</td>
+<td class="norightborder">
+	<a href="{ZF::U('Product/normsAdd',array('token' => $token, 'id' => $hostlist['id'], 'catid' => $catid, 'type' => $type))}">修改</a>
+	<a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('Product/normsDel',array('token' => $token, 'id' => $hostlist['id'], 'catid' => $catid, 'type' => $type))}');">删除</a>
+</td>
+</tr>
+</volist>
+</tbody>
+</table>
+</form>
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{ZF:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<include file="Public:footer"/>

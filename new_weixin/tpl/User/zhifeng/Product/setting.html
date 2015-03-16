@@ -1,0 +1,77 @@
+<include file="Public:head"/> 
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+<link rel="stylesheet" href="{ZF::STATICS}/kindeditor/themes/default/default.css" />
+<script src="{ZF::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+<script src="{ZF::STATICS}/upyun.js"></script>
+  <div class="content" style="" > 
+   <div class="cLineB"> 
+    <h4>商品分类设置</h4> 
+    <a href="{ZF::U('Product/cats',array('token'=>$token,'parentid'=>$parentid))}" class="right  btnGreen" style="margin-top:-27px">返回</a> 
+   </div> 
+<include file="tabnav"/> 
+   <form class="form" method="post" action="" enctype="multipart/form-data"> 
+    <input type="hidden" name="id" value="{ZF:$setting.id}" /> 
+     <input type="hidden" name="token" value="{ZF:$token}" /> 
+    <div class="msgWrap bgfc"> 
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+      <tbody> 
+       <tr>
+
+        <th>幻灯图片：</th>
+
+        <td><input type="text" name="picurl1" value="{ZF:$setting.picurl1}" id="pic1" class="px" style="width:350px;"><a href="###" onclick="upyunPicUpload('pic1',700,420,'{ZF:$token}')" class="a_upload">上传</a> &nbsp; <a href="###" onclick="viewImg('pic1')" class="btnGrayS vm">预览</a> &nbsp; 大小为720x400</td>
+
+    </tr>
+     <tr>
+
+        <th></th>
+
+        <td><input type="text" name="picurl2" value="{ZF:$setting.picurl2}" id="pic2" class="px" style="width:350px;"><a href="###" onclick="upyunPicUpload('pic2',700,420,'{ZF:$token}')" class="a_upload">上传</a> &nbsp; <a href="###" onclick="viewImg('pic2')" class="btnGrayS vm">预览</a> &nbsp; 大小为720x400</td>
+
+    </tr>
+      <tr>
+
+        <th></th>
+
+        <td><input type="text" name="picurl3" value="{ZF:$setting.picurl3}" id="pic3" class="px" style="width:350px;"><a href="###" onclick="upyunPicUpload('pic3',700,420,'{ZF:$token}')" class="a_upload">上传</a> &nbsp; <a href="###" onclick="viewImg('pic3')" class="btnGrayS vm">预览</a> &nbsp; 大小为720x400</td>
+
+    </tr>
+       <tr>
+        <th>免邮设置：</th> 
+        <td><input type="text" name="price" value="{ZF:$setting.price}" class="px"/> 元免邮 (注：写0表示不免邮)</td> 
+       </tr>
+       
+       <tr>
+        <th>积分兑换：</th> 
+        <td><input type="text" name="score" value="{ZF:$setting.score}" class="px"/> 积分=1元 (注：写0表示积分不可兑换)</td> 
+       </tr>
+       
+       <tr>
+        <th>是否支持货到付款：</th> 
+        <td>
+	        <input type="radio" name="paymode" value="0" id="paymode_0" <if condition="$setting['paymode'] eq 0">checked</if> /><label for="paymode_0">不支持</label>&nbsp;&nbsp;&nbsp;&nbsp;
+	        <input type="radio" name="paymode" value="1" id="paymode_1" <if condition="$setting['paymode'] eq 1">checked</if> /><label for="paymode_1">支持</label>
+        </td> 
+       </tr>
+       <tr>
+
+        <th>版权设置：</th>
+
+        <td><input name="copyright" value="{ZF:$setting.copyright}" class="px" style="width:350px;" type="text">  如：&copy; 维基版权所有</td>
+
+    </tr>
+       <tr>         
+       <th>&nbsp;</th>
+       <td>
+       <button type="submit" name="button" class="btnGreen">保存</button></td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     </div>
+    
+   </form> 
+  </div> 
+  <include file="Public:footer" />

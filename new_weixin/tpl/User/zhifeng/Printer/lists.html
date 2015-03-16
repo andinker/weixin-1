@@ -1,0 +1,80 @@
+<include file="Public:head"/>  
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+<div class="content" style="" >
+<div class="cLineB">
+<h4 class="left">打印机列表</h4>
+<span class="FAQ">支持飞鹅和飞印打印机，硬件购买联系管理员</span>
+</div>
+<!--tab start-->
+<include file="Email:menu"/>
+<!--tab end-->
+<div class="msgWrap">
+<form method="post" action="" id="info">
+<div class="cLine">
+<div class="pageNavigator left"> <a href="{ZF::U('Printer/index',array('token'=>$token))}" title="添加打印机" class="btnGrayS vm bigbtn"><img src="{ZF::RES}/images/product/arrow_switch.png" class="vm">添加打印机</a>
+<a href="{ZF::U('Inform/index',array('token'=>$token))}" title="通知设置" class="btnGrayS vm bigbtn"><img src="{ZF::RES}/images/product/arrow_switch.png" class="vm">通知设置</a>
+ (<span>店铺最多调用3个打印机设置！先调用下单店铺的打印机设置，若下单店铺没有设置或不足3个，则加选未指定店铺的打印机设置！</span>)</div>
+<div class="clr"></div>
+</div>
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+<tr>
+<th class="select"><input type="checkbox" value="" id="check_box"></th>
+<th width="50">ID</th>
+<th width="200">商户代码：</th>
+<th width="150">API 密钥：</th>
+<th width="150">设备编码：</th>
+<th width="120">打印机品牌</th>
+<th class="200">尾注信息</th>
+<th width="120">店铺</th>
+<th class="60">状态</th>
+<th width="100" class="norightborder">操作</th>
+</tr>
+</thead>
+<tbody style=" text-align:center;">
+<volist name="lists" id="o"> 
+<tr>
+<td><input type="checkbox" value="{ZF:$o.id}" class="cbitem" name="id_{ZF:$o.id}"></td>
+<td>{ZF:$o.id}</td>
+<td>{ZF:$o.memberCode}</td>
+<td>{ZF:$o.feiyin_key}</td>
+<td>{ZF:$o.deviceNo}</td>
+<td><switch name="o.type">
+<case value="1">飞印打印机</case>
+<case value="2">飞鹅打印机</case>
+<default/>飞印打印机
+</switch></td>
+<td>{ZF:$o.head}</td>
+<td><if condition="$o['storeid']">
+<volist name="stores" id="v">
+<eq name="o.storeid" value="$v['id']">{ZF:$v.name|default=所有}</eq>
+</volist>
+<else/>所有</if></td> 
+<td><if condition="$o.status eq 1"><span style="color:green">开启</span><else/><span style="color:red">关闭</span></if></td>
+<td class="norightborder"><a href="{ZF::U('Printer/index',array('token'=>$token,'id'=>$o['id']))}">修改</a>
+<a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('Printer/delete',array('token'=>$token,'id'=>$o['id']))}');">删除</a></td>
+</tr>
+</volist>
+</tbody>
+</table>
+<input type="hidden" name="token" value="{ZF:$_GET['token']}" />
+</form>
+<script type="text/javascript">
+$(function(){
+	$("#check_box").click(function(){
+		$(this).attr('checked')!="checked"?$('.cbitem').attr("checked",false):$('.cbitem').attr("checked",true);
+	});
+});
+</script>
+</div>
+<!--<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{ZF:$page}</div>
+</div>
+<div class="clr"></div>
+</div>-->
+</div>
+<include file="Public:footer"/>

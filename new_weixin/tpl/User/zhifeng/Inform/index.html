@@ -1,0 +1,234 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+<div class="content" style="" >
+<div class="cLineB">
+<h4 class="left">通知开关</h4>
+<span class="FAQ">用于各模块的通知开关，可单独设置邮箱短信打印机通知开关</span>
+</div>
+<!--tab start-->
+<include file="Email:menu"/>
+<!--tab end-->
+<style type="text/css">
+tbody>tr>td:first-child{font-weight:bold;} 
+</style>
+<div class="msgWrap">
+<form method="post"  action="{ZF::U('Inform/index',array('token'=>$token))}">
+<div class="cLine">
+	<div class="pageNavigator left"> 
+	 (<span>此项开关开启后，邮件，打印机都是设置了特定店铺所有的，所以默认调用</span>)</div>
+	<div class="clr"></div>
+</div>
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+	<thead>	
+	<tr>
+		<th>模块\类型</th>
+		<th>短信通知</th>
+		<th>邮件通知</th>
+		<th>打印开关</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>订餐</td>
+			<td>
+				<label for="dining-s1">开启</label>
+				<input type="radio" name="dining[s]" <if condition="$inform['dining']['s'] eq 1">checked</if> id="dining-s1" value="1">
+				&nbsp;&nbsp;
+				<label for="dining-s0">关闭</label>
+				<input type="radio" name="dining[s]" <if condition="$inform['dining']['s'] eq 0">checked</if> id="dining-s0" value="0">
+			</td>
+			<td>
+				<label for="dining-e1">开启</label>
+				<input type="radio" name="dining[e]" <if condition="$inform['dining']['e'] eq 1">checked</if> id="dining-e1" value="1">
+				&nbsp;&nbsp;
+				<label for="dining-e0">关闭</label>
+				<input type="radio" name="dining[e]" <if condition="$inform['dining']['e'] eq 0">checked</if> id="dining-e0" value="0">
+			</td>
+			<td>
+				<label for="dining-p1">开启</label>
+				<input type="radio" name="dining[p]" <if condition="$inform['dining']['p'] eq 1">checked</if> id="dining-p1" value="1">
+				&nbsp;&nbsp;
+				<label for="dining-p0">关闭</label>
+				<input type="radio" name="dining[p]" <if condition="$inform['dining']['p'] eq 0">checked</if> id="dining-p0" value="0">
+			</td>
+		</tr>
+		<tr>
+			<td>商城</td>
+			<td>
+				<label for="product-s1">开启</label>
+				<input type="radio" name="product[s]" <if condition="$inform['product']['s'] eq 1">checked</if> id="product-s1" value="1">
+				&nbsp;&nbsp;
+				<label for="product-s0">关闭</label>
+				<input type="radio" name="product[s]" <if condition="$inform['product']['s'] eq 0">checked</if> id="product-s0" value="0">
+			</td>
+			<td>
+				<label for="product-e1">开启</label>
+				<input type="radio" name="product[e]" <if condition="$inform['product']['e'] eq 1">checked</if> id="product-e1" value="1">
+				&nbsp;&nbsp;
+				<label for="product-e0">关闭</label>
+				<input type="radio" name="product[e]" <if condition="$inform['product']['e'] eq 0">checked</if> id="product-e0" value="0">
+			</td>
+			<td>
+				<label for="product-p1">开启</label>
+				<input type="radio" name="product[p]" <if condition="$inform['product']['p'] eq 1">checked</if> id="product-p1" value="1">
+				&nbsp;&nbsp;
+				<label for="product-p0">关闭</label>
+				<input type="radio" name="product[p]" <if condition="$inform['product']['p'] eq 0">checked</if> id="product-p0" value="0">
+			</td>
+		</tr>
+		<tr>
+			<td>团购</td>
+			<td>
+				<label for="group-s1">开启</label>
+				<input type="radio" name="group[s]" <if condition="$inform['group']['s'] eq 1">checked</if> id="group-s1" value="1">
+				&nbsp;&nbsp;
+				<label for="group-s0">关闭</label>
+				<input type="radio" name="group[s]" <if condition="$inform['group']['s'] eq 0">checked</if> id="group-s0" value="0">
+			</td>
+			<td>
+				<label for="group-e1">开启</label>
+				<input type="radio" name="group[e]" <if condition="$inform['group']['e'] eq 1">checked</if> id="group-e1" value="1">
+				&nbsp;&nbsp;
+				<label for="group-e0">关闭</label>
+				<input type="radio" name="group[e]" <if condition="$inform['group']['e'] eq 0">checked</if> id="group-e0" value="0">
+			</td>
+			<td>
+				<label for="group-p1">开启</label>
+				<input type="radio" name="group[p]" <if condition="$inform['group']['p'] eq 1">checked</if> id="group-p1" value="1">
+				&nbsp;&nbsp;
+				<label for="group-p0">关闭</label>
+				<input type="radio" name="group[p]" <if condition="$inform['group']['p'] eq 0">checked</if> id="group-p0" value="0">
+			</td>
+		</tr>
+		<tr>
+			<td>微预约</td>
+			<td>
+				<label for="yuyue-s1">开启</label>
+				<input type="radio" name="yuyue[s]" <if condition="$inform['yuyue']['s'] eq 1">checked</if> id="yuyue-s1" value="1">
+				&nbsp;&nbsp;
+				<label for="yuyue-s0">关闭</label>
+				<input type="radio" name="yuyue[s]" <if condition="$inform['yuyue']['s'] eq 0">checked</if> id="yuyue-s0" value="0">
+			</td>
+			<td>
+				<label for="yuyue-e1">开启</label>
+				<input type="radio" name="yuyue[e]" <if condition="$inform['yuyue']['e'] eq 1">checked</if> id="yuyue-e1" value="1">
+				&nbsp;&nbsp;
+				<label for="yuyue-e0">关闭</label>
+				<input type="radio" name="yuyue[e]" <if condition="$inform['yuyue']['e'] eq 0">checked</if> id="yuyue-e0" value="0">
+			</td>
+			<td>
+				<label for="yuyue-p1">开启</label>
+				<input type="radio" name="yuyue[p]" <if condition="$inform['yuyue']['p'] eq 1">checked</if> id="yuyue-p1" value="1">
+				&nbsp;&nbsp;
+				<label for="yuyue-p0">关闭</label>
+				<input type="radio" name="yuyue[p]" <if condition="$inform['yuyue']['p'] eq 0">checked</if> id="yuyue-p0" value="0">
+			</td>
+		</tr>
+		<tr>
+			<td>通用订单</td>
+			<td>
+				<label for="tydd-s1">开启</label>
+				<input type="radio" name="tydd[s]" <if condition="$inform['tydd']['s'] eq 1">checked</if> id="tydd-s1" value="1">
+				&nbsp;&nbsp;
+				<label for="tydd-s0">关闭</label>
+				<input type="radio" name="tydd[s]" <if condition="$inform['tydd']['s'] eq 0">checked</if> id="tydd-s0" value="0">
+			</td>
+			<td>
+				<label for="tydd-e1">开启</label>
+				<input type="radio" name="tydd[e]" <if condition="$inform['tydd']['e'] eq 1">checked</if> id="tydd-e1" value="1">
+				&nbsp;&nbsp;
+				<label for="tydd-e0">关闭</label>
+				<input type="radio" name="tydd[e]" <if condition="$inform['tydd']['e'] eq 0">checked</if> id="tydd-e0" value="0">
+			</td>
+			<td>
+				<label for="tydd-p1">开启</label>
+				<input type="radio" name="tydd[p]" <if condition="$inform['tydd']['p'] eq 1">checked</if> id="tydd-p1" value="1">
+				&nbsp;&nbsp;
+				<label for="tydd-p0">关闭</label>
+				<input type="radio" name="tydd[p]" <if condition="$inform['tydd']['p'] eq 0">checked</if> id="tydd-p0" value="0">
+			</td>
+		</tr>
+		<tr>
+			<td>万能表单</td>
+			<td>
+				<label for="biaodan-s1">开启</label>
+				<input type="radio" name="biaodan[s]" <if condition="$inform['biaodan']['s'] eq 1">checked</if> id="biaodan-s1" value="1">
+				&nbsp;&nbsp;
+				<label for="biaodan-s0">关闭</label>
+				<input type="radio" name="biaodan[s]" <if condition="$inform['biaodan']['s'] eq 0">checked</if> id="biaodan-s0" value="0">
+			</td>
+			<td>
+				<label for="biaodan-e1">开启</label>
+				<input type="radio" name="biaodan[e]" <if condition="$inform['biaodan']['e'] eq 1">checked</if> id="biaodan-e1" value="1">
+				&nbsp;&nbsp;
+				<label for="biaodan-e0">关闭</label>
+				<input type="radio" name="biaodan[e]" <if condition="$inform['biaodan']['e'] eq 0">checked</if> id="biaodan-e0" value="0">
+			</td>
+			<td>
+				<label for="biaodan-p1">开启</label>
+				<input type="radio" name="biaodan[p]" <if condition="$inform['biaodan']['p'] eq 1">checked</if> id="biaodan-p1" value="1">
+				&nbsp;&nbsp;
+				<label for="biaodan-p0">关闭</label>
+				<input type="radio" name="biaodan[p]" <if condition="$inform['biaodan']['p'] eq 0">checked</if> id="biaodan-p0" value="0">
+			</td>
+		</tr>
+		<tr>
+			<td>医疗</td>
+			<td>
+				<label for="yiliao-s1">开启</label>
+				<input type="radio" name="yiliao[s]" <if condition="$inform['yiliao']['s'] eq 1">checked</if> id="yiliao-s1" value="1">
+				&nbsp;&nbsp;
+				<label for="yiliao-s0">关闭</label>
+				<input type="radio" name="yiliao[s]" <if condition="$inform['yiliao']['s'] eq 0">checked</if> id="yiliao-s0" value="0">
+			</td>
+			<td>
+				<label for="yiliao-e1">开启</label>
+				<input type="radio" name="yiliao[e]" <if condition="$inform['yiliao']['e'] eq 1">checked</if> id="yiliao-e1" value="1">
+				&nbsp;&nbsp;
+				<label for="yiliao-e0">关闭</label>
+				<input type="radio" name="yiliao[e]" <if condition="$inform['yiliao']['e'] eq 0">checked</if> id="yiliao-e0" value="0">
+			</td>
+			<td>
+				<label for="yiliao-p1">开启</label>
+				<input type="radio" name="yiliao[p]" <if condition="$inform['yiliao']['p'] eq 1">checked</if> id="yiliao-p1" value="1">
+				&nbsp;&nbsp;
+				<label for="yiliao-p0">关闭</label>
+				<input type="radio" name="yiliao[p]" <if condition="$inform['yiliao']['p'] eq 0">checked</if> id="yiliao-p0" value="0">
+			</td>
+		</tr>
+		<tr>
+			<td>酒店</td>
+			<td>
+				<label for="jiudian-s1">开启</label>
+				<input type="radio" name="jiudian[s]" <if condition="$inform['jiudian']['s'] eq 1">checked</if> id="jiudian-s1" value="1">
+				&nbsp;&nbsp;
+				<label for="jiudian-s0">关闭</label>
+				<input type="radio" name="jiudian[s]" <if condition="$inform['jiudian']['s'] eq 0">checked</if> id="jiudian-s0" value="0">
+			</td>
+			<td>
+				<label for="jiudian-e1">开启</label>
+				<input type="radio" name="jiudian[e]" <if condition="$inform['jiudian']['e'] eq 1">checked</if> id="jiudian-e1" value="1">
+				&nbsp;&nbsp;
+				<label for="jiudian-e0">关闭</label>
+				<input type="radio" name="jiudian[e]" <if condition="$inform['jiudian']['e'] eq 0">checked</if> id="jiudian-e0" value="0">
+			</td>
+			<td>
+				<label for="jiudian-p1">开启</label>
+				<input type="radio" name="jiudian[p]" <if condition="$inform['jiudian']['p'] eq 1">checked</if> id="jiudian-p1" value="1">
+				&nbsp;&nbsp;
+				<label for="jiudian-p0">关闭</label>
+				<input type="radio" name="jiudian[p]" <if condition="$inform['jiudian']['p'] eq 0">checked</if> id="jiudian-p0" value="0">
+			</td>
+		</tr>
+		<tr>
+		<td height="50" colspan="4">
+		<input type="submit" value="保存"  class="btnGreen"  style="margin-right:20px;" />
+		</tr>
+	</tbody>
+</table>
+</form>
+
+</div>
+</div>
+
+<include file="Public:footer"/>	

@@ -1,0 +1,145 @@
+<include file="Public:head"/>
+<script src="{ZF::RES}/js/date/WdatePicker.js"></script>
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+<link rel="stylesheet" href="{ZF::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{ZF::STATICS}/kindeditor/plugins/code/prettify.css" />
+<script src="{ZF::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/upyun.js"></script>
+<script>
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#content', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : false,
+items : [
+'source','undo','plainpaste','wordpaste','clearhtml','quickformat','selectall','fullscreen','fontname', 'fontsize','subscript','superscript','indent','outdent','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','hr']
+});
+});
+
+</script>
+
+<script>
+function setlatlng(longitude,latitude){
+	art.dialog.data('longitude', longitude);
+	art.dialog.data('latitude', latitude);
+	art.dialog.open("{ZF::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}",{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+
+}
+</script>
+
+<div class="content" style="" >
+
+   <div class="cLineB"> 
+
+    <h4>类型设置</h4> 
+
+    <a href="{ZF::U($type.'/setcin',array('id'=>$id,'token'=>$token))}" class="right  btnGreen" style="margin-top:-27px">返回</a> 
+
+   </div> 
+
+
+
+   <form class="form" method="post" id="form" action="" enctype="multipart/form-data"> 
+
+
+
+    <div class="msgWrap bgfc"> 
+
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+
+      <tbody> 
+
+        <tr>
+
+			<th>预约类型：</td>
+
+			<td><input type="text" name="name" class="px" value="{ZF::$data[name]}"  /></td>
+
+		</tr>
+
+		<tr>
+
+			<th>原价：</td>
+
+			<td><input type="text" name="yuanjia" class="px" value="{ZF::$data[yuanjia]}"  /></td>
+
+		</tr>
+
+		<tr>
+
+			<th>优惠价：</td>
+
+			<td><input type="text" name="youhui" class="px" value="{ZF::$data[youhui]}"  /></td>	
+
+		</tr>
+
+		<tr>
+
+			<th>简要说明：</td>
+
+			<td><textarea name="memo" class="px" style="width:450px;height:50px;">{ZF::$data[memo]}</textarea></td>
+
+		</tr>
+
+		<tr> 
+			<th>图片1：</th>
+			<td><input type="text" name="pic1" value="{ZF::$data[pic1]}" id="pic1" class="px" style="width:350px;"  readonly="readonly"/>&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('pic1',1500,1000,'{ZF:$token}')" class="a_upload">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('pic1')" class="a_upload">预览</a> </td> 
+        </tr>
+
+		<tr> 
+			<th>图片2：</th>
+			<td><input type="text" name="pic2" value="{ZF::$data[pic2]}" id="pic2" class="px" style="width:350px;"  readonly="readonly"/>&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('pic2',1500,1000,'{ZF:$token}')" class="a_upload">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('pic2')" class="a_upload">预览</a> </td> 
+        </tr>
+		<tr> 
+			<th>图片3：</th>
+			<td><input type="text" name="pic3" value="{ZF::$data[pic3]}" id="pic3" class="px" style="width:350px;"  readonly="readonly"/>&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('pic3',1500,1000,'{ZF:$token}')" class="a_upload">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('pic3')" class="a_upload">预览</a> </td> 
+        </tr>
+	<tr> 
+			<th>图片4：</th>
+			<td><input type="text" name="pic4" value="{ZF::$data[pic4]}" id="pic1" class="px" style="width:350px;"  readonly="readonly"/>&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('pic4',1500,1000,'{ZF:$token}')" class="a_upload">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('pic4')" class="a_upload">预览</a> </td> 
+        </tr>
+		<tr> 
+			<th>图片5：</th>
+			<td><input type="text" name="pic5" value="{ZF::$data[pic5]}" id="pic1" class="px" style="width:350px;"  readonly="readonly"/>&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('pic5',1500,1000,'{ZF:$token}')" class="a_upload">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('pic5')" class="a_upload">预览</a> </td> 
+        </tr>
+
+        <TR>
+
+			<TH valign="top"><label for="info">详细介绍：</label></TH>
+
+            <TD><textarea name="messages" id="content"  rows="5" style="width:590px;height:360px">{ZF::$data[messages]}</textarea></TD>
+
+        </TR>  
+
+		
+
+       <tr>         
+
+       <th>&nbsp;</th>
+
+       <td>
+
+		<!--input type="hidden" name="time" value="{ZF:$set.time}" /-->
+
+       <button type="submit" class="btnGreen">保存</button> &nbsp; <a href="{ZF::U($type.'/setcin',array('id'=>$id,'token'=>$token))}" class="btnGray vm">取消</a></td> 
+
+       </tr> 
+
+	   
+
+      </tbody> 
+
+     </table> 
+
+     </div>
+
+    
+
+   </form> 
+
+  </div> 
+  <include file="Public:footer" />

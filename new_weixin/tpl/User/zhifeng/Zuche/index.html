@@ -1,0 +1,93 @@
+<include file="Public:head"/> 
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+<div class="content" style="" >
+<div class="cLineB">
+<h4 class="left">租车 ({ZF:$page}) </h4>
+<div class="searchbar right">
+<script language=javascript>
+function gourl(v)
+{
+	window.location.href ="{ZF::U('Zuche/index',array('token'=>$token))}&storeid="+v;
+}
+</script>
+<b>切换店铺：</b><select name="storeid" onchange="gourl(this.value);"><option value="0">所有店铺</option>
+<volist name="stores" id="st"> 
+<option value="{ZF:$st.id}" <if condition="$storeid eq $st['id']">selected</if>>{ZF:$st.name}</option>
+</volist>
+</select>
+</div>
+<div class="clr"></div>
+</div>
+<!--tab start-->
+<div class="tab">
+<ul>
+<li class="tabli" id="tab2"><a href="{ZF::U('Zuche/stores',array('token'=>$token,'storeid'=>$storeid))}">店铺信息</a></li>
+<li class="current tabli" id="tab0"><a href="{ZF::U('Zuche/index',array('token'=>$token,'storeid'=>$storeid))}">车型管理</a></li>
+<li class="tabli" id="tab2"><a href="{ZF::U('Zuche/cats',array('token'=>$token,'storeid'=>$storeid))}">车型分类管理</a></li>
+<!--<li class="tabli" id="tab2"><a href="{ZF::U('Zuche/orders',array('token'=>$token,'storeid'=>$storeid))}">订单管理</a></li>
+<li class="tabli" id="tab2"><a href="{ZF::U('Zuche/tables',array('token'=>$token,'storeid'=>$storeid))}">桌台管理</a></li>-->
+<li class="tabli" id="tab5"><a href="{ZF::U('Reply_info/set',array('token'=>$token,'infotype'=>'Zuche'))}">租车回复配置</a></li>
+</ul>
+</div>
+<!--tab end-->
+<div class="cLine">
+<div class="pageNavigator left"> <a href="{ZF::U('Zuche/add',array('token'=>$token,'storeid'=>$storeid))}" title="添加" class="btnGrayS vm bigbtn"><img src="{ZF::RES}/images/product/add.png" width="16" class="vm">添加车型</a></div>
+<div class="clr"></div>
+</div>
+<div class="msgWrap">
+<form method="post" action="" id="info">
+<input name="delall" type="hidden" value="">
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+<tr>
+<th class="select">选择</th>
+<th>名称</th>
+<th width="60">价格</th>
+<th width="100">分类</th>
+<th width="170">预授权费用</th>
+<th width="130">基本险</th>
+<th width="100" class="norightborder">操作</th>
+</tr>
+</thead>
+<tbody style="text-align:center;">
+<volist name="list" id="hostlist"> 
+<tr>
+<td><input type="checkbox" name="del_id[{ZF:$i}]" value="285" class="checkitem"></td>
+<td><div class="cateimg"><if condition="$hostlist['logourl']"><img src="{ZF:$hostlist.logourl}" class="cateimg_big2"><img src="{ZF:$hostlist.logourl}" width="48" style="vertical-align:middle;"/></if> {ZF:$hostlist.name}</div></td>
+<td>{ZF:$hostlist.price}元</td>
+<td><a href="{ZF::U('index',array('catid'=>$hostlist['catid'],'token'=>$token,'storeid'=>$storeid))}">{ZF:$hostlist.catname}</a></td>
+<td>{ZF:$hostlist.authoprice}</td>
+<td>{ZF:$hostlist.insurance}</td> 
+
+<td class="norightborder"><a href="{ZF::U('Zuche/set',array('id'=>$hostlist['id'],'token'=>$token,'storeid'=>$storeid))}">修改</a> <a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('Zuche/del',array('id'=>$hostlist['id'],'token'=>$token,'storeid'=>$storeid))}');">删除</a></td>
+</tr>
+</volist>
+</tbody>
+</table>
+</form>
+<script>
+function checkvotethis() {
+	var aa=document.getElementsByName('del_id[]');
+	var mnum = aa.length;
+	j=0;
+	for(i=0;i<mnum;i++){
+		if(aa[i].checked){
+		j++;
+		}
+	}
+	if(j>0) {
+		document.getElementById('info').submit();
+		} else {
+		alert('未选中任何信息！')
+	}
+}
+</script> 
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{ZF:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<include file="Public:footer"/>

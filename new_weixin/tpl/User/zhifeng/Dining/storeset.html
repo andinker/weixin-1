@@ -1,0 +1,94 @@
+<include file="Public:head"/> 
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+<script type="text/javascript" src="{ZF::RES}/js/formCheck/formcheck.js"> </script>
+<div class="content" style="" >
+<div class="cLineB">
+<h4 class="left">店铺信息修改</h4>
+<div class="searchbar right">
+<a href="{ZF::U('Dining/stores',array('token'=>$token,'parentid'=>$parentCat['parentid']))}" class="btnGrayS" style="margin-top:-5px">返回</a>
+</div>
+<div class="clr"></div>
+</div>
+<include file="menu"/>
+<div class="msgWrap">
+<form class="form" method="post" id="form" action=""> 
+<input type="hidden" name="token" value="{ZF::$token}" />
+<input type="hidden" name="storeid" value="{ZF:$set.storeid}" />
+    <div class="msgWrap bgfc"> 
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+      <tbody> 
+       <tr> 
+        <th>店铺名称：</th> 
+        <td><b class="red">{ZF:$set.name}</b></td> 
+       </tr>
+       <tr> 
+        <th><span class="red"></span>店铺公告：</th> 
+        <td><textarea name="bulletin" class="px require" id="bulletin" style="width:400px;height:80px;" placeholder="如：店铺最新优惠：买10元送1元 ">{ZF:$set.bulletin}</textarea></td> 
+       </tr> 
+        <tr> 
+        <th><span class="red"></span>店铺类型：</th> 
+		<td><if condition="$category">
+			<select name="category">
+			<volist name="category" id='vo'>
+			<option value="{ZF:$vo.id}" <eq name="set.category" value="$vo.id">selected</eq> >{ZF:$vo.name}</option>
+			</volist>
+			</select> 添加新的店铺类型，
+			<else/> 未设置店铺类型，
+			</if>前往lbs设置店铺类型，<a href="{ZF::U('Company/company_cate',array('token'=>$token))}">点此跳转店铺设置</a>
+		</td>
+       <!-- <td><input type="text" id="category" name="category" value="{ZF:$set.category}" placeholder="如：小吃、快餐 " class="px require" style="width:400px;" /></td> -->
+       </tr> 
+	   <tr> 
+        <th><span class="red"></span>店铺区域：</th> 
+		<td><if condition="$category">
+			<select name="areaid">
+			<volist name="storearea" id='v'>
+			<option value="{ZF:$v.id}" <eq name="set.areaid" value="$v.id">selected</eq> >{ZF:$v.name}</option>
+			</volist>
+			</select> 添加新的店铺区域，
+			<else/> 未设置店铺区域，
+			</if>前往lbs设置店铺区域，<a href="{ZF::U('Company/company_area',array('token'=>$token))}">点此跳转店铺区域设置</a>
+		</td>
+		</tr>
+       <tr> 
+        <th><span class="red"></span>营业时间：</th> 
+        <td><input type="text" id="time" name="time" value="{ZF:$set.time}" placeholder="如：8：00~22：00 " class="px require" style="width:400px;" /></td> 
+       </tr> 
+       <tr> 
+        <th><span class="red"></span>起送价格：</th> 
+        <td><input type="text" id="money" name="money" value="{ZF:$set.money}" placeholder="请填写数字，如50，仅保留小数点后2位 " class="px require" style="width:400px;" /></td> 
+       </tr> 
+	   <tr> 
+        <th> 送餐时间：</th> 
+        <td><input type="text"  name="sctime" value="{ZF:$set.sctime}" placeholder="请填写送餐时间，多个时间用,空开(必须英文状态下,)" class="px require" style="width:400px;" />
+		请填写送餐时间，多个时间用 , 空开(必须英文状态下逗号)
+		</td> 
+       </tr> 
+       <tr> 
+        <th><span class="red"></span>服务半径：</th> 
+        <td><input type="text" id="radius" name="radius" value="{ZF:$set.radius}" placeholder="如：3公里   "  class="px require" style="width:400px;" /></td> 
+       </tr> 
+       <tr> 
+        <th><span class="red"></span>配送区域：</th> 
+        <td><input type="text" id="scope" name="scope" value="{ZF:$set.scope}" placeholder="如：置地大道等   "   class="px require" style="width:400px;" /></td> 
+       </tr> 
+       <tr>         
+       <th>&nbsp;</th>
+       <td>
+       <button type="submit" name="button" class="btnGreen">保存</button></td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     </div>
+    
+   </form> 
+
+
+</div>
+<div class="cLine">
+
+<div class="clr"></div>
+</div>
+</div>
+
+<include file="Public:footer"/>

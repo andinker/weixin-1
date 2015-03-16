@@ -1,0 +1,17 @@
+<!--tab start-->
+<div class="tab">
+<ul>
+<li class="<if condition="ACTION_NAME eq stores OR ACTION_NAME eq storeset">current</if> tabli" id="tab2"><a href="{ZF::U('Dining/stores',array('token'=>$token,'storeid'=>$storeid))}">店铺信息</a></li>
+<!--<li class="<if condition="ACTION_NAME eq storesuser">current</if> tabli" id="tab2"><a href="{ZF::U('Dining/storesuser',array('token'=>$token,'storeid'=>$storeid))}">店员管理</a></li>-->
+<li class="<if condition="ACTION_NAME eq cats OR ACTION_NAME eq catAdd OR ACTION_NAME eq catSet ">current</if> tabli" id="tab2"><a href="{ZF::U('Dining/cats',array('token'=>$token,'storeid'=>$storeid))}">菜品分类管理</a></li>
+<li class="<if condition="ACTION_NAME eq index OR ACTION_NAME eq add OR ACTION_NAME eq set">current</if> tabli" id="tab0"><a href="{ZF::U('Dining/index',array('token'=>$token,'storeid'=>$storeid))}">菜品管理</a></li>
+<li class="<if condition="ACTION_NAME eq orders">current</if> tabli" id="tab2"><a href="{ZF::U('Dining/orders',array('token'=>$token,'storeid'=>$storeid))}">订单管理</a></li>
+<li class="<if condition="ACTION_NAME eq tables OR ACTION_NAME eq tableSet OR ACTION_NAME eq tableAdd">current</if> tabli" id="tab2"><a href="{ZF::U('Dining/tables',array('token'=>$token,'storeid'=>$storeid))}">桌台管理</a></li>
+<li class="<if condition="ACTION_NAME eq storecount">current</if> tabli" id="tab2"><a href="{ZF::U('Dining/storecount',array('token'=>$token,'storeid'=>$storeid))}">销售统计</a></li>
+<li class="<if condition="MODULE_NAME eq Company and ACTION_NAME eq company_cate">current</if> tabli" id="tab2"><a href="{ZF::U('Company/company_cate',array('token'=>$token,'type'=>'dining'))}">分类及区域设置</a></li>
+<li class="<if condition="MODULE_NAME eq Email">current</if> tabli" id="tab2"><a href="{ZF::U('Email/lists',array('token'=>$token,'storeid'=>$storeid))}">提醒及打印</a></li>
+<!--<li class="<if condition="MODULE_NAME eq Company and ACTION_NAME eq company_area">current</if> tabli" id="tab2"><a href="{ZF::U('Company/company_area',array('token'=>$token,'type'=>'dining'))}">店铺区域设置</a></li>-->
+<li class="<if condition="MODULE_NAME eq Reply_info">current</if> tabli" id="tab5"><a href="{ZF::U('Reply_info/set',array('token'=>$token,'infotype'=>'Dining'))}">订餐回复配置</a></li>
+</ul>
+</div>
+<!--tab end-->
