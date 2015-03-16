@@ -1,0 +1,10 @@
+<FilesMatch "\.(bak|inc|lib|sh|tpl|lbi|dwt)$">
+    order deny,allow
+    deny from all
+</FilesMatch>
+
+RewriteEngine On
+#RewriteBase /
+
+##Wxpay
+RewriteRule ^wxpay/(warning|payfeedback|getpackage|pay)$ index\.php\?g=Wap&m=Wxpay&a=$1 [L]
