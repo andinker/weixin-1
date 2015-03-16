@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<link href="{ZF::RES}/zuche/css/common.css" rel="stylesheet" type="text/css">
+<link href="{ZF::RES}/zuche/css/rent.css" rel="stylesheet" type="text/css">
+<title>{ZF:$metaTitle}</title>
+<style type="text/css">
+/*.round .dandanb ul { border-top:1px solid #ddd;}
+.round .dandanb ul li{width:30%; height:36px; line-height:36px; float:left; text-indent:25px;}*/
+/*.round a{color:#000;}
+.round .dandanb .kjj { border-top:1px solid #ddd;}
+.round .dandanb .kjj span {width:30%; height:30px; line-height:32px; float:left; text-indent:25px; padding:0;margin:0;}
+.round .dandanb .kjj span.tell{width:40%; background:url({ZF::RES}/weidingcan/index/images/card/themes/1/icon_order.png) left 5px no-repeat; background-size:24px;}
+.round .dandanb .kjj span.reserve{background:url({ZF::RES}/weidingcan/index/images/card/themes/1/icon_reserve.png) left 5px no-repeat; background-size:24px;}
+.round .dandanb .kjj span.lbs{background:url({ZF::RES}/weidingcan/index/images/card/themes/1/icon_lbs.png) left 5px no-repeat; background-size:24px;}
+.round .dandanb .kjj span a{color:#000; text-decoration:none;}*/
+#detailInfo img{width:100%;}
+</style>
+</head>
+<body>
+
+<body>
+	<div id="rent">
+		
+		<div class="ui-header">
+			<div class="right">
+			</div>
+			<div class="left">
+				
+				<a href="{ZF::U('Zuche/stores',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"><div class="icon-container" id="backToIndex"><div class="icon backToIndex"></div></div></a>
+			</div>
+			<div class="logo">
+			<div style="height:1.5em;">
+				<if condition="$store_logourl">
+					<!--<div style="display:inline-block;">
+						<img src="{ZF:$store_logourl['logourl']}" style="height:2em;width:2em;vertical-align:-0.5em;margin-top:0.5em;font-size:1.5em;">
+					</div>-->
+					<div style="display:inline;font-size:1.5em;">{ZF:$store_logourl['name']|mb_substr=0,4,'utf-8'}</div>
+				<else/><div style="display:inline;">{ZF:$metaTitle}</div></if>
+			
+			</div>
+				<!--<img src="{ZF::RES}/zuche/css/logo.jpg">-->
+			</div>
+			
+		</div>
+		
+		<div class="ui-content">
+			<!--<div class="container box" style=" margin-bottom:0.4em;">
+				<div class="cardexplain"> 
+					
+					<div class="round" style="overflow: hidden;">-->
+					<!--<div class="title"><span class="none smallspan">店铺信息({ZF:$StoreCount}个)</span></div>-->
+					<!--<volist id="b" name="stores">
+					<div class="dandanb">
+					<a href="{ZF::U('Zuche/cartlist',array('token'=>$token,'wecha_id'=>$wecha_id,'storeid'=>$b['id']))}">
+						<span class="none shangjia">
+						<div style="width:20%;display:inline-block;overflow:hidden;max-height:10em;max-width:10em;"><img style="width:100%;" src="{ZF:$b.logourl}"></div><div style="width:76%;margin-left:2%;display:inline-block; line-height:1.5em;max-height:10em;padding-top:0px;float:right;"><b>{ZF:$b.name}</b><br/>
+						{ZF:$b.intro|strip_tags(mb_substr=0,30,'utf-8')}...</div>
+						</span>
+					</a>
+					<div class="clr"></div>
+						<div class="kjj">
+						<span class="tell"><a href="tel:{ZF:$b.tel}">电话预订</a></span>
+						<span class="reserve"><a href="{ZF::U('Zuche/cartlist',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'storeid'=>$b['id']))}">店铺信息</a></span>
+						<span class="lbs"><a href="http://api.map.baidu.com/marker?location={ZF:$b.latitude},{ZF:$b.longitude}&title={ZF:$b.name}&content={ZF:$b.address}&output=html">导航</a></span>
+						</div>
+					<div class="clr"></div>
+					</div>
+					</volist>
+					</div>
+				</div>
+			</div>
+			-->
+			
+			<div class="btn-container">
+			<if condition="$zucheurl">
+				<a href="{ZF:$zucheurl}"><button id="selectCar" class="btn yellow-btn">预约租车</button></a>
+			<else/>
+				<a href="{ZF::U('Yuyue/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],id=>$yuyuezuche['id']))}"><button id="selectCar" class="btn yellow-btn">预约租车</button></a>
+			</if>
+			</div>
+			
+			<div id="detailInfo" width="100%">
+				
+				<volist name="content" id="vo">
+				<div class="box msg ">
+				{ZF:$vo.info}
+				</div>
+				</volist>
+				
+			</div>
+		</div>
+		<!--		
+		<div class="ui-footer">
+		
+			<div class="service">
+				<div class="icon">
+					66
+				</div>
+				<div class="text">大城市</div>
+			</div>
+			<div class="service">
+				<div class="icon">
+					52
+				</div>
+				<div class="text"> 大机场</div>
+			</div>
+			<div class="service">
+				<div class="icon">
+					24
+				</div>
+				<div class="text">小时服务</div>
+			</div>
+			<div class="service">
+				<div class="icon">
+					∞
+				</div>
+				<div class="text">不限里程</div>
+			</div>
+		</div>
+		<!-- /footer -->
+	</div>
+</body>
+
+</body></html>

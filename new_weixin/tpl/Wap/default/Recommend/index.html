@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no"> 
+<meta name="viewport" content="initial-scale=1.0, width=device-width,initial-scale=1.0, maximum-scale=1.0,user-scalable=0;">
+<title>{ZF:$recommend.title}</title>
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/Recommend/Recommend.css" media="all">
+<script type="text/javascript" src="{ZF::STATICS}/jquery.min.js"></script>
+<style >
+#bottom{margin-bottom:60px;} 
+.product_share_box2{color:#ccc;}
+#alert{z-index:1000; width:80%; margin:0 auto;min-height:2em;border: 1px solid #f60; box-shadow: 3px 3px 3px #ddd;position:fixed;left: 10%;bottom: 30%;border-radius: 1em; background:#eee;color:#333; display:none;}
+#alert .alertTitle{ font-weight:bold;height:1.5em;  line-height:1.5em; text-align:center; background:#F7D4C6; border-bottom:1px dotted #F15C48;border-radius:1em 1em 0 0; font-size:1.2em;}
+#alert .alertCentent{font-size:0.8em; padding:0.5em 1em; line-height:1.5em;}
+#alert .btn{margin:0.3em 1em; background:#FACD7F;border-radius:5px; color:#000; height:1.5em; line-height:1.5em; padding:5px; display:inline-block; width:6em; text-align: center;}
+.zhezhao{height:100%; width:100%; position:fixed; _position:absolute; top:0; z-index:999; filter:alpha(opacity=50); -moz-opacity:0.5;  -khtml-opacity: 0.5;  opacity: 0.5; background-color:#000;}
+</style>
+</head>
+
+<body >
+<div id="product">
+	<div class="warp">
+		<div class="content clearfix">
+			<div class="product-content" id="content" style="padding-top:0px;">
+				<h2 class="font-style1" style="font-size:20px;font-weight:bold;">{ZF:$recommend.title}</h2>
+				<div class="font-style2 clearfix headxx">
+					<em class="l" id="pDate" style="font-style:normal">{ZF:$recommend.time|date='Y-m-d',###|default="data(time())"}  <a href="{ZF:$recommend.booturl|default='javascript:;'}" class="blue">{ZF:$recommend.author|default="admin"}</a></em><!-- <em class="blue l">维基微推荐</em>-->
+					<span id="recommendnum" class="r">{ZF:$recommend['tjnum']+$recommend['tjbasenum']|default='0'}人推荐</span> 
+					<span id="readnum" class="r">{ZF:$recommend.seenum|default='0'}人阅读&nbsp;&nbsp;</span>
+				</div>
+				<div id="pTitle" style="clear:both;"></div>
+				<div id="uiconent" style="padding-top:5px;">
+				{ZF:$recommend.content|html_entity_decode}
+				</div>
+			</div>
+		</div>
+
+		<!--底部-->
+		<div id="bottom" class="tempwarp">
+			<div id="footer_info" data-role="none">
+				<p id="copyright">{ZF:$recommend.copyright|html_entity_decode}</p>
+			</div>
+		</div>
+
+<!--推荐分享即有钱-->  
+	<if condition="$fuser['tjsn']">
+		<div id="product_share2" class="tempwarp" style="">
+         	<div id="product_share_box2">
+            <span>此文章来自朋友：<b style="color:#5BE755;">{ZF:$fuser.user.truename} </b>的推荐</span>
+			<span>推荐码：<b style="color:#5BE755;">{ZF:$fuser.tjsn}</b></span>
+			<span>请点击下面的关注按钮，关注我们，并输入推荐码完成推荐！</span>
+			<div id="ljtj_button" class="l" style="width:45%">
+            <a href="{ZF:$recommend.booturl|default='###'}" >{ZF:$recommend.tuijiantext}</a>
+            </div> 
+			 <div id="ljtj_button" class="r" style="width:45%">
+            <a href="{ZF::U('Recommend/tjnumsort',array('token'=>$token,'tjsn'=>$fuser['tjsn'],'acid'=>$recommend['id']))}" >{ZF:$recommend.sorttext}</a>
+            </div> 
+            </div> 
+         </div>
+	<else/>
+         <div id="product_share" class="tempwarp">
+         	<div id="product_share_box1">
+            <img class="l" src="{ZF::RES}/Recommend/images/qiandai.gif" height="31" width="31" style="margin-top:5px;">
+            <table height="44" border="0" align="left" class="l" style="width:60%; padding-left:5px;">
+            <tbody>
+			  <tr><td valign="middle" class="font_style4">这个对你的好友有帮助吗？现在推荐分享拿好礼</td></tr>
+            </tbody></table> 
+            
+				<if condition="$user['tjsn']">
+					<!--<style >#product_share{bottom:44px;} #bottom{margin-bottom:100px;}  </style>-->
+					<div id="ljtj_button" class="r" onclick="document.getElementById('mcover').style.display='block';">
+					<a href="javascript:;">立即推荐</a>
+					</div> 
+				<else/>			
+					<div id="ljtj_button" class="r" onclick="redirecturl()">
+					<a href="javascript:;" >立即推荐</a>
+					</div> 
+				</if>
+            </div> 
+         </div>
+	</if>
+	<section style="width:95%; margin:0px auto;">
+		<div id="mcover" onclick="document.getElementById('mcover').style.display='';" style="">
+			<img src="{ZF::RES}/img/guide.png">
+		</div>
+	</section>
+	</div>
+	<div id="alert">
+		<div class="alertTitle"></div>
+		<div class="alertCentent"></div>
+		<div class="alertButten"><span class="btn" id="submitredir" onClick="submitredir()">确定</span><span class="btn" id="cachealert" onClick="cachealert()">取消</span></div>
+	</div>
+	<div class="zhao"></div>
+</div>
+<script type="text/javascript">
+	function alert(title,centent){
+		$('.alertTitle').html(title);
+		$('.alertCentent').html(centent);		
+		$('.alertButten #submitredir').attr('onClick','submitredir()');
+		$('.alertButten #cachealert').attr('onClick','cachealert()');
+		$('.zhao').attr('class','zhezhao');
+		$('#alert').show();
+	}
+	function submitredir(){
+		setTimeout(window.location.href="{ZF::U('Recommend/recommendRight',array('token'=>$token,'wecha_id'=>$wecha_id,'acid'=>$acid))}",2000);	
+	}
+	function cachealert(){
+		$('.zhezhao').attr('class','zhao');
+		$('#alert').hide();
+	}
+	function redirecturl(){
+			alert('温馨提示','为了提高您的推荐效果，请先填写您的个人信息。此信息并将做为兑奖凭证',"{ZF::U('Recommend/recommendRight',array('token'=>$token,'wecha_id'=>$wecha_id,'acid'=>$acid))}");
+			//setTimeout(window.location.href="{ZF::U('Recommend/recommendRight',array('token'=>$token,'wecha_id'=>$wecha_id,'acid'=>$acid))}",3000);	
+	}
+</script>
+<script type="text/javascript">
+ 	          document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        window.shareData = {  
+            "imgUrl": "{ZF:$recommend.img}", 
+            "timeLineLink": window.location.href+"&tjsn={ZF:$user['tjsn']}",
+            "sendFriendLink": window.location.href+"&tjsn={ZF:$user['tjsn']}",
+            "weiboLink":window.location.href,
+            "tTitle": "{ZF:$recommend.title}",
+            "tContent": "{ZF:$recommend.content|htmlspecialchars_decode|strip_tags|mb_substr=0,30}",
+            "fTitle": "{ZF:$recommend.title}",
+            "fContent":"{ZF:$recommend.content|htmlspecialchars_decode|strip_tags|mb_substr=0,30}",
+            "wContent": "{ZF:$recommend.content|htmlspecialchars_decode|strip_tags|mb_substr=0,30}"
+        };
+        // 发送给好友
+        WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+            WeixinJSBridge.invoke('sendAppMessage', { 
+                "img_url": window.shareData.imgUrl,
+                "img_width": "640",
+                "img_height": "640",
+                "link": window.shareData.sendFriendLink,
+                "desc": window.shareData.fContent,
+                "title": window.shareData.fTitle
+            }, function (res) {
+                _report('send_msg', res.err_msg);
+            })
+        });
+
+        // 分享到朋友圈
+        WeixinJSBridge.on('menu:share:timeline', function (argv) {
+            WeixinJSBridge.invoke('shareTimeline', {
+                "img_url": window.shareData.imgUrl,
+                "img_width": "640",
+                "img_height": "640",
+                "link": window.shareData.timeLineLink,
+                "desc": window.shareData.tContent,
+                "title": window.shareData.tTitle
+            }, function (res) {
+                _report('timeline', res.err_msg);
+            });
+        });
+
+        // 分享到微博
+        WeixinJSBridge.on('menu:share:weibo', function (argv) {
+            WeixinJSBridge.invoke('shareWeibo', {
+                "content": window.shareData.wContent,
+                "url": window.shareData.weiboLink,
+            }, function (res) {
+                _report('weibo', res.err_msg);
+            });
+        });
+        }, false)
+		
+    </script>
+</body></html>

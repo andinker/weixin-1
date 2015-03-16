@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta name="keywords" content="{ZF::C('keyword')}" />
+<meta name="description" content="{ZF::C('content')}" />
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/public/css/template/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/public/css/template/reset.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/public/css/template/list-10.css" media="all" />
+
+<title>推荐活动列表</title>
+
+</head>
+<body>
+<div class="weimob-page"> 
+  <section>
+    <div>
+      <ul class="list_ul">
+        <volist name="lists" id="so">
+          <li>           
+            <a href="{ZF::U('Recommend/index',array('acid'=>$so['id'],'token'=>$so['token'],'wecha_id'=>$wecha_id))}" class="tbox">
+            <dd>
+              <div> <img src="{ZF:$so.img}" /> </div>
+            </dd>
+            <dt>
+              <hgroup>
+                <h1>{ZF:$so.title}</h1>
+              </hgroup>
+            </dt>
+            </a> </li>
+        </volist>
+      </ul>
+    </div>
+  </section>
+
+</div>
+<footer>
+  <div class="weimob-copyright" style="text-align:center">©{ZF::C('copyright')}</a> </div>
+</footer>
+</body>
+</html>

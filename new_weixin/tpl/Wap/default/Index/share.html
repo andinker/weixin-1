@@ -1,0 +1,31 @@
+
+	<if condition="ACTION_NAME eq 'index'">
+		<script type="text/javascript">
+			window.shareData = {  
+					"moduleName":"Index",
+					"moduleID": "0",
+					"imgUrl": "{ZF:$homeInfo.picurl}", 
+					"timeLineLink": "{ZF::C('site_url')}{ZF::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"sendFriendLink": "{ZF::C('site_url')}{ZF::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"weiboLink": "{ZF::C('site_url')}{ZF::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"tTitle": "{ZF:$homeInfo.title}",
+					"tContent": "{ZF:$homeInfo.info}"
+				};
+		</script>
+	<else />
+		<script type="text/javascript">
+			window.shareData = {  
+				"moduleName":"NewsList",
+				"moduleID": "{ZF:$_GET['classid']|intval}",
+				"imgUrl": "{ZF:$thisClassInfo.img}", 
+				"timeLineLink": "{ZF::C('site_url')}{ZF::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token'],'classid'=>$_GET['classid']))}",
+				"sendFriendLink": "{ZF::C('site_url')}{ZF::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token'],'classid'=>$_GET['classid']))}",
+				"weiboLink": "{ZF::C('site_url')}{ZF::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token'],'classid'=>$_GET['classid']))}",
+				"tTitle": "{ZF:$thisClassInfo.name}",
+				"tContent": "{ZF:$thisClassInfo.info}"
+			};
+		</script>	
+	
+	</if>
+	
+{ZF:$shareScript}

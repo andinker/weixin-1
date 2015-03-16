@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="stylesheet" type="text/css" href="{ZF::RES}/Recommend/RecommendRight.css" media="all"> 
+    <title>推荐信息</title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+	<script type="text/javascript" src="{ZF::STATICS}/jquery.min.js"></script>
+	<style>
+	#alert{z-index:1000; width:80%; margin:0 auto;min-height:2em;border: 1px solid #f60; box-shadow: 3px 3px 3px #ddd;position:fixed;left: 10%;bottom: 30%;border-radius: 1em; background:#eee;color:#333; display:none;}
+#alert .alertTitle{ font-weight:bold;height:1.5em;  line-height:1.5em; text-align:center; background:#F7D4C6; border-bottom:1px dotted #F15C48;border-radius:1em 1em 0 0; font-size:1.2em;}
+#alert .alertCentent{font-size:0.8em; padding:0.5em 1em; line-height:1.5em;}
+#alert .btn{margin:0.3em 1em; background:#FACD7F;border-radius:5px; color:#000; height:1.5em; line-height:1.5em; padding:5px; display:inline-block; width:6em; text-align: center;}
+.zhezhao{height:100%; width:100%; position:fixed; _position:absolute; top:0; z-index:999; filter:alpha(opacity=50); -moz-opacity:0.5;  -khtml-opacity: 0.5;  opacity: 0.5; background-color:#000;}
+	</style>
+</head>
+
+<body ondragstart="return false;" onselectstart="return false;">
+    <form method="post" action="" id="">
+	<input type="hidden" name="issubmit" id="issubmit" value="0">
+        <section class="body">
+            <div id="overlay" style="position: fixed; z-index: 100;"></div>
+            <div class="cardcenter">
+                <div class="head-title">个人资料</div>
+                <div class="yhq-content">
+                    <div class="grzl-title">个人资料</div>
+                    <div>
+                        <table border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto; text-align: left; width: 90%; line-height: 55px; margin-top: 15px;">
+                            <tbody>
+							<if condition="$recouser['ftjsn']">
+							<tr>
+                                <td width="79">姓名:</td>
+                                <td width="220"> {ZF:$user.truename}</td>
+                            </tr>
+                            <tr>    <td>联系电话:</td><td> {ZF:$user.tel}</td>     </tr>
+							<tr>	<td>推荐人信息:</td><td>姓名:{ZF:$fuser.truename}   推荐码：{ZF:$recouser.ftjsn}</td>     </tr>
+							<else/>
+							<tr>
+                                <td width="79">真实姓名:</td>
+                                <td width="220">
+                                    <input name="truename" type="text" id="truename" class="px" value='{ZF:$user.truename}' placeholder="请输入您真实的姓名"></td>
+                            </tr>
+                            <tr>
+                                <td>联系电话:</td>
+                                <td><input name="tel" type="text" required  id="tel" class="px"  value='{ZF:$user.tel}' placeholder="请输入您真实的电话"></td>
+                            </tr>
+							<if condition="$recoadd">
+							<tr>
+                                <td>推荐码:</td>
+                                <td>
+                                    <input name="ftjsn" type="text" id="ftjsn" class="px" value="{ZF:$_GET['tjsn']}" placeholder="请输入邀请您的推荐码"></td>
+                            </tr></if>
+							</if>
+							<if condition="$recouser['tjsn']">
+							<tr>
+                                <td>我的推荐码:</td>
+                                <td> {ZF:$recouser.tjsn}
+									<input name='tjsn' type="hidden" id='tjsn' value="{ZF:$recouser.tjsn}"/>
+								</td>
+                            </tr>
+							<tr>	<td>我的推荐积分:</td><td> {ZF:$user.recommend_score|default="目前为零要加倍努力哦！"}</td>     </tr>
+							</if>
+                            <tr>
+                                <td colspan="2" style="line-height: 8px; line-height: 24px; color: red;">注：姓名和电话,推荐码保存后将不可修改，请认真填写！<br>
+                                    绑定电话后可获取优惠券特权！</td>
+                            </tr>
+                        </tbody>
+						</table>
+							<if condition="$recouser['tjsn']">
+								 <if condition="$recouser['ftjsn']">
+									<div class="btn" style="width:65%; margin:0 auto;">
+									<a href="{ZF::U('Recommend/index',array('token'=>$token,'wecha_id'=>$wecha_id,'acid'=>$_GET['acid']))}"><span class="btnbc" >我要推荐!</span></a>
+									</div>
+								 <else/>
+								 <!--<div class="yhq-btn l" style="width:35%; margin-left:5%;">
+									<a href="{ZF::U('Recommend/recommendRight',array('token'=>$token,'wecha_id'=>$wecha_id,'acid'=>$_GET['acid']))}"><span class="btnbc" >完善信息</span></a>
+								</div>-->
+										
+								<?php if($recoadd==1){ ?>
+									<div class="yhq-btn">
+										<span class="btnbc" >保存</span>
+									</div>
+								<?php }else{ ?>
+										<div class="btn" style="width:65%; margin:0 auto;">
+										<a href="{ZF::U('Recommend/index',array('token'=>$token,'wecha_id'=>$wecha_id,'acid'=>$_GET['acid']))}"><span class="btnbc" >我要推荐!</span></a>
+										</div>
+										
+								<?php }?>
+								</if>
+								
+							<else/>
+							<div class="yhq-btn">
+								<span class="btnbc" >保存</span>
+							</div>
+							</if>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>	
+	<if condition="$recouser['tjsn']">
+	<include file="Recommend:footmenu"/>
+	</if>
+	<div id="alert">
+		<div class="alertTitle"></div>
+		<div class="alertCentent"></div>
+		<div class="alertButten"><span class="btn" id="cachealert" onClick="cachealert()">确定</span></div>
+	</div>
+	<div class="zhao"></div>
+</body>
+<script type="text/javascript">
+	function alert(title,centent){
+		$('.alertTitle').html(title);
+		$('.alertCentent').html(centent);		
+		//$('.alertButten #submitredir').attr('onClick','submitredir()');
+		//$('.alertButten #cachealert').attr('onClick','cachealert()');
+		//$('.zhao').attr('class','zhezhao');
+		$('#alert').show();
+	}
+	function cachealert(){
+		$('.zhezhao').attr('class','zhao');
+		$('#alert').hide();
+	}
+</script>
+<script>
+$(function(){
+	var submitValue=$('#issubmit').val();
+	$('.yhq-btn .btnbc').click(function(){
+	if(vailReSubmit()==false) return;
+	var truename=$('#truename').val();
+	var tel=$('#tel').val();
+	var ftjsn=$('#ftjsn').val();
+	var tjsn=$('#tjsn').val();
+	var error='错误提示';
+	if(tel==''||truename==''){
+		alert(error,'姓名和电话不能为空！');return;
+	}
+	if(tel.length!=0){
+		reg=/^\d{11}$/;
+		if(!reg.test(tel)){
+			alert(error,'联系电话输入不正确！');return;
+		}
+	}
+	<if condition="$recoadd">
+	if(ftjsn.length!=0){
+		reg=/^[0-9]+$/;
+		if(!reg.test(ftjsn)){
+			alert(error,'推荐码格式填写错误,推荐码为纯数字组成！');return;
+		}
+		if(tjsn==ftjsn){
+			alert(error,'亲，自己推荐自己是不可以的哦！！');return;
+		}
+	}
+	</if>
+	var subdata={
+		truename:truename,
+		tel:tel,
+		ftjsn:ftjsn,
+		tjsn:tjsn
+	}
+	submitValue=1;
+	$.post("{ZF::U('Recommend/RecommendRight',array('token'=>$token,'wecha_id'=>$wecha_id,'acid'=>$acid))}",subdata,function(data){
+			if(data.error==0){
+				submitValue=0;
+				alert(error,data.msg);
+			}else{
+				alert('恭喜您！',data.msg);
+			}
+			if(data.url){
+				setTimeout('window.location.href="'+data.url+'"',3000);		
+			}
+	},'json')
+	});
+	
+	function vailReSubmit(){
+	if(submitValue == 0){return true;}else{
+		alert('贪心了哦！','按一次就够了，请勿重复提交！请耐心等待！谢谢合作！');
+		return false;}
+	}
+})
+</script>
+</html>

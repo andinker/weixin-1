@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">	
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="{lanrain::RES}/css/yuyue/onlinebooking.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{lanrain::RES}/css/yuyue/datepicker.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{lanrain::RES}/css/yuyue/weimob-ui-1-1.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{lanrain::RES}/css/yuyue/common.css" media="all" />
+<script type="text/javascript" src="{lanrain::RES}/js/yuyue/jQuery.js"></script>
+<script type="text/javascript" src="{lanrain::RES}/js/yuyue/jquery-ui.js"></script>
+<title>我的预约</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<!-- Mobile Devices Support @begin -->
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<!-- Mobile Devices Support @end -->
+<link rel="shortcut icon" href="img/favicon.ico" />
+<style>
+img{width:100%!important;}
+.pages{text-align:center;}
+.pages a{margin:0 5px;padding:2px 3px; border:solid 1px #ccc;}
+</style>
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+<div class="qiandaobanner"> 
+<a href="{lanrain::U('Yuyue/index',array('token'=>$token ,'wecha_id'=>$wecha_id,'id'=>$_GET[id]))}"  ><img src="<if condition="$yuyue.topic neq false">{lanrain:$yuyue.topic}<else/> {lanrain::RES}/images/yuyue/head_pic.jpg</if> "/></a>
+</div>
+<div class="cardexplain"> 
+
+<!--超过预订时间3天后自动删掉预订记录，免得占服务器资源！-->
+
+    <ul class="round">
+    <volist name="order" id="vo" empty="暂时没有数据" > 
+            <li class="title">
+                    <span>预约详情<em class="no"><if condition="$vo.type eq 0">等待客服回电<else/> 已受理</if></em></span>
+            </li>
+            <li>
+                <div class="text">
+                    <p>联系人：{lanrain:$vo.name}</p>	
+                    <p>联系电话：{lanrain:$vo.phone}</p>										
+                    <p>预约时间：{lanrain:$vo['date'] | date="Y-m-d H:i",###}</p>
+                    <p>人数：{lanrain:$vo['num']}</p>				
+                    <p>备注：{lanrain:$vo['memo']}</p>
+                    <div class="footReturn">
+                    <a style="color:#fff;" class="submit" href="{lanrain::U('Yuyue/set',array('token'=>$token ,'wecha_id'=>$wecha_id,'id'=>$vo['id']))}">删除 | 修改</a>
+                    </div>
+                </div>
+            </li>
+    </volist>	
+    </ul>
+
+</div> 
+<div class="pages">{lanrain:$page}</div>
+<div mark="stat_code" style="width:0px; height:0px; display:none;"></div>
+</body>
+</html>

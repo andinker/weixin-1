@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no,inital-scale=1.0">	
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/yuyue/onlinebooking.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/yuyue/datepicker.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/yuyue/weimob-ui-1-1.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/yuyue/common.css" media="all" />
+<script type="text/javascript" src="{ZF::RES}/js/yuyue/jQuery.js"></script>
+<script type="text/javascript" src="{ZF::RES}/js/yuyue/jquery-ui.js"></script>
+<title>修改预约</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<!-- Mobile Devices Support @begin -->
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<!-- Mobile Devices Support @end -->
+<link rel="shortcut icon" href="img/favicon.ico" />
+<style>
+img{width:100%!important;}
+</style>
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+<div class="qiandaobanner"> 
+<a href="{ZF::U('Yuyue/index',array('token'=>$token ,'wecha_id'=>$wecha_id,'id'=>$order[pid]))}"  ><img src="<if condition="$yuyue.topic neq false">{ZF:$yuyue.topic}<else/> {ZF::RES}/images/yuyue/head_pic.jpg</if> "/></a>
+</div>
+<div class="cardexplain">
+<!--粉丝填写过的信息的，直接就显示名字电话，粉丝没有填写过信息的话，这里就直接留空让粉丝填写-->
+<ul class="round">
+<form action="javascript:" method="post">
+<li class="title mb">
+<span class="none">{ZF:$data.addtime|date="Y-m-d H:i",###} 订单详情
+<if condition="$data.type eq 0"><em class="no">等待客服回电</em></if><if condition="$data.type eq 1"><em class="ok">订单已受理</em></if>
+<if condition="$data.type eq 2"><em class="error">订单被拒绝</em></if>
+</span>
+</span>
+</li>
+<if condition="$order.type eq 1"><li class="nob" style="display:none;"><else /><li class="nob" ></if> 
+<div class="beizhu">此订单可重新修改后再提交！</div>
+</li>
+<if condition="$str.person neq 1"><li class="nob" style="display:none;"><else /><li class="nob" ></if> 
+<table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<th>联系人</th>
+<td><input name="name" class="px" id="truename" value="<if condition="$order.name neq false">{ZF:$order.name}</if>" placeholder="请输入您的真实姓名" type="text"></td>
+</tr>
+</table>
+</li>
+<if condition="$str.phone neq 1"><li class="nob" style="display:none;"><else /><li class="nob" ></if>
+<table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<th>联系电话</th>
+<td><input name="phone" class="px" id="tel" value="<if condition="$order.phone neq false">{ZF:$order.phone}</if>" placeholder="请输入您的电话" type="tel"></td>
+</tr>
+</table>
+</li>
+<if condition="$str.date neq 1"><li class="nob" style="display:none;"><else /><li class="nob" ></if>
+<table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<th>预约日期</th>
+<td>
+<input type="text" class="px" name="date" id="dateline" readonly="readonly" value="{ZF:$order.or_date}" />
+</td>
+</tr>
+</table>
+</li>
+<if condition="$str.time neq 1"><li class="nob" style="display:none;"><else /><li class="nob" ></if>
+<table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<th>预约时间</th>
+<td><select name="time" id="timepart" class="dropdown-select">
+<foreach name="timepart_arr" item="vo">
+	<option value="{ZF:$vo}" <if condition="$order['timepart'] eq $vo">selected</if>>{ZF:$vo}</option>
+</foreach>
+</select>
+</td>
+</tr>
+</table>
+</li>
+<volist name="arr" id="item" key="i">
+<li class="nob" >
+<table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <th>{ZF:$item.name}</th>
+        <td><input name="text{ZF:$i}" class="single px" id="text{ZF:$i}" value="{ZF:$sigle_arr[$item['name']]}" placeholder="{ZF:$item.value}" type="text"></td>
+    </tr>
+</table>
+</li>
+</volist>
+<volist name="list" id="item" key="k">
+<li class="nob" >
+<table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+
+<th>{ZF:$item.name}</th>
+<td>
+<select name="" class="download dropdown-select">
+    <volist name="item[value]" id="i">
+    <option value="{ZF:$i}" <if condition="$download_arr[$item['name']] eq $i">selected</if>>{ZF:$i}</option>
+    </volist>
+</select>
+</td>
+</tr>
+</table>
+</li>
+</volist>
+<li class="nob">
+<table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<th class="thtop" valign="top">{ZF:$str.message}</th>
+<td>
+<textarea name="memo" class="pxtextarea" style=" height:99px;overflow-y:visible" id="info" placeholder="请输入备注信息">{ZF:$order.memo}</textarea>
+<input type="hidden" name="wecha_id" id="wecha_id" value="{ZF:$wecha_id}" />
+<input type="hidden" name="token" id="token" value="{ZF:$token}" />
+<input type="hidden" name="order_type" id="order_type" value="{ZF:$order.type}" />
+<input type="hidden" name="id" id="id" value="{ZF:$order.id}" />
+<input type="hidden" name="pid" id="pid" value="{ZF:$order.pid}" />
+</td>
+</tr>
+</table>
+</li>
+</form>
+</ul>	
+<div class="footReturn">
+<ul>
+<li class="footerbtn"><a id="showcard2" class="del right3" href="javascript:void(0)">删除信息</a></li>
+<li class="footerbtn"><a id="showcard" class="submit left3" style="color:#fff;" href="javascript:void(0)">提交修改</a></li>
+</ul>
+<div class="clr"></div>
+<div class="window" id="windowcenter">
+<div id="title" class="wtitle">操作成功<span class="close" id="alertclose"></span></div>
+<div class="content">
+<div id="txt"></div>
+</div>
+</div>
+</div>
+
+</div>
+<script type="text/javascript"> 
+
+$(document).ready(function () {
+    $( "#dateline" ).datepicker({
+        minDate: new Date(),
+        dateFormat: "yy-mm-dd"
+   }).val((
+				function(d){
+					return [d.getFullYear(), d.getMonth()+1, d.getDate()].join("-");
+				}
+			)(new Date()));
+	//提交信息
+	$("#showcard").click(function () {
+		if($("#order_type").val() ==1){
+			alert('已受理，不能修改！'); return;
+		}
+		var ret_single = ret_download = tel_num = '';
+		
+		if($("#truename").val()==''){
+			alert('名字不能为空'); return;
+		}
+		tel_num = $("#tel").val();
+		if('undefined' !== typeof(tel_num)){
+			if(tel_num ==''){alert('电话不能为空');return;} 
+			if(tel_num.length < 11){alert('请输入正确的电话');return;} 
+		}
+	
+		//if($("#dateline").val()==''){alert('请选择时间');return;}
+		$(".single").each(function(i){
+			var s_name = $(this).parent().siblings().text();
+			var s_value = $(this).val();
+			if('' != s_value) ret_single += '$'+s_name+'#'+s_value;
+		});
+		$(".download").each(function(i){
+			var s_name = $(this).parent().siblings().text();
+			var s_value = $(this).val();
+			if('' != s_value) ret_download += '$'+s_name+'#'+s_value;
+		});
+		var submitData = {
+			wechaid: $("#wecha_id").val(),
+			id: $("#id").val(),
+			pid: $("#pid").val(),
+			token: $("#token").val(),
+			name: $("#truename").val(),
+			timepart: $("#timepart").val(),
+			or_date: $("#dateline").val(),
+			memo: $("#info").val(),
+			phone: $("#tel").val(),
+			fieldsigle: ret_single,
+			fielddownload: ret_download,
+		};
+		if('fromUsername' == submitData.wechatid) submitData.wechatid = '';
+		$.post("{ZF::U('Yuyue/runSet')}", submitData,
+			function(data) {
+				alert(data.msg);
+				setTimeout('window.location.href='+data.url,1000);
+			},
+		"json")
+	}); 
+	//删除信息
+	$("#showcard2").click(function () {
+		if($("#order_type").val() ==1){
+			alert('已受理，不能删除！'); return;
+		}
+		var submitData2 = {
+			wechaid: $("#wecha_id").val(),
+			token: $("#token").val(),
+			id: $("#id").val(),
+			pid: $("#pid").val()
+		};
+		$.post("{ZF::U('Yuyue/del')}", submitData2,
+			function(data) {
+				alert(data.msg);
+				setTimeout('window.location.href='+data.url,1000);
+			},
+		"json")
+	}); 
+	
+});
+$("#windowclosebutton").click(function () { 
+	$("#windowcenter").slideUp(500);
+}); 
+
+$("#alertclose").click(function () { 
+	$("#windowcenter").slideUp(500);
+}); 
+function jumpurl(url){
+	window.location.href = url;
+}
+function alert(title){ 
+	$("#windowcenter").slideToggle("slow"); 
+	$("#txt").html(title);
+	setTimeout('$("#windowcenter").slideUp(500)',4000);
+}
+</script> 
+<div mark="stat_code" style="width:0px; height:0px; display:none;"></div>
+</body>
+</html>

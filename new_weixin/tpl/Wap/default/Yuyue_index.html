@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">	
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="{lanrain::RES}/css/yuyue/onlinebooking.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{lanrain::RES}/css/yuyue/datepicker.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{lanrain::RES}/css/yuyue/weimob-ui-1-1.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{lanrain::RES}/css/yuyue/common.css" media="all" />
+<script type="text/javascript" src="{lanrain::RES}/js/yuyue/jQuery.js"></script>
+<script type="text/javascript" src="{lanrain::RES}/js/yuyue/jquery-ui.js"></script>
+<title>预约-{lanrain:$yuyue.title}</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<!-- Mobile Devices Support @begin -->
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<!-- Mobile Devices Support @end -->
+<link rel="shortcut icon" href="img/favicon.ico" />
+<style>
+img{width:100%!important;}
+</style>
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+<div class="qiandaobanner"> 
+<a href="{lanrain::U('Yuyue/index',array('token'=>$token ,'wecha_id'=>$wecha_id,'id'=>$yuyue[id]))}"  ><img src="<if condition="$yuyue.topic neq false">{lanrain:$yuyue.topic}<else/> {lanrain::RES}/images/yuyue/head_pic.jpg</if> "/></a>
+</div>
+<div class="cardexplain">
+<!--普通用户登录时显示-->
+<ul class="round">
+<li>
+<a href="{lanrain::U('Yuyue/order',array('token'=>$token ,'wecha_id'=>$wecha_id,'id'=>$yuyue[id]))}"  ><span>我的预约<em class="ok">{lanrain:$count}</em></span></a>
+</li>
+</ul>
+<!--后台可控制是否显示-->
+<ul class="round">
+    <li>
+    <h2>订单说明</h2>
+    <div class="text">{lanrain:$yuyue['info']}</div>
+    </li>
+</ul>
+
+<!--后台可控制是否显示-->
+<ul class="round">
+<li><a href="http://api.map.baidu.com/marker?location={lanrain:$yuyue['longitude']},{lanrain:$yuyue['latitude']}&title={lanrain:$yuyue['address']}&name={lanrain:$yuyue['address']}&content={lanrain:$yuyue['info']}&output=html&src=weiba|weiweb">
+<span>地址：{lanrain:$yuyue['address']}</span></a></li>
+<li><a href="tel:{lanrain:$yuyue['phone']}"><span>订单电话：{lanrain:$yuyue['phone']}</span></a></li>
+<li><span>活动时间：{lanrain:$yuyue['startdate']} — {lanrain:$yuyue['enddate']}</span></li>
+</ul>
+
+<ul class="round roundyellow" style="display:none;">
+    <li class="userinfo"><a href="dingdan"><span>请完善个人资料再填表单</span></a></li>
+</ul>
+
+<!--粉丝填写过的信息的，直接就显示名字电话，粉丝没有填写过信息的话，这里就直接留空让粉丝填写-->
+<ul class="round">
+<form action="" method="post">
+<li class="title mb"><span class="none">请认真填写表单</span></li>
+<li class="nob">
+<table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<th>联系人</th>
+<td><input name="name" class="px" id="name" value="<if condition="$order.name neq false">{lanrain:$order.name}<else/> </if> " placeholder="请输入您的真实姓名" type="text"></td>
+</tr>
+</table>
+</li>
+<li class="nob">
+<table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<th>联系电话</th>
+<td><input name="phone" class="px" id="phone" value="<if condition="$order.phone neq false">{lanrain:$order.phone}<else/> </if> " placeholder="请输入您的电话" type="tel"></td>
+</tr>
+</table>
+</li>
+<li class="nob">
+<table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<th>人数</th>
+<td><input name="num" class="px" id="num" placeholder="请输入人数" value="1" type="text"></td>
+</tr>
+</table>
+</li>
+<li class="nob">
+<table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<th>预约日期</th>
+<td>
+<input type="text" class="px" name="date" value="" id="date" readonly />
+
+</td>
+</tr>
+</table>
+</li>
+<li class="nob">
+<table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<th>预约时间</th>
+<td><select name="time_hour" id="time_hour" class="dropdown-select" style="width:30%;float:left;">
+<for start="1" end="25">
+<option value="{lanrain:$i|sprintf="%02d",###}">{lanrain:$i|sprintf="%02d",###}时</option>
+</for>
+</select>
+<select name="time_second" id="time_second" class="dropdown-select" style="width:30%;float:left; margin-left:10px;">
+<for start="0" end="7">
+<option value="{lanrain:$i|sprintf="%02d",###}">{lanrain:$i|sprintf="%d0",###}分</option>
+</for>
+</select>
+</td>
+</tr>
+</table>
+</li>
+<li class="nob">
+<table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<th class="thtop" valign="top">备注</th>
+<td>
+<textarea name="memo" class="pxtextarea" style=" height:99px;overflow-y:visible" id="memo" placeholder="请输入备注信息"></textarea>
+<input type="hidden" name="wecha_id" id="wecha_id" value="{lanrain:$wecha_id}" />
+<input type="hidden" name="pid" id="pid" value="{lanrain:$yuyue['id']}" />
+</td>
+</tr>
+</table>
+</li>
+</form>
+</ul>
+<div class="footReturn">
+    <input id="showcard" class="submit" value="提交消息" type="button" > 
+    <div class="window" id="windowcenter">
+        <div id="title" class="wtitle">操作提示<span class="close" id="alertclose"></span></div>
+        <div class="content">
+            <div id="txt"></div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script type="text/javascript"> 
+
+$(document).ready(function () {
+    $( "#date" ).datepicker({
+        minDate: new Date(),
+        dateFormat: "yy-mm-dd"
+    });
+	//提交信息
+	$("#showcard").click(function () {
+		var tel_num =num= '';
+		if($("#num").val()==''){alert('人数不能为空');return;} 
+		tel_num = $("#phone").val();
+		if('undefined' !== typeof(tel_num)){
+			if(tel_num ==''){alert('电话不能为空');return;} 
+			if(tel_num.length < 11){alert('请输入正确的电话');return;} 
+		}
+	
+		if($("#name").val()==''){alert('名字不能为空');return;}
+		if($("#date").val()==''){alert('请选择时间');return;}
+		var submitData = {
+			wechaid: $("#wecha_id").val(),
+			pid: $("#pid").val(),
+			name: $("#name").val(),
+			num: $("#num").val(),
+			date: $("#date").val()+" "+$("#time_hour").val()+":"+$("#time_second").val()+":00",
+			memo: $("#memo").val(),
+			phone: $("#phone").val()
+		};
+		if('fromUsername' == submitData.wechatid) submitData.wechatid = '';
+		$.post("{lanrain::U('Yuyue/add',array('token'=>$token,'wecha_id'=>$wecha_id))}", submitData,
+			function(data) {
+				if (1 == data) {
+					alert("提交成功！");
+					setTimeout(function(){
+						window.location.href="{lanrain::U('Yuyue/order',array('token'=>$token,'wecha_id'=>$wecha_id,'id'=>$yuyue['id']))}";
+					},1500);
+					return;
+				} else {
+					alert("提交失败");
+				}
+			})
+	}); 
+	
+	$("#alertclose").click(function () { 
+		$("#windowcenter").slideUp(500);
+	}); 
+
+	function alert(title){ 
+		$("#windowcenter").slideToggle("slow"); 
+		$("#txt").html(title);
+	}
+}); 
+</script>
+<div mark="stat_code" style="width:0px; height:0px; display:none;"></div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="stylesheet" type="text/css" href="{ZF::RES}/Recommend/RecommendRight.css" media="all"> 
+    <title>推荐信息</title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+	<script type="text/javascript" src="{ZF::STATICS}/jquery.min.js"></script>
+	
+</head>
+
+<body ondragstart="return false;" onselectstart="return false;">
+    <form method="post" action="" id="">
+        <section class="body">
+            <div id="overlay" style="position: fixed; z-index: 100;"></div>
+            <div class="cardcenter">
+                <div class="head-title">推荐排行榜</div>
+                <div class="yhq-content">
+                    <div class="grzl-title">推荐排行榜（前20名）</div>
+                    <div>
+                        <table cellspacing="0"  style="margin: 0 auto; text-align:center; width:90%;background-color:#ddd; margin-bottom:5px;">
+							<thead><th>姓名</th><th>推荐成功数量</th><th>个人推荐积分</th></thead>
+                            <tbody style="" >
+							<volist name="userlist" id="so">
+							<tr><td>{ZF:$so.truename}</td><td>{ZF:$so.tjnum}</td><td>{ZF:$so.recommend_score}</td></tr>
+							</volist>
+							</tbody>
+						</table>
+                    </div>
+                </div>
+				<if condition="$_GET['wecha_id']">
+				<div class="ljtj_button l" >
+				<a href="{ZF::U('Recommend/recommendRight',array('token'=>$token,'wecha_id'=>$wecha_id,'acid'=>$_GET['acid'],'tjsn'=>$_GET['tjsn']))}" >我的资料</a>
+				</div>
+				<div class="ljtj_button r" >
+					<a href="{ZF::U('Recommend/myRecommendUser',array('token'=>$token,'wecha_id'=>$wecha_id,'acid'=>$_GET['acid'],'tjsn'=>$footuser['tjsn']))}" >查看我的推荐</a>
+				</div>
+				</if>
+            </div>
+			
+        </section>
+    </form>
+	<if condition="$_GET['wecha_id']">
+		<include file="Recommend:footmenu"/>
+	</if>
+</body>
+</html>

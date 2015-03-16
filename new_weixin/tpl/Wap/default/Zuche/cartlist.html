@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<link href="{ZF::RES}/zuche/css/common.css" rel="stylesheet" type="text/css">
+<link href="{ZF::RES}/zuche/css/vehicle.css" rel="stylesheet" type="text/css">
+<title>选择车型</title>
+</head>
+<body>
+	<div>
+		
+		
+		<div class="ui-header">
+			<div class="right">
+				<div class="icon-container"><a href="tel:{ZF:$store_info['tel']}" class="icon tel"></a></div>
+				<div class="icon-container"  id="backhome"><div class="icon back backToMain" data-url="{ZF::U('Zuche/stores',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"></div></div>
+			</div>
+			<div class="left">
+				
+				<div class="icon-container" id="back"><div class="icon back" data-url="{ZF::U('Zuche/xiangqing',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'storeid'=>$store_info['id']))}"></div></div>
+			</div>
+			<div class="title">
+				选择车型
+			</div>
+			
+		</div>
+
+		<div class="ui-content">
+			<!--  门店区域 -->
+			<div class="store box" id="store">
+			<div class="icon icon-store qijian">
+				<if condition="$store_info['logourl']"><img src="{ZF:$store_info['logourl']}" style="width:64px;height:64px;"><else/><img src="{ZF:$store_logourl['logourl']}" style="width:64px;height:64px;"></if>
+			</div>
+			<div class="detail">
+				<p class="big weight"><if condition="$store_info['name']">{ZF:$store_info['name']}</p>
+				<p><a style="color:#000; font-size:1em;" href="tel:{ZF:$store_info['tel']}">租车热线：{ZF:$store_info['tel']}</a>
+				</p>
+				<else/>所有门店</p>
+				<p><if condition="$store_logourl['tel']"><a style="color:#000; font-size:1em;" href="tel:{ZF:$store_logourl['tel']}">租车热线：{ZF:$store_logourl['tel']}</a></br><else/>祝您出行愉快。。。</if>
+				
+				</p></if>
+			</div>
+			</div>
+
+			<!-- <div class="box" id="condition">
+				
+			</div> -->
+			
+			
+
+			<div class="result">
+				<div class="ui-filter">
+					
+					<div class="ui-filter-item" id="filterByPrice"  data-url="{ZF::U('Zuche/cartlist', array('token'=>$token,'storeid'=>$storeid))}">
+					
+						按租金
+						<span  <if condition="$method eq 'DESC'">class="icon arrow-line"  <else/>class="icon arrow-line up"</if> ></span>	
+					</div>
+					<div class="ui-filter-item" id="filterByLevel">
+						
+						筛选车型
+						<span class="icon arrow-down"></span>
+					</div>
+					<!--<div class="ui-filter-item" id="filterByAll">
+						
+						 只看可订车型
+						 <span class="icon check-small checked" id="filterByAllChx"></span>
+					
+					</div>-->
+				</div>
+				<div id="condition">
+					   <a href="{ZF::U('Zuche/cartlist', array('token'=>$token,'storeid'=>$storeid))}"><span <if condition="$catid">class="item" <else/> class="item active"</if>>不限</span></a>
+					   <volist name="cats" id="cats">
+						<a href="{ZF::U('Zuche/cartlist', array('token'=>$token,'storeid'=>$storeid,'catid'=>$cats['id']))}"><span <if condition="$catid eq $cats['id']">class="item active" <else/> class="item"</if>>{ZF:$cats.name}</span></a>
+					   </volist>					
+					   <!--<script language=javascript>
+						function gourl(v)
+						{
+							window.location.href ="{ZF::U('Zuche/cartlist',array('token'=>$token,'wecha_id'=>$wecha_id))}&storeid="+v;
+						}
+						</script>
+					  <b> 切换店铺：</b><select name="storeid" onchange="gourl(this.value);"><option value="0">所有店铺</option>
+						<volist name="stores" id="st"> 
+						<option value="{ZF:$st.id}" <if condition="$storeid eq $st['id']">selected</if>>{ZF:$st.name}</option>
+						</volist>
+						</select>-->
+				</div>
+				<div id="list">
+					<div class="level box">
+						
+						<ul data-inset="true" class="ui-listview">
+							<volist name="zuche" id="vo">
+							<li class="ui-li">
+									<div class="up">
+											<span class="big weight"> {ZF:$vo.name} </span>
+									</div>
+									<div class="down">
+										<div class="left" style="line-height:1.5em">
+											<div style="margin:0px;"><span class="label">基本险：</span><span class="gray">{ZF:$vo.insurance}元/天</span></div>
+											<div style="margin:0px;"><span class="label">预授权：</span><span class="gray">{ZF:$vo.authoprice}元起</span></div>
+										</div>
+										<div class="mid">
+											<div class="large price clearfix">
+												<div class="right normal danwei">均价<br>元/天</div><div class="right weight">{ZF:$vo.price}</div>
+											</div>
+										</div>
+										<div class="right">
+										<if condition="$zucheurl">
+											<a href="{ZF:$vo.url}"><button class="btn yellow-btn rent" >租车</button></a>
+										<else/>
+											<a <if condition="$vo['tel']"> href="tel:{ZF:$vo.tel}" <elseif condition="$store_info['tel']"/> href="tel:{ZF:$store_info['tel']}" <else/> href="tel:{ZF:$store_logourl['tel']}" </if>><button class="btn yellow-btn rent" >租车</button></a>
+										</if>
+										</div>
+									</div>	 
+							</li>
+							</volist>
+						</ul>
+			
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<!-- /footer -->
+	</div>
+
+
+
+				
+	
+
+	<script type="text/javascript" src="{ZF::RES}/zuche/js/jquery.js"></script>
+	<!--<script type="text/javascript" src="{ZF::RES}/zuche/js/jsrender.js"></script>
+	<script type="text/javascript" src="{ZF::RES}/zuche/js/core.js"></script>
+	<script type="text/javascript" src="{ZF::RES}/zuche/js/vehicle.js"></script>-->
+	
+	<div style="display: none;" id="loading-mask" class="mask">
+	<div class="loading"><img src="{ZF::RES}/zuche/js/loading.gif"><div>正在加载</div></div>
+	</div>
+	<script src="{ZF::RES}/zuche/js/cate_select.js"></script>
+	<script type="text/javascript">
+		$('.J_cate_select').cate_select();
+	</script>
+	<script type="text/javascript">
+	$(function(){
+		 $("#filterByLevel").click(function () {
+            $("#condition").slideToggle("slow");
+        });
+		 $("#back,#backhome").click(function () {
+			$(".back").css({
+				"background-color": "gray"
+			});
+			var url = $(this).find(".back").attr("data-url");
+			if (url) {
+				location.href = url;
+			} else {
+				window.history.go(-1);
+			}
+		});
+		$("#filterByPrice").click(function(){
+            var base_url = $(this).attr("data-url");
+			method = 'ASC';
+			_get_method = '{ZF:$method}';
+			if (_get_method == 'ASC')  {
+				method = 'DESC';
+			}	
+			var url = base_url +'&method='+method;
+			location.href = url;
+        });
+		})
+	</script>
+	<!--<script type="text/javascript" src="{ZF::RES}/zuche/js/m_code_1862.js"></script>-->
+	
+
+</body></html>

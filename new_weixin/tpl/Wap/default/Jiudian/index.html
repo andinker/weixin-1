@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/yuyue/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/yuyue/datepicker.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/yuyue/onlinebooking.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/yuyue/weimob-ui-1-1.css" media="all" />
+<script type="text/javascript" src="{ZF::RES}/js/yuyue/jQuery.js"></script>
+<script type="text/javascript" src="{ZF::RES}/js/yuyue/jquery-ui.js"></script>
+<title>微酒店-{ZF:$data.title}</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+        <!-- Mobile Devices Support @begin -->
+
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+
+            <meta content="no-cache" http-equiv="pragma">
+
+            <meta content="0" http-equiv="expires">
+
+            <meta content="telephone=no, address=no" name="format-detection">
+
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <!-- Mobile Devices Support @end -->
+
+        <link rel="shortcut icon" href="img/favicon.ico" />
+
+        <style>
+
+            img{width:100%!important;}
+
+        </style>
+
+    </head>
+
+    <body onselectstart="return true;" ondragstart="return false;">
+
+        <body id="onlinebooking">
+
+<!-- -------------------------------------------------------------------------------------------------------------------------------- -->
+
+	<div class="qiandaobanner"> 
+
+		<if condition="$data['topic'] neq ''"><img src="{ZF:$data.topic}"><else /><img src="{ZF::RES}/images/yuyue/head_pic.jpg"></if>
+
+	</div>
+
+	<div class="cardexplain">
+
+	<!--普通用户登录时显示-->
+
+	<ul class="round">
+
+		<li>
+
+			<a href="{ZF::U($type.'/order',array('token'=> $data['token'], 'wecha_id'=> $data['wecha_id'],'id'=>$data['id']))}"  ><span>我的订单<em class="ok">{ZF:$data.count}</em></span></a>
+
+		</li>
+
+	</ul>
+
+	<!--后台可控制是否显示-->
+
+	
+
+	<ul class="round">
+
+		<li class="title">
+
+			<span class="none">{ZF:$data.title}</span>
+
+		</li>
+
+		<volist name="info" id="item">
+
+		<li class="dandanb">
+
+			<a href="{ZF::U($type.'/info',array('token'=> $data['token'], 'wecha_id'=> $data['wecha_id'],'id'=>$item['pid'],'aid'=>$item['id']))}" >
+
+			<span>
+
+			<table class="jiagebiao" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+				<tr>
+
+					<td><div>{ZF:$item.name}</div>
+
+						<div><img src="{ZF:$item.pic1}" class="showimg" style="max-width:100px;">                            <p>{ZF:$item.memo}</p>
+
+							<p>原价：<a class="yuanjia">￥{ZF:$item.yuanjia}</a></p>
+
+							<p>优惠价：<a class="youhuijia">￥{ZF:$item.youhui}</a></p></div></td>
+
+				</tr>
+
+			</table>
+
+			</span>
+
+			</a>
+
+		</li>
+
+		</volist>
+
+	</ul>
+
+	
+
+	<ul class="round">
+
+		<li>
+
+		<h2>订单说明</h2>
+
+		<div class="text">{ZF:$data.info}</div>
+
+		</li>
+
+	</ul>
+
+
+
+	<!--后台可控制是否显示-->
+
+	<ul class="round">
+
+		<li class="addr"><a href="http://api.map.baidu.com/marker?location={ZF:$data.longitude},{ZF:$data.latitude}&title={ZF:$data.copyright}&name={ZF:$data.copyright}&content={ZF:$data.address}&output=html&src=weiba|weiweb"><span>地址： {ZF:$data.address}</span></a></li>
+
+		<li class="tel"><a href="tel:{ZF:$data.phone}"><span>订单电话： {ZF:$data.phone}</span></a></li>
+
+	</ul>
+	</div>
+
+<footer style="text-align:center; color:#ffd800;margin-right:20px;margin-top:0px;"><a>{ZF:$data.copyright}</a></footer>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<include file="Product:header"/>
+<script type="text/javascript">
+if (location.href.indexOf("PHPSESSID")<0) location.href=location.href+"&PHPSESSID={ZF:$cookie}";
+</script>
+<form method="post" action="{ZF::U('Product/ordersave',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" id="FromID">
+<div>
+	<div class="m-ck-module">
+	<h1>收货信息</h1>
+	<ul>
+		<li class="addr-info">
+			<ul class="addr-addnew-form addr-edit-form" id="addr-edit-form" style="display: none1;">
+				<li>
+					<label>收货人姓名：</label><span><input name="truename" id="truename" value="{ZF:$fans.truename}" type="text" placeholder="输入收货人姓名"></span>
+					<label>手机：</label><span><input name="tel" id="tel" value="{ZF:$fans.tel}" type="text" placeholder="输入您的收货电话"></span>
+					<label>详细地址：</label><span><input name="address" id="address" value="{ZF:$fans.address}" type="text" placeholder="输入您的收货地址"></span>
+				</li>
+			</ul>
+			<label>联系方式保存到用户库</label>
+			<ul class="rd">
+				<li>
+					<label><input type="checkbox" value="1" name="saveinfo" id="saveinfo" style="width: 16px;" checked="true"/></label>
+				</li>    
+			</ul>
+		</li>
+	</ul>
+	</div>
+	<div class="m-ck-module">
+		<h1>付款方式</h1>
+		<ul id="payment_mode" class="rd">
+			<li>
+			<select id="payment_selector" name="payment" style="width: 100%;border: 1px #f00 solid;border-radius: 0.5em;padding: 5px; line-height:2em;">
+				<if condition="$payment">
+				<volist id="v" name="payment">
+					<option value="{ZF:$v.pay_code}">{ZF:$v.pay_name}</option> 
+				</volist>
+				</if>
+				<if condition="$setting['paymode'] eq 1"><option value="0">货到付款</option></if>
+				<if condition="$Userinfo['account'] gt 0">	<option value="yuepay">余额支付</option></if>
+			</select>
+             <!--<if condition="$payment">
+   				<volist id="v" name="payment">
+				<label><input id="{ZF:$v.pay_code}" name="payment" value="{ZF:$v.pay_code}" type="radio" checked>{ZF:$v.pay_name}</label>
+				</volist>
+   			 </if>
+				<if condition="$setting['paymode'] eq 1">
+				<label><input name="payment" value="0" type="radio">货到付款</label>
+				</if>
+                <if condition="$Userinfo['account'] gt 0">
+                <label><input name="payment" value="yuepay" type="radio">余额支付 您的可用余额：<b style="color:red;">{ZF:$Userinfo.account}</b>元</label> 
+                </if>-->
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+    //alert(navigator.userAgent);
+	//wxpay     微信支付
+	//zfalipay  支付宝
+	//wapalipay 手机支付宝
+	//tenpay    财付通
+	//waptenpay 手机财付通
+	//智能选择默认支付方式     手机浏览器 Mobile   微信浏览器MicroMessenger
+	
+	
+	if (is_weixin()){
+		if ($("#payment_selector option[value=wxpay]").length >0){ //微信支付
+			$("#payment_selector option[value=wxpay]").attr("selected","selected");
+		}else if ($("#payment_selector option[value=waptenpay]").length >0){//手机财付通
+			$("#payment_selector option[value=waptenpay]").attr("selected","selected");
+		}else if ($("#payment_selector option[value=tenpay]").length >0){//财付通
+			$("#payment_selector option[value=tenpay]").attr("selected","selected");
+		}else if($("#payment_selector option[value=wapalipay]").length >0){ //手机支付宝
+			$("#payment_selector option[value=wapalipay]").attr("selected","selected");
+		}else if ($("#payment_selector option[value=zfalipay]").length >0){//支付宝
+			$("#payment_selector option[value=zfalipay]").attr("selected","selected");
+		}
+	}else if (is_mobile()){
+		if ($("#payment_selector option[value=wapalipay]").length >0){ //手机支付宝
+			$("#payment_selector option[value=wapalipay]").attr("selected","selected");
+		}else if ($("#payment_selector option[value=waptenpay]").length >0){//手机财付通
+			$("#payment_selector option[value=waptenpay]").attr("selected","selected");
+		}else if ($("#payment_selector option[value=zfalipay]").length >0){//支付宝
+			$("#payment_selector option[value=zfalipay]").attr("selected","selected");
+		}
+	}else{
+		if ($("#payment_selector option[value=zfalipay]").length >0){//支付宝
+			$("#payment_selector option[value=zfalipay]").attr("selected","selected");
+		}else if ($("#payment_selector option[value=tenpay]").length >0){//财付通
+			$("#payment_selector option[value=tenpay]").attr("selected","selected");
+		}
+	}
+
+function is_mobile(){
+	var ua = navigator.userAgent.toLowerCase();
+	if(ua.match(/Mobile/i)=="mobile") {
+		return true;
+ 	} else {
+		return false;
+	}
+}
+function is_weixin(){
+	var ua = navigator.userAgent.toLowerCase();
+	if(ua.match(/MicroMessenger/i)=="micromessenger") {
+		return true;
+ 	} else {
+		return false;
+	}
+}
+function is_alipay(){
+	if ( $("#payment_selector").val() == "zfalipay" ||
+	     $("#payment_selector").val() == "wapalipay" )
+	{
+		//alert("选择了支付宝支付！");
+		return true;
+	}else {
+		//alert("没有选择支付宝。");
+		return false;
+	}
+}
+</script>
+<style type="text/css">
+.alipqy_notice{position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(100, 100, 100, 0.7);z-index:100;display:none;}
+.alipqy_notice {background: rgba(0, 0, 0, 0.9); texe-align:center;}
+.alipqy_notice img { display:block; margin:0px auto;}
+</style>
+<div class="alipqy_notice" id="alipqy_notice">
+    <img src="/tpl/static/images/jump_out_of_weixin.png" style="width:320px;">
+</div>
+	<!-- <div class="m-ck-module">
+		<h1>送货方式</h1>
+		<ul id="shipping" class="rd"><input id="delivery" type="hidden" name="delivery" value="">
+		<li shipping="15"><label><input name="dt_id" value="535" type="radio">普通快递<b class="c_red">0元</b></label></li></ul>
+	</div> -->
+<div class="m-ck-module">
+<h1>商品清单</h1>
+<ul>
+<ul class="m-cart-list">
+<volist name="products" id="p">
+	<if condition="empty($p['detail']) neq true">
+		<volist name="p['detail']" id="row">
+			<li>
+				<span class="pic"><img src="{ZF:$p.logourl}" width="75" height="75"></span>
+				<span class="con">
+				<i class="t">{ZF:$p.name}</i>
+				<i class="d"><if condition="empty($p['formatTitle']) neq true">{ZF:$p.formatTitle}：{ZF:$row.formatName}</if> <if condition="empty($p['colorTitle']) neq true">，{ZF:$p.colorTitle}：{ZF:$row.colorName}</if></i>
+				<p><label>数量：</label>{ZF:$row.count}　<label>销售价：</label><span class="price">￥{ZF:$row.price}</span></p>
+				</span>
+			</li>
+		</volist>
+	<else/>
+		<li>
+			<span class="pic"><img src="{ZF:$p.logourl}" width="75" height="75"></span>
+			<span class="con">
+			<i class="t">{ZF:$p.name}</i>
+			<p><label>数量：</label>{ZF:$p.count}　<label>销售价：</label><span class="price">￥{ZF:$p.price}</span></p>
+			</span>
+		</li>
+	</if>
+</volist>
+</ul>
+</ul>
+</div>
+<div class="m-cart-toal m-checkout-toal">
+<p id="price_total" class="check">商品总数：<b>{ZF:$totalCount}</b>　件<br>
+商品原总价：<b>{ZF:$totalFee}</b>　元<br>
+运费：<b>{ZF:$mailprice}</b>　元<br>
+<!-- 优惠金额：0元<br> -->
+您共需支付：<b id="totalmoney"><php>{echo ($totalFee + $mailprice);}</php></b>　元</p>
+<if condition="($setting['score'] gt 0) OR ($fans['total_score'] gt 0)">
+<p class="check">您的可用积分：<b>{ZF:$fans['total_score']}</b>　分<br/>
+使用积分兑换：<input type="text" name="score" style="border: 1px solid #cfcfcf;margin: 0 -1px;font-size: 16px;display: inline-block;text-align: center;height: 22px;width: 50px;border-radius: 0;background: -webkit-gradient(linear, 0 0, 0 100%, from(#e5e5e5),color-stop(0.3, #fff),to(#fff));-webkit-appearance: none;color: #999;" id="score"/>
+<span></span>
+</p>
+</if>
+<div id="show_msg" class="tip_blue"></div>
+<p class="act"><a id="sub_order" href="javascript:;" class="checkout">确认，提交订单</a></p>
+</div>
+</form>
+</div>
+</form>
+<script>
+var scale = "{ZF:$setting['score']}";
+var totalscore = "{ZF:$fans['total_score']}";
+$(document).ready(function(){
+	var total = parseInt($("#totalmoney").html());
+	$("#score").keyup(function(){
+		var num = parseInt($(this).val());
+		console.log(num);
+		if (isNaN(num)) {
+			console.log(num);
+			num = 0;
+		}
+		if (num > totalscore) {
+			$(this).val(totalscore);
+			return floatNotify.simple('您填写的积分超过了您的可用积分');
+			return false;
+		}
+		var t = total - num/scale;
+		if (t <= 0) {
+			$(this).val(total * scale);
+			t = 0;
+		}
+		$("#totalmoney").html(t);
+	});
+	$("#sub_order").click(function(){
+		
+		//如果选择的是支付宝支付方式，则要求跳出系统浏览器
+		if (is_weixin()){
+			//alert("是微信");
+			if (is_alipay()){
+	            $(".alipqy_notice").css('display','block');
+			    return false;
+			}
+		}else{
+			
+			//alert("不是微信，进程将继续");
+		}
+		
+		var userName=$('#truename').val();
+		if($.trim(userName) == ""){
+			return floatNotify.simple('请填写姓名');
+			return false;
+		}
+		var userPhone = $("#tel").val()
+		if ($.trim(userPhone) == "") {
+			return floatNotify.simple('请填写您的手机号码');
+			return false;
+		}
+		var patrn = /^(1(([35][0-9])|(47)|(85)|[8][01256789]))\d{8}$/;
+		if (!patrn.exec($.trim(userPhone))) {
+			return floatNotify.simple('手机号格式错误');
+			return false;
+		}
+		var address = $("#address").val()
+		if ($.trim(address) == "") {
+			return floatNotify.simple('请填写您的详细地址');
+			return false;
+		}
+		$("#FromID").submit();
+		return false;
+		var saveinfo = $("#saveinfo").attr('checked') == 'checked' ? 1 : 0;
+		var payment=$("select[name='payment']").val();
+		console.log(payment);
+		var data = {
+				truename:userName,
+				tel:userPhone,
+				address:address,
+				saveinfo:saveinfo,
+				token:"{ZF:$_GET['token']}",
+				wecha_id:"{ZF:$_GET['wecha_id']}",
+				payment:payment,
+				score:parseInt($("#score").val())
+		}
+		console.log(data);
+		return false;
+		$("#sub_order").html('提交中...').unbind();
+		$.get('index.php?g=Wap&m=Product&a=ordersave&PHPSESSID={ZF:$Think.get.PHPSESSID}', data, function(response){
+			if (response.error_code == false) {
+				if (response.isopen == 1) {
+					location.href = "{ZF::U('Alipay/pay',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'success'=>1,'from'=> 'Product'))}" + '&orderName=' + response.orderName + '&single_orderid=' + response.orderid + '&price=' + response.price;
+				} else {
+					location.href = "{ZF::U('Product/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'success'=>1))}";
+				}
+			} else {
+				$("#sub_order").html('确认，提交订单').bind('click');
+				return floatNotify.simple(response.msg);
+			}
+			
+		}, 'json');
+		return true;
+	});
+});
+</script>
+		<if condition="$kefu['sc'] eq '1'">
+		<include file="footsrc"/>
+		</if> 
+</body>
+<script type="text/javascript">
+window.shareData = {  
+            "moduleName":"Product",
+            "moduleID":"0",
+            "imgUrl": "{ZF::C('site_url') .  U('Product/orderCart',array('token' => $_GET['token']))}", 
+            "timeLineLink": "{ZF::C('site_url') .  U('Product/orderCart',array('token' => $_GET['token']))}",
+            "sendFriendLink": "{ZF::C('site_url') .  U('Product/orderCart',array('token' => $_GET['token']))}",
+            "weiboLink": "{ZF::C('site_url') .  U('Product/orderCart',array('token' => $_GET['token']))}",
+            "tTitle": "{ZF:$metaTitle}",
+            "tContent": "{ZF:$metaTitle}"
+        };
+</script>
+{ZF:$shareScript}
+</html>

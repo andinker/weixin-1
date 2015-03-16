@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<meta content="" name="description">
+		<meta content="" name="keywords">
+		<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+		<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+		<meta content="no-cache" http-equiv="pragma">
+		<meta content="0" http-equiv="expires">
+		<meta content="telephone=no, address=no" name="format-detection">
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+		<link rel="stylesheet" type="text/css" href="{ZF::STATICS}/forum/css/main.css" ></link>
+		<link rel="stylesheet" type="text/css" href="{ZF::STATICS}/forum/css/dialog.css" ></link>
+		<script src="{ZF::STATICS}/forum/js/jquery_min.js" ></script>
+		<script src="{ZF::STATICS}/forum/js/main.js" ></script>
+		<script src="{ZF::STATICS}/forum/js/helper_min.js" ></script>
+		<script src="{ZF::STATICS}/forum/js/dialog_min.js" ></script>
+		<script>
+
+	       function collectTrends(tid, uid){
+		        loading(true);
+	    	    $.post("{ZF::U('Forum/likeAjax',array('token'=>$_GET['token']))}",{
+	    	        "tid"  : tid,
+	    	        "uid"  : uid,
+		    	    },function(res){
+		    	    	loading(false);
+		    	        if(res) {
+							
+			    	        location.reload();
+		    	        }
+
+		    	    });
+	        }
+	       function praiseTrends(tid, uid){
+	    	    loading(true);
+	    	    $.post("{ZF::U('Forum/favourAjax',array('token'=>$_GET['token']))}",{
+	    	        "tid"  : tid,
+	    	        "uid"  : uid,
+		    	    },function(res){
+		    	    	loading(false);
+		    	        if(res) {
+			    	        location.reload();
+		    	        }
+
+		    	    });
+	        }
+		</script>
+	</head>
+	<body onselectstart="return true;" ondragstart="return false;" class="discuss_my discuss_my_tiezi">
+		<div id="container" class="container" <if condition="$bgurl neq NULL">style="background:url('{ZF:$bgurl}') repeat-y center 0"</if>>
+			<header>
+				<div class="header_1">
+					<ul class="tbox">
+						<li>
+													<span id="upload_header" class="head_img">
+								<img src="{ZF:$portrait}" onerror="this.src='{ZF::STATICS}/forum/images/face.png';" />
+							</span>
+												</li>
+						<li>
+							<h5 id="nickName"><label>{ZF:$uname}</label><!--<a href="javascript:void(0);" class="icons icons_edit">&nbsp;</a>--></h5>
+							<p>
+							<!--	
+								<a href="#" class="label"><span class="icons icons_vip_0">&nbsp;</span>非会员</a>
+							-->
+							</p>
+						</li>
+					</ul>
+				</div>
+
+			</header>
+			<div class="body">
+				<div class="list_article">
+				<volist id="list" name="list">
+					<article>
+						<header>
+							<div class="article_state">
+								
+							</div>
+							<ul class="tbox">
+								<li></li>
+								<li>
+									<h5>{ZF:$list.title}</h5>
+									<p>{ZF::date('Y-m-d H:i:s',$list['createtime'])}</p>
+								</li>
+								
+	
+							</ul>
+						</header>
+						<section>
+											<php>
+												if(!empty($list['photos'])){
+													
+													$count = count(explode(',',$list['photos']));
+													echo '<figure data-count="'.$count.'张图片">
+													<div>';
+													$photos = explode(',',$list['photos']);
+													
+													for($i=0;$i<count($photos);$i++){
+														echo '<img src="'.$photos[$i].'" data-src="'.$photos[$i].'" data-gid="g7" onload="preViewImg(this, event);"/>';
+														}
+													
+												
+													echo '</div></figure>';
+												}
+											</php>
+											<div style="clear:both"></div>	
+							<div>
+								<div>{ZF::htmlspecialchars_decode($list['content'],ENT_QUOTES)}</div>
+							</div>
+							<a href="{ZF::U('Forum/comment',array('tid'=>$list['id'],'wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token']))}">查看全文</a>
+						</section>
+
+						<footer>
+    										
+								<ul class="box">
+    								<li><!--喜欢-->
+										<a href="javascript:;" class="a_collect <php>if(in_array($wecha_id,explode(',',$list['likeid']))){echo 'on';}else{ }</php>" onclick="collectTrends({ZF:$list.id},'{ZF:$wecha_id}')" ><span class="icons icons_collect" >&nbsp;</span><label><if condition="empty($list['likeid'])">0<else />{ZF::count(explode(',',$list['likeid']))}</if></label></a>
+    								</li>
+    								<li><!--评论-->
+    									<a href="{ZF::U('Forum/comment',array('tid'=>$list['id'],'wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token']))}" class="a_comment"><span class="icons icons_comment" >&nbsp;</span><label>{ZF:$list.cnum}</label></a>
+    								</li>
+    								<li><!--赞-->
+    								    <a href="javascript:;" class="a_like <php>if(in_array($wecha_id,explode(',',$list['favourid']))){echo 'on';}else{ }</php>" onclick="praiseTrends({ZF:$list.id},'{ZF:$wecha_id}')"><span class="icons icons_like">&nbsp;</span><label><if condition="empty($list['favourid'])">0<else />{ZF::count(explode(',',$list['favourid']))}</if></label></a>
+    								</li>
+							    </ul>
+						</footer>
+					</article>
+				</volist>
+					
+				</div>
+			</div>
+			<include file="footermenu"/>			
+		</div>
+			
+<script type="text/javascript">
+window.shareData = {  
+            "moduleName":"Forum",
+            "moduleID":"",
+            "imgUrl": "", 
+            "timeLineLink": "{ZF::C('site_url')}{ZF::U('Forum/index',array('token'=>$_GET['token']))}",
+            "sendFriendLink": "{ZF::C('site_url')}{ZF::U('Forum/index',array('token'=>$_GET['token']))}",
+            "weiboLink": "{ZF::C('site_url')}{ZF::U('Forum/index',array('token'=>$_GET['token']))}",
+            "tTitle": "{ZF:$uname}",
+            "tContent": "{ZF:$uname}"
+        };
+</script>
+{ZF:$shareScript}
+
+	</body>
+
+</html>

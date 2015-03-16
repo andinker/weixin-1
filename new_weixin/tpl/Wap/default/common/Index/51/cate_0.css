@@ -1,0 +1,6 @@
+#cate30  .mainmenu li{background-color:rgba(252, 170, 180, 0.9);}
+#cate30  .mainmenu li:nth-child(2n){ background-color:#FFF;}
+#cate30  .mainmenu li:nth-child(2n) a{ color:rgb(252, 170, 180);}
+#cate30  .mainmenu li a{color:#fff;}
+#cate30 {background-color:rgb(131, 41, 41); }
+.copyright{color:#eee;}

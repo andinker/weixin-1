@@ -1,0 +1,16 @@
+
+		<script type="text/javascript">
+
+			window.shareData = {  
+				"moduleName":"Index",
+				"moduleID": '3',
+				"imgUrl": "{ZF:$res.pic}", 
+				"timeLineLink": "{ZF::C('site_url')}{ZF::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token'],'classid'=>$_GET['classid'],'id'=>intval($_GET['id'])))}",
+				"sendFriendLink": "{ZF::C('site_url')}{ZF::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token'],'classid'=>$_GET['classid'],'id'=>intval($_GET['id'])))}",
+				"weiboLink": "{ZF::C('site_url')}{ZF::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token'],'classid'=>$_GET['classid'],'id'=>intval($_GET['id'])))}",
+				"tTitle": "{ZF:$res.title}-{ZF:$tpl.wxname}",
+				"tContent": "{ZF:$res.text|htmlspecialchars_decode|strip_tags|trim|mb_substr=###,0,30,'utf-8'|str_replace="\\r\\n",' ',###|str_replace='"','',###}"
+			};
+		</script>	
+
+{ZF:$shareScript}

@@ -1,0 +1,7 @@
+.copyright{color:orange;}
+.copyright a{color:#0099cb;}
+#cate30  .mainmenu li{background-color:orange;}
+#cate30  .mainmenu li:nth-child(2n){ background-color:#fff}
+#cate30  .mainmenu li:nth-child(2n) a{ color:orange}
+#cate30  .mainmenu li a{color:#FFF;}
+#cate30 {background-color:gray; }

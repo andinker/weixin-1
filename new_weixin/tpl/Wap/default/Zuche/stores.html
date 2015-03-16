@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1">
+<meta name="format-detection" content="telephone=no">
+
+<link rel="stylesheet" href="{ZF::RES}/zuche/css/common.css">
+<link rel="stylesheet" href="{ZF::RES}/zuche/css/district.css">
+<title>门店列表</title>
+<style>
+a{color:#faa114;}
+</style>
+</head>
+<body>
+	<div id="district">
+		
+		
+		<div class="ui-header">
+			
+			<div class="left">
+				
+				<!--<div class="icon-container" id="back"><div class="icon back" data-url="/html5/rent/rentcity.html?from=dep"></div></div>-->
+			</div>
+			<div class="title">门店列表</div>
+			
+		</div>
+		<div class="ui-content" id="">
+			<ul id="districtContainer" class="container" style="display: block;">
+			<volist id="b" name="stores">
+				<li class="ui-li  ui-li-divider districtgroups">
+				<a href="{ZF::U('Zuche/xiangqing',array('token'=>$token,'wecha_id'=>$wecha_id,'storeid'=>$b['id']))}" style="display:block;"><span>{ZF:$b.name}&nbsp;<!--<span class="fullday">24<b style="font-size:0.7em">小时</b></span>--></span></a>
+				</li>
+			</volist>	
+			</ul>
+		</div>
+	</div>
+</body></html>

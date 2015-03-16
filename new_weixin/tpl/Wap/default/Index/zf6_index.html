@@ -1,0 +1,80 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{ZF:$tpl['wxname']}</title>
+<meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no,inital-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link href="{ZF::RES}/css/allcss/w54.css" rel="stylesheet" type="text/css" />
+<link href="{ZF::RES}/css/allcss/iscroll.css" rel="stylesheet" type="text/css" />
+<SCRIPT type=text/javascript src="{ZF::RES}/js/v12/jquery-1.7.2.min.js"></SCRIPT>
+<SCRIPT type=text/javascript src="{ZF::RES}/js/v12/rotate.js"></SCRIPT>
+<SCRIPT type=text/javascript src="{ZF::RES}/js/v12/jquery.transform.js"></SCRIPT>
+<SCRIPT type=text/javascript src="{ZF::RES}/css/allcss/iscroll.js"></SCRIPT>
+<script type="text/javascript">
+            var myScroll;
+            function loaded() {
+                myScroll = new iScroll('wrapper', {
+                    snap: true,
+                    momentum: false,
+                    hScrollbar: false,
+                    onScrollEnd: function () {
+                        document.querySelector('#indicator > li.active').className = '';
+                        document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+                    }
+                }); 
+            }
+            document.addEventListener('DOMContentLoaded', loaded, false);
+</script>
+<style type="text/css">
+.bottom_nav{float:left; position:inherit;}
+.copyright{margin-bottom:55px;}
+</style>
+</head>
+<BODY id="cate17">	
+   <!--背景音乐-->
+<if condition="$homeInfo['animation'] neq '0'"><include file="Index:anStyle"/></if>
+<if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
+<!---轮播------>
+ <div class="mainbg" style="z-index:-1;">
+    <img src="<if condition="$homeInfo.homeurl neq false">{ZF:$homeInfo.homeurl}<else/>{ZF::RES}/images/themes/bg1.jpg</if> "/>
+        </div>  
+  <DIV class="bottom_nav">
+<DIV class="content">
+<volist name="info" id="vo">
+<A href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url}</if>">
+<P class="ico"><IMG src="{ZF:$vo.img}"></P>
+<P class="title">{ZF:$vo.name}</P></A>
+</volist>
+</DIV>
+</DIV>
+<div style="clear:both;"></div>
+<div class="copyright">
+<if condition="$iscopyright eq 1">
+©{ZF:$homeInfo.copyright}
+<else/>
+©{ZF:$siteCopyright}
+</if>
+</div> 
+<include file="Index:styleInclude"/><include file="$cateMenuFileName"/>
+<!-- share -->
+<include file="Index:share" /> 
+ <script>
+            var count = document.getElementById("thelist").getElementsByTagName("img").length;	
+            for(i=0;i<count;i++){
+                document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+            }
+            document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+            setInterval(function(){
+                myScroll.scrollToPage('next', 0,400,count);
+            },3500 );
+            window.onresize = function(){ 
+                for(i=0;i<count;i++){
+                    document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+                }
+                document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+            } 
+        </script>
+</body>
+</html>

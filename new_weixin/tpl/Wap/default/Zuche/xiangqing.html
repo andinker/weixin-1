@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1">
+<meta name="format-detection" content="telephone=no">
+
+<link rel="stylesheet" href="{ZF::RES}/zuche/css/common.css">
+<style>
+	#confirmStore{
+		line-height:64px;
+		width:100%;
+	}
+	#confirmStore span{
+		font-size: 14px;
+	}
+	a{color:#fff;}
+	.jieshao img{width:100%;}
+</style>
+<title>取车门店   </title>
+</head>
+<body>
+	<div id="store">
+		<div class="ui-header">
+			<div class="left">
+				<div class="icon-container" id="back"><div class="icon back" data-url="{ZF::U('Zuche/stores',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"></div></div>
+			</div>
+			<div class="title">
+				{ZF:$store_info['name']}
+			</div>
+		</div>
+		<div class="ui-content">
+			<div>
+				<button id="confirmStore" class="btn yellow-btn">
+					<span class="icon-store dianmian"><if condition="$store_info['logourl']"><img src="{ZF:$store_info['logourl']}" style="width:64px;height:64px;"><else/><img src="{ZF:$store_logourl['logourl']}" style="width:64px;height:64px;"></if></span>
+					<span>选择{ZF:$store_info['name']}</span>
+					<a href="{ZF::U('Zuche/cartlist',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'storeid'=>$store_info['id']))} class="btn1">预订</a>
+				</button>
+			</div>
+            <div>
+				<h3 id="" class="name"></h3>
+                <p>地址：{ZF:$store_info['address']}</p>
+					<!--<p>营业时间：08:00 -21:00</p>-->
+				
+             </div>
+			 <div class="jieshao" style="width:100%">
+				{ZF:$store_info['intro']}
+				<!--<img style="display:block;width:100%;" src="./取车门店 _files/staticimage">-->
+	   		</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="{ZF::RES}/zuche/js/jquery.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		 $("#back").click(function () {
+			$(".back").css({
+				"background-color": "gray"
+			});
+			var url = $(this).find(".back").attr("data-url");
+			if (url) {
+				location.href = url;
+			} else {
+				window.history.go(-1);
+			}
+		});
+		})
+	</script>
+</body></html>

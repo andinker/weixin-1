@@ -1,0 +1,166 @@
+<include file="Product:header"/>
+<style type="text/css">
+.paylists, .alipqy_notice{position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(100, 100, 100, 0.7);z-index:100;display:none;}
+.paylists ul{width:90%;height:auto;overflow:auto; box-shadow:0 0 3px #ccc;margin:30% auto; background:#fff;border:solid 1px #999;}
+.paylists a{line-height:2em; padding:0 1em;border-bottom:1px dotted #ccc;display:block;}
+.paylists a:hover{background-color:#FFC;color:#F60;}
+.alipqy_notice {background: rgba(0, 0, 0, 0.9);}
+</style>
+
+<div class="paylists"  id="paylists" onclick="document.getElementById('paylists').style.display='';">
+    <ul>
+    <volist name="payment" id="pay">
+        <li>
+        <a onclick="return checkWXB(this);" href="{ZF::U('Pay/'.$pay['pay_code'],array('token'=>$token,'wecha_id'=>$wecha_id,'orderid'=>$cartData['orderid']))}">{ZF:$pay.pay_name}</a></li>
+    </volist>
+    <if condition="$Userinfo['account'] gt 0">
+        <li><a herf="{ZF::U('Pay/yuepay',array('token'=>$token,'wecha_id'=>$wecha_id,'orderid'=>$cartData['orderid']))}">余额支付 (余额：<b style="color:red;">{ZF:$Userinfo.account}</b>元)</a></li>
+    </if>
+    </ul>
+
+</div>
+
+<div class="alipqy_notice" id="alipqy_notice">
+    <img src="/tpl/static/images/jump_out_of_weixin.png" style="width:320px;">
+</div>
+
+<script type="text/javascript">
+function checkWXB(a){
+	
+	if( !($(a).text().indexOf("支付宝") < 0) ){
+		//alert("是支付宝");
+	
+		if (is_weixin()){
+			//alert("是微信，需跳出");
+	        $(".alipqy_notice").css('display','block');
+			return false;
+		}else{
+			//alert("不是微信，不需跳出");
+	        return true;
+	        
+		}
+	
+	}
+        
+}
+
+function is_weixin(){
+	var ua = navigator.userAgent.toLowerCase();
+	if(ua.match(/MicroMessenger/i)=="micromessenger") {
+		return true;
+ 	} else {
+		return false;
+	}
+}
+</script>
+
+
+<ul class="m-uc-order-p-liv m-cart-list">
+<volist name="products" id="p">
+	<if condition="empty($p['detail']) neq true">
+		<volist name="p['detail']" id="row">
+			<li>
+				<span class="pic"><img src="{ZF:$p.logourl}" width="75" height="75"></span>
+				<span class="con">
+				<i class="t">{ZF:$p.name}</i>
+				<i class="d"><if condition="empty($p['formatTitle']) neq true">{ZF:$p.formatTitle}：{ZF:$row.formatName}</if> <if condition="empty($p['colorTitle']) neq true">，{ZF:$p.colorTitle}：{ZF:$row.colorName}</if></i>
+				<p><label>数量：</label>{ZF:$row.count}　<label>小计：</label><span class="price">￥{ZF:$row['price'] * $row['count']}</span></p>
+				</span>
+			</li>
+		</volist>
+	<else/>
+		<li>
+			<span class="pic"><img src="{ZF:$p.logourl}" width="75" height="75"></span>
+			<span class="con">
+			<i class="t">{ZF:$p.name}</i>
+			<p><label>数量：</label>{ZF:$p.count}　<label>小计：</label><span class="price">￥{ZF:$p.price}</span></p>
+			</span>
+		</li>
+	</if>
+</volist>
+</ul>
+<ul class="m-uc-order-v-infobox">
+<p>订单编号：{ZF:$cartData.orderid}</p>
+<li><span class="tit">订单状态</span>
+<php>if($cartData['sent']){echo '<b class="orderStatus">已发货</b>';}else{echo '<b class="orderStatus">待发货</b>';}</php>
+</li>
+<li>
+<p>下单时间：{ZF:$cartData.time|date="Y-m-d H:i:s",###}</p>
+<p>订单金额：<b>{ZF:$totalFee}元</b></p>
+</li>
+<if condition="($cartData['paid'] eq 0) AND ($cartData['sent'] eq 0)">
+<li class="act">
+<div class="btn-yel"><a href="javascript:" class="paybtn" style="color:#FFF; display:block;">立即付款</a></div>
+<div class="btn-gray"><a href="javascript:" onclick="cancleorder();">取消订单</a></div>
+</li>
+</if>
+</ul>
+<ul class="m-uc-order-v-infobox">
+<li><span class="tit">收货人信息</span></li>
+<li>
+<p>收货人：{ZF:$cartData.truename}</p>
+<p>收货地址：{ZF:$cartData.address}</p>
+<p>手机/固话：{ZF:$cartData.tel}</p>
+</li>
+</ul>
+<ul class="m-uc-order-v-infobox">
+<li><span class="tit">支付与配送</span></li>
+<li id="shipping_zfhps">
+<p>配送方式：<php>if($cartData['logistics']){echo $cartData['logistics'] . ';  订单号：' . $cartData['logisticsid'];}else{echo '普通快递';}</php></p>
+<p>商品金额：{ZF:$totalFee}元</p>
+<p>运费：{ZF:$mailprice}元　</p>
+<p>应付金额：<php>{echo $cartData['price'];}</php>元</p>
+<p>兑换积分：<php>{echo $cartData['score'];}</php>分</p>
+</li>
+</ul>
+</div>
+<script type="text/javascript">
+$(function(){
+    $('.paybtn').click(function(){
+        $(".paylists").css('display','block');
+    })
+})
+function cancleorder(){
+    confirm =floatNotify.confirm("确定要删除此订单吗？", "",
+        function(t, n) {
+            if(n==true){
+                $.ajax({
+                	type:"GET",
+                	url: "{ZF::U('Product/cancelCart',array('token' => $token, 'cartid' => $cartid, 'wecha_id' => $wecha_id))}",
+                    dataType:"json",
+                    success:function(data){
+                        if(data.error_code == false){
+                            floatNotify.simple('订单取消成功');
+                            setTimeout("location.href='{ZF::U('Product/my',array('token' => $token, 'wecha_id' => $wecha_id))}'",1200);  
+                        }else{
+                           return floatNotify.simple(data.msg);  
+                        }
+                    },
+                    error:function(){
+                       return floatNotify.simple("提交失败");
+                    }
+                });
+            }
+    	this.hide();
+      }),
+    confirm.show();
+}
+</script>
+		<if condition="$kefu['sc'] eq '1'">
+		<include file="footsrc"/>
+		</if> 
+</body>
+<script type="text/javascript">
+window.shareData = {  
+            "moduleName":"Product",
+            "moduleID":"0",
+            "imgUrl": "", 
+            "timeLineLink": "{ZF::C('site_url') .  U('Product/myDetail',array('token' => $_GET['token']))}",
+            "sendFriendLink": "{ZF::C('site_url') .  U('Product/myDetail',array('token' => $_GET['token']))}",
+            "weiboLink": "{ZF::C('site_url') .  U('Product/myDetail',array('token' => $_GET['token']))}",
+            "tTitle": "{ZF:$metaTitle}",
+            "tContent": "{ZF:$metaTitle}"
+        };
+</script>
+{ZF:$shareScript}
+</html>
