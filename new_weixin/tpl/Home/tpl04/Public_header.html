@@ -1,0 +1,20 @@
+﻿  <div class="header">
+    <div class="wrap">
+      <div class="logo"> <a href="{ZF::U('Home/Index/index')}"></a> </div>
+      <div class="header-nav">
+        <ul>
+          <li> <a href="{ZF::U('Home/Index/index')}" class="active">首页</a> </li>
+          <li> <a href="{ZF::U('Home/Index/solution')}" class="">经典案例</a> </li>
+          <li> <a href="{ZF::U('Home/Index/navigation')}" class="">功能导航</a> </li>
+          <li> <a href="{ZF::U('Home/Index/spread')}" class="">渠道代理</a> </li>
+          <li> <a href="{ZF::U('Home/Index/union')}" class="">自媒体联盟</a> </li>
+          <li> <a href="{ZF::U('Home/Index/about')}" class="">关于我们</a> </li>
+        </ul>
+      </div>
+      <div class="header-btns">
+        <if condition="$_SESSION[uid]==false"> <a href="{ZF::U('Home/Index/login')}" class="btn btn-text">登录</a> <a href="{ZF::U('Home/Index/reg')}" class="btn btn-green">注册试用</a>
+          <else/>
+          <a href="{ZF::U('User/Index/index')}" class="btn btn-green">{ZF:$Think.session.uname}</a> <a href="/#" class="btn btn-green" onClick="Javascript:window.open('{ZF::U('System/Admin/logout')}','_blank')" >退出</a> </if>
+      </div>
+    </div>
+  </div>

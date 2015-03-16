@@ -1,0 +1,66 @@
+﻿<include file="Public:header"/>
+<div class="Public-content clearfix">
+	<div class="Public">
+		<h1 class="Public-h2">注册</h1>
+		<div class="Public-box clearfix">
+			<div class="reg-wrapper2">
+		<form id="regform" class="form-horizontal" action="index.php?m=Users&amp;a=checkreg" method="post">
+		  <div class="control-group">
+		    <label class="control-label" for="username">用户名</label>
+		    <div class="controls" >
+		      <input type="text" name="username" id="username">
+		      <span class="maroon">*</span><span class="help-inline">长度为6~16位字符，可以为“数字/字母/中划线/下划线”组成</span>
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <label class="control-label" for="password">用户密码</label>
+		    <div class="controls">
+		      <input type="password" name="password" id="password">
+		      <span class="maroon">*</span><span class="help-inline">长度为6~16位字符</span>
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <label class="control-label" for="repassword">重复密码</label>
+		    <div class="controls">
+		      <input type="password" name="repassword" id="repassword"><span class="maroon">*</span><span class="help-inline">请重复输入密码</span>
+		    </div>
+		  </div>
+		   <div class="control-group">
+		    <label class="control-label" for="qq">Q Q 号</label>
+		    <div class="controls">
+		      <input type="text" name="qq" id="qq"><span class="maroon">*</span><span class="help-inline">QQ号与服务升级及功能优惠等相关，请填写正确的QQ号</span>
+		    </div>
+		  </div>
+		  
+		   <div class="control-group">
+		    <label class="control-label" for="truename">联系人：</label>
+		    <div class="controls">
+		      <input type="text" name="truename" id="truename"><span class="help-inline">主要用于通知及个性化服务</span>
+		    </div>
+		  </div>
+		  <if condition="C('reg_needmp')">
+		   <div class="control-group">
+		    <label class="control-label" for="tel">手机号</label>
+		    <div class="controls">
+		      <input type="text" name="tel" id="tel"><span class="maroon">*</span><span class="help-inline">手机号与支付、通知、优惠等相关，请填写正确的手机号</span>
+		    </div>
+		  </div>
+		  </if>
+		  <div class="control-group">
+		    <label class="control-label" for="email">邮箱</label>
+		    <div class="controls">
+		      <input type="text" name="email" id="email">
+		      <span class="maroon">*</span><span class="help-inline">邮箱将与支付、通知、优惠相关，请填写正确的邮箱</span>
+		    </div>
+		  </div>
+		  <div class="control-group">
+		  	<div class="controls">
+			    <button type="submit" id="reg-btn" class="btn-register"></button>
+		  	</div>
+		  </div>
+		</form>
+		</div>
+		</div>
+	</div>
+</div>
+<include file="Public:footer"/>

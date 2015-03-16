@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>网站分类编辑</title>
+<link href="{ZF::RES}/images/main.css" type="text/css" rel="stylesheet">
+<script src="{ZF::STATICS}/jquery-1.4.2.min.js" type="text/javascript"></script>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<link rel="stylesheet" href="{ZF::STATICS}/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="{ZF::STATICS}/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="{ZF::STATICS}/kindeditor/lang/zh_CN.js"></script>
+<script>
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			uploadJson : '{ZF::U("Editor/editer_upload")}',
+			fileManagerJson : '{ZF::U("Editor/editer_manager")}',
+			allowFileManager : true
+		});	
+		K('#image1').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					imageUrl : K('#headpic').val(),
+					clickFn : function(uploadJson, title, width, height, border, align) {
+						K('#headpic').val(uploadJson);
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+	});
+</script>
+</head>
+<body class="warp">
+<div id="artlist" class="addn">
+<form action="{ZF::U('essay/set',array('pid'=>$pid,'level'=>$level))}" method="post">
+<style type="text/css">
+table tr td{
+	padding:0 1em;
+}
+</style>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="addn">
+  <tr>
+    <th colspan="4">{ZF:$title|default="添加文章"}</th>
+    </tr>
+    <tr> 
+		<td  height="48">
+			<strong>标题：</strong>
+		</td>
+		<td>
+			<input type="text" name="title" value="{ZF:$info.title}" class="ipt" size="45" style="width:450px;" />
+		</td>
+    </tr> 
+	  <tr> 
+		<td  height="48">
+			<strong>缩略图：</strong>
+		</td>
+		<td>
+			<input type="text" name="headpic" value="{ZF:$info.headpic}" id="headpic" class="ipt"/><input type="button" id="image1" value="选择图片" />
+		</td>
+    </tr> 
+	<input type="hidden" name="id"  value="{ZF:$info.id}" id="img-hidden" />
+    <tr> 
+      <td height="48">
+		<strong>文章作者：</strong>
+	  </td>
+      <td height="48">
+		<input type="text" name="author" value="{ZF:$info.author}" class="ipt" />　
+		<strong>文章来源：</strong>
+		<input type="text" name="form" value="{ZF:$info.form}" class="ipt" /> 
+	  </td>
+    </tr>
+	<tr height="48">
+		<td colspan="2">
+			<strong>排序：</strong><input type="text" name="sort" value="{ZF:$info.sort}" class="ipt"/>&nbsp;
+			<strong>状态：</strong><label for="status1">显示</label><input type="radio" name="status" id="status1" value="1" <eq name="info['status']" value="1"> checked </eq> />&nbsp;<label for="status0">隐藏</label><input type="radio" id="status0" name="status" value="0" <eq name="info['status']" value="0">checked</eq>/>
+		&nbsp;&nbsp;
+			<strong>分类：</strong>
+			<select name="cid">
+				<volist name="essay_cate" id="cate">
+				<option value="{ZF:$cate.id}" <eq name="cate.id" value="$info.cid"> selected </eq> >{ZF:$cate.name}</option>				
+				</volist>
+			</select>
+		</td>
+    </tr> 
+	
+    <!--<tr> 
+      <td width="10%" height="48" align="right"><strong>封面上传：</strong></td>
+      <td width="90%"><img src="{ZF::RES}/images/main/picxz.gif" id="imgs" />
+	  <input type="hidden" name="imgs"  value="{ZF:$info.imgs}" id="img-hidden" />
+	  </td>
+    </tr>-->
+      <tr> 
+      <td colspan="2">
+		 <textarea class="text-input "  id="editor_id" name="content" rows="15" style="width:100%;height:300px;">{ZF:$info.content}</textarea>
+	</td>
+    </tr>
+    <tr> 
+      <td height="48" colspan="2">
+	  <div id="addkey"></div>
+	  <div 	style="">
+		<input type="submit" value="" style="width:97px;height:27px;background:url({ZF::RES}/images/main/addwz.gif)" />
+		<input type="reset" value="" style="width:97px;height:27px;background:url({ZF::RES}/images/main/addqx.gif)" />
+	  </div></td>
+    </tr>
+</table>
+</form>
+<br />
+<br />
+<br />
+
+</div>
+</body>
+</html>
