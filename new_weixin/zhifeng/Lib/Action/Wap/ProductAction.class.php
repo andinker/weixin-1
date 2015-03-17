@@ -90,8 +90,8 @@ class ProductAction extends WapAction{
 		$this->assign('cats',$cats);
 		$this->assign('info', $setting);
 		$this->assign('metaTitle','商品分类');
-		print_r($cats);print_r($setting);print_r($products);
-		echo $shoptpl;
+		//print_r($cats);print_r($setting);print_r($products);
+		//echo $shoptpl;
 		$this->display($shoptpl);
 	}
 	public function products() {
