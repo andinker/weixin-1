@@ -10,7 +10,7 @@
 			'info'=>'全新商城模板，随机颜色，时尚大方，不支持首页幻灯片',
 			'attr'=>'',
 			'sort'=>1,
-		),	
+		),
 		
 		array(
 			'tplid'=>2,
@@ -129,7 +129,17 @@
 			'info'=>'两列模板，推荐方形图！',
 			'attr'=>'',
 			'sort'=>13,
-		),	
+		),
+		array(
+				'tplid'=>201,
+				'name'=>'响应式模板1',
+				'views'=>'201_index_rwd',
+				'imgurl'=>'rwd_cate01.png',
+				'info'=>'响应式模板，可以同时适应多种设备，包括PC、手机、平板等设备',
+				'attr'=>'',
+				'sort'=>14,
+		),
+			
 	);
 	
 return $shoptpl;
