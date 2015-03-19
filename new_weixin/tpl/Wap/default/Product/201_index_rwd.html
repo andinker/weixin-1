@@ -1,260 +1,115 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-
 <head>
-
-
-
 <title>{ZF:$metaTitle}</title>
-
-
-
 <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
-
 <meta name="apple-mobile-web-app-capable" content="yes">
-
 <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
-
-<meta name="format-detection" content="telephone=no"><style>
-
-#iframe_screen{
-    background:#fff;
-    position:absolute;
-    width:100%;
-    height:100%;
-    left:0;
-    top:0;
-    z-index:300000;
-    overflow:hidden;
-}
-</style>
-
+<meta name="format-detection" content="telephone=no">
 <meta charset="utf-8">
-
-<link href="{ZF::STATICS}/tpl/184/css/cate.css" rel="stylesheet" type="text/css" />
-
- <link href="{ZF::STATICS}/tpl/com/css/iscroll.css" rel="stylesheet" type="text/css" />
-
 <style>
-
- 
-
- 
-
+	#iframe_screen{
+	    background:#fff;
+	    position:absolute;
+	    width:100%;
+	    height:100%;
+	    left:0;
+	    top:0;
+	    z-index:300000;
+	    overflow:hidden;
+	}
 </style>
-
-<script src="{ZF::STATICS}/tpl/com/js/iscroll.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-
-var myScroll;
-
-
-
-function loaded() {
-
-myScroll = new iScroll('wrapper', {
-
-snap: true,
-
-momentum: false,
-
-hScrollbar: false,
-
-onScrollEnd: function () {
-
-document.querySelector('#indicator > li.active').className = '';
-
-document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-
-}
-
- });
-
  
-
-}
-
-
-
-document.addEventListener('DOMContentLoaded', loaded, false);
-
-</script>
-
+ <!-- Bootstrap CDN -->
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script> 
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.css">
+<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
  
-
+<link rel="stylesheet" href="{ZF::STATICS}/plugin_flickity/flickity.min.css"/>
+<script type="text/javascript" src="{ZF::STATICS}/plugin_flickity/flickity.pkgd.min.js"></script>
+ 
+<style type="text/css">
+body { font-family:"微软雅黑";}
+@media screen and (min-width: 1080px) {.gallery-cell{height: 500px;}}
+@media screen and (min-width: 640px) and ( max-width: 1080px ) {.gallery-cell{height: 350px;}}
+@media screen and (min-width: 320px) and ( max-width: 640px ){.gallery-cell{height: 240px;}}
+@media screen and (min-width: 1px) and ( max-width: 320px ) {.gallery-cell{height: 140px;}}
+.gallery-cell {
+		  width: 100%;
+		  background-color:#eee;
+		}
+.gallery-cell img { width:100%;}
+#nav, #copyright { margin-top:10px;}
+#nav { padding:10px 0;}
+#copyright { border-top:1px solid #EAEAEA; line-height:30px;}
+#tool_bar { padding:10px 0; background-color:#f7f5f5; /*border-bottom:1px solid #EAEAEA;*/}
+</style>
+ 
 </head>
 
 <body>
-<div class="banner">
 
-<div id="wrapper">
-
-<div id="scroller">
-
-<ul id="thelist">
-
-				<foreach name='info[picurls]' item='i'>     
-
-					<li><p></p><img src="{ZF:$i}"></li>
-
-			</foreach>
-
-
-</ul>
-
-</div>
-
+<div id="tool_bar">
+	<div class="container">
+	     <div class="row">
+		     <div class="col-xs-2 col-sm-3 col-md-4 col-lg-4"><a class="btn btn-default" href="#" role="button">我的网店</a></div>
+		     <div class="col-xs-5 col-sm-4 col-md-5 col-lg-5 text-right">
+		          <button type="button" class="btn btn-primary btn-sm">注册</button>&nbsp;&nbsp;
+		          <button type="button" class="btn btn-primary btn-sm">登录</button>
+		     </div>
+		     <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3 text-right">
+		          <button type="button" class="btn btn-primary btn-sm">个人中心</button>&nbsp;&nbsp;
+		          <button type="button" class="btn btn-primary btn-sm">购物车</button>
+		     </div>
+	     </div>
+	</div>
 </div>
 
 <div id="nav">
-
-<div id="prev" onclick="myScroll.scrollToPage('prev', 0,400,2);return false">&larr; prev</div>
-
-<ul id="indicator">
-
-            
-
-				<volist name="flash" id="so">
-
-					<li <if condition="$i eq 1">class="active"</if> ></li>
-
-				</volist>
-
-</ul>
-
-<div id="next" onclick="myScroll.scrollToPage('next', 0);return false">next &rarr;</div>
-
+	<div class="container">
+			<ul class="nav nav-pills">
+			    <li class="active"><a href="#">首页<span class="sr-only">(current)</span></a></li>
+				 <volist name="cats" id="hostlist">
+				 <li><a href="<if condition="$hostlist['parentid'] eq 0">{ZF::U('Product/products',array('token'=>$_GET['token'],'catid'=>$hostlist['id'],'wecha_id'=>$wecha_id,'dining'=>$isDining))}<else/>{ZF::U('Product/products',array('token'=>$_GET['token'],'catid'=>$hostlist['id'],'wecha_id'=>$wecha_id))}</if>">{ZF:$hostlist.name}</a></li>
+				 </volist>
+			</ul>
+	</div>
 </div>
 
-<div class="clr"></div>
-
+<div class="gallery js-flickity">
+	<foreach name='info[picurls]' item='i'>     
+			<div class="gallery-cell"><img src="{ZF:$i}"></div>
+	</foreach>
 </div>
 
 
-
- <div id="insert1" ></div>
-
- 
-
- 
-
-<ul  class="mainmenu">
-
-   <volist name="cats" id="hostlist">
-
-		<li><a href="<if condition="$hostlist['parentid'] eq 0">{ZF::U('Product/products',array('token'=>$_GET['token'],'catid'=>$hostlist['id'],'wecha_id'=>$wecha_id,'dining'=>$isDining))}<else/>{ZF::U('Product/products',array('token'=>$_GET['token'],'catid'=>$hostlist['id'],'wecha_id'=>$wecha_id))}</if>">
-
-			<img src="{ZF:$hostlist.logourl}" />
-
-			<p><b>{ZF:$hostlist.name}</b><span>{ZF:$hostlist.info}</span></p>
-
-		</a></li>
-
- 	</volist>
-
-</ul>
-
-
-
-<script>
-
-
-
-
-
-var count = document.getElementById("thelist").getElementsByTagName("img").length;	
-
-var count2 = document.getElementsByClassName("menuimg").length;
-
-
-
-
-
-for(i=0;i<count;i++){
-
- document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
-
-
-
-}
-
-for(i=0;i<count2;i++){
-
-  
-
-document.getElementsByClassName("menuimg").item(i).style.cssText = " HEIGHT:"+(document.body.clientWidth/320)*111+"px";
-
-document.getElementsByClassName("menumesg").item(i).style.cssText = " HEIGHT:"+(document.body.clientWidth/320)*111+"px";
-
- 
-
-}
-
-
-
-document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
-
-
-
-
-
- setInterval(function(){
-
-myScroll.scrollToPage('next', 0,400,count);
-
-},3500 );
-
-
-
-window.onresize = function(){ 
-
-for(i=0;i<count;i++){
-
-document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
-
-
-
-}
-
-for(i=0;i<count2;i++){
-
- 
-
- 
-
-document.getElementsByClassName("menuimg").item(i).style.cssText = " HEIGHT:"+(document.body.clientWidth/320)*111+"px";
-
-document.getElementsByClassName("menumesg").item(i).style.cssText = " HEIGHT:"+(document.body.clientWidth/320)*111+"px";
-
-  
-
-}
-
-
-
- document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
-
-} 
-
-
-
-</script>
-
-		
-
-<div class="copyright">
-
-<if condition="$iscopyright eq 1">
-
-{ZF:$homeInfo.copyright}
-
-<else/>
-
-{ZF:$siteCopyright}
-
-</if>
-
+<div class="container">
+    <h4 class="page-header">热卖商品</h4>
+<div class="jumbotron">
+  <h4>还没有商品数据！</h4>
+  <p>...</p>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+</div>
+</div>
+
+<div class="container">
+    <h4 class="page-header">新品上架</h4>
+<div class="jumbotron">
+  <h4>还没有商品数据！</h4>
+  <p>...</p>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+</div>
+</div>
+
+<div id="copyright">
+	<div class="container">
+		<if condition="$iscopyright eq 1">
+		    {ZF:$homeInfo.copyright}
+		<else/>
+		    {ZF:$siteCopyright}
+		</if>
+	</div>
 </div> 
 
 	<if condition="ACTION_NAME eq 'index'">
