@@ -50,7 +50,7 @@ class IndexAction extends UserAction{
 		$db=M('Wxuser');
 		$count=$db->where($where)->count();
 		$page=new Page($count,255);
-		$info=$db->where($where)->limit($page->firstRow.','.$page->listRows)->select();
+		$info=$db->where($where)->limit($page->firstRow.','.$page->listRows)->order('id asc')->select();
 		$this->assign('info',$info);
 		$this->assign('group',$groups);
 		$this->assign('page',$page->show());
