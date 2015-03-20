@@ -182,6 +182,11 @@ class IndexAction extends WapAction{
 			<script src="'.RES.'/Index/bjdh/'.$this->homeInfo['bjdh'].'/bjdh'.$this->homeInfo['bjdh'].'.js" type="text/javascript"></script>';
 			$this->assign('bjdh',$bjdh);
 		}
+		
+		//读取门店（公司）信息
+		$where=array('token'=>$this->token);
+		$thisCompany=M('Company')->where($where)->find();
+		$this->assign('company',$thisCompany); 
      
 		$this->display($tpldata['tpltypename']);
 	}

@@ -2,9 +2,134 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+<title>{ZF:$tpl.wxname}</title>
+
+<!-- Bootstrap CDN -->
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script> 
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.css">
+<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+ 
+<link rel="stylesheet" href="{ZF::STATICS}/plugin_flickity/flickity.min.css"/>
+<script type="text/javascript" src="{ZF::STATICS}/plugin_flickity/flickity.pkgd.min.js"></script>
+ 
+ <style type="text/css">
+ body { font-family:"微软雅黑"; }
+ 
+ 
+@media screen and (min-width: 1080px) {.gallery-cell{height: 600px;}}
+@media screen and (min-width: 640px) and ( max-width: 1080px ) {.gallery-cell{height: 500px;}}
+@media screen and (min-width: 320px) and ( max-width: 640px ){.gallery-cell{height: 300px;}}
+@media screen and (min-width: 1px) and ( max-width: 320px ) {.gallery-cell{height: 200px;}}
+.gallery-cell {
+		  width: 100%;
+		}
+.gallery-cell img { width:100%;}
+.gallery-cell p { text-align: center; font-size: 1.5em; margin:0px;}
+ 
+ #tool_bar { background-color:#d11725;}
+ #nav_bar { padding: 10px 0px; background-color:#F4F4F4;}
+ #copyright { border-top:1px solid #EAEAEA; line-height:30px;}
+ </style>
+ 
 </head>
 <body>
-我是小区模板1
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="line-height:50px;">{ZF::$company['address']}:{ZF::$company['name']}</div>
+    </div>
+</div> 
+
+<div id="tool_bar">
+	<div class="container">
+	    <div class="row" style="padding: 10px 0px; color:#FFF; line-height: 50px;">
+	         <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
+	              <span class="glyphicon glyphicon-menu-hamburger" style="top:10px; font-size:2em;"></span>&nbsp;&nbsp;
+	              <img style="width:50px; display:inline;" class="img-responsive" alt="我的小区" src="{ZF::STATICS}/logo-xiaoqu.png">
+	         </div>
+	         <div class="col-xs-6 col-sm-7 col-md-8 col-lg-8 text-right">
+	                   <span class="glyphicon glyphicon-play" ></span>&nbsp;&nbsp;{ZF::$company['name']}
+	         </div>
+	         <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 text-right" style="font-size:2em;">
+	              <span class="glyphicon glyphicon-shopping-cart" ></span>&nbsp;&nbsp;<span class="glyphicon glyphicon-user" ></span>
+	         </div>
+	    </div>
+	</div>
+</div>
+
+
+<div id="nav_bar">
+	<div class="container" style="font-size:1.2em;">
+			<ul class="nav nav-pills">
+			     <li><a href="#">首页</a></li>
+            <volist name="info" id="vo">
+                <li>
+
+                       <a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url|htmlspecialchars_decode}</if>">
+                              {ZF:$vo.name}
+                        </a>
+
+                </li>
+            </volist>
+			</ul>
+	</div>
+</div>
+
+<div style=" margin:0px auto; max-width: 1140px;">
+	<div class="gallery js-flickity">
+		<volist name="flash" id="so">
+				<div class="gallery-cell">
+				    <a href="{ZF:$so.url}"><img src="{ZF:$so.img}" /></a>
+				    <p>{ZF:$so.info}</p>
+				</div>
+		</volist>
+	</div>
+</div>
+
+
+
+
+<div class="container" style="margin-top:35px;">
+	<div class="jumbotron">
+	  <h1>用户自定义内容区</h1>
+	  <p>...</p>
+	  <p><a class="btn btn-primary btn-lg" href="#" role="button">马上到后台填写数据</a></p>
+	</div>
+</div>
+
+
+<div id="copyright">
+	<div class="container">
+		<if condition="$iscopyright eq 1">
+		    {ZF:$homeInfo.copyright}
+		<else/>
+		    {ZF:$siteCopyright}
+		</if>
+	</div>
+</div> 
+
+
+
+<pre>
+<php>
+print_r($flash);
+print_r($homeInfo);
+print_r("--".$indexanimation);
+print_r($info);
+print_r($num);
+print_r($flashbgcount);
+print_r($tpl);
+print_r($bjmp3);
+print_r($tongji);
+print_r($bjdh);
+print_r($company);
+</php>
+</pre>
+
+
+
+
 </body>
 </html>
