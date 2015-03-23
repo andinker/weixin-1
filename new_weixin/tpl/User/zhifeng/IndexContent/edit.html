@@ -1,0 +1,167 @@
+<include file="Public:head"/>
+<link rel="stylesheet" href="{ZF::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{ZF::STATICS}/kindeditor/plugins/code/prettify.css" />
+<script src="{ZF::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+<script type="text/javascript" src="{ZF::RES}/js/jquery.min.js"></script>
+<script>
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#info', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+uploadJson : SITEURL+'/index.php?g=User&m=Upyun&a=kindedtiropic',
+items : [
+'source','undo','clearhtml','hr','fontsize','forecolor','hilitecolor',
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+'insertunorderedlist', '|', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+});
+
+});
+</script>
+<script src="{ZF::STATICS}/upyun.js?2013"></script>
+
+
+
+<form method="post">
+<br>
+<h3>用户自定义图文内容</h3>
+<textarea name="info" id="info"  rows="5" style="width:590px;height:360px">{ZF:$content.content_html}</textarea>
+<br>
+
+
+<h3>中部自定义菜单一</h3>
+菜单标题：<input type="input" class="px" id="menu_1_name" value="{ZF:$content.content_menu1_title}" name="menu_1_name" style="width:200px" ><br>
+一：文本 <input type="input" class="px" id="menu_1_item_1_name" value="{ZF:$content.content_menu1_item1_text}" name="menu_1_item_1_name" style="width:100px" >
+        链接<input type="input" class="px" id="menu_1_item_1_url" value="{ZF:$content.content_menu1_item1_link}" name="menu_1_item_1_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_1_item_1_url',0)" class="a_choose">从功能库添加</a><br />
+二： 文本<input type="input" class="px" id="menu_1_item_2_name" value="{ZF:$content.content_menu1_item2_text}" name="menu_1_item_2_name" style="width:100px" >
+       链接<input type="input" class="px" id="menu_1_item_2_url" value="{ZF:$content.content_menu1_item2_link}" name="menu_1_item_2_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_1_item_2_url',0)" class="a_choose">从功能库添加</a><br />
+三：文本 <input type="input" class="px" id="menu_1_item_3_name" value="{ZF:$content.content_menu1_item3_text}" name="menu_1_item_3_name" style="width:100px" >
+      链接<input type="input" class="px" id="menu_1_item_3_url" value="{ZF:$content.content_menu1_item3_link}" name="menu_1_item_3_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_1_item_3_url',0)" class="a_choose">从功能库添加</a><br />
+四： 文本<input type="input" class="px" id="menu_1_item_4_name" value="{ZF:$content.content_menu1_item4_text}" name="menu_1_item_4_name" style="width:100px" >
+       链接<input type="input" class="px" id="menu_1_item_4_url" value="{ZF:$content.content_menu1_item4_link}" name="menu_1_item_4_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_1_item_4_url',0)" class="a_choose">从功能库添加</a><br />
+五：文本 <input type="input" class="px" id="menu_1_item_5_name" value="{ZF:$content.content_menu1_item5_text}" name="menu_1_item_5_name" style="width:100px" >
+      链接<input type="input" class="px" id="menu_1_item_5_url" value="{ZF:$content.content_menu1_item5_link}" name="menu_1_item_5_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_1_item_5_url',0)" class="a_choose">从功能库添加</a><br />
+六：文本 <input type="input" class="px" id="menu_1_item_6_name" value="{ZF:$content.content_menu1_item6_text}" name="menu_1_item_6_name" style="width:100px" >
+       链接<input type="input" class="px" id="menu_1_item_6_url" value="{ZF:$content.content_menu1_item6_link}" name="menu_1_item_6_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_1_item_6_url',0)" class="a_choose">从功能库添加</a><br />
+<br>
+
+
+<h3>中部自定义菜单二</h3>
+菜单标题：<input type="input" class="px" id="menu_2_name" value="{ZF:$content.content_menu2_title}" name="menu_2_name" style="width:200px" ><br>
+一：文本 <input type="input" class="px" id="menu_2_item_1_name" value="{ZF:$content.content_menu2_item1_text}" name="menu_2_item_1_name" style="width:100px" >
+        链接<input type="input" class="px" id="menu_2_item_1_url" value="{ZF:$content.content_menu2_item1_link}" name="menu_2_item_1_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_2_item_1_url',0)" class="a_choose">从功能库添加</a><br />
+二： 文本<input type="input" class="px" id="menu_2_item_2_name" value="{ZF:$content.content_menu2_item2_text}" name="menu_2_item_2_name" style="width:100px" >
+       链接<input type="input" class="px" id="menu_2_item_2_url" value="{ZF:$content.content_menu2_item2_link}" name="menu_2_item_2_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_2_item_2_url',0)" class="a_choose">从功能库添加</a><br />
+三：文本 <input type="input" class="px" id="menu_2_item_3_name" value="{ZF:$content.content_menu2_item3_text}" name="menu_2_item_3_name" style="width:100px" >
+      链接<input type="input" class="px" id="menu_2_item_3_url" value="{ZF:$content.content_menu2_item3_link}" name="menu_2_item_3_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_2_item_3_url',0)" class="a_choose">从功能库添加</a><br />
+四： 文本<input type="input" class="px" id="menu_2_item_4_name" value="{ZF:$content.content_menu2_item4_text}" name="menu_2_item_4_name" style="width:100px" >
+       链接<input type="input" class="px" id="menu_2_item_4_url" value="{ZF:$content.content_menu2_item4_link}" name="menu_2_item_4_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_2_item_4_url',0)" class="a_choose">从功能库添加</a><br />
+五：文本 <input type="input" class="px" id="menu_2_item_5_name" value="{ZF:$content.content_menu2_item5_text}" name="menu_2_item_5_name" style="width:100px" >
+      链接<input type="input" class="px" id="menu_2_item_5_url" value="{ZF:$content.content_menu2_item5_link}" name="menu_2_item_5_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_2_item_5_url',0)" class="a_choose">从功能库添加</a><br />
+六：文本 <input type="input" class="px" id="menu_2_item_6_name" value="{ZF:$content.content_menu2_item6_text}" name="menu_2_item_6_name" style="width:100px" >
+       链接<input type="input" class="px" id="menu_2_item_6_url" value="{ZF:$content.content_menu2_item6_link}" name="menu_2_item_6_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_2_item_6_url',0)" class="a_choose">从功能库添加</a><br />
+<br>
+
+<h3>中部橱窗商品推荐一</h3>
+<input type="text" id="adgoods_1_data" name="adgoods_1_data" readonly="readonly" value="{ZF:$content.content_goodslist1_ids}">
+<div><a href="###" onclick="addGoods( 'adgoods_1_data', 'goodslist_1' )" class="a_choose">从商品库添加</a></div>
+<div>
+<iframe frameborder=0 name="goodslist_1" id="goodslist_1" src="{ZF::U('User/IndexContent/showgoods')}" width="800px;" height='300px;'></iframe>
+</div>
+
+
+<h3>中部橱窗商品推荐二</h3> 
+<input type="text" id="adgoods_2_data" name="adgoods_2_data" readonly="readonly" value="{ZF:$content.content_goodslist2_ids}">
+<div><a href="###" onclick="addGoods( 'adgoods_2_data','goodslist_2' )" class="a_choose">从商品库添加</a></div>
+<div>
+<iframe frameborder=0 name="goodslist_2" id="goodslist_2" src="{ZF::U('User/IndexContent/showgoods')}" width="800px;" height='300px;'></iframe>
+</div>
+
+
+
+<h3>中部橱窗商品推荐三</h3> 
+<input type="text" id="adgoods_3_data" name="adgoods_3_data" readonly="readonly" value="{ZF:$content.content_goodslist3_ids}">
+<div><a href="###" onclick="addGoods( 'adgoods_3_data','goodslist_3' )" class="a_choose">从商品库添加</a></div>
+<div>
+<iframe frameborder=0 name="goodslist_3" id="goodslist_3" src="{ZF::U('User/IndexContent/showgoods')}" width="800px;" height='300px;'></iframe>
+</div>
+
+<div><input type="submit" value="保存" class="btnGreen left"></div>
+
+</form>
+
+<script type="text/javascript">
+
+//数组去重复方法
+Array.prototype.distinct　= function () {
+    var thix = this,
+        _a = this.concat().sort(),
+        n = 0;
+    _a.sort(function (a, b) {
+        if(a === b) {
+            n = thix.indexOf(a);
+            thix.splice(n,1);
+        }
+    });
+    return thix;
+};
+
+
+function call_back( data_container_id, goodslist_id ) {
+	// 显示商品数据，以便做删除操作
+	var array = document.getElementById(data_container_id).value.split(",");
+	array.distinct();
+    
+	var ids = "";
+	
+	for(i=0; i<array.length; i++){
+		if ( array[i] != "" ) {
+			// 根据ID读取商品标题和图片链接进行显示
+			ids =  ids + array[i];
+			if (i < array.length -1  && array.length> 1) ids = ids + ",";
+		}
+	}
+	
+	window.frames[goodslist_id].location.href = "{ZF::U('User/IndexContent/showgoods')}&data_id="+data_container_id+"&ids="+ids;
+	
+};
+//初始化商品列表
+call_back('adgoods_1_data','goodslist_1');
+call_back('adgoods_2_data','goodslist_2');
+call_back('adgoods_3_data','goodslist_3');
+
+function addGoods( data_container_id, goodslist_id ){
+
+	art.dialog.data('data_container_id',data_container_id);
+	art.dialog.data('goodslist_id',goodslist_id);
+	
+	art.dialog.data('call_back',call_back);
+	art.dialog.open('{ZF::U('User/IndexContent/selectgoods')}', {
+		title: '选择商品',
+		width: '100%',
+	    height: '100%',
+	    left: '0%',
+	    top: '0%',
+	    fixed: true,
+	    resize: false,
+	    drag: false});
+}
+</script>
+<include file="Public:footer"/>

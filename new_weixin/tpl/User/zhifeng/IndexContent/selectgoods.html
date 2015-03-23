@@ -1,0 +1,128 @@
+<include file="Public:head"/>
+<link rel="stylesheet" href="{ZF::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{ZF::STATICS}/kindeditor/plugins/code/prettify.css" />
+<script src="{ZF::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+<script type="text/javascript" src="{ZF::RES}/js/jquery.min.js"></script>
+
+<div style="width:90%; margin:10px auto;">
+<a href="###" class="a_choose" style="height:50px; line-height:50px; font-size:2em;">把已选择的商品添加到首页</a>
+</div>
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" style="width:90%; margin:10px auto;">
+<thead>
+<tr>
+<th class="select">选择</th>
+<th>名称</th>
+<th width="100">价格</th>
+<th width="100">会员价</th>
+<th width="100">分类</th>
+<th width="170">关键词</th>
+<th width="130">时间</th>
+<!-- th width="150" class="norightborder">操作</th-->
+</tr>
+</thead>
+<tbody style="text-align:center;">
+<volist name="list" id="hostlist"> 
+<tr>
+<td><input type="checkbox" name="del_id[{ZF:$i}]" value="{ZF:$hostlist['id']}" class="checkitem"></td>
+<td><div class="cateimg"><if condition="$hostlist['logourl']"><img src="{ZF:$hostlist.logourl}" class="cateimg_big2"><img src="{ZF:$hostlist.logourl}" width="48" style="vertical-align:middle;"/></if> {ZF:$hostlist.name}</div></td>
+<td>{ZF:$hostlist.price}元</td>
+<td>{ZF:$hostlist.vprice}元</td>
+<td><a href="{ZF::U('index',array('catid'=>$hostlist['catid'],'token'=>$token))}">{ZF:$hostlist.catname}</a></td>
+<td>{ZF:$hostlist.keyword}</td>
+<td>{ZF:$hostlist.time|date="Y-m-d H:i:s",###}</td> 
+
+<!--td class="norightborder"><a href="{ZF::U('Product/add',array('id'=>$hostlist['id'],'token'=>$token,'catid'=>$hostlist['catid']))}">修改</a> <a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('Product/del',array('id'=>$hostlist['id'],'token'=>$token))}');">删除</a></td-->
+</tr>
+</volist>
+</tbody>
+</table>
+
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{ZF:$page}</div>
+</div>
+<div class="clr"></div>
+
+
+<script type="text/javascript">
+
+//数组去重复方法
+Array.prototype.distinct　= function () {
+    var thix = this,
+        _a = this.concat().sort(),
+        n = 0;
+    _a.sort(function (a, b) {
+        if(a === b) {
+            n = thix.indexOf(a);
+            thix.splice(n,1);
+        }
+    });
+    return thix;
+};
+
+
+var win = art.dialog.top;
+var data_container_id = art.dialog.data('data_container_id');
+var goodslist_id      = art.dialog.data('goodslist_id');
+var data = win.document.getElementById(data_container_id);
+var mycall_back = art.dialog.data('call_back');;
+
+var data_array = data.value.split(",");
+data_array.distinct();
+
+// 检查列表中的数据是否已经被选过
+var items = $(".checkitem");
+
+for(var i=0; i < items.length; i++ ){
+	
+	var item = items.get(i);
+    if ( $.inArray(item.value,data_array) != -1 ) {
+    	$(item).attr("checked","checked");
+    }
+	
+}
+
+
+$(".a_choose").bind("click", function(){
+	
+	var citems = $(".checkitem:checked");
+	
+	for(var i=0; i < citems.length; i++ ){
+		
+		var citem = citems.get(i);
+		
+		if (data.value != "") data.value = data.value+",";
+		
+		data.value = data.value+citem.value;
+	}
+	
+	//去重复
+	var data_array = data.value.split(",");
+
+	data_array.distinct();
+	
+	data.value = "";
+	for(var i=0; i < data_array.length; i++){
+		
+		data.value = data.value + data_array[i];
+		if ( i < data_array.length -1  && data_array.length> 1 ) data.value = data.value + ",";
+		
+	}
+	
+	//alert(data.value);
+	
+	mycall_back(data_container_id,goodslist_id);
+	
+	art.dialog.close();
+	
+});
+
+
+
+</script>
+<include file="Public:footer"/>

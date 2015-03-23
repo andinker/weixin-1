@@ -11,7 +11,7 @@ class IndexAction extends UserAction{
 			unset($group);
 			$db=M('Wxuser');
 			$count=$db->where($where)->count();
-			$page=new Page($count,25);
+			$page=new Page($count,9999);
 			$info=$db->where($where)->limit($page->firstRow.','.$page->listRows)->select();
 			$this->assign('info',$info);
 			$this->assign('token',$token);
