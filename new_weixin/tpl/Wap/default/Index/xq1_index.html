@@ -93,12 +93,54 @@
 
 <div class="container" style="margin-top:35px;">
 	<div class="jumbotron">
-	  <h1>用户自定义内容区</h1>
-	  <p>...</p>
-	  <p><a class="btn btn-primary btn-lg" href="#" role="button">马上到后台填写数据</a></p>
+	  {ZF:$indexContent.content_html}
 	</div>
 </div>
 
+
+<div class="container" style="margin-top:35px;">
+     <div>
+          <volist name="indexContent.content_goodslist1" id="goods_item">
+	          <div class="goods_box">
+	               <a href="{ZF::U('Wap/Product/product')}&token={ZF:$goods_item.token}&wecha_id={ZF:$wecha_id}&id={ZF:$goods_item.id}">
+	                  <img src="{ZF:$goods_item.logourl}">
+	                  <p class="goods_box_title">{ZF:$goods_item.name}</p>
+	                  <p class="goods_box_price">{ZF:$goods_item.price}</p>
+	               </a>
+	          </div>
+          </volist>
+     </div>
+</div>
+
+
+
+<div class="container" style="margin-top:35px;">
+     <div>
+          <volist name="indexContent.content_goodslist2" id="goods_item">
+	          <div class="goods_box">
+	               <a href="{ZF::U('Wap/Product/product')}&token={ZF:$goods_item.token}&wecha_id={ZF:$wecha_id}&id={ZF:$goods_item.id}">
+	                  <img src="{ZF:$goods_item.logourl}">
+	                  <p class="goods_box_title">{ZF:$goods_item.name}</p>
+	                  <p class="goods_box_price">{ZF:$goods_item.price}</p>
+	               </a>
+	          </div>
+          </volist>
+     </div>
+</div>
+
+<div class="container" style="margin-top:35px;">
+     <div>
+          <volist name="indexContent.content_goodslist3" id="goods_item">
+	          <div class="goods_box">
+	               <a href="{ZF::U('Wap/Product/product')}&token={ZF:$goods_item.token}&wecha_id={ZF:$wecha_id}&id={ZF:$goods_item.id}">
+	                  <img src="{ZF:$goods_item.logourl}">
+	                  <p class="goods_box_title">{ZF:$goods_item.name}</p>
+	                  <p class="goods_box_price">{ZF:$goods_item.price}</p>
+	               </a>
+	          </div>
+          </volist>
+     </div>
+</div>
 
 <div id="copyright">
 	<div class="container">
@@ -114,6 +156,7 @@
 
 <pre>
 <php>
+print_r($indexContent);
 print_r($flash);
 print_r($homeInfo);
 print_r("--".$indexanimation);
