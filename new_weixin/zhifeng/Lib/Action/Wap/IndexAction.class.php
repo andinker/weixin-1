@@ -65,6 +65,8 @@ class IndexAction extends WapAction{
 		$plugMenus=$this->_getPlugMenu();
 		$this->assign('plugmenus',$catemenu);
 		$this->assign('showPlugMenu',count($catemenu));
+		
+		$this->assign('token',$this->token);
 	}
 	
 	
@@ -190,6 +192,14 @@ class IndexAction extends WapAction{
 		
 		//读取后台设置的首页内容
 		$indexContent = M('WxuserSiteIndexcontent')->where($where)->find();
+		
+		   //生成功能库链接
+		   for ($i = 1; $i < 7; $i++){
+			   	for ($j = 1; $j < 3; $j++){
+				   	$indexContent['content_menu'.$j.'_item'.$i.'_link'] = str_replace('{siteUrl}', C('site_url'), $indexContent['content_menu'.$j.'_item'.$i.'_link']);
+				   	$indexContent['content_menu'.$j.'_item'.$i.'_link'] = str_replace('{wechat_id}', $this->wecha_id, $indexContent['content_menu'.$j.'_item'.$i.'_link']);
+			   	}
+		   }
 		
 		   //抽取商品数据
 			$ids_1 = explode(',',$indexContent['content_goodslist1_ids']);

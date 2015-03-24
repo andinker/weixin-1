@@ -15,13 +15,62 @@
 <script type="text/javascript" src="{ZF::STATICS}/plugin_flickity/flickity.pkgd.min.js"></script>
  
  <style type="text/css">
- body { font-family:"微软雅黑"; }
+ body { font-family:"微软雅黑"; font-size:1em; }
  
  
-@media screen and (min-width: 1080px) {.gallery-cell{height: 600px;}}
-@media screen and (min-width: 640px) and ( max-width: 1080px ) {.gallery-cell{height: 500px;}}
-@media screen and (min-width: 320px) and ( max-width: 640px ){.gallery-cell{height: 300px;}}
-@media screen and (min-width: 1px) and ( max-width: 320px ) {.gallery-cell{height: 200px;}}
+@media screen and (min-width: 1080px) {
+.gallery-cell{height: 600px;}
+}
+@media screen and (min-width: 640px) and ( max-width: 1080px ) {
+.gallery-cell{height: 500px;}
+}
+@media screen and (min-width: 320px) and ( max-width: 640px ){
+.gallery-cell{height: 300px;}
+}
+@media screen and (min-width: 1px) and ( max-width: 320px ) {
+.gallery-cell{height: 200px;}
+}
+
+@media screen and (min-width: 1201px) {
+.goods_box_img { height:250px;}
+}
+@media screen and (min-width: 1081px) and ( max-width: 1200px ) {
+.goods_box_img { height:215px;}
+}
+@media screen and (min-width: 992px) and ( max-width: 1080px ) {
+.goods_box_img { height:210px;}
+}
+@media screen and (min-width: 901px) and ( max-width: 991px ) {
+.goods_box_img { height:220px;}
+}
+@media screen and (min-width: 768px) and ( max-width: 900px ) {
+.goods_box_img { height:220px;}
+}
+@media screen and (min-width: 701px) and ( max-width: 767px ) {
+.goods_box_img { height:330px;}
+}
+@media screen and (min-width: 641px) and ( max-width: 700px ) {
+.goods_box_img { height:250px;}
+}
+@media screen and (min-width: 601px) and ( max-width: 640px ){
+.goods_box_img { height:240px;}
+}
+@media screen and (min-width: 481px) and ( max-width: 600px ){
+.goods_box_img { height:200px;}
+}
+@media screen and (min-width: 451px) and ( max-width: 480px ) {
+.goods_box_img { height:190px;}
+}
+@media screen and (min-width: 381px) and ( max-width: 450px ) {
+.goods_box_img { height:150px;}
+}
+@media screen and (min-width: 301px) and ( max-width: 380px ) {
+.goods_box_img { height:115px;}
+}
+@media screen and (min-width: 1px) and ( max-width: 300px ) {
+.goods_box_img { height:100px;}
+}
+
 .gallery-cell {
 		  width: 100%;
 		}
@@ -31,6 +80,19 @@
  #tool_bar { background-color:#d11725;}
  #nav_bar { padding: 10px 0px; background-color:#F4F4F4;}
  #copyright { border-top:1px solid #EAEAEA; line-height:30px;}
+ 
+ 
+ 
+.userHTML img { width:100%;}
+
+.goods_box { margin-bottom:20px;}
+.goods_box_img { overflow:hidden;}
+.goods_box_title, .goods_box_price { height:35px; line-height:25px; overflow:hidden; background-color:#f8f8f8; padding:0px 10px;}
+.goods_box_title { padding-top: 10px;}
+.goods_box_price { padding-bottom:10px; text-align:center;}
+.goods_box img { width:100%;}
+
+ 
  </style>
  
 </head>
@@ -45,15 +107,16 @@
 <div id="tool_bar">
 	<div class="container">
 	    <div class="row" style="padding: 10px 0px; color:#FFF; line-height: 50px;">
-	         <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
+	         <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2">
 	              <span class="glyphicon glyphicon-menu-hamburger" style="top:10px; font-size:2em;"></span>&nbsp;&nbsp;
 	              <img style="width:50px; display:inline;" class="img-responsive" alt="我的小区" src="{ZF::STATICS}/logo-xiaoqu.png">
 	         </div>
-	         <div class="col-xs-6 col-sm-7 col-md-8 col-lg-8 text-right">
+	         <div class="col-xs-5 col-sm-7 col-md-8 col-lg-8 text-right">
 	                   <span class="glyphicon glyphicon-play" ></span>&nbsp;&nbsp;{ZF::$company['name']}
 	         </div>
 	         <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 text-right" style="font-size:2em;">
-	              <span class="glyphicon glyphicon-shopping-cart" ></span>&nbsp;&nbsp;<span class="glyphicon glyphicon-user" ></span>
+	              <a style="color:#FFF;" href="{ZF::U('Wap/Product/cart')}&token={ZF:$token}"><span class="glyphicon glyphicon-shopping-cart" ></span></a>&nbsp;&nbsp;
+	              <a style="color:#FFF;" href="{ZF::U('Wap/Product/my')}&token={ZF:$token}"><span class="glyphicon glyphicon-user" ></span></a>
 	         </div>
 	    </div>
 	</div>
@@ -90,22 +153,21 @@
 
 
 
-
 <div class="container" style="margin-top:35px;">
-	<div class="jumbotron">
+     <div class="userHTML">
 	  {ZF:$indexContent.content_html}
-	</div>
+	  </div>
 </div>
 
 
 <div class="container" style="margin-top:35px;">
-     <div>
+     <div class="row">
           <volist name="indexContent.content_goodslist1" id="goods_item">
-	          <div class="goods_box">
+	          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 goods_box">
 	               <a href="{ZF::U('Wap/Product/product')}&token={ZF:$goods_item.token}&wecha_id={ZF:$wecha_id}&id={ZF:$goods_item.id}">
-	                  <img src="{ZF:$goods_item.logourl}">
-	                  <p class="goods_box_title">{ZF:$goods_item.name}</p>
-	                  <p class="goods_box_price">{ZF:$goods_item.price}</p>
+	                  <div class="goods_box_img"><img src="{ZF:$goods_item.logourl}"></div>
+	                  <div class="goods_box_title">{ZF:$goods_item.name}</div>
+	                  <div class="goods_box_price"><span style="text-decoration:line-through;">￥{ZF:$goods_item.oprice}元</span>  ￥{ZF:$goods_item.price}元</div>
 	               </a>
 	          </div>
           </volist>
@@ -114,28 +176,69 @@
 
 
 
-<div class="container" style="margin-top:35px;">
-     <div>
+
+<!-- 菜单一 -->
+<div class="container">
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <p class="navbar-text navbar-left">
+	         <span style="font-size:18px; font-weight:bold; color:#c4000b;">{ZF:$indexContent.content_menu1_title}</span>&nbsp;&nbsp;
+	         <span style="font-size:1em;" class="glyphicon glyphicon-menu-right"></span>&nbsp;&nbsp;
+	         <span style="font-size:16px;">
+		   <a class="navbar-link" href="{ZF:$indexContent.content_menu1_item1_link}">{ZF:$indexContent.content_menu1_item1_text}</a>&nbsp;&nbsp;&nbsp;
+		    <a class="navbar-link" href="{ZF:$indexContent.content_menu1_item2_link}">{ZF:$indexContent.content_menu1_item2_text}</a>&nbsp;&nbsp;&nbsp;
+		    <a class="navbar-link" href="{ZF:$indexContent.content_menu1_item3_link}">{ZF:$indexContent.content_menu1_item3_text}</a>&nbsp;&nbsp;&nbsp;
+		    <a class="navbar-link" href="{ZF:$indexContent.content_menu1_item4_link}">{ZF:$indexContent.content_menu1_item4_text}</a>&nbsp;&nbsp;&nbsp;
+            </span>
+        </p>
+	  </div>
+	</nav>
+</div>
+
+
+
+<div class="container">
+     <div class="row">
           <volist name="indexContent.content_goodslist2" id="goods_item">
-	          <div class="goods_box">
+	          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 goods_box">
 	               <a href="{ZF::U('Wap/Product/product')}&token={ZF:$goods_item.token}&wecha_id={ZF:$wecha_id}&id={ZF:$goods_item.id}">
-	                  <img src="{ZF:$goods_item.logourl}">
-	                  <p class="goods_box_title">{ZF:$goods_item.name}</p>
-	                  <p class="goods_box_price">{ZF:$goods_item.price}</p>
+	                  <div class="goods_box_img"><img src="{ZF:$goods_item.logourl}"></div>
+	                  <div class="goods_box_title">{ZF:$goods_item.name}</div>
+	                  <div class="goods_box_price"><span style="text-decoration:line-through;">￥{ZF:$goods_item.oprice}元</span>  ￥{ZF:$goods_item.price}元</div>
 	               </a>
 	          </div>
           </volist>
      </div>
 </div>
 
-<div class="container" style="margin-top:35px;">
-     <div>
+
+<!-- 菜单二 -->
+<div class="container">
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <p class="navbar-text navbar-left">
+	         <span style="font-size:18px; font-weight:bold; color:#c4000b;">{ZF:$indexContent.content_menu2_title}</span>&nbsp;&nbsp;
+	         <span style="font-size:1em;" class="glyphicon glyphicon-menu-right"></span>&nbsp;&nbsp;
+	         <span style="font-size:16px;">
+		   <a class="navbar-link" href="{ZF:$indexContent.content_menu2_item1_link}">{ZF:$indexContent.content_menu2_item1_text}</a>&nbsp;&nbsp;
+		    <a class="navbar-link" href="{ZF:$indexContent.content_menu2_item2_link}">{ZF:$indexContent.content_menu2_item2_text}</a>&nbsp;&nbsp;
+		    <a class="navbar-link" href="{ZF:$indexContent.content_menu2_item3_link}">{ZF:$indexContent.content_menu2_item3_text}</a>&nbsp;&nbsp;
+		    <a class="navbar-link" href="{ZF:$indexContent.content_menu2_item4_link}">{ZF:$indexContent.content_menu2_item4_text}</a>&nbsp;&nbsp;
+            </span>
+        </p>
+	  </div>
+	</nav>
+</div>
+
+
+<div class="container">
+     <div class="row">
           <volist name="indexContent.content_goodslist3" id="goods_item">
-	          <div class="goods_box">
+	          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 goods_box">
 	               <a href="{ZF::U('Wap/Product/product')}&token={ZF:$goods_item.token}&wecha_id={ZF:$wecha_id}&id={ZF:$goods_item.id}">
-	                  <img src="{ZF:$goods_item.logourl}">
-	                  <p class="goods_box_title">{ZF:$goods_item.name}</p>
-	                  <p class="goods_box_price">{ZF:$goods_item.price}</p>
+	                  <div class="goods_box_img"><img src="{ZF:$goods_item.logourl}"></div>
+	                  <div class="goods_box_title">{ZF:$goods_item.name}</div>
+	                  <div class="goods_box_price"><span style="text-decoration:line-through;">￥{ZF:$goods_item.oprice}元</span>  ￥{ZF:$goods_item.price}元</div>
 	               </a>
 	          </div>
           </volist>
@@ -154,7 +257,7 @@
 
 
 
-<pre>
+<!-- pre>
 <php>
 print_r($indexContent);
 print_r($flash);
@@ -169,7 +272,7 @@ print_r($tongji);
 print_r($bjdh);
 print_r($company);
 </php>
-</pre>
+</pre-->
 
 
 

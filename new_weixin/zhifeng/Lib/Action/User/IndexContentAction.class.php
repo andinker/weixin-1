@@ -73,10 +73,10 @@ class IndexContentAction extends UserAction{
 			
 			if ( $m ->save($posted_data) ) $this->success('保存成功');
 			else {
-				//$this->error('保存失败，请稍后再试~');
-				echo $m->getLastSql();
-				echo $m->getDbError();
-				print_r($posted_data);
+				$this->error('保存失败，请稍后再试~');
+				//echo $m->getLastSql();
+				//echo $m->getDbError();
+				//print_r($posted_data);
 			}
 			
 			exit();
