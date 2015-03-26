@@ -1,4 +1,4 @@
-CREATE TABLE `weixin_test`.`zfwx_wxuser_site_indexcontent` (
+CREATE TABLE `zfwx_wxuser_site_indexcontent` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `token` VARCHAR(45) NOT NULL,
   `content_html` TEXT NULL,

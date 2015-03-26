@@ -1,1 +1,1 @@
-INSERT INTO `weixin_test`.`zfwx_tmpls` (`id`, `tplid`, `name`, `views`, `type`, `imgurl`, `info`, `attr`, `status`, `sort`) VALUES (NULL, 'xq1', '我的小区模块1', 'xq1_index', '1', 'xq_cate1.png', '我的小区应用专用模板，响应式设计，适应任何设备的屏幕。', 'myxq', '1', '0');
+INSERT INTO `zfwx_tmpls` (`id`, `tplid`, `name`, `views`, `type`, `imgurl`, `info`, `attr`, `status`, `sort`) VALUES (NULL, 'xq1', '我的小区模块1', 'xq1_index', '1', 'xq_cate1.png', '我的小区应用专用模板，响应式设计，适应任何设备的屏幕。', 'myxq', '1', '0');
