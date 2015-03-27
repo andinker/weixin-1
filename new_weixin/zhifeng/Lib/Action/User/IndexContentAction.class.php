@@ -36,10 +36,19 @@ class IndexContentAction extends UserAction{
 		}
 
 		
+		//读取文章分类数据，作为公告的设置值
+		$db=D('Classify');
+		$where['token']=session('token');
+		$thisClassify=$db->where($where)->select();
+		$this->assign('thisClassify',$thisClassify);
+		
+		//print_r($thisClassify); 
+		
 		if (IS_POST){
 			
 			$posted_data['id']  = $data[0]['id'];
 			
+			$posted_data['announcements_class_id']   = $_POST['announcements'];
 			$posted_data['content_html']             = $_POST['info'];
 			$posted_data['content_menu1_title']      = $_POST['menu_1_name'];
 			$posted_data['content_menu1_item1_text'] = $_POST['menu_1_item_1_name'];

@@ -225,6 +225,16 @@ class IndexAction extends WapAction{
 			
 			
 		$this->assign('indexContent',$indexContent);
+		
+		
+		// 获取公告文章列表
+		$db=D('Img');
+		$where['token']=$this->token;
+		$announcements = $db->where($where)->order('uptatetime DESC')->select();
+		
+		//print_r($announcements);
+		$this->assign('announcements',$announcements);
+		
 			
 		$this->assign('token',$this->token);
 		$this->assign('wecha_id',$this->wecha_id);

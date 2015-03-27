@@ -14,6 +14,11 @@
 <link rel="stylesheet" href="{ZF::STATICS}/plugin_flickity/flickity.min.css"/>
 <script type="text/javascript" src="{ZF::STATICS}/plugin_flickity/flickity.pkgd.min.js"></script>
  
+ 
+<script type="text/javascript" src="{ZF::STATICS}/plugin_vticker/jquery.vticker.min.js"></script>
+ 
+ 
+ 
  <style type="text/css">
  body { font-family:"微软雅黑"; font-size:1em; }
  
@@ -77,11 +82,11 @@
 .gallery-cell img { width:100%;}
 .gallery-cell p { text-align: center; font-size: 1.5em; margin:0px;}
  
- #tool_bar { background-color:#d11725;}
- #nav_bar { padding: 10px 0px; background-color:#F4F4F4;}
+ #tool_bar { background:url("/tpl/Wap/default/common/Index/xq1/toolbar_bg.png"); border-top:1px solid #ad0e1a; box-shadow:0px 2px 10px 0px rgba(0,0,0,.3); z-index:99; position:relative;}
+ #nav_bar { padding: 10px 0px; background-color:#FFF; border-bottom:2px solid #666; box-shadow:0px 2px 10px 0px rgba(0,0,0,.3); z-index:98; position:relative;}
  #copyright { border-top:1px solid #EAEAEA; line-height:30px;}
  
- 
+ .tool_bar_icon { display:inline-block;}
  
 .userHTML img { width:100%;}
 
@@ -92,31 +97,64 @@
 .goods_box_price { padding-bottom:10px; text-align:center;}
 .goods_box img { width:100%;}
 
- 
+.menu-cells { width:9999px;}
+.menu-cell { display:inline-block; padding: 0px 20px 0px 0px; font-size: 16px; line-height: 25px; text-align:left;}
+
+.menu-cell a { color:#666; font-weight:bold;}
+.index a { color:#d11725;}
  </style>
  
 </head>
 <body>
 
+
+     
+
 <div class="container">
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="line-height:50px;">{ZF::$company['address']}:{ZF::$company['name']}</div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <table style="width:100%; line-height:35px; font-size:16px;">
+               <tr>
+                  <td style="width:60px;"><div id="announcements_title">公告：</div></td>
+                  <td>
+						     <div id="announcements">
+						      <ul>
+								     <volist name="announcements" id="vo">
+								     
+								         <li style="white-space:nowrap;overflow:hidden;"><a href="{ZF::U('Wap/Index/content')}&id={ZF:$vo.id}&token={ZF:$token}" title="{ZF:$vo.title}">{ZF:$vo.createtime|date="Y/m/d",###}&nbsp;&nbsp;{ZF:$vo.title}</a></li>
+								     
+								     </volist>
+						      </ul>
+						     </div>
+                  </td>
+               </tr>
+            </table>
+            
+
+
+        </div>
     </div>
 </div> 
 
+<script type="text/javascript">
+$(function() {
+	  $('#announcements').vTicker();
+	});  
+</script>
+
 <div id="tool_bar">
 	<div class="container">
-	    <div class="row" style="padding: 10px 0px; color:#FFF; line-height: 50px;">
-	         <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2">
-	              <span class="glyphicon glyphicon-menu-hamburger" style="top:10px; font-size:2em;"></span>&nbsp;&nbsp;
-	              <img style="width:50px; display:inline;" class="img-responsive" alt="我的小区" src="{ZF::STATICS}/logo-xiaoqu.png">
-	         </div>
-	         <div class="col-xs-5 col-sm-7 col-md-8 col-lg-8 text-right">
-	                   <span class="glyphicon glyphicon-play" ></span>&nbsp;&nbsp;{ZF::$company['name']}
-	         </div>
-	         <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 text-right" style="font-size:2em;">
-	              <a style="color:#FFF;" href="{ZF::U('Wap/Product/cart')}&token={ZF:$token}"><span class="glyphicon glyphicon-shopping-cart" ></span></a>&nbsp;&nbsp;
-	              <a style="color:#FFF;" href="{ZF::U('Wap/Product/my')}&token={ZF:$token}"><span class="glyphicon glyphicon-user" ></span></a>
+	    <div class="row" style=" color:#FFF; line-height: 50px;">
+             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		         <div style="float:left;">
+		              <div class="tool_bar_icon"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_menu.png"></div>&nbsp;&nbsp;
+		              <img style="height:35px; display:inline;" class="img-responsive" alt="我的小区" src="{ZF::STATICS}/logo-xiaoqu.png">
+		         </div>
+		         <div style="float:right;">
+		                   <span class="glyphicon glyphicon-play" style="font-size:8px; line-height:8px;"></span>&nbsp;&nbsp;<span style="font-size:14px;">{ZF::$company['name']}</span>&nbsp;&nbsp;
+		              <div class="tool_bar_icon"><a style="color:#FFF;" href="{ZF::U('Wap/Product/cart')}&token={ZF:$token}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_cart.png"></a></div>&nbsp;&nbsp;
+		              <div class="tool_bar_icon"><a style="color:#FFF;" href="{ZF::U('Wap/Product/my')}&token={ZF:$token}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_my.png"></a></div>
+		         </div>
 	         </div>
 	    </div>
 	</div>
@@ -124,23 +162,50 @@
 
 
 <div id="nav_bar">
+
 	<div class="container" style="font-size:1.2em;">
-			<ul class="nav nav-pills">
-			     <li><a href="#">首页</a></li>
+	
+         <table style="width:100%;">
+               <tr>
+                   <td style="width:60px;"><span class="menu-cell index"><a href="#">首页</a></span></td>
+                   <td>
+<div id="menu-gallery">
+			     <div class="menu-cells">
             <volist name="info" id="vo">
-                <li>
+                <span class="menu-cell">
 
                        <a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url|htmlspecialchars_decode}</if>">
                               {ZF:$vo.name}
                         </a>
 
-                </li>
+                </span>
             </volist>
-			</ul>
+            </div>
+            <div class="menu-cells"></div>
+
+</div>
+                   </td>
+               </tr>
+         </table>
+
 	</div>
+
 </div>
 
-<div style=" margin:0px auto; max-width: 1140px;">
+<script type="text/javascript">
+$('#menu-gallery').flickity({
+	freeScroll: true,
+    contain: true,
+    // disable previous & next buttons and dots
+    prevNextButtons: false,
+    pageDots: false,
+    cellAlign: 'left',
+	});
+</script>
+
+
+
+<div style=" margin:0px auto; max-width: 1140px; z-index:97; position:relative;">
 	<div class="gallery js-flickity">
 		<volist name="flash" id="so">
 				<div class="gallery-cell">
@@ -252,6 +317,7 @@
 		<else/>
 		    {ZF:$siteCopyright}
 		</if>
+		&nbsp;&nbsp;{ZF::$company['address']}&nbsp;&nbsp;{ZF::$company['name']}
 	</div>
 </div> 
 

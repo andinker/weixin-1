@@ -29,6 +29,15 @@ items : [
 
 <form method="post">
 <br>
+<h3>公告设置</h3> 
+<select name="announcements">
+<volist name="thisClassify" id="vo">
+    <option value="{ZF:$vo.id}"<eq name="vo.id" value="$content.announcements_class_id"> selected="selected"</eq>>{ZF:$vo.name}</option>
+ </volist>
+</select>
+<br>
+
+<br>
 <h3>用户自定义图文内容</h3>
 <textarea name="info" id="info"  rows="5" style="width:590px;height:360px">{ZF:$content.content_html}</textarea>
 <br>
