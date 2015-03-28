@@ -1,0 +1,42 @@
+<body>
+
+<div class="nav clearfix">
+
+	<div class="nav-content">
+
+		<h1 class="left" href="{ZF::C('site_url')}">{ZF::C('site_name')}</h1>
+
+		<div class="right line-li">
+
+			<ul>
+
+				<li><a href="{ZF::C('site_url')}" >首页</a></li>
+
+                <li><a href="{ZF::U('Home/Index/fc')}">功能介绍</a></li>
+
+                <li><a href="{ZF::U('Home/Index/common')}">客户案例</a></li>
+
+				<if condition="!isset($_SESSION['uid'])">
+
+				<li><a href="{ZF::U('Index/login')}">用户登录</a></li>
+
+				<li><a href="{ZF::U('Index/reg')}" class="hover">免费注册</a></li>
+
+				<else/>
+
+                <li><a href="{ZF::U('User/Index/index')}">管理中心</a></li>
+
+				<li><a href="/#" onClick="Javascript:window.open('{ZF::U('System/Admin/logout')}','_blank')" >退出</a></li>
+
+				</if>	
+
+                <li <eq name="ACTION_NAME" value="help">class="menuon"</eq>><a href="{ZF::U('Home/Index/help')}">帮助中心</a></li>
+
+			</ul>
+
+		</div>
+
+	</div>
+
+</div>
+
