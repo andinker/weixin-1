@@ -20,7 +20,7 @@
  
  
  <style type="text/css">
- body { font-family:"微软雅黑"; font-size:1em; }
+ body { font-family:"微软雅黑"; font-size:1em; background-color:#e3e3e8;}
  
  
 @media screen and (min-width: 1080px) {
@@ -29,11 +29,23 @@
 @media screen and (min-width: 640px) and ( max-width: 1080px ) {
 .gallery-cell{height: 500px;}
 }
-@media screen and (min-width: 320px) and ( max-width: 640px ){
-.gallery-cell{height: 300px;}
+@media screen and (min-width: 751px) and ( max-width: 768px ) {
+.gallery-cell{height: 395px;}
 }
-@media screen and (min-width: 1px) and ( max-width: 320px ) {
-.gallery-cell{height: 200px;}
+@media screen and (min-width: 668px) and ( max-width: 750px ) {
+.gallery-cell{height: 385px;}
+}
+@media screen and (min-width: 641px) and ( max-width: 667px ) {
+.gallery-cell{height: 340px;}
+}
+@media screen and (min-width: 480px) and ( max-width: 640px ){
+.gallery-cell{height: 244px;}
+}
+@media screen and (min-width: 320px) and ( max-width: 479px ) {
+.gallery-cell{height: 160px;}
+}
+@media screen and (min-width: 1px) and ( max-width: 319px ) {
+.gallery-cell{height: 120px;}
 }
 
 @media screen and (min-width: 1201px) {
@@ -90,11 +102,13 @@
  
 .userHTML img { width:100%;}
 
-.goods_box { margin-bottom:20px;}
+.goods_box { margin-bottom:20px; }
+.goods_box a { display:block; background-color:#FFF; box-shadow:2px 2px 10px 0px rgba(0,0,0,0.1);}
 .goods_box_img { overflow:hidden;}
-.goods_box_title, .goods_box_price { height:35px; line-height:25px; overflow:hidden; background-color:#f8f8f8; padding:0px 10px;}
-.goods_box_title { padding-top: 10px;}
-.goods_box_price { padding-bottom:10px; text-align:center;}
+.goods_box_title, .goods_box_price { height:35px; line-height:25px; font-size:14px; overflow:hidden; background-color:#FFF; padding:0px 10px;}
+.goods_box_title { padding-top: 10px; color:#000;}
+.goods_box_price { padding-bottom:10px; text-align:center; color:#d11725;}
+.goods_box_price span { display:inline-block; margin-left:10px; font-size:8px; text-decoration:line-through; color:#666;}
 .goods_box img { width:100%;}
 
 .menu-cells { width:9999px;}
@@ -102,45 +116,16 @@
 
 .menu-cell a { color:#666; font-weight:bold;}
 .index a { color:#d11725;}
+
+
+.menu_table p { margin:0px;}
+
+.cmenu-gallery-cell { width:9999px;}
  </style>
  
 </head>
 <body>
 
-
-     
-
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <table style="width:100%; line-height:35px; font-size:16px;">
-               <tr>
-                  <td style="width:60px;"><div id="announcements_title">公告：</div></td>
-                  <td>
-						     <div id="announcements">
-						      <ul>
-								     <volist name="announcements" id="vo">
-								     
-								         <li style="white-space:nowrap;overflow:hidden;"><a href="{ZF::U('Wap/Index/content')}&id={ZF:$vo.id}&token={ZF:$token}" title="{ZF:$vo.title}">{ZF:$vo.createtime|date="Y/m/d",###}&nbsp;&nbsp;{ZF:$vo.title}</a></li>
-								     
-								     </volist>
-						      </ul>
-						     </div>
-                  </td>
-               </tr>
-            </table>
-            
-
-
-        </div>
-    </div>
-</div> 
-
-<script type="text/javascript">
-$(function() {
-	  $('#announcements').vTicker();
-	});  
-</script>
 
 <div id="tool_bar">
 	<div class="container">
@@ -148,10 +133,10 @@ $(function() {
              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		         <div style="float:left;">
 		              <div class="tool_bar_icon"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_menu.png"></div>&nbsp;&nbsp;
-		              <img style="height:35px; display:inline;" class="img-responsive" alt="我的小区" src="{ZF::STATICS}/logo-xiaoqu.png">
+		              <img style="height:32px; display:inline;" class="img-responsive" alt="我的小区" src="{ZF::STATICS}/logo-xiaoqu.png">
 		         </div>
 		         <div style="float:right;">
-		                   <span class="glyphicon glyphicon-play" style="font-size:8px; line-height:8px;"></span>&nbsp;&nbsp;<span style="font-size:14px;">{ZF::$company['name']}</span>&nbsp;&nbsp;
+		                   <span class="glyphicon glyphicon-play" style="font-size:8px; line-height:8px;"></span>&nbsp;&nbsp;<span style="font-size:14px; position:relative; top:3px;">{ZF::$company['name']}</span>&nbsp;&nbsp;
 		              <div class="tool_bar_icon"><a style="color:#FFF;" href="{ZF::U('Wap/Product/cart')}&token={ZF:$token}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_cart.png"></a></div>&nbsp;&nbsp;
 		              <div class="tool_bar_icon"><a style="color:#FFF;" href="{ZF::U('Wap/Product/my')}&token={ZF:$token}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_my.png"></a></div>
 		         </div>
@@ -206,33 +191,60 @@ $('#menu-gallery').flickity({
 
 
 <div style=" margin:0px auto; max-width: 1140px; z-index:97; position:relative;">
-	<div class="gallery js-flickity">
+	<div class="gallery js-flickity" data-flickity-options='{ "wrapAround":true,"autoPlay":true,"pageDots": false }'>
 		<volist name="flash" id="so">
 				<div class="gallery-cell">
-				    <a href="{ZF:$so.url}"><img src="{ZF:$so.img}" /></a>
+				    <img src="{ZF:$so.img}" />
 				    <p>{ZF:$so.info}</p>
 				</div>
 		</volist>
 	</div>
 </div>
 
+<div style=" margin:0px auto 0px auto; max-width: 1140px;">
+<nav class="navbar navbar-default">
+            <table style="width:100%; line-height:50px; font-size:14px;">
+               <tr>
+                  <td style="width:60px;"><div id="announcements_title">&nbsp;&nbsp;公告：</div></td>
+                  <td>
+						     <div id="announcements">
+						      <ul>
+								     <volist name="announcements" id="vo">
+								     
+								         <li style="white-space:nowrap;overflow:hidden;"><a style="color:#666;" href="{ZF::U('Wap/Index/content')}&id={ZF:$vo.id}&token={ZF:$token}" title="{ZF:$vo.title}">{ZF:$vo.title}&nbsp;&nbsp;{ZF:$vo.createtime|date="Y/m/d",###}</a></li>
+								     
+								     </volist>
+						      </ul>
+						     </div>
+                  </td>
+               </tr>
+            </table>
+</nav>            
 
 
-<div class="container" style="margin-top:35px;">
+</div> 
+
+<script type="text/javascript">
+$(function() {
+	  $('#announcements').vTicker();
+	});  
+</script>
+
+<div class="container">
      <div class="userHTML">
 	  {ZF:$indexContent.content_html}
 	  </div>
 </div>
 
 
-<div class="container" style="margin-top:35px;">
+<div class="container" style="margin-top:20px;">
      <div class="row">
           <volist name="indexContent.content_goodslist1" id="goods_item">
 	          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 goods_box">
 	               <a href="{ZF::U('Wap/Product/product')}&token={ZF:$goods_item.token}&wecha_id={ZF:$wecha_id}&id={ZF:$goods_item.id}">
 	                  <div class="goods_box_img"><img src="{ZF:$goods_item.logourl}"></div>
 	                  <div class="goods_box_title">{ZF:$goods_item.name}</div>
-	                  <div class="goods_box_price"><span style="text-decoration:line-through;">￥{ZF:$goods_item.oprice}元</span>  ￥{ZF:$goods_item.price}元</div>
+	                  <div class="goods_box_price">￥{ZF:$goods_item.price}元<span>￥{ZF:$goods_item.oprice}元</span></div>
 	               </a>
 	          </div>
           </volist>
@@ -244,18 +256,37 @@ $('#menu-gallery').flickity({
 
 <!-- 菜单一 -->
 <div class="container">
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default" style="height:35px; min-height:35px; line-height:35px;">
 	  <div class="container-fluid">
-	    <p class="navbar-text navbar-left">
-	         <span style="font-size:18px; font-weight:bold; color:#c4000b;">{ZF:$indexContent.content_menu1_title}</span>&nbsp;&nbsp;
-	         <span style="font-size:1em;" class="glyphicon glyphicon-menu-right"></span>&nbsp;&nbsp;
-	         <span style="font-size:16px;">
-		   <a class="navbar-link" href="{ZF:$indexContent.content_menu1_item1_link}">{ZF:$indexContent.content_menu1_item1_text}</a>&nbsp;&nbsp;&nbsp;
-		    <a class="navbar-link" href="{ZF:$indexContent.content_menu1_item2_link}">{ZF:$indexContent.content_menu1_item2_text}</a>&nbsp;&nbsp;&nbsp;
-		    <a class="navbar-link" href="{ZF:$indexContent.content_menu1_item3_link}">{ZF:$indexContent.content_menu1_item3_text}</a>&nbsp;&nbsp;&nbsp;
-		    <a class="navbar-link" href="{ZF:$indexContent.content_menu1_item4_link}">{ZF:$indexContent.content_menu1_item4_text}</a>&nbsp;&nbsp;&nbsp;
-            </span>
-        </p>
+
+            <table class="menu_table" style="width:100%; ">
+               <tr>
+                  <td style=" width:90px; text-align:left;"> 
+						    <p>
+						         <span style="font-size:14px; font-weight:bold; color:#c4000b;">{ZF:$indexContent.content_menu1_title}</span>&nbsp;&nbsp;
+						         <span style="font-size:1em;" class="glyphicon glyphicon-menu-right"></span>&nbsp;&nbsp;
+					        </p>
+                </td>
+                <td>
+						<div class="cmenu-gallery">
+							 <div class="cmenu-gallery-cell">
+								        <p>
+									         <span style="font-size:14px;">
+										   <a class="navbar-link" href="{ZF:$indexContent.content_menu1_item1_link}">{ZF:$indexContent.content_menu1_item1_text}</a>&nbsp;&nbsp;&nbsp;
+										    <a class="navbar-link" href="{ZF:$indexContent.content_menu1_item2_link}">{ZF:$indexContent.content_menu1_item2_text}</a>&nbsp;&nbsp;&nbsp;
+										    <a class="navbar-link" href="{ZF:$indexContent.content_menu1_item3_link}">{ZF:$indexContent.content_menu1_item3_text}</a>&nbsp;&nbsp;&nbsp;
+										    <a class="navbar-link" href="{ZF:$indexContent.content_menu1_item4_link}">{ZF:$indexContent.content_menu1_item4_text}</a>&nbsp;&nbsp;&nbsp;
+								            </span>
+								        </p>
+						          </div>
+						          <div class="cmenu-gallery-cell"></div>
+						
+						</div>
+
+                  </td>
+               </tr>
+            </table>
+
 	  </div>
 	</nav>
 </div>
@@ -269,7 +300,7 @@ $('#menu-gallery').flickity({
 	               <a href="{ZF::U('Wap/Product/product')}&token={ZF:$goods_item.token}&wecha_id={ZF:$wecha_id}&id={ZF:$goods_item.id}">
 	                  <div class="goods_box_img"><img src="{ZF:$goods_item.logourl}"></div>
 	                  <div class="goods_box_title">{ZF:$goods_item.name}</div>
-	                  <div class="goods_box_price"><span style="text-decoration:line-through;">￥{ZF:$goods_item.oprice}元</span>  ￥{ZF:$goods_item.price}元</div>
+	                  <div class="goods_box_price">￥{ZF:$goods_item.price}元<span>￥{ZF:$goods_item.oprice}元</span></div>
 	               </a>
 	          </div>
           </volist>
@@ -279,18 +310,37 @@ $('#menu-gallery').flickity({
 
 <!-- 菜单二 -->
 <div class="container">
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default" style="height:35px; min-height:35px; line-height:35px;">
 	  <div class="container-fluid">
-	    <p class="navbar-text navbar-left">
-	         <span style="font-size:18px; font-weight:bold; color:#c4000b;">{ZF:$indexContent.content_menu2_title}</span>&nbsp;&nbsp;
-	         <span style="font-size:1em;" class="glyphicon glyphicon-menu-right"></span>&nbsp;&nbsp;
-	         <span style="font-size:16px;">
-		   <a class="navbar-link" href="{ZF:$indexContent.content_menu2_item1_link}">{ZF:$indexContent.content_menu2_item1_text}</a>&nbsp;&nbsp;
-		    <a class="navbar-link" href="{ZF:$indexContent.content_menu2_item2_link}">{ZF:$indexContent.content_menu2_item2_text}</a>&nbsp;&nbsp;
-		    <a class="navbar-link" href="{ZF:$indexContent.content_menu2_item3_link}">{ZF:$indexContent.content_menu2_item3_text}</a>&nbsp;&nbsp;
-		    <a class="navbar-link" href="{ZF:$indexContent.content_menu2_item4_link}">{ZF:$indexContent.content_menu2_item4_text}</a>&nbsp;&nbsp;
-            </span>
-        </p>
+
+            <table class="menu_table" style="width:100%; ">
+               <tr>
+                  <td style=" width:90px; text-align:left;"> 
+						    <p>
+						         <span style="font-size:14px; font-weight:bold; color:#c4000b;">{ZF:$indexContent.content_menu2_title}</span>&nbsp;&nbsp;
+						         <span style="font-size:1em;" class="glyphicon glyphicon-menu-right"></span>&nbsp;&nbsp;
+					        </p>
+                </td>
+                <td>
+						<div class="cmenu-gallery">
+							 <div class="cmenu-gallery-cell">
+								        <p>
+									         <span style="font-size:14px;">
+										   <a class="navbar-link" href="{ZF:$indexContent.content_menu2_item1_link}">{ZF:$indexContent.content_menu2_item1_text}</a>&nbsp;&nbsp;&nbsp;
+										    <a class="navbar-link" href="{ZF:$indexContent.content_menu2_item2_link}">{ZF:$indexContent.content_menu2_item2_text}</a>&nbsp;&nbsp;&nbsp;
+										    <a class="navbar-link" href="{ZF:$indexContent.content_menu2_item3_link}">{ZF:$indexContent.content_menu2_item3_text}</a>&nbsp;&nbsp;&nbsp;
+										    <a class="navbar-link" href="{ZF:$indexContent.content_menu2_item4_link}">{ZF:$indexContent.content_menu2_item4_text}</a>&nbsp;&nbsp;&nbsp;
+								            </span>
+								        </p>
+						          </div>
+						          <div class="cmenu-gallery-cell"></div>
+						
+						</div>
+
+                  </td>
+               </tr>
+            </table>
+
 	  </div>
 	</nav>
 </div>
@@ -303,7 +353,7 @@ $('#menu-gallery').flickity({
 	               <a href="{ZF::U('Wap/Product/product')}&token={ZF:$goods_item.token}&wecha_id={ZF:$wecha_id}&id={ZF:$goods_item.id}">
 	                  <div class="goods_box_img"><img src="{ZF:$goods_item.logourl}"></div>
 	                  <div class="goods_box_title">{ZF:$goods_item.name}</div>
-	                  <div class="goods_box_price"><span style="text-decoration:line-through;">￥{ZF:$goods_item.oprice}元</span>  ￥{ZF:$goods_item.price}元</div>
+	                  <div class="goods_box_price">￥{ZF:$goods_item.price}元<span>￥{ZF:$goods_item.oprice}元</span></div>
 	               </a>
 	          </div>
           </volist>
@@ -311,18 +361,27 @@ $('#menu-gallery').flickity({
 </div>
 
 <div id="copyright">
-	<div class="container">
+	<div class="container text-center">
 		<if condition="$iscopyright eq 1">
 		    {ZF:$homeInfo.copyright}
 		<else/>
 		    {ZF:$siteCopyright}
 		</if>
-		&nbsp;&nbsp;{ZF::$company['address']}&nbsp;&nbsp;{ZF::$company['name']}
+		<br>{ZF::$company['address']}&nbsp;&nbsp;{ZF::$company['name']}
 	</div>
 </div> 
 
 
-
+<script type="text/javascript">
+$('.cmenu-gallery').flickity({
+	freeScroll: true,
+    contain: true,
+    // disable previous & next buttons and dots
+    prevNextButtons: false,
+    pageDots: false,
+    cellAlign: 'left',
+	});
+</script>
 <!-- pre>
 <php>
 print_r($indexContent);
