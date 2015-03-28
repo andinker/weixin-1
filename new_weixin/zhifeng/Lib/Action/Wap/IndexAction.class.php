@@ -205,23 +205,28 @@ class IndexAction extends WapAction{
 			$ids_1 = explode(',',$indexContent['content_goodslist1_ids']);
 			$ids_2 = explode(',',$indexContent['content_goodslist2_ids']);
 			$ids_3 = explode(',',$indexContent['content_goodslist3_ids']);
+			$ids_4 = explode(',',$indexContent['content_goodslist4_ids']);
 			
 			foreach ($ids_1 as $k=>$v) { if (empty($v)) unset($ids_1[$k]); }
 			foreach ($ids_2 as $k=>$v) { if (empty($v)) unset($ids_2[$k]); }
 			foreach ($ids_3 as $k=>$v) { if (empty($v)) unset($ids_3[$k]); }
+			foreach ($ids_4 as $k=>$v) { if (empty($v)) unset($ids_4[$k]); }
 			
 			$ids_1_str = implode(",", $ids_1);
 			$ids_2_str = implode(",", $ids_2);
 			$ids_3_str = implode(",", $ids_3);
+			$ids_4_str = implode(",", $ids_4);
 			
 			$product_model=M('Product');
 			$list1 = $product_model->where('`id` in ('. $ids_1_str .')')->order('id desc')->select();
 			$list2 = $product_model->where('`id` in ('. $ids_2_str .')')->order('id desc')->select();
 			$list3 = $product_model->where('`id` in ('. $ids_3_str .')')->order('id desc')->select();
+			$list4 = $product_model->where('`id` in ('. $ids_4_str .')')->order('id desc')->select();
 			
 			$indexContent['content_goodslist1'] = $list1;
 			$indexContent['content_goodslist2'] = $list2;
 			$indexContent['content_goodslist3'] = $list3;
+			$indexContent['content_goodslist4'] = $list4;
 			
 			
 		$this->assign('indexContent',$indexContent);

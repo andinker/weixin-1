@@ -100,6 +100,7 @@
  
  .tool_bar_icon { display:inline-block;}
  
+.userHTML { margin-bottom:20px; }
 .userHTML img { width:100%;}
 
 .goods_box { margin-bottom:20px; }
@@ -237,7 +238,7 @@ $(function() {
 </div>
 
 
-<div class="container" style="margin-top:20px;">
+<div class="container">
      <div class="row">
           <volist name="indexContent.content_goodslist1" id="goods_item">
 	          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 goods_box">
@@ -308,6 +309,14 @@ $(function() {
 </div>
 
 
+<!-- 广告条一 -->
+<div class="container">
+     <div class="userHTML">
+	  {ZF:$indexContent.content_banner_1}
+	  </div>
+</div>
+
+
 <!-- 菜单二 -->
 <div class="container">
 	<nav class="navbar navbar-default" style="height:35px; min-height:35px; line-height:35px;">
@@ -359,6 +368,81 @@ $(function() {
           </volist>
      </div>
 </div>
+
+
+<!-- 广告条二 -->
+<div class="container">
+     <div class="userHTML">
+	  {ZF:$indexContent.content_banner_2}
+	  </div>
+</div>
+
+
+<!-- 菜单三 -->
+<div class="container">
+	<nav class="navbar navbar-default" style="height:35px; min-height:35px; line-height:35px;">
+	  <div class="container-fluid">
+
+            <table class="menu_table" style="width:100%; ">
+               <tr>
+                  <td style=" width:90px; text-align:left;"> 
+						    <p>
+						         <span style="font-size:14px; font-weight:bold; color:#c4000b;">{ZF:$indexContent.content_menu3_title}</span>&nbsp;&nbsp;
+						         <span style="font-size:1em;" class="glyphicon glyphicon-menu-right"></span>&nbsp;&nbsp;
+					        </p>
+                </td>
+                <td>
+						<div class="cmenu-gallery">
+							 <div class="cmenu-gallery-cell">
+								        <p>
+									         <span style="font-size:14px;">
+										   <a class="navbar-link" href="{ZF:$indexContent.content_menu3_item1_link}">{ZF:$indexContent.content_menu3_item1_text}</a>&nbsp;&nbsp;&nbsp;
+										    <a class="navbar-link" href="{ZF:$indexContent.content_menu3_item2_link}">{ZF:$indexContent.content_menu3_item2_text}</a>&nbsp;&nbsp;&nbsp;
+										    <a class="navbar-link" href="{ZF:$indexContent.content_menu3_item3_link}">{ZF:$indexContent.content_menu3_item3_text}</a>&nbsp;&nbsp;&nbsp;
+										    <a class="navbar-link" href="{ZF:$indexContent.content_menu3_item4_link}">{ZF:$indexContent.content_menu3_item4_text}</a>&nbsp;&nbsp;&nbsp;
+								            </span>
+								        </p>
+						          </div>
+						          <div class="cmenu-gallery-cell"></div>
+						
+						</div>
+
+                  </td>
+               </tr>
+            </table>
+
+	  </div>
+	</nav>
+</div>
+
+
+
+
+<div class="container">
+     <div class="row">
+          <volist name="indexContent.content_goodslist4" id="goods_item">
+	          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 goods_box">
+	               <a href="{ZF::U('Wap/Product/product')}&token={ZF:$goods_item.token}&wecha_id={ZF:$wecha_id}&id={ZF:$goods_item.id}">
+	                  <div class="goods_box_img"><img src="{ZF:$goods_item.logourl}"></div>
+	                  <div class="goods_box_title">{ZF:$goods_item.name}</div>
+	                  <div class="goods_box_price">￥{ZF:$goods_item.price}元<span>￥{ZF:$goods_item.oprice}元</span></div>
+	               </a>
+	          </div>
+          </volist>
+     </div>
+</div>
+
+
+<!-- 广告条三 -->
+<div class="container">
+     <div class="userHTML">
+	  {ZF:$indexContent.content_banner_3}
+	  </div>
+</div>
+
+
+
+
 
 <div id="copyright">
 	<div class="container text-center">

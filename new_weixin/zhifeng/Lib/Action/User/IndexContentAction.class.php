@@ -50,6 +50,7 @@ class IndexContentAction extends UserAction{
 			
 			$posted_data['announcements_class_id']   = $_POST['announcements'];
 			$posted_data['content_html']             = $_POST['info'];
+
 			$posted_data['content_menu1_title']      = $_POST['menu_1_name'];
 			$posted_data['content_menu1_item1_text'] = $_POST['menu_1_item_1_name'];
 			$posted_data['content_menu1_item1_link'] = $_POST['menu_1_item_1_url'];
@@ -63,6 +64,7 @@ class IndexContentAction extends UserAction{
 			$posted_data['content_menu1_item5_link'] = $_POST['menu_1_item_5_url'];
 			$posted_data['content_menu1_item6_text'] = $_POST['menu_1_item_6_name'];
 			$posted_data['content_menu1_item6_link'] = $_POST['menu_1_item_6_url'];
+
 			$posted_data['content_menu2_title']      = $_POST['menu_2_name'];
 			$posted_data['content_menu2_item1_text'] = $_POST['menu_2_item_1_name'];
 			$posted_data['content_menu2_item1_link'] = $_POST['menu_2_item_1_url'];
@@ -76,9 +78,30 @@ class IndexContentAction extends UserAction{
 			$posted_data['content_menu2_item5_link'] = $_POST['menu_2_item_5_url'];
 			$posted_data['content_menu2_item6_text'] = $_POST['menu_2_item_6_name'];
 			$posted_data['content_menu2_item6_link'] = $_POST['menu_2_item_6_url'];
+
+			$posted_data['content_menu3_title']      = $_POST['menu_3_name'];
+			$posted_data['content_menu3_item1_text'] = $_POST['menu_3_item_1_name'];
+			$posted_data['content_menu3_item1_link'] = $_POST['menu_3_item_1_url'];
+			$posted_data['content_menu3_item2_text'] = $_POST['menu_3_item_2_name'];
+			$posted_data['content_menu3_item2_link'] = $_POST['menu_3_item_2_url'];
+			$posted_data['content_menu3_item3_text'] = $_POST['menu_3_item_3_name'];
+			$posted_data['content_menu3_item3_link'] = $_POST['menu_3_item_3_url'];
+			$posted_data['content_menu3_item4_text'] = $_POST['menu_3_item_4_name'];
+			$posted_data['content_menu3_item4_link'] = $_POST['menu_3_item_4_url'];
+			$posted_data['content_menu3_item5_text'] = $_POST['menu_3_item_5_name'];
+			$posted_data['content_menu3_item5_link'] = $_POST['menu_3_item_5_url'];
+			$posted_data['content_menu3_item6_text'] = $_POST['menu_3_item_6_name'];
+			$posted_data['content_menu3_item6_link'] = $_POST['menu_3_item_6_url'];
+			
 			$posted_data['content_goodslist1_ids']   = $_POST['adgoods_1_data'];
 			$posted_data['content_goodslist2_ids']   = $_POST['adgoods_2_data'];
 			$posted_data['content_goodslist3_ids']   = $_POST['adgoods_3_data'];
+			$posted_data['content_goodslist4_ids']   = $_POST['adgoods_4_data'];
+
+			$posted_data['content_banner_1']         = $_POST['banner_1']; 
+			$posted_data['content_banner_2']         = $_POST['banner_2'];
+			$posted_data['content_banner_3']         = $_POST['banner_3'];
+			
 			
 			if ( $m ->save($posted_data) ) $this->success('保存成功');
 			else {
