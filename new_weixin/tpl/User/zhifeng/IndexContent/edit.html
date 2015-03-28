@@ -10,7 +10,7 @@
 <script>
 var editor;
 KindEditor.ready(function(K) {
-editor = K.create('#info', {
+editor = K.create('.toedit', {
 resizeType : 1,
 allowPreviewEmoticons : false,
 allowImageUpload : true,
@@ -39,7 +39,7 @@ items : [
 
 <br>
 <h3>用户自定义图文内容</h3>
-<textarea name="info" id="info"  rows="5" style="width:590px;height:360px">{ZF:$content.content_html}</textarea>
+<textarea class="toedit" name="info" id="info"  rows="5" style="width:590px;height:360px">{ZF:$content.content_html}</textarea>
 <br>
 
 
@@ -88,6 +88,30 @@ items : [
    <a href="###" onclick="addLink('menu_2_item_6_url',0)" class="a_choose">从功能库添加</a><br />
 <br>
 
+
+<h3>中部自定义菜单三</h3>
+菜单标题：<input type="input" class="px" id="menu_3_name" value="{ZF:$content.content_menu3_title}" name="menu_3_name" style="width:200px" ><br>
+一：文本 <input type="input" class="px" id="menu_3_item_1_name" value="{ZF:$content.content_menu3_item1_text}" name="menu_3_item_1_name" style="width:100px" >
+        链接<input type="input" class="px" id="menu_3_item_1_url" value="{ZF:$content.content_menu3_item1_link}" name="menu_3_item_1_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_3_item_1_url',0)" class="a_choose">从功能库添加</a><br />
+二： 文本<input type="input" class="px" id="menu_3_item_2_name" value="{ZF:$content.content_menu3_item2_text}" name="menu_3_item_2_name" style="width:100px" >
+       链接<input type="input" class="px" id="menu_3_item_2_url" value="{ZF:$content.content_menu3_item2_link}" name="menu_3_item_2_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_3_item_2_url',0)" class="a_choose">从功能库添加</a><br />
+三：文本 <input type="input" class="px" id="menu_3_item_3_name" value="{ZF:$content.content_menu3_item3_text}" name="menu_3_item_3_name" style="width:100px" >
+      链接<input type="input" class="px" id="menu_3_item_3_url" value="{ZF:$content.content_menu3_item3_link}" name="menu_3_item_3_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_3_item_3_url',0)" class="a_choose">从功能库添加</a><br />
+四： 文本<input type="input" class="px" id="menu_3_item_4_name" value="{ZF:$content.content_menu3_item4_text}" name="menu_3_item_4_name" style="width:100px" >
+       链接<input type="input" class="px" id="menu_3_item_4_url" value="{ZF:$content.content_menu3_item4_link}" name="menu_3_item_4_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_3_item_4_url',0)" class="a_choose">从功能库添加</a><br />
+五：文本 <input type="input" class="px" id="menu_3_item_5_name" value="{ZF:$content.content_menu3_item5_text}" name="menu_3_item_5_name" style="width:100px" >
+      链接<input type="input" class="px" id="menu_3_item_5_url" value="{ZF:$content.content_menu3_item5_link}" name="menu_3_item_5_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_3_item_5_url',0)" class="a_choose">从功能库添加</a><br />
+六：文本 <input type="input" class="px" id="menu_3_item_6_name" value="{ZF:$content.content_menu3_item6_text}" name="menu_3_item_6_name" style="width:100px" >
+       链接<input type="input" class="px" id="menu_3_item_6_url" value="{ZF:$content.content_menu3_item6_link}" name="menu_3_item_6_url" style="width:300px" >
+   <a href="###" onclick="addLink('menu_3_item_6_url',0)" class="a_choose">从功能库添加</a><br />
+<br>
+
+
 <h3>中部橱窗商品推荐一</h3>
 <input type="text" id="adgoods_1_data" name="adgoods_1_data" readonly="readonly" value="{ZF:$content.content_goodslist1_ids}">
 <div><a href="###" onclick="addGoods( 'adgoods_1_data', 'goodslist_1' )" class="a_choose">从商品库添加</a></div>
@@ -111,6 +135,31 @@ items : [
 <div>
 <iframe frameborder=0 name="goodslist_3" id="goodslist_3" src="{ZF::U('User/IndexContent/showgoods')}" width="800px;" height='300px;'></iframe>
 </div>
+
+<h3>中部橱窗商品推荐四</h3> 
+<input type="text" id="adgoods_4_data" name="adgoods_4_data" readonly="readonly" value="{ZF:$content.content_goodslist4_ids}">
+<div><a href="###" onclick="addGoods( 'adgoods_4_data','goodslist_4' )" class="a_choose">从商品库添加</a></div>
+<div>
+<iframe frameborder=0 name="goodslist_4" id="goodslist_4" src="{ZF::U('User/IndexContent/showgoods')}" width="800px;" height='300px;'></iframe>
+</div>
+
+
+
+<br>
+<h3>广告栏一</h3>
+<textarea class="toedit" name="banner_1" id="banner_1"  rows="5" style="width:590px;height:360px">{ZF:$content.content_banner_1}</textarea>
+<br>
+
+<br>
+<h3>广告栏二</h3>
+<textarea class="toedit" name="banner_2" id="banner_2"  rows="5" style="width:590px;height:360px">{ZF:$content.content_banner_2}</textarea>
+<br>
+
+<br>
+<h3>广告栏三</h3>
+<textarea class="toedit" name="banner_3" id="banner_3"  rows="5" style="width:590px;height:360px">{ZF:$content.content_banner_3}</textarea>
+<br>
+
 
 <div><input type="submit" value="保存" class="btnGreen left"></div>
 
@@ -155,6 +204,7 @@ function call_back( data_container_id, goodslist_id ) {
 call_back('adgoods_1_data','goodslist_1');
 call_back('adgoods_2_data','goodslist_2');
 call_back('adgoods_3_data','goodslist_3');
+call_back('adgoods_4_data','goodslist_4');
 
 function addGoods( data_container_id, goodslist_id ){
 
