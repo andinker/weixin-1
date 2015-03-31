@@ -1,4 +1,9 @@
 <include file="Public:head"/>
+<style type="text/css">
+h3{text-align:right;font-size:18px;color:#333333;font-family:'微软雅黑';}
+td{border-bottom:1px dashed #CCCCCC;padding:10px;line-height:40px;}
+span{color:#999999;}
+</style>
 <link rel="stylesheet" href="{ZF::STATICS}/kindeditor/themes/default/default.css" />
 <link rel="stylesheet" href="{ZF::STATICS}/kindeditor/plugins/code/prettify.css" />
 <script src="{ZF::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
@@ -28,141 +33,183 @@ items : [
 
 
 <form method="post">
-<br>
-<h3>公告设置</h3> 
-<select name="announcements">
-<volist name="thisClassify" id="vo">
-    <option value="{ZF:$vo.id}"<eq name="vo.id" value="$content.announcements_class_id"> selected="selected"</eq>>{ZF:$vo.name}</option>
- </volist>
-</select>
-<br>
 
-<br>
-<h3>用户自定义图文内容</h3>
-<textarea class="toedit" name="info" id="info"  rows="5" style="width:590px;height:360px">{ZF:$content.content_html}</textarea>
-<br>
-
-
-<h3>中部自定义菜单一</h3>
-菜单标题：<input type="input" class="px" id="menu_1_name" value="{ZF:$content.content_menu1_title}" name="menu_1_name" style="width:200px" ><br>
-一：文本 <input type="input" class="px" id="menu_1_item_1_name" value="{ZF:$content.content_menu1_item1_text}" name="menu_1_item_1_name" style="width:100px" >
-        链接<input type="input" class="px" id="menu_1_item_1_url" value="{ZF:$content.content_menu1_item1_link}" name="menu_1_item_1_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_1_item_1_url',0)" class="a_choose">从功能库添加</a><br />
-二： 文本<input type="input" class="px" id="menu_1_item_2_name" value="{ZF:$content.content_menu1_item2_text}" name="menu_1_item_2_name" style="width:100px" >
-       链接<input type="input" class="px" id="menu_1_item_2_url" value="{ZF:$content.content_menu1_item2_link}" name="menu_1_item_2_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_1_item_2_url',0)" class="a_choose">从功能库添加</a><br />
-三：文本 <input type="input" class="px" id="menu_1_item_3_name" value="{ZF:$content.content_menu1_item3_text}" name="menu_1_item_3_name" style="width:100px" >
-      链接<input type="input" class="px" id="menu_1_item_3_url" value="{ZF:$content.content_menu1_item3_link}" name="menu_1_item_3_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_1_item_3_url',0)" class="a_choose">从功能库添加</a><br />
-四： 文本<input type="input" class="px" id="menu_1_item_4_name" value="{ZF:$content.content_menu1_item4_text}" name="menu_1_item_4_name" style="width:100px" >
-       链接<input type="input" class="px" id="menu_1_item_4_url" value="{ZF:$content.content_menu1_item4_link}" name="menu_1_item_4_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_1_item_4_url',0)" class="a_choose">从功能库添加</a><br />
-五：文本 <input type="input" class="px" id="menu_1_item_5_name" value="{ZF:$content.content_menu1_item5_text}" name="menu_1_item_5_name" style="width:100px" >
-      链接<input type="input" class="px" id="menu_1_item_5_url" value="{ZF:$content.content_menu1_item5_link}" name="menu_1_item_5_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_1_item_5_url',0)" class="a_choose">从功能库添加</a><br />
-六：文本 <input type="input" class="px" id="menu_1_item_6_name" value="{ZF:$content.content_menu1_item6_text}" name="menu_1_item_6_name" style="width:100px" >
-       链接<input type="input" class="px" id="menu_1_item_6_url" value="{ZF:$content.content_menu1_item6_link}" name="menu_1_item_6_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_1_item_6_url',0)" class="a_choose">从功能库添加</a><br />
-<br>
-
-
-<h3>中部自定义菜单二</h3>
-菜单标题：<input type="input" class="px" id="menu_2_name" value="{ZF:$content.content_menu2_title}" name="menu_2_name" style="width:200px" ><br>
-一：文本 <input type="input" class="px" id="menu_2_item_1_name" value="{ZF:$content.content_menu2_item1_text}" name="menu_2_item_1_name" style="width:100px" >
-        链接<input type="input" class="px" id="menu_2_item_1_url" value="{ZF:$content.content_menu2_item1_link}" name="menu_2_item_1_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_2_item_1_url',0)" class="a_choose">从功能库添加</a><br />
-二： 文本<input type="input" class="px" id="menu_2_item_2_name" value="{ZF:$content.content_menu2_item2_text}" name="menu_2_item_2_name" style="width:100px" >
-       链接<input type="input" class="px" id="menu_2_item_2_url" value="{ZF:$content.content_menu2_item2_link}" name="menu_2_item_2_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_2_item_2_url',0)" class="a_choose">从功能库添加</a><br />
-三：文本 <input type="input" class="px" id="menu_2_item_3_name" value="{ZF:$content.content_menu2_item3_text}" name="menu_2_item_3_name" style="width:100px" >
-      链接<input type="input" class="px" id="menu_2_item_3_url" value="{ZF:$content.content_menu2_item3_link}" name="menu_2_item_3_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_2_item_3_url',0)" class="a_choose">从功能库添加</a><br />
-四： 文本<input type="input" class="px" id="menu_2_item_4_name" value="{ZF:$content.content_menu2_item4_text}" name="menu_2_item_4_name" style="width:100px" >
-       链接<input type="input" class="px" id="menu_2_item_4_url" value="{ZF:$content.content_menu2_item4_link}" name="menu_2_item_4_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_2_item_4_url',0)" class="a_choose">从功能库添加</a><br />
-五：文本 <input type="input" class="px" id="menu_2_item_5_name" value="{ZF:$content.content_menu2_item5_text}" name="menu_2_item_5_name" style="width:100px" >
-      链接<input type="input" class="px" id="menu_2_item_5_url" value="{ZF:$content.content_menu2_item5_link}" name="menu_2_item_5_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_2_item_5_url',0)" class="a_choose">从功能库添加</a><br />
-六：文本 <input type="input" class="px" id="menu_2_item_6_name" value="{ZF:$content.content_menu2_item6_text}" name="menu_2_item_6_name" style="width:100px" >
-       链接<input type="input" class="px" id="menu_2_item_6_url" value="{ZF:$content.content_menu2_item6_link}" name="menu_2_item_6_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_2_item_6_url',0)" class="a_choose">从功能库添加</a><br />
-<br>
-
-
-<h3>中部自定义菜单三</h3>
-菜单标题：<input type="input" class="px" id="menu_3_name" value="{ZF:$content.content_menu3_title}" name="menu_3_name" style="width:200px" ><br>
-一：文本 <input type="input" class="px" id="menu_3_item_1_name" value="{ZF:$content.content_menu3_item1_text}" name="menu_3_item_1_name" style="width:100px" >
-        链接<input type="input" class="px" id="menu_3_item_1_url" value="{ZF:$content.content_menu3_item1_link}" name="menu_3_item_1_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_3_item_1_url',0)" class="a_choose">从功能库添加</a><br />
-二： 文本<input type="input" class="px" id="menu_3_item_2_name" value="{ZF:$content.content_menu3_item2_text}" name="menu_3_item_2_name" style="width:100px" >
-       链接<input type="input" class="px" id="menu_3_item_2_url" value="{ZF:$content.content_menu3_item2_link}" name="menu_3_item_2_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_3_item_2_url',0)" class="a_choose">从功能库添加</a><br />
-三：文本 <input type="input" class="px" id="menu_3_item_3_name" value="{ZF:$content.content_menu3_item3_text}" name="menu_3_item_3_name" style="width:100px" >
-      链接<input type="input" class="px" id="menu_3_item_3_url" value="{ZF:$content.content_menu3_item3_link}" name="menu_3_item_3_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_3_item_3_url',0)" class="a_choose">从功能库添加</a><br />
-四： 文本<input type="input" class="px" id="menu_3_item_4_name" value="{ZF:$content.content_menu3_item4_text}" name="menu_3_item_4_name" style="width:100px" >
-       链接<input type="input" class="px" id="menu_3_item_4_url" value="{ZF:$content.content_menu3_item4_link}" name="menu_3_item_4_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_3_item_4_url',0)" class="a_choose">从功能库添加</a><br />
-五：文本 <input type="input" class="px" id="menu_3_item_5_name" value="{ZF:$content.content_menu3_item5_text}" name="menu_3_item_5_name" style="width:100px" >
-      链接<input type="input" class="px" id="menu_3_item_5_url" value="{ZF:$content.content_menu3_item5_link}" name="menu_3_item_5_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_3_item_5_url',0)" class="a_choose">从功能库添加</a><br />
-六：文本 <input type="input" class="px" id="menu_3_item_6_name" value="{ZF:$content.content_menu3_item6_text}" name="menu_3_item_6_name" style="width:100px" >
-       链接<input type="input" class="px" id="menu_3_item_6_url" value="{ZF:$content.content_menu3_item6_link}" name="menu_3_item_6_url" style="width:300px" >
-   <a href="###" onclick="addLink('menu_3_item_6_url',0)" class="a_choose">从功能库添加</a><br />
-<br>
-
-
-<h3>中部橱窗商品推荐一</h3>
-<input type="text" id="adgoods_1_data" name="adgoods_1_data" readonly="readonly" value="{ZF:$content.content_goodslist1_ids}">
-<div><a href="###" onclick="addGoods( 'adgoods_1_data', 'goodslist_1' )" class="a_choose">从商品库添加</a></div>
-<div>
-<iframe frameborder=0 name="goodslist_1" id="goodslist_1" src="{ZF::U('User/IndexContent/showgoods')}" width="800px;" height='300px;'></iframe>
-</div>
-
-
-<h3>中部橱窗商品推荐二</h3> 
-<input type="text" id="adgoods_2_data" name="adgoods_2_data" readonly="readonly" value="{ZF:$content.content_goodslist2_ids}">
-<div><a href="###" onclick="addGoods( 'adgoods_2_data','goodslist_2' )" class="a_choose">从商品库添加</a></div>
-<div>
-<iframe frameborder=0 name="goodslist_2" id="goodslist_2" src="{ZF::U('User/IndexContent/showgoods')}" width="800px;" height='300px;'></iframe>
-</div>
-
-
-
-<h3>中部橱窗商品推荐三</h3> 
-<input type="text" id="adgoods_3_data" name="adgoods_3_data" readonly="readonly" value="{ZF:$content.content_goodslist3_ids}">
-<div><a href="###" onclick="addGoods( 'adgoods_3_data','goodslist_3' )" class="a_choose">从商品库添加</a></div>
-<div>
-<iframe frameborder=0 name="goodslist_3" id="goodslist_3" src="{ZF::U('User/IndexContent/showgoods')}" width="800px;" height='300px;'></iframe>
-</div>
-
-<h3>中部橱窗商品推荐四</h3> 
-<input type="text" id="adgoods_4_data" name="adgoods_4_data" readonly="readonly" value="{ZF:$content.content_goodslist4_ids}">
-<div><a href="###" onclick="addGoods( 'adgoods_4_data','goodslist_4' )" class="a_choose">从商品库添加</a></div>
-<div>
-<iframe frameborder=0 name="goodslist_4" id="goodslist_4" src="{ZF::U('User/IndexContent/showgoods')}" width="800px;" height='300px;'></iframe>
-</div>
-
-
-
-<br>
-<h3>广告栏一</h3>
-<textarea class="toedit" name="banner_1" id="banner_1"  rows="5" style="width:590px;height:360px">{ZF:$content.content_banner_1}</textarea>
-<br>
-
-<br>
-<h3>广告栏二</h3>
-<textarea class="toedit" name="banner_2" id="banner_2"  rows="5" style="width:590px;height:360px">{ZF:$content.content_banner_2}</textarea>
-<br>
-
-<br>
-<h3>广告栏三</h3>
-<textarea class="toedit" name="banner_3" id="banner_3"  rows="5" style="width:590px;height:360px">{ZF:$content.content_banner_3}</textarea>
-<br>
-
-
-<div><input type="submit" value="保存" class="btnGreen left"></div>
-
+    <table width="100%">
+    	<tr>
+        	<td><h3>公告设置</h3> </td>
+            <td>
+            	<select name="announcements" style="height:30px;color:#333333;font-size:16px;">
+                <volist name="thisClassify" id="vo">
+                    <option value="{ZF:$vo.id}"<eq name="vo.id" value="$content.announcements_class_id"> selected="selected"</eq>>{ZF:$vo.name}</option>
+                 </volist>
+                </select>
+                <span style="padding-left:30px;">* 公告类型选择之后，首页的公告展示中会显示对应类型公告的最新五条记录</span>
+            </td>
+        </tr>
+        
+        <tr>
+        	<td><h3>用户自定义图文内容</h3></td>
+            <td>
+                <span>* 修改图文详情之后，首页的图文详情版块会显示用户添加的内容</span>
+            	<textarea class="toedit" name="info" id="info"  rows="5" style="width:590px;height:360px">{ZF:$content.content_html}</textarea>	
+            </td>
+        </tr>
+        
+        <tr>
+        	<td><h3>中部自定义菜单一</h3></td>
+            <td>
+                <span>* 添加的菜单标题与类目会在首页第二橱窗推荐中的菜单栏显示，点击"从功能库添加"还可添加一些已有的类目</span><br />
+            	<strong>菜单标题：</strong><input type="input" class="px" id="menu_1_name" value="{ZF:$content.content_menu1_title}" name="menu_1_name" style="width:200px" ><br>
+                一：类目 <input type="input" class="px" id="menu_1_item_1_name" value="{ZF:$content.content_menu1_item1_text}" name="menu_1_item_1_name" style="width:100px"  />
+                        链接<input type="input" class="px" id="menu_1_item_1_url" value="{ZF:$content.content_menu1_item1_link}" name="menu_1_item_1_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_1_item_1_url',0)" class="a_choose">从功能库添加</a><br />
+                二：类目 <input type="input" class="px" id="menu_1_item_2_name" value="{ZF:$content.content_menu1_item2_text}" name="menu_1_item_2_name" style="width:100px" >
+                       链接<input type="input" class="px" id="menu_1_item_2_url" value="{ZF:$content.content_menu1_item2_link}" name="menu_1_item_2_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_1_item_2_url',0)" class="a_choose">从功能库添加</a><br />
+                三：类目 <input type="input" class="px" id="menu_1_item_3_name" value="{ZF:$content.content_menu1_item3_text}" name="menu_1_item_3_name" style="width:100px" >
+                      链接<input type="input" class="px" id="menu_1_item_3_url" value="{ZF:$content.content_menu1_item3_link}" name="menu_1_item_3_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_1_item_3_url',0)" class="a_choose">从功能库添加</a><br />
+                四：类目 <input type="input" class="px" id="menu_1_item_4_name" value="{ZF:$content.content_menu1_item4_text}" name="menu_1_item_4_name" style="width:100px" >
+                       链接<input type="input" class="px" id="menu_1_item_4_url" value="{ZF:$content.content_menu1_item4_link}" name="menu_1_item_4_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_1_item_4_url',0)" class="a_choose">从功能库添加</a><br />
+                五：类目 <input type="input" class="px" id="menu_1_item_5_name" value="{ZF:$content.content_menu1_item5_text}" name="menu_1_item_5_name" style="width:100px" >
+                      链接<input type="input" class="px" id="menu_1_item_5_url" value="{ZF:$content.content_menu1_item5_link}" name="menu_1_item_5_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_1_item_5_url',0)" class="a_choose">从功能库添加</a><br />
+                六：类目 <input type="input" class="px" id="menu_1_item_6_name" value="{ZF:$content.content_menu1_item6_text}" name="menu_1_item_6_name" style="width:100px" >
+                       链接<input type="input" class="px" id="menu_1_item_6_url" value="{ZF:$content.content_menu1_item6_link}" name="menu_1_item_6_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_1_item_6_url',0)" class="a_choose">从功能库添加</a><br />
+            </td>
+        </tr>
+        
+        <tr>
+        	<td><h3>中部自定义菜单二</h3></td>
+            <td>
+                <span>* 添加的菜单标题与类目会在首页第三橱窗推荐中的菜单栏显示，点击"从功能库添加"还可添加一些已有的类目</span><br />
+                <strong>菜单标题：</strong><input type="input" class="px" id="menu_2_name" value="{ZF:$content.content_menu2_title}" name="menu_2_name" style="width:200px" ><br>
+                一：类目 <input type="input" class="px" id="menu_2_item_1_name" value="{ZF:$content.content_menu2_item1_text}" name="menu_2_item_1_name" style="width:100px" >
+                        链接<input type="input" class="px" id="menu_2_item_1_url" value="{ZF:$content.content_menu2_item1_link}" name="menu_2_item_1_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_2_item_1_url',0)" class="a_choose">从功能库添加</a><br />
+                二：类目 <input type="input" class="px" id="menu_2_item_2_name" value="{ZF:$content.content_menu2_item2_text}" name="menu_2_item_2_name" style="width:100px" >
+                       链接<input type="input" class="px" id="menu_2_item_2_url" value="{ZF:$content.content_menu2_item2_link}" name="menu_2_item_2_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_2_item_2_url',0)" class="a_choose">从功能库添加</a><br />
+                三：类目 <input type="input" class="px" id="menu_2_item_3_name" value="{ZF:$content.content_menu2_item3_text}" name="menu_2_item_3_name" style="width:100px" >
+                      链接<input type="input" class="px" id="menu_2_item_3_url" value="{ZF:$content.content_menu2_item3_link}" name="menu_2_item_3_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_2_item_3_url',0)" class="a_choose">从功能库添加</a><br />
+                四：类目 <input type="input" class="px" id="menu_2_item_4_name" value="{ZF:$content.content_menu2_item4_text}" name="menu_2_item_4_name" style="width:100px" >
+                       链接<input type="input" class="px" id="menu_2_item_4_url" value="{ZF:$content.content_menu2_item4_link}" name="menu_2_item_4_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_2_item_4_url',0)" class="a_choose">从功能库添加</a><br />
+                五：类目 <input type="input" class="px" id="menu_2_item_5_name" value="{ZF:$content.content_menu2_item5_text}" name="menu_2_item_5_name" style="width:100px" >
+                      链接<input type="input" class="px" id="menu_2_item_5_url" value="{ZF:$content.content_menu2_item5_link}" name="menu_2_item_5_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_2_item_5_url',0)" class="a_choose">从功能库添加</a><br />
+                六：类目 <input type="input" class="px" id="menu_2_item_6_name" value="{ZF:$content.content_menu2_item6_text}" name="menu_2_item_6_name" style="width:100px" >
+                       链接<input type="input" class="px" id="menu_2_item_6_url" value="{ZF:$content.content_menu2_item6_link}" name="menu_2_item_6_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_2_item_6_url',0)" class="a_choose">从功能库添加</a><br />
+            </td>
+        </tr>
+        
+        <tr>
+        	<td><h3>中部自定义菜单三</h3></td>
+            <td>
+                <span>* 添加的菜单标题与类目会在首页第四橱窗推荐中的菜单栏显示，点击"从功能库添加"还可添加一些已有的类目</span><br />
+            	<strong>菜单标题：</strong><input type="input" class="px" id="menu_3_name" value="{ZF:$content.content_menu3_title}" name="menu_3_name" style="width:200px" ><br>
+                一：类目 <input type="input" class="px" id="menu_3_item_1_name" value="{ZF:$content.content_menu3_item1_text}" name="menu_3_item_1_name" style="width:100px" >
+                        链接<input type="input" class="px" id="menu_3_item_1_url" value="{ZF:$content.content_menu3_item1_link}" name="menu_3_item_1_url" style="color:#666666;width:300px;" >
+                   <a href="#" onclick="addLink('menu_3_item_1_url',0)" class="a_choose">从功能库添加</a><br />
+                二：类目 <input type="input" class="px" id="menu_3_item_2_name" value="{ZF:$content.content_menu3_item2_text}" name="menu_3_item_2_name" style="width:100px" >
+                       链接<input type="input" class="px" id="menu_3_item_2_url" value="{ZF:$content.content_menu3_item2_link}" name="menu_3_item_2_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_3_item_2_url',0)" class="a_choose">从功能库添加</a><br />
+                三：类目 <input type="input" class="px" id="menu_3_item_3_name" value="{ZF:$content.content_menu3_item3_text}" name="menu_3_item_3_name" style="width:100px" >
+                      链接<input type="input" class="px" id="menu_3_item_3_url" value="{ZF:$content.content_menu3_item3_link}" name="menu_3_item_3_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_3_item_3_url',0)" class="a_choose">从功能库添加</a><br />
+                四：类目 <input type="input" class="px" id="menu_3_item_4_name" value="{ZF:$content.content_menu3_item4_text}" name="menu_3_item_4_name" style="width:100px" >
+                       链接<input type="input" class="px" id="menu_3_item_4_url" value="{ZF:$content.content_menu3_item4_link}" name="menu_3_item_4_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_3_item_4_url',0)" class="a_choose">从功能库添加</a><br />
+                五：类目 <input type="input" class="px" id="menu_3_item_5_name" value="{ZF:$content.content_menu3_item5_text}" name="menu_3_item_5_name" style="width:100px" >
+                      链接<input type="input" class="px" id="menu_3_item_5_url" value="{ZF:$content.content_menu3_item5_link}" name="menu_3_item_5_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_3_item_5_url',0)" class="a_choose">从功能库添加</a><br />
+                六：类目 <input type="input" class="px" id="menu_3_item_6_name" value="{ZF:$content.content_menu3_item6_text}" name="menu_3_item_6_name" style="width:100px" >
+                       链接<input type="input" class="px" id="menu_3_item_6_url" value="{ZF:$content.content_menu3_item6_link}" name="menu_3_item_6_url" style="color:#666666;width:300px" >
+                   <a href="#" onclick="addLink('menu_3_item_6_url',0)" class="a_choose">从功能库添加</a><br />
+            </td>
+        </tr>
+        
+        <tr>
+        	<td><h3>中部橱窗商品推荐一</h3></td>
+            <td>
+                <span>* 点击"从商品库添加"可添加已有的商品，使其显示在首页的第一橱窗推荐栏目中，用户还可自由移除选中商品</span>
+            	<input type="text" id="adgoods_1_data" name="adgoods_1_data" readonly="readonly" value="{ZF:$content.content_goodslist1_ids}" style="display:none;">
+                <div style="margin-bottom:10px;"><a href="#" onclick="addGoods( 'adgoods_1_data', 'goodslist_1' )" class="a_choose">从商品库添加</a></div>
+                <div>
+                <iframe frameborder=0 name="goodslist_1" id="goodslist_1" src="{ZF::U('User/IndexContent/showgoods')}" width="800px" height="300px"></iframe>
+                </div>
+            </td>
+        </tr>
+        
+        <tr>
+        	<td><h3>中部橱窗商品推荐二</h3> </td>
+            <td>
+                <span>* 点击"从商品库添加"可添加已有的商品，使其显示在首页的第二橱窗推荐栏目中，用户还可自由移除选中商品</span>
+            	<input type="text" id="adgoods_2_data" name="adgoods_2_data" readonly="readonly" value="{ZF:$content.content_goodslist2_ids}"  style="display:none;">
+                <div style="margin-bottom:10px;"><a href="#" onclick="addGoods( 'adgoods_2_data','goodslist_2' )" class="a_choose">从商品库添加</a></div>
+                <div>
+                <iframe frameborder=0 name="goodslist_2" id="goodslist_2" src="{ZF::U('User/IndexContent/showgoods')}" width="800px" height="300px"></iframe>
+                </div>
+            </td>
+        </tr>
+        
+        <tr>
+        	<td><h3>中部橱窗商品推荐三</h3> </td>
+            <td>
+                <span>* 点击"从商品库添加"可添加已有的商品，使其显示在首页的第三橱窗推荐栏目中，用户还可自由移除选中商品</span>
+            	<input type="text" id="adgoods_3_data" name="adgoods_3_data" readonly="readonly" value="{ZF:$content.content_goodslist3_ids}"  style="display:none;">
+                <div style="margin-bottom:10px;"><a href="#" onclick="addGoods( 'adgoods_3_data','goodslist_3' )" class="a_choose">从商品库添加</a></div>
+                <div>
+                <iframe frameborder=0 name="goodslist_3" id="goodslist_3" src="{ZF::U('User/IndexContent/showgoods')}" width="800px" height="300px"></iframe>
+                </div>
+            </td>
+        </tr>
+        
+        <tr>
+        	<td><h3>中部橱窗商品推荐四</h3></td>
+            <td>
+                <span>* 点击"从商品库添加"可添加已有的商品，使其显示在首页的第四橱窗推荐栏目中，用户还可自由移除选中商品</span>
+            	<input type="text" id="adgoods_4_data" name="adgoods_4_data" readonly="readonly" value="{ZF:$content.content_goodslist4_ids}"  style="display:none;">
+                <div style="margin-bottom:10px;"><a href="#" onclick="addGoods( 'adgoods_4_data','goodslist_4' )" class="a_choose">从商品库添加</a></div>
+                <div>
+                <iframe frameborder=0 name="goodslist_4" id="goodslist_4" src="{ZF::U('User/IndexContent/showgoods')}" width="800px" height="300px"></iframe>
+                </div>
+            </td>
+        </tr>
+        
+        <tr>
+        	<td><h3>广告栏一</h3></td>
+            <td>
+            	<span>* 编辑广告栏的内容，会显示在首页的第一广告栏中</span>
+            	<textarea class="toedit" name="banner_1" id="banner_1"  rows="5" style="width:590px;height:360px">{ZF:$content.content_banner_1}</textarea>
+            </td>
+        </tr>
+        
+        <tr>
+        	<td><h3>广告栏二</h3></td>
+            <td>
+           		<span>* 编辑广告栏的内容，会显示在首页的第二广告栏中</span>
+            	<textarea class="toedit" name="banner_2" id="banner_2"  rows="5" style="width:590px;height:360px">{ZF:$content.content_banner_2}</textarea>
+            </td>
+        </tr>
+        
+        <tr>
+        	<td style="border:none;"><h3>广告栏三</h3></td>
+            <td style="border:none;">
+                <span>* 编辑广告栏的内容，会显示在首页的第三广告栏中</span>
+                <textarea class="toedit" name="banner_3" id="banner_3"  rows="5" style="width:590px;height:360px">{ZF:$content.content_banner_3}</textarea>
+            </td>
+        </tr>
+        
+        <tr>
+        	<td style="border:none;"></td>
+        	<td style="border:none;"><input type="submit" value="保存" class="btnGreen left" ></td>
+        </tr>
+    </table>
 </form>
 
 <script type="text/javascript">
