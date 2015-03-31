@@ -1266,9 +1266,12 @@ border: 0;cursor: pointer;display: inline-block;height: 61px;margin-top: 10px;ou
 
 .home-des-show .function{padding-bottom:20px;}
 
-.home-des-show .function .left span{font-size:18px;line-height:40px;}
+.home-des-show .function .left span{font-size:18px;line-height:35px;}
 
-.home-des-show .function .left span h3{font-size:30px;padding-bottom:10px; padding-top:80px;}
+.home-des-show .function .left span h3{font-size:30px;padding-bottom:10px;color:#009933;}
+
+.home-des-show .function .left span li strong{color:#009933;padding-right:5px;}
+
 
 .home-des-show .function .left{width:48%;float:left;}
 
@@ -1276,7 +1279,15 @@ border: 0;cursor: pointer;display: inline-block;height: 61px;margin-top: 10px;ou
 
 .home-des-show .function .right span{font-size:18px;line-height:40px;}
 
-.home-des-show .function .right span h3{font-size:30px;padding-bottom:10px;padding-top:80px;}
+.home-des-show .function .right span h3{font-size:30px;padding-bottom:10px;padding-top:80px;color:#009933;}
+
+.home-des-show .function  span ul{padding-top:20px;}
+
+.home-des-show .function  span li{list-style:none;font-size:16px;}
+
+.home-des-show .function span .des_content{padding-left:1em;color:#666;}
+
+.home-des-show .function .right span li strong{color:#009933;padding-right:5px;}
 
 .home-des-show .function .left{width:48%;float:left;}
 

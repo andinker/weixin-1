@@ -22,10 +22,10 @@
 <link rel="shortcut icon" href="{ZF::RES}/images/favicon.ico" />
 </head>
 <div class="nav clearfix" style="position: fixed;">
-	<div class="container">
+	<div class="container" style="width:1200px;">
     	<h1 class="left" href="{ZF::C('site_url')}">{ZF::C('site_name')}</h1>
     	<div class="right line-li">
-
+			<ul>
 				<li><a href="{ZF::C('site_url')}" >首页</a></li>
 
                 <li><a href="{ZF::U('Home/Index/fc')}">功能介绍</a></li>
@@ -48,7 +48,7 @@
 
                 <li <eq name="ACTION_NAME" value="help">class="menuon"</eq>><a href="{ZF::U('Home/Index/help')}">帮助中心</a></li>
 
-
+			</li>
 		</div>
     </div>
 </div>
@@ -85,8 +85,14 @@ $("#banner").carousel({items: [
             <div class=" row function">
             	<div class="col-md-6 left">
                 	<span>
-                		<h3>物业服务</h3>
-							我的小区提供给物业专有的特色功能，物业可通过微信方便地组织小区活动，也可在微信端发布小区公告，办事指南以及上传小区住户的物业费用等来高效率地管理业主，提高物业的服务水平，轻松实现微信物业，引导物业全面进入“微物业”时代。    	
+                		<h3>你了解你的小区吗？</h3>
+							<p>在小区住这么久了，对于小区的服务你都了解吗？</p>
+                            <p>现在，只需在我的小区平台注册一个帐号，你就可以享受以下种种服务：</p>
+                        <ul >
+                            <li class="des_content"><strong>1.</strong>业主可通过我的小区平台进行资讯查看，自助报修、意见反馈、物业费用查询等服务</li>
+                            <li class="des_content"><strong>2.</strong>业主可以在小区内拓展自己的交际生活圈，也可以对自己闲置的物品进行小区二手买卖，上下班出行还可参与拼车服务等</li>
+                            <li class="des_content"><strong>3.</strong>业主可在我的小区平台发现各式各样的店铺，了解到商家发布的最新信息，也可在线购买小区商家的物品</li> 
+                        </ul>	
                     </span>
                 </div>
                 <div class="col-md-6 right">
@@ -100,8 +106,11 @@ $("#banner").carousel({items: [
                 </div>
                 <div class="col-md-6 right">
                 	<span>
-                		<h3>业主互动</h3>
-							我的小区为小区业主提供的多种互动功能，业主可以在微信端进行自助报修、意见反馈、物业费用查询等，业主也可以快速查找小区周边服务信息，轻松进行在线交易，我的小区还为小区提供了专门的社区模块，帮助业主快速建立自己的网上家园。                	
+                		<h3>商家服务</h3>
+                        <ul>
+                            <li><strong>1.</strong>商家可了解自己小区内部商家以及其他小区商家的最新动态，关注网站最新信息</li>
+                            <li><strong>2.</strong>商家可在我的小区平台开店，自由发布自己的促销产品，方便业主快速了解商家店铺的最新动态</li>
+                        </ul>
                     </span>
                 </div>
              </div>
@@ -109,8 +118,13 @@ $("#banner").carousel({items: [
             <div class=" row function">
             	<div class="col-md-6 left">
                 	<span>
-                		<h3>商家服务</h3>
-							我的小区为商家提供新的营销模式，小区商家可通过微信在线方便快速地展示自己的店铺信息和各类促销产品，以最快的速度展示在业主面前。引导物业全面进入“微物业”时代。    	
+                		<h3 style="margin-top:30px; ">物业管理</h3>
+                        <ul style="line-height:40px;">
+                            <li><strong>1.</strong>物业可以通过我的小区平台组织小区活动，供业主积极报名参与</li>
+                            <li><strong>2.</strong>物业可在我的小区平台发布小区公告，办事指南，迅速发布物业信息</li>
+                            <li><strong>3.</strong>物业可上传小区住户的物业费用来高效率地管理业主，方便业主查询</li>
+                            <li><strong>4.</strong>物业还可在我的小区平台开设小区便利店，服务小区业主，实现物业盈利</li>  
+                        </ul>                         
                     </span>
                 </div>
                 <div class="col-md-6 right">
@@ -118,40 +132,40 @@ $("#banner").carousel({items: [
                 </div>
             </div>
             <div class="block"></div>
-            <div class="row">
+         <!-- <div class="row">
             	<div class="col-md-12">
                     <h2>我的小区如何让物业公司赢利？</h2>
                     <div class="block"></div>
                     <div class="line"></div>
                 </div>
                 <div class="col-md-12"><img src="{ZF::RES}/images/xiaoqu.png"/></div>
-            </div>
-            <div class="block"></div>
-            <div class="line"></div>
-        	<div class="row">
+            </div>-->
+           
+        	<!-- <div class="row">
             	<div class="col-md-3">
-                	<span class="words">真没想到有这样的网站专门为我们物业公司服务，之前就开通了微信公众平台，但是不太懂，不知道怎么运营，用我的小区来管理运营就方便的多了，我的小区确实是我们管理小区的好助手。</span>
+                	<span class="words">入驻了我的小区之后，我在小区的顾客是越来越多了，之前因为店铺铺位不明显，导致很多业主都没看到我的店铺，现在在我的小区上面，大家都能在网站看到我们店铺的信息，生意也是越来越好了。</span>
                     <div class="block"></div>
-                    <span class="author">— <span class="glyphicon glyphicon-user" style="padding-left:5px;padding-right:5px;"></span>中天物业-任经理</span>
+                    <span class="author">— <span class="glyphicon glyphicon-user" style="padding-left:5px;padding-right:5px;"></span>金碧新城-徐店主</span>
                 </div>
                 <div class="col-md-3">
-                	<span class="words">开通了我的小区以后，业主反应比较好，提升了我们公司的形象，这点很不错。而且我的小区还是免费的，没什么门槛，这点也不错。希望和我的小区能长期合作，互利共赢。</span>
-                    <div class="block"></div>
-                    <span class="author">— <span class="glyphicon glyphicon-user" style="padding-left:5px;padding-right:5px;"></span>佳信和物业-徐经理</span>
-                </div>
-                <div class="col-md-3">
-                	<span class="words">我的小区的模式之前有考虑过，也咨询了一些软件公司，开发一套需要不少钱，也就放弃了。现在我的小区免费给我们物业公司使用，确实能解决我们的大问题，非常感谢我的小区，希望你们能越做越好。</span>
-                    <div class="block"></div>
-                    <span class="author">— <span class="glyphicon glyphicon-user" style="padding-left:5px;padding-right:5px;"></span>华强物业-刘经理</span>
-                </div>
-                <div class="col-md-3">
-                	<span class="words">我的小区平台真心不错，以前小区内有什么通知都需要挨家挨户过来咨询，现在一句公告添加到我的小区上去，整个小区的业主都知道了，很方便我们物业管理小区。</span>
+                	<span class="words">开通了我的小区以后，业主反应比较好，以前小区内有什么通知都需要挨家挨户过来咨询，现在一句公告添加到我的小区上去，整个小区的业主都知道了，消息传播得很快，很方便。</span>
                     <div class="block"></div>
                     <span class="author">— <span class="glyphicon glyphicon-user" style="padding-left:5px;padding-right:5px;"></span>金碧物业-黄经理</span>
                 </div>
+                <div class="col-md-3">
+                	<span class="words">自从加入了我的小区之后，经常能看到小区的最新动态，现在需要什么都可以直接上网预定，不需要走到小区店铺也可以买到想要的东西，也因为我的小区平台，我现在认识了很多邻居呢！</span>
+                    <div class="block"></div>
+                    <span class="author">— <span class="glyphicon glyphicon-user" style="padding-left:5px;padding-right:5px;"></span>金碧新城-朱小姐</span>
+                </div>
+                <div class="col-md-3">
+                	<span class="words">我的小区平台真心不错，以前小区很少组织一些集体活动的，因为小区人多，很难去组织，现在小区里面多了好多集体活动，都在我的小区里面能看到，想参加直接报名就可以了。</span>
+                    <div class="block"></div>
+                    <span class="author">— <span class="glyphicon glyphicon-user" style="padding-left:5px;padding-right:5px;"></span>金碧新城-黄先生</span>
+                </div>
            		<div class="block"></div>
-            </div>
+            </div>  -->
 		</div>
+
 		<!--产品结束-->  	
           <!--主要功能开始-->
 		<div class="gongneng" id="container">
