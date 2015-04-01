@@ -18,7 +18,7 @@
 #home .welcome div{float:left; width:130px; height:30px; background:url(../images/account/welcome.png) left 0 no-repeat;}
 #home .welcome span{display:block; height:30px; line-height:36px; font-size:24px; color:#5F8E24;}
 #home .info{margin-top:10px; width:1000px;}
-#home .info .member{width:363px; height:149px; padding:15px; background:url(../images/account/member-info-bg.png); float:left;}
+#home .info .member{ height:149px; background:url(../images/account/member-info-bg.png); float:left;}
 #home .info .face{width:116px; height:116px; float:left;}
 #home .info .info_list{width:235px; float:left; overflow:hidden; margin-left:12px; margin-top:-9px;}
 #home .info .info_list li{height:32px; line-height:32px; overflow:hidden; color:#fff; white-space:nowrap; text-overflow:ellipsis; font-size:12px;}
