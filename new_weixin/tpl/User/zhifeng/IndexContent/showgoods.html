@@ -10,31 +10,38 @@
 
 
 
-
-<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="80%">
-<thead>
-<tr>
-<th>名称</th>
-<th width="50">价格</th>
-<th width="50">会员价</th>
-<th width="50">分类</th>
-<th width="50" class="norightborder">操作</th>
-</tr>
-</thead>
-<tbody style="text-align:center;">
-<volist name="list" id="hostlist"> 
-<tr id="tr_{ZF:$hostlist.id}">
-
-<td><div class="cateimg"><if condition="$hostlist['logourl']"><img src="{ZF:$hostlist.logourl}" class="cateimg_big2"><img src="{ZF:$hostlist.logourl}" width="48" style="vertical-align:middle;"/></if> {ZF:$hostlist.name}</div></td>
-<td>{ZF:$hostlist.price}元</td>
-<td>{ZF:$hostlist.vprice}元</td>
-<td><a href="{ZF::U('index',array('catid'=>$hostlist['catid'],'token'=>$token))}">{ZF:$hostlist.catname}</a></td>
-
-<td class="norightborder"><a href="javascript:deleteGoods({ZF:$hostlist.id})">移除</a></td>
-</tr>
-</volist>
-</tbody>
-</table>
+<notempty name="list">
+    <table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="80%">
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th width="50">价格</th>
+                <th width="50">会员价</th>
+                <th width="50">分类</th>
+                <th width="50" class="norightborder">操作</th>
+            </tr>
+        </thead>
+    
+        <tbody style="text-align:center;">
+            <volist name="list" id="hostlist"> 
+                <tr id="tr_{ZF:$hostlist.id}">
+                
+                    <td><div class="cateimg"><if condition="$hostlist['logourl']"><img src="{ZF:$hostlist.logourl}" class="cateimg_big2"><img src="{ZF:$hostlist.logourl}" width="48" style="vertical-align:middle;"/></if> {ZF:$hostlist.name}</div></td>
+                    <td>{ZF:$hostlist.price}元</td>
+                    <td>{ZF:$hostlist.vprice}元</td>
+                    <td><a href="{ZF::U('index',array('catid'=>$hostlist['catid'],'token'=>$token))}">{ZF:$hostlist.catname}</a></td>
+                    
+                    <td class="norightborder"><a href="javascript:deleteGoods({ZF:$hostlist.id})">移除</a></td>
+                </tr>
+            </volist>
+        </tbody>
+    </table>
+    
+<else/>
+	<div class="alert" style="font-size:24px;color:#999999; height:180px;text-align:center;padding:80px 20px 30px 20px; ">
+    	<p>此模块暂时还没有橱窗推荐</p><p>请点击“从商品库添加”进行橱窗商品的添加</p>
+    </div>
+</notempty>
 
 <script type="text/javascript">
 //数组去重复方法

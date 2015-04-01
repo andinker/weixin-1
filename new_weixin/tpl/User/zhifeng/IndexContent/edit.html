@@ -59,7 +59,7 @@ items : [
         	<td><h3>中部自定义菜单一</h3></td>
             <td>
                 <span>* 添加的菜单标题与类目会在首页第二橱窗推荐中的菜单栏显示，点击"从功能库添加"还可添加一些已有的类目</span><br />
-            	<strong>菜单标题：</strong><input type="input" class="px" id="menu_1_name" value="{ZF:$content.content_menu1_title}" name="menu_1_name" style="width:200px" ><br>
+            	<strong>菜单标题：</strong><input type="input" class="px" id="menu_1_name" value="{ZF:$content.content_menu1_title}" name="menu_1_name" style="width:200px" ><span style="padding-left:20px;">* 菜单标题必须填写，该菜单才能在首页菜单栏显示</span><br>
                 一：类目 <input type="input" class="px" id="menu_1_item_1_name" value="{ZF:$content.content_menu1_item1_text}" name="menu_1_item_1_name" style="width:100px"  />
                         链接<input type="input" class="px" id="menu_1_item_1_url" value="{ZF:$content.content_menu1_item1_link}" name="menu_1_item_1_url" style="color:#666666;width:300px" >
                    <a href="#" onclick="addLink('menu_1_item_1_url',0)" class="a_choose">从功能库添加</a><br />
@@ -85,7 +85,7 @@ items : [
         	<td><h3>中部自定义菜单二</h3></td>
             <td>
                 <span>* 添加的菜单标题与类目会在首页第三橱窗推荐中的菜单栏显示，点击"从功能库添加"还可添加一些已有的类目</span><br />
-                <strong>菜单标题：</strong><input type="input" class="px" id="menu_2_name" value="{ZF:$content.content_menu2_title}" name="menu_2_name" style="width:200px" ><br>
+                <strong>菜单标题：</strong><input type="input" class="px" id="menu_2_name" value="{ZF:$content.content_menu2_title}" name="menu_2_name" style="width:200px" ><span style="padding-left:20px;">* 菜单标题必须填写，该菜单才能在首页菜单栏显示</span><br>
                 一：类目 <input type="input" class="px" id="menu_2_item_1_name" value="{ZF:$content.content_menu2_item1_text}" name="menu_2_item_1_name" style="width:100px" >
                         链接<input type="input" class="px" id="menu_2_item_1_url" value="{ZF:$content.content_menu2_item1_link}" name="menu_2_item_1_url" style="color:#666666;width:300px" >
                    <a href="#" onclick="addLink('menu_2_item_1_url',0)" class="a_choose">从功能库添加</a><br />
@@ -111,7 +111,7 @@ items : [
         	<td><h3>中部自定义菜单三</h3></td>
             <td>
                 <span>* 添加的菜单标题与类目会在首页第四橱窗推荐中的菜单栏显示，点击"从功能库添加"还可添加一些已有的类目</span><br />
-            	<strong>菜单标题：</strong><input type="input" class="px" id="menu_3_name" value="{ZF:$content.content_menu3_title}" name="menu_3_name" style="width:200px" ><br>
+            	<strong>菜单标题：</strong><input type="input" class="px" id="menu_3_name" value="{ZF:$content.content_menu3_title}" name="menu_3_name" style="width:200px" ><span style="padding-left:20px;">* 菜单标题必须填写，该菜单才能在首页菜单栏显示</span><br>
                 一：类目 <input type="input" class="px" id="menu_3_item_1_name" value="{ZF:$content.content_menu3_item1_text}" name="menu_3_item_1_name" style="width:100px" >
                         链接<input type="input" class="px" id="menu_3_item_1_url" value="{ZF:$content.content_menu3_item1_link}" name="menu_3_item_1_url" style="color:#666666;width:300px;" >
                    <a href="#" onclick="addLink('menu_3_item_1_url',0)" class="a_choose">从功能库添加</a><br />
@@ -140,7 +140,7 @@ items : [
             	<input type="text" id="adgoods_1_data" name="adgoods_1_data" readonly="readonly" value="{ZF:$content.content_goodslist1_ids}" style="display:none;">
                 <div style="margin-bottom:10px;"><a href="#" onclick="addGoods( 'adgoods_1_data', 'goodslist_1' )" class="a_choose">从商品库添加</a></div>
                 <div>
-                <iframe frameborder=0 name="goodslist_1" id="goodslist_1" src="{ZF::U('User/IndexContent/showgoods')}" width="800px" height="300px"></iframe>
+                <iframe  name="goodslist_1" id="goodslist_1" src="{ZF::U('User/IndexContent/showgoods')}" width="800px" height="300px" style="border:1px solid #CCCCCC;"></iframe>
                 </div>
             </td>
         </tr>
@@ -152,7 +152,7 @@ items : [
             	<input type="text" id="adgoods_2_data" name="adgoods_2_data" readonly="readonly" value="{ZF:$content.content_goodslist2_ids}"  style="display:none;">
                 <div style="margin-bottom:10px;"><a href="#" onclick="addGoods( 'adgoods_2_data','goodslist_2' )" class="a_choose">从商品库添加</a></div>
                 <div>
-                <iframe frameborder=0 name="goodslist_2" id="goodslist_2" src="{ZF::U('User/IndexContent/showgoods')}" width="800px" height="300px"></iframe>
+                <iframe  name="goodslist_2" id="goodslist_2" src="{ZF::U('User/IndexContent/showgoods')}" width="800px" height="300px" style="border:1px solid #CCCCCC;"></iframe>
                 </div>
             </td>
         </tr>
@@ -164,7 +164,7 @@ items : [
             	<input type="text" id="adgoods_3_data" name="adgoods_3_data" readonly="readonly" value="{ZF:$content.content_goodslist3_ids}"  style="display:none;">
                 <div style="margin-bottom:10px;"><a href="#" onclick="addGoods( 'adgoods_3_data','goodslist_3' )" class="a_choose">从商品库添加</a></div>
                 <div>
-                <iframe frameborder=0 name="goodslist_3" id="goodslist_3" src="{ZF::U('User/IndexContent/showgoods')}" width="800px" height="300px"></iframe>
+                <iframe  name="goodslist_3" id="goodslist_3" src="{ZF::U('User/IndexContent/showgoods')}" width="800px" height="300px"  style="border:1px solid #CCCCCC;"></iframe>
                 </div>
             </td>
         </tr>
@@ -176,7 +176,7 @@ items : [
             	<input type="text" id="adgoods_4_data" name="adgoods_4_data" readonly="readonly" value="{ZF:$content.content_goodslist4_ids}"  style="display:none;">
                 <div style="margin-bottom:10px;"><a href="#" onclick="addGoods( 'adgoods_4_data','goodslist_4' )" class="a_choose">从商品库添加</a></div>
                 <div>
-                <iframe frameborder=0 name="goodslist_4" id="goodslist_4" src="{ZF::U('User/IndexContent/showgoods')}" width="800px" height="300px"></iframe>
+                <iframe  name="goodslist_4" id="goodslist_4" src="{ZF::U('User/IndexContent/showgoods')}" width="800px" height="300px"  style="border:1px solid #CCCCCC;"></iframe>
                 </div>
             </td>
         </tr>

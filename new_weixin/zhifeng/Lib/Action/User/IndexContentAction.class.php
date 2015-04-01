@@ -159,6 +159,7 @@ class IndexContentAction extends UserAction{
 
 			$count      = $product_model->where($where)->count();
 			$Page       = new Page($count,20);
+			$Page->setConfig('theme','<span style="font-size:16px;">共 %totalRow% %header% %first% %prePage% %upPage% <span style="color:red;">%linkPage%</span> %downPage% %nextPage% %end% 第 %nowPage% 页/共 %totalPage% 页</span>');
 			$show       = $Page->show();
 			$list = $product_model->where($where)->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
 
