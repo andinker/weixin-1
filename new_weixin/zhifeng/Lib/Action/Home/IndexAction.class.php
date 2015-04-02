@@ -60,4 +60,21 @@ class IndexAction extends BaseAction{
 				$this->error('校验码不正确，请重试！',U('Index/index'));
 			}
 	**/
+	
+	public function reg() {
+		
+		//读取省、市、区、小区数据表进行显示
+		$where = array('status'=>1);
+		$province_data 	= M('region_province')->where($where)->select();
+		$city_data     	= M('region_city')->where($where)->select();
+		$district_data 	= M('region_district')->where($where)->select();
+		$community_data = M('region_community')->where($where)->select(); 
+		
+		$this->assign('province_data'	,$province_data);
+		$this->assign('city_data'		,$city_data);
+		$this->assign('district_data'	,$district_data);
+		$this->assign('community_data'	,$community_data);
+		
+		$this->display(); 
+	}
 }
