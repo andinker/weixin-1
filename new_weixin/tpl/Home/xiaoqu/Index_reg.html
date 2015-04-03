@@ -11,6 +11,11 @@
 <script type="text/javascript" src="{ZF::RES}/js/jQuery.js"></script>
 <script type="text/javascript" src="{ZF::RES}/js/weimob-index.js"></script>
 <link rel="shortcut icon" href="{ZF::RES}/images/favicon.ico" />
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+<style type="text/css">
+.control-group .controls select {height: 35px; line-height:25px; width: 180px;}
+</style>
 </head>
 <include file="Public:header"/>
 <div class="Public-content clearfix">
@@ -41,6 +46,140 @@
 		      <input type="password" name="repassword" id="repassword" onClick="javascript:_gaq.push(['_trackPageview','/home/reg/virtual/Password']);">
 		    </div>
 		  </div>		  
+
+
+
+		  <div class="control-group">
+		    <label class="control-label" for="username">帐号类型</label>
+		    <div class="controls" >
+	                       <select class="region_ctrl" name="account_type">
+		                           <option value="0">商家号</option>
+		                           <option value="1">小区号</option>
+		                   </select>
+		      <span class="maroon">*</span><span class="help-inline">请选择</span>
+		    </div>
+		  </div>
+		  
+
+		  <div class="control-group">
+		    <label class="control-label" for="username">所在小区</label>
+		    <div class="controls" >
+		      
+                                                                   
+	                   <select class="region_ctrl" name="province" id="province" onchange="items_filter(this)">
+ 
+	                   </select>省
+	                   <span onclick="addItem( '添加省份','province', 0 );">没有找到我的省份？</span>
+	                   <br/>
+	                   
+	                   <select class="region_ctrl" name="city" id="city" onchange="items_filter(this)">
+
+	                   </select>市
+	                   <span onclick="addItem( '添加城市','city', $('#province').val() );">没有找到我的城市？</span>
+	                   <br/>
+	                   
+	                   <select class="region_ctrl" name="district" id="district" onchange="items_filter(this)">
+
+	                   </select>区
+	                   <span onclick="addItem( '添加政区','district', $('#city').val() );">没有找到我的政区？</span>
+	                   <br/>
+	                   
+	                   <select class="region_ctrl" name="community" id="community">
+
+	                   </select>社区 
+	                   <span onclick="addItem( '添加社区','community', $('#district').val() );">没有找到我的社区？</span>
+	                   <br/>
+	                   
+                  		
+
+		      <span class="maroon">*</span><span class="help-inline">请选择</span>
+		    </div>
+		  </div>
+
+
+<script type="text/javascript">
+
+
+	var data = {province:{ZF::json_encode($province_data)},
+			city:{ZF::json_encode($city_data)},
+			district:{ZF::json_encode($district_data)},
+			community:{ZF::json_encode($community_data)}}
+
+
+
+function items_filter( select ){
+	
+	var autoload_select_id = null;
+	var autoload_data = null;
+	
+	switch ($(select).attr("id")){
+		case "province":
+			autoload_select_id = "city";
+			autoload_data = data.city;
+			break;
+		case "city":
+			autoload_select_id = "district";
+			autoload_data = data.district;
+			break;	
+		case "district":
+			autoload_select_id = "community";
+			autoload_data = data.community;
+			break;
+	}
+	
+	$("#"+autoload_select_id).empty();
+	$(autoload_data).each(function (i){
+		
+		var p_id = null;
+		switch ($(select).attr("id")){
+			case "province":
+				p_id = this.province_id;
+				break;
+			case "city":
+				p_id = this.city_id;
+				break;	
+			case "district":
+				p_id = this.district_id;
+				break;
+		}
+		
+		if ( $(select).find("option:selected").val() == p_id ) 
+		$("#"+autoload_select_id).append("<option value='"+this.id+"'>"+this.name+"</option>");
+		
+	});
+	
+	if (autoload_select_id != "community")
+	items_filter( $("#"+autoload_select_id)[0] );
+	
+}
+
+// 区域数据 初始化显示
+$(data.province).each(function (i){
+	$("#province").append("<option value='"+this.id+"'>"+this.name+"</option>");
+});
+
+$("#province").change();
+
+
+
+
+function addItem( title,type, p_id ){
+
+	//art.dialog.data('goodslist_id',goodslist_id);
+	//art.dialog.data('call_back',call_back);
+	art.dialog.open('{ZF::U('Home/Region/addregionitem')}&type='+type+'&pid='+p_id, {
+		title: title,
+		width: '50%',
+	    height: '50%',
+	    left: '50%',
+	    top: '50%',
+	    fixed: true,
+	    resize: false,
+	    drag: false});
+}
+</script>
+
+
 		  <if condition="C('reg_needmp')">
 		   <div class="control-group">
 		    <label class="control-label" for="tel">手机号</label>

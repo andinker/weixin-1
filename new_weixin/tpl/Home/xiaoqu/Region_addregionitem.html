@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>添加区域项</title>
+<!-- Bootstrap CDN -->
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script> 
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.css">
+<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+ 
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+ 
+</head>
+<body>
+
+<form method="post">
+
+<!-- 输出父项名称 -->
+<php>
+function mymymy($value){
+
+    if ( (!empty($_GET['pid'])) && (intval($value['id']) == intval($_GET['pid'])) ) return " selected='selected'";
+
+
+}
+</php>
+你已选择的
+<notempty name="p_items">
+		<switch name="type">
+		    <case value="province"></case>
+		    <case value="city">省份</case>
+		    <case value="district">城市</case>
+		    <case value="community">政区</case>
+		</switch>
+		是：
+		<input type="hidden" readonly="readonly" name="p_item" value="{ZF:$Think.get.pid}">
+		<select name="_p_item" disabled="disabled">
+			<volist name="p_items" id="vo">
+			  	<option value="{ZF:$vo.id}"{ZF::mymymy($vo)}>{ZF:$vo.name}</option>
+			 </volist>
+		</select>
+		
+		<br>
+</notempty>
+
+
+
+
+<!-- 输出本级未审核数据，以及新建项控件 -->
+<if condition="($p_items neq NULL) OR (($p_items eq NULL) AND ($type eq 'province'))">
+
+先在这里找找有没有你想要的
+	<switch name="type">
+	    <case value="province">省份</case>
+	    <case value="city">城市</case>
+	    <case value="district">政区</case>
+	    <case value="community">小区</case>
+	</switch>:<br>
+
+    <!-- 输出已有的未审核数据 -->
+	<select name="preItems" id="preItems">
+		<volist name="preItems" id="vo">
+		  	<option value="{ZF:$vo.id}">{ZF:$vo.name}</option>
+		 </volist>
+	</select>
+	<input type="button" onclick="choose()" value="选择"><br><br><br><br>
+	<div>
+            仍然找不到？那么自己动手输入一个吧：
+	<input type="text" name="new_item_name" value="">
+	<input type="submit" value="添加">
+	</div>
+
+<else />
+	对不起，你要添加的项必须选择父项，但是该父项级还没有数据可供选择，请先添加父项级数据！
+</if>
+
+</form>
+
+
+<script type="text/javascript">
+function choose(){
+	
+	//获取已选项
+	var choose_item = $("#preItems option:selected")[0];
+	
+	var win = art.dialog.top;
+	var options = $(win.document.getElementById('{ZF:$type}')).find("option");
+	
+	var haved = false;
+	
+	//检查列表中是否已经添加
+	options.each(function (i){
+		
+		if (this.value == choose_item.value){
+			haved = true;
+			this.selected = true;
+		}
+		
+	});
+	var new_item = $(choose_item).clone();
+	if (!haved) $(win.document.getElementById('{ZF:$type}')).append(new_item);
+	new_item.get(0).selected = true;
+	
+	$(win.document.getElementById('{ZF:$type}')).change();
+	
+	art.dialog.close();
+}
+</script>
+
+
+</body>
+</html>
