@@ -40,13 +40,15 @@
 </div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="alist">
 	  <tr>
-		<td width="70">ID</td>
+		<td width="60">ID</td>
 		<td width="150">用户名称</td>
-		<td width="150">角色组</td>
-		<td width="150">QQ</td>
-		<td width="150">手机号</td>
+		<td width="80">角色组</td>
+		<td width="80">QQ</td>
+		<td width="80">手机号</td>
 		<td width="100">最后登录IP</td>
 		<td width="150">最后登录时间</td>
+		<td width="300">区域</td>
+		<td width="70">类型</td>
 		<td width="70">状态</td>
 		<td width="100">管理操作</td>
 	  </tr>
@@ -59,6 +61,72 @@
 				<td >{ZF:$vo.tel}</td>
 				<td align='center'>{ZF:$vo.lastip}</td>
 				<td align='center'><php>echo date('Y-m-d H:i:s', $vo['lasttime'])</php></td>
+				<td align='center'>
+				    <php>
+					    foreach ($community_data as $k=>$v){
+					        if ($v['id'] == $vo['community_id']){
+					        
+							    foreach ($district_data as $k2=>$v2){
+							        if ($v2['id'] == $v['district_id']){
+							        
+									    foreach ($city_data as $k3=>$v3){
+									        if ($v3['id'] == $v2['city_id']){
+									        
+											    foreach ($province_data as $k4=>$v4){
+											        if ($v4['id'] == $v3['province_id'])
+											        echo $v4['name'];
+											    }
+									        
+									        }
+									    }
+							        
+							        }
+							    }
+							    
+					        }
+					    }
+				    </php>省
+				    <php>
+					    foreach ($community_data as $k=>$v){
+					        if ($v['id'] == $vo['community_id']){
+					        
+							    foreach ($district_data as $k2=>$v2){
+							        if ($v2['id'] == $v['district_id']){
+							        
+									    foreach ($city_data as $k3=>$v3){
+									        if ($v3['id'] == $v2['city_id'])
+									        echo $v3['name'];
+									    }
+							        
+							        }
+							    }
+							    
+					        }
+					    }
+				    </php>市
+				    <php>
+					    foreach ($community_data as $k=>$v){
+					        if ($v['id'] == $vo['community_id']){
+					        
+							    foreach ($district_data as $k2=>$v2){
+							        if ($v2['id'] == $v['district_id'])
+							        echo $v2['name'];
+							    }
+							    
+					        }
+					    }
+				    </php>区
+				    <php>
+
+					    foreach ($community_data as $k=>$v){
+					        if ($v['id'] == $vo['community_id'])
+					        echo $v['name'];
+					    }
+				    </php>
+				</td>
+				<td align='center'>
+				    <eq name="vo.account_type" value="1"><font color="red"><strong>小区号</strong></font><else/><font color="blue">商家号</font></eq> 
+				</td>
 				<td align='center'><eq name="vo.status" value="1"><font color="red">√</font><else/><font color="blue">×</font></eq> 
 				</td>
 				<td align='center'>

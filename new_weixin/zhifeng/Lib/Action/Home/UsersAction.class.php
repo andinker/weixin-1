@@ -57,9 +57,14 @@ class UsersAction extends BaseAction{
 	public function checkreg(){
 		$db=D('Users');
 		if($db->create()){
+			/*echo '<pre>';
+			print_r($_POST);
+			print_r($db->data());
+			echo '</pre>';
+			exit();*/
 			$id=$db->add();
 			if($id){				
-				if(C('ischeckuser')!='true'){
+				if(C('ischeckuser')!='true' || intval($_POST['account_type']) == 1){
 					$this->success('注册成功,请联系在线客服审核帐号',U('User/Index/index'));exit;
 				}
 				$gid=intval(C('reg_groupid'))?intval(C('reg_groupid')):1;

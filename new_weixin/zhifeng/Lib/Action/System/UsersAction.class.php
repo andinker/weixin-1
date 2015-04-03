@@ -1,6 +1,19 @@
 <?php
 class UsersAction extends BackAction{
 	public function index(){
+		
+		//读取省、市、区、小区数据表进行显示
+		$where = array();
+		$province_data 	= M('region_province')->where($where)->select();
+		$city_data     	= M('region_city')->where($where)->select();
+		$district_data 	= M('region_district')->where($where)->select();
+		$community_data = M('region_community')->where($where)->select();
+
+		$this->assign('province_data'	,$province_data);
+		$this->assign('city_data'		,$city_data);
+		$this->assign('district_data'	,$district_data);
+		$this->assign('community_data'	,$community_data);
+		
 		$db=D('Users');
 		$group=M('User_group')->field('id,name')->order('id desc')->select();
 		$count= $db->count();
@@ -19,6 +32,20 @@ class UsersAction extends BackAction{
 	
 	// 添加用户
     public function add(){
+    	
+    	//读取省、市、区、小区数据表进行显示
+    	$where = array();
+    	$province_data 	= M('region_province')->where($where)->select();
+    	$city_data     	= M('region_city')->where($where)->select();
+    	$district_data 	= M('region_district')->where($where)->select();
+    	$community_data = M('region_community')->where($where)->select();
+    	
+    	$this->assign('province_data'	,$province_data);
+    	$this->assign('city_data'		,$city_data);
+    	$this->assign('district_data'	,$district_data);
+    	$this->assign('community_data'	,$community_data);
+    	
+    	
         $UserDB = D("Users");
         if(isset($_POST['dosubmit'])) {
             $password = $_POST['password'];
@@ -69,7 +96,20 @@ class UsersAction extends BackAction{
 	}
     // 编辑用户
     public function edit(){
-         $UserDB = D("Users");
+
+    	//读取省、市、区、小区数据表进行显示
+    	$where = array();
+    	$province_data 	= M('region_province')->where($where)->select();
+    	$city_data     	= M('region_city')->where($where)->select();
+    	$district_data 	= M('region_district')->where($where)->select();
+    	$community_data = M('region_community')->where($where)->select();
+    	
+    	$this->assign('province_data'	,$province_data);
+    	$this->assign('city_data'		,$city_data);
+    	$this->assign('district_data'	,$district_data);
+    	$this->assign('community_data'	,$community_data);
+    	
+    	$UserDB = D("Users");
         if(isset($_POST['dosubmit'])) {
             $password = $this->_post('password','trim',0);
             $repassword = $this->_post('repassword','trim',0);
@@ -87,6 +127,7 @@ class UsersAction extends BackAction{
 			unset($_POST['__hash__']);
             //根据表单提交的POST数据创建数据对象
 				$_POST['viptime']=strtotime($_POST['viptime']);
+				$_POST['community_id'] = $_POST['community'];
                 if($UserDB->save($_POST)){
 					if($_POST['gid']!=$users['gid']){
 						$fun=M('Function')->field('funname,gid,isserve')->where('`gid` <= '.$_POST['gid'])->select();
@@ -104,9 +145,14 @@ class UsersAction extends BackAction{
 							}
 						}
 					}
-                    $this->success('编辑成功！',U('Users/index'));
+                    $this->success('编辑成功！',U('Users/edit',array('id'=>$_POST['id'])));
                 }else{
-                     $this->error('编辑失败!');
+                	echo '<pre>';
+                	print($UserDB->getLastSql());
+                	print_r($UserDB->data());
+                	print_r($_POST);echo '</pre>';
+                	exit();
+                     $this->error('编辑失败：'.$UserDB->getError(),U('Users/edit',array('id'=>$_POST['id'])));
                 }
             
         }else{
@@ -153,5 +199,19 @@ class UsersAction extends BackAction{
         }else{
             $this->error('删除失败!');
         }
+    }
+
+    public function getRegions() {
+    	//读取省、市、区、小区数据表进行显示
+    	$where = array();
+    	$province_data 	= M('region_province')->where($where)->select();
+    	$city_data     	= M('region_city')->where($where)->select();
+    	$district_data 	= M('region_district')->where($where)->select();
+    	$community_data = M('region_community')->where($where)->select();
+    	
+    	$this->assign('province_data'	,$province_data);
+    	$this->assign('city_data'		,$city_data);
+    	$this->assign('district_data'	,$district_data);
+    	$this->assign('community_data'	,$community_data);
     }
 }

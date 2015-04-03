@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>这里管理还没有审核的区域项</title>
+</head>
+<body>
+
+<ul>
+    <li><a href="{ZF::U('System/Region/index',array('type'=>'province'))}">省份</a></li>
+    <li><a href="{ZF::U('System/Region/index',array('type'=>'city'))}">城市</a></li>
+    <li><a href="{ZF::U('System/Region/index',array('type'=>'district'))}">政区</a></li>
+    <li><a href="{ZF::U('System/Region/index',array('type'=>'community'))}">小区</a></li>
+</ul>
+
+
+<notempty name="rs">
+<table border="1" width="100%" style="text-align:center;">
+    <tr>
+        <th>所在区域</th>
+        <th>区域项名称</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+<volist name="rs" id="vo">
+
+	<tr>
+		<td>
+		
+		<php>
+		    if ($type=='province'){
+		       echo '无';
+		    } 
+			if ($type=='city'){        
+			    foreach ($province_data as $k4=>$v4){
+			        if ($v4['id'] == $vo['province_id'])
+			        echo $v4['name'].'省 ';
+			    }
+			}
+			if ($type=='district'){        
+			    foreach ($city_data as $k4=>$v4){
+			        if ($v4['id'] == $vo['city_id']){
+					    foreach ($province_data as $k3=>$v3){
+					        if ($v3['id'] == $v4['province_id'])
+					        echo $v3['name'].'省 ';
+					    }
+				        echo $v4['name'].'市 ';
+			        }
+			    }
+			}
+			if ($type=='community'){        
+			    foreach ($district_data as $k4=>$v4){
+			        if ($v4['id'] == $vo['district_id']){
+					    foreach ($city_data as $k3=>$v3){
+					        if ($v3['id'] == $v4['city_id']){
+							    foreach ($province_data as $k2=>$v2){
+							        if ($v2['id'] == $v4['province_id'])
+							        echo $v2['name'].'省 ';
+							    }
+							    echo $v3['name'].'市 ';
+					        }
+					    }
+				        echo $v4['name'].'区 ';
+			        }
+			    }
+			}
+		</php>
+        </td>
+        <td style=" font-weight:bold; font-size:1.5em;">
+		{ZF:$vo.name}
+		<php>
+		  if ($type=='district') echo '区';
+		  if ($type=='city') echo '市';
+		  if ($type=='province') echo '省';
+		</php>
+		</td>
+		
+		<td>
+		<php>
+		     if ($vo['status'] == 0) echo '<span style="color:red;">未审核</span>';
+		     else echo '<span style="color:green;">已审核</span>';
+		</php>
+		</td>
+		
+		<td><a href="{ZF::U('System/Region/ok',array('type'=>$type,'id'=>$vo['id']))}">通过审核</a> |
+		    <a href="{ZF::U('System/Region/del',array('type'=>$type,'id'=>$vo['id']))}">删除</a></td>
+	</tr>
+</volist>
+</table>
+<else/>
+没有数据喔
+</notempty>
+
+
+    
+
+
+
+
+</body>
+</html>

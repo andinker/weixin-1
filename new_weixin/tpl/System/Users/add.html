@@ -4,6 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="{ZF::RES}/images/main.css" type="text/css" rel="stylesheet">
 <script src="{ZF::STATICS}/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <meta http-equiv="x-ua-compatible" content="ie=7" />
 </head>
 <body class="warp">
@@ -38,6 +40,194 @@
 						<input type="password" name="repassword" class="ipt" size="45"/>
 					</td>
 				</tr>
+				
+				
+                <tr>
+                    <td>
+                    
+		  <div class="control-group">
+		    <label class="control-label" for="username">帐号类型</label>
+		    <div class="controls" >
+	                       <select class="region_ctrl" name="account_type" id="account_type">
+		                           <option value="0">商家号</option>
+		                           <option value="1">小区号</option>
+		                   </select>
+		      <span class="maroon">*</span><span class="help-inline">每个小区只能申请一个小区号，申请小区号需要等待审核</span>
+		    </div>
+		  </div>
+		  
+
+		  <div class="control-group">
+		    <label class="control-label" for="username">所在小区</label>
+		    <div class="controls" >
+		      
+                                                                   
+	                   <select class="region_ctrl" name="province" id="province" onchange="items_filter(this)">
+	                   </select>省
+	                   <span class="maroon">*</span>
+	                   <span onclick="addItem( '添加省份','province', 0 );">没有找到我的省份？</span>
+	                   <br/>
+	                   
+	                   <select class="region_ctrl" name="city" id="city" onchange="items_filter(this)">
+	                   </select>市
+	                   <span class="maroon">*</span>
+	                   <span onclick="addItem( '添加城市','city', $('#province').val() );">没有找到我的城市？</span>
+	                   <br/>
+	                   
+	                   <select class="region_ctrl" name="district" id="district" onchange="items_filter(this)">
+	                   </select>区
+	                   <span class="maroon">*</span>
+	                   <span onclick="addItem( '添加政区','district', $('#city').val() );">没有找到我的政区？</span>
+	                   <br/>
+	                   
+	                   <select class="region_ctrl" name="community" id="community">
+	                   </select>社区
+	                   <span class="maroon">*</span> 
+	                   <span onclick="addItem( '添加社区','community', $('#district').val() );">没有找到我的社区？</span>
+	                   <br/>
+	                   
+                  		
+
+		      <span class="maroon">*</span><span class="help-inline">请选择</span>
+		    </div>
+		  </div>
+
+
+<script type="text/javascript">
+
+
+	var data = {province:{ZF::json_encode($province_data)},
+			city:{ZF::json_encode($city_data)},
+			district:{ZF::json_encode($district_data)},
+			community:{ZF::json_encode($community_data)}}
+
+
+
+function items_filter( select ){
+	
+	var autoload_select_id = null;
+	var autoload_data = null;
+	
+	switch ($(select).attr("id")){
+		case "province":
+			autoload_select_id = "city";
+			autoload_data = data.city;
+			break;
+		case "city":
+			autoload_select_id = "district";
+			autoload_data = data.district;
+			break;	
+		case "district":
+			autoload_select_id = "community";
+			autoload_data = data.community;
+			break;
+	}
+	
+	$("#"+autoload_select_id).empty();
+	$(autoload_data).each(function (i){
+		
+		var p_id = null;
+		switch ($(select).attr("id")){
+			case "province":
+				p_id = this.province_id;
+				break;
+			case "city":
+				p_id = this.city_id;
+				break;	
+			case "district":
+				p_id = this.district_id;
+				break;
+		}
+		
+		if ( $(select).find("option:selected").val() == p_id ) 
+		$("#"+autoload_select_id).append("<option value='"+this.id+"'>"+this.name+"</option>");
+		
+	});
+	
+	if (autoload_select_id != "community")
+	items_filter( $("#"+autoload_select_id)[0] );
+	
+}
+
+// 区域数据 初始化显示
+$(data.province).each(function (i){
+	$("#province").append("<option value='"+this.id+"'>"+this.name+"</option>");
+});
+
+$("#province").change();
+
+
+
+
+function addItem( title,type, p_id ){
+
+	//art.dialog.data('goodslist_id',goodslist_id);
+	//art.dialog.data('call_back',call_back);
+	art.dialog.open('{ZF::U('Home/Region/addregionitem')}&type='+type+'&pid='+p_id, {
+		title: title,
+		width: '50%',
+	    height: '50%',
+	    left: '50%',
+	    top: '50%',
+	    fixed: true,
+	    resize: false,
+	    drag: false});
+}
+</script>
+
+
+<notempty name="info">
+<!-- 显示已数据库值 -->
+<script type="text/javascript">
+$("#account_type").val({ZF:$info.account_type});
+$(data.community).each(function (i){
+	if (this.id == {ZF:$info.community_id}){
+		
+		//查找该社区所属的政区
+		var district_id = this.district_id;
+		$(data.district).each(function (i){
+			if (this.id == district_id ){
+				
+				//查找该政区所属的城市
+				var city_id = this.city_id;
+				$(data.city).each(function (i){
+					if (this.id == city_id ){
+						
+						//查找该城市所属的省份
+						var province_id = this.province_id;
+				        $(data.province).each(function (i){
+					       if (this.id == province_id ){
+					    	   $("#province").val(this.id);
+					    	   $("#province").change();
+					       }
+				        });
+				        $("#city").val(this.id);
+				        $("#city").change();
+				        
+					}
+				});
+				$("#district").val(this.id);
+				$("#district").change();
+				
+			}
+		});
+		$("#community").val(this.id);
+		$("#community").change();
+		
+	}
+});
+function setOption(type,item){
+	if ($("#"+type+" option[value='"+item.id+"']").length == 0){
+		$("#"+type).append("<option value='"+item.id+"'>"+item.name+"</option>");
+	}
+	$("#"+type).val(item.id);
+}
+</script>
+</notempty>            
+                    </td>
+                
+                </tr>
+
 				<tr>
 					<td height="48" align="right"><strong>用户角色：</strong></td>
 					<td colspan="3" class="lt">
