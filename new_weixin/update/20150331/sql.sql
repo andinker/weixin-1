@@ -34,8 +34,3898 @@ CREATE TABLE `zfwx_region_community` (
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8;
 
+<<<<<<< HEAD
 /* ä¿®æ”¹ä¼šå‘˜å¸å·æ•°æ®è¡¨ï¼Œå¢žåŠ ç¤¾åŒºidåˆ—å’Œå¸å·ç±»åž‹åˆ— */
 ALTER TABLE `zfwx_users` 
 ADD COLUMN `community_id` INT NOT NULL DEFAULT 0 AFTER `truename`,
 ADD COLUMN `account_type` TINYINT NOT NULL DEFAULT 0 AFTER `community_id`;
 
+=======
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (1,'±±¾©','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (2,'ÉÏº£','1');	
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (3,'Ìì½ò','1');	  
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (4,'ÖØÇì','1');  
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (5,'ºÚÁú½­','1');  
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (6,'¼ªÁÖ','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (7,'ÁÉÄþ','1');  
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (8,'ÄÚÃÉ¹Å','1');  
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (9,'ÄþÏÄ','1');  
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (10,'ÐÂ½®','1');  
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (11,'Çàº£','1');  
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (12,'¸ÊËà','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (13,'ÉÂÎ÷','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (14,'ºÓ±±','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (15,'ºÓÄÏ','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (16,'É½¶«','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (17,'É½Î÷','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (18,'ºþ±±','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (19,'ºþÄÏ','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (20,'°²»Õ','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (21,'½­ËÕ','1');  
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (22,'Õã½­','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (23,'½­Î÷','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (24,'¹ã¶«','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (25,'¹ãÎ÷','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (26,'¸£½¨','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (27,'ËÄ´¨','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (28,'ÔÆÄÏ','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (29,'¹óÖÝ','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (30,'Î÷²Ø','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (31,'º£ÄÏ','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (32,'Ïã¸Û','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (33,'°ÄÃÅ','1');
+INSERT INTO `zfwx_region_province`  (`id`,`name`, `status`) VALUES (34,'Ì¨Íå','1');
+
+
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('1','±±¾©','1','1');
+
+	   INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('2','ÉÏº£','2','1');
+
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('3','Ìì½ò','3','1');
+
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('4','ÖØÇì','4','1');
+
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('5','¹þ¶û±õ','5','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('6','ÆëÆë¹þ¶û','5','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('7','Äµµ¤½­','5','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('8','º×¸Ú','5','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('9','Ë«Ñ¼É½','5','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('10','¼¦Î÷','5','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('11','´óÇì','5','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('12','ÒÁ´º','5','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('13','¼ÑÄ¾Ë¹','5','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('14','ÆßÌ¨ºÓ','5','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('15','ºÚºÓ','5','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('16','Ëç»¯','5','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('17','´óÐË°²Áë','5','1');
+ 
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('18','³¤´º','6','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('19','¼ªÁÖ','6','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('20','ËÄÆ½','6','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('21','ÁÉÔ´','6','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('22','Í¨»¯','6','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('23','°×É½','6','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('24','ËÉÔ­','6','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('25','°×³Ç','6','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('26','ÑÓ±ß³¯ÏÊ×å','6','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('27','¸ßÐÂ','6','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('28','ÑÓ¼ª','6','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('29','Ã·ºÓ¿Ú','6','1');
+  
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('30','ÉòÑô','7','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('31','´óÁ¬','7','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('32','½õÖÝ','7','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('33','°°É½','7','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('34','¸§Ë³','7','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('35','±¾Ïª','7','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('36','µ¤¶«','7','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('37','ºùÂ«µº','7','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('38','Óª¿Ú','7','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('39','ÅÌ½õ','7','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('40','¸·ÐÂ','7','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('41','ÁÉÑô','7','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('42','ÌúÁë','7','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('43','³¯Ñô','7','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('44','Íß·¿µê','7','1');  
+	
+	  
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('45','ºôºÍºÆÌØ','8','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('46','°üÍ·','8','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('47','ÎÚº£','8','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('48','³à·å','8','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('49','Í¨ÁÉ','8','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('50','¶õ¶û¶àË¹','8','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('51','ÎÚÀ¼²ì²¼ÃË','8','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('52','ÎýÁÖ¹ùÀÕÃË','8','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('53','°ÍÑåÄ×¶ûÃË','8','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('54','°¢À­ÉÆÃË','8','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('55','ÐË°²ÃË','8','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('56','°ÍÑåÄ×¶û','8','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('57','ºôÂ×±´¶û','8','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('58','¼¯Äþ','8','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('59',' ÎÚÀ¼ºÆÌØ','8','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('60','ÎýÁÖºÆÌØ','8','1');
+	
+	  
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('61','Òø´¨','9','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('62','Ê¯×ìÉ½','9','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('63','ÎâÖÒ','9','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('64','¹ÌÔ­','9','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('460','ÖÐÎÀ','9','1');
+	
+	  
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('65','ÎÚÂ³Ä¾Æë','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('66','¿ËÀ­ÂêÒÀ','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('67','ÍÂÂ³·¬','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('68','¹þÃÜ','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('69','ºÍÌï','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('70','°¢¿ËËÕ','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('71','¿¦Ê²','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('72','¿Ë×ÎÀÕËÕ¿Â¶û¿Ë×Î','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('73','°ÍÒô¹ùÀãÃÉ¹Å','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('74','²ý¼ª»Ø×å','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('75','²©¶ûËþÀ­ÃÉ¹Å','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('76','ÒÁÀç¹þÈø¿Ë','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('77','Ëþ³Ç','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('78','°¢ÀÕÌ©','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('79','Ê¡Ö±Ï½ÏØ¼¶ÐÐÕþµ¥Î»','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('82','¿ËÀ­ÂíÒÀ','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('83','¿â¶ûÀÕ','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('84','Ê¯ºÓ×Ó','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('85','ÍÂÂ³·¬','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('86',' ÎÚÊÐ','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('87','¿üÍÍ','10','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('89','ÒÁÄþ','10','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('90','Î÷Äþ','11','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('91','º£¶«','11','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('92',' º£±±²Ø×å','11','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('93','»ÆÄÏ²Ø×å','11','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('94','º£ÄÏ²Ø×å','11','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('95','¹ûÂå²Ø×å','11','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('96','ÓñÊ÷²Ø×å','11','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('97','º£Î÷ÃÉ¹Å×å²Ø×å','11','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('98','¸ñ¶ûÄ¾','11','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('99','À¼ÖÝ','12','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('100','ÌìË®','12','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('101','½ð²ý','12','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('102','°×Òø','12','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('103','¼ÎÓø¹Ø','12','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('104','Îä Íþ ','12','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('105','ÕÅÒ´','12','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('106','Æ½Á¹','12','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('107','¾ÆÈª','12','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('108','ÇìÑô','12','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('109','¶¨Î÷','12','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('459','Â¤ÄÏ','12','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('110','¸ÊÄÏ²Ø×å','12','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('111','ÁÙÏÄ»Ø×å','12','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('112','¼ÎÓø','12','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('113','ÎäÍþ','12','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('114','Î÷°²','13','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('115','±¦¼¦','13','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('116','ÑÓ°²','13','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('117','Í­´¨','13','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('118','ÏÌÑô','13','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('119','Î¼ÄÏ','13','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('120','ººÖÐ','13','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('121','ÓÜÁÖ','13','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('122','°²¿µ','13','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('123','ÉÌÂå','13','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('124','º«³Ç','13','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('125','Ê¯¼Ò×¯','14','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('126','±£¶¨','14','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('127','ÌÆÉ½','14','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('128','ÇØ»Êµº','14','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('129','ºªµ¦','14','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('130','ÐÏÌ¨','14','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('131','ÕÅ¼Ò¿Ú','14','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('132','³ÐµÂ','14','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('133','²×ÖÝ','14','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('134','ÀÈ·»','14','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('135','ºâË®','14','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('136','°ÔÖÝ','14','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('137','ÇàÏØ','14','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('138','ÈÎÇð','14','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('139','äÃÖÝ','14','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('140','Ö£ÖÝ','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('141','ÂåÑô','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('142','¿ª·â','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('143','Æ½¶¥É½','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('144','½¹×÷','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('145','º×±Ú','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('146','ÐÂÏç','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('147','°²Ñô','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('148','å§Ñô','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('149','Ðí²ý','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('150','äðºÓ','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('151','ÈýÃÅÏ¿','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('152','ÄÏÑô','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('153','ÉÌÇð','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('154','ÐÅÑô','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('155','ÖÜ¿Ú','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('156','×¤Âíµê','15','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('455','¼ÃÔ´','15','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('157','¼ÃÄÏ','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('158','Çàµº','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('159','ÑÌÌ¨','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('160','×Í²©','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('161','Ôæ×¯','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('162','¶«Óª','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('163','Î«·»','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('164','Íþº£','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('165','¼ÃÄþ','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('166','Ì©°²','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('167','ÈÕÕÕ','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('168','À³Îß','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('169','µÂÖÝ','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('170','ÁÙÒÊ','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('171','ÁÄ³Ç','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('172','±õÖÝ','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('173','ºÊÔó','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('174','¸ßÃÜ','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('175','ºÉÔó','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('176','»´·»','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('177','¼´Ä«','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('178','½ºÄÏ','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('179','À³ÖÝ','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('180','ÁÖÒÊ','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('181','ÁÙÐÃ','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('182','Áú¿Ú','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('183','ÅîÀ³','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('184','ÇàÖÝ','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('185','ÈéÉ½','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('186','ÊÙ¹â','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('187','ëøÖÝ','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('188','ÎÄµÇ','16','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('189','ÕÐÔ¶','16','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('190','Ì«Ô­','17','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('191','´óÍ¬','17','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('192','Ë·ÖÝ','17','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('193','ÑôÈª','17','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('194','³¤ÖÎ','17','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('195','½ú³Ç','17','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('461','ÐÃÖÝ','17','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('196','½úÖÐ','17','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('197','ÁÙ·Ú','17','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('198','ÔË³Ç','17','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('199','ÂÀÁº','17','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('200','ºÓ½ò','17','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('201','ºîÂí','17','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('202','Ð¢Òå','17','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('203','ÓÜ´Î','17','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('204','Îäºº','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('205','»ÆÊ¯','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('206','Ïå·®','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('207','Ê®Ñß','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('208','¾£ÖÝ','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('209','ÒË²ý','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('210','¾£ÃÅ','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('211','¶õÖÝ','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('212','Ð¢¸Ð','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('213','»Æ¸Ô','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('214','ÏÌÄþ','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('215','ËæÖÝ','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('216','¶÷Ê©ÍÁ¼Ò×åÃç×å','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('217','°²Â½','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('218','¶÷Ê©','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('219','ºº¿Ú','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('220','ººÑô','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('221','Ç±½­','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('222','ÏÉÌÒ','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('223','ÖêÖÝ','18','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('456','Ê¡Ö±Ï½ÏØ¼¶ÐÐÕþµ¥Î»','18','1');
+	
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('224','³¤É³','19','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('225','ÖêÖÞ','19','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('226','ÏæÌ¶','19','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('227','ºâÑô','19','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('228','ÉÛÑô','19','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('229','ÔÀÑô','19','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('230','³£µÂ','19','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('231','ÕÅ¼Ò½ç','19','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('232','ÒæÑô','19','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('233','³»ÖÝ','19','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('234','ÓÀÖÝ','19','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('235','»³»¯','19','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('236','Â¦µ×','19','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('237','ÏæÎ÷ÍÁ¼Ò×åÃç×å','19','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('238','ÖêÖÝ','19','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('239','ÉÛ¶«','19','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('240','ºÏ·Ê','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('241','Îßºþ','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('242','°ö²º','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('243','»´ÄÏ','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('244','Âí°°É½','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('245','»´±±','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('246','Í­Áê','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('247','°²Çì','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('248','»ÆÉ½','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('249','³üÖÝ','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('250','¸·Ñô','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('251','ËÞÖÝ','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('252','³²ºþ','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('253','Áù°²','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('254','ÙñÖÝ','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('255','³ØÖÝ','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('256','Ðû³Ç','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('257','ÃÉ³Ç','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('258','Äþ¹ú','20','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('259','Í©³Ç','20','1');
+	
+	  
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('260','ÄÏ¾©','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('261','ÐìÖÝ','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('262','Á¬ÔÆ¸Û','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('263','»´°²','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('264','ËÞÇ¨','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('265','ÑÎ³Ç','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('266','ÑïÖÝ','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('267','Ì©ÖÝ','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('268','ÄÏÍ¨','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('269','Õò½­','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('270','³£ÖÝ','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('271','ÎÞÎý','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('272','ËÕÖÝ','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('273','³£Êì','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('274','µ¤Ñô','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('275','º£ÃÅ','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('276','½­¶¼','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('277','½­Òõ','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('278','¾¸½­','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('279','À¥É½','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('280','äàÑô','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('281','Ì«²Ö','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('282','Ì©ÖÝ»ª','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('283','Îâ½­','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('284','ÎâÏØ','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('285','ÒËÐË','21','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('286','ÕÅ¼Ò¸Û','21','1');
+	 
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('287','º¼ÖÝ','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('288','Äþ²¨','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('289','ÎÂÖÝ','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('290','¼ÎÐË','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('291','ºþÖÝ','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('292','ÉÜÐË','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('293','½ð»ª','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('294','áéÖÝ','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('295','ÖÛÉ½','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('296','Ì¨ÖÝ','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('297','ÀöË®','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('298','´ÈÏª','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('299','¶«Ñô','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('300','·î»¯','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('301','ÀÖÇå','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('302','ÁÙ°²','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('303','ÁÙº£','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('304','Æ½ºþ','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('305','Èð°²','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('306','ÉÏÓÝ','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('307','áÓÖÝ','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('308','ÎÂÁë','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('309','ÒåÎÚ','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('310','ÓÀ¿µ','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('311','ÓàÒ¦','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('312','Öîôß','22','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('313','ÐÂ²ý','22','1');
+	  
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('314','ÄÏ²ý','23','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('315','¾°µÂÕò','23','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('316','Æ¼Ïç','23','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('317','ÐÂÓà','23','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('318','¾Å½­','23','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('319','Ó¥Ì¶','23','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('320','¸ÓÖÝ','23','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('321','¼ª°²','23','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('322','ÒË´º','23','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('323','¸§ÖÝ','23','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('324','ÉÏÈÄ','23','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('325','¸ß°²','23','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('326','¹ãÖÝ','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('327','ÉîÛÚ','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('328','Öéº£','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('329','ÉÇÍ·','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('330','ÉØ¹Ø','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('331','ºÓÔ´','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('332','Ã·ÖÝ','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('333','»ÝÖÝ','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('334','ÉÇÎ²','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('335','¶«Ý¸','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('336','ÖÐÉ½','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('337','½­ÃÅ','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('338','·ðÉ½','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('339','Ñô½­','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('340','Õ¿½­','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('341','Ã¯Ãû','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('342','ÕØÇì','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('343','ÇåÔ¶','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('344','³±ÖÝ','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('345','½ÒÑô','24','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('346','ÔÆ¸¡','24','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('354','ÄÏÄþ','25','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('355','ÁøÖÝ','25','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('356','¹ðÁÖ','25','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('357','ÎàÖÝ','25','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('358','±±º£','25','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('359','·À³Ç¸Û','25','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('360','ÇÕÖÝ','25','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('361','¹ó¸Û','25','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('362','ÓñÁÖ','25','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('363','°ÙÉ«','25','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('364','ºØÖÝ','25','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('365','ºÓ³Ø','25','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('366','À´±ö','25','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('367','³ç×ó','25','1');
+	
+	 
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('368','¸£ÖÝ','26','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('369','ÏÃÃÅ','26','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('370','ÈýÃ÷','26','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('371','ÆÎÌï','26','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('372','ÈªÖÝ','26','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('373','ÕÄÖÝ','26','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('374','ÄÏÆ½','26','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('375','ÁúÑÒ','26','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('376','ÄþµÂ','26','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('377','¸£Çå','26','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('378','½¨ê±','26','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('379','½ú½­','26','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('380','ÄÏ°²','26','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('381','ÉÛÎä','26','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('382','Ê¯Ê¨','26','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('383','ÏÉÓÎ','26','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('384','³É¶¼','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('385','×Ô¹±','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('386','ÅÊÖ¦»¨','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('387','ãòÖÝ','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('388','µÂÑô','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('389','ÃàÑô','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('390','¹ãÔª','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('391','ËìÄþ','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('392','ÄÚ½­','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('393','ÀÖÉ½','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('394','ÄÏ³ä','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('395','ÒË±ö','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('396','¹ã°²','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('397','´ïÖÝ','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('398','°ÍÖÐ','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('399','ÑÅ°²','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('400','Ã¼É½','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('401','×ÊÑô','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('402','°¢°Ó²Ø×åÇ¼×å','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('403','¸Ê×Î²Ø×å','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('404','Á¹É½ÒÍ×å','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('405','¹ãºº','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('406','½õÑô','27','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('407','Î÷²ý','27','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('408','À¥Ã÷','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('409','Çú¾¸','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('410','ÓñÏª','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('411','±£É½','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('412','ÕÑÍ¨','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('413','Ë¼Ã©','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('414','ÁÙ²×','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('415','Àö½­','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('416',' ÎÄÉ½×³×åÃç×å','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('417','ºìºÓ¹þÄá×åÒÍ×å','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('418','Î÷Ë«°æÄÉ´ö×å','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('419','³þÐÛÒÍ×å','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('420','´óÀí°××å','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('421','µÂºê´ö×å¾°ÆÄ×å','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('422','Å­½­ÀüÀü×å','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('423','µÏÇì²Ø×å','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('424','´óÀí','28','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('458','ÆÕ¶ý','28','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('425','¹óÑô','29','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('426','ÁùÅÌË®','29','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('427','×ñÒå','29','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('428','°²Ë³','29','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('429','Í­ÈÊ','29','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('430','±Ï½Ú','29','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('431','Ç­Î÷ÄÏ²¼ÒÀ×åÃç×å','29','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('432','Ç­¶«ÄÏÃç×å¶±×å','29','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('433','Ç­ÄÏ²¼ÒÀ×åÃç×å','29','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('434','¶¼ÔÈ','29','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('435','¹óí¦','29','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('436','¿­Àï','29','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('437','Í­ÈÊ','29','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('438','À­Èø','30','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('439','ÄÇÇú','30','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('440','²ý¶¼','30','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('441','É½ÄÏ','30','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('442','ÈÕ¿¦Ôò','30','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('443','°¢Àï','30','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('444','ÁÖÖ¥','30','1');
+
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('445','º£¿Ú','31','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('446','ÈýÑÇ','31','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('457','Ê¡Ö±Ï½ÏØ¼¶ÐÐÕþµ¥Î»','31','1');
+	  
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('447','Ïã¸Û','32','1');
+	
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('448','°ÄÃÅ','33','1');
+	  
+	
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('449','Ì¨±±','34','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('450','¸ßÐÛ','34','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('451','Ì¨ÖÐ','34','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('452','Ì¨ÄÏ','34','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('453','»ùÂ¡','34','1');
+	  INSERT INTO zfwx_region_city(id,name,province_id,status)VALUES('454','ÐÂÖñ','34','1');
+  
+ 		 
+ 	  
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1','¶«³Ç','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2','Î÷³Ç','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('3','ÐûÎä','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('4','³çÎÄ','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('5','³¯Ñô','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('6','º£µí','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('7','·áÌ¨','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('8','Ê¯¾°É½','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('9','ÃÅÍ·¹µ','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('10','²ýÆ½','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('11','´óÐË','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('12','»³Èá','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('13','ÃÜÔÆ','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('14','Æ½¹È','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('15','Ë³Òå','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('16','Í¨ÖÝ','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('17','ÑÓÇì','1','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('18','·¿É½','1','1');
+		
+		
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('19','ºÓ¶«','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('20','ºÓÎ÷','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('21','ºÓ±±','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('22','ÄÏ¿ª','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('23','ºìÇÅ','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('24','ÌÁ¹Á','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('25','ºº¹Á','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('26','´ó¸Û','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('27','¶«Àö','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('28','Î÷Çà','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('29','½òÄÏ','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('30','±±³½','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('31',' ÎäÇå','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('32','±¦Ûæ','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('33','¼»ÏØ ','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('34','ÄþºÓ','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('35','¾²º£','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('36','ºÍÆ½','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('37','±£Ë°','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('38','¾­¼Ã¼¼Êõ¿ª·¢Çø','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('39','¸ßÐÂ','3','1');
+			  INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('40','±õº£ÐÂ','3','1');
+			
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('41','³¤°²','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('42','ÇÅ¶«','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('43','ÇÅÎ÷','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('44','ÐÂ»ª','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('45','¾®Úê¿ó','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('46','Ô£»ª','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('47','¾®Úê','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('48','Õý¶¨','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('49','èï³Ç','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('50','ÐÐÌÆ','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('51','ÁéÊÙ','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('52','¸ßÒØ','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('53','ÉîÔó','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('54','ÔÞ»Ê','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('55','ÎÞ¼«','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('56','Æ½É½','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('57','ÔªÊÏ','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('58','ÕÔÏØ','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('59','ÐÁ¼¯','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('60','Þ»³Ç','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('61','½úÖÝ','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('62','ÐÂÀÖ','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('63','Â¹Èª','125','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('64','¸ßÐÂ¼¼Êõ¿ª·¢Çø','125','1'); 
+			
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('65','Â·ÄÏ','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('66','Â·±±','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('67','¹ÅÒ±','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('68','¿ªÆ½','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('69','·áÄÏ','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('70','·áÈó','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('71','ÂÐÏØ','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('72','ÂÐÄÏ','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('73','ÀÖÍ¤','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('74','Ç¨Î÷','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('75','ÓñÌï','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('76','ÌÆº£','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('77','×ñ»¯','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('78','Ç¨°²','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('79','¸ßÐÂ','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('80','ºº¹Á¹ÜÀí','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('81','º£¸Û¿ª·¢Çø','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('82','Â«Ì¨¿ª·¢Çø','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('83','ÄÏ±¤¿ª·¢Çø','127','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('84','²Üåúµé¹¤Òµ','127','1'); 
+			
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('87','±±´÷ºÓ','128','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('88','ÇàÁúÂú×å','128','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('89','²ýÀè','128','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('90','¸§Äþ','128','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('91','Â¬Áú','128','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('92','¾­¼Ã¼¼Êõ¿ª·¢Çø','128','1'); 
+			
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('93','ºªÉ½','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('94','´ÔÌ¨','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('95','¸´ÐË','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('96','·å·å¿ó','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('97','ºªµ¦','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('98','ÁÙÕÄ','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('99','³É°²','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('100','´óÃû','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('101','ÉæÏØ','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('102','´ÅÏØ','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('103','·ÊÏç','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('104','ÓÀÄê','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('105','ÇñÏØ','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('106','¼¦Ôó','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('107','¹ãÆ½','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('108','¹ÝÌÕ','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('109','ÎºÏØ','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('110','ÇúÖÜ','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('111','Îä°²','129','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('112','¾­¼Ã¿ª·¢Çø','129','1'); 
+			
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('113','ÇÅ¶«','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('114','ÇÅÎ÷','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('115','ÐÏÌ¨','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('116','ÁÙ³Ç','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('117','ÄÚÇð','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('118','°ØÏç','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('119','Â¡Ò¢','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('120','ÈÎÏØ','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('121','ÄÏºÍ','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('122','Äþ½ú','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('123','¾ÞÂ¹','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('124','ÐÂºÓ','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('125','¹ã×Ú','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('126','Æ½Ïç','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('127','ÍþÏØ','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('128','ÇåºÓ','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('129','ÁÙÎ÷','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('130','ÄÏ¹¬','130','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('131','É³ºÓ','130','1'); 
+			
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('132','ÐÂÊÐ','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('133','ÄÏ','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('134','±±ÊÐ','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('135','Âú³Ç','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('136','ÇåÔ·','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('137','äµË®','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('138','¸·Æ½','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('139','ÐìË®','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('140','¶¨ÐË','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('141','ÌÆÏØ','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('142','¸ßÑô','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('143','ÈÝ³Ç','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('144','äµÔ´','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('145','Íû¶¼','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('146','°²ÐÂ','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('147','Ò×ÏØ','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('148','ÇúÑô','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('149','ó»ÏØ','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('150','Ë³Æ½','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('151','²©Ò°','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('152','ÐÛÏØ','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('153','äÃÖÝ','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('154','¶¨ÖÝ','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('155','°²¹ú','126','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('156','¸ß±®µê','126','1'); 
+			
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('159','Ðû»¯','131','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('160','ÏÂ»¨Ô°','131','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('161','Ðû»¯','131','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('162','ÕÅ±±','131','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('163','¿µ±£','131','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('164','¹ÁÔ´','131','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('165','ÉÐÒå','131','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('166','ÎµÏØ','131','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('167','ÑôÔ­','131','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('168','»³°²','131','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('169','ÍòÈ«','131','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('170','»³À´','131','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('171','äÃÂ¹','131','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('172','³à³Ç','131','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('173','³çÀñ','131','1'); 
+			
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('174','Ë«ÇÅ','132','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('175','Ë«ÂÐ','132','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('176','Ó¥ÊÖÓª×Ó¿ó','132','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('177','³ÐµÂ','132','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('178','ÐËÂ¡','132','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('179','Æ½Èª','132','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('180','ÂÐÆ½','132','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('181','Â¡»¯','132','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('182','·áÄþÂú×å','132','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('183','¿í³ÇÂú×å','132','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('184','Î§³¡Âú×åÃÉ¹Å×å','132','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('185','ÐÂ»ª','133','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('186','ÔËºÓ','133','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('187','²×ÏØ','133','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('188','ÇàÏØ','133','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('189','¶«¹â','133','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('190','º£ÐË','133','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('191','ÑÎÉ½','133','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('192','ËàÄþ','133','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('193','ÄÏÆ¤','133','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('194','ÎâÇÅ','133','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('195','Ï×ÏØ','133','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('196','ÃÏ´å»Ø×å','133','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('197','²´Í·','133','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('198','ÈÎÇð','133','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('199','»Ææè','133','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('200','ºÓ¼ä','133','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('201','°²´Î','134','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('202','¹ãÑô','134','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('203','¹Ì°²','134','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('204','ÓÀÇå','134','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('205','ÏãºÓ','134','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('206','´ó³Ç','134','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('207','ÎÄ°²','134','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('208','´ó³§»Ø×å','134','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('209','°ÔÖÝ','134','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('210','ÈýºÓ','134','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('211','¿ª·¢Çø','134','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('212','ÌÒ³Ç','135','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('213','ÔæÇ¿','135','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('214','ÎäÒØ','135','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('215','ÎäÇ¿','135','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('216','ÈÄÑô','135','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('217','°²Æ½','135','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('218','¹Ê³Ç','135','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('219','¾°','135','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('220','¸·³Ç','135','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('221','¼½ÖÝ','135','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('222','ÉîÖÝ','135','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('223','Ð¡µê','190','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('224','Ó­Ôó','190','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('225','ÐÓ»¨Áë','190','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('226','¼â²ÝÆº','190','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('227','Íò°ØÁÖ','190','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('228','½úÔ´','190','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('229','ÇåÐì','190','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('230','ÑôÇú','190','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('231','Â¦·³','190','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('232','¹Å½»','190','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('233','³Ç','191','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('234','¿ó','191','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('235','ÄÏ½¼','191','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('236','ÐÂÈÙ','191','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('237','Ñô¸ß','191','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('238','ÌìÕò','191','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('239','¹ãÁé','191','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('240','ÁéÇð','191','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('241','»ëÔ´','191','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('242','×óÔÆ','191','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('243','´óÍ¬','191','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('244','³Ç','193','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('245','¿ó','193','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('246','½¼','193','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('247','Æ½¶¨','193','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('248','ÓÛÏØ','193','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('249','³Ç','194','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('250','½¼','194','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('251','³¤ÖÎ','194','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('252','ÏåÔ«','194','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('253','ÍÍÁô','194','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('254','Æ½Ë³','194','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('255','Àè³Ç','194','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('256','ºø¹Ø','194','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('257','³¤×Ó','194','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('258','ÎäÏç','194','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('259','ÇßÏØ','194','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('260','ÇßÔ´','194','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('261','Âº³Ç','194','1');
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('262','³Ç','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('263','ÇßË®','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('264','Ñô³Ç','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('265','Áê´¨','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('266','ÔóÖÝ','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('267','¸ßÆ½','195','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('268','Ë·³Ç','192','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('269','Æ½Â³','192','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('270','É½Òõ','192','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('271','Ó¦ÏØ','192','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('272','ÓÒÓñ','192','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('273','»³ÈÊ','192','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('274','ÓÜ´Î','196','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('275','ÓÜÉç','196','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('276','×óÈ¨','196','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('277','ºÍË³','196','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('278','ÎôÑô','196','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('279','ÊÙÑô','196','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('280','Ì«¹È','196','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('281','ÆîÏØ','196','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('282','Æ½Ò£','196','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('283','ÁéÊ¯','196','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('284','½éÐÝ','196','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('285','ÑÎºþ','198','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('286','ÁÙâ¢','198','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('287','ÍòÈÙ','198','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('288','ÎÅÏ²','198','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('289','ð¢É½','198','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('290','ÐÂç­','198','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('291','ç­ÏØ','198','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('292','Ô«Çú','198','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('293','ÏÄÏØ','198','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('294','Æ½Â½','198','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('295','ÜÇ³Ç','198','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('296','ÓÀ¼Ã','198','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('297','ºÓ½ò','198','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('298','ÐÃ¸®','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('299','¶¨Ïå','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('300','ÎåÌ¨','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('301','´úÏØ','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('302','·±ÖÅ','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('303','ÄþÎä','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('304','¾²ÀÖ','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('305','Éñ³Ø','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('306','ÎåÕ¯','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('307','á³á°','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('308','ºÓÇú','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('309','±£µÂ','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('310','Æ«¹Ø','195','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('311','Ô­Æ½','195','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('312','Ò¢¶¼','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('313','ÇúÎÖ','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('314','Òí³Ç','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('315','Ïå·Ú','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('316','ºé¶´','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('317','¹ÅÏØ','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('318','°²Ôó','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('319','¸¡É½','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('320','¼ªÏØ','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('321','ÏçÄþ','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('322','´óÄþ','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('323','ÚôÏØ','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('324','ÓÀºÍ','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('325','ÆÑÏØ','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('326','·ÚÎ÷','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('327','ºîÂí','197','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('328','»ôÖÝ','197','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('329','ÀëÊ¯','199','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('330','ÎÄË®','199','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('331','½»³Ç','199','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('332','ÐËÏØ','199','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('333','ÁÙÏØ','199','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('334','ÁøÁÖ','199','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('335','Ê¯Â¥','199','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('336','á°ÏØ','199','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('337','·½É½','199','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('338','ÖÐÑô','199','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('339','½»¿Ú','199','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('340','Ð¢Òå','199','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('341','·ÚÑô','199','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('342','»ØÃñ','45','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('343','ÓñÈª','45','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('344','ÐÂ³Ç','45','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('345','Èüº±','45','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('346','ÍÁÄ¬ÌØ×óÆì','45','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('347','ÍÐ¿ËÍÐ','45','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('348','ºÍÁÖ¸ñ¶û','45','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('349','ÇåË®ºÓ','45','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('350','Îä´¨','45','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('351','¶«ºÓ','46','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('352','À¥¶¼ÂØ','46','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('353','ÇàÉ½','46','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('354','Ê¯¹Õ','46','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('355','°×ÔÆ¿ó','46','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('356','¾ÅÔ­','46','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('357','ÍÁÄ¬ÌØÓÒÆì','46','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('358','¹ÌÑô','46','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('359','´ï¶ûº±Ã¯Ã÷°²ÁªºÏÆì','46','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('360','º£²ªÍå','47','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('361','º£ÄÏ','47','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('362','ÎÚ´ï','47','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('363','ºìÉ½','47','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('364','Ôª±¦É½','48','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('365','ËÉÉ½','48','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('366','°¢Â³¿Æ¶ûÇßÆì','48','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('367','°ÍÁÖ×óÆì','48','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('368','°ÍÁÖÓÒÆì','48','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('369','ÁÖÎ÷','48','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('370','¿ËÊ²¿ËÌÚÆì','48','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('371','ÎÌÅ£ÌØÆì','48','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('372','¿¦À®ÇßÆì','48','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('373','Äþ³Ç','48','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('374','°½ººÆì','48','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('375','ÐÂ³Ç','48','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('376','¿Æ¶ûÇß','49','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('377','¿Æ¶ûÇß×óÒíÖÐÆì','49','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('378','¿Æ¶ûÇß×óÒíºóÆì','49','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('379','¿ªÂ³','49','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('380','¿âÂ×Æì','49','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('381','ÄÎÂüÆì','49','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('382','ÔúÂ³ÌØÆì','49','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('383','»ôÁÖ¹ùÀÕ','49','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('384','¶«Ê¤','50','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('385','´ïÀ­ÌØÆì','50','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('386','×¼¸ñ¶ûÆì','50','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('387','¶õÍÐ¿ËÇ°Æì','50','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('388','¶õÍÐ¿ËÆì','50','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('389','º¼½õÆì','50','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('390','ÎÚÉóÆì','50','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('391','ÒÁ½ð»ôÂåÆì','50','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('392','º£À­¶û','57','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('393','°¢ÈÙÆì','57','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('394','ÄªÁ¦´ïÍß´ïÎÓ¶û×å×ÔÖÎÆì','57','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('395','¶õÂ×´º×ÔÖÎÆì','57','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('396','¶õÎÂ¿Ë×å×ÔÖÎÆì','57','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('397','³Â°Í¶û»¢Æì','57','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('398','ÐÂ°Í¶û»¢×óÆì','57','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('399','ÐÂ°Í¶û»¢ÓÒÆì','57','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('400','ÂúÖÞÀï','57','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('401','ÑÀ¿ËÊ¯','57','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('402','ÔúÀ¼ÍÍ','57','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('403','¶î¶û¹ÅÄÉ','57','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('404','¸ùºÓ','57','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('405','ÁÙºÓ','53','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('406','ÎåÔ­','53','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('407','íã¿Ú','53','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('408','ÎÚÀ­ÌØÇ°Æì','53','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('409','ÎÚÀ­ÌØÖÐÆì','53','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('410','ÎÚÀ­ÌØºóÆì','53','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('411','º¼½õºóÆì','53','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('412','¼¯Äþ','59','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('413','×¿×Ê','59','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('414','»¯µÂ','59','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('415','ÉÌ¶¼','59','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('416','ÐËºÍ','59','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('417','Á¹³Ç','59','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('418','²ì¹þ¶ûÓÒÒíÇ°Æì','59','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('419','²ì¹þ¶ûÓÒÒíÖÐÆì','59','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('420','²ì¹þ¶ûÓÒÒíºóÆì','59','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('421','ËÄ×ÓÍõÆì','59','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('422','·áÕò','59','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('423','ÎÚÀ¼ºÆÌØ','55','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('424','°¢¶ûÉ½','55','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('425','¿Æ¶ûÇßÓÒÒíÇ°Æì','55','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('426','¿Æ¶ûÇßÓÒÒíÖÐÆì','55','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('427','ÔúêãÌØÆì','55','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('428','Í»Èª','55','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('429','¶þÁ¬ºÆÌØ','52','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('430','ÎýÁÖºÆÌØ','52','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('431','°¢°Í¸ÂÆì','52','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('432','ËÕÄáÌØ×óÆì','52','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('433','ËÕÄáÌØÓÒÆì','52','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('434','¶«ÎÚÖéÄÂÇßÆì','52','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('435','Î÷ÎÚÖéÄÂÇßÆì','52','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('436','Ì«ÆÍËÂÆì','52','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('437','Ïâ»ÆÆì','52','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('438','ÕýÏâ°×Æì','52','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('439','ÕýÀ¶Æì','52','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('440','¶àÂ×','52','1');
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('441','°¢À­ÉÆ×óÆì','54','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('442','°¢À­ÉÆÓÒÆì','54','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('443','¶î¼ÃÄÉÆì','54','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('444','ºÍÆ½','30','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('445','ÉòºÓ','30','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('446','´ó¶«','30','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('447','»Ê¹Ã','30','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('448','ÌúÎ÷','30','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('449','ËÕ¼ÒÍÍ','30','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('450','¶«Áê','30','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('451','Éò±±ÐÂ','30','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('452','ÓÚºé','30','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('453','ÁÉÖÐ','30','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('454','¿µÆ½','30','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('455','·¨¿â','30','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('456','ÐÂÃñ','30','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('457','¾­¼Ã¼¼Êõ¿ª·¢Çø','30','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('458','»ëÄÏÐÂ','30','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('459','ÐÂ³Ç×Ó¾­¼Ã¼¼Êõ¿ª·¢Çø','30','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('460','ÖÐÉ½','31','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('461','Î÷¸Ú','31','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('462','É³ºÓ¿Ú','31','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('463','¸Ê¾®×Ó','31','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('464','ÂÃË³¿Ú','31','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('465','½ðÖÝ','31','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('466','³¤º£','31','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('467','Íß·¿µê','31','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('468','ÆÕÀ¼µê','31','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('469','×¯ºÓ','31','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('470','¿ª·¢Çø','31','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('471','±£Ë°','31','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('472','Ìú¶«','33','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('473','ÌúÎ÷','33','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('474','Á¢É½','33','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('475','Ç§É½','33','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('476','Ì¨°²','33','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('477','á¶ÑÒÂú×å','33','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('478','º£³Ç','33','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('479','ÐÂ¸§','34','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('480','¶«ÖÞ','34','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('481','Íû»¨','34','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('482','Ë³³Ç','34','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('483','¸§Ë³','34','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('484','ÐÂ±öÂú×å','34','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('485','ÇåÔ­Âú×å','34','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('486','Æ½É½','35','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('487','Ã÷É½','35','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('488','Ïªºþ','35','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('489','ÄÏ·Ò','35','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('490','±¾ÏªÂú×å','35','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('491','»¸ÈÊÂú×å','35','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('492','Ôª±¦','36','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('493','ÕñÐË','36','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('494','Õñ°²','36','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('495','¿íµéÂú×å','36','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('496','¶«¸Û','36','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('497','·ï³Ç','36','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('498','¹ÅËþ','32','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('499','ÁèºÓ','32','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('500','Ì«ºÍ','32','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('501','ºÚÉ½','32','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('502','Òå','32','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('503','Áèº£','32','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('504','±±Äþ','32','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('505','ËÉÉ½ÐÂ','32','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('506','¾­¼Ã¼¼Êõ¿ª·¢Çø','32','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('507','Õ¾Ç°','38','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('508','Î÷','38','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('509','öÑÓãÈ¦','38','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('510','ÀÏ±ß','38','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('511','¸ÇÖÝ','38','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('512','´óÊ¯ÇÅ','38','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('513','º£ÖÝ','40','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('514','ÐÂÇñ','40','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('515','Ì«Æ½','40','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('516','ÇåºÓÃÅ','40','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('517','Ï¸ºÓ','40','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('518','¸·ÐÂÃÉ¹Å×å','40','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('519','ÕÃÎä','40','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('520','°×Ëþ','41','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('521','ÎÄÊ¥','41','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('522','ºêÎ°','41','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('523','¹­³¤Áë','41','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('524','Ì«×ÓºÓ','41','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('525','ÁÉÑô','41','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('526','µÆËþ','41','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('527','Ë«Ì¨×Ó','39','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('528','ÐËÂ¡Ì¨','39','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('529','´óÍÝ','39','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('530','ÅÌÉ½','39','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('531','ÒøÖÝ','42','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('532','ÇåºÓ','42','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('533','ÌúÁë','42','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('534','Î÷·á','42','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('535','²ýÍ¼','42','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('536','µ÷±øÉ½','42','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('537','¿ªÔ­','42','1');
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('538','Ë«Ëþ','43','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('539','Áú³Ç','43','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('540','³¯Ñô','43','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('541','½¨Æ½','43','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('542','¿¦À®Çß×óÒíÃÉ¹Å×å','43','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('543','±±Æ±','43','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('544','ÁèÔ´','43','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('545','Á¬É½','37','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('546','Áú¸Û','37','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('547','ÄÏÆ±','37','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('548','ËçÖÐ','37','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('549','½¨²ý','37','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('550','ÐË³Ç','37','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('551','ÄÏ¹Ø','18','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('552','¿í³Ç','18','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('553','³¯Ñô','18','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('554','¶þµÀ','18','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('555','ÂÌÔ°','18','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('556','Ë«Ñô','18','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('557','Å©°²','18','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('558','¾ÅÌ¨','18','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('559','ÓÜÊ÷','18','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('560','µÂ»Ý','18','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('561','¾»ÔÂ¾­¼Ã¿ª·¢Çø','18','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('562','¸ßÐÂ¼¼Êõ²úÒµ¿ª·¢Çø','18','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('563','¾­¼Ã¼¼Êõ¿ª·¢Çø','18','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('564','²ýÒØ','19','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('565','ÁúÌ¶','19','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('566','´¬Óª','19','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('567','·áÂú','19','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('568','ÓÀ¼ª','19','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('569','òÔºÓ','19','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('570','èëµé','19','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('571','ÊæÀ¼','19','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('572','ÅÍÊ¯','19','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('573','ÌúÎ÷','20','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('574','Ìú¶«','20','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('575','ÀæÊ÷','20','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('576','ÒÁÍ¨Âú×å','20','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('577','¹«Ö÷Áë','20','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('578','Ë«ÁÉ','20','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('579','ÁúÉ½','21','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('580','Î÷°²','21','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('581','¶«·á','21','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('582','¶«ÁÉ','21','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('583','¶«²ý','22','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('584','¶þµÀ½­','22','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('585','Í¨»¯','22','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('586','»ÔÄÏ','22','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('587','ÁøºÓ','22','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('588','Ã·ºÓ¿Ú','22','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('589','¼¯°²','22','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('590','°ËµÀ½­','23','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('591','¸§ËÉ','23','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('592','¾¸Óî','23','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('593','³¤°×³¯ÏÊ×å','23','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('594','½­Ô´','23','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('595','ÁÙ½­','23','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('596','Äþ½­','24','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('597','Ç°¹ù¶ûÂÞË¹ÃÉ¹Å×å','24','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('598','³¤Áë','24','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('599','Ç¬°²','24','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('600','·öÓà','24','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('601','ä¬±±','25','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('602','Õòêã','25','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('603','Í¨ÓÜ','25','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('604','ä¬ÄÏ','25','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('605','´ó°²','25','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('606','ÑÓ¼ª','26','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('607','Í¼ÃÇ','26','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('608','¶Ø»¯','26','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('609','çõ´º','26','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('610','Áú¾®','26','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('611','ºÍÁú','26','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('612','ÍôÇå','26','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('613','°²Í¼','26','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('614','µÀÀï','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('615','ÄÏ¸Ú','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('616','µÀÍâ','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('617','Ïã·»','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('618','¶¯Á¦','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('619','Æ½·¿','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('620','ËÉ±±','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('621','ºôÀ¼','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('622','ÒÀÀ¼','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('623','·½Õý','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('624','±ö','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('625','°ÍÑå','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('626','Ä¾À¼','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('627','Í¨ºÓ','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('628','ÑÓÊÙ','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('629','°¢³Ç','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('630','Ë«³Ç','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('631','ÉÐÖ¾','5','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('632','Îå³£','5','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('633','ÁúÉ³','6','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('634','½¨»ª','6','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('635','Ìú·æ','6','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('636','°º°ºÏª','6','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('637','¸»À­¶û»ù','6','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('638','Äë×ÓÉ½','6','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('639','Ã·ÀïË¹´ïÎÓ¶û×å','6','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('640','Áú½­','6','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('641','ÒÀ°²','6','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('642','Ì©À´','6','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('643','¸ÊÄÏ','6','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('644','¸»Ô£','6','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('645','¿ËÉ½','6','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('646','¿Ë¶«','6','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('647','°ÝÈª','6','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('648','Ú«ºÓ','6','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('649','¼¦¹Ú','10','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('650','ºãÉ½','10','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('651','µÎµÀ','10','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('652','ÀæÊ÷','10','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('653','³Ç×ÓºÓ','10','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('654','ÂéÉ½','10','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('655','¼¦¶«','10','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('656','»¢ÁÖ','10','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('657','ÃÜÉ½','10','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('658','ÏòÑô','8','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('659','¹¤Å©','8','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('660','ÄÏÉ½','8','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('661','ÐË°²','8','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('662','¶«É½','8','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('663','ÐËÉ½','8','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('664','ÂÜ±±','8','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('665','Ëç±õ','8','1');
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('666','¼âÉ½','9','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('667','Áë¶«','9','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('668','ËÄ·½Ì¨','9','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('669','±¦É½','9','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('670','¼¯ÏÍ','9','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('671','ÓÑÒê','9','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('672','±¦Çå','9','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('673','ÈÄºÓ','9','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('674','Èø¶ûÍ¼','11','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('675','Áú·ï','11','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('676','ÈÃºúÂ·','11','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('677','ºì¸Ú','11','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('678','´óÍ¬','11','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('679','ÕØÖÝ','11','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('680','ÕØÔ´','11','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('681','ÁÖµé','11','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('682','¶Å¶û²®ÌØÃÉ¹Å×å','11','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('683','ÒÁ´º','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('684','ÄÏ²í','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('685','ÓÑºÃ','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('686','Î÷ÁÖ','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('687','´äÂÍ','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('688','ÐÂÇà','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('689','ÃÀÏª','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('690','½ðÉ½ÍÍ','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('691','ÎåÓª','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('692','ÎÚÂíºÓ','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('693','ÌÀÍúºÓ','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('694','´øÁë','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('695','ÎÚÒÁÁë','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('696','ºìÐÇ','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('697','ÉÏ¸ÊÁë','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('698','¼ÎÒñ','12','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('699','ÌúÁ¦','12','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('700','ÏòÑô','13','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('701','Ç°½ø','13','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('702','¶«·ç','13','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('703','½¼ÏØ','13','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('704','èëÄÏ','13','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('705','èë´¨','13','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('706','ÌÀÔ­','13','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('707','¸§Ô¶','13','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('708','Í¬½­','13','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('709','¸»½õ','13','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('710','ÐÂÐË','14','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('711','ÌÒÉ½','14','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('712','ÇÑ×ÓºÓ','14','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('713','²ªÀû','14','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('714','¶«°²','7','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('715','°®Ãñ','7','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('716','ÑôÃ÷','7','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('717','Î÷°²','7','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('718','¶«Äþ','7','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('719','ÁÖ¿Ú','7','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('720','Ëç·ÒºÓ','7','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('721','º£ÁÖ','7','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('722','Äþ°²','7','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('723','ÄÂÀâ','7','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('724','°®»Ô','15','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('725','ÄÛ½­','15','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('726','Ñ·¿Ë','15','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('727','ËïÎâ','15','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('728','±±°²','15','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('729','Îå´óÁ¬³Ø','15','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('730','±±ÁÖ','16','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('731','Íû¿ü','16','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('732','À¼Î÷','16','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('733','Çà¸Ô','16','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('734','Çì°²','16','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('735','Ã÷Ë®','16','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('736','ËçÀâ','16','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('737','°²´ï','16','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('738','ÕØ¶«','16','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('739','º£Â×','16','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('740','ºôÂê','17','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('741','ËþºÓ','17','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('742','Ä®ºÓ','17','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('743','¼Ó¸ñ´ïÆæ','17','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('744','ËÉÁë','17','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('745','ÐÂÁÖ','17','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('746','ºôÖÐ','17','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('747','»ÆÆÖ','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('748','Â¬Íå','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('749','Ðì»ã','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('750','³¤Äþ','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('751','¾²°²','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('752','ÆÕÍÓ','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('753','Õ¢±±','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('754','ºç¿Ú','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('755','ÑîÆÖ','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('756','ãÉÐÐ','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('757','±¦É½','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('758','¼Î¶¨','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('759','ÆÖ¶«ÐÂ','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('760','½ðÉ½','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('761','ËÉ½­','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('762','ÇàÆÖ','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('763','ÄÏ»ã','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('764','·îÏÍ','2','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('765','³çÃ÷','2','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('766','ÐþÎä','260','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('767','°×ÏÂ','260','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('768','ÇØ»´','260','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('769','½¨Úþ','260','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('770','¹ÄÂ¥','260','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('771','ÏÂ¹Ø','260','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('772','ÆÖ¿Ú','260','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('773','ÆÜÏ¼','260','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('774','Óê»¨Ì¨','260','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('775','½­Äþ','260','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('776','ÁùºÏ','260','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('777','äàË®','260','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('778','¸ß´¾','260','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('779','³ç°²','271','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('780','ÄÏ³¤','271','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('781','±±ÌÁ','271','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('782','ÎýÉ½','271','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('783','»ÝÉ½','271','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('784','±õºþ','271','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('785','½­Òõ','271','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('786','ÒËÐË','271','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('787','ÐÂÏØ','271','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('788','ÔÆÁú','261','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('789','¹ÄÂ¥','261','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('790','¾ÅÀï','261','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('791','ÈªÉ½','261','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('792','Í­É½','261','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('793','¼ÖÍô','261','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('794','·áÏØ','261','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('795','ÅæÏØ','261','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('796','î¡Äþ','261','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('797','ÐÂÒÊ','261','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('798','ÚüÖÝ','261','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('799','ÌìÄþ','270','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('800','ÖÓÂ¥','270','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('801','ÆÝÊûÑß','270','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('802','ÐÂ±±','270','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('803','Îä½ø','270','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('804','äàÑô','270','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('805','½ðÌ³','270','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('806','²×ÀË','272','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('807','Æ½½­','272','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('808','½ðãÑ','272','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('809','»¢Çð','272','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('810','ÎâÖÐ','272','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('811','Ïà³Ç','272','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('812','³£Êì','272','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('813','ÕÅ¼Ò¸Û','272','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('814','À¥É½','272','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('815','Îâ½­','272','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('816','Ì«²Ö','272','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('817','¹¤ÒµÔ°','272','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('818','¸ßÐÂ','272','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('819','³ç´¨','268','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('820','¸ÛÕ¢','268','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('821','º£°²','268','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('822','Èç¶«','268','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('823','Æô¶«','268','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('824','Èç¸Þ','268','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('825','Í¨ÖÝ','268','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('826','º£ÃÅ','268','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('827','¾­¼Ã¼¼Êõ¿ª·¢Çø','268','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('828','Á¬ÔÆ','262','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('829','ÐÂÆÖ','262','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('830','º£ÖÝ','262','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('831','¸ÓÓÜ','262','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('832','¶«º£','262','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('833','¹àÔÆ','262','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('834','¹àÄÏ','262','1');
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('835','ÇåºÓ','263','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('836','³þÖÝ','263','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('837','»´Òõ','263','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('838','ÇåÆÖ','263','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('839','Á°Ë®','263','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('840','ºéÔó','263','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('841','íìíô','263','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('842','½ðºþ','263','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('843','Í¤ºþ','265','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('844','ÑÎ¶¼','265','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('845','ÏìË®','265','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('846','±õº£','265','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('847','¸·Äþ','265','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('848','ÉäÑô','265','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('849','½¨ºþ','265','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('850','¶«Ì¨','265','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('851','´ó·á','265','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('852','¹ãÁê','266','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('853','Úõ½­','266','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('854','±¦Ó¦','266','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('855','ÒÇÕ÷','266','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('856','¸ßÓÊ','266','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('857','½­¶¼','266','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('858','Î¬Ñï','266','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('859','¾­¼Ã¿ª·¢Çø','266','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('860','¾©¿Ú','269','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('861','ÈóÖÝ','269','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('862','µ¤Í½','269','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('863','µ¤Ñô','269','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('864','ÑïÖÐ','269','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('865','¾äÈÝ','269','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('866','ÐÂÏØ','269','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('867','º£Áê','267','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('868','¸ß¸Û','267','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('869','ÐË»¯','267','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('870','¾¸½­','267','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('871','Ì©ÐË','267','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('872','½ªÑß','267','1');
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('873','ËÞ³Ç','264','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('874','ËÞÔ¥','264','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('875','ãðÑô','264','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('876','ãôÑô','264','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('877','ãôºé','264','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('878','ÉÏ³Ç','287','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('879','ÏÂ³Ç','287','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('880','½­¸É','287','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('881','¹°Êû','287','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('882','Î÷ºþ','287','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('883','±õ½­','287','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('884','ÏôÉ½','287','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('885','Óàº¼','287','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('886','Í©Â®','287','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('887','´¾°²','287','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('888','½¨µÂ','287','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('889','¸»Ñô','287','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('890','ÁÙ°²','287','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('891','º£Êï','288','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('892','½­¶«','288','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('893','½­±±','288','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('894','±±ÂØ','288','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('895','Õòº£','288','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('896','Û´ÖÝ','288','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('897','ÏóÉ½','288','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('898','Äþº£','288','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('899','ÓàÒ¦','288','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('900','´ÈÏª','288','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('901','·î»¯','288','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('902','Â¹³Ç','289','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('903','ÁúÍå','289','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('904','ê±º£','289','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('905','¶´Í·','289','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('906','ÓÀ¼Î','289','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('907','Æ½Ñô','289','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('908','²ÔÄÏ','289','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('909','ÎÄ³É','289','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('910','Ì©Ë³','289','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('911','Èð°²','289','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('912','ÀÖÇå','289','1');
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('913','ÐãÖÞ','290','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('914','¼ÎÉÆ','290','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('915','º£ÑÎ','290','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('916','º£Äþ','290','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('917','Æ½ºþ','290','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('918','Í©Ïç','290','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('919','ÄÏºþ','290','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('920','ÎâÐË','291','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('921','ÄÏä±','291','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('922','µÂÇå','291','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('923','³¤ÐË','291','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('924','°²¼ª','291','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('925','Ô½³Ç','292','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('926','ÉÜÐË','292','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('927','ÐÂ²ý','292','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('928','Öîôß','292','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('929','ÉÏÓÝ','292','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('930','áÓÖÝ','292','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('931','æÄ³Ç','293','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('932','½ð¶«','293','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('933','ÎäÒå','293','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('934','ÆÖ½­','293','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('935','ÅÍ°²','293','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('936','À¼Ïª','293','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('937','ÒåÎÚ','293','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('938','¶«Ñô','293','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('939','ÓÀ¿µ','293','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('940','¿Â³Ç','294','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('941','áé½­','294','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('942','³£É½','294','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('943','¿ª»¯','294','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('944','ÁúÓÎ','294','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('945','½­É½','294','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('946','¶¨º£','295','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('947','ÆÕÍÓ','295','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('948','á·É½','295','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('949','áÓãô','295','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('950','½·½­','296','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('951','Â·ÇÅ','296','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('952','»ÆÑÒ','296','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('953','Óñ»·','296','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('954','ÈýÃÅ','296','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('955','ÌìÌ¨','296','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('956','ÏÉ¾Ó','296','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('957','ÎÂÁë','296','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('958','ÁÙº£','296','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('959','Á«¶¼','297','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('960','ÇàÌï','297','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('961','çÆÔÆ','297','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('962','Ëì²ý','297','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('963','ËÉÑô','297','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('964','ÔÆºÍ','297','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('965','ÇìÔª','297','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('966','¾°Äþî´×å','297','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('967','ÁúÈª','297','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('968','Ñþº£','240','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('969','Â®Ñô','240','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('970','ÊñÉ½','240','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('971','°üºÓ','240','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('972','³¤·á','240','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('973','·Ê¶«','240','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('974','·ÊÎ÷','240','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('975','¾­¼Ã¼¼Êõ¿ª·¢Çø','240','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('976','ÐÂÕ¾ÊÔÑé','240','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('977','ÕþÎñÎÄ»¯ÐÂ','240','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('978','¸ßÐÂ¼¼Êõ²úÒµ¿ª·¢Çø','240','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('979','¾µºþ','241','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('980','ð¯½­','241','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('981','Îßºþ','241','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('982','·±²ý','241','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('983','ÄÏÁê','241','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('984','ß®½­','241','1');
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('985','ÈýÉ½','241','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('986','Áú×Óºþ','242','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('987','°öÉ½','242','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('988','Óí»á','242','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('989','»´ÉÏ','242','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('990','»³Ô¶','242','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('991','ÎåºÓ','242','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('992','¹ÌÕò','242','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('993','´óÍ¨','243','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('994','Ìï¼ÒâÖ','243','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('995','Ð»¼Ò¼¯','243','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('996','°Ë¹«É½','243','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('997','ÅË¼¯','243','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('998','·ïÌ¨','243','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('999','ÓêÉ½','244','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1000','»¨É½','244','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1001','½ð¼Ò×¯','244','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1002','µ±Í¿','244','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1003','¾­¼Ã¼¼Êõ¿ª·¢Çø','244','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1004','¶Å¼¯','245','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1005','ÏàÉ½','245','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1006','ÁÒÉ½','245','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1007','å¡Ïª','245','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1008','Í­¹ÙÉ½','246','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1009','Ê¨×ÓÉ½','246','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1010','½¼ÏØ','246','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1011','Í­Áê','246','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1012','Ó­½­','247','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1013','´ó¹Û','247','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1014','»³Äþ','247','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1015','èÈÑô','247','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1016','Ç±É½','247','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1017','Ì«ºþ','247','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1018','ËÞËÉ','247','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1019','Íû½­','247','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1020','ÔÀÎ÷','247','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1021','Í©³Ç','247','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1022','ÒËÐã','247','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1023','ÍÍÏª','248','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1024','»ÆÉ½','248','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1025','»ÕÖÝ','248','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1026','ì¨ÏØ','248','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1027','ÐÝÄþ','248','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1028','÷ðÏØ','248','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1029','ÆîÃÅ','248','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1030','ÀÅçð','249','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1031','ÄÏÚÛ','249','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1032','À´°²','249','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1033','È«½·','249','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1034','¶¨Ô¶','249','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1035','·ïÑô','249','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1036','Ìì³¤','249','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1037','Ã÷¹â','249','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1038','ò£ÖÝ','250','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1039','ò£¶«','250','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1040','ò£Èª','250','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1041','ÁÙÈª','250','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1042','Ì«ºÍ','250','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1043','¸·ÄÏ','250','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1044','ò£ÉÏ','250','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1045','½çÊ×','250','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1046','¾­¼Ã¿ª·¢Çø','250','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1047','ˆ¬ÇÅ','251','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1048','í¸É½','251','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1049','ÏôÏØ','251','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1050','Áéèµ','251','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1051','ãôÏØ','251','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1052','¾Ó³²','252','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1053','Â®½­','252','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1054','ÎÞÎª','252','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1055','º¬É½','252','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1056','ºÍÏØ','252','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1057','½ð°²','253','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1058','Ô£°²','253','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1059','ÊÙÏØ','253','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1060','»ôÇñ','253','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1061','Êæ³Ç','253','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1062','½ðÕ¯','253','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1063','»ôÉ½','253','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1064','ÚÛ³Ç','254','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1065','ÎÐÑô','254','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1066','ÃÉ³Ç','254','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1067','ÀûÐÁ','254','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1068','¹ó³Ø','255','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1069','¶«ÖÁ','255','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1070','Ê¯Ì¨','255','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1071','ÇàÑô','255','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1072','ÐûÖÝ','256','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1073','ÀÉÏª','256','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1074','¹ãµÂ','256','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1075','ãþ','256','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1076','¼¨Ïª','256','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1077','ìºµÂ','256','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1078','Äþ¹ú','256','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1079','¹ÄÂ¥','368','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1080','Ì¨½­','368','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1081','²ÖÉ½','368','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1082','ÂíÎ²','368','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1083','½ú°²','368','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1084','Ãöºî','368','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1085','Á¬½­','368','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1086','ÂÞÔ´','368','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1087','ÃöÇå','368','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1088','ÓÀÌ©','368','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1089','Æ½Ì¶','368','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1090','¸£Çå','368','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1091','³¤ÀÖ','368','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1092','Ë¼Ã÷','369','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1093','º£²×','369','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1094','ºþÀï','369','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1095','¼¯ÃÀ','369','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1096','Í¬°²','369','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1097','Ïè°²','369','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1098','¹ÄÀËÓì','369','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1099','ÏóÓì±£Ë°','369','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1100','»ð¾æ¸ßÐÂ','369','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1101','³ÇÏá','371','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1102','º­½­','371','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1103','Àó³Ç','371','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1104','ÐãÓì','371','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1105','ÏÉÓÎ','371','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1106','Ã·ÁÐ','370','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1107','ÈýÔª','370','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1108','Ã÷Ïª','370','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1109','ÇåÁ÷','370','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1110','Äþ»¯','370','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1111','´óÌï','370','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1112','ÓÈÏª','370','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1113','É³','370','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1114','½«ÀÖ','370','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1115','Ì©Äþ','370','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1116','½¨Äþ','370','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1117','ÓÀ°²','370','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1118','Àð³Ç','372','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1119','·áÔó','372','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1120','Âå½­','372','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1121','Èª¸Û','372','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1122','»Ý°²','372','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1123','°²Ïª','372','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1124','ÓÀ´º','372','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1125','µÂ»¯','372','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1126','½ðÃÅ','372','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1127','Ê¯Ê¨','372','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1128','½ú½­','372','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1129','ÄÏ°²','372','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1130','¾­¼Ã¼¼Êõ¿ª·¢Çø','372','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1131','Ü¼³Ç','373','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1132','ÁúÎÄ','373','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1133','ÔÆÏö','373','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1134','ÕÄÆÖ','373','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1135','Ú¯°²','373','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1136','³¤Ì©','373','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1137','¶«É½','373','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1138','ÄÏ¾¸','373','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1139','Æ½ºÍ','373','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1140','»ª°²','373','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1141','Áúº£','373','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1142','ÑÓÆ½','374','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1143','Ë³²ý','374','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1144','ÆÖ³Ç','374','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1145','¹âÔó','374','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1146','ËÉÏª','374','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1147','ÕþºÍ','374','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1148','ÉÛÎä','374','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1149','ÎäÒÄÉ½','374','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1150','½¨ê±','374','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1151','½¨Ñô','374','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1152','ÐÂÂÞ','375','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1153','³¤Í¡','375','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1154','ÓÀ¶¨','375','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1155','ÉÏº¼','375','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1156','ÎäÆ½','375','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1157','Á¬³Ç','375','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1158','ÕÄÆ½','375','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1159','½¶³Ç','376','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1160','Ï¼ÆÖ','376','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1161','¹ÅÌï','376','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1162','ÆÁÄÏ','376','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1163','ÊÙÄþ','376','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1164','ÖÜÄþ','376','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1165','èÏÈÙ','376','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1166','¸£°²','376','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1167','¸£¶¦','376','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1168','¶«ºþ','314','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1169','Î÷ºþ','314','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1170','ÇàÔÆÆ×','314','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1171','ÍåÀï','314','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1172','ÇàÉ½ºþ','314','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1173','ÄÏ²ý','314','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1174','ÐÂ½¨','314','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1175','°²Òå','314','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1176','½øÏÍ','314','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1177','¾­¼Ã¼¼Êõ¿ª·¢Çø','314','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1178','ºì¹ÈÌ²ÐÂ','314','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1179','¸ßÐÂ¼¼Êõ²úÒµ¿ª·¢Çø','314','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1180','É£º£¾­¼Ã¼¼Êõ¿ª·¢Çø','314','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1181','Ó¢ÐÛ¾­¼Ã¿ª·¢Çø','314','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1182','²ý½­','315','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1183','ÖéÉ½','315','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1184','¸¡Áº','315','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1185','ÀÖÆ½','315','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1186','°²Ô´','316','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1187','Ïæ¶«','316','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1188','Á«»¨','316','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1189','ÉÏÀõ','316','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1190','Â«Ïª','316','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1191','Â®É½','318','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1192','ä±Ñô','318','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1193','¾Å½­','318','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1194','ÎäÄþ','318','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1195','ÐÞË®','318','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1196','ÓÀÐÞ','318','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1197','µÂ°²','318','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1198','ÐÇ×Ó','318','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1199','¶¼²ý','318','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1200','ºþ¿Ú','318','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1201','ÅíÔó','318','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1202','Èð²ý','318','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1203','ÓåË®','317','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1204','·ÖÒË','317','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1205','ÔÂºþ','319','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1206','Óà½­','319','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1207','¹óÏª','319','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1208','ÕÂ¹±','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1209','¸Ó','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1210','ÐÅ·á','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1211','´óÓà','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1212','ÉÏÓÌ','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1213','³çÒå','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1214','°²Ô¶','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1215','ÁúÄÏ','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1216','¶¨ÄÏ','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1217','È«ÄÏ','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1218','Äþ¶¼','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1219','ÓÚ¶¼','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1220','ÐË¹ú','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1221','»á²ý','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1222','Ñ°ÎÚ','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1223','Ê¯³Ç','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1224','Èð½ð','320','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1225','ÄÏ¿µ','320','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1226','¼ªÖÝ','321','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1227','ÇàÔ­','321','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1228','¼ª°²','321','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1229','¼ªË®','321','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1230','Ï¿½­','321','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1231','ÐÂ¸É','321','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1232','ÓÀ·á','321','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1233','Ì©ºÍ','321','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1234','Ëì´¨','321','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1235','Íò°²','321','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1236','°²¸£','321','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1237','ÓÀÐÂ','321','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1238','¾®¸ÔÉ½','321','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1239','Ô¬ÖÝ','322','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1240','·îÐÂ','322','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1241','ÍòÔØ','322','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1242','ÉÏ¸ß','322','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1243','ÒË·á','322','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1244','¾¸°²','322','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1245','Í­¹Ä','322','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1246','·á³Ç','322','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1247','ÕÁÊ÷','322','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1248','¸ß°²','322','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1249','ÁÙ´¨','323','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1250','ÄÏ³Ç','323','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1251','Àè´¨','323','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1252','ÄÏ·á','323','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1253','³çÈÊ','323','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1254','ÀÖ°²','323','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1255','ÒË»Æ','323','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1256','½ðÏª','323','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1257','×ÊÏª','323','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1258','¶«Ïç','323','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1259','¹ã²ý','323','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1260','ÐÅÖÝ','324','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1261','ÉÏÈÄ','324','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1262','¹ã·á','324','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1263','ÓñÉ½','324','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1264','Ç¦É½','324','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1265','ºá·å','324','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1266','ß®Ñô','324','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1267','Óà¸É','324','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1268','Û¶Ñô','324','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1269','ÍòÄê','324','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1270','æÄÔ´','324','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1271','µÂÐË','324','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1272','ÀúÏÂ','157','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1273','ÊÐÖÐ','157','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1274','»±Òñ','157','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1275','ÌìÇÅ','157','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1276','Àú³Ç','157','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1277','³¤Çå','157','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1278','Æ½Òõ','157','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1279','¼ÃÑô','157','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1280','ÉÌºÓ','157','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1281','ÕÂÇð','157','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1282','¸ßÐÂ','157','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1283','¾­¼Ã¿ª·¢Çø','157','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1284','ÊÐÄÏ','158','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1285','ÊÐ±±','158','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1286','ËÄ·½','158','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1287','»Æµº','158','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1288','áÀÉ½','158','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1289','Àî²×','158','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1290','³ÇÑô','158','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1291','½ºÖÝ','158','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1292','¼´Ä«','158','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1293','Æ½¶È','158','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1294','½ºÄÏ','158','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1295','À³Î÷','158','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1296','×Í´¨','160','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1297','ÕÅµê','160','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1298','²©É½','160','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1299','ÁÙ×Í','160','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1300','ÖÜ´å','160','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1301','»¸Ì¨','160','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1302','¸ßÇà','160','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1303','ÒÊÔ´','160','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1304','¸ßÐÂ','160','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1305','ÊÐÖÐ','161','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1306','Ñ¦³Ç','161','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1307','á»³Ç','161','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1308','Ì¨¶ù×¯','161','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1309','É½Í¤','161','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1310','ëøÖÝ','161','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1311','¶«Óª','162','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1312','ºÓ¿Ú','162','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1313','¿ÑÀû','162','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1314','Àû½ò','162','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1315','¹ãÈÄ','162','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1316','Ö¥î·','159','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1317','¸£É½','159','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1318','Ä²Æ½','159','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1319','À³É½','159','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1320','³¤µº','159','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1321','Áú¿Ú','159','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1322','À³Ñô','159','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1323','À³ÖÝ','159','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1324','ÅîÀ³','159','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1325','ÕÐÔ¶','159','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1326','ÆÜÏ¼','159','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1327','º£Ñô','159','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1328','¿ª·¢Çø','159','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1329','Î«³Ç','163','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1330','º®Í¤','163','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1331','·»×Ó','163','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1332','¿üÎÄ','163','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1333','ÁÙëÔ','163','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1334','²ýÀÖ','163','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1335','ÇàÖÝ','163','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1336','Öî³Ç','163','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1337','ÊÙ¹â','163','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1338','°²Çð','163','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1339','¸ßÃÜ','163','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1340','²ýÒØ','163','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1341','¾­¼Ã¿ª·¢Çø','163','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1342','±õº£¾­¼Ã¿ª·¢Çø','163','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1343','¸ßÐÂ¼¼Êõ¿ª·¢Çø','163','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1344','³ö¿Ú¼Ó¹¤','163','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1345','ÊÐÖÐ','165','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1346','ÈÎ³Ç','165','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1347','Î¢É½','165','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1348','ÓãÌ¨','165','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1349','½ðÏç','165','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1350','¼ÎÏé','165','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1351','ãëÉÏ','165','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1352','ãôË®','165','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1353','ÁºÉ½','165','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1354','Çú¸·','165','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1355','ÙðÖÝ','165','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1356','×Þ³Ç','165','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1357','Ì©É½','166','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1358','á·ÔÀ','166','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1359','ÄþÑô','166','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1360','¶«Æ½','166','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1361','ÐÂÌ©','166','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1362','·Ê³Ç','166','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1363','»·´ä','164','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1364','ÎÄµÇ','164','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1365','ÈÙ³É','164','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1366','ÈéÉ½','164','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1367','¾­¼Ã¼¼Êõ¿ª·¢Çø','164','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1368','¸ß¼¼Êõ¿ª·¢Çø','164','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1369','¶«¸Û','167','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1370','á°É½','167','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1371','ÎåÁ«','167','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1372','Üì','167','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1373','À³³Ç','168','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1374','¸Ö³Ç','168','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1375','À¼É½','170','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1376','ÂÞ×¯','170','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1377','ºÓ¶«','170','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1378','ÒÊÄÏ','170','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1379','Û°³Ç','170','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1380','ÒÊË®','170','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1381','²ÔÉ½','170','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1382','·Ñ','170','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1383','Æ½ÒØ','170','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1384','ÜìÄÏ','170','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1385','ÃÉÒõ','170','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1386','ÁÙãð','170','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1387','µÂ³Ç','169','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1388','Áê','169','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1389','Äþ½ò','169','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1390','ÇìÔÆ','169','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1391','ÁÙÒØ','169','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1392','ÆëºÓ','169','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1393','Æ½Ô­','169','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1394','ÏÄ½ò','169','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1395','Îä³Ç','169','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1396','ÀÖÁê','169','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1397','Óí³Ç','169','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1398','¶«²ý¸®','171','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1399','Ñô¹È','171','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1400','Ý·','171','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1401','ÜÝÆ½','171','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1402','¶«°¢','171','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1403','¹Ú','171','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1404','¸ßÌÆ','171','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1405','ÁÙÇå','171','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1406','±õ³Ç','172','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1407','»ÝÃñ','172','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1408','ÑôÐÅ','172','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1409','ÎÞé¦','172','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1410','Õ´»¯','172','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1411','²©ÐË','172','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1412','×ÞÆ½','172','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1413','Äµµ¤','175','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1414','²Ü','175','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1415','µ¥','175','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1416','³ÉÎä','175','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1417','¾ÞÒ°','175','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1418','Û©³Ç','175','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1419','Û²³Ç','175','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1420','¶¨ÌÕ','175','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1421','¶«Ã÷','175','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1422','ÖÐÔ­','140','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1423','¶þÆß','140','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1424','¹Ü³Ç»Ø×å','140','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1425','½ðË®','140','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1426','ÉÏ½Ö','140','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1427','ÖÐÄ²','140','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1428','¹®Òå','140','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1429','ÜþÑô','140','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1430','ÐÂÃÜ','140','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1431','ÐÂÖ£','140','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1432','µÇ·â','140','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1433','¸ßÐÂ¼¼Êõ¿ª·¢Çø','140','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1434','»Ý¼Ã','140','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1435','¾­¼Ã¼¼Êõ¿ª·¢Çø','140','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1436','Ö£¶«ÐÂ','140','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1437','³ö¿Ú¼Ó¹¤','140','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1438','ÁúÍ¤','142','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1439','Ë³ºÓ»Ø×å','142','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1440','¹ÄÂ¥','142','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1441','è½','142','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1442','Í¨Ðí','142','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1443','Î¾ÊÏ','142','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1444','¿ª·â','142','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1445','À¼¿¼','142','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1446','½ðÃ÷','142','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1447','ÓíÍõÌ¨','142','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1448','ÀÏ³Ç','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1449','Î÷¹¤','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1450','žeºÓ»Ø×å','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1451','½§Î÷','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1452','¼ªÀû','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1453','ÂåÁú','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1454','ÃÏ½ò','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1455','ÐÂ°²','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1456','èï´¨','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1457','áÔÏØ','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1458','ÈêÑô','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1459','ÒËÑô','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1460','ÂåÄþ','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1461','ÒÁ´¨','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1462','ÙÈÊ¦','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1463','¸ßÐÂ¼¼Êõ¿ª·¢Çø','141','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1464','¾­¼Ã¼¼Êõ¿ª·¢Çø','141','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1465','ÐÂ»ª','143','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1466','ÎÀ¶«','143','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1467','Ê¯Áú','143','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1468','Õ¿ºÓ','143','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1469','±¦·á','143','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1470','Ò¶ÏØ','143','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1471','Â³É½','143','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1472','Û£','143','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1473','Îè¸Ö','143','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1474','ÈêÖÝ','143','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1475','ÎÄ·å','147','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1476','±±¹Ø','147','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1477','Òó¶¼','147','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1478','Áú°²','147','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1479','°²Ñô','147','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1480','ÌÀÒõ','147','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1481','»¬ÏØ','147','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1482','ÄÚ»Æ','147','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1483','ÁÖÖÝ','147','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1484','º×É½','145','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1485','É½³Ç','145','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1486','ä¿±õ','145','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1487','¿£ÏØ','145','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1488','ä¿ÏØ','145','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1489','ºìÆì','146','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1490','ÎÀ±õ','146','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1491','·ïÈª','146','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1492','ÄÁÒ°','146','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1493','ÐÂÏç','146','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1494','»ñ¼Î','146','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1495','Ô­Ñô','146','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1496','ÑÓ½ò','146','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1497','·âÇð','146','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1498','³¤Ô«','146','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1499','ÎÀ»Ô','146','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1500','»ÔÏØ','146','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1501','½â·Å','144','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1502','ÖÐÕ¾','144','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1503','Âí´å','144','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1504','É½Ñô','144','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1505','ÐÞÎä','144','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1506','²©°®','144','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1507','ÎäÚì','144','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1508','ÎÂÏØ','144','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1509','ÇßÑô','144','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1510','ÃÏÖÝ','144','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1511','»ªÁú','148','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1512','Çå·á','148','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1513','ÄÏÀÖ','148','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1514','·¶ÏØ','148','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1515','Ì¨Ç°','148','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1516','å§Ñô','148','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1517','Îº¶¼','149','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1518','Ðí²ý','149','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1519','Û³Áê','149','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1520','Ïå³Ç','149','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1521','ÓíÖÝ','149','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1522','³¤¸ð','149','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1523','Ô´»ã','150','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1524','Û±³Ç','150','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1525','ÕÙÁê','150','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1526','ÎèÑô','150','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1527','ÁÙò£','150','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1528','ºþ±õ','151','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1529','äÅ³Ø','151','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1530','ÉÂÏØ','151','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1531','Â¬ÊÏ','151','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1532','ÒåÂí','151','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1533','Áé±¦','151','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1534','Íð³Ç','152','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1535','ÎÔÁú','152','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1536','ÄÏÕÙ','152','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1537','·½³Ç','152','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1538','Î÷Ï¿','152','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1539','ÕòÆ½','152','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1540','ÄÚÏç','152','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1541','äÀ´¨','152','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1542','ÉçÆì','152','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1543','ÌÆºÓ','152','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1544','ÐÂÒ°','152','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1545','Í©°Ø','152','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1546','µËÖÝ','152','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1547','ÁºÔ°','153','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1548','î¡Ñô','153','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1549','ÃñÈ¨','153','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1550','î¡ÏØ','153','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1551','ÄþÁê','153','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1552','èÏ³Ç','153','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1553','ÓÝ³Ç','153','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1554','ÏÄÒØ','153','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1555','ÓÀ³Ç','153','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1556','›¸ºÓ','154','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1557','Æ½ÇÅ','154','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1558','ÂÞÉ½','154','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1559','¹âÉ½','154','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1560','ÐÂÏØ','154','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1561','ÉÌ³Ç','154','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1562','¹ÌÊ¼','154','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1563','äê´¨','154','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1564','»´±õ','154','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1565','Ï¢ÏØ','154','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1566','´¨»ã','155','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1567','·ö¹µ','155','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1568','Î÷»ª','155','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1569','ÉÌË®','155','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1570','ÉòÇð','155','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1571','µ¦³Ç','155','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1572','»´Ñô','155','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1573','Ì«¿µ','155','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1574','Â¹ÒØ','155','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1575','Ïî³Ç','155','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1576','æä³Ç','156','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1577','Î÷Æ½','156','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1578','ÉÏ²Ì','156','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1579','Æ½Óß','156','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1580','ÕýÑô','156','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1581','È·É½','156','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1582','ÃÚÑô','156','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1583','ÈêÄÏ','156','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1584','ËìÆ½','156','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1585','ÐÂ²Ì','156','1'); 
+			 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1587','½­°¶','204','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1588','½­ºº','204','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1589','³~¿Ú','204','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1590','ººÑô','204','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1591','Îä²ý','204','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1592','ÇàÉ½','204','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1593','ºéÉ½','204','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1594','¶«Î÷ºþ','204','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1595','ººÄÏ','204','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1596','²Ìµé','204','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1597','½­ÏÄ','204','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1598','»ÆÚé','204','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1599','ÐÂÖÞ','204','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1600','»ÆÊ¯¸Û','205','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1601','Î÷ÈûÉ½','205','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1602','ÏÂÂ½','205','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1603','ÌúÉ½','205','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1604','ÑôÐÂ','205','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1605','´óÒ±','205','1');
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1606','Ã©¼ý','207','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1607','ÕÅÍå','207','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1608','ÔÇ','207','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1609','ÔÇÎ÷','207','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1610','ÖñÉ½','207','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1611','ÖñÏª','207','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1612','·¿ÏØ','207','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1613','µ¤½­¿Ú','207','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1614','Î÷Áê','209','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1615','Îé¼Ò¸Ú','209','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1616','µã¾ü','209','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1617','ë½Í¤','209','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1618','ÒÄÁê','209','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1619','Ô¶°²','209','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1620','ÐËÉ½','209','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1621','ïö¹é','209','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1622','³¤ÑôÍÁ¼Ò×å','209','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1623','Îå·åÍÁ¼Ò×å','209','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1624','ÒË¶¼','209','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1625','µ±Ñô','209','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1626','Ö¦½­','209','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1627','¾­¼Ã¼¼Êõ¿ª·¢Çø','209','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1628','Ïå³Ç','206','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1629','·®³Ç','206','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1630','ÏåÑô','206','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1631','ÄÏÕÄ','206','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1632','¹È³Ç','206','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1633','±£¿µ','206','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1634','ÀÏºÓ¿Ú','206','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1635','ÔæÑô','206','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1636','ÒË³Ç','206','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1637','Áº×Óºþ','211','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1638','»ªÈÝ','211','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1639','¶õ³Ç','211','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1640','¶«±¦','210','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1641','¶Þµ¶','210','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1642','¾©É½','210','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1643','É³Ñó','210','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1644','ÖÓÏé','210','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1645','Ð¢ÄÏ','212','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1646','Ð¢²ý','212','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1647','´óÎò','212','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1648','ÔÆÃÎ','212','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1649','Ó¦³Ç','212','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1650','°²Â½','212','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1651','ºº´¨','212','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1652','É³ÊÐ','208','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1653','¾£ÖÝ','208','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1654','¹«°²','208','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1655','¼àÀû','208','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1656','½­Áê','208','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1657','Ê¯Ê×','208','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1658','ºéºþ','208','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1659','ËÉ×Ì','208','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1660','»ÆÖÝ','213','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1661','ÍÅ·ç','213','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1662','ºì°²','213','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1663','ÂÞÌï','213','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1664','Ó¢É½','213','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1665','ä»Ë®','213','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1666','Þ­´º','213','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1667','»ÆÃ·','213','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1668','Âé³Ç','213','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1669','ÎäÑ¨','213','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1670','ÏÌ°²','214','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1671','¼ÎÓã','214','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1672','Í¨³Ç','214','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1673','³çÑô','214','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1674','Í¨É½','214','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1675','³à±Ú','214','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1676','Ôø¶¼','215','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1677','¹ãË®','215','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1678','¶÷Ê©','216','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1679','Àû´¨','216','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1680','½¨Ê¼','216','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1681','°Í¶«','216','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1682','Ðû¶÷','216','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1683','ÏÌ·á','216','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1684','À´·ï','216','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1685','º×·å','216','1'); 
+			 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2997','Ê¡Ö±Ï½ÏØ¼¶ÐÐÕþµ¥Î»','450','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1686','ÏÉÌÒ','450','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1687','Ç±½­','450','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1688','ÌìÃÅ','450','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1689','ÉñÅ©¼ÜÁÖ','450','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1690','Ü½ÈØ','224','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1691','ÌìÐÄ','224','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1692','ÔÀÂ´','224','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1693','¿ª¸£','224','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1694','Óê»¨','224','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1695','³¤É³','224','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1696','Íû³Ç','224','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1697','ÄþÏç','224','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1698','ä¯Ñô','224','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1699','ºÉÌÁ','225','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1700','Â«äÁ','225','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1701','Ê¯·å','225','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1702','ÌìÔª','225','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1703','ÖêÖÞ','225','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1704','ØüÏØ','225','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1705','²èÁê','225','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1706','Ñ×Áê','225','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1707','õ·Áê','225','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1708','Óêºþ','226','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1709','ÔÀÌÁ','226','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1710','ÏæÌ¶','226','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1711','ÏæÏç','226','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1712','ÉØÉ½','226','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1713','ÖéêÍ','227','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1714','Ñã·å','227','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1715','Ê¯¹Ä','227','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1716','ÕôÏæ','227','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1717','ÄÏÔÀ','227','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1718','ºâÑô','227','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1719','ºâÄÏ','227','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1720','ºâÉ½','227','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1721','ºâ¶«','227','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1722','Æî¶«','227','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1723','ñçÑô','227','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1724','³£Äþ','227','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1725','Ë«Çå','228','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1726','´óÏé','228','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1727','±±Ëþ','228','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1728','ÉÛ¶«','228','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1729','ÐÂÉÛ','228','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1730','ÉÛÑô','228','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1731','Â¡»Ø','228','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1732','¶´¿Ú','228','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1733','ËçÄþ','228','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1734','ÐÂÄþ','228','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1735','³Ç²½Ãç×å','228','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1736','Îä¸Ô','228','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1737','ÔÀÑôÂ¥','229','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1738','ÔÆÏª','229','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1739','¾ýÉ½','229','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1740','ÔÀÑô','229','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1741','»ªÈÝ','229','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1742','ÏæÒõ','229','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1743','Æ½½­','229','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1744','ãèÂÞ','229','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1745','ÁÙÏæ','229','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1746','ÎäÁê','230','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1747','¶¦³Ç','230','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1748','°²Ïç','230','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1749','ººÊÙ','230','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1750','å¢','230','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1751','ÁÙå¢','230','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1752','ÌÒÔ´','230','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1753','Ê¯ÃÅ','230','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1754','½òÊÐ','230','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1755','ÓÀ¶¨','231','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1756','ÎäÁêÔ´','231','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1757','´ÈÀû','231','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1758','É£Ö²','231','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1759','×ÊÑô','232','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1760','ºÕÉ½','232','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1761','ÄÏÏØ','232','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1762','ÌÒ½­','232','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1763','°²»¯','232','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1764','ãä½­','232','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1765','±±ºþ','233','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1766','ËÕÏÉ','233','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1767','¹ðÑô','233','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1768','ÒËÕÂ','233','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1769','ÓÀÐË','233','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1770','¼ÎºÌ','233','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1771','ÁÙÎä','233','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1772','Èê³Ç','233','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1773','¹ð¶«','233','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1774','°²ÈÊ','233','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1775','×ÊÐË','233','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1776','ÀäË®Ì²','234','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1777','ÆîÑô','234','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1778','¶«°²','234','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1779','Ë«ÅÆ','234','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1780','µÀ','234','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1781','½­ÓÀ','234','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1782','ÄþÔ¶','234','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1783','À¶É½','234','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1784','ÐÂÌï','234','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1785','½­»ªÑþ×å','234','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1786','ÁãÁê','234','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1787','º×³Ç','235','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1788','ÖÐ·½','235','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1789','ãäÁê','235','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1790','³½Ïª','235','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1791','äÓÆÖ','235','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1792','»áÍ¬','235','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1793','ÂéÑôÃç×å','235','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1794','ÐÂ»Î¶±×å','235','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1795','ÜÆ½­¶±×å','235','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1796','¾¸ÖÝÃç×å¶±×å','235','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1797','Í¨µÀ¶±×å','235','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1798','ºé½­','235','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1799','Â¦ÐÇ','236','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1800','Ë«·å','236','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1801','ÐÂ»¯','236','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1802','ÀäË®½­','236','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1803','Á°Ô´','236','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1804','¼ªÊ×','237','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1805','ãòÏª','237','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1806','·ï»Ë','237','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1807','»¨Ô«','237','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1808','±£¾¸','237','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1809','¹ÅÕÉ','237','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1810','ÓÀË³','237','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1811','ÁúÉ½','237','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1812','ÀóÍå','326','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1813','Ô½Ðã','326','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1814','º£Öé','326','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1815','ÌìºÓ','326','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1816','°×ÔÆ','326','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1817','»ÆÆÒ','326','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1818','·¬Ø®','326','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1819','»¨¶¼','326','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1820','Ôö³Ç','326','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1821','´Ó»¯','326','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1822','ÄÏÉ³','326','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1823','ÂÜ¸Ú','326','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1824','Îä½­','330','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1825','ä¥½­','330','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1826','Çú½­','330','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1827','Ê¼ÐË','330','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1828','ÈÊ»¯','330','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1829','ÎÌÔ´','330','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1830','ÈéÔ´Ñþ×å','330','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1831','ÐÂ·á','330','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1832','ÀÖ²ý','330','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1833','ÄÏÐÛ','330','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1834','ÂÞºþ','327','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1835','¸£Ìï','327','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1836','ÄÏÉ½','327','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1837','±¦°²','327','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1838','Áú¸Ú','327','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1839','ÑÎÌï','327','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1840','¹âÃ÷ÐÂ','327','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1841','ÆºÉ½ÐÂ','327','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1842','ÏãÖÞ','328','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1843','¶·ÃÅ','328','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1844','½ðÍå','328','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1845','Áúºþ','328','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1846','½ðÆ½','328','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1847','å©½­','328','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1848','³±Ñô','328','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1849','³±ÄÏ','328','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1850','³Îº£','328','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1851','ÄÏ°Ä','328','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1852','ìø³Ç','338','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1853','ÄÏº£','338','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1854','Ë³µÂ','338','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1855','ÈýË®','338','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1856','¸ßÃ÷','338','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1857','Åî½­','337','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1858','½­º£','337','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1859','ÐÂ»á','337','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1860','Ì¨É½','337','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1861','¿ªÆ½','337','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1862','º×É½','337','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1863','¶÷Æ½','337','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1864','³à¿²','340','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1865','Ï¼É½','340','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1866','ÆÂÍ·','340','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1867','ÂéÕÂ','340','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1868','ËìÏª','340','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1869','ÐìÎÅ','340','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1870','Á®½­','340','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1871','À×ÖÝ','340','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1872','Îâ´¨','340','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1873','¿ª·¢Çø','340','1');
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1874','Ã¯ÄÏ','341','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1875','Ã¯¸Û','341','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1876','µç°×','341','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1877','¸ßÖÝ','341','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1878','»¯ÖÝ','341','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1879','ÐÅÒË','341','1');
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1880','¶ËÖÝ','342','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1881','¶¦ºþ','342','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1882','¹ãÄþ','342','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1883','»³¼¯','342','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1884','·â¿ª','342','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1885','µÂÇì','342','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1886','¸ßÒª','342','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1887','ËÄ»á','342','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1888','¸ßÐÂ¼¼Êõ²úÒµ¿ª·¢Çø','342','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1889','»Ý³Ç','333','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1890','»ÝÑô','333','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1891','²©ÂÞ','333','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1892','»Ý¶«','333','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1893','ÁúÃÅ','333','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1894','´óÑÇÍå','333','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1895','ÖÙâý¸ßÐÂ','333','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1896','Ã·½­','332','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1897','Ã·ÏØ','332','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1898','´óÆÒ','332','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1899','·áË³','332','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1900','Îå»ª','332','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1901','Æ½Ô¶','332','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1902','½¶Áë','332','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1903','ÐËÄþ','332','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1904','³Ç','334','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1905','Â½·á','334','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1906','º£·á','334','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1907','Â½ºÓ','334','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1908','Ô´³Ç','331','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1909','×Ï½ð','331','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1910','Áú´¨','331','1'); 
+		
+		
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1911','Á¬Æ½','331','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1912','ºÍÆ½','331','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1913','¶«Ô´','331','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1914','½­³Ç','339','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1915','ÑôÎ÷','339','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1916','Ñô¶«','339','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1917','Ñô´º','339','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1918','Çå³Ç','343','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1919','·ð¸Ô','343','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1920','ÑôÉ½','343','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1921','Á¬É½×³×åÑþ×å','343','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1922','Á¬ÄÏÑþ×å','343','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1923','ÇåÐÂ','343','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1924','Ó¢µÂ','343','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1925','Á¬ÖÝ','343','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1926','ÄÏ³Ç','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1927','Ê¯ÁúÕò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1928','³¤°²Õò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1929','»¢ÃÅÕò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1930','ºáÁ¤Õò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1931','å¼²½Õò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1932','»Æ½­Õò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1933','ÇåÏªÕò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1934','Ý¸³Ç','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1935','Íò½­','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1936','¶«³Ç','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1937','Ê¯íÙÕò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1938','²èÉ½Õò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1939','Ê¯ÅÅÕò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1940','ÆóÊ¯Õò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1941','ÇÅÍ·Õò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1942','Ð»¸ÚÕò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1943','¶«¿ÓÕò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1944','³£Æ½Õò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1945','´óÀÊÕò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1946','ÌÁÏÃÕò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1947','·ï¸ÚÕò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1948','ºñ½ÖÕò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1949','É³ÌïÕò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1950','µÀœòÕò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1951','ºéÃ·Õò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1952','ÂéÓ¿Õò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1953','ÖÐÌÃÕò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1954','¸ßˆ¶Õò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1955','ÕÁÄ¾Í·Õò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1956','´óÁëÉ½Õò','335','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1957','ÍûÅ£¶ÕÕò','335','1');
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1958','ÖÐÉ½','336','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1959','ÏæÇÅ','344','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1960','³±°²','344','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1961','ÈÄÆ½','344','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1962','éÅ³Ç','345','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1963','½Ò¶«','345','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1964','½ÒÎ÷','345','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1965','»ÝÀ´','345','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1966','ÆÕÄþ','345','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1967','¶«É½','345','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1968','ÆÕÇÈ','345','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1969','´óÄÏÉ½ÇÈ','345','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1970','ÔÆ³Ç','346','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1971','ÐÂÐË','346','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1972','ÓôÄÏ','346','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1973','ÔÆ°²','346','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1974','ÂÞ¶¨','346','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1975','ÐËÄþ','354','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1976','ÇàÐã','354','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1977','½­ÄÏ','354','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1978','Î÷ÏçÌÁ','354','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1979','Á¼Çì','354','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1980','çßÄþ','354','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1981','ÎäÃù','354','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1982','Â¡°²','354','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1983','ÂíÉ½','354','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1984','ÉÏÁÖ','354','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1985','±öÑô','354','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1986','ºáÏØ','354','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1987','³ÇÖÐ','355','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1988','Óã·å','355','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1989','ÁøÄÏ','355','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1990','Áø±±','355','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1991','Áø½­','355','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1992','Áø³Ç','355','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1993','Â¹Õ¯','355','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1994','ÈÚ°²','355','1'); 
+
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1995','ÈÚË®Ãç×å','355','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1996','Èý½­¶±×å','355','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1997','Ðã·å','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1998','µþ²Ê','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('1999','ÏóÉ½','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2000','ÆßÐÇ','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2001','ÑãÉ½','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2002','ÑôË·','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2003','ÁÙ¹ð','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2004','Áé´¨','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2005','È«ÖÝ','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2006','ÐË°²','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2007','ÓÀ¸£','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2008','¹àÑô','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2009','ÁúÊ¤¸÷×å','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2010','×ÊÔ´','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2011','Æ½ÀÖ','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2012','ÀóÆÖ','356','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2013','¹§³ÇÑþ×å','356','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2014','ÍòÐã','357','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2015','µûÉ½','357','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2016','³¤ÖÞ','357','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2017','²ÔÎà','357','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2018','ÌÙÏØ','357','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2019','ÃÉÉ½','357','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2020','á¯Ïª','357','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2021','º£³Ç','358','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2022','Òøº£','358','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2023','ÌúÉ½¸Û','358','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2024','ºÏÆÖ','358','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2025','¸Û¿Ú','359','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2026','·À³Ç','359','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2027','ÉÏË¼','359','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2028','¶«ÐË','359','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2029','ÇÕÄÏ','360','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2030','ÇÕ±±','360','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2031','ÁéÉ½','360','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2032','ÆÖ±±','360','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2033','ÇÕÖÝ¸Û¾­¼Ã¿ª·¢Çø','360','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2034','¸Û±±','361','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2035','¸ÛÄÏ','361','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2036','ñûÌÁ','361','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2037','Æ½ÄÏ','361','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2038','¹ðÆ½','361','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2039','ÓñÖÝ','362','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2040','ÈÝÏØ','362','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2041','Â½´¨','362','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2042','²©°×','362','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2043','ÐËÒµ','362','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2044','±±Á÷','362','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2045','ÓÒ½­','363','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2046','ÌïÑô','363','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2047','Ìï¶«','363','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2048','Æ½¹û','363','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2049','µÂ±£','363','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2050','¾¸Î÷','363','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2051','ÄÇÆÂ','363','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2052','ÁèÔÆ','363','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2053','ÀÖÒµ','363','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2054','ÌïÁÖ','363','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2055','Î÷ÁÖ','363','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2056','Â¡ÁÖ¸÷×å','363','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2057','°Ë²½','364','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2058','ÕÑÆ½','364','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2059','ÖÓÉ½','364','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2060','¸»´¨Ñþ×å','364','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2061','½ð³Ç½­','365','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2062','ÄÏµ¤','365','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2063','Ìì¶ë','365','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2064','·ïÉ½','365','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2065','¶«À¼','365','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2066','ÂÞ³ÇØïÀÐ×å','365','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2067','»·½­Ã«ÄÏ×å','365','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2068','°ÍÂíÑþ×å','365','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2069','¶¼°²Ñþ×å','365','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2070','´ó»¯Ñþ×å','365','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2071','ÒËÖÝ','365','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2072','ÐË±ö','366','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2073','ÐÃ³Ç','366','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2074','ÏóÖÝ','366','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2075','ÎäÐû','366','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2076','½ðÐãÑþ×å','366','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2077','ºÏÉ½','366','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2078','½­ÖÞ','367','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2079','·öËç','367','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2080','ÄþÃ÷','367','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2081','ÁúÖÝ','367','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2082','´óÐÂ','367','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2083','ÌìµÈ','367','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2084','Æ¾Ïé','367','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2085','ÐãÓ¢','445','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2086','Áú»ª','445','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2087','ÇíÉ½','445','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2088','ÃÀÀ¼','445','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2089','ºÓÎ÷','446','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2090','ºÓ¶«','446','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2091','Ìï¶ÀÕò','446','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2092','·ï»ËÕò','446','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2093','ÈýÑÇ','446','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2094','ÑÂ³ÇÕò','446','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2095','ÌìÑÄÕò','446','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2096','Óý²ÅÏç','446','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2097','º£ÌÄÍåÕò','446','1');
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2098','ÎåÖ¸É½','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2099','Çíº£','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2100','ÙÙÖÝ','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2101','ÎÄ²ý','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2102','ÍòÄþ','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2103','¶«·½','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2104','¶¨°²','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2105','ÍÍ²ý','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2106','³ÎÂõ','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2107','ÁÙ¸ß','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2108','°×É³Àè×å','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2109','²ý½­Àè×å','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2110','ÀÖ¶«Àè×å','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2111','ÁêË®Àè×å','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2112','±£Í¤Àè×åÃç×å','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2113','ÇíÖÐÀè×åÃç×å','457','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2114','Î÷¡¢ÄÏ¡¢ÖÐÉ³Èºµº°ìÊÂ´¦','457','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2115','ÍòÖÝ','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2116','¸¢Áê','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2117','ÓåÖÐ','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2118','´ó¶É¿Ú','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2119','½­±±','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2120','É³Æº°Ó','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2121','¾ÅÁúÆÂ','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2122','ÄÏ°¶','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2123','±±íÕ','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2124','ÍòÊ¢','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2125','Ë«ÇÅ','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2126','Óå±±','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2127','°ÍÄÏ','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2128','Ç­½­','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2129','³¤ÊÙ','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2130','ôë½­','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2131','äüÄÏ','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2132','Í­Áº','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2133','´ó×ã','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2134','ÈÙ²ý','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2135','èµÉ½','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2136','ÁºÆ½','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2137','³Ç¿Ú','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2138','·á¶¼','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2139','µæ½­','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2140','ÎäÂ¡','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2141','ÖÒÏØ','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2142','¿ªÏØ','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2143','ÔÆÑô','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2144','·î½Ú','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2145','Î×É½','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2146','Î×Ïª','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2147','Ê¯ÖùÍÁ¼Ò×å','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2148','ÐãÉ½ÍÁ¼Ò×åÃç×å','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2149','ÓÏÑôÍÁ¼Ò×åÃç×å','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2150','ÅíË®Ãç×åÍÁ¼Ò×å','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2151','¸ßÐÂ','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2152','½­½ò','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2153','ºÏ´¨','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2154','ÓÀ´¨','4','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2155','ÄÏ´¨','4','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2156','½õ½­','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2157','ÇàÑò','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2158','½ðÅ£','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2159','Îäºî','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2160','³É»ª','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2161','ÁúÈªæä','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2162','Çà°×½­','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2163','ÐÂ¶¼','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2164','ÎÂ½­','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2165','½ðÌÃ','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2166','Ë«Á÷','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2167','Û¯ÏØ','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2168','´óÒØ','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2169','ÆÑ½­','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2170','ÐÂ½ò','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2171','¶¼½­Ñß','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2172','ÅíÖÝ','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2173','ÚöáÁ','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2174','³çÖÝ','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2175','¸ßÐÂ','384','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2176','¸ßÐÂÎ÷','384','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2177','×ÔÁ÷¾®','385','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2178','¹±¾®','385','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2179','´ó°²','385','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2180','ÑØÌ²','385','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2181','ÈÙÏØ','385','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2182','¸»Ë³','385','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2183','¶«','386','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2184','Î÷','386','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2185','ÈÊºÍ','386','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2186','Ã×Ò×','386','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2187','ÑÎ±ß','386','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2188','½­Ñô','387','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2189','ÄÉÏª','387','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2190','ÁúÂíÌ¶','387','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2191','ãòÏØ','387','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2192','ºÏ½­','387','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2193','ÐðÓÀ','387','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2194','¹ÅÝþ','387','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2195','ìºÑô','388','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2196','ÖÐ½­','388','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2197','ÂÞ½­','388','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2198','¹ãºº','388','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2199','Ê²Úú','388','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2200','ÃàÖñ','388','1');
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2201','¸¢³Ç','389','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2202','ÓÎÏÉ','389','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2203','ÈýÌ¨','389','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2204','ÑÎÍ¤','389','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2205','°²ÏØ','389','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2206','è÷äü','389','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2207','±±´¨Ç¼×å','389','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2208','Æ½Îä','389','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2209','½­ÓÍ','389','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2210','Å©¿Æ','389','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2211','¾­¼Ã¼¼Êõ¿ª·¢Çø','389','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2212','¸ßÐÂ','389','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2213','ÏÉº£','389','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2214','ÀûÖÝ','390','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2215','Ôª°Ó','390','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2216','³¯Ìì','390','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2217','Íú²Ô','390','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2218','Çà´¨','390','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2219','½£¸ó','390','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2220','²ÔÏª','390','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2221','´¬É½','391','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2222','°²¾Ó','391','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2223','ÅîÏª','391','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2224','Éäºé','391','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2225','´óÓ¢','391','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2226','ÊÐÖÐ','392','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2227','¶«ÐË','392','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2228','ÍþÔ¶','392','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2229','×ÊÖÐ','392','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2230','Â¡²ý','392','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2231','ÊÐÖÐ','393','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2232','É³Íå','393','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2233','ÎåÍ¨ÇÅ','393','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2234','½ð¿ÚºÓ','393','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2235','êùÎª','393','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2236','¾®ÑÐ','393','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2237','¼Ð½­','393','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2238','ãå´¨','393','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2239','¶ë±ßÒÍ×å','393','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2240','Âí±ßÒÍ×å','393','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2241','¶ëÃ¼É½','393','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2242','Ë³Çì','394','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2243','¸ßÆº','394','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2244','¼ÎÁê','394','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2245','ÄÏ²¿','394','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2246','ÓªÉ½','394','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2247','Åî°²','394','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2248','ÒÇÂ¤','394','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2249','Î÷³ä','394','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2250','ãÏÖÐ','394','1');
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2251','¶«ÆÂ','400','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2252','ÈÊÊÙ','400','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2253','ÅíÉ½','400','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2254','ºéÑÅ','400','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2255','µ¤Àâ','400','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2256','ÇàÉñ','400','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2257','´äÆÁ','395','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2258','ÒË±ö','395','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2259','ÄÏÏª','395','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2260','½­°²','395','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2261','³¤Äþ','395','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2262','¸ßÏØ','395','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2263','çîÏØ','395','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2264','óÞÁ¬','395','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2265','ÐËÎÄ','395','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2266','ÆÁÉ½','395','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2267','¹ã°²','396','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2268','ÔÀ³Ø','396','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2269','ÎäÊ¤','396','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2270','ÁÚË®','396','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2271','»ªÝö','396','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2272','Í¨´¨','397','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2273','´ïÏØ','397','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2274','Ðûºº','397','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2275','¿ª½­','397','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2276','´óÖñ','397','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2277','ÇþÏØ','397','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2278','ÍòÔ´','397','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2279','Óê³Ç','399','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2280','ÃûÉ½','399','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2281','Üþ¾­','399','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2282','ººÔ´','399','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2283','Ê¯ÃÞ','399','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2284','ÌìÈ«','399','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2285','Â«É½','399','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2286','±¦ÐË','399','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2287','°ÍÖÝ','398','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2288','Í¨½­','398','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2289','ÄÏ½­','398','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2290','Æ½²ý','398','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2291','Ñã½­','401','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2292','°²ÔÀ','401','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2293','ÀÖÖÁ','401','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2294','¼òÑô','401','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2295','ãë´¨','402','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2296','ÀíÏØ','402','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2297','Ã¯ÏØ','402','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2298','ËÉÅË','402','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2299','¾ÅÕ¯¹µ','402','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2300','½ð´¨','402','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2301','Ð¡½ð','402','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2302','ºÚË®','402','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2303','Âí¶û¿µ','402','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2304','ÈÀÌÁ','402','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2305','°¢°Ó','402','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2306','Èô¶û¸Ç','402','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2307','ºìÔ­','402','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2308','¿µ¶¨','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2309','ãò¶¨','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2310','µ¤°Í','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2311','¾ÅÁú','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2312','ÑÅ½­','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2313','µÀæÚ','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2314','Â¯»ô','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2315','¸Ê×Î','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2316','ÐÂÁú','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2317','µÂ¸ñ','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2318','°×Óñ','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2319','Ê¯Çþ','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2320','É«´ï','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2321','ÀíÌÁ','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2322','°ÍÌÁ','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2323','Ïç³Ç','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2324','µ¾³Ç','403','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2325','µÃÈÙ','403','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2326','Î÷²ý','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2327','Ä¾Àï²Ø×å','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2328','ÑÎÔ´','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2329','µÂ²ý','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2330','»áÀí','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2331','»á¶«','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2332','ÄþÄÏ','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2333','ÆÕ¸ñ','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2334','²¼ÍÏ','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2335','½ðÑô','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2336','ÕÑ¾õ','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2337','Ï²µÂ','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2338','ÃáÄþ','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2339','Ô½Î÷','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2340','¸ÊÂå','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2341','ÃÀ¹Ã','404','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2342','À×²¨','404','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2343','ÄÏÃ÷','425','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2344','ÔÆÑÒ','425','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2345','»¨Ïª','425','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2346','ÎÚµ±','425','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2347','°×ÔÆ','425','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2348','Ð¡ºÓ','425','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2349','¿ªÑô','425','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2350','Ï¢·é','425','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2351','ÐÞÎÄ','425','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2352','ÇåÕò','425','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2353','½ðÑôÐÂ','425','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2354','ÖÓÉ½','426','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2355','ÁùÖ¦ÌØ','426','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2356','Ë®³Ç','426','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2357','ÅÌÏØ','426','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2358','ºì»¨¸Ú','427','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2359','»ã´¨','427','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2360','×ñÒå','427','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2361','Í©è÷','427','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2362','ËçÑô','427','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2363','Õý°²','427','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2364','µÀÕæØîÀÐ×åÃç×å','427','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2365','Îñ´¨ØîÀÐ×åÃç×å','427','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2366','·ï¸Ô','427','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2367','äØÌ¶','427','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2368','ÓàÇì','427','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2369','Ï°Ë®','427','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2370','³àË®','427','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2371','ÈÊ»³','427','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2372','Î÷Ðã','428','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2373','Æ½°Ó','428','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2374','ÆÕ¶¨','428','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2375','ÕòÄþ²¼ÒÀ×åÃç×å','428','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2376','¹ØÁë²¼ÒÀ×åÃç×å','428','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2377','×ÏÔÆÃç×å²¼ÒÀ×å','428','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2378','Í­ÈÊ','429','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2379','½­¿Ú','429','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2380','ÓñÆÁ¶±×å','429','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2381','Ê¯Úä','429','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2382','Ë¼ÄÏ','429','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2383','Ó¡½­ÍÁ¼Ò×åÃç×å','429','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2384','µÂ½­','429','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2385','ÑØºÓÍÁ¼Ò×å','429','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2386','ËÉÌÒÃç×å','429','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2387','ÍòÉ½ÌØ','429','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2388','ÐËÒå','431','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2389','ÐËÈÊ','431','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2390','ÆÕ°²','431','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2391','ÇçÂ¡','431','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2392','Õê·á','431','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2393','ÍûÚÓ','431','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2394','²áºà','431','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2395','°²Áú','431','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2396','±Ï½Ú','430','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2397','´ó·½','430','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2398','Ç­Î÷','430','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2399','½ðÉ³','430','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2400','Ö¯½ð','430','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2401','ÄÉÓº','430','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2402','ÍþÄþÒÍ×å»Ø×åÃç×å','430','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2403','ºÕÕÂ','430','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2404','¿­Àï','432','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2405','»ÆÆ½','432','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2406','Ê©±ü','432','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2407','ÈýËë','432','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2408','ÕòÔ¶','432','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2409','á¯¹®','432','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2410','ÌìÖù','432','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2411','½õÆÁ','432','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2412','½£ºÓ','432','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2413','Ì¨½­','432','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2414','ÀèÆ½','432','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2415','éÅ½­','432','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2416','´Ó½­','432','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2417','À×É½','432','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2418','Âé½­','432','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2419','µ¤Õ¯','432','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2420','¶¼ÔÈ','433','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2421','¸£Èª','433','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2422','Àó²¨','433','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2423','¹ó¶¨','433','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2424','ÎÍ°²','433','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2425','¶ÀÉ½','433','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2426','Æ½ÌÁ','433','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2427','ÂÞµé','433','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2428','³¤Ë³','433','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2429','ÁúÀï','433','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2430','»ÝË®','433','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2431','Èý¶¼Ë®×å','433','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2432','Îå»ª','408','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2433','ÅÌÁú','408','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2434','¹Ù¶É','408','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2435','Î÷É½','408','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2436','¶«´¨','408','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2437','³Ê¹±','408','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2438','½úÄþ','408','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2439','¸»Ãñ','408','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2440','ÒËÁ¼','408','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2441','Ê¯ÁÖÒÍ×å','408','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2442','áÔÃ÷','408','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2443','Â»È°ÒÍ×åÃç×å','408','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2444','Ñ°µé»Ø×åÒÍ×å','408','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2445','°²Äþ','408','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2446','÷è÷ë','409','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2447','ÂíÁú','409','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2448','Â½Á¼','409','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2449','Ê¦×Ú','409','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2450','ÂÞÆ½','409','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2451','¸»Ô´','409','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2452','»áÔó','409','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2453','Õ´Òæ','409','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2454','ÐûÍþ','409','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2455','ºìËþ','410','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2456','½­´¨','410','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2457','³Î½­','410','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2458','Í¨º£','410','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2459','»ªÄþ','410','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2460','Ò×ÃÅ','410','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2461','¶ëÉ½ÒÍ×å','410','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2462','ÐÂÆ½ÒÍ×å´ö×å','410','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2463','Ôª½­¹þÄá×åÒÍ×å´ö×å','410','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2464','Â¡Ñô','411','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2465','Ê©µé','411','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2466','ÌÚ³å','411','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2467','ÁúÁê','411','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2468','²ýÄþ','411','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2469','ÕÑÑô','412','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2470','Â³µé','412','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2471','ÇÉ¼Ò','412','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2472','ÑÎ½ò','412','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2473','´ó¹Ø','412','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2474','ÓÀÉÆ','412','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2475','Ëç½­','412','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2476','ÕòÐÛ','412','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2477','ÒÍÁ¼','412','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2478','ÍþÐÅ','412','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2479','Ë®¸»','412','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2480','¹Å³Ç','415','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2481','ÓñÁúÄÉÎ÷×å','415','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2482','ÓÀÊ¤','415','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2483','»ªÆº','415','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2484','ÄþÝõÒÍ×å','415','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2485','Ë¼Ã©','458','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2486','Äþ¶ý¹þÄá×åÒÍ×å','458','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2487','Ä«½­¹þÄá×å','458','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2488','¾°¶«ÒÍ×å','458','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2489','¾°¹È´ö×åÒÍ×å','458','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2490','ÕòãäÒÍ×å¹þÄá×åÀ­ìï×å','458','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2491','½­³Ç¹þÄá×åÒÍ×å','458','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2492','ÃÏÁ¬´ö×åÀ­ìï×åØô×å','458','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2493','À½²×À­ìï×å','458','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2494','Î÷ÃËØô×å','458','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2495','ÁÙÏè','414','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2496','·ïÇì','414','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2497','ÔÆÏØ','414','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2498','ÓÀµÂ','414','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2499','Õò¿µ','414','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2500','Ë«½­À­ìï×åØô×å²¼ÀÊ×å´ö×å','414','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2501','¹¢Âí´ö×åØô×å','414','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2502','²×Ô´Øô×å','414','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2503','³þÐÛ','419','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2504','Ë«°Ø','419','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2505','Ä²¶¨','419','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2506','ÄÏ»ª','419','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2507','Ò¦°²','419','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2508','´óÒ¦','419','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2509','ÓÀÈÊ','419','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2510','ÔªÄ±','419','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2511','Îä¶¨','419','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2512','Â»·á','419','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2513','¸ö¾É','417','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2514','¿ªÔ¶','417','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2515','ÃÉ×Ô','417','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2516','ÆÁ±ßÃç×å','417','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2517','½¨Ë®','417','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2518','Ê¯ÆÁ','417','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2519','ÃÖÀÕ','417','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2520','ãòÎ÷','417','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2521','ÔªÑô','417','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2522','ºìºÓ','417','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2523','½ðÆ½Ãç×åÑþ×å´ö×å','417','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2524','ÂÌ´º','417','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2525','ºÓ¿ÚÑþ×å','417','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2526','ÎÄÉ½','416','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2527','ÑâÉ½','416','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2528','Î÷³ë','416','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2529','ÂéÀõÆÂ','416','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2530','Âí¹Ø','416','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2531','Çð±±','416','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2532','¹ãÄÏ','416','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2533','¸»Äþ','416','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2534','¾°ºé','418','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2535','ÛÂº£','418','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2536','ÛÂÀ°','418','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2537','´óÀí','420','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2538','Ñúå¨ÒÍ×å','420','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2539','ÏéÔÆ','420','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2540','±ö´¨','420','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2541','ÃÖ¶É','420','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2542','ÄÏ½§ÒÍ×å','420','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2543','Î¡É½ÒÍ×å»Ø×å','420','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2544','ÓÀÆ½','420','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2545','ÔÆÁú','420','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2546','¶ýÔ´','420','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2547','½£´¨','420','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2548','º×Çì','420','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2549','ÈðÀö','421','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2550','ÂºÎ÷','421','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2551','ÁººÓ','421','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2552','Ó¯½­','421','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2553','Â¤´¨','421','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2554','ãòË®','422','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2555','¸£¹±','422','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2556','¹±É½¶ÀÁú×åÅ­×å','422','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2557','À¼Æº°××åÆÕÃ××å','422','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2558','Ïã¸ñÀïÀ­','423','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2559','µÂÇÕ','423','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2560','Î¬Î÷ÀüËÛ×å','423','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2561','³Ç¹Ø','438','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2562','ÁÖÖÜ','438','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2563','µ±ÐÛ','438','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2564','ÄáÄ¾','438','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2565','ÇúË®','438','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2566','¶ÑÁúµÂÇì','438','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2567','´ï×Î','438','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2568','Ä«Öñ¹¤¿¨','438','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2569','²ý¶¼','440','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2570','½­´ï','440','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2571','¹±¾õ','440','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2572','ÀàÎÚÆë','440','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2573','¶¡Çà','440','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2574','²ìÑÅ','440','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2575','°ËËÞ','440','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2576','×ó¹±','440','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2577','Ã¢¿µ','440','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2578','ÂåÂ¡','440','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2579','±ß°Ó','440','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2580','ÄË¶«','441','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2581','ÔúÄÒ','441','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2582','¹±¸Â','441','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2583','É£ÈÕ','441','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2584','Çí½á','441','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2585','ÇúËÉ','441','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2586','´ëÃÀ','441','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2587','ÂåÔú','441','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2588','¼Ó²é','441','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2589','Â¡×Ó','441','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2590','´íÄÇ','441','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2591','ÀË¿¨×Ó','441','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2592','ÈÕ¿¦Ôò','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2593','ÄÏÄ¾ÁÖ','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2594','½­×Î','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2595','¶¨ÈÕ','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2596','ÈøåÈ','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2597','À­×Î','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2598','°ºÈÊ','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2599','Ð»Í¨ÃÅ','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2600','°×ÀÊ','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2601','ÈÊ²¼','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2602','¿µÂí','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2603','¶¨½á','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2604','ÖÙ°Í','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2605','ÑÇ¶«','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2606','¼ªÂ¡','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2607','ÄôÀ­Ä¾','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2608','Èø¸Â','442','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2609','¸Ú°Í','442','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2610','ÄÇÇú','439','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2611','¼ÎÀè','439','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2612','±ÈÈç','439','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2613','ÄôÈÙ','439','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2614','°²¶à','439','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2615','ÉêÔú','439','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2616','Ë÷','439','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2617','°à¸ê','439','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2618','°ÍÇà','439','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2619','ÄáÂê','439','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2620','ÆÕÀ¼','443','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2621','Ôý´ï','443','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2622','¸Á¶û','443','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2623','ÈÕÍÁ','443','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2624','¸ï¼ª','443','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2625','¸ÄÔò','443','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2626','´ëÇÚ','443','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2627','ÁÖÖ¥','444','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2628','¹¤²¼½­´ï','444','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2629','Ã×ÁÖ','444','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2630','Ä«ÍÑ','444','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2631','²¨ÃÜ','444','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2632','²ìÓç','444','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2633','ÀÊÏØ','444','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2634','ÐÂ³Ç','114','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2635','±®ÁÖ','114','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2636','Á«ºþ','114','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2637','å±ÇÅ','114','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2638','Î´Ñë','114','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2639','ÑãËþ','114','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2640','ÑÖÁ¼','114','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2641','ÁÙäü','114','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2642','³¤°²','114','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2643','À¶Ìï','114','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2644','ÖÜÖÁ','114','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2645','»§ÏØ','114','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2646','¸ßÁê','114','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2647','¸ßÐÂ','114','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2648','ÍõÒæ','117','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2649','Ó¡Ì¨','117','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2650','Ò«ÖÝ','117','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2651','ÒË¾ý','117','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2652','ÐÂ','117','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2653','Î¼±õ','115','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2654','½ðÌ¨','115','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2655','³Â²Ö','115','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2656','·ïÏè','115','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2657','áªÉ½','115','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2658','·ö·ç','115','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2659','Ã¼ÏØ','115','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2660','Â¤ÏØ','115','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2661','Ç§Ñô','115','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2662','÷ëÓÎ','115','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2663','·ï','115','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2664','Ì«°×','115','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2665','ÇØ¶¼','118','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2666','Î¼³Ç','118','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2667','ÑîÁê','118','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2668','ÈýÔ­','118','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2669','ãþÑô','118','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2670','ÐËÆ½','118','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2671','Ç¬ÏØ','118','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2672','ÀñÈª','118','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2673','ÓÀÊÙ','118','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2674','±òÏØ','118','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2675','³¤Îä','118','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2676','Ñ®ÒØ','118','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2677','´¾»¯','118','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2678','Îä¹¦','118','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2679','ÁÙÎ¼','119','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2680','»ªÏØ','119','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2681','äü¹Ø','119','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2682','´óÀó','119','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2683','ºÏÑô','119','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2684','³Î³Ç','119','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2685','ÆÑ³Ç','119','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2686','°×Ë®','119','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2687','¸»Æ½','119','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2688','º«³Ç','119','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2689','»ªÒõ','119','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2690','±¦Ëþ','116','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2691','ÑÓ³¤','116','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2692','ÑÓ´¨','116','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2693','×Ó³¤','116','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2694','°²Èû','116','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2695','Ö¾µ¤','116','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2696','ÎâÆì','116','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2697','¸ÊÈª','116','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2698','¸»','116','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2699','Âå´¨','116','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2700','ÒË´¨','116','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2701','»ÆÁú','116','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2702','»ÆÁê','116','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2703','ººÌ¨','120','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2704','ÄÏÖ£','120','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2705','³Ç¹Ì','120','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2706','Ñó','120','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2707','Î÷Ïç','120','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2708','ÃãÏØ','120','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2709','ÄþÇ¿','120','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2710','ÂÔÑô','120','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2711','Õò°Í','120','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2712','Áô°Ó','120','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2713','·ðÆº','120','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2714','¾­¼Ã¿ª·¢Çø','120','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2715','ÓÜÑô','121','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2716','ÉñÄ¾','121','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2717','¸®¹È','121','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2718','ºáÉ½','121','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2719','¾¸±ß','121','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2720','¶¨±ß','121','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2721','ËçµÂ','121','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2722','Ã×Ö¬','121','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2723','¼ÑÏØ','121','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2724','Îâ±¤','121','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2725','Çå½§','121','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2726','×ÓÖÞ','121','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2727','ºº±õ','122','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2728','ººÒõ','122','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2729','Ê¯Èª','122','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2730','ÄþÉÂ','122','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2731','×ÏÑô','122','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2732','á°¸Þ','122','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2733','Æ½Àû','122','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2734','ÕòÆº','122','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2735','Ñ®Ñô','122','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2736','°×ºÓ','122','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2737','ÉÌÖÝ','123','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2738','ÂåÄÏ','123','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2739','µ¤·ï','123','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2740','ÉÌÄÏ','123','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2741','É½Ñô','123','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2742','Õò°²','123','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2743','×õË®','123','1');
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2744','³Ç¹Ø','99','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2745','ÆßÀïºÓ','99','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2746','Î÷¹Ì','99','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2747','°²Äþ','99','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2748','ºì¹Å','99','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2749','ÓÀµÇ','99','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2750','¸ÞÀ¼','99','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2751','ÓÜÖÐ','99','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2752','¼ÎÓø¹Ø','103','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2753','½ð´¨','101','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2754','ÓÀ²ý','101','1');
+			  
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2755','°×Òø','102','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2756','Æ½´¨','102','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2757','¾¸Ô¶','102','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2758','»áÄþ','102','1'); 
+		
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2759','¾°Ì©','102','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2760','ÇØÖÝ','100','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2761','Âó»ý','100','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2762','ÇåË®','100','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2763','ÇØ°²','100','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2764','¸Ê¹È','100','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2765','ÎäÉ½','100','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2766','ÕÅ¼Ò´¨»Ø×å','100','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2767','Á¹ÖÝ','104','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2768','ÃñÇÚ','104','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2769','¹ÅÀË','104','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2770','Ìì×£²Ø×å','104','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2771','¸ÊÖÝ','105','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2772','ËàÄÏÔ£¹Ì×å','105','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2773','ÃñÀÖ','105','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2774','ÁÙÔó','105','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2775','¸ßÌ¨','105','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2776','É½µ¤','105','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2777','áÇá¼','106','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2778','ãþ´¨','106','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2779','ÁéÌ¨','106','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2780','³çÐÅ','106','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2781','»ªÍ¤','106','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2782','×¯ÀË','106','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2783','¾²Äþ','106','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2784','ËàÖÝ','107','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2785','½ðËþ','107','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2786','°²Î÷','107','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2787','Ëà±±ÃÉ¹Å×å','107','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2788','°¢¿ËÈû¹þÈø¿Ë×å','107','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2789','ÓñÃÅ','107','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2790','¶Ø»Í','107','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2791','Î÷·å','108','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2792','Çì³Ç','108','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2793','»·','108','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2794','»ª³Ø','108','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2795','ºÏË®','108','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2796','ÕýÄþ','108','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2797','Äþ','108','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2798','ÕòÔ­','108','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2799','°²¶¨','109','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2800','Í¨Î¼','109','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2801','Â¤Î÷','109','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2802','Î¼Ô´','109','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2803','ÁÙä¬','109','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2804','ÕÄ','109','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2805','áº','109','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2806','Îä¶¼','459','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2807','³É','459','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2808','ÎÄ','459','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2809','å´²ý','459','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2810','¿µ','459','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2811','Î÷ºÍ','459','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2812','Àñ','459','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2813','»Õ','459','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2814','Á½µ±','459','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2815','ÁÙÏÄ','111','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2816','ÁÙÏÄ','111','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2817','¿µÀÖ','111','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2818','ÓÀ¾¸','111','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2819','¹ãºÓ','111','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2820','ºÍÕþ','111','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2821','¶«Ïç×å','111','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2822','»ýÊ¯É½±£°²×å¶«Ïç×åÈöÀ­×å','111','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2823','ºÏ×÷','110','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2824','ÁÙÌ¶','110','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2825','×¿Äá','110','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2826','ÖÛÇú','110','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2827','µü²¿','110','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2828','ÂêÇú','110','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2829','ÂµÇú','110','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2830','ÏÄºÓ','110','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2831','³Ç¶«','90','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2832','³ÇÖÐ','90','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2833','³ÇÎ÷','90','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2834','³Ç±±','90','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2835','´óÍ¨»Ø×åÍÁ×å','90','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2836','äÒÖÐ','90','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2837','äÒÔ´','90','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2838','Æ½°²','91','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2839','ÃñºÍ»Ø×åÍÁ×å','91','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2840','ÀÖ¶¼','91','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2841','»¥ÖúÍÁ×å','91','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2842','»¯Â¡»Ø×å','91','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2843','Ñ­»¯ÈöÀ­×å','91','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2844','ÃÅÔ´»Ø×å','92','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2845','ÆîÁ¬','92','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2846','º£êÌ','92','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2847','¸Õ²ì','92','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2848','Í¬ÈÊ','93','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2849','¼âÔú','93','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2850','Ôó¿â','93','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2851','ºÓÄÏÃÉ¹Å×å','93','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2852','¹²ºÍ','94','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2853','Í¬µÂ','94','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2854','¹óµÂ','94','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2855','ÐËº£','94','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2856','¹óÄÏ','94','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2857','ÂêÇß','95','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2858','°àÂê','95','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2859','¸ÊµÂ','95','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2860','´ïÈÕ','95','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2861','¾ÃÖÎ','95','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2862','Âê¶à','95','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2863','ÓñÊ÷','96','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2864','ÔÓ¶à','96','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2865','³Æ¶à','96','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2866','ÖÎ¶à','96','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2867','ÄÒÇ«','96','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2868','ÇúÂéÀ³','96','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2869','¸ñ¶ûÄ¾','97','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2870','µÂÁî¹þ','97','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2871','ÎÚÀ¼','97','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2872','¶¼À¼','97','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2873','Ìì¾þ','97','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2874','´ó²ñµ©ÐÐÎ¯','97','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2875','ÐËÇì','61','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2876','Î÷ÏÄ','61','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2877','½ð·ï','61','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2878','ÓÀÄþ','61','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2879','ºØÀ¼','61','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2880','ÁéÎä','61','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2881','´óÎä¿Ú','62','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2882','»ÝÅ©','62','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2883','Æ½ÂÞ','62','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2884','ÀûÍ¨','63','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2885','ÑÎ³Ø','63','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2886','Í¬ÐÄ','63','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2887','ÇàÍ­Ï¿','63','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2888','Ô­ÖÝ','64','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2889','Î÷¼ª','64','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2890','Â¡µÂ','64','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2891','ãþÔ´','64','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2892','ÅíÑô','64','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2893','É³ÆÂÍ·','460','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2894','ÖÐÄþ','460','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2895','º£Ô­','460','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2896','ÌìÉ½','65','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2897','É³ÒÀ°Í¿Ë','65','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2898','ÐÂ','65','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2899','Ë®Ä¥¹µ','65','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2900','Í·ÍÍºÓ','65','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2901','´ïÛà³Ç','65','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2902','Ã×¶«','65','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2903','ÎÚÂ³Ä¾Æë','65','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2904','¶ÀÉ½×Ó','66','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2905','¿ËÀ­ÂêÒÀ','66','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2906','°×¼îÌ²','66','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2907','ÎÚ¶ûºÌ','66','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2908','ÍÂÂ³·¬','67','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2909','Û·ÉÆ','67','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2910','ÍÐ¿ËÑ·','67','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2911','¹þÃÜ','68','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2912','°ÍÀïÀ¤¹þÈø¿Ë','68','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2913','ÒÁÎá','68','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2914','²ý¼ª','74','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2915','¸·¿µ','74','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2916','Ã×Èª','74','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2917','ºôÍ¼±Ú','74','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2918','ÂêÄÉË¹','74','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2919','ÆæÌ¨','74','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2920','¼ªÄ¾Èø¶û','74','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2921','Ä¾ÀÝ¹þÈø¿Ë','74','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2922','²©ÀÖ','75','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2923','¾«ºÓ','75','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2924','ÎÂÈª','75','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2925','¿â¶ûÀÕ','73','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2926','ÂÖÌ¨','73','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2927','Î¾Àç','73','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2928','ÈôÇ¼','73','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2929','ÇÒÄ©','73','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2930','ÑÉêÈ»Ø×å','73','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2931','ºÍ¾²','73','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2932','ºÍË¶','73','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2933','²©ºþ','73','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2934','°¢¿ËËÕ','70','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2935','ÎÂËÞ','70','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2936','¿â³µ','70','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2937','É³ÑÅ','70','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2938','ÐÂºÍ','70','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2939','°Ý³Ç','70','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2940','ÎÚÊ²','70','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2941','°¢ÍßÌá','70','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2942','¿ÂÆº','70','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2943','°¢Í¼Ê²','72','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2944','°¢¿ËÌÕ','72','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2945','°¢ºÏÆæ','72','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2946','ÎÚÇ¡','72','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2947','¿¦Ê²','71','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2948','Êè¸½','71','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2949','ÊèÀÕ','71','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2950','Ó¢¼ªÉ³','71','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2951','ÔóÆÕ','71','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2952','É¯³µ','71','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2953','Ò¶³Ç','71','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2954','Âó¸ÇÌá','71','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2955','ÔÀÆÕºþ','71','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2956','Ù¤Ê¦','71','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2957','°Í³þ','71','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2958','ËþÊ²¿â¶û¸ÉËþ¼ª¿Ë','71','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2959','ºÍÌï','69','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2960','ºÍÌï','69','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2961','Ä«Óñ','69','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2962','Æ¤É½','69','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2963','ÂåÆÖ','69','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2964','²ßÀÕ','69','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2965','ÓÚÌï','69','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2966','Ãñ·á','69','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2967','ÒÁÄþ','76','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2968','¿üÍÍ','76','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2969','ÒÁÄþ','76','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2970','²ì²¼²é¶ûÎý²®','76','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2971','»ô³Ç','76','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2972','¹®Áô','76','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2973','ÐÂÔ´','76','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2974','ÕÑËÕ','76','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2975','ÌØ¿ËË¹','76','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2976','ÄáÀÕ¿Ë','76','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2977','Ëþ³Ç','77','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2978','ÎÚËÕ','77','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2979','¶îÃô','77','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2980','É³Íå','77','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2981','ÍÐÀï','77','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2982','Ô£Ãñ','77','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2983','ºÍ²¼¿ËÈü¶ûÃÉ¹Å','77','1'); 
+			 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2984','°¢ÀÕÌ©','78','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2985','²¼¶û½ò','78','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2986','¸»ÔÌ','78','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2987','¸£º£','78','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2988','¹þ°ÍºÓ','78','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2989','ÇàºÓ','78','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2990','¼ªÄ¾ÄË','78','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2991','Ê¯ºÓ×Ó','79','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2992','°¢À­¶û','79','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2993','Í¼Ä¾Êæ¿Ë','79','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2994','Îå¼ÒÇþ','79','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2995','Ïã¸Û','447','1'); 
+			 INSERT INTO zfwx_region_district(id,name,city_id,status)VALUES('2996','°ÄÃÅ','448','1'); 
+>>>>>>> 4bbe80dbe97eaaefe9308eea0f82ba3ed48d0de9
