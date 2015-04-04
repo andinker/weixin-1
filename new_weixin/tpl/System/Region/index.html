@@ -3,19 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <title>这里管理还没有审核的区域项</title>
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<style type="text/css">
+li{list-style:none;float:left;}
+li a{font-size:18px;text-decoration:none;}
+table,th{text-align:center;}
+th{font-size:18px;}
+</style>
+<link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-<ul>
-    <li><a href="{ZF::U('System/Region/index',array('type'=>'province'))}">省份</a></li>
-    <li><a href="{ZF::U('System/Region/index',array('type'=>'city'))}">城市</a></li>
-    <li><a href="{ZF::U('System/Region/index',array('type'=>'district'))}">政区</a></li>
-    <li><a href="{ZF::U('System/Region/index',array('type'=>'community'))}">小区</a></li>
-</ul>
-
+<div style="padding:10px;">
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="{ZF::U('System/Region/index',array('type'=>'province'))}">省份</a></li>
+        <li role="presentation"><a href="{ZF::U('System/Region/index',array('type'=>'city'))}">城市</a></li>
+        <li role="presentation"><a href="{ZF::U('System/Region/index',array('type'=>'district'))}">镇区</a></li>
+        <li role="presentation"><a href="{ZF::U('System/Region/index',array('type'=>'community'))}">小区</a></li>
+    </ul>
+</div>
 
 <notempty name="rs">
-<table border="1" width="100%" style="text-align:center;">
+<table  class="table table-striped" width="100%" style="">
     <tr>
         <th>所在区域</th>
         <th>区域项名称</th>
@@ -66,7 +75,7 @@
 			}
 		</php>
         </td>
-        <td style=" font-weight:bold; font-size:1.5em;">
+        <td style=" font-weight:bold; font-size:16px;">
 		{ZF:$vo.name}
 		<php>
 		  if ($type=='district') echo '区';

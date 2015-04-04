@@ -11,7 +11,9 @@
  
 <script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
 <script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
- 
+<style type="text/css">
+	body{text-align:center;padding-top:20px; }
+</style> 
 </head>
 <body>
 
@@ -26,62 +28,78 @@ function mymymy($value){
 
 }
 </php>
-你已选择的
-<notempty name="p_items">
-		<switch name="type">
-		    <case value="province"></case>
-		    <case value="city">省份</case>
-		    <case value="district">城市</case>
-		    <case value="community">政区</case>
-		</switch>
-		是：
-		<input type="hidden" readonly="readonly" name="p_item" value="{ZF:$Think.get.pid}">
-		<select name="_p_item" disabled="disabled">
-			<volist name="p_items" id="vo">
-			  	<option value="{ZF:$vo.id}"{ZF::mymymy($vo)}>{ZF:$vo.name}</option>
-			 </volist>
-		</select>
-		
-		<br>
-</notempty>
-
-
-
-
-<!-- 输出本级未审核数据，以及新建项控件 -->
-<if condition="($p_items neq NULL) OR (($p_items eq NULL) AND ($type eq 'province'))">
-
-先在这里找找有没有你想要的
-	<switch name="type">
-	    <case value="province">省份</case>
-	    <case value="city">城市</case>
-	    <case value="district">政区</case>
-	    <case value="community">小区</case>
-	</switch>:<br>
-
-    <!-- 输出已有的未审核数据 -->
-	<select name="preItems" id="preItems">
-		<volist name="preItems" id="vo">
-		  	<option value="{ZF:$vo.id}">{ZF:$vo.name}</option>
-		 </volist>
-	</select>
-	<input type="button" onclick="choose()" value="选择"><br><br><br><br>
-	<div>
-            仍然找不到？那么自己动手输入一个吧：
-	<input type="text" name="new_item_name" value="">
-	<input type="submit" value="添加">
-	</div>
-
-<else />
-	对不起，你要添加的项必须选择父项，但是该父项级还没有数据可供选择，请先添加父项级数据！
-</if>
-
+<div style="">
+    <div style="padding-bottom:20px;width:60%;text-align:center;margin:auto">
+        <div style=" text-align:left;">
+            <notempty name="p_items">
+                    你已选择的
+                    <switch name="type">
+                        <case value="province"></case>
+                        <case value="city">省份</case>
+                        <case value="district">城市</case>
+                        <case value="community">小区</case>
+                    </switch>
+                    是：
+                    <input type="hidden" readonly="readonly" name="p_item" value="{ZF:$Think.get.pid}">
+                    <select name="_p_item" disabled="disabled" style="margin-top:10px;">
+                        <volist name="p_items" id="vo">
+                            <option value="{ZF:$vo.id}"{ZF::mymymy($vo)}>{ZF:$vo.name}</option>
+                         </volist>
+                    </select>
+                    
+                    <br>
+            </notempty>
+        </div>
+    </div>
+    
+    <!-- 输出本级未审核数据，以及新建项控件 -->
+    <div style="border:3px solid #009966;text-align:center;margin:auto;width:60%;padding-top:20px;padding-bottom:20px;margin-bottom:10px;">
+        <if condition="($p_items neq NULL) OR (($p_items eq NULL) AND ($type eq 'province'))">
+        
+        先在这里找找有没有你想要的
+            <switch name="type">
+                <case value="province">省份</case>
+                <case value="city">城市</case>
+                <case value="district">镇区</case>
+                <case value="community">小区</case>
+            </switch>:
+        
+            <!-- 输出已有的未审核数据 -->
+            <p>
+                <select name="preItems" id="preItems" style="width:120px;height:25px;">
+                    <volist name="preItems" id="vo">
+                        <option value="{ZF:$vo.id}">{ZF:$vo.name}</option>
+                     </volist>
+                </select>
+                <input type="button" onClick="choose()" value="选择" style="width:70px;margin:10px;">
+            </p>
+            <p style="padding-top:10px;">
+                仍然找不到？<span onClick="showaddpanel()" style="color:#FF0000; cursor:pointer;">点击此处</span>手动输入一个吧：
+            </p>
+             <p>
+                <span id="add_panel" style="display:none;padding:10px;">
+                    <input type="text" name="new_item_name" value="">
+                    <input type="submit" value="添加">
+                    <span onClick="hideaddpanel()" style="padding-left:20px;cursor:pointer;color:#333333;text-decoration:underline;">取消</span>
+                </span>
+        	</p>
+        <else />
+            对不起，你要添加的项必须选择父项，但是该父项级还没有数据可供选择，请先添加父项级数据！
+        </if>
+    </div>
+</div>
 </form>
-
+<script type="text/javascript">
+function showaddpanel(){
+	$("#add_panel").show("slow");
+}
+function hideaddpanel(){
+	$("#add_panel").hide("slow");
+}
+</script>
 
 <script type="text/javascript">
 function choose(){
-	
 	//获取已选项
 	var choose_item = $("#preItems option:selected")[0];
 	//alert(window.parent);
