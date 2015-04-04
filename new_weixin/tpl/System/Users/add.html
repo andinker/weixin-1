@@ -7,6 +7,9 @@
 <script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
 <script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <meta http-equiv="x-ua-compatible" content="ie=7" />
+<style type="text/css">
+	select{height:25px;width:136px;}
+</style>
 </head>
 <body class="warp">
 <div id="artlist" class="addn">
@@ -40,59 +43,51 @@
 						<input type="password" name="repassword" class="ipt" size="45"/>
 					</td>
 				</tr>
-				
-				
                 <tr>
-                    <td>
-                    
-		  <div class="control-group">
-		    <label class="control-label" for="username">帐号类型</label>
-		    <div class="controls" >
-	                       <select class="region_ctrl" name="account_type" id="account_type">
-		                           <option value="0">商家号</option>
-		                           <option value="1">小区号</option>
-		                   </select>
-		      <span class="maroon">*</span><span class="help-inline">每个小区只能申请一个小区号，申请小区号需要等待审核</span>
-		    </div>
-		  </div>
-		  
-
-		  <div class="control-group">
-		    <label class="control-label" for="username">所在小区</label>
-		    <div class="controls" >
-		      
-                                                                   
-	                   <select class="region_ctrl" name="province" id="province" onchange="items_filter(this)">
-	                   </select>省
-	                   <span class="maroon">*</span>
-	                   <span onclick="addItem( '添加省份','province', 0 );">没有找到我的省份？</span>
+                    <td height="48" align="right">
+                        <label class="control-label" for="username"><strong>帐号类型：</strong></label>
+                    </td>
+                    <td>  
+                                       <select class="region_ctrl" name="account_type" id="account_type"">
+                                               <option value="0">商家号</option>
+                                               <option value="1">小区号</option>
+                                       </select>
+                          <span class="maroon" style="padding-left:10px;color:#FF0000;">*</span><span class="help-inline">每个小区只能申请一个小区号，申请小区号需要等待审核</span>
+		  			</td>
+                </tr>
+                <tr>
+                	<td height="48" align="right"><label class="control-label" for="username"><strong>所在小区：</strong></label></td>
+                    <td style="line-height:35px;">
+		   			   <select class="region_ctrl" name="province" id="province" onchange="items_filter(this)">
+	                   </select>
+                       <span style="padding-left:10px;">省</span>
+	                   <span class="maroon" style="padding-left:10px;color:#FF0000;">*</span>
+	                   没有找到我的省份？<span  style=" cursor:pointer;color:red;" onclick="addItem( '添加省份','province', 0 );">点击添加</span>
 	                   <br/>
 	                   
 	                   <select class="region_ctrl" name="city" id="city" onchange="items_filter(this)">
-	                   </select>市
-	                   <span class="maroon">*</span>
-	                   <span onclick="addItem( '添加城市','city', $('#province').val() );">没有找到我的城市？</span>
+	                   </select>
+                       <span>市</span>
+	                   <span class="maroon" style="padding-left:10px;color:#FF0000;">*</span>
+	                   没有找到我的城市？<span  style=" cursor:pointer;color:red;" onclick="addItem( '添加城市','city', $('#province').val() );">点击添加</span>
 	                   <br/>
 	                   
 	                   <select class="region_ctrl" name="district" id="district" onchange="items_filter(this)">
-	                   </select>区
-	                   <span class="maroon">*</span>
-	                   <span onclick="addItem( '添加政区','district', $('#city').val() );">没有找到我的政区？</span>
+	                   </select>
+                       <span>区/县/镇</span>
+	                   <span class="maroon" style="padding-left:10px;color:#FF0000;">*</span>
+	                   没有找到我的政区?<span  style=" cursor:pointer;color:red;" onclick="addItem( '添加政区','district', $('#city').val() );">点击添加</span>
 	                   <br/>
 	                   
 	                   <select class="region_ctrl" name="community" id="community">
-	                   </select>社区
-	                   <span class="maroon">*</span> 
-	                   <span onclick="addItem( '添加社区','community', $('#district').val() );">没有找到我的社区？</span>
+	                   </select>
+                       <span>小区</span>
+	                   <span class="maroon" style="padding-left:10px;color:#FF0000;">*</span> 
+	                   没有找到我的小区？<span  style=" cursor:pointer;color:red;" onclick="addItem( '添加小区','community', $('#district').val() );">点击添加</span>
 	                   <br/>
-	                   
-                  		
-
-		      <span class="maroon">*</span><span class="help-inline">请选择</span>
-		    </div>
-		  </div>
-
-
+                       
+		      		   <span class="maroon" style="color:#FF0000;">*</span><strong><span class="help-inline" style="padding-left:10px;">此项为必填项，用户如果在上面选项找不到自己的小区，可点击后面的提示语进行手动添加</span></strong>
+              
 <script type="text/javascript">
 
 
@@ -231,7 +226,7 @@ function setOption(type,item){
 				<tr>
 					<td height="48" align="right"><strong>用户角色：</strong></td>
 					<td colspan="3" class="lt">
-						<select name="gid" style="width:136px">
+						<select name="gid" style="width:136px;">
 							<volist name="role" id="vo">
 								<option value="{ZF:$vo.id}" <eq name="vo.id" value="$info.gid">selected=""</eq> >{ZF:$vo.name}</option>
 							</volist>
@@ -295,8 +290,9 @@ function setOption(type,item){
 						<input type="text" name="remark" class="ipt" size="45" value="{ZF:$info.remark}"/>
 					</td>
 				</tr>
-	<tr>
-		<td colspan="4">
+	<tr> 
+    	<td></td>
+		<td style="padding:10px;">
 			<gt name="info.id" value="0">
 				<input class="bginput btn" type="submit" name="dosubmit" value="修 改" >
 				<else />
