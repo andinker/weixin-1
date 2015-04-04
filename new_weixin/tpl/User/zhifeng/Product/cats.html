@@ -1,4 +1,6 @@
 <include file="Public:head"/>
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />  
 <div class="content" style="" >
 <div class="cLineB">
@@ -21,8 +23,8 @@
 <th width="160">商品列表</th>
 <th width="100">规格</th>
 <th width="100">外观</th>
-<th width="160">分类属性</th>
-<th width="150" class="norightborder">操作</th>
+<th width="100">分类属性</th>
+<th width="220" class="norightborder">操作</th>
 </tr>
 </thead>
 <tbody style="text-align:center;">
@@ -38,7 +40,8 @@
 <td><a href="{ZF::U('Product/attrs',array('token'=>$token,'catid'=>$sortlist['id']))}">属性管理</a></td>
 <td class="norightborder">
 <a href="{ZF::U('Product/cats',array('parentid'=>$sortlist['id'],'token'=>$token))}">子分类</a>&nbsp;|&nbsp;
-<a href="{ZF::U('Product/catSet',array('token'=>$token,'id'=>$sortlist['id']))}">修改</a> 
+<a href="{ZF::U('Product/catSet',array('token'=>$token,'id'=>$sortlist['id']))}">修改</a>&nbsp;
+<span style="cursor:pointer;" onclick="setExp({ZF:$sortlist['id']},'{ZF:$sortlist.name}')">批量改运费</span>&nbsp;
 <a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('Product/catDel',array('id'=>$sortlist['id'],'token'=>$token))}');">删除</a>
 </td>
 </tr>
@@ -54,4 +57,21 @@
 <div class="clr"></div>
 </div>
 </div>
+
+<script type="text/javascript">
+function setExp( cid , cname ){
+	//art.dialog.data('goodslist_id',goodslist_id);
+	//art.dialog.data('call_back',call_back);
+	art.dialog.open('{ZF::U('User/Product/setexp')}&cid='+cid, {
+		title:'批量更改 [ '+cname+' ] 类目下所有商品的运费',
+		width: '30%',
+	    height: '30%',
+	    left: '50%',
+	    top: '50%',
+	    fixed: true,
+	    resize: false,
+	    drag: false});
+}
+</script>
+
 <include file="Public:footer"/>

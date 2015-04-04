@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>批量设置商品邮费</title>
+</head>
+<body>
+
+<php>
+if (IS_POST){
+</php>
+<notempty name="rs">
+<div>
+
+共更新了{ZF:$rs}个商品的运费！
+
+</div>
+</notempty>
+<php>
+}
+</php>
+
+<form method="post">
+
+<input type="hidden" name="cid" value="{ZF:$cid}">
+输入运费值：<input type="type" name="exp" value="0"><br>
+<input type="checkbox" name="inc_child" value="inc_child">同时更改该分类下所有级层子分类的运费<br>
+<input type="submit" value="确定">
+
+</form>
+
+
+</body>
+</html>

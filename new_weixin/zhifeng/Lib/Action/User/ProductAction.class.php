@@ -963,6 +963,56 @@ class ProductAction extends UserAction{
             }
         }        
 	}
+	
+	/**
+	 * 批量修改运费
+	 */
+	public function setexp() {
+		
+		$cid = empty($_GET['cid']) ? NULL : intval($_GET['cid']);
+		if ($cid == NULL) $this->error('非法参数');
+		else $this->assign('cid',$cid);
+		
+		if (IS_POST){
+			
+			$cid = intval($_POST['cid']);
+			$inc_child = $_POST['inc_child'];
+			$exp_price = floatval($_POST['exp']);
+			
+			$ids = ''.$cid;
+			if (!empty($inc_child)) {
+				
+				$child_ids = $this->getChildCids($cid);
+				
+				if (!empty($child_ids)){
+					foreach ($child_ids as $k=>$v){
+						$ids = $ids.','.$v;
+					}
+				}
+				
+			}
+			
+			$rs = M('product')->where('catid in ('.$ids.')')->setField('mailprice',$exp_price);
+
+			$this->assign('rs',intval($rs));
+			
+		}
+		
+		$this->display();
+	}
+	
+	private function getChildCids($cid) {
+		$data = M('Product_cat')->where(array('parentid'=>$cid))->select();
+		$ids = array();
+		if (!empty($data)){
+			foreach ($data as $k=>$v){
+				array_push($ids, $v['id']);
+				$child_ids = getChildCids($v['id']);
+				$ids = array_merge($ids,$child_ids);
+			}
+		}
+		return $ids;
+	}
 }
 
 
