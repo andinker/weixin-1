@@ -75,7 +75,7 @@ class RegionAction extends BaseAction{
 				$p_item = empty($_POST['p_item']) ? NULL : intval($_POST['p_item']);
 				if (empty($p_item) && $item_type != 'province') $this->error('非法的父项！');
 				
-				$new_item_name = empty(trim($_POST['new_item_name'])) ? NULL : trim($_POST['new_item_name']);
+				$new_item_name = empty($_POST['new_item_name']) ? NULL : trim($_POST['new_item_name']);
 				if (empty($new_item_name)) $this->error('区域名称不能为空！');
 				
 				// 检查项是否已经存在
