@@ -973,6 +973,8 @@ class ProductAction extends UserAction{
 		if ($cid == NULL) $this->error('非法参数');
 		else $this->assign('cid',$cid);
 		
+		$price = 0;
+		
 		if (IS_POST){
 			
 			$cid = intval($_POST['cid']);
@@ -993,14 +995,21 @@ class ProductAction extends UserAction{
 			}
 			
 			$rs = M('product')->where('catid in ('.$ids.')')->setField('mailprice',$exp_price);
-
 			$this->assign('rs',intval($rs));
 			
+			$price = $exp_price;
 		}
+		
+		$this->assign('price',$price);
 		
 		$this->display();
 	}
 	
+	/**
+	 * 递归获取一个类别下的所有子类
+	 * @param unknown $cid
+	 * @return multitype:
+	 */
 	private function getChildCids($cid) {
 		$data = M('Product_cat')->where(array('parentid'=>$cid))->select();
 		$ids = array();
