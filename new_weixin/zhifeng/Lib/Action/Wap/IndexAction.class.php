@@ -235,6 +235,7 @@ class IndexAction extends WapAction{
 		// 获取公告文章列表
 		$db=D('Img');
 		$where['token']=$this->token;
+		$where['classid']=$indexContent['announcements_class_id'];
 		$announcements = $db->where($where)->order('uptatetime DESC')->select();
 		
 		//print_r($announcements);
