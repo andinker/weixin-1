@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>注册</title>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script> 
+</head>
+<body>
+
+
+<h3>注册</h3>
+<div>{ZF:$error}</div>
+<form method="post">
+
+手机号：<input type="tel" name="phone" id="phone"><input type="button" onclick="getcode();" value="发送验证码到手机"><br>
+验证码：<input type="text" name="code" onchange="checkcode(this.value);">
+<span id="checkcode_rs"></span><br>
+
+登录密码：<input type="text" name="password" id="password"><br>
+确认密码：<input type="text" name="password_c" onchange="checkpw(this.value,'password','checkpw_rs');"><span id="checkpw_rs"></span><br>
+
+<input type="submit" value="注册">
+
+</form>
+
+<script type="text/javascript">
+function getcode(){
+	$.get('{ZF::U('Xiaoqu/People/getcode')}',{phone:$('#phone').val()},
+	  function(data){
+	    alert("Data Loaded: " + data);
+	  });
+}
+
+function checkcode(code){
+	$.get('{ZF::U('Xiaoqu/People/checkcode')}',
+			  function(data){
+			    if (data == code) $('#checkcode_rs').html('<span style="color:green;">填写正确</span>');
+			    else  $('#checkcode_rs').html('<span style="color:red;">验证码不正确</span>');
+			  });
+}
+
+function checkpw(value,domid,msgid){
+	if (value == $('#'+domid).val()) $('#'+msgid).html('<span style="color:green;">填写正确</span>');
+	else $('#'+msgid).html('<span style="color:red;">两次填写的密码不一致!</span>');
+}
+</script>
+
+</body>
+</html>
