@@ -2,13 +2,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>注册</title>
-<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script> 
+<title>你正在找回密码</title>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
 
 
-<h3>注册</h3>
+<h3>找回密码</h3>
 <div>{ZF:$error}</div>
 <form method="post">
 
@@ -16,12 +16,10 @@
 验证码：<input type="text" name="code" onchange="checkcode(this.value);">
 <span id="checkcode_rs"></span><br>
 
-登录密码：<input type="text" name="password" id="password"><br>
-确认密码：<input type="text" name="password_c" onchange="checkpw(this.value,'password','checkpw_rs');"><span id="checkpw_rs"></span><br>
-
-<input type="submit" value="注册">
+<input type="submit" value="找回密码"> 
 
 </form>
+<p>你可以去<a href="/">首页</a> 或者 <a href="{ZF::U('login')}">重新登录</a></p>
 
 <script type="text/javascript">
 function getcode(){
@@ -61,10 +59,6 @@ function checkcode(code){
 			  });
 }
 
-function checkpw(value,domid,msgid){
-	if (value == $('#'+domid).val()) $('#'+msgid).html('<span style="color:green;">填写正确</span>');
-	else $('#'+msgid).html('<span style="color:red;">两次填写的密码不一致!</span>');
-}
 
 
 $("#getcode_btn").bind("click",getcode);

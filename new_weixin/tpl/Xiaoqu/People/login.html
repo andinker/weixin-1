@@ -6,10 +6,15 @@
 </head>
 <body>
 
-
+<h3>用户登录</h3>
+<p style="color:red;">{ZF:$error}</p>
 <form method="post">
-手机号：<input type="tel" name="phone"><br>
-验证码：<input type="text" name="code"><br>
+手机号：<input type="tel" name="phone">
+<span>还没注册<a href="{ZF::U('register')}">马上注册</a>
+<br>
+密码：<input type="password" name="password">
+<span>忘记密码了？<a href="{ZF::U('retrieve')}">马上找回</a></span>
+<br>
 <input type="submit" value="登录">
 </form>
 
