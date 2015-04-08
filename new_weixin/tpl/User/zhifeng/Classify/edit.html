@@ -106,6 +106,7 @@
   <TH valign="top">分类模板</TH>
   <TD>
   <input type="text" id="selecttpl" class="px" value="已选择模板{ZF:$info.tpid}" disabled size="40"  />
+  <input type="button" value="清空" onclick="deltpl()"  style="cursor:pointer;"/>
   <a href="###" class="a_upload" onclick="chooseTpl('tpid','selecttpl',1)">选择模板</a>
   <a href="###" class="a_upload" onclick="viewTpl()">预览</a>  
 <input type="hidden" class="px" id="tpid" value="{ZF:$info.tpid}" name="tpid" style="width:250px">
@@ -115,6 +116,13 @@
 			chooseTpl(tid,'',2);
 		}
 	</script>
+   <script>
+   	function deltpl(){
+		 $('#tpid').val('');
+		 $('#selecttpl').val('');
+		 
+	}
+   </script>
 	 <TD>&nbsp;</TD>
 </TR>
 <TR>
