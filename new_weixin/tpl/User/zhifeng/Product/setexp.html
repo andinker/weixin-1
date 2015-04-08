@@ -23,12 +23,12 @@ if (IS_POST){
 </php>
 
 <form method="post">
-
-<input type="hidden" name="cid" value="{ZF:$cid}">
-输入运费值：<input type="type" name="exp" value="{ZF:$price}"><br>
-<input type="checkbox" name="inc_child" value="inc_child">同时更改该分类下所有级层子分类的运费<br>
-<input type="submit" value="确定">
-
+	<div style="text-align:center;line-height:40px;">  
+        <input type="hidden" name="cid" value="{ZF:$cid}">
+        <div style="font-weight:bold;">输入运费值：<input type="type" name="exp" value="{ZF:$price}"></div>
+        <div style="color:#666666;font-size:14px;"><input type="checkbox" name="inc_child" value="inc_child">同时更改该分类下所有级层子分类的运费</div>
+        <input type="submit" value="确定" >
+	</div>
 </form>
 
 
