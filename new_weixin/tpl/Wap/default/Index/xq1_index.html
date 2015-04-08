@@ -21,7 +21,7 @@
  
  <style type="text/css">
  body { font-family:"微软雅黑"; font-size:1em; background-color:#e3e3e8;}
- 
+ li{list-style:none;}
  
 @media screen and (min-width: 1080px) {
 .gallery-cell{height: 600px;}
@@ -122,6 +122,7 @@
 .menu_table p { margin:0px;}
 
 .cmenu-gallery-cell { width:9999px;}
+ 
  </style>
  
 </head>
@@ -206,25 +207,43 @@ $('#menu-gallery').flickity({
 
 
 <!-- 底部导航内容 -->
-<div>
-	<ul>
-        <volist name="catemenu" id="vo">
-        <li> <a <?php if($vo['vo']){echo 'onclick="javascript:displayit('.$vo['k'].')"';}else{echo 'href="'.$vo['url'].'"';}?>><img src="{ZF:$vo.picurl}"><label>{ZF:$vo.name}</label></a>
-        <?php if ($vo['vo']){
-        	?>
-            <ul id="menu_list{ZF:$vo['k']}" class="menu_font" style=" display:none">
-            <volist name="vo['vo']" id="vo">
-                <li> <a href="{ZF:$vo.url}"><img src="{ZF:$vo.picurl}"><label>{ZF:$vo.name}</label></a></li>
-                </volist>
-            </ul>
-             <?php
-        }
-        ?>
-        </li>
-        </volist>
-	</ul> 
+
+<div class="container">
+    <ul style="background:#FFFFFF;margin-bottom:20px;box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);">
+        <div class="nav_bottom">
+            <div class="menu-cells">
+                 <volist name="catemenu" id="vo">
+                     <span class="menu-cell">
+                        <span> <a <?php if($vo['vo']){echo 'onclick="javascript:displayit('.$vo['k'].')"';}else{echo 'href="'.$vo['url'].'"';}?>><img src="{ZF:$vo.picurl}" width="56px" height="56px"></a>
+                            <?php if ($vo['vo']){
+                                ?>
+                                <ul id="menu_list{ZF:$vo['k']}" class="menu_font" style=" display:none">
+                                    <volist name="vo['vo']" id="vo">
+                                        <span> <a href="{ZF:$vo.url}"><img src="{ZF:$vo.picurl}"></a></span>
+                                    </volist>
+                                </ul>
+                                 <?php
+                            }
+                            ?>
+                        </span>
+                     </span>
+                 </volist>
+             </div>
+             <div class="menu-cells"></div>
+        </div>
+    </ul>
 </div>
 
+<script type="text/javascript">
+$('.nav_bottom').flickity({
+	freeScroll: true,
+    contain: true,
+    // disable previous & next buttons and dots
+    prevNextButtons: false,
+    pageDots: false,
+    cellAlign: 'left',
+	});
+</script>
 
 <notempty name="announcements">
     <div style=" margin:0px auto 0px auto; max-width: 1140px;">
