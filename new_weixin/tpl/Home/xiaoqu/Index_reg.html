@@ -15,6 +15,7 @@
 <script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <style type="text/css">
 .control-group .controls select {height: 35px; line-height:25px; width: 180px;}
+.region-msg{ position:relative;top:-13px;}
 </style>
 </head>
 <include file="Public:header"/>
@@ -52,7 +53,7 @@
 		  <div class="control-group">
 		    <label class="control-label" for="username">帐号类型</label>
 		    <div class="controls" >
-	                       <select class="region_ctrl" name="account_type">
+	                       <select class="region_ctrl" name="account_type"  style=" width:167px;">
 		                           <option value="0">商家号</option>
 		                           <option value="1">小区号</option>
 		                   </select>
@@ -66,33 +67,39 @@
 		    <div class="controls" >
 		      
                                                                    
-	                   <select class="region_ctrl" name="province" id="province" onchange="items_filter(this)">
-	                   </select>省
-	                   <span class="maroon">*</span>
-	                   <span onclick="addItem( '添加省份','province', 0 );">没有找到我的省份？</span>
-	                   <br/>
+	                   <select class="region_ctrl" name="province" id="province" onChange="items_filter(this)"  style=" width:167px;margin-bottom:30px;">
+	                   </select>
+                       <span class="region-msg">省
+                       
+                           <span class="maroon">*</span>
+                           没有找到我的省份？<span onClick="addItem( '添加省份','province', 0 );" style="color:#FF6600; cursor:pointer;">点击添加</span>
+                       </span>
+                           <br/>
 	                   
-	                   <select class="region_ctrl" name="city" id="city" onchange="items_filter(this)">
-	                   </select>市
-	                   <span class="maroon">*</span>
-	                   <span onclick="addItem( '添加城市','city', $('#province').val() );">没有找到我的城市？</span>
-	                   <br/>
+	                   <select class="region_ctrl" name="city" id="city" onChange="items_filter(this)" style=" width:167px;margin-bottom:30px;">
+	                   </select>
+                       <span class="region-msg">市
+                           <span class="maroon">*</span>
+                           没有找到我的城市？<span onClick="addItem( '添加城市','city', $('#province').val() );" style="color:#FF6600;cursor:pointer;">点击添加</span>
+                       </span>
+                       <br/>
 	                   
-	                   <select class="region_ctrl" name="district" id="district" onchange="items_filter(this)">
-	                   </select>区
-	                   <span class="maroon">*</span>
-	                   <span onclick="addItem( '添加政区','district', $('#city').val() );">没有找到我的政区？</span>
-	                   <br/>
+	                   <select class="region_ctrl" name="district" id="district" onChange="items_filter(this)" style=" width:167px;margin-bottom:30px;">
+	                   </select>
+                       <span class="region-msg">区/县/镇
+                           <span class="maroon">*</span>
+                           没有找到我的政区？<span onClick="addItem( '添加政区','district', $('#city').val() );" style="color:#FF6600;cursor:pointer;">点击添加</span>
+	                   </span>
+                       <br/>
 	                   
-	                   <select class="region_ctrl" name="community" id="community">
-	                   </select>社区
-	                   <span class="maroon">*</span> 
-	                   <span onclick="addItem( '添加社区','community', $('#district').val() );">没有找到我的社区？</span>
-	                   <br/>
-	                   
-                  		
-
-		      <span class="maroon">*</span><span class="help-inline">请选择</span>
+	                   <select class="region_ctrl" name="community" id="community" style="width:167px;margin-bottom:30px;">
+	                   </select>
+                       <span class="region-msg">小区
+                           <span class="maroon">*</span> 
+                           没有找到我的小区？<span onClick="addItem( '添加社区','community', $('#district').val() );" style="color:#FF6600;cursor:pointer;">点击添加</span>
+	                   </span>
+                       <br/>
+		     		 <span class="maroon" style="color:#FF0000;">*</span><strong><span class="help-inline" style="padding-left:10px;">此项为必填项，用户如果在上面选项找不到自己的小区，可点击后面的提示语进行手动添加</span></strong>
 		    </div>
 		  </div>
 
