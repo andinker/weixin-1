@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>我的小区 - 首页</title>
+</head>
+<body>
+我的小区下所有商家页面入口
+<ul style="font-size:24px;">
+<volist name="wxusers" id="vo">
+    <li><a href="{ZF::U('Wap/Index/index',array('token'=>$vo['token']))}">{ZF:$vo.wxname}</a></li>
+</volist>
+</ul>
+<p>
+	<a href="{ZF::U('People/home')}">去个人中心</a> | 
+	<a href="{ZF::U('Index/index')}">去小区首页</a>
+</p>
+</body>
+</html>

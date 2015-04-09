@@ -93,8 +93,8 @@ var focusPic = new Swiper('.focusPic .views',{pagination: '.focusPic .tabs',auto
 </div>
 <div id="show_msg" style="display:none;" class="error"></div>
 <div class="i-row act">
-<a href="javascript:;" onClick="QuickBuy()" class="buynow">立即购买</a>
-<a href="javascript:;" id="btn_add_cart" class="addcart" onclick="add_cart();">加入购物车</a>
+<a href="javascript:;" onClick="<empty name="Think.get.wecha_id">toLogin()<else/>QuickBuy()</empty>" class="buynow">立即购买</a>
+<a href="javascript:;" id="btn_add_cart" class="addcart" onclick="<empty name="Think.get.wecha_id">toLogin()<else/>add_cart()</empty>">加入购物车</a>
 </div>
 </form>
 </div>
@@ -260,6 +260,14 @@ function QuickBuy() {
 	});
 }
 </script>
+
+<script type="text/javascript">
+function toLogin(){
+	location.href="{ZF::U('Xiaoqu/People/login',array('re'=>urlencode($_SERVER['REQUEST_URI'])))}";
+}
+</script>
+
+
 	<if condition="$kefu['sc'] eq '1'">
 		<include file="footsrc"/>
 		</if> 

@@ -21,6 +21,10 @@ class WapAction extends BaseAction{
 		}
 		$this->siteUrl=C('site_url');
 		$this->assign('wxuser',$this->wxuser);
+		
+		
+		
+		/* 原有微信登录，只有在高级服务号的情况下，才会登录获取wecha_id，但其实还有一个条件，必须要在公众号后台配置域名才可以完成这个啊 */
 		if(!$_GET['wecha_id']&&$this->wxuser['winxintype']==3&&!isset($_GET['code'])&&$this->wxuser['oauth']){
 			$customeUrl=$this->siteUrl.$_SERVER['REQUEST_URI'];
 			$scope='snsapi_userinfo';
@@ -38,6 +42,52 @@ class WapAction extends BaseAction{
 		}else{
 			$this->wecha_id=$this->_get('wecha_id');
 		}
+		/* ======================================= 2015/4/9 mark */
+		
+		
+		
+		/* 好吧，为了让没有被获取Openid的人也可以顺利使用微信应用的服务，我们做了一个全局的注册登录功能，在Xiaoqu分组的People模块中
+		 * OKa let's do it  */
+		
+		$people = session('people');
+		
+		if (empty($this->wecha_id) && !empty($people)){ // 如果经过上面的处理后仍然没有得到用户的openid，则再搞搞佢,为它生成一个虚拟的openid，作为url中的 wecha_id进行使用，这样应该没有问题吧……
+            //echo '正在组装wecha_id';
+			// 如果已经登录了，就直接生成wecha_id
+			if (!empty($people)){
+				$this->wecha_id = 'phone-'.md5($people['phone']);
+				if (empty($_GET['wecha_id'])){
+					$re_url = str_replace('&wecha_id=', '&wecha_id='.$this->wecha_id, $_SERVER['REQUEST_URI'],$replace_count);
+					if ($replace_count < 1){
+						$re_url = $re_url.'&wecha_id='.$this->wecha_id;
+					}
+					header('Location: '.$re_url);
+				}
+			}
+			
+		}else{
+			//echo '没有组装wecha_id';
+		}
+		
+		
+		if (empty($people) && !empty($_GET['wecha_id'])){ 
+			//echo '正在消除wecha_id';
+			//如果没有登录，应该去掉&wecha_id=phone-xxxxxxxxxx
+			$pattern = '/&wecha_id=phone\-[0-9a-zA-Z]*/i';
+			$re_url = preg_replace($pattern, '', $_SERVER['REQUEST_URI'],-1,$re_count);
+			if ($re_count > 0) header('Location: '.$re_url);
+		}else{
+			//echo '没有消除wecha_id';
+		}
+		/* ==================================================== */
+		
+		
+		
+		
+		
+		
+		
+		
 		$this->assign('wecha_id',$this->wecha_id);
 		$fansInfo=S('fans_'.$this->token.'_'.$this->wecha_id);
 		if(!$fansInfo){
