@@ -106,7 +106,7 @@
   <TH valign="top">分类模板</TH>
   <TD>
   <input type="text" id="selecttpl" class="px" value="已选择模板{ZF:$info.tpid}" disabled size="40"  />
-  <input type="button" value="清空" onclick="deltpl()"  style="cursor:pointer;"/>
+  <a href="###" class="a_upload" onclick="deltpl()">清空</a>
   <a href="###" class="a_upload" onclick="chooseTpl('tpid','selecttpl',1)">选择模板</a>
   <a href="###" class="a_upload" onclick="viewTpl()">预览</a>  
 <input type="hidden" class="px" id="tpid" value="{ZF:$info.tpid}" name="tpid" style="width:250px">
@@ -129,6 +129,7 @@
   <TH valign="top">详情模板</TH>
   <TD>
   <input type="text" id="selectconttpl" class="px" value="已选择模板{ZF:$info.conttpid}" disabled size="40"  />
+  <a href="###" class="a_upload" onclick="deltpl2()">清空</a>
 	<a href="###" class="a_upload" onclick="chooseTpl('conttpid','selectconttpl',3)">选择模板</a>
 	<a href="###" class="a_upload" onclick="viewTpl2()">预览</a>
 	<input type="hidden" class="px" value="{ZF:$info.conttpid}" id="conttpid" name="conttpid" style="width:250px">
@@ -136,6 +137,12 @@
 		function viewTpl2(){
 			var tid = $('#conttpid').val();
 			chooseTpl(tid,'',4);
+		}
+	</script>
+    <script>
+		function deltpl2(){
+			$('#conttpid').val('');
+			$('#selectconttpl').val('');
 		}
 	</script>
   </TD>
