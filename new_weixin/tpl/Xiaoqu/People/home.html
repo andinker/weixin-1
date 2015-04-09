@@ -5,16 +5,22 @@
 <title>这里是个人中心</title>
 </head>
 <body>
-<h3>这里是个人中心</h3>
+<h3>个人中心</h3>
+<php>
+$people = session('people');
+</php>
+<ul>
+<li>名字：{ZF:$people['name']}</li>
+<li>手机：{ZF:$people['phone']}</li>
+<li>注册时间：{ZF:$people['create_time']}</li>
+<li>最后登录时间：{ZF:$people['lastlogin_time']}</li>
+</ul>
+
 
 <p>
-	<a href="{ZF::U('logout')}">退出登录</a>
+	<a href="{ZF::U('logout')}">退出登录</a> | 
+	<a href="{ZF::U('Index/index')}">去小区首页</a>
 </p>
 
-<pre>
-<php>
-print_r(session('people'));
-</php>
-</pre>
 </body>
 </html>

@@ -313,6 +313,9 @@ class ProductAction extends WapAction{
 	 * 购物车列表
 	 */
 	public function cart(){
+		
+		$this->checked_login();
+		
 		if (empty($this->wecha_id)) {
 			unset($_SESSION[$this->session_cart_name]);
 		}
@@ -437,6 +440,9 @@ class ProductAction extends WapAction{
 		$this->redirect(U('Product/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'])));
 	}
 	public function ajaxUpdateCart(){
+
+		$this->checked_login();
+		
 		$count = isset($_GET['count']) ? intval($_GET['count']) : 1;
 		$carts = $this->_getCart();
 		$id = intval($_GET['id']);
@@ -461,6 +467,9 @@ class ProductAction extends WapAction{
 	
 	//订单详情
 	public function orderCart() {
+		
+		$this->checked_login();
+		
 		if (empty($this->wecha_id)) {
 			unset($_SESSION[$this->session_cart_name]);
 		}
@@ -495,6 +504,9 @@ class ProductAction extends WapAction{
 	}
 	
 	public function ordersave(){
+		
+		$this->checked_login();
+		
 		$row = array();
 		$token=$this->token;
 		$row['orderid'] = $orderid =date("YmdHis").rand(1000,2000);
@@ -670,6 +682,9 @@ class ProductAction extends WapAction{
 	}
 
 	public function my(){
+		
+		$this->checked_login();
+		
 		$offset = 5;
 		$page = isset($_GET['page']) ? max(intval($_GET['page']), 1) : 1;
 		$start = ($page - 1) * $offset;
@@ -701,6 +716,9 @@ class ProductAction extends WapAction{
 		$this->display();
 	}
 	public function myDetail(){
+		
+		$this->checked_login();
+		
 		$cartid = isset($_GET['cartid']) && intval($_GET['cartid'])? intval($_GET['cartid']) : 0;
 		$product_cart_model = M('product_cart');
 
@@ -733,6 +751,9 @@ class ProductAction extends WapAction{
 		$this->display();
 	}
 	public function cancelCart(){
+		
+		$this->checked_login();
+		
 		$cartid = isset($_GET['cartid']) && intval($_GET['cartid'])? intval($_GET['cartid']) : 0;
 		$product_model=M('product');
 		$product_cart_model = M('product_cart');
@@ -773,6 +794,9 @@ class ProductAction extends WapAction{
 	}
 	
 	public function updateOrder(){
+		
+		$this->checked_login();
+		
 		$product_cart_model = M('product_cart');
 		$thisOrder = $product_cart_model->where(array('id'=>intval($_GET['id'])))->find();
 		//检查权限
@@ -800,6 +824,9 @@ class ProductAction extends WapAction{
 		$this->display();
 	}
 	public function deleteOrder(){
+		
+		$this->checked_login();
+		
 		$product_model=M('product');
 		$product_cart_model=M('product_cart');
 		$product_cart_list_model=M('product_cart_list');
@@ -914,6 +941,15 @@ class ProductAction extends WapAction{
 		$str = @ereg_replace(" ","",$str);
 		$str = @ereg_replace("&nbsp;","",$str);
 		return trim($str);
+	}
+	
+	private function checked_login() {
+		// 如果whcha_id为空，则引导用户登录 
+		$people = session('people');
+		if (empty($_GET['wecha_id']) && empty($people)){
+			//echo '空的wecha_id'.$_GET['wecha_id'];
+			$this->redirect('Xiaoqu/People/login',array('re'=>urlencode($_SERVER['REQUEST_URI'])));
+		}
 	}
 }
 

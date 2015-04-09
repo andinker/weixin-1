@@ -53,7 +53,8 @@ class PeopleAction extends XiaoquAction {
 			$this->setPeopleSession($people);
 			
 			//跳转
-			$this->redirect('home');
+			if (empty($_GET['re'])) $this->redirect('home');
+			else header('Location:'.$_GET['re'] ); 
 		}
 		
 		$this->assign('error',$error);
