@@ -195,24 +195,63 @@ $('#menu-gallery').flickity({
     <div style=" margin:0px auto; max-width: 1140px; z-index:97; position:relative;">
         <div class="gallery js-flickity" data-flickity-options='{ "wrapAround":true,"autoPlay":true,"pageDots": false }'>
             <volist name="flash" id="so">
-                    <div class="gallery-cell">
-                        <img src="{ZF:$so.img}" />
-                        <p>{ZF:$so.info}</p>
+                    <div class="gallery-cell clickcell">
+                        <a><img src="{ZF:$so.img}" /></a>
                     </div>
             </volist>
         </div>
     </div>
 </notempty>
 
-
+<script type="text/javascript">
+$(".clickcell").bind("click",function(){
+	alert(123);
+});
+</script>
 
 <!-- 底部导航内容 -->
 
-<div class="container">
-    <ul style="background:#FFFFFF;margin-bottom:20px;box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);">
+    <div style=" margin:0px auto 0px auto; max-width: 1140px;">
+    <nav class="navbar navbar-default" style="min-height:40px; height:40px;">
+                <table style="width:100%; line-height:20px; font-size:14px; margin:10px auto;">
+                   <tr>
+	                   <volist name="catemenu" id="vo">
+	                      <td style="width:25%;<php>
+	                      			if ($i<4) echo 'border-right:1px solid #ccc;';
+	                      </php>">
+	                           <div id="bot_nav"style="text-align:center;">
+	                                        <a <?php if($vo['vo']){echo 'onclick="javascript:displayit('.$vo['k'].')"';}else{echo 'href="'.$vo['url'].'"';}?> style="font-size:16px;color:#666;" >{ZF:$vo.name}</a>
+										        <?php if ($vo['vo']){
+        									?>
+										     <ul id="menu_list{ZF:$vo['k']}" class="menu_font" style=" display:none">
+		                                         <volist name="vo['vo']" id="vo">
+						                			<span style="white-space:nowrap;overflow:hidden;"><a href="{ZF:$vo.url}">{ZF:$vo.name}</a></span>
+		                                         </volist>
+										     </ul>
+										     <?php
+										       }
+       						 				?>
+										        </span>
+	                            </div>
+	                      </td>
+	                   </volist>
+                   </tr>
+                </table>
+    </nav>            
+    
+ 
+    
+    <script type="text/javascript">
+    $(function() {
+          $('#announcements').vTicker();
+        });  
+    </script>
+</notempty>
+<!-- <div class="container">
+    <ul style="background:#FFFFFF;margin-bottom:20px;box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);padding:0;">
         <div class="nav_bottom">
             <div class="menu-cells">
-                 <volist name="catemenu" id="vo">
+                  <volist name="catemenu" id="vo">
                      <span class="menu-cell">
                         <span> <a <?php if($vo['vo']){echo 'onclick="javascript:displayit('.$vo['k'].')"';}else{echo 'href="'.$vo['url'].'"';}?>><img src="{ZF:$vo.picurl}" width="56px" height="56px"></a>
                             <?php if ($vo['vo']){
@@ -227,13 +266,27 @@ $('#menu-gallery').flickity({
                             ?>
                         </span>
                      </span>
-                 </volist>
+                 </volist> 
+                 <volist name="catemenu" id="vo">
+				        <span> <a <?php if($vo['vo']){echo 'onclick="javascript:displayit('.$vo['k'].')"';}else{echo 'href="'.$vo['url'].'"';}?>><label>{ZF:$vo.name}</label></a>
+				        <?php if ($vo['vo']){
+        				?>
+				            <ul id="menu_list{ZF:$vo['k']}" class="menu_font" style=" display:none">
+				            <volist name="vo['vo']" id="vo">
+				                <span> <a href="{ZF:$vo.url}"><img src="{ZF:$vo.picurl}"><label>{ZF:$vo.name}</label></a></span>
+				                </volist>
+				            </ul>
+				             <?php
+				       			 }
+       						 ?>
+				        </span>
+			        </volist>
              </div>
              <div class="menu-cells"></div>
         </div>
     </ul>
 </div>
-
+ -->
 <script type="text/javascript">
 $('.nav_bottom').flickity({
 	freeScroll: true,
