@@ -14,6 +14,8 @@ class PeopleAction extends XiaoquAction {
 				if ($id = $db->add()){
 					//自动登录
 					//$error = $error.''.$id;
+					// 发送帐号信息到手机短信
+					$this->sendSMS(array($_POST['phone']),'您刚刚完成了注册，你的登录密码是'.$_POST['password'].'，请妥善保管。', $err);
 					$this->login($id);
 				}else{
 					$error = $db->getDbError();
@@ -32,6 +34,12 @@ class PeopleAction extends XiaoquAction {
 	 * 消费者用户登录
 	 */
 	public function login( $people_id = 0 ){
+		
+		//如果已经登录，跳到$_GET['re']或者个人中心
+		if ($this->is_logined()){
+			if (empty($_GET['re'])) $this->error('你已经登录！',U('home'));
+			else header('Location:'.$_GET['re'] ); 
+		}
 		
 		// 读取帐号信息，生成虚拟wecha_id
 		$db = D('People');

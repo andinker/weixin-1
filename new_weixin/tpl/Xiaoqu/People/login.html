@@ -10,7 +10,7 @@
 <p style="color:red;">{ZF:$error}</p>
 <form method="post">
 手机号：<input type="tel" name="phone">
-<span>还没注册<a href="{ZF::U('register')}">马上注册</a>
+<span>还没注册<a href="<empty name='Think.get.re'>{ZF::U('register')}<else/>{ZF::U('register',array('re'=>urlencode($_GET['re'])))}</empty>">马上注册</a>
 <br>
 密码：<input type="password" name="password">
 <span>忘记密码了？<a href="{ZF::U('retrieve')}">马上找回</a></span>

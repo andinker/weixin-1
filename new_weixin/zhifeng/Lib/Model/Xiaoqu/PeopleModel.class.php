@@ -42,6 +42,8 @@ class PeopleModel extends Model{
 				$error = '帐号已被冻结';
 				return false;
 			}else{
+				//更新最后登录时间
+				$this->where(array('phone'=>$phone,'password'=>md5($password)))->setField('lastlogin_time',$this->getdatatime());
 				return $rs;
 			}
 		}
