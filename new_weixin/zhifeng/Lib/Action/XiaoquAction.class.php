@@ -1,5 +1,5 @@
 <?php
-class XiaoquAction extends Action {
+class XiaoquAction extends BaseAction {
 	public function sendSMS($phones,$content,&$error) {
 		//短信宝配置
 		$username = 'itcocoa';
