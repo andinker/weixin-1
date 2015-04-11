@@ -53,7 +53,7 @@ class ClassifyAction extends UserAction{
 	public function insert(){
 		$this->all_insert();
 	}
-	public function upsave(){
+	public function upsave(){ //print_r($_POST); exit();
 		$this->all_save();
 	}
 	public function chooseTpl(){	
@@ -73,16 +73,22 @@ class ClassifyAction extends UserAction{
 				$info['tplview'] =$tpl[$key]['imgurl'];
 			}
 		}
+
 		
 		
-		
-		/* 分类列表模板 */
-		
-		
-		/*===========*/
-		
-		
-		
+		/* 2015.4.10 添加类型为2的列表页模板数据 
+		$listTpl =$db->where(array('type'=>2,'status'=>1))->order('sort asc,id DESC')->select();
+		foreach($listTpl as $key=>$con){
+			if(!strpos('http',$con['imgurl'])){
+				$listTpl[$key]['imgurl']=RES.'/tmplimg/list/'.$con['imgurl'];
+			}
+			if($tpid==$con['tplid']){
+				$info['tplview2'] = $listTpl[$key]['imgurl'];
+			}
+		}
+		$this->assign('listTpl',$listTpl);
+		============================*/
+
 		
 		
 		$contTpl =$db->where(array('type'=>3,'status'=>1))->order('sort asc,id DESC')->select();	

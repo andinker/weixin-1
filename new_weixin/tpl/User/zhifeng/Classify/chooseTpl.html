@@ -198,6 +198,7 @@ li:hover .mbtip {
 		
 		
 <elseif condition="$_GET['type'] eq 2" />
+    
 	<style>
 			#viewTpl {
 				width:170px;
@@ -209,7 +210,63 @@ li:hover .mbtip {
 	</style>
 
 	<div id="viewTpl"><img src="{ZF:$info.tplview}" /></div>
+	
+	
+	<!-- div style="background:#fefbe4;border:1px solid #f3ecb9;color:#993300;padding:10px;margin-bottom:5px;font-size:13px;">
+	使用方法：点击两侧的箭头可以翻页浏览更多的模板，直接点击对应的模板既可选中
+	</div>
+	<div class="list_carousel2">
+		<div class="caroufredsel_wrapper2" style="">
+			<ul id="foo3" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 0px; margin: 0px; z-index: auto;">
+														
+				<volist name="listTpl" id="contTpl">			
+				<li>
+					<a style="margin-bottom:5px;" href="javascript:void(0);" onclick="returnHomepage({ZF:$contTpl.tplid})" title="模板 {ZF:$contTpl.tplid}     {ZF:$contTpl.info}">
+						<img src="{ZF:$contTpl.imgurl}" />
+					</a>
+					<span class="tplinfo">{ZF:$contTpl.name}</span>
+				</li>
+				</volist>
 
+			</ul>
+				
+		</div>
+		
+		<div class="clearfix2"></div>
+
+	</div>
+			<script type="text/javascript">
+			/*$(document).ready(function(){
+				$('#foo3').carouFredSel({
+					auto: false,
+					prev: '#prev3',
+					next: '#next3',
+					pagination: "#pager3",
+					mousewheel: true,
+					swipe: {
+						onMouse: true,
+						onTouch: true
+					}		
+				
+				});	
+
+			});*/
+			
+			
+			var domid=art.dialog.data('domid');
+			var domid2=art.dialog.data('domid2');
+			// 返回数据到主页面
+			function returnHomepage(url){
+				var origin = artDialog.open.origin;
+				var dom = origin.document.getElementById(domid);
+				var dom2 = origin.document.getElementById(domid2);
+
+				dom.value=url;
+				dom2.value='已选择模板 '+url;
+				setTimeout("art.dialog.close()", 100 )
+			}
+
+			</script-->
 	
 <elseif condition="$_GET['type'] eq 3" />
 

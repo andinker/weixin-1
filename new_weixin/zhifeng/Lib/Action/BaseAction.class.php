@@ -88,6 +88,7 @@ class BaseAction extends Action
 		if($db->create()===false){
 			$this->error($db->getError());
 		}else{
+			//print_r($db->data());exit(); 
 			$id=$db->save();
 			if($id){
 				$m_arr=array(
