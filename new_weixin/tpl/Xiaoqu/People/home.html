@@ -1,44 +1,26 @@
-<include file="Public:header"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>这里是个人中心</title>
-<style style="text/css">
-
-body{font-family: '微软雅黑';background-color:#fff;}
-#login_title{ padding-top:20px;padding-bottom:10px;width:300px;margin:0 auto;border-bottom: 1px solid #ccc;}
-#login_title span{font-size:16px;color:#666;padding-bottom:10px;font-weight:bold;padding-left:10px;}
-#message{width:300px;margin:0 auto;}
-#message ul{padding:0;margin:0;margin-top:20px;margin-bottom: 20px;}
-#message ul li{text-align:left; font-size:14px;line-height: 40px;}
-#message ul li span{font-weight:bold;}
-#message p{text-align:center;margin-bottom:20px;font-size:14px;}
-
-
-</style>
 </head>
 <body>
-<div id="login_title">
-	<span>个人中心</span>
-</div>
+<h3>个人中心</h3>
 <php>
 $people = session('people');
 </php>
-<div class="container" id="message">
-	<ul>
-		<li><span>名字：</span>{ZF:$people['name']}</li>
-		<li><span>手机号码：</span>{ZF:$people['phone']}</li>
-		<li><span>注册时间：</span>{ZF:$people['create_time']}</li>
-		<li><span>上一次登录时间：</span>{ZF:$people['lastlogin_time']}</li>
-	</ul>
-	
-	
-	<p>
-		<a href="{ZF::U('logout')}">退出登录</a> &nbsp;&nbsp;|&nbsp;&nbsp; 
-		<a href="{ZF::U('Index/index')}">去小区首页</a>
-	</p>
-</div>
-<include file="Public:footer"/>
+<ul>
+<li>名字：{ZF:$people['name']}</li>
+<li>手机：{ZF:$people['phone']}</li>
+<li>注册时间：{ZF:$people['create_time']}</li>
+<li>上一次登录时间：{ZF:$people['lastlogin_time']}</li>
+</ul>
+
+
+<p>
+	<a href="{ZF::U('logout')}">退出登录</a> | 
+	<a href="{ZF::U('Index/index')}">去小区首页</a>
+</p>
+
 </body>
 </html>

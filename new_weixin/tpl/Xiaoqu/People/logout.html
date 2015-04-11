@@ -1,23 +1,13 @@
-<include file="Public:header"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>你已成功退出登录</title>
-<style type="text/css">
-body{font-family: '微软雅黑';background-color: #fff;}
-#logout_msg{width:300px;margin:0 auto;font-size:18px;text-align:center;color:red;padding-top:20px;}
-</style>
 </head>
 <body>
-<div class="container"  id="login">
-	<div id="logout_msg">
-		<span>你已经成功退出登录了！</span>
-	</div>
-	<div style="text-align:center;margin-bottom:20px;margin-top:20px;font-size:14px;">
-		你可以去<a href="{ZF::U('Index/index')}">首页</a> 或者 <a href="{ZF::U('login')}">重新登录</a>
-	</div>
-</div>
-<include file="Public:footer"/>
+
+<h3>你已经成功退出登录了！</h3>
+<p>你可以去<a href="{ZF::U('Index/index')}">首页</a> 或者 <a href="{ZF::U('login')}">重新登录</a></p>
+
 </body>
 </html>

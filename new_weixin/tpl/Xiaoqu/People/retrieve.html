@@ -1,63 +1,25 @@
-<include file="Public:header"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>你正在找回密码</title>
 <script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.css">
-<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<style style="text/css">
-
-body{font-family: '微软雅黑';}
-#re_title{ padding-top:30px;padding-bottom:10px;width:300px;margin:0 auto;border-bottom: 1px solid #ccc;}
-#re_title span{font-size:16px;color:#666;padding-bottom:10px;font-weight:bold;padding-left:10px;}
-#re{background:#fff;margin-bottom:20px;}
-.re-box{font-size:16px;text-align: center;margin:0 auto;margin-bottom: 10px;}
-.re-box tr{margin-bottom:20px;line-height:30px;}
-.re-but{margin-top:20px;text-align: center;margin:0 auto;margin-top:20px;}
-.submit input{width:255px;}
-input{margin-bottom: 10px;margin-top:10px;}
-
-</style>
 </head>
 <body>
-<div id="re_title">
-	<span>找回密码</span>
-</div>
-<div class="container"  id="re">
-	<form method="post">
-		<table width="300px" class="re-box">
-			<tr>
-				<td colspan="2" style="color:red;text-align:center;font-size:14px;">{ZF:$error}</td>
-			</tr>
-			<tr>
-				<td style="text-align:center;">手机号：</td>
-				<td><input type="tel" name="phone" id="phone" placeholder="请输入手机号码" height="40px"></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td align="left" style="padding-left:20px;"><input type="button" id="getcode_btn" value="发送验证码到手机"></td>
-			</tr>
-			<tr>
-				<td style="text-align:center;">验证码：</td>
-				<td><input type="text" name="code" onchange="checkcode(this.value);" placeholder="请输入验证码" height="40px" width="100%"><span id="checkcode_rs"></span></td>
-			</tr>
-		</table>
-		<table class="re-but">
-			<tr style="text-align:center;">
-				<td><input type="submit" value="找回密码" style="background:red;width:300px;height:35px;border:0;box-shadow:1px 1px 1px 1px;font-size:16px;"></td>
-			</tr>
-		</table>
-		
-	</form>
-	
-	<div style="text-align:center;margin-bottom:20px;margin-top:20px;">
-		你可以去<a href="/">首页</a> 或者 <a href="{ZF::U('login')}">重新登录</a>
-	</div>
-</div>
 
+
+<h3>找回密码</h3>
+<div>{ZF:$error}</div>
+<form method="post">
+
+手机号：<input type="tel" name="phone" id="phone"><input type="button" id="getcode_btn" value="发送验证码到手机"><br>
+验证码：<input type="text" name="code" onchange="checkcode(this.value);">
+<span id="checkcode_rs"></span><br>
+
+<input type="submit" value="找回密码"> 
+
+</form>
+<p>你可以去<a href="/">首页</a> 或者 <a href="{ZF::U('login')}">重新登录</a></p>
 
 <script type="text/javascript">
 function getcode(){
@@ -98,7 +60,7 @@ function checkcode(code){
 }
 
 
-<include file="Public:footer"/>
+
 $("#getcode_btn").bind("click",getcode);
 </script>
 
