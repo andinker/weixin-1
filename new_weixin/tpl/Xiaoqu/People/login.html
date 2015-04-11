@@ -1,28 +1,63 @@
+<include file="Public:header"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>登录</title>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script> 
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.css">
+<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<style style="text/css">
+
+body{font-family: '微软雅黑';}
+#login_title{ padding-top:30px;padding-bottom:10px;width:300px;margin:0 auto;border-bottom: 1px solid #ccc;}
+#login_title span{font-size:16px;color:#666;padding-bottom:10px;font-weight:bold;padding-left:10px;}
+#login{background:#fff;margin-bottom:20px;}
+.login-box{font-size:16px;text-align: center;margin:0 auto;margin-bottom: 10px;}
+.login-box tr{margin-bottom:20px;line-height:30px;}
+.login-but{margin-top:20px;text-align: center;margin:0 auto;margin-top:20px;}
+.submit input{width:255px;}
+input{margin-bottom: 10px;margin-top:10px;}
+
+</style>
 </head>
 <body>
-
-<h3>用户登录</h3>
-<p style="color:red;">{ZF:$error}</p>
-<form method="post">
-手机号：<input type="tel" name="phone">
-<span>还没注册<a href="<empty name='Think.get.re'>{ZF::U('register')}<else/>{ZF::U('register',array('re'=>urlencode($_GET['re'])))}</empty>">马上注册</a>
-<br>
-密码：<input type="password" name="password">
-<span>忘记密码了？<a href="{ZF::U('retrieve')}">马上找回</a></span>
-<br>
-<input type="submit" value="登录">
-</form>
-
-
-<p>
-	<a href="{ZF::U('People/home')}">去个人中心</a> | 
-	<a href="{ZF::U('Index/index')}">去小区首页</a>
-</p>
-
+<div id="login_title">
+	<span>用户登录</span>
+</div>
+<div class="container"  id="login">
+	<form method="post">
+		<table width="300px" class="login-box">
+			<tr>
+				<td colspan="2" style="color:red;text-align:center;font-size:14px;">{ZF:$error}</td>
+			</tr>
+			<tr>
+				<td style="text-align:center;">手机号：</td>
+				<td><input type="tel" name="phone" placeholder="请用手机号码登陆" height="40px"></td>
+			</tr>
+			<tr>
+				<td style="text-align:center;">密码：</td>
+				<td><input type="password" name="password" placeholder="请输入密码" height="40px" width="100%"></td>
+			</tr>
+		</table>
+		<div style="margin-bottom:20px;text-align: right;width: 300px;margin:0 auto;">
+			<span style="padding-left:20px;"><a href="<empty name='Think.get.re'>{ZF::U('register')}<else/>{ZF::U('register',array('re'=>urlencode($_GET['re'])))}</empty>">快速注册</a></span>
+			&nbsp;&nbsp;|&nbsp;&nbsp;<span style="padding-right:20px;"><a href="{ZF::U('retrieve')}">找回密码</a></span>
+		</div>
+		<table class="login-but">
+			<tr style="text-align:center;">
+				<td><input type="submit" value="登录" style="background:red;width:300px;height:35px;border:0;box-shadow:1px 1px 1px 1px;font-size:16px;"></td>
+			</tr>
+		</table>
+		
+	</form>
+	
+	<div style="text-align:center;margin-bottom:20px;margin-top:20px;">
+		<a href="{ZF::U('People/home')}">去个人中心</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+		<a href="{ZF::U('Index/index')}">去小区首页</a>
+	</div>
+</div>
+<include file="Public:footer"/>
 </body>
 </html>
