@@ -263,7 +263,7 @@ class IndexAction extends WapAction{
 		//获取模板信息
 		$tpldata=$this->wxuser;
 		//兼容老版本对老版本tpid进行处理
-		$wxoldtpl=!(strpos($tpldata['tpltypeid'], 'y') === FALSE);
+		$wxoldtpl=!(strpos($tpldata['tpltypeid'], 'y') === FALSE);  //id里面有'y'字符存在的就是老版本的tid,也就是所谓的老模板？
 		if($wxoldtpl){
 			$tpldata['tpltypeid']=101;//老版本tpid
 			$tpldata['tpltypename'] ='101_index';
@@ -311,7 +311,7 @@ class IndexAction extends WapAction{
 		//add轮播图结束
 	
 		//
-		if($sub){
+		if($sub){          //  ===========  当前分类下存在子分类，把子分类当作列表内容列出  ============
 			//处理url
 			$sub=$this->convertLinks($sub);
 			//有子类
@@ -328,7 +328,9 @@ class IndexAction extends WapAction{
 			$this->assign('info',$sub);
 			$this->assign('thisClassInfo',$info);
 			$tpllistname=$tpldata['tpltypename'];
-		}else{
+			
+		}else{        //  =======  当前分类下没有子分类，把当前分类下的文章当作列表内容列出  ========
+			
 			//部分列表模板使用快捷切换分类			
 			$classlist=$classify->where(array("fid"=>0,'status'=>1,"token"=>$token))->order('sorts asc')->select(); 
 			$classlist=$this->convertLinks($classlist);
@@ -356,7 +358,9 @@ class IndexAction extends WapAction{
 			}else{						
 				$this->assign('info',$res);//index模板数据
 				$tpllistname=$tpldata['tpltypename'];
-			}			
+			}
+
+			$this->assign('thisClassInfo',$info);
 		}		
 		$flashNum=count($flash);
 		$this->assign('flash',$flash);

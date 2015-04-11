@@ -148,6 +148,13 @@
   </TD>
   <TD>&nbsp;</TD>
 </TR>
+<tr>
+  <TH valign="top">分类页头部内容：</TH>
+  <td>
+        <div><span>* 修改后，如果所选择的模板支持，分类页的头部广告块会显示用户添加的内容</span></div>
+    	<textarea class="toedit" name="header_content"  rows="5" style="width:590px;height:360px">{ZF:$info.header_content}</textarea>
+  </td>
+</tr>
 <TR>
   <TH></TH>
   <TD><button type="submit"  name="button"  class="btnGreen left" >保存</button>
@@ -178,7 +185,7 @@
         
         window.ICON();
     });
-
+/*
     KindEditor.ready(function(K){
         var editor = K.editor({
             themeType: 'simple',
@@ -200,7 +207,7 @@
                 });
             });
         });
-    });
+    });*/
 </script>	<script>
 		window.document.onkeydown = function(e) {
 			if ('' == document.activeElement.id) {
@@ -212,4 +219,20 @@
 			}
 		};
 	</script>
+<script>
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('.toedit', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+uploadJson : SITEURL+'/index.php?g=User&m=Upyun&a=kindedtiropic',
+items : [
+'source','undo','clearhtml','hr','fontsize','forecolor','hilitecolor',
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+'insertunorderedlist', '|', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+});
+
+});
+</script>
 <include file="Public:footer"/>
