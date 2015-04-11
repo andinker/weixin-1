@@ -115,7 +115,7 @@
 .menu-cells { width:9999px;}
 .menu-cell { display:inline-block; padding: 0px 20px 0px 0px; font-size: 16px; line-height: 25px; text-align:left;}
 
-.menu-cell a { color:#666; font-weight:bold;}
+.menu-cell a { color:#666; }
 .index a { color:#d11725;}
 
 
@@ -212,7 +212,7 @@ $(".clickcell").bind("click",function(){
 <!-- 底部导航内容 -->
 
     <div style=" margin:0px auto 0px auto; max-width: 1140px;">
-    <nav class="navbar navbar-default" style="min-height:40px; height:40px;">
+    <nav class="navbar navbar-default" style="min-height:40px; height:40px;margin-bottom:0px;">
                 <table style="width:100%; line-height:20px; font-size:14px; margin:10px auto;">
                    <tr>
 	                   <volist name="catemenu" id="vo">
@@ -266,21 +266,7 @@ $(".clickcell").bind("click",function(){
                             ?>
                         </span>
                      </span>
-                 </volist> 
-                 <volist name="catemenu" id="vo">
-				        <span> <a <?php if($vo['vo']){echo 'onclick="javascript:displayit('.$vo['k'].')"';}else{echo 'href="'.$vo['url'].'"';}?>><label>{ZF:$vo.name}</label></a>
-				        <?php if ($vo['vo']){
-        				?>
-				            <ul id="menu_list{ZF:$vo['k']}" class="menu_font" style=" display:none">
-				            <volist name="vo['vo']" id="vo">
-				                <span> <a href="{ZF:$vo.url}"><img src="{ZF:$vo.picurl}"><label>{ZF:$vo.name}</label></a></span>
-				                </volist>
-				            </ul>
-				             <?php
-				       			 }
-       						 ?>
-				        </span>
-			        </volist>
+                 </volist>
              </div>
              <div class="menu-cells"></div>
         </div>
@@ -299,7 +285,7 @@ $('.nav_bottom').flickity({
 </script>
 
 <notempty name="announcements">
-    <div style=" margin:0px auto 0px auto; max-width: 1140px;">
+    <div style=" margin:-3px auto 0px auto; max-width: 1140px;">
     <nav class="navbar navbar-default">
                 <table style="width:100%; line-height:50px; font-size:14px;">
                    <tr>
