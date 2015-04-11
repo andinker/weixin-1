@@ -73,6 +73,18 @@ class ClassifyAction extends UserAction{
 				$info['tplview'] =$tpl[$key]['imgurl'];
 			}
 		}
+		
+		
+		
+		/* 分类列表模板 */
+		
+		
+		/*===========*/
+		
+		
+		
+		
+		
 		$contTpl =$db->where(array('type'=>3,'status'=>1))->order('sort asc,id DESC')->select();	
 		foreach($contTpl as $key=>$con){
 			if(!strpos('http',$con['imgurl'])){
@@ -86,6 +98,7 @@ class ClassifyAction extends UserAction{
 		$this->assign('info',$info);
 		$this->assign('contTpl',$contTpl);
 		$this->assign('tpl',$tpl);
+		
 
 		$this->display();
 	}
