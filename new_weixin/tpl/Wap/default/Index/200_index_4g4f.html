@@ -12,7 +12,9 @@
 <link href="{ZF::RES}/Index/79/cate.css" rel="stylesheet" type="text/css" />
 <link href="{ZF::RES}/Index/public/css/iscroll.css" rel="stylesheet" type="text/css" />
 
-<style>
+<style type="text/css">
+.head_con img{width:100%;}
+
 </style>
 <script src="{ZF::RES}/Index/public/js/iscroll.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -38,9 +40,14 @@ document.addEventListener('DOMContentLoaded', loaded, false);
 </head>
 
 <body>
+<!-- 模板顶部内容 -->
+<div class="head_con">
+	{ZF:$thisClassInfo['header_content']}
+</div>
 		<!--引导动画-->
-    <notempty name="indexanimation"><include file="Index:anStyle"/></notempty>
+<!--     <notempty name="indexanimation"><include file="Index:anStyle"/></notempty>-->
     <!--背景音乐-->
+<!-- 
 		<if condition="$homeInfo['musicurl'] neq false">
 			<include file="Index:music"/>
 		</if>
@@ -68,7 +75,7 @@ document.addEventListener('DOMContentLoaded', loaded, false);
     <div class="clr"></div>
 </div>
  <div id="insert1" ></div>
-
+ -->
 <ul class="mainmenu">
 	<volist name="info" id="vo">
 		<li>
