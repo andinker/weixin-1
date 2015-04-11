@@ -1,19 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+<include file="Public:header"/> 
 <title>我的小区 - 首页</title>
+<style type="text/css">
+body{font-family: '微软雅黑';}
+#index{width:300px;margin:0 auto;line-height:35px;padding-top:20px;}
+#index p{font-size: 14px;text-align: center;}
+#vo{color:red;}
+</style>
 </head>
 <body>
-我的小区下所有商家页面入口
-<ul style="font-size:24px;">
-<volist name="wxusers" id="vo">
-    <li><a href="{ZF::U('Wap/Index/index',array('token'=>$vo['token']))}">{ZF:$vo.wxname}</a></li>
-</volist>
-</ul>
-<p>
-	<a href="{ZF::U('People/home')}">去个人中心</a> | 
-	<a href="{ZF::U('Index/index')}">去小区首页</a>
-</p>
+<div class="container" style="text-align:left" id="index">
+	<span style="font-size:18px;">我的小区下所有商家页面入口</span>
+	<ul style="font-size:16px;padding:0;margin: 0;">
+	<volist name="wxusers" id="vo">
+	    <li><a href="{ZF::U('Wap/Index/index',array('token'=>$vo['token']))}">{ZF:$vo.wxname}</a></li>
+	</volist>
+	</ul>
+	<p>
+		<a href="{ZF::U('People/home')}">去个人中心</a> | 
+		<a href="{ZF::U('Index/index')}">去小区首页</a>
+	</p>
+</div>
+<include file="Public:footer"/>
 </body>
 </html>
