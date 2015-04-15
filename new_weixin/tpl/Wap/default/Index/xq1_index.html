@@ -193,20 +193,26 @@ $('#menu-gallery').flickity({
 
 <notempty name="flash">
     <div style=" margin:0px auto; max-width: 1140px; z-index:97; position:relative;">
-        <div class="gallery js-flickity" data-flickity-options='{ "wrapAround":true,"autoPlay":true,"pageDots": false }'>
+        <div class="mygallery">
             <volist name="flash" id="so">
-                    <div class="gallery-cell clickcell">
-                        <a><img src="{ZF:$so.img}" /></a>
+                    <div class="gallery-cell clickcell" urldata="{ZF:$so.url}">
+                        <img src="{ZF:$so.img}" />
                     </div>
             </volist>
         </div>
     </div>
 </notempty>
+<script>
+var myg = $('.mygallery').flickity({ "wrapAround":true,"autoPlay": true,"pageDots": false });
 
-<script type="text/javascript">
-$(".clickcell").bind("click",function(){
-	alert(123);
-});
+myg.on( 'staticClick', function( event, pointer, cellElement, cellIndex ) {
+	if ( !cellElement ) {
+	    return;
+	  }
+
+	  location.href = $( cellElement ).attr('urldata');
+
+})
 </script>
 
 <!-- 底部导航内容 -->
@@ -289,7 +295,7 @@ $('.nav_bottom').flickity({
     <nav class="navbar navbar-default">
                 <table style="width:100%; line-height:50px; font-size:14px;">
                    <tr>
-                      <td style="width:60px;"><div id="announcements_title">&nbsp;&nbsp;公告：</div></td>
+                      <td style="width:60px;"><div id="announcements_title" onclick="alert('=============');">&nbsp;&nbsp;公告：</div></td>
                       <td>
                                  <div id="announcements">
                                   <ul>
