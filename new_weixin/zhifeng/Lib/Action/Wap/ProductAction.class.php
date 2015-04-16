@@ -82,9 +82,13 @@ class ProductAction extends WapAction{
 			}
 		}
 		
-		//读取商品列表
-		$where = array('token' => $this->token, 'groupon' => 0);
-		$products = $this->product_model-> where($where) ->order("sort ASC ")->limit('0, 10')->select();
+		//按分类读取商品列表
+		$products = array();
+		foreach ($cats as $cat){
+			$where = array('token' => $this->token, 'groupon' => 0,'catid'=>$cat['id']);
+			$cat_products = $this->product_model-> where($where) ->order("sort ASC ")->limit('0, 6')->select();
+			$products[$cat['id']] = $cat_products;
+		}
 		$this->assign('products', $products);
 		
 		$this->assign('cats',$cats);
