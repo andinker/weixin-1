@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+ 
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.css">
+<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js">
+<script type="text/javascript" src="{ZF::RES}/Index/public/js/jQuery.js?2014-9-20"></script>
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/public/css/template/common.css?2014-9-20" media="all" />
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/list/car_reset.css?2014-9-20" media="all" />
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/list/list-9.css?2014-9-20" media="all" />
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<title>{ZF:$tpl.wxname}</title>
+<style type="text/css">
+.head_con img{width:100%;margin-top: 0;margin-bottom: 10px;}
+.top_bar+*{padding-top: 0px;}
+a{color:#333;}
+a:hover{color:purple;}
+</style>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta name="keywords" content="{ZF::C('keyword')}" />
+<meta name="description" content="{ZF::C('content')}" />
+	<!-- Mobile Devices Support @begin -->
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+            <meta content="no-cache" http-equiv="pragma">
+            <meta content="0" http-equiv="expires">
+            <meta content="telephone=no, address=no" name="format-detection">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+        <link rel="shortcut icon" href="{ZF::STATICS}/favicon.ico" />
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+<link rel="stylesheet" type="text/css" href="{ZF::STATICS}/font-awesome/font-awesome.css" media="all" />
+
+<div class="body">
+  <div style="height:35px!important;"></div>
+  <div class="top_bar">
+    <nav>
+      <ul class="top_menu">
+        <li onClick="window.history.go(-1);"><span class="icon-chevron-sign-left"></span></li>
+		<li onClick="location.href='{ZF::U('Index/index',array('token'=>$tpl['token']))}'"><span class="icon-home"></span></li>
+        <li><a href="tel:<if condition="$homeInfo.dianhua neq false">{ZF:$homeInfo.dianhua}<else/>没有留电话</if>"><span class="icon-phone"></span></a></li>
+		<li onClick="$('#menu_font').toggleClass('hidden');">
+			<span class="icon-list-ul"></span>
+			<ul id="menu_font" class="menu_font hidden" onClick="$('#menu_font').toggleClass('hidden');">
+			
+			</ul>
+		</li>
+      </ul>
+    </nav>
+  </div>
+	<div class="head_con">
+		{ZF:$thisClassInfo['header_content']}
+	</div>
+	<volist name="res" id="so" key="b" >  
+     
+	     
+			<div class="head_news" style="background-color: #f8f8f8;border-bottom: 1px solid #ccc;padding-top:5px;padding-left:5px;padding-bottom:10px;margin-bottom:10px;">
+			<if condition="$so['url']"><a  href="{ZF:$so.url}" class="tbox">
+            <a  href="{ZF::U('Index/content',array('id'=>$so['id'],'token'=>$so['token'],'wecha_id'=>$wecha_id))}" class="tbox">
+			</if>
+				<div class="container">
+	            	<ol style="font-size:16px;margin-bottom: 5px;">{ZF:$so.title}</ol>
+	            	<table>
+	            		<tr>
+	            			<td><img src="{ZF:$so.pic}"  style="width:60px!important; height:60px;margin-right:5px;padding:3px;border:1px solid #ddd;background-color: white;"/></td>
+	            			<td style="">
+	            				<span id="content" style="color:#666;height:50px; overflow:hidden;display:block;text-overflow:ellipsis;">{ZF:$so.text}</span>
+	            			</td>
+	            		</tr>
+	            	</table>
+				</div>
+			</a>
+			</div>
+		
+     
+	</volist>
+		
+</div>        		
+<footer>
+  <div class="weimob-copyright"><if condition="$iscopyright eq 1">
+©{ZF:$homeInfo.copyright}
+<else/>
+©{ZF:$siteCopyright}
+</if> </div>
+  <span class="weimob-support" style="display:none;">©{ZF::C('copyright')}</span> </footer>
+				<div mark="stat_code" style="width:0px; height:0px; display:none;">{ZF:$home.stat_code|htmlspecialchars_decode}
+					</div>
+	</body>
+</html>
