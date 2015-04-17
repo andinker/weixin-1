@@ -19,18 +19,63 @@
 	    overflow:hidden;
 	}
 </style>
- 
  <!-- Bootstrap CDN -->
 <script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script> 
 <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.css">
 <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  
+ <link rel="stylesheet" type="text/css" href="{ZF::STATICS}/shop_menu/css/reset.css">
+<link rel="stylesheet" type="text/css" href="{ZF::STATICS}/shop_menu/css/reboot.css">
+<link rel="stylesheet" type="text/css" href="{ZF::STATICS}/shop_menu/css/main.css">
+<link rel="stylesheet" type="text/css" href="{ZF::STATICS}/shop_menu/css/media.css">
+<script src="{ZF::STATICS}/shop_menu/js/jquery.min.js"></script>
+<script src="{ZF::STATICS}/shop_menu/js/jquery-ui.min.js"></script>
+<script src="{ZF::STATICS}/shop_menu/js/jquery.simplesidebar.js"></script>
  
 <link rel="stylesheet" href="{ZF::STATICS}/plugin_flickity/flickity.min.css"/>
 <script type="text/javascript" src="{ZF::STATICS}/plugin_flickity/flickity.pkgd.min.js"></script>
- 
 <style type="text/css">
-body { font-family:"微软雅黑";}
+body { font-family:"微软雅黑";color:white;background:{ZF:$info.background_color}; }
+@media screen and (min-width: 1201px) {
+.goods_box_img { height:250px;}
+}
+@media screen and (min-width: 1081px) and ( max-width: 1200px ) {
+.goods_box_img { height:215px;}
+}
+@media screen and (min-width: 992px) and ( max-width: 1080px ) {
+.goods_box_img { height:210px;}
+}
+@media screen and (min-width: 901px) and ( max-width: 991px ) {
+.goods_box_img { height:220px;}
+}
+@media screen and (min-width: 768px) and ( max-width: 900px ) {
+.goods_box_img { height:220px;}
+}
+@media screen and (min-width: 701px) and ( max-width: 767px ) {
+.goods_box_img { height:330px;}
+}
+@media screen and (min-width: 641px) and ( max-width: 700px ) {
+.goods_box_img { height:250px;}
+}
+@media screen and (min-width: 601px) and ( max-width: 640px ){
+.goods_box_img { height:240px;}
+}
+@media screen and (min-width: 481px) and ( max-width: 600px ){
+.goods_box_img { height:200px;}
+}
+@media screen and (min-width: 451px) and ( max-width: 480px ) {
+.goods_box_img { height:190px;}
+}
+@media screen and (min-width: 381px) and ( max-width: 450px ) {
+.goods_box_img { height:150px;}
+}
+@media screen and (min-width: 301px) and ( max-width: 380px ) {
+.goods_box_img { height:115px;}
+}
+@media screen and (min-width: 1px) and ( max-width: 300px ) {
+.goods_box_img { height:100px;}
+}
 @media screen and (min-width: 1080px) {.gallery-cell{height: 500px;}}
 @media screen and (min-width: 640px) and ( max-width: 1080px ) {.gallery-cell{height: 350px;}}
 @media screen and (min-width: 320px) and ( max-width: 640px ){.gallery-cell{height: 240px;}}
@@ -40,16 +85,36 @@ body { font-family:"微软雅黑";}
 		  background-color:#eee;
 		}
 .gallery-cell img { width:100%;}
-#nav, #copyright { margin-top:10px;}
-#nav { padding:10px 0;}
-#copyright { border-top:1px solid #EAEAEA; line-height:30px;}
-#tool_bar { padding:10px 0; background-color:#f7f5f5; /*border-bottom:1px solid #EAEAEA;*/}
+//#nav, #copyright { margin-top:10px;}
+#nav { padding:5px 15px 5px 15px;margin:0px 0px 0px 10px;}
+#nav>ul{padding-left:0;margin-left:0;}
+li{list-style: none;}
+#copyright { line-height:30px;}
+#tool_bar { padding:15px 0; background-color:#f7f5f5; /*border-bottom:1px solid #EAEAEA;*/}
+.nav>li>a{padding:5px 10px;}
+.row .product{padding-bottom:20px;padding-left: 15px;padding-right: 15px;}
+.row .product img{box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.1);}
+.title{height:30px;background:white;height:35px;font-size:1em;margin-bottom:20px;border-radius:2px;line-height:35px;padding-left:10px;}
+.goods_box { margin-bottom:20px;border-radius:2px;}
+.goods_box a { display:block; background-color:#FFF; box-shadow:2px 2px 10px 0px rgba(0,0,0,0.1);border-radius:2px;}
+.goods_box_img { overflow:hidden;border-radius:2px;}
+.goods_box_title, .goods_box_price { height:35px; line-height:25px; font-size:14px; overflow:hidden; background-color:#FFF; padding:0px 10px;}
+.goods_box_title { padding-top: 10px; color:#000;}
+.goods_box_price { padding-bottom:10px; text-align:center; color:#d11725;border-radius:2px;}
+.goods_box_price span { display:inline-block; margin-left:10px; font-size:8px; text-decoration:line-through; color:#666;}
+.goods_box img { width:100%;}
+.content_middle img{width:100%;}
+.logo img{text-align:center;width:100%;}
+.font-setting{color:{ZF:$info.font_color};}
+.menu_font-setting{color:{ZF:$info.menu_font_color};}
+.all_bg{background-image:url({ZF:$info.background_img});}
+.sidebar li:hover {background-color: {ZF:$info.menu_font_color};color:{ZF:$info.menu_background_color};font-weight:bold;}
 </style>
- 
+
 </head>
 
 <body>
-
+<!--  
 <div id="tool_bar">
 	<div class="container">
 	     <div class="row">
@@ -65,7 +130,8 @@ body { font-family:"微软雅黑";}
 	     </div>
 	</div>
 </div>
-
+-->
+<!--  
 <div id="nav">
 	<div class="container">
 			<ul class="nav nav-pills">
@@ -76,14 +142,116 @@ body { font-family:"微软雅黑";}
 			</ul>
 	</div>
 </div>
-
-<div class="gallery js-flickity">
-	<foreach name='info[picurls]' item='i'>     
-			<div class="gallery-cell"><img src="{ZF:$i}"></div>
-	</foreach>
+-->
+<!--  
+<div id="nav" style="position:fixed; z-index: 100;border-radius:3px; background-color:rgba(255,255,255,0.7);">
+			<ul>
+			    <li class="active"><a href="#" style="color:#333;"><span class="glyphicon glyphicon-list" style="padding-right:10px;padding-top:5px;"></span>商品分类</a></li>
+			</ul>
 </div>
 
+--> 
+<!-- 头部开始 -->
+<span id="nav" style="position:fixed; z-index: 100;font-size:30px;padding:0;cursor: pointer; " class="font-setting">
+	<span id="open-sb" class="glyphicon glyphicon-list" ></span>
+</span> 
+<section class="sidebar" style="background:{ZF:$info.menu_background_color};  color:{ZF:$info.menu_font_color}">
+		<nav>
+			<h6 style="font-weight: bold;">商品分类</h6>
+			<ul>
+				<volist name="cats" id="cat">
+					<li>
+						<a href="{ZF::U('Wap/Product/products')}&token={ZF:$cat.token}&wecha_id={ZF:$wecha_id}&catid={ZF:$cat.id}">
+							{ZF:$cat['name']}
+						</a>
+					</li>
+				</volist>
+			</ul>
+		</nav>
+</section>
+<script>
+$( document ).ready(function() {
+	$.ajaxSetup({
+		cache: false
+	});
+	$( '.sidebar' ).simpleSidebar({
+		settings: {
+			opener: '#open-sb',
+			closed:'.mygallery',
+			wrapper: '.wrapper',
+			animation: {
+				duration: 500,
+				easing: 'easeOutQuint'
+			}
+		},
+		sidebar: {
+			align: 'left',
+			width: 150,
+			closingLinks: 'a',
+		}
+	});
+});
 
+</script>
+
+
+
+	<php>
+		if( empty($info['content_header'])){
+	</php>
+		<div class="logo" style="text-align:center;background-color: #ccc;padding-top:5px;" id="get_h">
+	<php>
+			echo '<img src="/tpl/Wap/default/common/shop/images/logo_def.png"/>';
+	</php>
+		</div>
+	<php>		
+		}
+		else{
+	</php>
+	<div class="logo" style="text-align:center;min-height:40px;padding-top:5px;" id="get_h">
+		{ZF:$info.content_header}
+	</div>
+	<php>
+		}
+	</php>
+<script type="text/javascript">
+var h = window.document.getElementById('get_h');
+var a =  h .offsetHeight;
+if(a>40){
+	$("#nav").css("line-height",a+'px');
+	$('#nav').css("font-size","32px");
+}
+if(a<=40){
+	$('#nav').css("font-size","24px");
+	$("#nav").css("line-height",a+'px');
+}
+</script>
+<!-- 头部结束 -->
+<!-- <img src="/tpl/Wap/default/common/shop/images/logo_def.png"/> -->
+<!-- banner轮播开始 --> 
+<div class="mygallery">
+	<volist name='info[picurls]' id='vo'>     
+			<div class="gallery-cell" urldata="<php>echo $info['piclink'.$i];</php>"><img src="{ZF:$vo}"></div>
+	</volist>
+</div>
+<script>
+var myg = $('.mygallery').flickity({ "wrapAround":true,"autoPlay": true,"pageDots": false });
+
+
+myg.on( 'staticClick', function( event, pointer, cellElement, cellIndex ) {
+	if ( !cellElement ) {
+	    return;
+	  }
+
+	  location.href = $( cellElement ).attr('urldata');
+
+})
+
+</script>
+<!-- banner轮播结束 -->
+
+
+<!-- 
 <div class="container">
     <h4 class="page-header">热卖商品</h4>
 <div class="jumbotron">
@@ -101,8 +269,92 @@ body { font-family:"微软雅黑";}
   <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 </div>
 </div>
+ -->
+ 
+<div class="all_bg">
+<!-- 中部编辑区开始 -->
+<div style="margin-bottom:20px;" class="content_middle">
+	{ZF:$info.content_middle}
+<!-- <img src="/tpl/Wap/default/common/shop/images/bb.jpg" width="100%"> -->	
+</div>
 
-<div id="copyright">
+<!-- 中部编辑区结束 -->
+<!-- 产品分类展示开始 -->
+<volist name="cats" id="cat">
+
+    <php>
+    if ( !empty($products[$cat['id']]) ){ 
+    </php>
+
+	<div class="container">
+		<div class="title" style="  box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.1);">
+			<span style="float:left;color:black;">{ZF:$cat['name']}</span>
+			<span style="float:right"><a  href="{ZF::U('Wap/Product/products')}&token={ZF:$cat['token']}&catid={ZF:$cat[id]}&wecha_id={ZF:$wecha_id}" style="padding-right:10px;color:black;">更多>></a></span>
+		</div>
+	     <div class="row">
+	          <volist name="products[ $cat['id'] ]" id="pro"  offset="0" length='4'>
+		          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 goods_box" style="border-radius:2px;">
+		               <a href="{ZF::U('Wap/Product/product')}&token={ZF:$pro.token}&wecha_id={ZF:$wecha_id}&id={ZF:$pro.id}">
+		                  <div class="goods_box_img"><img src="{ZF:$pro.logourl}"></div>
+		                  <div class="goods_box_title">{ZF:$pro.name}</div>
+		                  <div class="goods_box_price">￥{ZF:$pro.price}元<span>￥{ZF:$pro.oprice}元</span></div>
+		               </a>
+		          </div>
+	          </volist>
+	     </div>
+	</div>
+
+    <php>
+    }
+    </php>
+
+</volist>
+<!-- 产品分类展示结束 -->
+<!-- 
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4 product"><img src="/tpl/Wap/default/common/shop/images/pro1.jpg" width="100%"></div>
+		<div class="col-xs-4 product"><img src="/tpl/Wap/default/common/shop/images/pro1.jpg" width="100%"></div>
+		<div class="col-xs-4 product"><img src="/tpl/Wap/default/common/shop/images/pro1.jpg" width="100%"></div>
+	</div>
+	<div class="title">
+		<volist name="cats" id="vo">
+	            <span style="float:left">{ZF:$vo.name}</span>
+				                       
+	    </volist>
+	</div>
+	<div class="title">
+		<span style="float:left">基础护肤</span>
+		<span style="float:right">更多>></span>
+	</div>
+
+	<div class="row" style="padding-top:10px;">
+		<div class="col-xs-4 product"><img src="/tpl/Wap/default/common/shop/images/pro1.jpg" width="100%"></div>
+		<div class="col-xs-4 product"><img src="/tpl/Wap/default/common/shop/images/pro1.jpg" width="100%"></div>
+		<div class="col-xs-4 product"><img src="/tpl/Wap/default/common/shop/images/pro1.jpg" width="100%"></div>
+		<div class="col-xs-4 product"><img src="/tpl/Wap/default/common/shop/images/pro1.jpg" width="100%"></div>
+		<div class="col-xs-4 product"><img src="/tpl/Wap/default/common/shop/images/pro1.jpg" width="100%"></div>
+		<div class="col-xs-4 product"><img src="/tpl/Wap/default/common/shop/images/pro1.jpg" width="100%"></div>
+	</div>
+
+	<div class="title">
+		<span style="float:left;">彩妆</span>
+		<span style="float:right;">更多>></span>
+	</div>
+
+	<div class="row" style="padding-top:10px;">
+		<div class="col-xs-4 product"><img src="/tpl/Wap/default/common/shop/images/pro1.jpg" width="100%"></div>
+		<div class="col-xs-4 product"><img src="/tpl/Wap/default/common/shop/images/pro1.jpg" width="100%"></div>
+		<div class="col-xs-4 product"><img src="/tpl/Wap/default/common/shop/images/pro1.jpg" width="100%"></div>
+		<div class="col-xs-4 product"><img src="/tpl/Wap/default/common/shop/images/pro1.jpg" width="100%"></div>
+		<div class="col-xs-4 product"><img src="/tpl/Wap/default/common/shop/images/pro1.jpg" width="100%"></div>
+		<div class="col-xs-4 product"><img src="/tpl/Wap/default/common/shop/images/pro1.jpg" width="100%"></div>
+	</div>
+
+</div>
+ -->
+ <!-- 底部开始 -->
+<div id="copyright" style="text-align:center;" class="font-setting">
 	<div class="container">
 		<if condition="$iscopyright eq 1">
 		    {ZF:$homeInfo.copyright}
@@ -111,6 +363,9 @@ body { font-family:"微软雅黑";}
 		</if>
 	</div>
 </div> 
+<!-- 底部结束 -->
+
+</div>
 
 	<if condition="ACTION_NAME eq 'index'">
 
@@ -175,6 +430,16 @@ body { font-family:"微软雅黑";}
 <if condition="$kefu['sc'] eq '1'">
 <include file="footsrc"/>
 </if> 
+
+<pre>
+<php>
+/*print_r($cats);
+print_r($products);
+print_r($info);*/
+</php>
+</pre>
+
+
 </body>
 
 
