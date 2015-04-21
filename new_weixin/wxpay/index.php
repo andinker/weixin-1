@@ -11,7 +11,7 @@ if (get_magic_quotes_gpc()) {
     $_GET = array_map('stripslashes_deep', $_GET);
     $_COOKIE = array_map('stripslashes_deep', $_COOKIE);
 }
-define('APP_DEBUG',1);
+define('APP_DEBUG',1); 
 define('APP_NAME', 'zhifeng');
 define('CONF_PATH','./../Conf/');
 define('RUNTIME_PATH','./../data/runtime/');

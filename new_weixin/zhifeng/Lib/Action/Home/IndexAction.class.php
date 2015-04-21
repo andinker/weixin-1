@@ -2,7 +2,13 @@
 class IndexAction extends BaseAction{
 	//关注回复
 	public function index(){
-		$this->display();
+		
+		if ( strpos($_SERVER['SCRIPT_NAME'],'/wxpay/index.php') === false ){ 
+			$this->display();
+		}else{
+			//微支付通知url
+			R('Wap/Wxpay/notify_url');
+		}
 	}
 	public function price(){
 		//遍历功能列表
