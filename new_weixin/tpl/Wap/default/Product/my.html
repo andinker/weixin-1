@@ -1,6 +1,6 @@
 <include file="Product:header"/>
 
-<div style="line-height:30px; text-align:center;"> <a href="{ZF::U('Xiaoqu/People/home')}">去个人中心</a> </div>
+<div style="line-height:30px; text-align:center;"> <a href="{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token'],'re'=>urlencode($_SERVER['REQUEST_URI'])))}">去个人中心</a> </div>
 
 <if condition="$ordersCount neq 0">
 	<volist name="orders" id="o">

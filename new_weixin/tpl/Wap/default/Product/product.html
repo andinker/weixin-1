@@ -263,7 +263,7 @@ function QuickBuy() {
 
 <script type="text/javascript">
 function toLogin(){
-	location.href="{ZF::U('Xiaoqu/People/login',array('re'=>urlencode($_SERVER['REQUEST_URI'])))}";
+	location.href="{ZF::U('Xiaoqu/People/login',array('token'=>$token,'re'=>urlencode($_SERVER['REQUEST_URI'])))}";
 }
 </script>
 

@@ -1,5 +1,6 @@
 <?php
 class XiaoquAction extends BaseAction {
+	public $token;
 	public function sendSMS($phones,$content,&$error) {
 		//短信宝配置
 		$username = 'itcocoa';

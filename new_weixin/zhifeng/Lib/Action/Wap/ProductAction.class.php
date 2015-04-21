@@ -687,6 +687,8 @@ class ProductAction extends WapAction{
 
 	public function my(){
 		
+		
+		
 		$this->checked_login();
 		
 		$offset = 5;
@@ -952,7 +954,7 @@ class ProductAction extends WapAction{
 		$people = session('people');
 		if (empty($_GET['wecha_id']) && empty($people)){
 			//echo '空的wecha_id'.$_GET['wecha_id'];
-			$this->redirect('Xiaoqu/People/login',array('re'=>urlencode($_SERVER['REQUEST_URI'])));
+			$this->redirect('Xiaoqu/People/login',array('token'=>$this->token,'re'=>urlencode($_SERVER['REQUEST_URI'])));
 		}
 	}
 }

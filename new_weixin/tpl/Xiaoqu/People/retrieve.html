@@ -47,14 +47,14 @@ input{margin-bottom: 10px;margin-top:10px;}
 		</table>
 		<table class="re-but">
 			<tr style="text-align:center;">
-				<td><input type="submit" value="找回密码" style="background:red;width:300px;height:35px;border:0;box-shadow:1px 1px 1px 1px;font-size:16px;"></td>
+				<td><input type="submit" value="找回密码" style="background-image: url(/tpl/Wap/default/common/Index/xq1/toolbar_bg.png);width:300px;height:35px;border:0;box-shadow:1px 1px 1px 1px;font-size:16px;color:white;font-weight:bold;"></td>
 			</tr>
 		</table>
 		
 	</form>
 	
 	<div style="text-align:center;margin-bottom:20px;margin-top:20px;">
-		你可以去<!-- a href="/">首页</a--> <a href="{ZF::U('login')}">重新登录</a>
+		你可以去<!-- a href="/">首页</a--> <a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/login')}<else/>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">重新登录</a>
 	</div>
 </div>
 

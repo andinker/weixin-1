@@ -1,5 +1,6 @@
 <?php
 class PeopleAction extends XiaoquAction {
+	public $token;
 	
 	/**
 	 * 消费者用户注册
@@ -7,7 +8,7 @@ class PeopleAction extends XiaoquAction {
 	public function register() {
 		
 		//检查提交 
-		$error = '注册成功';
+		$error = '';
 		if (IS_POST){
 			$db = D('People');
 			if ($rs = $db->create()){
@@ -34,7 +35,7 @@ class PeopleAction extends XiaoquAction {
 	 * 消费者用户登录
 	 */
 	public function login( $people_id = 0 ){
-		
+		$this->token=$this->_get('token','trim');
 		//如果已经登录，跳到$_GET['re']或者个人中心
 		if ($this->is_logined()){
 			if (empty($_GET['re'])) $this->error('你已经登录！',U('home'));
@@ -72,8 +73,8 @@ class PeopleAction extends XiaoquAction {
 	
 	public function home() {
 		
-		if (!$this->is_logined()) $this->error('您还没有登录！',U('login'));
 		
+		if (!$this->is_logined()) $this->error('您还没有登录！',U('login',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']))));
 		$this->display();
 	}
 	

@@ -35,7 +35,7 @@ $people = session('people');
 	
 	
 	<p>
-		<a href="{ZF::U('logout')}">退出登录</a>
+		<a href="<empty name='Think.get.re'>{ZF::U('logout')}<else/>{ZF::U('logout',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">退出登录</a>
 		<!-- a href="{ZF::U('Index/index')}">去小区首页</a-->
 	</p>
 </div>

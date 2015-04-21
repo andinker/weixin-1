@@ -15,7 +15,7 @@ body{font-family: '微软雅黑';background-color: #fff;}
 		<span>你已经成功退出登录了！</span>
 	</div>
 	<div style="text-align:center;margin-bottom:20px;margin-top:20px;font-size:14px;">
-		你可以去<!-- a href="{ZF::U('Index/index')}">首页</a--> 或者 <a href="{ZF::U('login')}">重新登录</a>
+		你可以去<!-- a href="{ZF::U('Index/index')}">首页</a--> 或者 <a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/login')}<else/>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">重新登录</a>
 	</div>
 </div>
 <include file="Public:footer"/>

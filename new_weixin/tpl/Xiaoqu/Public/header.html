@@ -131,8 +131,9 @@ body { font-family:"微软雅黑"; font-size:1em; background-color:#e3e3e8;}
 	    <div class="row" style=" color:#FFF; line-height: 50px;">
              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		         <div style="float:left;">
-		              <div class="tool_bar_icon"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_menu.png"></div>&nbsp;&nbsp;
-		              <img style="height:32px; display:inline;" class="img-responsive" alt="我的小区" src="{ZF::STATICS}/logo-xiaoqu.png">
+		              <div class="tool_bar_icon"><!-- <img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_menu.png"> --></div>&nbsp;&nbsp;
+		              <img style="height:32px; display:inline;cursor:pointer;" class="img-responsive" alt="我的小区" src="{ZF::STATICS}/logo-xiaoqu.png" onclick="location.href='{ZF::U('Wap/Index/index',array('token'=>$_GET['token']))}';">
+		              
 		         </div>
 		         <div style="float:right;">
 
@@ -143,7 +144,6 @@ body { font-family:"微软雅黑"; font-size:1em; background-color:#e3e3e8;}
 	    </div>
 	</div>
 </div>
-
 
 <div id="nav_bar">
 
@@ -159,8 +159,8 @@ body { font-family:"微软雅黑"; font-size:1em; background-color:#e3e3e8;}
                 <span class="menu-cell">
 					<div class="menu-cells"> 
 		                <span class="menu-cell"  >
-		                        <a href="{ZF::U('People/login')}" style="padding-right:20px;color:#333;">登录</a>
-								<a href="<empty name='Think.get.re'>{ZF::U('People/register')}<else/>{ZF::U('People/register',array('re'=>urlencode($_GET['re'])))}</empty>" style="padding-right:20px;color:#333;">注册</a>
+		                        <a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/login')}<else/>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>" style="padding-right:20px;color:#333;">登录</a>
+								<a href="<empty name='Think.get.re'>{ZF::U('People/register')}<else/>{ZF::U('People/register',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>" style="padding-right:20px;color:#333;">注册</a>
 		                </span> 
 		            </div>
                 </span>
@@ -175,7 +175,6 @@ body { font-family:"微软雅黑"; font-size:1em; background-color:#e3e3e8;}
 	</div>
 
 </div>
-
 <script type="text/javascript">
 $('#menu-gallery').flickity({
 	freeScroll: true,
