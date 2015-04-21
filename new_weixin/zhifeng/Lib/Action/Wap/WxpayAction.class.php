@@ -42,10 +42,10 @@ class WxpayAction extends BaseAction{
 		$WxPayConf_pub_data['MCHID'] = $this->wxpay_config['partnerId'];
 		$WxPayConf_pub_data['KEY'] = $this->wxpay_config['partnerKey'];
 		
-		$WxPayConf_pub_data['JS_API_CALL_URL'] = urlencode($_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+		$WxPayConf_pub_data['JS_API_CALL_URL'] = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 		$WxPayConf_pub_data['SSLCERT_PATH'] = '';
 		$WxPayConf_pub_data['SSLKEY_PATH'] = '';
-		$WxPayConf_pub_data['NOTIFY_URL'] = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].'/wxpay/index.php';
+		$WxPayConf_pub_data['NOTIFY_URL'] = 'http://'.$_SERVER['HTTP_HOST'].'/wxpay/index.php';
 		$WxPayConf_pub_data['CURL_TIMEOUT'] = '30';
 		
 		return $WxPayConf_pub_data;

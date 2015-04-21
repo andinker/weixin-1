@@ -277,7 +277,7 @@ class Wxpay_client_pub extends Common_util_pub
 	 */
 	function postXml()
 	{
-	    $xml = $this->createXml();
+	    $xml = $this->createXml(); 
 		$this->response = $this->postXmlCurl($xml,$this->url,$this->curl_timeout);
 		return $this->response;
 	}
