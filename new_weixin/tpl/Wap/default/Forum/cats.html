@@ -1,25 +1,113 @@
+<style type="text/css">
+.nav_cat{font-size:16px;font-family:'微软雅黑';min-height:165px;background:white;margin:6px;}
+.nav_cat li{list-style: none;float:left;width:25%;overflow: hidden;height:30px;line-height:30px;}
+.classify{margin:6px;font-size:20px;border-bottom: 1px solid #e0e0e0;padding:5px 0;height:40px;line-height: 40px;}
+.show_m{float:right;padding-right:20px;line-height: 20px;display:block;}
+</style>
 
-<div><strong><a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>0))}">论坛首页</a></strong></div>
+<div class="nav_cat">
 
-<if condition="$cat['parentid'] neq 0">
-    <div>父级分类：<strong><a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$pcat['id']))}">{ZF:$pcat['name']}</a></strong></div>
-<else/>
-    <div>父级分类：<strong><a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>0))}">根分类</a></strong></div>
-</if>
+	<div class="classify">
+		
+		<span style="float:right;line-height:40px;padding-right: 10px;">
+			 <if condition="$cat['parentid'] neq 0">
+				    
+					    <a style="color:#ccc;" href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$pcat['id']))}">
+					    	{ZF:$pcat['name']}
+					    </a>
+				    
+			<else/>
+				    
+					    <a style="color:#999;" href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>0))}">
+					           	论坛首页
+					    </a>
+				   
+			</if>
+		</span>
+		<span style="padding-left: 5px;">
+			<if condition="$catid neq 0">
+					
+						<a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$cat['id']))}">
+							{ZF:$cat['name']}
+						</a>
+					
+			<else/>
+				    
+					    <a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>0))}">
+					          	 论坛首页
+					    </a>
+				    
+			</if>
+		</span>
+	</div>	
+	<div style="margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom: 10px;overflow: hidden;">
+		<ul>
+			<li> 
+				<strong>
+					<a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>0))}">
+						论坛首页
+					</a>
+				</strong>
+			</li>
+			<notempty name="cats">
+			<span class="get_l">
+			   <volist name="cats" id="vo" offset="0" length="7">
+			      <li class="part_nav">
+				      <a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$vo['id']))}">
+				      	{ZF:$vo.name}
+				      </a>
+			      </li>
+			   </volist>
+			</span>
+				<else/>
+			 	 <li style="color:#ccc">没有子分类</li>
+			</notempty>
+		<div class="nav_more" style="display:none;">
+			<volist name="cats" id="vo"  offset="7">
+				<li class="mo">
+						<a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$vo['id']))}">
+						{ZF:$vo['name']}
+						</a> 
+				</li>
+			</volist>
+		</div>
+		</ul>
+		
 
-<if condition="$catid neq 0">
-	<div>当前分类：<strong><a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$cat['id']))}">{ZF:$cat['name']}</a></strong></div>
-<else/>
-    <div>当前分类：<strong><a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>0))}">根分类</a></strong></div>
-</if>
+	</div>		
 
-<notempty name="cats">
-<h3>子分类</h3>
-<ul>
-   <volist name="cats" id="vo">
-      <li><a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$vo['id']))}">{ZF:$vo.name}</a></li>
-   </volist>
-</ul>
-<else/>
-  没有子分类
-</notempty>
+			<div onclick="show_hide()" class="show_m">
+				<strong>
+					<span class="more" style="cursor: pointer;">
+						展开更多>>
+					</span>
+				</strong>
+			</div>		
+</div>
+<script type="text/javascript">
+
+var a=$(".nav_more");
+var x=$(".nav_more>li").height();
+var le=$(".mo").length;
+var all=165+Math.ceil(le/4)*x;
+var y=$(".part_nav").length; 
+//alert(y);
+if(y<=6 && le==0){
+	$(".show_m").css("display","none");
+}
+if(y<=3){
+	$(".nav_cat").css("min-height","105px");
+}
+function show_hide(){
+	if(a.css('display')=='none'){
+		$(".nav_more").show("fast");
+		$(".nav_cat").css("min-height",all+"px");
+		$(".more").text("<<收起");
+	}else{
+		$(".nav_more").hide("fast");
+		$(".nav_cat").css("min-height","165px");
+		$(".more").text("展开更多>>");
+	}
+}
+
+</script>
