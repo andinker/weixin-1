@@ -139,6 +139,16 @@
 				'attr'=>'',
 				'sort'=>14,
 		),
+		array(
+				'tplid'=>13,
+				'name'=>'商城模板13',
+				'views'=>'113_index_rwd',
+				'imgurl'=>'rwd_cate01.png',
+				'info'=>'',
+				'attr'=>'',
+				'sort'=>15,
+		),
+		
 			
 	);
 	

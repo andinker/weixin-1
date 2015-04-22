@@ -11,11 +11,11 @@ a{color:#333;text-decoration:none}
 .m-hd div{min-width:48px}
 .m-hd div a{display:inline-block;width:48px;height:44px;text-indent:-10em;overflow:hidden;position:relative;}
 .m-hd div a:after{content:"";position:absolute;display:inline-block}
-.m-hd div a.back{border-right:1px solid #900;}
+.m-hd div a.home{border-right:1px solid #900;}
 .m-hd div a.cat,.m-hd div.logo,.m-hd div.tit,.m-hd div a.uc{border-right:1px solid #900;border-left:1px solid #c00;}
 .m-hd div a.cart{border-left:1px solid #c00;}
 .m-hd div a.cart i.cart_com{box-shadow:0 0 1px #900 inset;text-indent:0;position:absolute;top:8px;right:8px;z-index:1;background:#FF9;color:#966;border-radius:20px;font-size:12px;padding:0 4px;font-weight:700;}
-.m-hd div a.back:after{width:18px;height:16px;background:url(img/back.png) no-repeat;background-size:contain;top:13px;left:15px}
+.m-hd div a.home:after{width:18px;height:16px;background:url(img/home.png) no-repeat;background-size:contain;top:13px;left:15px}
 .m-hd div a.cat:after{width:21px;height:15px;background:url(img/caticon.png) no-repeat;background-size:contain;top:15px;left:14px}
 .m-hd div.logo,.m-hd div.tit{-webkit-box-flex:1;position:relative;font-size:18px;line-height:44px;padding:0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff;font-weight:700;text-align:center;}
 .m-hd.m-hd-ck .tit{margin-right:48px;border-right:0}
@@ -240,9 +240,9 @@ a{color:#333;text-decoration:none}
 .m-cart-toal .tip{text-shadow:1px 1px 1px #fff;color:#aaa;margin-top:5px}
 .m-cart-toal .check b{color:#c00}
 .m-cart-toal .act{display:-webkit-box;margin-top:15px}
-.m-cart-toal .act a.back{color:#999;display:block;padding:0 8px;position:relative;background:-webkit-gradient(linear,left top,left bottom,from(#fefefe), to(#e8e8e8));border:1px solid #D5D5D5;line-height:29px;height:29px;margin:3px 10% 0 17px}
-.m-cart-toal .act a.back i{width:17px;height:32px;overflow:hidden;position:absolute;top:-1px;left:-17px}
-.m-cart-toal .act a.back i:after{content:'';width:21px;height:21px;position:absolute;top:4px;left:6px;-webkit-transform:rotate(45deg);background:-webkit-gradient(linear,left top,right bottom,from(#fefefe), to(#e8e8e8));border:1px solid #D5D5D5}
+.m-cart-toal .act a.home{color:#999;display:block;padding:0 8px;position:relative;background:-webkit-gradient(linear,left top,left bottom,from(#fefefe), to(#e8e8e8));border:1px solid #D5D5D5;line-height:29px;height:29px;margin:3px 10% 0 17px}
+.m-cart-toal .act a.home i{width:17px;height:32px;overflow:hidden;position:absolute;top:-1px;left:-17px}
+.m-cart-toal .act a.home i:after{content:'';width:21px;height:21px;position:absolute;top:4px;left:6px;-webkit-transform:rotate(45deg);background:-webkit-gradient(linear,left top,right bottom,from(#fefefe), to(#e8e8e8));border:1px solid #D5D5D5}
 .m-cart-toal .act a.checkout{border-radius:2px;display:block;text-align:center;-webkit-box-flex:1;width:100%;background:#e80404;color:#fff;text-shadow:-1px -1px 1px #9C1414;-webkit-box-shadow:0 -1px 1px #AF2200 inset;font-weight:700;line-height:36px}
 
 /*checkout*/
