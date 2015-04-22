@@ -1,0 +1,25 @@
+
+<div><strong><a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>0))}">论坛首页</a></strong></div>
+
+<if condition="$cat['parentid'] neq 0">
+    <div>父级分类：<strong><a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$pcat['id']))}">{ZF:$pcat['name']}</a></strong></div>
+<else/>
+    <div>父级分类：<strong><a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>0))}">根分类</a></strong></div>
+</if>
+
+<if condition="$catid neq 0">
+	<div>当前分类：<strong><a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$cat['id']))}">{ZF:$cat['name']}</a></strong></div>
+<else/>
+    <div>当前分类：<strong><a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>0))}">根分类</a></strong></div>
+</if>
+
+<notempty name="cats">
+<h3>子分类</h3>
+<ul>
+   <volist name="cats" id="vo">
+      <li><a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$vo['id']))}">{ZF:$vo.name}</a></li>
+   </volist>
+</ul>
+<else/>
+  没有子分类
+</notempty>

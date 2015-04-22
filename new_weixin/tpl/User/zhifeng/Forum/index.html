@@ -49,6 +49,7 @@ function selectall(name) {
 <th class="select"><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
 <th width="50">编号</th>
 <th width="80">发帖人</th>
+<th width="80">分类</th>
 <th width="100">标题</th>
 <th class="210">内容</th>
 <th width="50">赞</th>
@@ -62,12 +63,28 @@ function selectall(name) {
 </thead>
 <tbody>
 <tr></tr>
-
+<php>
+function ____get_catname( $id ){
+   
+   $name = '未知分类';
+   
+   if ( $id == 0 ) $name = '根分类';
+   
+   foreach( $cats as $cat ){
+      if (intval($cat['id']) == intval($id)){
+         $name = $cat['name'];
+      }
+   }
+   
+   return $name;
+}
+</php>
 	<volist name="list" id="t"> 
 		<tr>
 			<td><input type="checkbox" value="{ZF:$t.id}" class="cbitem" name="id[]"></td>
 			<td>{ZF:$t.id}</td>
 			<td>{ZF:$t.uname}</td>
+            <td><php>echo ____get_catname( $t['catid'] );</php></td>
 			<td>{ZF:$t.title}</td>
 			<td>{ZF:$t.content|htmlspecialchars_decode}</td>
 			<td><if condition="$t['favourid'] neq NULL">{ZF::count(explode(',',$t['favourid']))}<else />0</if></td>

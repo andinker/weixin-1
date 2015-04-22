@@ -69,6 +69,7 @@
 						</li>
 					</ul>
 				</div>
+			    <include file="cats"/>
 			</header>
 			
 			<div class="body">
@@ -109,7 +110,7 @@
     								<h5>{ZF:$list.title}</h5><!--发帖标题-->
 								    <div>{ZF::htmlspecialchars_decode($list['content'],ENT_QUOTES)}</div><!--发帖内容-->
 							    </div>
-							    <a href="{ZF::U('Forum/comment',array('tid'=>$list['id'],'wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token']))}">查看全文</a>
+							    <a href="{ZF::U('Forum/comment',array('tid'=>$list['id'],'wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$catid))}">查看全文</a>
 								
     						</section>
 							
@@ -175,7 +176,7 @@ window.shareData = {
             if(($(document).height()-range) <= totalheight ) {
 			
 					$.ajax({
-						url: "{ZF::U('Forum/moreList',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"+"&p="+pageNum,
+						url: "{ZF::U('Forum/moreList',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'catid'=>$catid))}"+"&p="+pageNum,
 						type:"post",
 						data:"pageNum="+pageNum,
 						success: function(res){

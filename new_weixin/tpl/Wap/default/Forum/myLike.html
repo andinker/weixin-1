@@ -51,6 +51,7 @@
 	<body onselectstart="return true;" ondragstart="return false;" class="discuss_my discuss_my_tiezi">
 		<div id="container" class="container" <if condition="$bgurl neq NULL">style="background:url('{ZF:$bgurl}') repeat-y center 0"</if>>
 			<header>
+				<include file="cats"/>
 				<div class="header_1">
 					<ul class="tbox">
 						<li>
@@ -71,19 +72,19 @@
 					<nav>
 						<ul class="box">
 							<li>
-								<a href="{ZF::U('Forum/myContent',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token']))}">
+								<a href="{ZF::U('Forum/myContent',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$catid))}">
 									<label>帖子</label>
 									<span>{ZF:$mytopicsnum}</span>
 								</a>
 							</li>
 							<li>
-								<a href="{ZF::U('Forum/myLike',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token']))}" class="on">
+								<a href="{ZF::U('Forum/myLike',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$catid))}" class="on">
 									<label>喜欢</label>
 									<span>{ZF::count($list)}</span>
 								</a>
 							</li>
 							<li>
-								<a href="{ZF::U('Forum/myMessage',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token']))}">
+								<a href="{ZF::U('Forum/myMessage',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$catid))}">
 									<label>消息</label>
 									<span>{ZF:$mymessagenum}</span>
 								</a>

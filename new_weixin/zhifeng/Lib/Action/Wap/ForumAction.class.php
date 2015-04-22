@@ -2,9 +2,12 @@
 
 
 class ForumAction extends WapAction{
+	
+	public $catid;
 
 	public function _initialize() {
-		parent::_initialize();	
+		parent::_initialize();
+
 	}
 	
 	
@@ -36,13 +39,51 @@ class ForumAction extends WapAction{
 
 		$this->assign('bgurl',$isopen['bgurl']);
 		
+		
+		//读取当前分类的子分类数据
+		if (empty($_GET['catid'])) $this->catid = 0;
+		else $this->catid = intval($_GET['catid']);
+		
+		$cats_db = M('Forum_cat');
+		$cats = $cats_db->where(array('parentid'=>$this->catid))->select();
+		
+		$c_cat = $cats_db->where(array('id'=>$this->catid))->find();
+		
+		$p_cat = null;
+		if ($c_cat['parentid'] != 0) $p_cat = $cats_db->where(array('id'=>$c_cat['parentid']))->find();
+		
+		$this->assign('catid',$this->catid);
+		$this->assign('cat',$c_cat);
+		$this->assign('pcat',$p_cat);
+		$this->assign('cats',$cats);
+		
+	}
+	
+	private function getAllChildIds( $id ){
+		$ids = array();
+		$cats = M('Forum_cat')->where(array('parentid'=>$id))->select();
+		foreach ($cats as $cat){
+			array_push($ids, $cat['id']);
+			$c_ids = $this->getAllChildIds($cat['id']);
+			foreach ($c_ids as $c_id){
+				array_push($ids, $c_id);
+			}
+		}
+		
+		return $ids;
 	}
 	
 	//论坛首页
 	public function index(){
 		$forum = M('Forum_topics');
 		$token = $this->_get('token');
-		$where = array('status'=>'1','token'=>$token);
+		
+		// 获取当前分类下所有级层子分类的id
+		$childs = $this->getAllChildIds($this->catid);
+		array_push($childs, $this->catid);
+		$ids_str = implode(",", $childs);
+		
+		$where = 'status=1 AND token=\''.$token.'\' AND catid in ('.$ids_str.')';
 		$count      = $forum->where( $where )->count();
         $Page       = new Page($count,10);
         $show       = $Page->show();
@@ -90,7 +131,15 @@ class ForumAction extends WapAction{
 		
 		$token = $this->_get('token');	
 		$forum = M('Forum_topics');
-		$where = array('status'=>'1','token'=>$token);
+
+		
+		// 获取当前分类下所有级层子分类的id
+		$childs = $this->getAllChildIds();
+		array_push($childs, $this->catid);
+		$ids_str = implode(",", $childs);
+		
+		$where = 'status=1 AND token=\''.$token.'\' AND catid in ('.$ids_str.')';
+		
 		$count      = $forum->where( $where )->count();
         $Page       = new Page($count,10);
 		$wecha_id = $this->_get('wecha_id');
@@ -247,7 +296,7 @@ class ForumAction extends WapAction{
 		
 		$data['photos'] = implode(',',$photos);
 		
-
+        $data['catid'] = $_POST['catid'];
 		
 		
 		
@@ -257,9 +306,9 @@ class ForumAction extends WapAction{
 		if($forum->create()){
 			if($forum->add($data)){
 				if($conf['ischeck'] == 1){
-					$this->error('等待管理员审核后您的帖子才可以显示',U('Forum/myContent',array('wecha_id'=>$data['uid'],'token'=>$data['token'])));
+					$this->error('等待管理员审核后您的帖子才可以显示',U('Forum/myContent',array('wecha_id'=>$data['uid'],'token'=>$data['token'],'catid'=>$data['catid'])));
 				}else{
-					$this->redirect(U('Forum/index',array('wecha_id'=>$data['uid'],'token'=>$data['token'])));
+					$this->redirect(U('Forum/index',array('wecha_id'=>$data['uid'],'token'=>$data['token'],'catid'=>$data['catid'])));
 				}
 				
 			}
@@ -441,9 +490,9 @@ class ForumAction extends WapAction{
 				M('Forum_message')->add($message);
 				
 				if($conf['comcheck'] == 1){
-					$this->error('等待管理员审核后您的评论才可以显示',U('Forum/comment',array('wecha_id'=>$data['uid'],'tid'=>$tid,'token'=>$data['token'])));
+					$this->error('等待管理员审核后您的评论才可以显示',U('Forum/comment',array('wecha_id'=>$data['uid'],'tid'=>$tid,'token'=>$data['token'],'catid'=>$this->catid)));
 				}else{
-					$this->redirect(U("Forum/comment",array('tid'=>$data['tid'],'wecha_id'=>$data['uid'],'token'=>$data['token'])));
+					$this->redirect(U("Forum/comment",array('tid'=>$data['tid'],'wecha_id'=>$data['uid'],'token'=>$data['token'],'catid'=>$this->catid)));
 				}
 				
 				
@@ -565,9 +614,9 @@ class ForumAction extends WapAction{
 
 				M('Forum_message')->add($message);
 				if($conf['comcheck'] == 1){
-					$this->error('等待管理员审核后您的评论才可以显示',U('Forum/comment',array('wecha_id'=>$data['uid'],'tid'=>$data['tid'],'token'=>$data['token'])));
+					$this->error('等待管理员审核后您的评论才可以显示',U('Forum/comment',array('wecha_id'=>$data['uid'],'tid'=>$data['tid'],'token'=>$data['token'],'catid'=>$this->catid)));
 				}else{
-					$this->redirect(U("Forum/comment",array('tid'=>$data['tid'],'wecha_id'=>$data['uid'],'token'=>$data['token'])));
+					$this->redirect(U("Forum/comment",array('tid'=>$data['tid'],'wecha_id'=>$data['uid'],'token'=>$data['token'],'catid'=>$this->catid)));
 				}
 
 					

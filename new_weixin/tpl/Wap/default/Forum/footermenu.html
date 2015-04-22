@@ -7,17 +7,17 @@
 				<section class="nav_footer">
 					<ul class="box">
 						<li>
-							<a href="{ZF::U('Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token']))}" class="on">
+							<a href="{ZF::U('Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$catid))}" class="on">
 								<span class="icons_home">&nbsp;</span>
 								<label>首页</label>
 							</a>
 						</li>
 						<li>
-						 <a href="{ZF::U('Forum/add',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token']))}" class="nav_add">
+						 <a href="{ZF::U('Forum/add',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$catid))}" class="nav_add">
 						<span class="icons_home_edit">&nbsp;</span></a>
 						</li>
 						<li>
-							<a href="{ZF::U('Forum/myMessage',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token']))}">
+							<a href="{ZF::U('Forum/myMessage',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$catid))}">
 							 <span class="icons_my" data-tip="{ZF:$messageNum}">&nbsp;</span>
 							<label>我的</label>
 							</a>

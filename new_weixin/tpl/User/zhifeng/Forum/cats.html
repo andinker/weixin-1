@@ -1,0 +1,84 @@
+<include file="Public:head"/>
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" /> 
+<div class="content" style="" >
+<div class="cLineB">
+<h4 class="left"><if condition="($parentid eq '0') or ($parentid eq '')"><if condition="$isProduct neq 1">分类管理<else/>菜品分类</if><else/>“{ZF::$parentCat['name']}”的子分类</if> ({ZF:$page}) </h4>
+<div class="clr"></div>
+</div>
+
+<!--tab start-->
+<div class="tab">
+<ul>
+<include file="tabs"/> 
+</ul>
+</div>
+<!--tab end-->
+ 
+<div class="cLine">
+<div class="pageNavigator left"> <a href="{ZF::U('Forum/catAdd',array('token'=>$token,'parentid'=>$parentid,'dining'=>$isProduct))}" title="新增分类" class="btnGrayS vm bigbtn"><img src="{ZF::RES}/images/product/add.png" class="vm">新增分类</a></div>
+<div class="clr"></div>
+</div>
+<div class="msgWrap">
+<form method="post" action="" id="info">
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+<tr>
+<th width="50">排序</th>
+<th >分类名称</th>
+<th width="90">上级分类</th>
+<th width="160">贴子列表</th>
+<!-- th width="100">规格</th>
+<th width="100">外观</th>
+<th width="100">分类属性</th-->
+<th width="220" class="norightborder">操作</th>
+</tr>
+</thead>
+<tbody style="text-align:center;">
+<tr></tr>
+<volist name="list" id="sortlist"> 
+<tr>
+<td>{ZF:$sortlist.sortrank}</td>
+<td>{ZF:$sortlist.name}</td>
+<td><if condition="($parentid)"><a href="{ZF::U('Forum/cats',array('token'=>$token,'parentid'=>$parentCat['parentid']))}">{ZF:$parentCat['name']}</a><else />无上级分类</if></td>
+<td><a href="{ZF::U('Forum/index',array('token'=>$token,'catid'=>$sortlist['id']))}">贴子管理</a></td>
+<!-- td><if condition="($sortlist['norms'])"><a href="{ZF::U('Product/norms',array('token'=>$token,'catid'=>$sortlist['id'],'type'=>'0'))}">{ZF:$sortlist.norms}管理</a></if></td> 
+<td><if condition="($sortlist['color'])"><a href="{ZF::U('Product/norms',array('token'=>$token,'catid'=>$sortlist['id'],'type'=>'1'))}">{ZF:$sortlist.color}管理</a></if></td>
+<td><a href="{ZF::U('Product/attrs',array('token'=>$token,'catid'=>$sortlist['id']))}">属性管理</a></td-->
+<td class="norightborder">
+<a href="{ZF::U('Forum/cats',array('parentid'=>$sortlist['id'],'token'=>$token))}">子分类</a>&nbsp;|&nbsp;
+<a href="{ZF::U('Forum/catSet',array('token'=>$token,'id'=>$sortlist['id']))}">修改</a>&nbsp;
+<a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('Forum/catDel',array('id'=>$sortlist['id'],'token'=>$token))}');">删除</a>
+</td>
+</tr>
+</volist>
+</tbody>
+</table>
+</form> 
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{ZF:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+
+<script type="text/javascript">
+function setExp( cid , cname ){
+	//art.dialog.data('goodslist_id',goodslist_id);
+	//art.dialog.data('call_back',call_back);
+	art.dialog.open('{ZF::U('User/Product/setexp')}&cid='+cid, {
+		title:'批量更改 [ '+cname+' ] 类目下所有商品的运费',
+		width: '30%',
+	    height: '30%',
+	    left: '50%',
+	    top: '50%',
+	    fixed: true,
+	    resize: false,
+	    drag: false});
+}
+</script>
+
+<include file="Public:footer"/>

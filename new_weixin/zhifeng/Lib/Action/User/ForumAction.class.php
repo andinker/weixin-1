@@ -10,20 +10,30 @@ class ForumAction extends UserAction{
 	//帖子管理
 	public function index(){
 		
+		$catid=intval($_GET['catid']);
+		$catid=empty($catid)?0:$catid;
+		
 		$topics = M('Forum_topics');
 		
 		$token = $this->token;
 
 		$where = array('token'=>$token);
+		if (!empty($catid)) $where['catid']=$catid; 
+		
 		$count      = $topics->where( $where )->count();
         $Page       = new Page($count,10);
         $show       = $Page->show();
 		$list = $topics->where( $where )->order('status ASC,createtime DESC')->limit($Page->firstRow.','.$Page->listRows)->select();
-		
+
 		foreach ($list as $k=>$v){
 		
 			$list[$k]['content'] = htmlspecialchars_decode($v['content']);
 		}
+		
+		
+		// 读取分类数据
+		$cats = M('Forum_cats')->select();
+		$this->assign('cats',$cats);
 		
 		$this->assign('tabid',1);
 		$this->assign('page',$show);
@@ -288,7 +298,106 @@ class ForumAction extends UserAction{
 	}
 	
 
-
+	public function cats(){
+		$parentid=intval($_GET['parentid']);
+		$parentid=$parentid==''?0:$parentid;
+		$data=M('Forum_cat');
+		$where=array('parentid'=>$parentid,'token'=>session('token'));
+		if(IS_POST){
+			$key = $this->_post('searchkey');
+			if(empty($key)){
+				$this->error("关键词不能为空");
+			}
+			$map['token'] = $this->_get('token');
+			$map['name|des'] = array('like',"%$key%");
+			$list = $data->where($map)->select();
+			$count      = $data->where($map)->count();
+			$Page       = new Page($count,20);
+			$show       = $Page->show();
+		}else{
+			$count      = $data->where($where)->count();
+			$Page       = new Page($count,20);
+			$show       = $Page->show();
+			$list = $data->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+		}
+		$this->assign('page',$show);
+		$this->assign('list',$list);
+		if ($parentid){
+			$parentCat = $data->where(array('id'=>$parentid))->find();
+		}
+		$this->assign('parentCat',$parentCat);
+		$this->assign('parentid',$parentid);
+		$this->display();
+	}
+	
+	public function catAdd(){
+		if(IS_POST){
+			$this->insert('Forum_cat','/cats?parentid='.$this->_post('parentid'));
+		}else{
+			$parentid=intval($_GET['parentid']);
+			$parentid=$parentid==''?0:$parentid;
+			//查询所有分类
+			$catlist =M('Forum_cat')->where("token='".$this->token."'")->select();
+			$this->assign('catlist',$catlist);
+			$this->assign('parentid',$parentid);
+			$this->display('catSet');
+		}
+	}
+	
+	public function catDel(){
+		if($this->_get('token')!=session('token')){$this->error('非法操作');}
+		$id = $this->_get('id');
+		if(IS_GET){
+			$where=array('id'=>$id,'token'=>session('token'));
+			$data=M('Forum_cat');
+			$check=$data->where($where)->find();
+			if($check==false)   $this->error('非法操作');
+			$product_model=M('Product');
+			$productsOfCat=$product_model->where(array('catid'=>$id))->select;
+			if (count($productsOfCat)){
+				$this->error('本分类下有商品，请删除商品后再删除分类',U('Forum/cats',array('token'=>session('token'))));
+			}
+			$back=$data->where($wehre)->delete();
+			if($back==true){
+				$this->success('操作成功',U('Forum/cats',array('token'=>session('token'),'parentid'=>$check['parentid'],'dining'=>1)));
+			}else{
+				$this->error('服务器繁忙,请稍后再试',U('Forum/cats',array('token'=>session('token'))));
+			}
+		}
+	}
+	
+	public function catSet(){ 
+		$id = $this->_get('id');
+		$checkdata = M('Forum_cat')->where(array('id'=>$id))->find();
+		if(empty($checkdata)){
+			$this->error("没有相应记录.您现在可以添加.",U('Forum/catAdd'));
+		}
+		if(IS_POST){
+			$data=D('Forum_cat');
+			$where=array('id'=>$this->_post('id'),'token'=>session('token'));
+			$check=$data->where($where)->find();
+			if($check==false)$this->error('非法操作');
+			if($data->create()){
+				if($data->where($where)->save($_POST)){
+						
+					$this->success('修改成功',U('Forum/cats',array('token'=>session('token'),'parentid'=>$this->_post('parentid'),'dining'=>1)));
+						
+				}else{
+					$this->error('操作失败');
+				}
+			}else{
+				$this->error($data->getError());
+			}
+		}else{
+			//查询所有分类
+			$catlist =M('Forum_cat')->where("token='".$this->token."' and id <> '$id'")->select();
+			$this->assign('catlist',$catlist);
+			$this->assign('parentid',$checkdata['parentid']);
+			$this->assign('set',$checkdata);
+			$this->display();
+	
+		}
+	}
 
 	
 }
