@@ -125,7 +125,7 @@ body { font-family:"微软雅黑"; font-size:1em; background-color:#e3e3e8;}
 </head>
 <body>
 
-
+{ZF:$test}
 <div id="tool_bar">
 	<div class="container">
 	    <div class="row" style=" color:#FFF; line-height: 50px;">
@@ -133,12 +133,11 @@ body { font-family:"微软雅黑"; font-size:1em; background-color:#e3e3e8;}
 		         <div style="float:left;">
 
 		              <div class="tool_bar_icon"><!-- <img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_menu.png"> --></div>&nbsp;&nbsp;
-		              <img style="height:32px; display:inline;cursor:pointer;" class="img-responsive" alt="我的小区" src="{ZF::STATICS}/logo-xiaoqu.png" onclick="location.href='{ZF::U('Wap/Index/index',array('token'=>$_GET['token']))}';">
+		              <img style="height:32px; display:inline;cursor:pointer;" class="img-responsive" alt="我的小区" src="{ZF::STATICS}/logo-xiaoqu.png" onclick="location.href='<empty name="community_token">{ZF::U('Wap/Index/index',array('token'=>$_GET['token']))}<else/>{ZF::U('Wap/Index/index',array('token'=>$community_token))}</empty>';">
 		              
 
 		         </div>
 		         <div style="float:right;">
-
 		              <div class="tool_bar_icon"><a style="color:#FFF;" href="{ZF::U('Wap/Product/cart')}&token={ZF:$token}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_cart.png"></a></div>&nbsp;&nbsp;
 		              <div class="tool_bar_icon"><a style="color:#FFF;" href="{ZF::U('Wap/Product/my')}&token={ZF:$token}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_my.png"></a></div>
 		         </div>
@@ -160,7 +159,9 @@ body { font-family:"微软雅黑"; font-size:1em; background-color:#e3e3e8;}
             
                 <span class="menu-cell">
 					<div class="menu-cells"> 
-		                <span class="menu-cell"  >
+		                <span class="menu-cell">
+		                        <a href="{ZF::U('Wap/Index/index',array('token'=>$_GET['token']))}" style="padding-right:20px;color:#333;">返回微站</a>
+		                        <a href="{ZF::U('Wap/Product/cats',array('token'=>$_GET['token']))}" style="padding-right:20px;color:#333;">返回微商城</a>
 		                        <a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/login')}<else/>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>" style="padding-right:20px;color:#333;">登录</a>
 								<a href="<empty name='Think.get.re'>{ZF::U('People/register')}<else/>{ZF::U('People/register',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>" style="padding-right:20px;color:#333;">注册</a>
 		                </span> 
@@ -187,6 +188,3 @@ $('#menu-gallery').flickity({
     cellAlign: 'left',
 	});
 </script>
-
-</body>
-</html>
