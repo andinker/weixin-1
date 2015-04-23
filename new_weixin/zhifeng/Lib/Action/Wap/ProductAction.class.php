@@ -34,6 +34,15 @@ class ProductAction extends WapAction{
 		//分类
 		$cats = $this->product_cat_model->where(array('token' => $this->token))->order('sortrank asc')->select();
 		$this->assign('cats', $cats);
+		 
+		//当前分类
+		$c_catid = empty($_GET['catid']) ? 0 : intval($_GET['catid']);
+		$c_cat = null;
+		foreach ($cats as $cat){
+			if ($cat['id'] == $c_catid) $c_cat = $cat;
+		}
+		$this->assign('cat',$c_cat);
+		$this->assign('catid',$c_catid);
 		
 		$this->company=M('Company')->where(array('token'=>$this->token,'isbranch'=>0))->find();
 		//在线客服
