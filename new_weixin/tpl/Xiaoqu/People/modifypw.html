@@ -1,0 +1,42 @@
+<php>$PageTile = '修改密码';</php>
+<include file="Public:header"/>
+
+
+
+<div class="container" id="message">
+
+
+
+<php> if (IS_POST){ </php>
+
+	<div style="color:<if condition="$status eq true">green<else/>red</if>;">{ZF:$error}</div>
+	
+<php> }</php>
+
+
+<php> if ( IS_POST && ($status == true)){ </php>
+
+            你已经成功修改了密码！
+
+<php>}else{</php>
+
+	<form method="post">
+	
+	旧密码：<input type="text" name="oldpw"><br>
+	新密码：<input type="text" name="newpw"><br>
+	确认新密码：<input type="text" name="newpw2"><br>
+	
+	<input type="submit" value="修改">
+	
+	</form>
+
+<php>}</php>
+
+
+
+<a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/home')}<else/>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">去个人中心</a>
+
+
+</div>
+
+<include file="Public:footer"/>
