@@ -34,7 +34,7 @@ class PeopleAction extends XiaoquAction {
 	/**
 	 * 消费者用户登录
 	 */
-	public function login( $people_id = 0 ){
+	public function login( $people_id = 0, $redirect = true){
 		$this->token=$this->_get('token','trim');
 		//如果已经登录，跳到$_GET['re']或者个人中心
 		if ($this->is_logined()){
@@ -62,8 +62,12 @@ class PeopleAction extends XiaoquAction {
 			$this->setPeopleSession($people);
 			
 			//跳转
-			if (empty($_GET['re'])) $this->redirect('home');
-			else header('Location:'.$_GET['re'] ); 
+			if ($redirect){
+				if (empty($_GET['re'])) $this->redirect('home');
+				else header('Location:'.$_GET['re'] ); 
+			}else{
+				return true;
+			}
 		}
 		
 		$this->assign('error',$error);
@@ -84,11 +88,105 @@ class PeopleAction extends XiaoquAction {
 	}
 	
 	/**
+	 * 用户登录后修改密码
+	 */
+	public function modifypw(){
+		
+		if (!$this->is_logined()) $this->error('您还没有登录！',U('login',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']))));
+		
+		$error = '';
+		$status = false;
+		
+		if (IS_POST){
+			
+			//检查密码是否为空
+			if (empty($_POST['newpw'])){
+				$error = '新密码不能为空';
+			}else{
+			
+				//检查两次新密码是否一致
+				if ($_POST['newpw'] != $_POST['newpw2']){
+					$error = '两次密码输入不一致';
+				}else{
+					
+					//检查旧密码是否正确
+					$db = D('People');
+					$session_people = session('people');
+					$people = $db->login($session_people['phone'],$_POST['oldpw'],$error);
+					
+					if (empty($people)){
+						//旧密码不正确
+						$error = '旧密码不正确';
+					}else{
+						//设置新密码
+						$rs = $db->setPassword($session_people['id'],$_POST['newpw']);
+						
+						if ($rs){
+							$error = '修改成功';
+							$status = true;
+							$this->refreshPeopleSession();
+						}else{
+							$error = '修改失败，请联系服务人员';
+						}
+					}
+					
+				}
+			
+			}
+			
+		}
+		
+		$this->assign('error',$error);
+		$this->assign('status',$status);
+		
+		$this->display();
+	}
+	
+	/**
+	 * 用户登录后修改名字
+	 */
+	public function modifyname(){
+
+		if (!$this->is_logined()) $this->error('您还没有登录！',U('login',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']))));
+		
+		$error = '';
+		$status = false;
+		
+		if (IS_POST){
+			//检查密码是否为空
+			if (empty($_POST['name'])){
+				$error = '新名字不能为空';
+			}else{
+				//设置新密码
+				
+				$db = D('People');
+				$session_people = session('people');
+				
+				$rs = $db->setName($session_people['id'],$_POST['name']);
+
+				if ($rs){
+					$error = '修改成功';
+					$status = true;
+					$this->refreshPeopleSession();
+				}else{
+					$error = '修改失败，请联系服务人员';
+				}
+			}
+		}
+		
+		$this->assign('error',$error);
+		$this->assign('status',$status);
+		
+		$this->display();
+	}
+	
+	/**
 	 * 消费者用户找回密码
 	 */
 	public function retrieve(){
 		
 		$error = '';
+		$retrieve_status = false;
 		
 		if (IS_POST){
 			//检查验证码
@@ -102,14 +200,28 @@ class PeopleAction extends XiaoquAction {
 				}else{
 					// 把新密码发送到手机
 					$status = $this->sendSMS(array($_POST['phone']), '您刚刚执行了找回密码操作，您现在的新密码是'.$new_pw, $err);
-					if ($status) $error = '您已经成功找回密码！新的密码已经发送到号码为['.$_POST['phone'].']的手机，请查看手机短信，并妥善保管您的新密码！';
+					if ($status){
+						
+						$error = '您已经成功找回密码！新的密码已经发送到号码为['.$_POST['phone'].']的手机，请查看手机短信，并妥善保管您的新密码！<br/>';
+						$retrieve_status = true;
+						
+						//获取用户id进行登录
+						$people = D('People')->getPeople($_POST['phone']);
+						if (!empty($people)){
+							$error = $error.'<h5>同时，您已经自动登录了系统！</h5>';
+							$this->login( $people['id'], false );
+						}else{
+							$error = $error.'<h5>但是，你需要前往登录页面手动登录！</h5>';
+						}
+					}
 					else  $error = '找回密码失败了，短信发送服务器方面出了问题，请联系客服人员！错误：'.$err;
 				}
 			}
 		}
 		
+		$this->assign('retrieve_status',$retrieve_status);
 		$this->assign('error',$error);
-		$this->display();
+		$this->display(); 
 	}
 	
 	/**
@@ -139,6 +251,12 @@ class PeopleAction extends XiaoquAction {
 	
 	private function setPeopleSession($people = NULL) {
 		session('people',$people);
+	}
+	
+	private function refreshPeopleSession(){
+		$people = session('people');
+		$new_people = D('People')->where(array('id'=>$people['id']))->find();
+		$this->setPeopleSession($new_people);
 	}
 	
 	/**

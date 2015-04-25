@@ -57,10 +57,27 @@ class PeopleModel extends Model{
 		$new_pw = mt_rand(10000000,99999999);
 		
 		// 保存到数据库
-		if ($this->where(array('phone',$phone))->setField('password',md5($new_pw))){
+		if ($this->where(array('phone'=>$phone))->setField('password',md5($new_pw))){
 			return $new_pw;
 		}else{
 			return false;
 		}
+	}
+	
+	public function setPassword($id,$pw){
+		return $this->where(array('id'=>$id))->setField('password',md5($pw));
+	}
+	
+	public function setName($id,$name){
+		return $this->where(array('id'=>$id))->setField('name',$name); 
+	}
+	
+	/**
+	 * 根据手机号码获取用户数据
+	 * @param unknown $phone
+	 */
+	public function getPeople($phone) {
+		$people = $this->where(array('phone'=>$phone))->find();
+		return $people;
 	}
 }
