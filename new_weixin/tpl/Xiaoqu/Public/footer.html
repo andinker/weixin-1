@@ -7,8 +7,12 @@
 <body>
 <div id="copyright">
 	<div class="container text-center">
-		© 2001-2014 cocoa版权所有
-		<br>广州白云区三元里大道中永腾商务中心 &nbsp;&nbsp;金碧新城
+		<if condition="$iscopyright eq 1">
+		    {ZF:$homeInfo.copyright}
+		<else/>
+		    {ZF:$siteCopyright}
+		</if>
+		<br>{ZF::$company['address']}&nbsp;&nbsp;{ZF::$company['name']}
 	</div>
 </div> 
 </body>
