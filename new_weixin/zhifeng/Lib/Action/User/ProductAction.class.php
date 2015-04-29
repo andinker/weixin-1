@@ -501,6 +501,7 @@ class ProductAction extends UserAction{
 				$company = D('Company')->where(array('token' => $thisOrder['token'], 'isbranch' => 0))->find();
 				$this->Send_sms($thisOrder['tel'],"您在{$company['name']}商城购买的商品，商家已经给您发货了，请您注意查收");
 				//微信支付发货通知
+				/* 新版微信支付已经取消发货通知接口
 				if($thisOrder['payment']=='wxpay'){
 					import("@.ORG.Weixinpay.WxpayMyExt");
 					$payset = $this->Payment_db->where(array('token'=>$this->token,'pay_code'=>'wxpay'))->find();
@@ -512,9 +513,9 @@ class ProductAction extends UserAction{
 					);
 					
 					$wxpay_myext=new WxpayMyExt($pay_config,$orderinfo);
-					//发送发货通知
+					发送发货通知
 					$result=$wxpay_myext->delivernotify_sent();
-				}
+				}*/
 			}
 			$this->success('修改成功',U('Product/orderInfo',array('token'=>session('token'),'id'=>$_GET['id'])));
 		}else {
