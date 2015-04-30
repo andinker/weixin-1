@@ -7,6 +7,9 @@
 <link rel="stylesheet" type="text/css" href="{ZF::RES}/css/style_2_common.css?BPm" />
 <script src="{ZF::RES}/js/common.js" type="text/javascript"></script>
 <link href="{ZF::RES}/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{ZF::RES}/js/jquery.min.js"></script>
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
 </head>
 <body id="nv_member">
 <div style="line-height:200%;padding:10px 20px;">
@@ -36,7 +39,7 @@
 </tr>
 <tr> 
 <th><span class="red">*</span>快递单号：</th>
-<td><input type="text" name="logisticsid" value="{ZF:$thisOrder.logisticsid}" class="px" style="width:200px;" /></td> 
+<td><input type="text" name="logisticsid" value="{ZF:$thisOrder.logisticsid}" class="px" style="width:200px;" /> <input type="button" class="btnGreen" value="查询快递" onclick="showExpWindow(<empty name="thisOrder['logisticsid']">0<else/>{ZF:$thisOrder.logisticsid}</empty>)"> </td> 
 </tr>
 
 <tr>         
@@ -47,8 +50,16 @@
 </tbody> 
 </table> 
  </div>
-</form> 
-   
+</form>
+
+
+<script>
+function showExpWindow(expNo){
+	if (expNo == 0) alert('没有设置运单号');
+	else window.open( "http://m.kuaidi100.com/result.jsp?com=&nu="+expNo );
+	//art.dialog.open("http://m.kuaidi100.com/result.jsp?com=&nu="+expNo,{lock:false,title:expNo+'快递详情',width:700,height:420,yesText:'关闭',background: '#000',opacity: 1});
+}
+</script>
 <table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
 <thead>
 <tr>
