@@ -39,7 +39,7 @@
 	</form>
 	
 	<div style="text-align:center;margin-bottom:20px;margin-top:20px;">
-		你可以去<!-- a href="/">首页</a--> <a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/login')}<else/>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">重新登录</a>
+		你可以去<!-- a href="/">首页</a--> <a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token']))}<else/>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">重新登录</a>
 	</div>
 </div>
 
@@ -68,7 +68,7 @@ function getcode(){
 	var btn = this;
 	var btn_value_bak = btn.value;
 	
-	$.get('{ZF::U('Xiaoqu/People/getcode')}',{phone:$('#phone').val()},
+	$.get('{ZF::U('Xiaoqu/People/getcode',array('token'=>$_GET['token']))}',{phone:$('#phone').val()},
 	  function(data){
 		btn.value = data;
 	  });
@@ -90,7 +90,7 @@ function getcode(){
 }
 
 function checkcode(code){
-	$.get('{ZF::U('Xiaoqu/People/checkcode')}',
+	$.get('{ZF::U('Xiaoqu/People/checkcode',array('token'=>$_GET['token']))}',
 			  function(data){
 			    if (data == code) {
 			    	$('#phone').attr('readonly',true);

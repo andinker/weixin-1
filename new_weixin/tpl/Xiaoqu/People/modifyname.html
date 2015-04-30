@@ -34,7 +34,7 @@
 
 	<php>}</php>
 	<div style="text-align: center;font-size: 12px;margin-top:10px;margin-bottom: 10px;">
-		<a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/home')}<else/>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">去个人中心</a>
+		<a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token']))}<else/>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">去个人中心</a>
 	</div>
 
 
