@@ -1,12 +1,9 @@
 
 <div id="copyright">
 	<div class="container text-center">
-		<if condition="$iscopyright eq 1">
-		    {ZF:$homeInfo.copyright}
-		<else/>
-		    {ZF:$siteCopyright}
-		</if>
-		<br>{ZF::$company['address']}&nbsp;&nbsp;{ZF::$company['name']}
+		{ZF:$homeInfo.copyright}
+		<br>
+		{ZF::$company['address']}&nbsp;&nbsp;{ZF::$company['name']}
 	</div>
 </div> 
 </body>
