@@ -191,8 +191,8 @@ input{margin-bottom: 10px;margin-top:10px;}
 
 		         </div>
 		         <div style="float:right;">
-		              <div class="tool_bar_icon"><a style="color:#FFF;" href="{ZF::U('Wap/Product/cart')}&token={ZF:$token}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_cart.png"></a></div>&nbsp;&nbsp;
-		              <div class="tool_bar_icon"><a style="color:#FFF;" href="{ZF::U('Wap/Product/my')}&token={ZF:$token}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_my.png"></a></div>
+		              <div class="tool_bar_icon"><a style="color:#FFF;" href="{ZF::U('Wap/Product/cart',array('token'=>$_GET['token']))}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_cart.png"></a></div>&nbsp;&nbsp;
+		              <div class="tool_bar_icon"><a style="color:#FFF;" href="{ZF::U('Wap/Product/my',array('token'=>$_GET['token']))}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_my.png"></a></div>
 		         </div>
 	         </div>
 	    </div>
