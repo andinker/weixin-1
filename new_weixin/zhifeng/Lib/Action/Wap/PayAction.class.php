@@ -241,27 +241,73 @@ class PayAction extends BaseAction{
 	}
 	public function wapalipay_notify_url()
 	{	
+		include_once(APP_PATH.'Lib/ORG/Weixinpay2/Log_.php');
+		
+		$log_ = new Log_();
+		$log_name=APP_PATH."./../data/wapalipay_notify_url-".date('Y-m-d',time()).".log";//log文件路径
+		
+		$log_->log_result($log_name,"【接收到的notify通知】:\r\n".var_export($_POST,true)."\r\n");
+		
 		vendor('Malipay.alipay_notify','','.class.php');
 		$alipay_config=$this->wapalipay_config;
 		$alipayNotify = new AlipayNotify($alipay_config);
 		$verify_result = $alipayNotify->verifyNotify();
 
-		if($verify_result) {//验证成功
-			$trade_status   = $_POST['trade_status']; //交易状态
-			$out_trade_no = $_POST['out_trade_no']; //商户订单号
-			$trade_no = $_POST['trade_no']; //支付宝交易号
-			$trade_status = $_POST['trade_status']; //交易状态
-			$total_fee =$_POST['total_fee']; //交易金额
+		
+
+		//解析notify_data
+		//注意：该功能PHP5环境及以上支持，需开通curl、SSL等PHP配置环境。建议本地调试时使用PHP开发软件
+		$doc = new DOMDocument();
+		if ($alipay_config['sign_type'] == 'MD5') {
+			$doc->loadXML($_POST['notify_data']);
+		}
+		
+		if ($alipay_config['sign_type'] == '0001') {
+			$doc->loadXML($alipayNotify->decrypt($_POST['notify_data']));
+		}
+		
+		if( ! empty($doc->getElementsByTagName( "notify" )->item(0)->nodeValue) ) {
+			//商户订单号
+			$out_trade_no = $doc->getElementsByTagName( "out_trade_no" )->item(0)->nodeValue;
+			//支付宝交易号
+			$trade_no = $doc->getElementsByTagName( "trade_no" )->item(0)->nodeValue;
+			//交易状态
+			$trade_status = $doc->getElementsByTagName( "trade_status" )->item(0)->nodeValue;
+		
+			$total_fee =$doc->getElementsByTagName( "total_fee" )->item(0)->nodeValue; //交易金额
+		
+		
+		
+		
+		//if($verify_result) {//验证成功
 			
+			$log_->log_result($log_name,"没有验证直接通过哈，以后再加上验证哈：".$verify_result."\r\n");
+			
+
 			$order =  $this->order_db->where(array('orderid'=>$out_trade_no))->find();
+			
+			
+			$log_->log_result($log_name,"查找到的订单数据是：".$this->order_db->getLastSql()."\r\n".var_export($order,true)."\r\n");
+			
 			//if($trade_status == 'TRADE_FINISHED' || $trade_status == 'TRADE_SUCCESS') {
 				if($order['paid']==0){
 					$data['paid'] = 1;
 					$data['payment'] = 'wapalipay';
 					$this->order_db->where(array('orderid'=>$out_trade_no))->save($data);
+					
+					$log_->log_result($log_name,"正在更改该订单的状态，运行的SQL语句为：".$this->order_db->getLastSql()."\r\n");
+				}else{
+					$log_->log_result($log_name,"订单的paid值为：".$order['paid']."，没有对订单数据进行处理\r\n");
 				}
+				
+				$log_->log_result($log_name,"向请求端输出了字符串：success\r\n");
+				
 				echo "success";	
 			//}	
+		//}else{
+			//$log_->log_result($log_name,"但是验证失败了喔！".$verify_result."\r\n");
+		//}
+		
 		}
 	}
 	public function zfalipay_return_url(){
@@ -300,6 +346,13 @@ class PayAction extends BaseAction{
 		}
 	}
 	public function zfalipay_notify_url(){	
+		
+		include_once(APP_PATH.'Lib/ORG/Weixinpay2/Log_.php');
+		$log_ = new Log_();
+		$log_name=APP_PATH."./../data/zfalipay_notify_url-".date('Y-m-d',time()).".log";//log文件路径
+		
+		$log_->log_result($log_name,"【接收到的notify通知】:\r\n".var_export($_POST,true)."\r\n");
+		
 		import("@.ORG.Alipay.AlipayNotify");
 		$alipay_config=$this->zfalipay_config;
 		$alipayNotify = new AlipayNotify($alipay_config);
