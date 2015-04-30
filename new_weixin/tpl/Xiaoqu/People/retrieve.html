@@ -1,33 +1,38 @@
 <php>$PageTile = '你正在找回密码';</php>
 <include file="Public:header"/>
 
-
-<div id="re_title">
-	<span>找回密码</span>
+<div class="container">
+	<div id="re_title" style="width:auto;">
+		<span style="padding-left:5px;">找回密码</span>
+	</div>
 </div>
 <div class="container"  id="re">
 	<form method="post"> 
 	    <div style="width:300px; margin:0px auto; color:red;text-align:center;font-size:14px;">{ZF:$error}</div>
-		<table width="300px" class="re-box"<if condition="$retrieve_status eq true"> style="display:none;"</if>>
+		<table  class="re-box"<if condition="$retrieve_status eq true"> style="display:none;"</if>>
 			<tr>
 				<td colspan="2" style=""></td>
 			</tr>
 			<tr>
 				<td style="text-align:center;">手机号：</td>
-				<td><input type="tel" name="phone" id="phone" placeholder="请输入手机号码" height="40px"></td>
+				<td style="text-align:left;"><input type="tel" name="phone" id="phone" placeholder="请输入手机号码" height="40px"></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td align="left" style="padding-left:20px;"><input type="button" id="getcode_btn" value="发送验证码到手机"></td>
+				<td align="left"><input type="button" id="getcode_btn" value="发送验证码到手机"></td>
 			</tr>
 			<tr>
 				<td style="text-align:center;">验证码：</td>
-				<td><input type="text" name="code" onchange="checkcode(this.value);" placeholder="请输入验证码" height="40px" width="100%"><span id="checkcode_rs"></span></td>
+				<td style="text-align:left;"><input type="text" name="code" onchange="checkcode(this.value);" placeholder="请输入验证码" height="40px" width="100%"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td align="left"><span id="checkcode_rs"></span></td>
 			</tr>
 		</table>
 		<table class="re-but">
 			<tr style="text-align:center;">
-				<td><input type="submit" value="找回密码" style="background-image: url(/tpl/Wap/default/common/Index/xq1/toolbar_bg.png);width:300px;height:35px;border:0;box-shadow:1px 1px 1px 1px;font-size:16px;color:white;font-weight:bold;"></td>
+				<td><input type="submit" value="找回密码" style="background-image: url(/tpl/Wap/default/common/Index/xq1/toolbar_bg.png);width:300px;height:35px;border:0;box-shadow:1px 1px 1px 1px;font-size:16px;color:white;font-weight:bold;" id="inp_w"></td>
 			</tr>
 		</table>
 		
@@ -38,6 +43,24 @@
 	</div>
 </div>
 
+<script type="text/javascript">
+var w=$('.re-box').width();
+$('#inp_w').css("width",w+30+"px");
+$('#re_title').css("width",w+30+"px");
+$(window).resize(function(){
+	var ww=$(window).width();
+	if(ww<=320){
+		var w=$('.re-box').width();
+		$('#inp_w').css("width",w+"px");
+		$('#re_title').css("width",w+10+"px");
+		
+	}else{
+		var w=$('.re-box').width();
+		$('#inp_w').css("width",w+30+"px");
+		$('#re_title').css("width",w+30+"px");
+	}
+})
+</script>
 
 <script type="text/javascript">
 function getcode(){
@@ -71,9 +94,9 @@ function checkcode(code){
 			  function(data){
 			    if (data == code) {
 			    	$('#phone').attr('readonly',true);
-			    	$('#checkcode_rs').html('<span style="color:green;">填写正确</span>');
+			    	$('#checkcode_rs').html('<span style="color:green;" class="glyphicon glyphicon-ok">验证码输入正确</span>');
 			    }
-			    else  $('#checkcode_rs').html('<span style="color:red;">验证码不正确</span>');
+			    else  $('#checkcode_rs').html('<span style="color:red;" class="glyphicon glyphicon-remove">验证码输入不正确</span>');
 			  });
 }
 
