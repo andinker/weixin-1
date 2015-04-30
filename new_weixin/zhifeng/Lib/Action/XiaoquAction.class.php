@@ -39,6 +39,16 @@ class XiaoquAction extends BaseAction {
     	  }
     	
     	}
+    	
+    	
+    	//读取公司信息
+    	$company = M('Company')->where(array('token'=>$_GET['token']))->find();
+    	$this->assign('company',$company);
+    	
+    	$homeInfo = M('Home')->where(array('token'=>$_GET['token']))->find();
+    	$this->assign('homeInfo',$homeInfo);
+    	
+    	
     	$this->assign('community_token',$community_token);
     	
     }

@@ -22,20 +22,32 @@
 
 	<form method="post">
 	
-	旧密码：<input type="text" name="oldpw"><br>
-	新密码：<input type="text" name="newpw"><br>
-	确认新密码：<input type="text" name="newpw2"><br>
-	
-	<input type="submit" value="修改">
-	
+		<table align="center" style="margin-top:20px;font-size: 14px;">
+			<tr>
+				<td>旧密码：</td>
+				<td><input type="text" name="oldpw"><br></td>
+			</tr>
+			<tr>
+				<td>新密码：</td>
+				<td><input type="text" name="newpw"><br></td>
+			</tr>
+			<tr>
+				<td>确认新密码：</td>
+				<td><input type="text" name="newpw2"><br></td>
+			</tr>
+			<tr>
+				
+				<td colspan="2" align="center"><input type="submit" value="修改"></td>
+			</tr>
+		</table>
 	</form>
 
 <php>}</php>
 
 
-
-<a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/home')}<else/>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">去个人中心</a>
-
+		<div style="text-align: center;font-size: 12px;margin-top:10px;margin-bottom: 10px;">
+			<a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/home')}<else/>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">去个人中心</a>
+		</div>
 
 </div>
 

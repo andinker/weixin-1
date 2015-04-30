@@ -5,30 +5,37 @@
 
 <div class="container" id="message">
 
-<php> if (IS_POST){ </php>
-
-	<div style="color:<if condition="$status eq true">green<else/>red</if>;">{ZF:$error}</div>
+	<php> if (IS_POST){ </php>
 	
-<php> }</php>
+		<div style="color:<if condition="$status eq true">green<else/>red</if>;">{ZF:$error}</div>
+		
+	<php> }</php>
+	
+	
+	<php> if ( IS_POST && ($status == true)){ </php>
+	
+	            你已经成功修改了名字！
+	
+	<php>}else{</php>
+	
+		<form method="post">
+		
+			<table width="100%" style="font-size:16px;margin-top:20px;text-align: center;">
+				<tr>
+					<td>请输入您的新名字：<input type="text" name="name" value="{ZF:$name}"></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="修改"></td>
+				</tr>
+			</table>
+		
+		
+		</form>
 
-
-<php> if ( IS_POST && ($status == true)){ </php>
-
-            你已经成功修改了名字！
-
-<php>}else{</php>
-
-<form method="post">
-
-请输入您的新名字：<input type="text" name="name" value="{ZF:$name}"><br>
-
-<input type="submit" value="修改">
-
-</form>
-
-<php>}</php>
-
-<a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/home')}<else/>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">去个人中心</a>
+	<php>}</php>
+	<div style="text-align: center;font-size: 12px;margin-top:10px;margin-bottom: 10px;">
+		<a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/home')}<else/>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">去个人中心</a>
+	</div>
 
 
 </div>

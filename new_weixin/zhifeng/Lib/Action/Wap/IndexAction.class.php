@@ -74,7 +74,10 @@ class IndexAction extends WapAction{
 		$this->assign('info',$this->info);
 		$this->display($this->tpl['tpltypename']);
 	}
-	
+	public function index_classify(){
+		$this->assign('info',$this->info);
+		$this->display();
+	}
 	public function index(){
 		//是否是高级模板
 		if($this->homeInfo['advancetpl']){
@@ -706,4 +709,6 @@ class IndexAction extends WapAction{
 	{
 		return !(strpos($haystack, $needle) === FALSE);
 	}
+	
+	
 }

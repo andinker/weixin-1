@@ -37,7 +37,7 @@
 <script type="text/javascript" src="{ZF::STATICS}/plugin_flickity/flickity.pkgd.min.js"></script>
 <style type="text/css">
 body { font-family:"微软雅黑";color:white;background:{ZF:$info.background_color}; }
-@media screen and (min-width: 1201px) {
+/*@media screen and (min-width: 1201px) {
 .goods_box_img { height:250px;}
 }
 @media screen and (min-width: 1081px) and ( max-width: 1200px ) {
@@ -79,7 +79,7 @@ body { font-family:"微软雅黑";color:white;background:{ZF:$info.background_co
 @media screen and (min-width: 1080px) {.gallery-cell{height: 500px;}}
 @media screen and (min-width: 640px) and ( max-width: 1080px ) {.gallery-cell{height: 350px;}}
 @media screen and (min-width: 320px) and ( max-width: 640px ){.gallery-cell{height: 240px;}}
-@media screen and (min-width: 1px) and ( max-width: 320px ) {.gallery-cell{height: 140px;}}
+@media screen and (min-width: 1px) and ( max-width: 320px ) {.gallery-cell{height: 140px;}}*/
 .gallery-cell {
 		  width: 100%;
 		  background-color:{ZF:$info.background_color};
@@ -216,12 +216,18 @@ $( document ).ready(function() {
 
 <!-- 头部结束 -->
 <!-- <img src="/tpl/Wap/default/common/shop/images/logo_def.png"/> -->
+
 <!-- banner轮播开始 --> 
-<div class="mygallery">
-	<volist name='info[picurls]' id='vo'>     
-			<div class="gallery-cell" urldata="<php>echo $info['piclink'.$i];</php>"><img src="{ZF:$vo}"  id="ban_he"></div>
-	</volist>
+
+<div style=" z-index:97; position:relative;" id="gal_he">
+	<div class="mygallery">
+		<volist name='info[picurls]' id='vo'>     
+				<div class="gallery-cell" urldata="<php>echo $info['piclink'.$i];</php>"><img src="{ZF:$vo}"  id="ban_he"></div>
+		</volist>
+	</div>
 </div>
+
+
 <script>
 var myg = $('.mygallery').flickity({ "wrapAround":true,"autoPlay": true,"pageDots": false });
 
@@ -236,6 +242,20 @@ myg.on( 'staticClick', function( event, pointer, cellElement, cellIndex ) {
 })
 
 </script>
+
+<script type="text/javascript">
+$('.cmenu-gallery').flickity({
+	freeScroll: true,
+    contain: true,
+    // disable previous & next buttons and dots
+    prevNextButtons: false,
+    pageDots: false,
+    cellAlign: 'left',
+	});
+</script>
+
+
+
 <!--  
 <script type="text/javascript">
 var hei = window.document.getElementById('ban_he');
@@ -438,7 +458,7 @@ print_r($info);*/
 </body>
 
 <script type="text/javascript">
-var h = window.document.getElementById('get_h');
+/*var h = window.document.getElementById('get_h');
 var a =  h .offsetHeight;
 //alert(a);
 $('.logo').css("min-height",a+"px");
@@ -450,7 +470,33 @@ if(a>40){
 if(a<=40){
 	$('#nav').css("font-size","24px");
 	$("#nav").css("line-height",a+'px');
+}*/
+var na_h=$('.logo img').height();
+$('.logo').css("min-height",na_h+"px");
+$("#nav").css("line-height",na_h+'px');
+$("#open-sb").css("line-height",na_h+'px');
+if(na_h>40){ 
+	$('#nav').css("font-size","32px");
+
 }
+if(na_h<=40){
+	$('#nav').css("font-size","24px"); 
+}
+
+$(window).resize(function(){
+	var na_h=$('.logo img').height();
+	$('.logo').css("min-height",na_h+"px");
+	$("#nav").css("line-height",na_h+'px');
+	$("#open-sb").css("line-height",na_h+'px');
+	if(na_h>40){
+		$('#nav').css("font-size","32px");
+
+	}
+	if(na_h<=40){
+		$('#nav').css("font-size","24px");
+	}
+	
+})
 /*
  var a= $('.logo > img:first').height();
 $('.logo').css("max-height",a+"px");
@@ -466,5 +512,27 @@ if(a<=50){
 }
  */
 </script>
+<script type="text/javascript">
 
+var gal_w=$('.mygallery').width();
+
+$('.gallary_cell').css("height",gal_w*1/2+"px");
+$("#gal_he div").css("height",gal_w*1/2+"px");
+
+
+var img_w=$(".goods_box").width();
+$(".goods_box_img").css("height",img_w+"px");
+
+$(window).resize(function(){
+	var gal_w=$('.mygallery').width();
+	$('.gallary_cell').css("height",gal_w*1/2+"px");
+	$("#gal_he div").css("height",gal_w*1/2+"px");
+
+
+	var img_w=$(".goods_box").width();
+	$(".goods_box_img").css("height",img_w+"px");
+});
+
+
+</script>
 </html>
