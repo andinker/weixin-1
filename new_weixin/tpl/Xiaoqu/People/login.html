@@ -22,8 +22,8 @@
 			</tr>
 		</table>
 		<div style="margin-bottom:20px;text-align: right;width: 300px;margin:0 auto;">
-			<span style="padding-left:20px;"><a href="<empty name='Think.get.re'>{ZF::U('register')}<else/>{ZF::U('register',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">快速注册</a></span>
-			&nbsp;&nbsp;|&nbsp;&nbsp;<span style="padding-right:20px;"><a href="<empty name='Think.get.re'>{ZF::U('retrieve')}<else/>{ZF::U('retrieve',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">找回密码</a></span>
+			<span style="padding-left:20px;"><a href="<empty name='Think.get.re'>{ZF::U('register',array('token'=>$_GET['token']))}<else/>{ZF::U('register',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">快速注册</a></span>
+			&nbsp;&nbsp;|&nbsp;&nbsp;<span style="padding-right:20px;"><a href="<empty name='Think.get.re'>{ZF::U('retrieve',array('token'=>$_GET['token']))}<else/>{ZF::U('retrieve',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">找回密码</a></span>
 		</div>
 		<table class="login-but">
 			<tr style="text-align:center;">
@@ -34,7 +34,7 @@
 	</form>
 	
 	<div style="text-align:center;margin-bottom:20px;margin-top:20px;">
-		<a href="<empty name='Think.get.re'>{ZF::U('People/home')}<else/>{ZF::U('People/home',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">去个人中心</a>
+		<a href="<empty name='Think.get.re'>{ZF::U('People/home',array('token'=>$_GET['token']))}<else/>{ZF::U('People/home',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">去个人中心</a>
 		<!-- a href="{ZF::U('Index/index')}">去小区首页</a-->
 	</div>
 </div>

@@ -9,15 +9,15 @@ $people = session('people');
 </php>
 <div class="container" id="message">
 	<ul>
-		<li><span>名字：</span>{ZF:$people['name']}&nbsp;&nbsp;<a href="<empty name='Think.get.re'>{ZF::U('modifyname')}<else/>{ZF::U('modifyname',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">修改名字</a></li>
+		<li><span>名字：</span>{ZF:$people['name']}&nbsp;&nbsp;<a href="<empty name='Think.get.re'>{ZF::U('modifyname',array('token'=>$_GET['token']))}<else/>{ZF::U('modifyname',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">修改名字</a></li>
 		<li><span>手机号码：</span>{ZF:$people['phone']} </li>
-		<li><span>登录密码：</span>********&nbsp;&nbsp;<strong><a href="<empty name='Think.get.re'>{ZF::U('modifypw')}<else/>{ZF::U('modifypw',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">修改密码</a></strong></li>
+		<li><span>登录密码：</span>********&nbsp;&nbsp;<strong><a href="<empty name='Think.get.re'>{ZF::U('modifypw',array('token'=>$_GET['token']))}<else/>{ZF::U('modifypw',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">修改密码</a></strong></li>
 		<li><span>注册时间：</span>{ZF:$people['create_time']}</li>
 		<li><span>上一次登录时间：</span>{ZF:$people['lastlogin_time']}</li>
 	</ul>
 	
 	<p>
-		<a href="<empty name='Think.get.re'>{ZF::U('logout')}<else/>{ZF::U('logout',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">退出登录</a>
+		<a href="<empty name='Think.get.re'>{ZF::U('logout',array('token'=>$_GET['token']))}<else/>{ZF::U('logout',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">退出登录</a>
 		<!-- a href="{ZF::U('Index/index')}">去小区首页</a-->
 	</p>
 </div>
