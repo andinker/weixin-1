@@ -215,8 +215,26 @@ input{margin-bottom: 10px;margin-top:10px;}
 		                <span class="menu-cell">
 		                        <a href="{ZF::U('Wap/Index/index',array('token'=>$_GET['token']))}" style="padding-right:20px;color:#333;">返回微站</a>
 		                        <a href="{ZF::U('Wap/Product/cats',array('token'=>$_GET['token']))}" style="padding-right:20px;color:#333;">返回微商城</a>
-		                        <a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token']))}<else/>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>" style="padding-right:20px;color:#333;">登录</a>
-								<a href="<empty name='Think.get.re'>{ZF::U('People/register',array('token'=>$_GET['token']))}<else/>{ZF::U('People/register',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>" style="padding-right:20px;color:#333;">注册</a>
+		                        
+		                        <php>
+		                        	$session = session('people');
+		                        	if (empty($session)) {
+		                        </php>
+			                        
+				                        <a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token']))}<else/>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>" style="padding-right:20px;color:#333;">登录</a>
+										<a href="<empty name='Think.get.re'>{ZF::U('People/register',array('token'=>$_GET['token']))}<else/>{ZF::U('People/register',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>" style="padding-right:20px;color:#333;">注册</a>
+									
+								<php>
+									}else{
+								</php>
+								
+				                        <a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token']))}<else/>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>" style="padding-right:20px;color:#333;">个人中心</a>
+										<a href="<empty name='Think.get.re'>{ZF::U('People/logout',array('token'=>$_GET['token']))}<else/>{ZF::U('People/logout',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>" style="padding-right:20px;color:#333;">退出</a>
+
+								<php>
+									}
+								</php>
+								
 		                </span> 
 		            </div>
                 </span>
