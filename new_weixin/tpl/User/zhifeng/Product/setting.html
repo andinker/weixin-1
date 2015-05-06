@@ -14,6 +14,7 @@
 <script src="./tpl/User/default/common/js/cart/jscolor.js" type="text/javascript"></script>
 
 <script>
+/*
 var editor;
 KindEditor.ready(function(K) {
 editor = K.create('.toedit', {
@@ -27,8 +28,11 @@ items : [
 'insertunorderedlist', '|', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
 });
 
-});
+});*/
 </script>
+
+<script src="{ZF::STATICS}/plugin_ckeditor/ckeditor.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/plugin_ckfinder/ckfinder.js" type="text/javascript"></script>
 
   <div class="content" style="" > 
    <div class="cLineB"> 
@@ -148,13 +152,17 @@ items : [
         <tr>
         	<th>首页头部Banner</th>
             <td>
+            	<div style="width:100%; border:1px solid #EEE;">
             	<textarea class="toedit" name="content_header" id="content_header"  rows="5" style="width:720px;height:160px">{ZF:$setting.content_header}</textarea>
+				</div>
             </td>
         </tr>
         <tr>
         	<th>首页中部Banner</th>
             <td>
+                <div style="width:100%; border:1px solid #EEE;">
             	<textarea class="toedit" name="content_middle" id="content_middle"  rows="5" style="width:720px;height:360px">{ZF:$setting.content_middle}</textarea>
+				</div>
             </td>
         </tr>
         
@@ -171,5 +179,35 @@ items : [
      </div>
     
    </form> 
-  </div> 
+  </div>
+
+		<script type="text/javascript">
+
+		// This is a check for the CKEditor class. If not defined, the paths must be checked.
+		if ( typeof CKEDITOR == 'undefined' )
+		{
+			document.write(
+				'<strong><span style="color: #ff0000">Error</span>: CKEditor not found</strong>.' +
+				'This sample assumes that CKEditor (not included with CKFinder) is installed in' +
+				'the "/ckeditor/" path. If you have it installed in a different place, just edit' +
+				'this file, changing the wrong paths in the &lt;head&gt; (line 5) and the "BasePath"' +
+				'value (line 32).' ) ;
+		}
+		else
+		{
+			var editor_content_header = CKEDITOR.replace( 'content_header' );
+			var editor_content_middle = CKEDITOR.replace( 'content_middle' );
+			//editor.setData( '<p>Just click the <b>Image</b> or <b>Link</b> button, and then <b>&quot;Browse Server&quot;</b>.</p>' );
+		
+			// Just call CKFinder.setupCKEditor and pass the CKEditor instance as the first argument.
+			// The second parameter (optional), is the path for the CKFinder installation (default = "/ckfinder/").
+			CKFinder.setupCKEditor( editor_content_header, { basePath : '{ZF::STATICS}/plugin_ckfinder/', skin : 'v1' } ) ;
+			CKFinder.setupCKEditor( editor_content_middle, { basePath : '{ZF::STATICS}/plugin_ckfinder/', skin : 'v1' } ) ;
+		
+			// It is also possible to pass an object with selected CKFinder properties as a second argument.
+			// CKFinder.setupCKEditor( editor, { basePath : '../', skin : 'v1' } ) ;
+		}
+
+		</script>
+		
   <include file="Public:footer" />

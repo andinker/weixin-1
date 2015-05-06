@@ -8,6 +8,7 @@
 <script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <script src="{ZF::STATICS}/upyun.js"></script>
 <script>
+/*
 var editor;
 KindEditor.ready(function(K) {
 editor = K.create('#intro', {
@@ -21,8 +22,17 @@ items : [
 'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut', 'music', 'video'],
 afterBlur: function(){this.sync();}
 });
-});
+});*/
 </script>
+
+
+<script src="{ZF::STATICS}/plugin_ckeditor/ckeditor.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/plugin_ckfinder/ckfinder.js" type="text/javascript"></script>
+
+
+
+
+
   <div class="content"> 
    <div class="cLineB"> 
     <h4>商品设置</h4> 
@@ -31,7 +41,7 @@ afterBlur: function(){this.sync();}
 <if condition="$isUpdate eq 1">
 <input type="hidden" name="id" value="{ZF:$set.id}" />
 </if>
-<form method="post" action="" id="formID">
+<form method="post" action="" id="formID" enctype="multipart/form-data">
 <input type="hidden" name="discount" id="discount" value="{ZF:$set.discount}" />
     <div class="msgWrap bgfc"> 
      <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
@@ -172,7 +182,7 @@ afterBlur: function(){this.sync();}
        </tr>
        <TR>
           <TH valign="top"><label for="info">图文详细页内容：</label></TH>
-          <TD><textarea name="intro" id="intro"  rows="5" style="width:590px;height:360px">{ZF:$set.intro}</textarea></TD>
+          <TD><textarea class="toedit" name="intro" id="intro"  rows="5" style="width:590px;height:360px">{ZF:$set.intro}</textarea></TD>
        </TR>  
        <tr>         
        <th>&nbsp;</th>
@@ -298,6 +308,21 @@ $(document).ready(function(){
 		}
 	});
 	$("#save").click(function(){
+		
+		
+		
+		
+		// 手动更新ckeditor数据
+		
+		for (instance in CKEDITOR.instances)
+			{
+				CKEDITOR.instances[instance].updateElement();
+			}
+                    
+		
+		
+		
+		
 		var name = $("#name").val();
 		if (name.length < 1) {
 			art.dialog({title:'消息提示', ok:true, width:300, height:200, content:'名称不能为空'});
@@ -392,4 +417,48 @@ $(document).ready(function(){
 	});
 });
 </script>
+
+
+
+
+
+		<script type="text/javascript">
+
+		// This is a check for the CKEditor class. If not defined, the paths must be checked.
+		if ( typeof CKEDITOR == 'undefined' )
+		{
+			document.write(
+				'<strong><span style="color: #ff0000">Error</span>: CKEditor not found</strong>.' +
+				'This sample assumes that CKEditor (not included with CKFinder) is installed in' +
+				'the "/ckeditor/" path. If you have it installed in a different place, just edit' +
+				'this file, changing the wrong paths in the &lt;head&gt; (line 5) and the "BasePath"' +
+				'value (line 32).' ) ;
+		}
+		else
+		{
+			
+			$( document ).ready( function() {
+				
+				$( '.toedit' ).each(function(){
+					
+					var editor_info = CKEDITOR.replace( this );
+					CKFinder.setupCKEditor( editor_info, { basePath : '{ZF::STATICS}/plugin_ckfinder/', skin : 'v1' } ) ;
+					
+				});
+				
+			} );
+			
+			
+			//var editor_info = CKEDITOR.replace( '.toedit' );
+			//editor.setData( '<p>Just click the <b>Image</b> or <b>Link</b> button, and then <b>&quot;Browse Server&quot;</b>.</p>' );
+		
+			// Just call CKFinder.setupCKEditor and pass the CKEditor instance as the first argument.
+			// The second parameter (optional), is the path for the CKFinder installation (default = "/ckfinder/").
+			//CKFinder.setupCKEditor( editor_info, { basePath : '{ZF::STATICS}/plugin_ckfinder/', skin : 'v1' } ) ;
+		
+			// It is also possible to pass an object with selected CKFinder properties as a second argument.
+			// CKFinder.setupCKEditor( editor, { basePath : '../', skin : 'v1' } ) ;
+		}
+
+		</script>
 <include file="Public:footer" />

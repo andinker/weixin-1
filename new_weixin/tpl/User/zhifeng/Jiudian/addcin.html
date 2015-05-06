@@ -9,6 +9,7 @@
 <script src="{ZF::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
 <script src="{ZF::STATICS}/upyun.js"></script>
 <script>
+/*
 var editor;
 KindEditor.ready(function(K) {
 editor = K.create('#content', {
@@ -19,8 +20,10 @@ items : [
 'source','undo','plainpaste','wordpaste','clearhtml','quickformat','selectall','fullscreen','fontname', 'fontsize','subscript','superscript','indent','outdent','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','hr']
 });
 });
-
+*/
 </script>
+<script src="{ZF::STATICS}/plugin_ckeditor/ckeditor.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/plugin_ckfinder/ckfinder.js" type="text/javascript"></script>
 <div class="content" style="" >
 
    <div class="cLineB"> 
@@ -158,5 +161,45 @@ function clan(i) {
 }
 
 </script>
+
+		<script type="text/javascript">
+
+		// This is a check for the CKEditor class. If not defined, the paths must be checked.
+		if ( typeof CKEDITOR == 'undefined' )
+		{
+			document.write(
+				'<strong><span style="color: #ff0000">Error</span>: CKEditor not found</strong>.' +
+				'This sample assumes that CKEditor (not included with CKFinder) is installed in' +
+				'the "/ckeditor/" path. If you have it installed in a different place, just edit' +
+				'this file, changing the wrong paths in the &lt;head&gt; (line 5) and the "BasePath"' +
+				'value (line 32).' ) ;
+		}
+		else
+		{
+			
+			$( document ).ready( function() {
+				
+				$( '#content' ).each(function(){
+					
+					var editor_info = CKEDITOR.replace( this );
+					CKFinder.setupCKEditor( editor_info, { basePath : '{ZF::STATICS}/plugin_ckfinder/', skin : 'v1' } ) ;
+					
+				});
+				
+			} );
+			
+			
+			//var editor_info = CKEDITOR.replace( '.toedit' );
+			//editor.setData( '<p>Just click the <b>Image</b> or <b>Link</b> button, and then <b>&quot;Browse Server&quot;</b>.</p>' );
+		
+			// Just call CKFinder.setupCKEditor and pass the CKEditor instance as the first argument.
+			// The second parameter (optional), is the path for the CKFinder installation (default = "/ckfinder/").
+			//CKFinder.setupCKEditor( editor_info, { basePath : '{ZF::STATICS}/plugin_ckfinder/', skin : 'v1' } ) ;
+		
+			// It is also possible to pass an object with selected CKFinder properties as a second argument.
+			// CKFinder.setupCKEditor( editor, { basePath : '../', skin : 'v1' } ) ;
+		}
+
+		</script>
 
   <include file="Public:footer" />
