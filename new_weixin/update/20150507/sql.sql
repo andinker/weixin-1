@@ -1,0 +1,1 @@
+ALTER TABLE  `zfwx_classify` ADD  `navpage_status` TINYINT NOT NULL DEFAULT  '1' AFTER  `status`;

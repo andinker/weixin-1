@@ -75,8 +75,28 @@ class IndexAction extends WapAction{
 		$this->display($this->tpl['tpltypename']);
 	}
 	public function index_classify(){
-		$this->assign('info',$this->info);
+		
+		$info = array();
+		
+		foreach ($this->info as $item){
+			if ($item['navpage_status'] == 1){
+				
+				$subitems = $item['sub'];
+				$item['sub'] = array();
+				
+				foreach ($subitems as $subitem){
+					if ($subitem['navpage_status'] == 1){
+						array_push($item['sub'], $subitem);
+					}
+				}
+				 
+				array_push($info, $item);
+			}
+		}
+		
+		$this->assign('info',$info);
 		$this->display();
+		
 	}
 	public function index(){
 		//是否是高级模板

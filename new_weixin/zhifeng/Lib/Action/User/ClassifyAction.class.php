@@ -10,11 +10,20 @@ class ClassifyAction extends UserAction{
 	public function index(){
 		$db=D('Classify');
 		$where['token']=session('token');
-		if($this->_get('fid')){
-			$where['fid']=$this->_get('fid');
+		
+		$fid = intval($this->_get('fid'));
+		
+		if(!empty($fid)){
+			$where['fid']=$fid;
 			$thisClassify=$db->where(array('id'=>$where['fid']))->find();
 			$this->assign('thisClassify',$thisClassify);
+		}else{
+			$this->assign('thisClassify',NULL);
 		}
+		
+		$where['fid'] = $fid; 
+		
+		
 		$count=$db->where($where)->count();
 		$page=new Page($count,25);
 		$info=$db->where($where)->order('fid asc,sorts asc')->limit($page->firstRow.','.$page->listRows)->select();

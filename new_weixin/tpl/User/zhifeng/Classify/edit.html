@@ -102,12 +102,21 @@
   <TD>&nbsp;</TD>
 </TR>
 <TR>
-  <TH valign="top"><label for="keyword">是否显示：</label></TH>
-  <TD><input type="radio" class="px" id="keyword" value="1" name="status" <eq name="info.status" value="1"> checked</eq> />是<br />
-  <input type="radio" class="px" id="keyword" value="0" name="status"  <eq name="info.status" value="0"> checked</eq> />否
+  <TH valign="top"><label for="keyword">是否可用：</label></TH>
+  <TD><input type="radio" class="px" value="1" name="status" <eq name="info.status" value="1"> checked</eq> />是<br />
+  <input type="radio" class="px" value="0" name="status"  <eq name="info.status" value="0"> checked</eq> />否
                    </TD>
   <TD>&nbsp;</TD>
 </TR>
+
+<TR>
+  <TH valign="top"><label for="keyword">在分类导航页中显示：</label></TH>
+  <TD><input type="radio" class="px" value="1" name="navpage_status" <eq name="info.navpage_status" value="1"> checked</eq> />是<br />
+  <input type="radio" class="px" value="0" name="navpage_status"  <eq name="info.navpage_status" value="0"> checked</eq> />否
+                   </TD>
+  <TD>&nbsp;</TD>
+</TR>
+
 <TR>
   <TH valign="top">分类模板</TH>
   <TD>
