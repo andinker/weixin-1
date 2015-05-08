@@ -324,7 +324,16 @@ class AttachmentAction extends UserAction{
 			);
 		}
 		$music = array(
-			'default' => array('name' => '默认','files' => array(array('file' => '1.mp3','name' => '汪峰-一起摇摆'),array('file' => '2.mp3','name' => '方大同-明天我要嫁给你了'),array('file' => '3.mp3','name' => '今天你要嫁给我'),array('file' => '4.mp3','name' => '钢琴曲卡农'))),
+			'default' => array('name' => '默认','files' => 
+							 array(
+							 		array('file' => '8.mp3','name' => '夜的钢琴曲'),
+							 		array('file' => '7.mp3','name' => 'Tassel'),
+							 		array('file' => '6.mp3','name' => 'Breeze'),
+							 		array('file' => '5.mp3','name' => 'I’m not the only one' ),
+								 	array('file' => '4.mp3','name' => '钢琴曲卡农')
+							 		
+							 )
+						),
 		);
 		
 		return array('icon' => $icons,'background' => $background,'music' => $music,'focus' => $focus);
