@@ -31,9 +31,9 @@
   <TH valign="top"><label for="keyword">上级分类名称：</label></TH>
   <TD><select name="fid" style="padding:5px;"><option value="">根分类</option>
   <volist name="fidlist" id="v">
-  <option value="{ZF:$v.id}"><notempty name="v.fid"> |- &nbsp;</notempty>{ZF:$v.name}</option>
+  <option value="{ZF:$v.id}">{ZF:$v.name}</option>
   </volist>
-  </select>&nbsp;&nbsp;<span style="color:red;">说明："|-"符号是为了方便识别子分类， 真实显示无此符号</span></TD>
+  </select></TD>
   <TD>&nbsp;</TD>
 </TR>
 <TR>

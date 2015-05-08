@@ -81,5 +81,42 @@ class UserAction extends BaseAction{
 			$this->error('您还没有开启该模块的使用权,请到功能模块中添加',U('Function/index',array('token'=>$this->token,'id'=>session('wxid'))));
 		}
 	}
+	
+	
+	/**
+	 * 把类别名加上级别前缀
+	 */
+	protected function makeLevelClassNames($data){
+		return $this->makeLevelClassNames_getChilds($data,0,0);
+	}
+	
+	protected function makeLevelClassNames_getChilds($data,$fid,$level){
+	
+		$childs = array();
+	
+		$mark = '';
+		for ($i=0;$i<$level;$i++){
+			$mark = '　　'.$mark;
+		}
+	
+	
+	
+		foreach ($data as $item){
+			if ( intval($item['fid']) == intval($fid)){
+	
+				$item['name'] = $mark.$item['name'];
+				array_push($childs, $item);
+	
+				$next_childs = $this->makeLevelClassNames_getChilds($data,$item['id'],$level+1);
+	
+				foreach ($next_childs as $next_child){
+					array_push($childs, $next_child);
+				}
+	
+			}
+		}
+	
+		return $childs;
+	}
 }
 ?>

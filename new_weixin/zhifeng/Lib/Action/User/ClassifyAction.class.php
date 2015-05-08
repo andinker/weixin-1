@@ -35,6 +35,9 @@ class ClassifyAction extends UserAction{
 	public function add(){
 		   $db=D('Classify');
 		   $pname=$db->field('id,fid,sorts,name')->where(array('token'=>$this->token))->order('fid,sorts')->select();
+		   
+		   $pname = $this->makeLevelClassNames($pname);
+		   
 		   $this->assign('fidlist',$pname);
 
 		$this->display();
@@ -46,6 +49,8 @@ class ClassifyAction extends UserAction{
 		$this->assign('info',$info);
 		
 		$pname=M('Classify')->where("token ='".$this->token."' and id <> $id")->order('fid,sorts')->select();
+
+		$pname = $this->makeLevelClassNames($pname);
 		$this->assign('fidlist',$pname);
 		$this->display();
 	}
