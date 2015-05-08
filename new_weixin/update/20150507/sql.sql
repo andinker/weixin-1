@@ -1,0 +1,2 @@
+/*插入小区模板3*/
+INSERT INTO `zfwx_tmpls` (`id`, `tplid`, `name`, `views`, `type`, `imgurl`, `info`, `attr`, `status`, `sort`) VALUES (NULL, 'xq3', '我的小区模块3', 'xq3_index', '1', 'xq_cate3.png', '我的小区模板3', 'myxq', '1', '255');
