@@ -91,27 +91,36 @@ if ($type!='my'){
 	</if>
 </div>
 <if condition="$type neq 'music'">
-<ul>
-<volist name="files" id="item">
-<li style="float:left;width:{ZF:$height}px;margin:1px;background:#ddd"><a href="###" onclick="returnHomepage('{ZF:$siteUrl}/tpl/static/attachment/{ZF:$type}/{ZF:$folder}/{ZF:$item}')"><img class="attimg" style="width:{ZF:$height}px;height:{ZF:$height}px;" src="{ZF::STATICS}/attachment/{ZF:$type}/{ZF:$folder}/{ZF:$item}" /></a></li>
-</volist>
-<div class="clr" style="height:10px;"></div>
-</ul>
-<div class="pages">{ZF:$show}</div>
+	<ul>
+		<volist name="files" id="item">
+			<li style="float:left;width:{ZF:$height}px;margin:1px;background:#ddd"><a href="###" onclick="returnHomepage('{ZF:$siteUrl}/tpl/static/attachment/{ZF:$type}/{ZF:$folder}/{ZF:$item}')"><img class="attimg" style="width:{ZF:$height}px;height:{ZF:$height}px;" src="{ZF::STATICS}/attachment/{ZF:$type}/{ZF:$folder}/{ZF:$item}" /></a></li>
+		</volist>
+		<div class="clr" style="height:10px;"></div>
+	</ul>
+	<div class="pages">{ZF:$show}</div>
 <else/>
-<table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
-<thead>
-<tr>
-<th>播放</th>
-<th>选择 <span class="tooltips" ><img src="{ZF::RES}/images/price_help.png" align="absmiddle" /><span>
-<p>点击歌名即可</p>
-</span></span></th>
-</tr>
-</thead>
-<volist name="files" id="item">
-<tr><td><a style="width:220px;float:left" class="audio {skin:'blue'}" href="{ZF:$siteUrl}/tpl/static/attachment/{ZF:$type}/{ZF:$folder}/{ZF:$item.file}">{ZF:$item.name}</a></td><td>&nbsp;&nbsp;<a href="###" onclick="returnHomepage('{ZF:$siteUrl}/tpl/static/attachment/{ZF:$type}/{ZF:$folder}/{ZF:$item.file}')">{ZF:$item.name}</a></td></tr>
-</volist>
-</table>
+	<table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+		<thead>
+			<tr>
+				<th>播放</th>
+				<th>选择 
+					<span class="tooltips" ><img src="{ZF::RES}/images/price_help.png" align="absmiddle" /><span>
+					<p>点击歌名即可</p>
+					</span></span>
+				</th>
+			</tr>
+		</thead>
+		<volist name="files" id="item">
+			<tr>
+				<td>
+					<a style="width:220px;float:left" class="audio {skin:'blue'}" href="{ZF:$siteUrl}/tpl/static/attachment/{ZF:$type}/{ZF:$folder}/{ZF:$item.file}">{ZF:$item.name}</a>
+				</td>
+				<td>&nbsp;&nbsp;
+					<a href="###" onclick="returnHomepage('{ZF:$siteUrl}/tpl/static/attachment/{ZF:$type}/{ZF:$folder}/{ZF:$item.file}')">{ZF:$item.name}</a>
+				</td>
+			</tr>
+		</volist>
+	</table>
 </if>
 <?php
 }else{
@@ -170,6 +179,5 @@ function returnHomepage(url){
 	setTimeout("art.dialog.close()", 100 )
 }
 </script>
-
 </body>
 </html>
