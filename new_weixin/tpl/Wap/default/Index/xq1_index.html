@@ -132,14 +132,14 @@
 <div id="tool_bar">
 	<div class="container">
 	    <div class="row" style=" color:#FFF; line-height: 50px;height:50px;overflow: hidden;">
-             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 head">
 		         <div style="float:left;">
-		              <div class="tool_bar_icon"><a href="{ZF::U('Wap/Index/index_classify')}&token={ZF:$token}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_menu.png"></a></div>&nbsp;&nbsp;
+		              <div class="tool_bar_icon"><a href="{ZF::U('Wap/Index/index_classify')}&token={ZF:$token}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_menu.png"></a></div>&nbsp;
 		              <img style="height:32px; display:inline;" class="img-responsive" alt="我的小区" src="{ZF::STATICS}/logo-xiaoqu.png">
 		         </div>
 		         <div style="float:right;">
-		                   <span class="glyphicon glyphicon-play" style="font-size:8px; line-height:8px;"></span>&nbsp;&nbsp;<span style="font-size:14px; position:relative; top:3px;">{ZF::$company['name']}</span>&nbsp;&nbsp;
-		              <div class="tool_bar_icon"><a style="color:#FFF;" href="{ZF::U('Wap/Product/cart')}&token={ZF:$token}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_cart.png"></a></div>&nbsp;&nbsp;
+		                   <span class="glyphicon glyphicon-play" style="font-size:8px; line-height:8px;"></span>&nbsp;&nbsp;<span style="font-size:14px; position:relative; top:3px;">{ZF::mb_substr($company['name'],0,8,'UTF-8')}</span>&nbsp;
+		              <div class="tool_bar_icon"><a style="color:#FFF;" href="{ZF::U('Wap/Product/cart')}&token={ZF:$token}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_cart.png"></a></div>&nbsp;
 		              <div class="tool_bar_icon"><a style="color:#FFF;" href="{ZF::U('Wap/Product/my')}&token={ZF:$token}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_my.png"></a></div>
 		         </div>
 	         </div>
@@ -592,6 +592,20 @@ $(window).resize(function(){
 	var img_w=$(".goods_box").width();
 	$(".goods_box_img").css("height",img_w+"px");
 	});
+	
+var win_w=$(window).width();
+if(win_w<=350){
+	$('.head').css("padding-left","0");
+	$('.head').css("padding-right","0");
+}
+$(window).resize(function(){
+	var win_w=$(window).width();
+	if(win_w<=350){
+		$('.head').css("padding-left","0");
+		$('.head').css("padding-right","0");
+	}	
+})
+
 </script>
 
 
