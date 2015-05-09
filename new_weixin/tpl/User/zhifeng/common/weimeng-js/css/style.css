@@ -4808,7 +4808,7 @@ body.error .wrapper {
         -moz-border-radius: 0;
         border-radius: 0;
     }
-
+/*
 .cke.cke_chrome {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
@@ -4878,7 +4878,7 @@ body.error .wrapper {
     border: 1px solid #ddd;
     border-top: 0;
 }
-
+*/
 table.DTCR_clonedTable {
     background-color: white;
     z-index: 202;

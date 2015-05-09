@@ -18,6 +18,9 @@ class ImgAction extends UserAction{
 		$db=M('Classify');
 		$where['token']=session('token');
 		$info=$db->where($where)->select();
+		
+		$info = $this->makeLevelClassNames($info);
+		
 		$this->assign('info',$info);
 		$this->display();
 	}
@@ -25,6 +28,9 @@ class ImgAction extends UserAction{
 		$db=M('Classify');
 		$where['token']=session('token');
 		$info=$db->where($where)->select();
+		
+		$info = $this->makeLevelClassNames($info);
+		
 		$where['id']=$this->_get('id','intval');
 		$where['uid']=session('uid');
 		$res=D('Img')->where($where)->find();
@@ -32,6 +38,7 @@ class ImgAction extends UserAction{
 		$this->assign('res',$info);
 		$this->display();
 	}
+	
 	public function del(){
 		$where['id']=$this->_get('id','intval');
 		$where['uid']=session('uid');

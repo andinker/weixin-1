@@ -12,7 +12,7 @@
 
  <script src="{ZF::STATICS}/upyun.js"></script>
 <script>
-
+/*
 var editor;
 KindEditor.ready(function(K) {
 editor = K.create('#description', {
@@ -34,8 +34,20 @@ uploadJson : SITEURL+'/index.php?g=User&m=Upyun&a=kindedtiropic',
 items : [
 'source','undo','plainpaste','wordpaste','clearhtml','quickformat','selectall','fullscreen','fontname', 'fontsize','subscript','superscript','indent','outdent','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','hr']
 });
-});
+});*/
 </script>
+
+
+
+
+
+
+
+<script src="{ZF::STATICS}/plugin_ckeditor/ckeditor.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/plugin_ckfinder/ckfinder.js" type="text/javascript"></script>
+
+
+
  <div class="content">
 <div class="cLineB">
  
@@ -88,14 +100,14 @@ items : [
 				</tr>
 				<tr>
 					<th width="120">客人介绍：</th>
-					<td>  <textarea id="description" name="description" placeholder='客人描述' style="width:560px;height:75px" >{ZF:$expert['description']}</textarea>
+					<td>  <textarea class="toedit" id="description" name="description" placeholder='客人描述' style="width:560px;height:75px" >{ZF:$expert['description']}</textarea>
                                         <span class="maroon">*</span>
                                         <span class="help-block">最多可150字</span></td>
 				</tr>
 				<tr>
 					<th>点评内容：</th>
 					<td>
-	 <textarea id="comment" name="comment" placeholder='点评内容' style="width:560px;height:75px" >{ZF:$expert['comment']}</textarea>
+	 <textarea class="toedit" id="comment" name="comment" placeholder='点评内容' style="width:560px;height:75px" >{ZF:$expert['comment']}</textarea>
                                         <span class="maroon">*</span>
                                         <span class="help-block">最多可5k字</span>
 					</td>
@@ -117,4 +129,50 @@ items : [
  
   
         </div>
+        
+        
+        
+		<script type="text/javascript">
+
+		// This is a check for the CKEditor class. If not defined, the paths must be checked.
+		if ( typeof CKEDITOR == 'undefined' )
+		{
+			document.write(
+				'<strong><span style="color: #ff0000">Error</span>: CKEditor not found</strong>.' +
+				'This sample assumes that CKEditor (not included with CKFinder) is installed in' +
+				'the "/ckeditor/" path. If you have it installed in a different place, just edit' +
+				'this file, changing the wrong paths in the &lt;head&gt; (line 5) and the "BasePath"' +
+				'value (line 32).' ) ;
+		}
+		else
+		{
+			
+			$( document ).ready( function() {
+				
+				$( '.toedit' ).each(function(){
+					
+					var editor_info = CKEDITOR.replace( this );
+					CKFinder.setupCKEditor( editor_info, { basePath : '{ZF::STATICS}/plugin_ckfinder/', skin : 'v1' } ) ;
+					
+				});
+				
+			} );
+			
+			
+			//var editor_info = CKEDITOR.replace( '.toedit' );
+			//editor.setData( '<p>Just click the <b>Image</b> or <b>Link</b> button, and then <b>&quot;Browse Server&quot;</b>.</p>' );
+		
+			// Just call CKFinder.setupCKEditor and pass the CKEditor instance as the first argument.
+			// The second parameter (optional), is the path for the CKFinder installation (default = "/ckfinder/").
+			//CKFinder.setupCKEditor( editor_info, { basePath : '{ZF::STATICS}/plugin_ckfinder/', skin : 'v1' } ) ;
+		
+			// It is also possible to pass an object with selected CKFinder properties as a second argument.
+			// CKFinder.setupCKEditor( editor, { basePath : '../', skin : 'v1' } ) ;
+		}
+
+		</script>
+        
+        
+        
+        
 <include file="Public:footer"/>

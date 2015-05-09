@@ -28,7 +28,7 @@
  </head>
 <script language="JavaScript">
 function keyLogin(){
- if (event.keyCode==13) 
+ if (event.keyCode==13)
    document.getElementById("basic-addon2").click(); 
 }
 </script>
@@ -59,7 +59,7 @@ function keyLogin(){
 		<div class="TabbedPanelsContentGroup">
 				 
 		
-			<volist name="info" id="info_item">		
+			<volist name="info" id="info_item">
 				
 					<div class="TabbedPanelsContent" id="{ZF:$info_item.id}">
 					
@@ -127,6 +127,10 @@ $(window).resize(function(){
 })
 </script>
 
-
+<!-- pre>
+<php>
+print_r($info); 
+</php>
+</pre-->
 </body>
 </html>

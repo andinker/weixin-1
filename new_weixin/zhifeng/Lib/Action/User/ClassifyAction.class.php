@@ -10,11 +10,20 @@ class ClassifyAction extends UserAction{
 	public function index(){
 		$db=D('Classify');
 		$where['token']=session('token');
-		if($this->_get('fid')){
-			$where['fid']=$this->_get('fid');
+		
+		$fid = intval($this->_get('fid'));
+		
+		if(!empty($fid)){
+			$where['fid']=$fid;
 			$thisClassify=$db->where(array('id'=>$where['fid']))->find();
 			$this->assign('thisClassify',$thisClassify);
+		}else{
+			$this->assign('thisClassify',NULL);
 		}
+		
+		$where['fid'] = $fid; 
+		
+		
 		$count=$db->where($where)->count();
 		$page=new Page($count,25);
 		$info=$db->where($where)->order('fid asc,sorts asc')->limit($page->firstRow.','.$page->listRows)->select();
@@ -26,6 +35,9 @@ class ClassifyAction extends UserAction{
 	public function add(){
 		   $db=D('Classify');
 		   $pname=$db->field('id,fid,sorts,name')->where(array('token'=>$this->token))->order('fid,sorts')->select();
+		   
+		   $pname = $this->makeLevelClassNames($pname);
+		   
 		   $this->assign('fidlist',$pname);
 
 		$this->display();
@@ -37,6 +49,8 @@ class ClassifyAction extends UserAction{
 		$this->assign('info',$info);
 		
 		$pname=M('Classify')->where("token ='".$this->token."' and id <> $id")->order('fid,sorts')->select();
+
+		$pname = $this->makeLevelClassNames($pname);
 		$this->assign('fidlist',$pname);
 		$this->display();
 	}

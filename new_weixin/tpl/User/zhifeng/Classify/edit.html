@@ -20,6 +20,12 @@
 <script type="text/javascript" src="{ZF::RES}/weimeng-js/resource.js"></script>
 <script type="text/javascript" src="{ZF::RES}/weimeng-js/inside.js"></script>
 <script src="{ZF::STATICS}/upyun.js?2013"></script>
+
+
+<script src="{ZF::STATICS}/plugin_ckeditor/ckeditor.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/plugin_ckfinder/ckfinder.js" type="text/javascript"></script>
+
+
  <div class="content" style="" >
           <div class="cLineB"><h4>编辑文章分类</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div> 
 <div class="msgWrap">
@@ -30,9 +36,9 @@
   <TH valign="top"><label for="keyword">上级分类名称：</label></TH>
   <TD><select name="fid" style="padding:5px;"><option value="">根分类</option>
   <volist name="fidlist" id="v">
-  <option value="{ZF:$v.id}" <if condition="$info['fid'] eq $v['id']">selected</if>><notempty name="v.fid"> |- &nbsp;</notempty>{ZF:$v.name}</option>
+  <option value="{ZF:$v.id}" <if condition="$info['fid'] eq $v['id']">selected</if>>{ZF:$v.name}</option>
   </volist>
-  </select>&nbsp;&nbsp;<span style="color:red;">说明："|-"符号是为了方便识别子分类， 真实显示无此符号</span></TD>
+  </select></TD>
   <TD>&nbsp;</TD>
 </TR>
 <TR>
@@ -96,12 +102,21 @@
   <TD>&nbsp;</TD>
 </TR>
 <TR>
-  <TH valign="top"><label for="keyword">是否显示：</label></TH>
-  <TD><input type="radio" class="px" id="keyword" value="1" name="status" <eq name="info.status" value="1"> checked</eq> />是<br />
-  <input type="radio" class="px" id="keyword" value="0" name="status"  <eq name="info.status" value="0"> checked</eq> />否
+  <TH valign="top"><label for="keyword">是否可用：</label></TH>
+  <TD><input type="radio" class="px" value="1" name="status" <eq name="info.status" value="1"> checked</eq> />是<br />
+  <input type="radio" class="px" value="0" name="status"  <eq name="info.status" value="0"> checked</eq> />否
                    </TD>
   <TD>&nbsp;</TD>
 </TR>
+
+<TR>
+  <TH valign="top"><label for="keyword">在分类导航页中显示：</label></TH>
+  <TD><input type="radio" class="px" value="1" name="navpage_status" <eq name="info.navpage_status" value="1"> checked</eq> />是<br />
+  <input type="radio" class="px" value="0" name="navpage_status"  <eq name="info.navpage_status" value="0"> checked</eq> />否
+                   </TD>
+  <TD>&nbsp;</TD>
+</TR>
+
 <TR>
   <TH valign="top">分类模板</TH>
   <TD>
@@ -152,7 +167,7 @@
   <TH valign="top">分类页头部内容：</TH>
   <td>
         <div><span>* 修改后，如果所选择的模板支持，分类页的头部广告块会显示用户添加的内容</span></div>
-    	<textarea class="toedit" name="header_content"  rows="5" style="width:590px;height:360px">{ZF:$info.header_content}</textarea>
+    	<textarea class="toedit" name="header_content" id="header_content"  rows="5" style="width:590px;height:360px">{ZF:$info.header_content}</textarea>
   </td>
 </tr>
 <TR>
@@ -219,7 +234,7 @@
 			}
 		};
 	</script>
-<script>
+<script>/*
 var editor;
 KindEditor.ready(function(K) {
 editor = K.create('.toedit', {
@@ -233,6 +248,38 @@ items : [
 'insertunorderedlist', '|', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
 });
 
-});
+});*/
 </script>
+
+
+
+		<script type="text/javascript">
+
+		// This is a check for the CKEditor class. If not defined, the paths must be checked.
+		if ( typeof CKEDITOR == 'undefined' )
+		{
+			document.write(
+				'<strong><span style="color: #ff0000">Error</span>: CKEditor not found</strong>.' +
+				'This sample assumes that CKEditor (not included with CKFinder) is installed in' +
+				'the "/ckeditor/" path. If you have it installed in a different place, just edit' +
+				'this file, changing the wrong paths in the &lt;head&gt; (line 5) and the "BasePath"' +
+				'value (line 32).' ) ;
+		}
+		else
+		{
+			var editor_header_content = CKEDITOR.replace( 'header_content' );
+			//editor.setData( '<p>Just click the <b>Image</b> or <b>Link</b> button, and then <b>&quot;Browse Server&quot;</b>.</p>' );
+		
+			// Just call CKFinder.setupCKEditor and pass the CKEditor instance as the first argument.
+			// The second parameter (optional), is the path for the CKFinder installation (default = "/ckfinder/").
+			CKFinder.setupCKEditor( editor_header_content, { basePath : '{ZF::STATICS}/plugin_ckfinder/', skin : 'v1' } ) ;
+		
+			// It is also possible to pass an object with selected CKFinder properties as a second argument.
+			// CKFinder.setupCKEditor( editor, { basePath : '../', skin : 'v1' } ) ;
+		}
+
+		</script>
+
+
+
 <include file="Public:footer"/>

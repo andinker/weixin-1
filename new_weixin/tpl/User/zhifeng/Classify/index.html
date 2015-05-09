@@ -45,15 +45,14 @@
 <td align="center">{ZF:$vo.name}<volist name="info" id="zo">
 <if condition="$zo['id'] eq $vo['fid']"><br><a class="red">属于子分类</a></if>
 </volist></td>
-<td align="center"><volist name="info" id="zo">
-<if condition="$zo['id'] eq $vo['fid']">{ZF:$zo.name}</if>
-</volist>
+<td align="center">
+<a href="{ZF::U('User/Classify/index',array('fid'=>$thisClassify['id']))}">{ZF:$thisClassify['name']}</a>
 </td>
 <td bgcolor="{ZF:$vo.yanse}"><span class="{ZF:$vo.icon}"></span></td>
 <td>{ZF:$vo.info}</td>
 <td><div class="cateimg"><img src="{ZF:$vo.img}" class="cateimg_small"  /><img src="{ZF:$vo.img}" class="cateimg_big"  /></div></td>
 <td>{ZF:$vo.url}</td>
-<td align="center"><eq name="vo.status" value="1">显示<else/>不显示</eq><br><a target="ddd" href="{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$_SESSION['token']))}">查看</a></td>
+<td align="center"><eq name="vo.status" value="1"><else/><span style="color:red;">已禁用</span></eq><br><a target="ddd" href="{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$_SESSION['token']))}">查看</a></td>
 <td align="center" class="norightborder">
 	<a style="color:red" href="{ZF::U('Classify/index',array('fid'=>$vo['id']))}">管理子分类</a>&nbsp;</br>
 	<a style="color:green" href="<?php if ($vo['fid']==0){?>{ZF::U('Classify/edit',array('id'=>$vo['id']))}<?php }else{?>{ZF::U('Classify/edit',array('id'=>$vo['id'],'fid'=>$vo['fid']))}<?php }?>">编辑</a>&nbsp; &nbsp;

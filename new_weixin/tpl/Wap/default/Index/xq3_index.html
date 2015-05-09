@@ -488,8 +488,11 @@ $(document).click(function() {
         </div>
     </div>
 </notempty>
+<style type="text/css">
+ol.flickity-page-dots { z-index:1222222; bottom:20px;}
+</style>
 <script>
-var myg = $('.mygallery').flickity({ "wrapAround":true,"autoPlay": true,"pageDots": false });
+var myg = $('.mygallery').flickity({ "wrapAround":true,"autoPlay": true,"pageDots": true,"prevNextButtons": false });
 
 
 myg.on( 'staticClick', function( event, pointer, cellElement, cellIndex ) {
