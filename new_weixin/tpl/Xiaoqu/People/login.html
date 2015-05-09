@@ -1,11 +1,34 @@
 <php>$PageTile = '登录';</php>
 <include file="Public:header"/>
-
-
-
-<div id="login_title">
-	<span>用户登录</span>
+<div class="container"  id="page_name" style="padding:0;">
+	<span class="col-xs-3 back"><a href="" onclick="window.history.back()"><span class="glyphicon glyphicon-menu-left"></span></a></span>
+	<span class="col-xs-6 page_title">登录</span>
+	<span class="col-xs-3 res_link"><a href="<empty name='Think.get.re'>{ZF::U('register',array('token'=>$_GET['token']))}<else/>{ZF::U('register',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>" style="font-size:16px;">注册</a></span>
 </div>
+<div class="col-xs-12" style="padding:10px 0 10px 0 ;color:red;text-align:center;font-size:14px;">{ZF:$error}</div>
+<form method="post"> 
+	<div class="container" id="page_box">
+		<div class="page">
+			<div class="page-msg">
+				<div class="col-xs-3 page-msg-name">手机号</div>
+				<div class="col-xs-9 page-msg_input"><input type="tel" name="phone" placeholder="请用手机号码登录" style="border:none;width:100%;height: 42px;"></div>
+			</div>
+			<div class="page-msg">
+				<div class="col-xs-3 page-msg-name">密&nbsp;&nbsp;&nbsp;码</div>
+				<div class="col-xs-5 page-msg_input"><input type="password" name="password" placeholder="请输入密码" style="border:none;width:100%;height: 42px; "></div>
+				<div class="col-xs-4" style="line-height: 42px;padding-left:5px;padding-right: 10px;text-align: right;background: white;height:42px;overflow: hidden;"><a style="font-size:16px;" href="<empty name='Think.get.re'>{ZF::U('retrieve',array('token'=>$_GET['token']))}<else/>{ZF::U('retrieve',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">忘记密码?</a></div>
+			</div>
+		</div>
+		<div class="col-xs-12 page-but">
+			<input type="submit" value="登录" style="background:#f95a60;/*background-image: url(/tpl/Wap/default/common/Index/xq1/toolbar_bg.png);background-repeat:repeat-x;*/width:100%;border:0;box-shadow:0px 1px 1px 0px;font-size:20px;color:white;height:40px;border-radius:4px;" >
+		</div>
+	</div>
+</form>
+<div class="col-xs-12" style="position:fixed;bottom:30px;padding:10px 0 10px 0 ;color:black;text-align:center;font-size:14px;z-index: -10">
+	<a href="{ZF::U('Wap/Index/index',array('token'=>$_GET['token']))}" style="padding-right:10px;">返回微站</a>|
+	<a href="{ZF::U('Wap/Product/cats',array('token'=>$_GET['token']))}" style="padding-left:10px;">返回微商城</a>
+</div>
+<!--  
 <div class="container"  id="login">
 	<form method="post">
 		<table  class="login-box">
@@ -35,10 +58,10 @@
 	
 	<div style="text-align:center;margin-bottom:20px;margin-top:20px;">
 		<a href="<empty name='Think.get.re'>{ZF::U('People/home',array('token'=>$_GET['token']))}<else/>{ZF::U('People/home',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">去个人中心</a>
-		<!-- a href="{ZF::U('Index/index')}">去小区首页</a-->
-	</div>
+		 a href="{ZF::U('Index/index')}">去小区首页</a-->
+	<!--</div>
 </div>
-
+-->
 <script type="text/javascript">
 var w=$('.login-box').width();
 $('#inp_w').css("width",w+"px");
@@ -48,4 +71,4 @@ $(window).resize(function(){
 })
 </script>
 
-<include file="Public:footer"/>
+<!--  <include file="Public:footer"/>-->

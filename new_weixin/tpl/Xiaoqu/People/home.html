@@ -1,6 +1,64 @@
 <php>$PageTile = '这里是个人中心';</php>
 <include file="Public:header"/>
-
+<!-- <div class="container"  id="login_name" style="padding:0;">
+	<span class="col-xs-12 login_title">{ZF::$company['name']}</span>
+</div> -->
+<php>
+$people = session('people');
+</php>
+<div class="container" style="background: #f8f8f8;padding-left:0;padding-right: 0;" id="home_page">
+	<div class="user_msg">
+		<div class="col-xs-4 msg_name"><span class="glyphicon glyphicon-user" style="color:#ea9093;padding-right:5px;"></span>名字</div>
+		<div class="col-xs-8" style="padding-left:5px;"><span style="font-size: 14px;">{ZF:$people['name']}</span>&nbsp;&nbsp;<a href="<empty name='Think.get.re'>{ZF::U('modifyname',array('token'=>$_GET['token']))}<else/>{ZF::U('modifyname',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">修改</a></div>
+	</div>
+	<div class="user_msg">
+		<div class="col-xs-4 msg_name"><span class="glyphicon glyphicon-phone" style="color:#ea9093;padding-right:5px;"></span>手机号码</div>
+		<div class="col-xs-8" style="padding-left:5px;">{ZF:$people['phone']}</div>
+	</div>
+	<div class="user_msg">
+		<div class="col-xs-4 msg_name"><span class="glyphicon glyphicon-lock" style="color:#ea9093;padding-right:5px;"></span>登录密码</div>
+		<div class="col-xs-8" style="padding-left:5px;">********&nbsp;&nbsp;<a href="<empty name='Think.get.re'>{ZF::U('modifypw',array('token'=>$_GET['token']))}<else/>{ZF::U('modifypw',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">修改</a></div>
+	</div>
+	<div class="user_msg">
+		<div class="col-xs-4 msg_name"><span class="glyphicon glyphicon-time" style="color:#ea9093;padding-right:5px;"></span>注册时间</div>
+		<div class="col-xs-8" style="padding-left:5px;">{ZF:$people['create_time']}</div>
+	</div>
+	<!--  
+	<div class="user_msg">
+		<div class="col-xs-5 msg_name"><span class="glyphicon glyphicon-time" style="color:#ea9093;padding-right:5px;"></span>上一次登录时间</div>
+		<div class="col-xs-7">{ZF:$people['lastlogin_time']}</div>
+	</div>
+	-->
+</div>
+<div class="container">
+	<div class="col-xs-12" style="background:#f95a60;width:100%;border:0;box-shadow:0px 1px 1px 0px;font-size:20px;height:40px;border-radius:4px;text-align: center;line-height: 40px;margin-top:20px;">
+		<a href="<empty name='Think.get.re'>{ZF::U('logout',array('token'=>$_GET['token']))}<else/>{ZF::U('logout',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>" style="color:white;" >退出登录</a>
+	</div>
+</div>
+<div style="height:60px;"></div>
+<div class="footer_nav" style="position: fixed; bottom:0%;width:100%;height:50px;" >
+	<div class="col-xs-3 footer_nav_name">
+		<a href="{ZF::U('Wap/Index/index',array('token'=>$_GET['token']))}">
+			<span class="glyphicon glyphicon-globe"></span>微站
+		</a>
+	</div>
+	<div class="col-xs-3 footer_nav_name">
+		<a href="{ZF::U('Wap/Product/cats',array('token'=>$_GET['token']))}">
+			<span class="glyphicon glyphicon-gift"></span>商城
+		</a>
+	</div>
+	<div class="col-xs-3 footer_nav_name">
+		<a href="{ZF::U('Wap/Product/cart')}&token={ZF:$token}">
+			<span class="glyphicon glyphicon-shopping-cart"></span>购物车
+		</a>
+	</div>
+	<div class="col-xs-3 footer_nav_name">
+		<a href="{ZF::U('Xiaoqu/People/home')}&token={ZF:$token}">
+			<span class="glyphicon glyphicon-user"></span>我的
+		</a>
+	</div>
+</div>
+<!-- 
 <div id="login_title">
 	<span>个人中心</span>
 </div>
@@ -18,8 +76,8 @@ $people = session('people');
 	
 	<p>
 		<a href="<empty name='Think.get.re'>{ZF::U('logout',array('token'=>$_GET['token']))}<else/>{ZF::U('logout',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>">退出登录</a>
-		<!-- a href="{ZF::U('Index/index')}">去小区首页</a-->
-	</p>
-</div>
+		 --><!-- a href="{ZF::U('Index/index')}">去小区首页</a-->
+	<!-- </p>
+</div> -->
 
-<include file="Public:footer"/>
+<!-- <include file="Public:footer"/> -->

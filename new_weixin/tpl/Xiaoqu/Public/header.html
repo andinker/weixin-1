@@ -16,246 +16,35 @@
  
  
 <script type="text/javascript" src="{ZF::STATICS}/plugin_vticker/jquery.vticker.min.js"></script>
- <style type="text/css">
-body { font-family:"微软雅黑"; font-size:1em; background-color:#FFF;}
- li{list-style:none;}
- 
- 
- 
- 
-#login_title{ padding-top:20px;padding-bottom:10px;width:300px;margin:0 auto;border-bottom: 1px solid #ccc;}
-#login_title span{font-size:16px;color:#666;padding-bottom:10px;font-weight:bold;padding-left:10px;}
-#message{width:300px;margin:0 auto;}
-#message ul{padding:0;margin:0;margin-top:20px;margin-bottom: 20px;}
-#message ul li{text-align:left; font-size:14px;line-height: 40px;}
-#message ul li span{font-weight:bold;}
-#message p{text-align:center;margin-bottom:20px;font-size:14px;}
- 
+<style type="text/css">
+body { font-family:"微软雅黑"; font-size:1em; background-color:#FFF;margin:0;padding: 0;background: #f0f0f0;}
+li{list-style:none;} 
+input{border-radius:0;}
+#page_name{background: white;height:40px;border-bottom: 1px solid #f0f0f0;font-size: 18px;line-height:40px;overflow: hidden;}
+#page_name a{color:#ea9093;}
+.page_title,.back{text-align:center;color:black;font-size: 22px;}
+.back{line-height:45px;}
+.back{padding-left: 5px;padding-right: 0;text-align: left;}
+.res_link{padding-right: 5px;padding-left: 0;text-align: right;}
+#page_box{padding-left:10px;padding-right: 10px;height:90px;margin-top:10px;background: #f0f0f0;}
+.page{border:1px solid #ddd; }
+.page-msg{height:45px;font-size:16px;}
+.page-msg a{font-size:16px;color:#ea9093;}
+.page-msg-name{background: white;padding-left: 0;padding-right: 0px;text-align: center;line-height:41px;font-size:14px;}
+.page-msg_input{padding-left: 3px;padding-right: 0;text-align: left;}
+.page-but{text-align: center;margin:0 auto;margin-top:20px;padding-left: 0;padding-right: 0;border-radius:4px;}
 
-#index{width:300px;margin:0 auto;line-height:35px;padding-top:20px;}
-#index p{font-size: 14px;text-align: center;}
-#vo{color:red;}
- 
- 
- #logout_msg{width:300px;margin:0 auto;font-size:18px;text-align:center;color:red;padding-top:20px;}
- 
- 
- 
- 
- #login_title{ padding-top:30px;padding-bottom:10px;width:300px;margin:0 auto;border-bottom: 1px solid #ccc;}
-#login_title span{font-size:16px;color:#666;padding-bottom:10px;font-weight:bold;padding-left:10px;}
-#login{background:#fff;margin-bottom:20px;}
-.login-box{font-size:16px;text-align: center;margin:0 auto;margin-bottom: 10px;}
-.login-box tr{margin-bottom:20px;line-height:30px;}
-.login-but{margin-top:20px;text-align: center;margin:0 auto;margin-top:20px;}
-.submit input{width:255px;}
-input{margin-bottom: 10px;margin-top:10px;}
- 
- 
- #res_title{ padding-top:20px;padding-bottom:10px;width:350px;margin:0 auto;border-bottom: 1px solid #ccc;margin-bottom:10px;}
-#res_title span{font-size:16px;color:#666;padding-bottom:10px;font-weight:bold;padding-left:10px;}
-#res{background:#fff;margin-bottom:20px;}
-.res-box{font-size:16px;text-align: center;margin:0 auto;margin-bottom: 10px;}
-.res-box tr{margin-bottom:20px;line-height:30px;}
-.res-but{margin-top:20px;text-align: center;margin:0 auto;margin-top:20px;}
-.submit input{width:255px;}
-input{margin-bottom: 10px;margin-top:10px;}
- 
- 
- 
-#re_title{ padding-top:30px;padding-bottom:10px;width:300px;margin:0 auto;border-bottom: 1px solid #ccc;}
-#re_title span{font-size:16px;color:#666;padding-bottom:10px;font-weight:bold;padding-left:10px;}
-#re{background:#fff;margin-bottom:20px;}
-.re-box{font-size:16px;text-align: center;margin:0 auto;margin-bottom: 10px;}
-.re-box tr{margin-bottom:20px;line-height:30px;}
-.re-but{margin-top:20px;text-align: center;margin:0 auto;margin-top:20px;}
-.submit input{width:255px;}
-input{margin-bottom: 10px;margin-top:10px;}
- 
- 
-@media screen and (min-width: 1080px) {
-.gallery-cell{height: 600px;}
-}
-@media screen and (min-width: 640px) and ( max-width: 1080px ) {
-.gallery-cell{height: 500px;}
-}
-@media screen and (min-width: 751px) and ( max-width: 768px ) {
-.gallery-cell{height: 395px;}
-}
-@media screen and (min-width: 668px) and ( max-width: 750px ) {
-.gallery-cell{height: 385px;}
-}
-@media screen and (min-width: 641px) and ( max-width: 667px ) {
-.gallery-cell{height: 340px;}
-}
-@media screen and (min-width: 480px) and ( max-width: 640px ){
-.gallery-cell{height: 244px;}
-}
-@media screen and (min-width: 320px) and ( max-width: 479px ) {
-.gallery-cell{height: 160px;}
-}
-@media screen and (min-width: 1px) and ( max-width: 319px ) {
-.gallery-cell{height: 120px;}
-}
+.nav{background: none;}
+.footer_nav{background: white;border-top:1px solid #ddd;z-index: 10000;}
+.footer_nav_name{text-align: center;font-size: 12px;line-height: 30px;padding-top:7px;padding-left:5px;padding-right:5px;}
+.footer_nav_name span{display: block;}
+.footer_nav_name a{color:#666;}
 
-@media screen and (min-width: 1201px) {
-.goods_box_img { height:250px;}
-}
-@media screen and (min-width: 1081px) and ( max-width: 1200px ) {
-.goods_box_img { height:215px;}
-}
-@media screen and (min-width: 992px) and ( max-width: 1080px ) {
-.goods_box_img { height:210px;}
-}
-@media screen and (min-width: 901px) and ( max-width: 991px ) {
-.goods_box_img { height:220px;}
-}
-@media screen and (min-width: 768px) and ( max-width: 900px ) {
-.goods_box_img { height:220px;}
-}
-@media screen and (min-width: 701px) and ( max-width: 767px ) {
-.goods_box_img { height:330px;}
-}
-@media screen and (min-width: 641px) and ( max-width: 700px ) {
-.goods_box_img { height:250px;}
-}
-@media screen and (min-width: 601px) and ( max-width: 640px ){
-.goods_box_img { height:240px;}
-}
-@media screen and (min-width: 481px) and ( max-width: 600px ){
-.goods_box_img { height:200px;}
-}
-@media screen and (min-width: 451px) and ( max-width: 480px ) {
-.goods_box_img { height:190px;}
-}
-@media screen and (min-width: 381px) and ( max-width: 450px ) {
-.goods_box_img { height:150px;}
-}
-@media screen and (min-width: 301px) and ( max-width: 380px ) {
-.goods_box_img { height:115px;}
-}
-@media screen and (min-width: 1px) and ( max-width: 300px ) {
-.goods_box_img { height:100px;}
-}
+.user_msg{background: white;height:45px;line-height: 45px;font-size: 14px;margin-top:10px;padding-left: 0;padding-right: 0;overflow: hidden;width:100%;}
+.msg_name{padding-left:15px;padding-right:0;}
 
-.gallery-cell {
-		  width: 100%;
-		}
-.gallery-cell img { width:100%;}
-.gallery-cell p { text-align: center; font-size: 1.5em; margin:0px;}
- 
- #tool_bar { background:url("/tpl/Wap/default/common/Index/xq1/toolbar_bg.png"); border-top:1px solid #ad0e1a; box-shadow:0px 2px 10px 0px rgba(0,0,0,.3); z-index:99; position:relative;}
- #nav_bar { padding: 10px 0px; background-color:#FFF; border-bottom:2px solid #666; box-shadow:0px 2px 10px 0px rgba(0,0,0,.3); z-index:98; position:relative;}
- #copyright { border-top:1px solid #EAEAEA; line-height:30px;}
- 
- .tool_bar_icon { display:inline-block;}
- .menu-cell a{font-size:16px;color:red;}
- .menu-cells .menu-cell a{padding-rght:10px;}
-/*.userHTML { margin-bottom:20px; }
-.userHTML img { width:100%;}
+#home_page a{font-size:14px;}
 
-.goods_box { margin-bottom:20px; }
-.goods_box a { display:block; background-color:#FFF; box-shadow:2px 2px 10px 0px rgba(0,0,0,0.1);}
-.goods_box_img { overflow:hidden;}
-.goods_box_title, .goods_box_price { height:35px; line-height:25px; font-size:14px; overflow:hidden; background-color:#FFF; padding:0px 10px;}
-.goods_box_title { padding-top: 10px; color:#000;}
-.goods_box_price { padding-bottom:10px; text-align:center; color:#d11725;}
-.goods_box_price span { display:inline-block; margin-left:10px; font-size:8px; text-decoration:line-through; color:#666;}
-.goods_box img { width:100%;}
-
-
-
-.menu-cell a { color:#666; font-weight:bold;}
-.index a { color:#d11725;}
-
-
-.menu_table p { margin:0px;}
-
-.cmenu-gallery-cell { width:9999px;}
- */
- </style>
- 
+</style>
 </head>
 <body>
-
-{ZF:$test}
-<div id="tool_bar">
-	<div class="container">
-	    <div class="row" style=" color:#FFF; line-height: 50px;">
-             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		         <div style="float:left;">
-
-		              <div class="tool_bar_icon"><!-- <img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_menu.png"> --></div>&nbsp;&nbsp;
-		              <img style="height:32px; display:inline;cursor:pointer;" class="img-responsive" alt="我的小区" src="{ZF::STATICS}/logo-xiaoqu.png" onclick="location.href='<empty name="community_token">{ZF::U('Wap/Index/index',array('token'=>$_GET['token']))}<else/>{ZF::U('Wap/Index/index',array('token'=>$community_token))}</empty>';">
-		              
-
-		         </div>
-		         <div style="float:right;">
-		              <div class="tool_bar_icon"><a style="color:#FFF;" href="{ZF::U('Wap/Product/cart',array('token'=>$_GET['token']))}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_cart.png"></a></div>&nbsp;&nbsp;
-		              <div class="tool_bar_icon"><a style="color:#FFF;" href="{ZF::U('Wap/Product/my',array('token'=>$_GET['token']))}"><img alt="我的小区" src="/tpl/Wap/default/common/Index/xq1/icon_my.png"></a></div>
-		         </div>
-	         </div>
-	    </div>
-	</div>
-</div>
-
-<div id="nav_bar">
-
-	<div class="container" style="font-size:1.2em;">
-	
-         <table style="width:100%;">
-               <tr>
-                   <!-- td style="width:60px;"><span class="menu-cell index"><a href="{ZF::U('Index/index')}">首页</a></span></td--> 
-                   <td>
-<div id="menu-gallery">
-			     <div class="menu-cells">
-            
-                <span class="menu-cell">
-					<div class="menu-cells"> 
-		                <span class="menu-cell">
-		                        <a href="{ZF::U('Wap/Index/index',array('token'=>$_GET['token']))}" style="padding-right:20px;color:#333;">返回微站</a>
-		                        <a href="{ZF::U('Wap/Product/cats',array('token'=>$_GET['token']))}" style="padding-right:20px;color:#333;">返回微商城</a>
-		                        
-		                        <php>
-		                        	$session = session('people');
-		                        	if (empty($session)) {
-		                        </php>
-			                        
-				                        <a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token']))}<else/>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>" style="padding-right:20px;color:#333;">登录</a>
-										<a href="<empty name='Think.get.re'>{ZF::U('People/register',array('token'=>$_GET['token']))}<else/>{ZF::U('People/register',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>" style="padding-right:20px;color:#333;">注册</a>
-									
-								<php>
-									}else{
-								</php>
-								
-				                        <a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token']))}<else/>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>" style="padding-right:20px;color:#333;">个人中心</a>
-										<a href="<empty name='Think.get.re'>{ZF::U('People/logout',array('token'=>$_GET['token']))}<else/>{ZF::U('People/logout',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re'])))}</empty>" style="padding-right:20px;color:#333;">退出</a>
-
-								<php>
-									}
-								</php>
-								
-		                </span> 
-		            </div>
-                </span>
-            </div>
-            <div class="menu-cells"></div>
-
-</div>
-                   </td>
-               </tr>
-         </table>
-
-	</div>
-
-</div>
-<script type="text/javascript">
-$('#menu-gallery').flickity({
-	freeScroll: true,
-    contain: true,
-    // disable previous & next buttons and dots
-    prevNextButtons: false,
-    pageDots: false,
-    cellAlign: 'left',
-	});
-</script>

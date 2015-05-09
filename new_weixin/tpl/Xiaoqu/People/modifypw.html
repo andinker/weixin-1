@@ -1,8 +1,52 @@
 <php>$PageTile = '修改密码';</php>
 <include file="Public:header"/>
+<div class="container"  id="page_name" style="padding:0;">
+	<span class="col-xs-12 page_title">修改密码</span>
+</div>
+
+<php> if (IS_POST){ </php>
+
+	<div style="font-size:16px;margin-top:20px;text-align: center;color:<if condition="$status eq true">green<else/>red</if>;">{ZF:$error}</div>
+	
+<php> }</php>
 
 
+<php> if ( IS_POST && ($status == true)){ </php>
+	<div style="margin-top:20px;text-align: center;font-size:16px;">
+	            你已经成功修改了密码！
+	</div>
+<php>}else{</php>
 
+<div class="col-xs-12" style="padding:10px 0 10px 0 ;color:red;text-align:center;font-size:14px;">{ZF:$error}</div>
+<form method="post"> 
+	<div class="container" id="page_box">
+		<div class="page">
+			<div class="page-msg">
+				<div class="col-xs-3 page-msg-name">旧密码</div>
+				<div class="col-xs-9 page-msg_input"><input type="text" name="oldpw" placeholder="请输入原密码" style="border:none;width:100%;height: 42px;"></div>
+			</div>
+			<div class="page-msg">
+				<div class="col-xs-3 page-msg-name">新密码</div>
+				<div class="col-xs-9 page-msg_input"><input type="text" name="newpw" placeholder="请输入新密码" style="border:none;width:100%;height: 42px;"></div>
+			</div>
+			<div class="page-msg">
+				<div class="col-xs-3 page-msg-name">确认新密码</div>
+				<div class="col-xs-9 page-msg_input"><input type="text" name="newpw2" placeholder="请确认新密码" style="border:none;width:100%;height: 42px;"></div>
+			</div>
+		</div>
+		<div class="col-xs-12 page-but">
+			<input type="submit" value="修改" style="background:#f95a60;/*background-image: url(/tpl/Wap/default/common/Index/xq1/toolbar_bg.png);background-repeat:repeat-x;*/width:100%;border:0;box-shadow:0px 1px 1px 0px;font-size:20px;color:white;height:40px;border-radius:4px;" >
+		</div>
+	</div>
+</form>
+<php>}</php>
+<div class="col-xs-12" style="position:fixed;bottom:30px;padding:10px 0 10px 0 ;color:black;text-align:center;font-size:14px;z-index: -10">
+	<a href="{ZF::U('Wap/Index/index',array('token'=>$_GET['token']))}" style="padding-right:10px;">返回微站</a>|
+	<a href="{ZF::U('Wap/Product/cats',array('token'=>$_GET['token']))}" style="padding-left:10px;padding-right:10px;">返回微商城</a>|
+	<a style="padding-left: 10px;" href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token']))}<else/>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">去个人中心</a>
+</div>
+
+<!-- 
 <div class="container" id="message">
 
 
@@ -50,5 +94,5 @@
 		</div>
 
 </div>
-
-<include file="Public:footer"/>
+ -->
+<!-- <include file="Public:footer"/> -->

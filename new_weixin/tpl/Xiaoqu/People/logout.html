@@ -4,13 +4,19 @@
 
 
 
-<div class="container"  id="login">
-	<div id="logout_msg">
-		<span>你已经成功退出登录了！</span>
+<div class="container"  id="page">
+	<div id="logout_msg" style="text-align: center;margin-top:20px;">
+		<span style="font-size:16px;">你已经成功退出登录了！</span>
 	</div>
+	<!--  
 	<div style="text-align:center;margin-bottom:20px;margin-top:20px;font-size:14px;">
-		你可以去<!-- a href="{ZF::U('Index/index')}">首页</a--> 或者 <a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token']))}<else/>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">重新登录</a>
+		你可以去<a href="{ZF::U('Index/index')}">首页</a> 或者 <a href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token']))}<else/>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">重新登录</a>
 	</div>
+	-->
 </div>
-
-<include file="Public:footer"/>
+<div class="col-xs-12" style="text-align:center;font-size:14px;margin-top:20px;">
+	<a href="{ZF::U('Wap/Index/index',array('token'=>$_GET['token']))}" style="padding-right:10px;">返回微站</a>|
+	<a href="{ZF::U('Wap/Product/cats',array('token'=>$_GET['token']))}" style="padding-left:10px;padding-right:10px;">返回微商城</a>|
+	<a style="padding-left:10px;" href=" <empty name='Think.get.re'>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token']))}<else/>{ZF::U('Xiaoqu/People/login',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">重新登录</a>
+</div>
+<!--  <include file="Public:footer"/>-->
