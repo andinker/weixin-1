@@ -537,9 +537,24 @@ class ProductAction extends UserAction{
 			$this->assign('products', $list);
 			$this->assign('totalFee',$totalFee);
 			$this->assign('totalCount',$totalCount);
+			$this->assign('totalMailprice',$data[2]);
 			$this->display();
 		}
 	}
+	
+	public function modify_order_price(){
+		
+		$db = M('Product_cart');
+		
+		$rs = $db->where(array('id'=>intval($_GET['id']),
+							   'token'=>$this->token,
+				               'paid'=>0)
+							)->setField('price',floatval($_GET['price']));
+		
+		echo floatval($_GET['price']);exit();
+	}
+	
+	
 	/**
 	 * 计算一次购物的总的价格与数量
 	 * @param array $carts
@@ -614,6 +629,25 @@ class ProductAction extends UserAction{
 			$row['colorTitle'] =  isset($catlist[$row['catid']]['color']) ? $catlist[$row['catid']]['color'] : '';
 			$list[] = $row;
 		}
+
+		
+		// 改为按商品件数来计算累加运费
+		// 把582行处的“取最大邮费”改为累加邮费
+		
+		$mailPrice = 0;
+		foreach ($data as $k=>$v){
+			$the_p = null;
+			foreach ($list as $tmp_p){
+				if ($tmp_p['id'] == $k){
+					$the_p = $tmp_p;
+				}
+			}
+			$mailPrice = $mailPrice+($the_p['mailprice']*$v['total']);
+		}
+		
+		
+		//print_r(array($list, $data, $mailPrice));
+		
 		return array($list, $data, $mailPrice);
 		die;
 		if (empty($carts)) {
@@ -734,6 +768,8 @@ class ProductAction extends UserAction{
 				$list[] = $row;
 			}
 		}
+		
+		
 		return array($list, $data, $mailPrice);
 	}
 	public function deleteOrder(){

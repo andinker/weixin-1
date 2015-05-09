@@ -162,7 +162,24 @@ function is_alipay(){
 <div class="m-cart-toal m-checkout-toal">
 <p id="price_total" class="check">商品总数：<b>{ZF:$totalCount}</b>　件<br>
 商品原总价：<b>{ZF:$totalFee}</b>　元<br>
-运费：<b>{ZF:$mailprice}</b>　元<br>
+运费：
+<if condition="$totalFee egt $setting['price'] AND $setting['price'] egt 0">
+    <php>$mailprice=0;</php>
+</if>
+
+<b>{ZF:$mailprice}</b>　元
+<if condition="$totalFee egt $setting['price'] AND $setting['price'] egt 0">
+   <if condition="$setting['price'] eq 0">
+   	 (全场免邮费)
+   <else/>
+   	 （满 {ZF:$setting['price']}元 免运费）
+   </if>
+<else/>
+
+</if>
+<br>
+
+
 <!-- 优惠金额：0元<br> -->
 您共需支付：<b id="totalmoney"><php>{echo ($totalFee + $mailprice);}</php></b>　元</p>
 <if condition="($setting['score'] gt 0) OR ($fans['total_score'] gt 0)">

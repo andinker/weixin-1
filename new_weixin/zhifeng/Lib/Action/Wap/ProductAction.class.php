@@ -357,6 +357,8 @@ class ProductAction extends WapAction{
 	public function getCat($carts = '')
 	{
 		$carts = empty($carts) ? $this->_getCart() : $carts;
+		
+		
 		//邮费
 		$mailPrice = 0;
 		//商品的IDS
@@ -369,11 +371,16 @@ class ProductAction extends WapAction{
 		}
 		
 		$productdata = $this->product_model->where(array('id'=> array('in', $pids)))->select();
+
+		
 		foreach ($productdata as $p) {
 			if (!in_array($p['catid'], $cartIds)) {
 				$cartIds[] = $p['catid'];
 			}
+			
 			$mailPrice = max($mailPrice, $p['mailprice']);
+			
+			
 			$productList[$p['id']] = $p;
 		}
 		//商品规格参数值
@@ -430,8 +437,27 @@ class ProductAction extends WapAction{
 			$list[] = $row;
 		}
 		if ($obj = M('Product_setting')->where(array('token' => $this->token))->find()) {
-			if ($totalprice >= $obj['price']) $mailPrice = 0;
+			if ($obj['price'] >= 0){
+				if ($totalprice >= $obj['price']) $mailPrice = 0;
+			}
 		}
+		
+		// 改为按商品件数来计算累加运费
+		// 把381行处的“取最大邮费”改为累加邮费
+		
+		$mailPrice = 0;
+		foreach ($data as $k=>$v){
+			$the_p = null;
+			foreach ($list as $tmp_p){
+				if ($tmp_p['id'] == $k){
+					$the_p = $tmp_p;
+				}
+			}
+			$mailPrice = $mailPrice+($the_p['mailprice']*$v['total']);
+		}
+		
+		//print_r(array($list, $data, $mailPrice));
+		
 		return array($list, $data, $mailPrice);
 	}
 	
@@ -506,6 +532,7 @@ class ProductAction extends WapAction{
 		if (empty($totalCount)) {
 			$this->error('没有购买商品!', U('Product/cart', array('token' => $this->token, 'wecha_id' => $this->wecha_id)));
 		}
+		
 		$list = $data[0];
 		$this->assign('products', $list);
 		$this->assign('totalFee', $totalFee);

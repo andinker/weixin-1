@@ -87,8 +87,49 @@ items : [
 
 
        <tr>
-        <th>免邮设置：</th> 
-        <td><input type="text" name="price" value="{ZF:$setting.price}" class="px"/> 元免邮 (注：写0表示不免邮)</td> 
+        <th>免邮费设置：</th> 
+        <td><input type="hidden" name="price" id="price_hidden" value="{ZF:$setting.price}" class="px"/>
+	           	<input type="radio" name="price_choose" class="price_choose" value="0" id="price_choose_1"<if condition="$setting['price'] eq 0"> checked="checked"</if>><label for="price_choose_1">所有订单免邮费</label><br>
+	            <input type="radio" name="price_choose" class="price_choose" value="-1" id="price_choose_2"<if condition="$setting['price'] lt 0"> checked="checked"</if>><label for="price_choose_2">所有订单不免邮费</label><br>
+	            <input type="radio" name="price_choose" class="price_choose" value="{ZF:$setting.price}" id="price_choose_3"<if condition="$setting['price'] gt 0"> checked="checked"</if>><label for="price_choose_3">订单满 <input type="text" name="price_edit" id="price_edit" value="{ZF:$setting.price}" style=" width:35px; height:10px; text-align:center;" class="px"/> 元免邮费</label>
+
+            
+            
+            <script type="text/javascript">
+            
+            	$(".price_choose").bind('change',function(){
+            		$("#price_hidden").val(this.value);
+            	});
+            	
+            	$("#price_edit").bind('focus',function(){
+            		$("#price_choose_1").attr('checked',false);
+            		$("#price_choose_2").attr('checked',false);
+            		$("#price_choose_3").attr('checked',true);
+            		$("#price_hidden").val($("#price_choose_3").val());
+            		
+            	});
+            	
+            	$("#price_edit").bind('keyup',function(){
+            		var value = parseFloat(this.value);
+            		
+            		if (isNaN(value)){
+            			if (this.value == ""){
+            				value = 0;
+            			}else{
+            				value = 0;
+            				this.value = 0;
+            			}
+            		}
+            		
+            		$("#price_choose_3").val(value);
+            		$("#price_hidden").val(value);
+            	});
+            
+            </script>
+            
+            
+            
+        </td> 
        </tr>
        
        <tr>
