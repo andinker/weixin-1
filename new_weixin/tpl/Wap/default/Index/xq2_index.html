@@ -22,7 +22,7 @@ a:hover{text-decoration: none;}
 body { font-family:"微软雅黑"; font-size:1em;background:#f8f8f8;}
 li{list-style:none;}
 .container{padding:0;max-width: 800px;}
-.all{max-width:800px;min-width:360px; margin:0 auto;padding:0;}
+.all{max-width:800px;/*min-width:360px;*/ margin:0 auto;padding:0;}
 
 @font-face{font-family:'FontAwesome';src:url('fontawesome-webfont.eot?v=3.2.1');src:url('fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'),url('fontawesome-webfont.woff?v=3.2.1') format('woff'),url('fontawesome-webfont.ttf?v=3.2.1') format('truetype'),url('fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');font-weight:normal;font-style:normal}
 [class^="icon-"],[class*=" icon-"]{font-family:FontAwesome;font-weight:normal;font-style:normal;text-decoration:inherit;-webkit-font-smoothing:antialiased;*margin-right:.3em}
@@ -212,7 +212,7 @@ a .icon-rotate-90:before,a .icon-rotate-180:before,a .icon-rotate-270:before,a .
  
  //.nav_search{background: #fff;}
  
- .tool_bar_icon a{color:white;font-size: 26px;line-height: 50px;}
+ .tool_bar_icon a{color:white;font-size: 26px;line-height: 45px;}
  
  </style>
  
@@ -282,7 +282,7 @@ window.ICON = function () {
 	    </div>
 </div>
  -->
-
+ <!--  
 <div id="tool_bar">
 	    <div style=" line-height: 45px;height:50px;overflow: hidden;box-shadow:0px 2px 10px 0px rgba(0,0,0,.3);">
              <div class="container" style="background:#80bd0c;">
@@ -297,6 +297,23 @@ window.ICON = function () {
 	         </div>
 	    </div>
 </div>
+-->
+
+<div id="tool_bar">
+	    <div style=" line-height: 45px;height:50px;overflow: hidden;box-shadow:0px 2px 10px 0px rgba(0,0,0,.3);">
+             <div class="container" style="background:#80bd0c;">
+		         <div style="float:left;">
+		             <img style="/*height:32px; */line-height:55px;display:inline;padding-left: 10px;" class="img-responsive" alt="我的小区" src="/tpl/Wap/default/common/Index/xq2/logo.jpg">&nbsp;&nbsp;&nbsp;&nbsp;
+		             <!-- <span class="glyphicon glyphicon-map-marker" style="font-size:16px; line-height:14px;color:white;top:5px;"></span>&nbsp;&nbsp;<span style="font-size:14px; position:relative; top:2px;color:white;">{ZF::$company['name']}</span>&nbsp;&nbsp;  -->
+		         </div>
+		         <div style="float:right;color:#fff;"> 
+		              <div class="tool_bar_icon"><a  href="{ZF::U('Wap/Product/cart')}&token={ZF:$token}"><img src="/tpl/Wap/default/common/Index/xq2/cart.jpg"></a></div>
+		              <div class="tool_bar_icon" style="padding-right:10px;"><a  href="{ZF::U('Wap/Product/my')}&token={ZF:$token}"><img src="/tpl/Wap/default/common/Index/xq2/my.jpg"></a></div>
+		         </div>
+	         </div>
+	    </div>
+</div>
+
 <div class="nav_bott" style="height:55px;background:#f8f8f8;">
 	<div style="float:left;width: 5%;background:#f8f8f8;">
 		<div class="tool_bar_icon" style="padding-left: 5px;"> <a href="{ZF::U('Wap/Index/index_classify')}&token={ZF:$token}" style="color:#80bd0c;line-height: 55px;"><span class="glyphicon glyphicon-menu-hamburger"></span></a></div>
@@ -397,6 +414,7 @@ $('.nav_bottom').flickity({
 </div>
 
 <div class="product">
+	<notempty name="indexContent.content_goodslist1">
 	<div class=" pro_name"><span class="glyphicon glyphicon-list-alt" style="padding-left:5px;padding-right:5px;"></span>精彩推荐</div>
      <div class="showgoods" style="background:white;">
     	 <volist name="indexContent.content_goodslist1" id="goods_item">
@@ -409,6 +427,7 @@ $('.nav_bottom').flickity({
 	          </div>
      	</volist>
      </div>
+     </notempty>
 </div>
 
 <!-- 菜单开始 -->
