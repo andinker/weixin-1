@@ -436,11 +436,7 @@ class ProductAction extends WapAction{
 			$row['colorTitle'] =  isset($catlist[$row['catid']]['color']) ? $catlist[$row['catid']]['color'] : '';
 			$list[] = $row;
 		}
-		if ($obj = M('Product_setting')->where(array('token' => $this->token))->find()) {
-			if ($obj['price'] >= 0){
-				if ($totalprice >= $obj['price']) $mailPrice = 0;
-			}
-		}
+
 		
 		// 改为按商品件数来计算累加运费
 		// 把381行处的“取最大邮费”改为累加邮费
@@ -455,6 +451,15 @@ class ProductAction extends WapAction{
 			}
 			$mailPrice = $mailPrice+($the_p['mailprice']*$v['total']);
 		}
+		 
+		
+		// 免运费处理
+		if ($obj = M('Product_setting')->where(array('token' => $this->token))->find()) {
+			if ($obj['price'] >= 0){
+				if ($totalprice >= $obj['price']) $mailPrice = 0;
+			}
+		}
+		
 		
 		//print_r(array($list, $data, $mailPrice));
 		

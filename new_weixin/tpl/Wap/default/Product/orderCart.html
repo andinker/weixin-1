@@ -163,10 +163,6 @@ function is_alipay(){
 <p id="price_total" class="check">商品总数：<b>{ZF:$totalCount}</b>　件<br>
 商品原总价：<b>{ZF:$totalFee}</b>　元<br>
 运费：
-<if condition="$totalFee egt $setting['price'] AND $setting['price'] egt 0">
-    <php>$mailprice=0;</php>
-</if>
-
 <b>{ZF:$mailprice}</b>　元
 <if condition="$totalFee egt $setting['price'] AND $setting['price'] egt 0">
    <if condition="$setting['price'] eq 0">

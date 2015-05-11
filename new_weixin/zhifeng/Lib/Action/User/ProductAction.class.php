@@ -645,6 +645,12 @@ class ProductAction extends UserAction{
 			$mailPrice = $mailPrice+($the_p['mailprice']*$v['total']);
 		}
 		
+		// 免运费处理
+		if ($obj = M('Product_setting')->where(array('token' => $this->token))->find()) {
+			if ($obj['price'] >= 0){
+				if ($totalprice >= $obj['price']) $mailPrice = 0;
+			}
+		}
 		
 		//print_r(array($list, $data, $mailPrice));
 		
