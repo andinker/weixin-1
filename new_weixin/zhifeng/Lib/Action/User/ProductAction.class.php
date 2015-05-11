@@ -630,7 +630,7 @@ class ProductAction extends UserAction{
 			$list[] = $row;
 		}
 
-		
+		 
 		// 改为按商品件数来计算累加运费
 		// 把582行处的“取最大邮费”改为累加邮费
 		
