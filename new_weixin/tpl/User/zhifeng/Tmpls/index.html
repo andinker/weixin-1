@@ -25,7 +25,7 @@ img{cursor:pointer;}
 
 <div class="content"  >
     <div class="cLineB">
-        <h4>模板管理 <a href="{ZF::U('Tmpls/clearScache',array('token'=>info.token))}">清理模板缓存</a>()<span class="FAQ">选择适合您的模版风格，手机输入“首页”测试效果。</span></h4>
+        <h4>模板管理 1<a href="{ZF::U('Tmpls/clearScache',array('token'=>info.token))}">清理模板缓存</a>()<span class="FAQ">选择适合您的模版风格，手机输入“首页”测试效果。</span></h4>
     </div>
 
     <div class="msgWrap form">
@@ -54,6 +54,7 @@ img{cursor:pointer;}
                     <li class="filter" data-filter="slip"><p>支持横向滑动</p><i></i></li>
                     <li class="filter" data-filter="lis"><p>列表风格</p><i></i></li>
 					<li class="filter" data-filter="oldtpl"><p>智风老模板</p><i></i></li>
+					<li class="filter" data-filter="myxq"><p>小区模板</p><i></i></li>
                   </ul>
 				 <h1 style="width:175px;margin-right:5px;position:relative;"><i class="icon-new"></i>按行业筛选：(即将发布)</h1>
 				   <!--<ul class="filterBtn">
@@ -69,13 +70,18 @@ img{cursor:pointer;}
 				<div class="clr"></div>
 					<ul class="cateradio">
 					<volist name="indextpl" id="tpl">
-					<li class='{ZF:$tpl.attr}  <eq name="info.tpltypeid" value="$tpl.tplid"> active </eq> '>
-                            <label>
-                                <img src="{ZF::RES}/tmplimg/index/{ZF:$tpl.imgurl}" onclick="javascript:alert('已选择模板{ZF:$tpl.tplid}')" />
-                                <input class="radio" type="radio" views="{ZF:$tpl.views}" name="optype" value="{ZF:$tpl.tplid}" <eq name="info.tpltypeid" value="$tpl.tplid">checked</eq> /> {ZF:$tpl.name}
-                            </label>
-                             <notempty name="tpl.info"><p class="mbtip">{ZF:$tpl.info}</p></notempty>
-                        </li>
+						<eq name="info.tpltypeid" value="$tpl.tplid">  
+							<li class='{ZF:$tpl.attr}  active '>
+						</eq>
+	                    <neq name="info.tpltypeid" value="$tpl.tplid"> 
+	                     	<li class='{ZF:$tpl.attr}'>
+	                    </neq>
+	                            <label>
+	                                <img src="{ZF::RES}/tmplimg/index/{ZF:$tpl.imgurl}" onclick="javascript:alert('已选择模板{ZF:$tpl.tplid}')" />
+	                                <input class="radio" type="radio" views="{ZF:$tpl.views}" name="optype" value="{ZF:$tpl.tplid}" <eq name="info.tpltypeid" value="$tpl.tplid">checked</eq> /> {ZF:$tpl.name}
+	                            </label>
+	                             <notempty name="tpl.info"><p class="mbtip">{ZF:$tpl.info}</p></notempty>
+	                        </li>
                     </volist>				
                     </ul>
                 </fieldset>
@@ -85,13 +91,18 @@ img{cursor:pointer;}
 				<p class="mbbh" style="line-height:1.5em; color:red; padding:5px 10px;">说明：此选项仅在分类未单独设置详情模板时，才会生效！</p>
 				<ul class="cateradio2">				
 				<volist name="liststpl" id="listtpl">
-				<li class='{ZF:$listtpl.attr} <eq name="info.tpllistid" value="$listtpl.tplid"> active </eq> '>
-					<label>
-					<img src="{ZF::RES}/tmplimg/list/{ZF:$listtpl.imgurl}" onclick="javascript:alert('已选择列表{ZF:$listtpl.tplid}')" />
-					<input class="radio2" type="radio" views="{ZF:$listtpl.views}" name="optype2" value="{ZF:$listtpl.tplid}" <eq name="info.tpllistid" value="$listtpl.tplid">checked</eq> /> {ZF:$listtpl.name}
-					</label>
-					 <notempty name="listtpl.info"><p class="mbtip">{ZF:$listtpl.info}</p></notempty>
-				</li>
+					<eq name="info.tpllistid" value="$listtpl.tplid"> 
+						<li class='{ZF:$listtpl.attr}  active '>
+					</eq>
+	                <neq name="info.tpltypeid" value="$tpl.tplid"> 
+	                     <li class='{ZF:$listtpl.attr}'>
+	                </neq>
+							<label>
+							<img src="{ZF::RES}/tmplimg/list/{ZF:$listtpl.imgurl}" onclick="javascript:alert('已选择列表{ZF:$listtpl.tplid}')" />
+							<input class="radio2" type="radio" views="{ZF:$listtpl.views}" name="optype2" value="{ZF:$listtpl.tplid}" <eq name="info.tpllistid" value="$listtpl.tplid">checked</eq> /> {ZF:$listtpl.name}
+							</label>
+							 <notempty name="listtpl.info"><p class="mbtip">{ZF:$listtpl.info}</p></notempty>
+						</li>
 				</volist>
 				</ul>
                 </fieldset>
@@ -114,12 +125,17 @@ img{cursor:pointer;}
 			<div class="clr"></div>
 			<ul class="cateradio3">
 			<volist name="contenttpl" id="contpl">
-				<li class='{ZF:$contpl.attr} <eq name="info.tplcontentid" value="$contpl.tplid"> active </eq> '>
-					<label><img src="{ZF::RES}/tmplimg/detail/{ZF:$contpl.imgurl}" onclick="javascript:alert('已选择详情模板{ZF:$contpl.tplid}')" />
-					<input class="radio3" type="radio" views="{ZF:$contpl.views}"  name="optype3" value="{ZF:$contpl.tplid}" <eq name="info.tplcontentid" value="$contpl.tplid">checked</eq>/>{ZF:$contpl.name}
-					</label>
-					 <notempty name="contpl.info"><p class="mbtip">{ZF:$contpl.info}</p></notempty>
-				</li>
+					<eq name="info.tplcontentid" value="$contpl.tplid"> 
+						<li class='{ZF:$contpl.attr}  active '>
+					</eq>
+	                <neq name="info.tpltypeid" value="$tpl.tplid"> 
+	                     <li class='{ZF:$contpl.attr}'>
+	                </neq>
+						<label><img src="{ZF::RES}/tmplimg/detail/{ZF:$contpl.imgurl}" onclick="javascript:alert('已选择详情模板{ZF:$contpl.tplid}')" />
+						<input class="radio3" type="radio" views="{ZF:$contpl.views}"  name="optype3" value="{ZF:$contpl.tplid}" <eq name="info.tplcontentid" value="$contpl.tplid">checked</eq>/>{ZF:$contpl.name}
+						</label>
+						 <notempty name="contpl.info"><p class="mbtip">{ZF:$contpl.info}</p></notempty>
+					</li>
 			</volist>
 			</ul>
 			</fieldset>
@@ -240,6 +256,9 @@ img{cursor:pointer;}
 					break;
 				case('oldtpl'):
 					jQuery("li.oldtpl").show('slow');
+					break;
+				case('myxq'):
+					jQuery("li.myxq").show('slow');
 					break;
 				case('dining'):
 					jQuery("li.dining").show('slow');
