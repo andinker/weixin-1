@@ -38,7 +38,7 @@ class PeopleAction extends XiaoquAction {
 		$this->token=$this->_get('token','trim');
 		//如果已经登录，跳到$_GET['re']或者个人中心
 		if ($this->is_logined()){
-			if (empty($_GET['re'])) $this->error('你已经登录！',U('home'));
+			if (empty($_GET['re'])) $this->redirect(U('home'));
 			else header('Location:'.$_GET['re'] ); 
 		}
 		
