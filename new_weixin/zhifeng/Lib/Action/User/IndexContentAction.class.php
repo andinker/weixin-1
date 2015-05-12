@@ -152,6 +152,43 @@ class IndexContentAction extends UserAction{
 	
 	
 	Public function selectgoods() {
+		
+		
+		// 检查当前公众号所属帐号的类型，是小区号还是商家号
+		
+		$isXQH = $this->user['account_type'] == 1 ? true : false ;
+		
+		
+		// 如果是商家号，就只能出现自家店铺的商品
+		if (!$isXQH){
+			$where['token'] = $this->token;
+		}
+		
+		
+		// 如果是小区号，则可以看到该小区范围的所有商家的商品
+		if ($isXQH){
+			// 查找小区号所属小区下所有帐号下的所有公众号的集合
+			$users = M('Users')->where(array('community_id'=>$this->user['community_id']))->select();
+
+			$userids = $this->user['id'];
+			
+			foreach ($users as $user){
+				$userids = $userids.','.$user['id'];
+			}
+
+			$wxusers = M('Wxuser')->where(array('uid'=>array('IN',$userids)))->select();
+
+			$tokens = '';
+			
+			foreach ($wxusers as $wxuser){
+				if ($tokens != '') $tokens = $tokens.',';
+				$tokens = $tokens.$wxuser['token'];
+			}
+			
+			// 查找这些公众号的商品，并按公众号排序
+			$where['token'] = array('IN',$tokens);
+		}
+		
 
 		$product_model=M('Product');
 		$where['dining']=0;
@@ -162,7 +199,7 @@ class IndexContentAction extends UserAction{
 			$Page->setConfig('theme','<span style="font-size:16px;">共 %totalRow% %header% %first% %prePage% %upPage% <span style="color:red;">%linkPage%</span> %downPage% %nextPage% %end% 第 %nowPage% 页/共 %totalPage% 页</span>');
 			$show       = $Page->show();
 			$list = $product_model->where($where)->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
-
+        
 			
 		foreach($list as $k=>$v){
 			$list[$k]['catname']=M('Product_cat')->where(array('id'=>$v['catid']))->getField('name');
