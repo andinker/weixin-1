@@ -1,7 +1,24 @@
 <php>$PageTile = '你已成功退出登录';</php>
 <include file="Public:header"/>
 
+<php>
+if (!empty($_GET['re'])){
+</php>
+<script type="text/javascript">
 
+function jump_to_re(){
+	   location.href = '{ZF:$_GET['re']}';
+	}
+	
+setTimeout('jump_to_re();',1000);
+</script>
+
+
+
+
+<php>
+}
+</php>
 
 
 <div class="container"  id="page">

@@ -51,7 +51,8 @@ class WapAction extends BaseAction{
 		
 		$people = session('people');
 		
-		if (empty($this->wecha_id) && !empty($people)){ // 如果经过上面的处理后仍然没有得到用户的openid，则再搞搞佢,为它生成一个虚拟的openid，作为url中的 wecha_id进行使用，这样应该没有问题吧……
+		if (empty($this->wecha_id) && !empty($people) && IS_GET){ // 如果经过上面的处理后仍然没有得到用户的openid，则再搞搞佢,为它生成一个虚拟的openid，作为url中的 wecha_id进行使用，这样应该没有问题吧……
+			
             //echo '正在组装wecha_id';
 			// 如果已经登录了，就直接生成wecha_id
 			if (!empty($people)){
@@ -70,7 +71,7 @@ class WapAction extends BaseAction{
 		}
 		
 		
-		if (empty($people) && !empty($_GET['wecha_id'])){ 
+		if (empty($people) && !empty($_GET['wecha_id']) && IS_GET){ 
 			//echo '正在消除wecha_id';
 			//如果没有登录，应该去掉&wecha_id=phone-xxxxxxxxxx
 			$pattern = '/&wecha_id=phone\-[0-9a-zA-Z]*/i';
@@ -341,5 +342,14 @@ class WapAction extends BaseAction{
 		curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 		$temp=curl_exec($ch);
 		return $temp;
+	}
+
+	protected function checked_login() { 
+		// 如果whcha_id为空，则引导用户登录
+		$people = session('people');
+		if (empty($_GET['wecha_id']) && empty($people)){
+			//echo '空的wecha_id'.$_GET['wecha_id'];
+			$this->redirect('Xiaoqu/People/login',array('token'=>$this->token,'re'=>urlencode($_SERVER['REQUEST_URI'])));
+		}
 	}
 }

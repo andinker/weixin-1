@@ -975,7 +975,7 @@ class ProductAction extends WapAction{
 	
 	function remove_html_tag($str){  //清除HTML代码、空格、回车换行符
 		//trim 去掉字串两端的空格
-		//strip_tags 删除HTML元素
+		//strip_tags 删除HTML元素 
 
 		$str = trim($str);
 		$str = @preg_replace('/<script[^>]*?>(.*?)<\/script>/si', '', $str);
@@ -988,15 +988,6 @@ class ProductAction extends WapAction{
 		$str = @ereg_replace(" ","",$str);
 		$str = @ereg_replace("&nbsp;","",$str);
 		return trim($str);
-	}
-	
-	private function checked_login() {
-		// 如果whcha_id为空，则引导用户登录 
-		$people = session('people');
-		if (empty($_GET['wecha_id']) && empty($people)){
-			//echo '空的wecha_id'.$_GET['wecha_id'];
-			$this->redirect('Xiaoqu/People/login',array('token'=>$this->token,'re'=>urlencode($_SERVER['REQUEST_URI'])));
-		}
 	}
 }
 

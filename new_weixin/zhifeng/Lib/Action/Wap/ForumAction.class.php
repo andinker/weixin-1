@@ -13,6 +13,7 @@ class ForumAction extends WapAction{
 	
 	public function __construct(){
 		parent::_initialize();
+		$this->checked_login();
 		$token = $this->_request('token');
 		$isopen = M('Forum_config')->field('isopen,bgurl')->where("token = '$token'")->find();
 		
@@ -45,7 +46,7 @@ class ForumAction extends WapAction{
 		else $this->catid = intval($_GET['catid']);
 		
 		$cats_db = M('Forum_cat');
-		$cats = $cats_db->where(array('parentid'=>$this->catid))->select();
+		$cats = $cats_db->where(array('token'=>$this->token,'parentid'=>$this->catid))->select();
 		
 		$c_cat = $cats_db->where(array('id'=>$this->catid))->find();
 		
@@ -57,7 +58,7 @@ class ForumAction extends WapAction{
 		$this->assign('pcat',$p_cat);
 		$this->assign('cats',$cats);
 		
-	}
+	} 
 	
 	private function getAllChildIds( $id ){
 		$ids = array();
@@ -147,7 +148,7 @@ class ForumAction extends WapAction{
 		$pageNum = $this->_post('pageNum','intval');
 		$pagetotal = ceil($count/10);
 		if($pageNum > $pagetotal){
-				exit;
+				exit; 
 		}
 		
 		$list2 = $forum->where( $where )->order('id DESC')->limit($Page->firstRow.','.$Page->listRows)->select();

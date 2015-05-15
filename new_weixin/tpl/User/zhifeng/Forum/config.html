@@ -28,6 +28,15 @@
 					<span class="red">微论坛 ， 微社区，社区 或者 论坛  —— 当用户输入该关键词时，将会触发此回复。</span></td>
 				</tr>
 				
+				
+				<tr>
+					<th width="120">访问地址：</th>
+					<td>
+					<a target="_blank" href="{ZF::U('Wap/Forum/index',array('token'=>$token))}">{ZF::U('Wap/Forum/index',array('token'=>$token))}</a>
+					</td>
+				</tr>
+				
+				
 				<tr>
 					<th width="120">讨论社区名字</th>
 					<td><input type="text" name="forumname" value="{ZF:$conf.forumname|default=$wxname.'官方粉丝社区'}" class="px" style="width:250px;"></td>

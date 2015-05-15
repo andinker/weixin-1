@@ -433,12 +433,65 @@ class IndexAction extends WapAction{
 		$lists=$img->where($where)->limit(5)->order('uptatetime')->select();
 		$lists=$this->convertLinks($lists);
 		
+		// 获取当前文章的所有评论
+		$comments = NULL;
+		if (!empty($id)){
+			$comments = M('Img_comment')->where(array('img_id'=>$id))->order('createtime desc')->select();
+		}		
+		
+	    // 获取评论者的名字
+	    foreach ($comments as $key=>$comment){
+	    	$rs = M('people')->where(array('id'=>$comment['uid']))->getField('name');
+	    	if (empty($rs)){
+	    		$comments[$key]['name'] = '游客';
+	    	}else{
+	    		$comments[$key]['name'] = $rs;
+	    	}
+	    }
+		
+	    $this->assign('comments',$comments);
+		
 		$this->assign('info',$sub);	//分类列表信息
 		$this->assign('lists',$lists);		//推荐文章
 		$this->assign('res',$res);			//内容详情;
 		$this->assign('tpl',$tpldata);				//微信帐号信息
 		$this->assign('copyright',$this->copyright);	//版权是否显示
 		$this->display($tpldata['tplcontentname']);
+		echo $tpldata['tplcontentname'];
+	}
+	
+	public function save_comment(){ 
+		
+		$this->checked_login();
+		
+		$comment_content = trim($_POST['comment_content']);
+		$people = session('people');
+		
+		
+		if (empty($comment_content)){
+			
+			$this->error('请先填写评论内容再发表！');
+		}else{
+			
+			$db = M('Img_comment');
+			
+			$data['img_id'] = intval($_POST['img_id']);
+			$data['uid'] = intval($people['id']);
+			$data['content'] = $comment_content;
+			
+			$rs = $db->add($data);
+			
+			if ($rs){
+				if (!empty($_GET['re'])){
+					$this->redirect($_GET['re']);
+				}else{
+					$this->success('评论成功！');
+				}
+			}else{
+				$this->error('发表评论失败！');
+			}
+		}
+		
 	}
 	
 	public function flash(){
