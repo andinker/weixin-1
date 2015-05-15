@@ -15,15 +15,9 @@ return array(
 	'HTML_CACHE_TIME'		=>   60,			//静态缓存有效期（秒）
 	'HTML_FILE_SUFFIX' 		=>'.html',			//静态缓存后缀 
 
-		'APP_DEBUG'=>true,
+	'APP_DEBUG'=>true,
+	'DB_FIELD_CACHE'=>false,
+	'TMPL_CACHE_ON'   => false,  // 默认开启模板编译缓存 false 的话每次都重新编译模板
+	'ACTION_CACHE_ON'  => false,  // 默认关闭Action 缓存
 		
-		'DB_FIELD_CACHE'=>false,
-		
-		'HTML_CACHE_ON'=>false,
-
-		'TMPL_CACHE_ON'   => false,  // 默认开启模板编译缓存 false 的话每次都重新编译模板
-		
-'ACTION_CACHE_ON'  => false,  // 默认关闭Action 缓存
-		
-'HTML_CACHE_ON'   => false,   // 默认关闭静态缓存
 );
