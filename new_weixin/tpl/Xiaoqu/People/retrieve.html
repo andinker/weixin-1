@@ -29,6 +29,12 @@
 	</div>
 </form>
 
+<div class="col-xs-12" style="position:fixed;bottom:30px;padding:10px 0 10px 0 ;color:black;text-align:center;font-size:14px;z-index: -10">
+	<a href="{ZF::U('Wap/Index/index',array('token'=>$_GET['token']))}" style="padding-right:10px;">返回微站</a>|
+	<a href="{ZF::U('Wap/Product/cats',array('token'=>$_GET['token']))}" style="padding-left:10px;padding-right:10px;">返回微商城</a>|
+	<a style="padding-left: 10px;" href="<empty name='Think.get.re'>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token']))}<else/>{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token'],'re'=>urlencode($_GET['re']) ))}</empty>">去个人中心</a>
+</div>
+
 <!-- 
 <div class="container">
 	<div id="re_title" style="width:auto;">
