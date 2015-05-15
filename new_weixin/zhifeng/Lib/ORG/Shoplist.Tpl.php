@@ -21,6 +21,16 @@
 			'attr'=>'',
 			'sort'=>2,
 		),
+			
+		array(
+			'tplid'=>3,
+			'name'=>'商城列表模板3',
+			'views'=>'list3_products',
+			'imgurl'=>'list_3.png',
+			'info'=>'添加了菜单的3D效果',
+			'attr'=>'',
+			'sort'=>3,
+		),
 	);
 	
 return $shoplisttpl;
