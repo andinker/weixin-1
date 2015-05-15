@@ -1,4 +1,33 @@
-<include file="Product:header"/>
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" /><meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="format-detection" content="telephone=no"/>
+<title>{ZF:$metaTitle}</title>
+<script src="{ZF::$staticFilePath}/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+
+<script src="{ZF::$staticFilePath}/js/jquery.lazyload.js" type="text/javascript"></script>
+<script src="{ZF::$staticFilePath}/js/notification.js" type="text/javascript"></script>
+<script src="{ZF::$staticFilePath}/js/swiper.min.js" type="text/javascript"></script>
+<script src="{ZF::$staticFilePath}/js/main.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="{ZF::$staticFilePath}/css/style_touch.css">
+</head>
+<script>
+$(document).ready(function(){
+$(".m-hd .cat").parent('div').click( function() {
+    var docH=$(document).height();
+  	$('.sub-menu-list').toggle();
+    $(".m-right-pop-bg2").addClass("on").css('min-height',docH);
+});
+$(".m-right-pop-bg2").click( function() {
+    $('.sub-menu-list').hide();
+   $(".m-right-pop-bg2").removeClass("on").removeAttr("style");
+});
+});
+</script>
 <style>
 #content{display:none;width:100%;overflow:hidden;position:absolute;top:0}#imgs{-webkit-transition-property:-webkit-transform;-webkit-transition-duration:0.5s;-webkit-transition-timing-function:ease-out;-webkit-transform:translate3d(0px,0px,0px);height:100%}#imgs li{float:left;text-align:center;height:100%;padding-top:65px}#imgs img{width:94%;-webkit-transform:translate3d(0px,0px,0px)}.bg{width:100%;top:0;left:0;background:#000;opacity:0.8;position:absolute;display:none}.close{display:none;position:absolute;z-index:10;right:3%;top:20px;color:#fff;cursor:pointer;background:#999;border-radius:3px;padding:5px 8px}.s_count{display:none;position:absolute;z-index:10;right:3%;top:25px;color:#fff;margin-right:60px}
 .infodetail img{
@@ -7,106 +36,183 @@
 .detail-info img{
 	width:100%;
 }
+
+body{font-family: '微软雅黑';}
+.focusPic img{width:100%;}
+.m-detail-mainout .focusPic .views img{max-height:100%;}
+.m-detail-mainout .focusPic{max-height: 320px;}
+.bottom_nav{position: fixed;height:50px;background: #eee;bottom:0;z-index: 100;width:100%;box-shadow:1px 1px 1px 1px;}
+.line{height:10px;}
+..m-hd a{border-left: none;border:1px solid #e2e2e2;}
+.m-hd{height:50px;border-bottom: none;background:#eee;display: inline-block;width:60px;}
+.m-hd div a.cart:after{width:100%;height: 100%;top:2px;left:0;color:black;background: url(/tpl/Wap/default/common/css/product/css/img/cart2.png) no-repeat;}
+.buynow{background:#f69555;color:#fff;font-size:1.4rem;padding:10px 20px;border-radius:5px;}
+.addcart{background:#ff5366;color:#fff;font-size:1.4rem;padding:10px 20px;border-radius:5px;}
+.m-detail-mainout .d-info .price{padding:10px 0;border:none;border-bottom: .1rem solid #eee;font-family: '微软雅黑';}
+.m-detail-mainout .d-info h1{padding:0;}
+.m-detail-mainout .d-info .i-row .t{width:auto;}
+.detailinfo .tabs{background: white;border-bottom: 3px solid #f8f8f8;}
+.m-detail-mainout .focusPic{margin-top:0;}
+.all{margin-bottom: 30px;}
+
+#top_div{ 
+    position:fixed; 
+    bottom:80px; 
+    right:0; 
+    display:none; 
+} 
+
 </style>
-<!--轮播--->
-<div class="focusPic">
-	<div class="views">
-		<if condition="$imageList">
-			<ul class="warp" id="fd">
-				<volist name="imageList" id="img">
-				<li class="li"><img src="{ZF:$img.image}"></li>
-				</volist>
-			</ul>
-		<else/>
-			<ul class="warp" id="fd">
-				<li class="li"><img src="{ZF:$product.logourl}"></li>
-			</ul>
-		</if>
-	</div>
-	<if condition="$imageList">
-		<ul class="tabs">
-			<volist name="imageList" id="img" key="i">
-			<li class="li">{ZF:$i}</li>
-			</volist>
+<body>
+<!--  -->
+<div class="all"  name="top">
+<div id="scnhtm5" class="m-body">
+	<div class="m-detail-mainout">
+		<!-- <div class="m-hd">
+		 <!-- <div><a href="javascript:history.go(-1);" class="back">返回</a></div>  -->
+	  	<!--<div><a href="{ZF::U('Wap/Product/cats',array('token'=>$_GET['token'], 'wecha_id' => $wecha_id))}" class="home">小区首页</a></div>
+		<div><a href="javascript:void(0);" class="cat">商品分类</a></div>
+		<div class="tit">{ZF:$metaTitle}</div>
+		<div><a href="{ZF::U('Product/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" class="uc">用户中心</a></div>
+		<div><a href="{ZF::U('Product/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" class="cart">购物车<i class="cart_com"><if condition="$totalProductCount neq 0" >{ZF:$totalProductCount}</if></i></a></div>
+		</div>
+		<ul class="sub-menu-list">
+		<li><a href="{ZF::U('Product/products',array('token' => $_GET['token'], 'catid' => 0, 'wecha_id' => $wecha_id))}">全部商品</a></li>
+		<li><a href="{ZF::U('Product/products',array('token' => $_GET['token'], 'catid' => $cat['parentid'], 'wecha_id' => $wecha_id))}">上级分类</a></li>
+		<volist name="cats" id="hostlist" key="i"> 
+		    <php>
+		     if ($hostlist['parentid'] == $catid){
+		    </php>
+		    <li><a href="{ZF::U('Product/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}">{ZF:$hostlist.name}</a></li>
+		    <php>
+		     } 
+		    </php>
+		</volist>
 		</ul>
-	<else/>
-		<ul class="tabs"><li>0</li></ul>
-	</if>
-</div>
+	 -->
+
+<!--轮播--->
+		<div class="focusPic">
+			<div class="views">
+				<if condition="$imageList">
+					<ul class="warp" id="fd">
+						<volist name="imageList" id="img">
+						<li class="li"><img src="{ZF:$img.image}"></li>
+						</volist>
+					</ul>
+				<else/>
+					<ul class="warp" id="fd">
+						<li class="li"><img src="{ZF:$product.logourl}"></li>
+					</ul>
+				</if>
+			</div>
+			<if condition="$imageList">
+				<ul class="tabs">
+					<volist name="imageList" id="img" key="i">
+					<li class="li">{ZF:$i}</li>
+					</volist>
+				</ul>
+			<else/>
+				<ul class="tabs"><li>0</li></ul>
+			</if>
+		</div>
 <script>
 var focusPic = new Swiper('.focusPic .views',{pagination: '.focusPic .tabs',autoplay:3000})
 </script>
 <!--轮播结束--->
-<div class="d-info">
-<form id="product_buy_form" name="product_buy_form" action="#" method="POST">
-<h1>{ZF:$product.name}</h1>
-<div class="price">
-<span class="okp">销售价：<em id="xsprice">￥{ZF:$product.price}</em></span>
-<span class="okp">会员价：<em id="vprice">￥<php>if ($product['vprice'] > 0) {echo $product['vprice'];} else {echo $product['price'];}</php></em></span>
-<span>市场价：<i>￥{ZF:$product.oprice}</i></span>
-</div>
-<div style="display:none;" class="price">促销：<font color="red">新春热卖~~~</font></div>
-<if condition="$colorData and $catData['color']">
-<div class="i-row">
-<div class="t">{ZF:$catData.color}：</div>
-<div class="c">
-	<ul class="ys cm">
-		<volist name="colorData" id="detail" key="colorId">
-			<li style="cursor:pointer" class="color" id="color_{ZF:$detail['color']}">
-				<if condition="$detail['logo'] neq ''"><img src="{ZF:$detail['logo']}"><else/>{ZF:$detail['colorName']}</if>
-			</li>
-		</volist>
-	</ul>
-</div>
-</div>
-</if>
-<if condition="$formatData and $catData['norms']">
-<div class="i-row">
-<div class="t">{ZF:$catData.norms}：</div>
-<div class="c">
-<ul id="shoe_size_list" class="ys cm">
-	<volist name="formatData" id="detail" key="formatId">
-		<li style="cursor:pointer" class="norms" id="norms_{ZF:$detail['format']}">{ZF:$detail['formatName']}</li>
-	</volist>
-</ul>
-</div>
-</div>
-</if>
+		<div class="d-info">
+			<form id="product_buy_form" name="product_buy_form" action="#" method="POST">
+				<h1>{ZF:$product.name}</h1>
+				<div class="price">
+				<span class="okp">销售价：<em id="xsprice">￥{ZF:$product.price}</em></span>
+				<span class="okp">会员价：<em id="vprice">￥<php>if ($product['vprice'] > 0) {echo $product['vprice'];} else {echo $product['price'];}</php></em></span>
+				<span>市场价：<i>￥{ZF:$product.oprice}</i></span>
+				</div>
+				<div style="display:none;" class="price">促销：<font color="red">新春热卖~~~</font></div>
+				<if condition="$colorData and $catData['color']">
+					<div class="i-row">
+						<div class="t">{ZF:$catData.color}：</div>
+							<div class="c">
+								<ul class="ys cm">
+									<volist name="colorData" id="detail" key="colorId">
+										<li style="cursor:pointer" class="color" id="color_{ZF:$detail['color']}">
+											<if condition="$detail['logo'] neq ''"><img src="{ZF:$detail['logo']}"><else/>{ZF:$detail['colorName']}</if>
+										</li>
+									</volist>
+								</ul>
+						</div>
+					</div>
+				</if>
+				<if condition="$formatData and $catData['norms']">
+					<div class="i-row">
+						<div class="t">{ZF:$catData.norms}：</div>
+						<div class="c">
+							<ul id="shoe_size_list" class="ys cm">
+								<volist name="formatData" id="detail" key="formatId">
+									<li style="cursor:pointer" class="norms" id="norms_{ZF:$detail['format']}">{ZF:$detail['formatName']}</li>
+								</volist>
+							</ul>
+						</div>
+					</div>
+				</if>
+				
+				<volist name="productDetail" id="pro">
+					<input type="hidden" id="color_{ZF:$pro.color}_norms_{ZF:$pro.format}" value="{ZF:$pro.num}" did="{ZF:$pro.id}" price="{ZF:$pro.price}" vprice="{ZF:$pro.vprice}" class="hidden"/>
+				</volist>
+				<div class="i-row">
+					<div class="t">数量：</div>
+					<div class="c buynum">
+						<i style="cursor: pointer;" class="numadjust dec" onclick="plus_minus({ZF:$product.id}, -1,{ZF:$product.price})"></i>
+							<input id="buy_num" name="goods[num]" type="text" value="1">
+						<i style="cursor: pointer;" class="numadjust add" onclick="plus_minus({ZF:$product.id},1,{ZF:$product.price})"></i>
+						<span class="stock">(库存<span id="stock">{ZF:$product.num}</span>)</span>
+					</div>
+				</div>
+				<div class="i-row">
+				<div class="t">邮费：</div>
+				<div class="c buynum">
+					<span class="stock">
+						<if condition="$product['mailprice'] eq '0'">
+							卖家包邮
+						<else/>
+							￥{ZF:$product.mailprice}
+						
+						</if>
+					</span>
+				</div>
+				</div>
+					<div id="show_msg" style="display:none;" class="error"></div>
+					<!--  <div class="i-row act">
+					<a href="javascript:;" onClick="<empty name="Think.get.wecha_id">toLogin()<else/>QuickBuy()</empty>" class="buynow">立即购买</a>
+					<a href="javascript:;" id="btn_add_cart" class="addcart" onclick="<empty name="Think.get.wecha_id">toLogin()<else/>add_cart()</empty>">加入购物车</a>
+					</div>
+					-->
+			</form>
+		</div>
+	</div>
 
-<volist name="productDetail" id="pro">
-<input type="hidden" id="color_{ZF:$pro.color}_norms_{ZF:$pro.format}" value="{ZF:$pro.num}" did="{ZF:$pro.id}" price="{ZF:$pro.price}" vprice="{ZF:$pro.vprice}" class="hidden"/>
-</volist>
-<div class="i-row">
-<div class="t">数量：</div>
-<div class="c buynum">
-<i style="cursor: pointer;" class="numadjust dec" onclick="plus_minus({ZF:$product.id}, -1,{ZF:$product.price})"></i>
-<input id="buy_num" name="goods[num]" type="text" value="1">
-<i style="cursor: pointer;" class="numadjust add" onclick="plus_minus({ZF:$product.id},1,{ZF:$product.price})"></i>
-<span class="stock">(库存<span id="stock">{ZF:$product.num}</span>)</span>
-</div>
-</div>
-<div class="i-row">
-<div class="t">邮费：</div>
-<div class="c buynum">
-<span class="stock">￥{ZF:$product.mailprice}</span>
-</div>
-</div>
-<div id="show_msg" style="display:none;" class="error"></div>
-<div class="i-row act">
-<a href="javascript:;" onClick="<empty name="Think.get.wecha_id">toLogin()<else/>QuickBuy()</empty>" class="buynow">立即购买</a>
-<a href="javascript:;" id="btn_add_cart" class="addcart" onclick="<empty name="Think.get.wecha_id">toLogin()<else/>add_cart()</empty>">加入购物车</a>
-</div>
-</form>
-</div>
-
-<div class="d-info">
-	<div class="detailinfo">
-		<ul class="tabs"><li>详情</li></ul>
+	<div class="line"></div>
+	
+	<div class="m-detail-mainout">
+		<div class="back_shop" style="height:35px;line-height:35px;font-family: '微软雅黑';font-size:14px;background: url(/tpl/Wap/default/common/css/product/css/img/shop.png) no-repeat;">
+			<a href="{ZF::U('Product/cats',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">
+				<span style="padding-left: 40px;">{ZF:$wxuser.wxname}</span>
+				<span style="float: right;padding-right: 10px;color:#a1a1a1;">进入店铺&nbsp;></span>
+			</a>
+		</div>
+	</div>
+	
+	<div class="line"></div>
+	
+<div class="m-detail-mainout">
+	<div class="d-info" style="margin: 0;">
+	<div class="detailinfo" style="padding:0;">
+		<ul class="tabs"><li style="color:#ff5366;">图文详情</li></ul>
 		<div class="views">
 			<div class="warp">
 				<div class="li">
 					<ul class="detail-list">
-					<li>{ZF:$product.name}</li>
+					<!--  <li>{ZF:$product.name}</li>-->
 					<volist name="attributeData" id="attribute">
 					<li><label>{ZF:$attribute.name}：</label><span>{ZF:$attribute.value}</span></li>
 					</volist>
@@ -270,7 +376,24 @@ function toLogin(){
 
 	<if condition="$kefu['sc'] eq '1'">
 		<include file="footsrc"/>
-		</if> 
+	</if> 
+	
+	</div>
+</div>
+</div>
+<div class="bottom_nav">
+		<div class="m-hd">
+			<div style="padding:7px 10px;">
+				<a href="{ZF::U('Product/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" class="cart" style="border-radius:4px;border-left: none;border:1px solid #e2e2e2;width:37px;height:35px;">购物车<i class="cart_com"><if condition="$totalProductCount neq 0" >{ZF:$totalProductCount}</if></i></a>
+			</div>
+		</div>
+	<div class="i-row act" style="display: inline-block;float:right;line-height: 50px;padding-right: 10px;">
+		<a href="javascript:;" onClick="<empty name="Think.get.wecha_id">toLogin()<else/>QuickBuy()</empty>" class="buynow">立即购买</a>&nbsp;
+		<a href="javascript:;" id="btn_add_cart" class="addcart" onclick="<empty name="Think.get.wecha_id">toLogin()<else/>add_cart()</empty>">加入购物车</a>
+	</div>
+		
+</div>
+	
 </body>
 <script type="text/javascript">
 window.shareData = {  
@@ -285,4 +408,23 @@ window.shareData = {
         };
 </script>
 {ZF:$shareScript}
+
+<script type="text/javascript"> 
+window.onscroll = function(){ 
+    var t = document.documentElement.scrollTop || document.body.scrollTop;  
+    var top_div = document.getElementById( "top_div" ); 
+    if( t >= 300 ) { 
+        top_div.style.display = "inline"; 
+    } else { 
+        top_div.style.display = "none"; 
+    } 
+} 
+
+</script> 
+<div id="top_div">
+	<a href="#top" style="background: url(/tpl/Wap/default/common/css/product/css/img/up.png) no-repeat top;background-color: rgba(0,0,0,0.48);padding:22px 5px 10px 5px;border-radius:30px;color:white;">顶部</a>
+</div> 
+<br /> 
+
+
 </html>
