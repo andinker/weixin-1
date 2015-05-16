@@ -457,7 +457,6 @@ class IndexAction extends WapAction{
 		$this->assign('tpl',$tpldata);				//微信帐号信息
 		$this->assign('copyright',$this->copyright);	//版权是否显示
 		$this->display($tpldata['tplcontentname']);
-		echo $tpldata['tplcontentname'];
 	}
 	
 	public function save_comment(){ 

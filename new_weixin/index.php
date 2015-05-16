@@ -1,5 +1,5 @@
 <?php
-define('COCOA_VERSON','v0.9.1');
+define('COCOA_VERSON','v0.9.2');
 header("Content-type: text/html; charset=utf-8");
 if (!is_file('./data/install.lock')) {
     header('Location: ./install/index.php');
