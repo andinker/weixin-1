@@ -156,7 +156,7 @@ class ProductAction extends WapAction{
 		$method = isset($_GET['method']) && ($_GET['method']=='DESC' || $_GET['method']=='ASC') ? $_GET['method'] : 'DESC';
 		$orders = array('time', 'discount', 'price', 'salecount');
 		$order = isset($_GET['order']) && in_array($_GET['order'], $orders) ? $_GET['order'] : 'time';
-		$start=($page-1)*$pageSize;
+		$start=($page-1)*$pageSize;$start++;
 		$products = $this->product_model->where($where)->order("sort ASC, " . $order.' '.$method)->limit($start . ',' . $pageSize)->select();
 		$str='{"products":[';
 		if ($products){

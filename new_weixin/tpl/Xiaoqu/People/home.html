@@ -48,12 +48,12 @@ $people = session('people');
 		</a>
 	</div>
 	<div class="col-xs-3 footer_nav_name">
-		<a href="{ZF::U('Wap/Product/cart')}&token={ZF:$token}">
+		<a href="{ZF::U('Wap/Product/cart',array('token'=>$_GET['token']))}">
 			<span class="glyphicon glyphicon-shopping-cart"></span>购物车
 		</a>
 	</div>
 	<div class="col-xs-3 footer_nav_name">
-		<a href="{ZF::U('Xiaoqu/People/home')}&token={ZF:$token}">
+		<a href="{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token']))}">
 			<span class="glyphicon glyphicon-user"></span>我的
 		</a>
 	</div>
