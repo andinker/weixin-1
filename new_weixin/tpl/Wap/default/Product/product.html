@@ -38,12 +38,13 @@ $(".m-right-pop-bg2").click( function() {
 }
 
 body{font-family: '微软雅黑';}
-.focusPic img{width:100%;}
-.m-detail-mainout .focusPic .views img{max-height:100%;}
-.m-detail-mainout .focusPic{max-height: 320px;}
-.bottom_nav{position: fixed;height:50px;background: #eee;bottom:0;z-index: 100;width:100%;box-shadow:1px 1px 1px 1px;}
+.focusPic img{width:100%;height:auto;}
+//.m-detail-mainout .focusPic .views img{max-height:100%;}
+.m-detail-mainout .focusPic{max-height: 640px;}
+.m-detail-mainout .focusPic .views img{max-height:none;}
+.bottom_nav{position: fixed;height:50px;background: #eee;bottom:0;z-index: 100;width:100%;box-shadow:1px 1px 10px #ccc;}
 .line{height:10px;}
-..m-hd a{border-left: none;border:1px solid #e2e2e2;}
+.m-hd a{border-left: none;border:1px solid #e2e2e2;}
 .m-hd{height:50px;border-bottom: none;background:#eee;display: inline-block;width:60px;}
 .m-hd div a.cart:after{width:100%;height: 100%;top:2px;left:0;color:black;background: url(/tpl/Wap/default/common/css/product/css/img/cart2.png) no-repeat;}
 .buynow{background:#f69555;color:#fff;font-size:1.4rem;padding:10px 20px;border-radius:5px;}
@@ -54,6 +55,7 @@ body{font-family: '微软雅黑';}
 .detailinfo .tabs{background: white;border-bottom: 3px solid #f8f8f8;}
 .m-detail-mainout .focusPic{margin-top:0;}
 .all{margin-bottom: 30px;}
+.m-body{min-width:200px;}
 
 #top_div{ 
     position:fixed; 
@@ -208,7 +210,7 @@ var focusPic = new Swiper('.focusPic .views',{pagination: '.focusPic .tabs',auto
 	<div class="d-info" style="margin: 0;">
 	<div class="detailinfo" style="padding:0;">
 		<ul class="tabs"><li style="color:#ff5366;">图文详情</li></ul>
-		<div class="views">
+		<div class="views"  style="padding:10px;">
 			<div class="warp">
 				<div class="li">
 					<ul class="detail-list">
@@ -425,6 +427,49 @@ window.onscroll = function(){
 	<a href="#top" style="background: url(/tpl/Wap/default/common/css/product/css/img/up.png) no-repeat top;background-color: rgba(0,0,0,0.48);padding:22px 5px 10px 5px;border-radius:30px;color:white;">顶部</a>
 </div> 
 <br /> 
-
+<script type="text/javascript">
+	var all_w=$('.detail-info').width();
+	$(".views img").each(function(i){
+		var img = $(this);
+		var realWidth;//真实的宽度
+		var realHeight;//真实的高度
+		$("<img/>").attr("src", $(img).attr("src")).load(function() {
+			realWidth = this.width;
+			realHeight = this.height;
+			if(realWidth>=all_w){
+				$(img).css("width","100%").css("height","auto");
+			}
+			else{
+				$(img).css("width",realWidth+'px').css("height",realHeight+'px');
+			}
+		});
+	});
+	
+	$(window).resize(function(){
+		var all_w=$('.detail-info').width();
+		$(".views img").each(function(i){
+			var img = $(this);
+			var realWidth;//真实的宽度
+			var realHeight;//真实的高度
+			$("<img/>").attr("src", $(img).attr("src")).load(function() {
+				realWidth = this.width;
+				realHeight = this.height;
+				if(realWidth>=all_w){
+					$(img).css("width","100%").css("height","auto");
+				}
+				else{
+					$(img).css("width",realWidth+'px').css("height",realHeight+'px');
+				}
+			});
+		});
+	})
+	
+	var win_width=$('.m-detail-mainout').width();
+	$('.m-detail-mainout .focusPic').css("max-height",win_width+"px");
+	$(window).resize(function(){
+		var win_width=$('.m-detail-mainout').width();
+		$('.m-detail-mainout .focusPic').css("max-height",win_width+"px");
+	})
+</script>
 
 </html>

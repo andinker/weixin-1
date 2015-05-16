@@ -1,4 +1,66 @@
-<include file="Product:header"/>
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" /><meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="format-detection" content="telephone=no"/>
+<title>{ZF:$metaTitle}</title>
+<script src="{ZF::$staticFilePath}/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="{ZF::$staticFilePath}/js/jquery.lazyload.js" type="text/javascript"></script>
+<script src="{ZF::$staticFilePath}/js/notification.js" type="text/javascript"></script>
+<script src="{ZF::$staticFilePath}/js/swiper.min.js" type="text/javascript"></script>
+<script src="{ZF::$staticFilePath}/js/main.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="{ZF::$staticFilePath}/css/style_touch.css">
+<style type="text/css">
+.m-ck-module h1{margin-bottom:10px;margin-left:10px;}
+.m-ck-module ul .addr-edit-form{margin-top:0;padding-top:0;}
+.m-ck-module ul .addr-addnew-form li input{padding-left: 5px;border-radius:4px;}
+.addr-info ul li label{margin-bottom:5px;}
+.m-ck-module ul li{padding:0;}
+.m-cart-toal .act a.checkout{border-radius:5px;}
+</style>
+</head>
+<script>
+$(document).ready(function(){
+$(".m-hd .cat").parent('div').click( function() {
+    var docH=$(document).height();
+  	$('.sub-menu-list').toggle();
+    $(".m-right-pop-bg2").addClass("on").css('min-height',docH);
+});
+$(".m-right-pop-bg2").click( function() {
+    $('.sub-menu-list').hide();
+   $(".m-right-pop-bg2").removeClass("on").removeAttr("style");
+});
+});
+</script>
+<body>
+<div id="top"></div>
+<div id="scnhtm5" class="m-body">
+	<div class="m-detail-mainout">
+	<!--  
+		<div class="m-hd">
+		<!-- <div><a href="javascript:history.go(-1);" class="back">返回</a></div> -->
+		<!--<div><a href="{ZF::U('Wap/Product/cats',array('token'=>$_GET['token'], 'wecha_id' => $wecha_id))}" class="home">小区首页</a></div>
+		<div><a href="javascript:void(0);" class="cat">商品分类</a></div>
+		<div class="tit">{ZF:$metaTitle}</div>
+		<div><a href="{ZF::U('Product/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" class="uc">用户中心</a></div>
+		<div><a href="{ZF::U('Product/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" class="cart">购物车<i class="cart_com"><if condition="$totalProductCount neq 0" >{ZF:$totalProductCount}</if></i></a></div>
+		</div>
+		<ul class="sub-menu-list">
+		<li><a href="{ZF::U('Product/products',array('token' => $_GET['token'], 'catid' => 0, 'wecha_id' => $wecha_id))}">全部商品</a></li>
+		<li><a href="{ZF::U('Product/products',array('token' => $_GET['token'], 'catid' => $cat['parentid'], 'wecha_id' => $wecha_id))}">上级分类</a></li>
+		<volist name="cats" id="hostlist" key="i"> 
+		    <php>
+		     if ($hostlist['parentid'] == $catid){
+		    </php>
+		    <li><a href="{ZF::U('Product/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}">{ZF:$hostlist.name}</a></li>
+		    <php>
+		     } 
+		    </php>
+		</volist>
+		</ul>-->
 <script type="text/javascript">
 if (location.href.indexOf("PHPSESSID")<0) location.href=location.href+"&PHPSESSID={ZF:$cookie}";
 </script>
@@ -9,18 +71,13 @@ if (location.href.indexOf("PHPSESSID")<0) location.href=location.href+"&PHPSESSI
 	<ul>
 		<li class="addr-info">
 			<ul class="addr-addnew-form addr-edit-form" id="addr-edit-form" style="display: none1;">
-				<li>
+				<li style="padding-left:0;padding-right:0;">
 					<label>收货人姓名：</label><span><input name="truename" id="truename" value="{ZF:$fans.truename}" type="text" placeholder="输入收货人姓名"></span>
 					<label>手机：</label><span><input name="tel" id="tel" value="{ZF:$fans.tel}" type="text" placeholder="输入您的收货电话"></span>
 					<label>详细地址：</label><span><input name="address" id="address" value="{ZF:$fans.address}" type="text" placeholder="输入您的收货地址"></span>
 				</li>
 			</ul>
-			<label>联系方式保存到用户库</label>
-			<ul class="rd">
-				<li>
-					<label><input type="checkbox" value="1" name="saveinfo" id="saveinfo" style="width: 16px;" checked="true"/></label>
-				</li>    
-			</ul>
+			<label><input type="checkbox" value="1" name="saveinfo" id="saveinfo" style="width: 16px;" checked="true"/>&nbsp;联系方式保存到用户库</label>
 		</li>
 	</ul>
 	</div>
@@ -28,10 +85,10 @@ if (location.href.indexOf("PHPSESSID")<0) location.href=location.href+"&PHPSESSI
 		<h1>付款方式</h1>
 		<ul id="payment_mode" class="rd">
 			<li>
-			<select id="payment_selector" name="payment" style="width: 100%;border: 1px #f00 solid;border-radius: 0.5em;padding: 5px; line-height:2em;">
+			<select id="payment_selector" name="payment" style="width: 100%;border: none;border-radius: 0.5em;padding: 5px; line-height:2em;">
 				<if condition="$payment">
 				<volist id="v" name="payment">
-					<option value="{ZF:$v.pay_code}">{ZF:$v.pay_name}</option> 
+					<option value="{ZF:$v.pay_code}" style="line-height: 50px;">{ZF:$v.pay_name}</option> 
 				</volist>
 				</if>
 				<if condition="$setting['paymode'] eq 1"><option value="0">货到付款</option></if>
@@ -151,7 +208,7 @@ function is_alipay(){
 			<span class="pic"><img src="{ZF:$p.logourl}" width="75" height="75"></span>
 			<span class="con">
 			<i class="t">{ZF:$p.name}</i>
-			<p><label>数量：</label>{ZF:$p.count}　<label>销售价：</label><span class="price">￥{ZF:$p.price}</span></p>
+			<p style="margin-top:3px;"><label>数量：</label>{ZF:$p.count}　<label>销售价：</label><span class="price">￥{ZF:$p.price}</span></p>
 			</span>
 		</li>
 	</if>
@@ -159,7 +216,7 @@ function is_alipay(){
 </ul>
 </ul>
 </div>
-<div class="m-cart-toal m-checkout-toal">
+<div class="m-cart-toal m-checkout-toal" style="line-height: 30px;font-family: '微软雅黑';">
 <p id="price_total" class="check">商品总数：<b>{ZF:$totalCount}</b>　件<br>
 商品原总价：<b>{ZF:$totalFee}</b>　元<br>
 运费：

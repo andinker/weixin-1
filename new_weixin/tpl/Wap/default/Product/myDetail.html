@@ -1,11 +1,79 @@
-<include file="Product:header"/>
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" /><meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="format-detection" content="telephone=no"/>
+<title>{ZF:$metaTitle}</title>
+<script src="{ZF::$staticFilePath}/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="{ZF::$staticFilePath}/js/jquery.lazyload.js" type="text/javascript"></script>
+<script src="{ZF::$staticFilePath}/js/notification.js" type="text/javascript"></script>
+<script src="{ZF::$staticFilePath}/js/swiper.min.js" type="text/javascript"></script>
+<script src="{ZF::$staticFilePath}/js/main.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="{ZF::$staticFilePath}/css/style_touch.css">
 <style type="text/css">
 .paylists, .alipqy_notice{position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(100, 100, 100, 0.7);z-index:100;display:none;}
 .paylists ul{width:90%;height:auto;overflow:auto; box-shadow:0 0 3px #ccc;margin:30% auto; background:#fff;border:solid 1px #999;}
 .paylists a{line-height:2em; padding:0 1em;border-bottom:1px dotted #ccc;display:block;}
 .paylists a:hover{background-color:#FFC;color:#F60;}
 .alipqy_notice {background: rgba(0, 0, 0, 0.9);}
+.m-hd div a.home,.m-hd div a.cat,.m-hd div a.uc,.m-hd div a.cart,.m-hd div.tit{border:none;/*border-right:1px solid #ccc;*/}
+.m-hd div.tit{color:white;}
+.m-hd{border:none;background:#37c3a9;box-shadow:2px 2px 10px #ccc;}
+.m-cart-toal{border-top:1px solid #ccc;}
+.back{background: #f69555;width:50%;line-height: 36px;text-align: center;color: white;display: block;font-weight: bold;border-radius:4px;-webkit-box-shadow: 0 -1px 1px #ccc inset;}
+.m-cart-toal .act a.checkout{background:#ff5366;border-radius:4px;text-shadow: none;-webkit-box-shadow: 0 -1px 1px #ccc inset;}
+.m-cart-toal .act{margin-top: 25px;}
+.m-hd div a.home:after{background: url(/tpl/Wap/default/common/css/product/css/img/home2.png) no-repeat;background-size: contain;}
+.m-hd div a.cart:after {background: url(/tpl/Wap/default/common/css/product/css/img/cart3.png) no-repeat;  background-size: contain;}
+.m-hd div a.uc:after{background: url(/tpl/Wap/default/common/css/product/css/img/user2.png) no-repeat;  background-size: contain;}
+.m-hd div a.cat:after{background: url(/tpl/Wap/default/common/css/product/css/img/caticon2.png) no-repeat;  background-size: contain;}
+.m-uc-order-v-infobox li.act .btn-yel {  background: #37c3a9;-webkit-box-shadow:none;text-shadow:none;}
+.m-uc-order-v-infobox li.act .btn-gray{width:100%;font-size:16px;margin-right:0;}
 </style>
+</head>
+<script>
+$(document).ready(function(){
+$(".m-hd .cat").parent('div').click( function() {
+    var docH=$(document).height();
+  	$('.sub-menu-list').toggle();
+    $(".m-right-pop-bg2").addClass("on").css('min-height',docH);
+});
+$(".m-right-pop-bg2").click( function() {
+    $('.sub-menu-list').hide();
+   $(".m-right-pop-bg2").removeClass("on").removeAttr("style");
+});
+});
+</script>
+<body>
+<div id="top"></div>
+<div id="scnhtm5" class="m-body">
+	<div class="m-detail-mainout">
+		
+		<div class="m-hd">
+		<!-- <div><a href="javascript:history.go(-1);" class="back">返回</a></div> -->
+		<div><a href="{ZF::U('Wap/Product/cats',array('token'=>$_GET['token'], 'wecha_id' => $wecha_id))}" class="home">小区首页</a></div>
+		<div><a href="javascript:void(0);" class="cat">商品分类</a></div>
+		<div class="tit">{ZF:$metaTitle}</div>
+		<div><a href="{ZF::U('Product/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" class="uc">用户中心</a></div>
+		<div><a href="{ZF::U('Product/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" class="cart">购物车<i class="cart_com"><if condition="$totalProductCount neq 0" >{ZF:$totalProductCount}</if></i></a></div>
+		</div>
+		<ul class="sub-menu-list">
+		<li><a href="{ZF::U('Product/products',array('token' => $_GET['token'], 'catid' => 0, 'wecha_id' => $wecha_id))}">全部商品</a></li>
+		<li><a href="{ZF::U('Product/products',array('token' => $_GET['token'], 'catid' => $cat['parentid'], 'wecha_id' => $wecha_id))}">上级分类</a></li>
+		<volist name="cats" id="hostlist" key="i"> 
+		    <php>
+		     if ($hostlist['parentid'] == $catid){
+		    </php>
+		    <li><a href="{ZF::U('Product/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}">{ZF:$hostlist.name}</a></li>
+		    <php>
+		     } 
+		    </php>
+		</volist>
+		</ul>
+
 
 <div class="paylists"  id="paylists" onclick="document.getElementById('paylists').style.display='';">
     <ul>
@@ -81,7 +149,7 @@ function is_weixin(){
 </ul>
 <ul class="m-uc-order-v-infobox">
 <p>订单编号：{ZF:$cartData.orderid}</p>
-<li><span class="tit">订单状态</span>
+<li><span class="tit">订单状态：</span>
 <php>if($cartData['sent']){echo '<b class="orderStatus">已发货</b>';}else{echo '<b class="orderStatus">待发货</b>';}</php>
 </li>
 <li>
@@ -93,7 +161,7 @@ function is_weixin(){
 <li><p style="text-align: center; color: green; font-size:12px;">如果你认为订单应付金额有问题，可以联系商家更改此金额。</p></li>
 <if condition="($cartData['paid'] eq 0) AND ($cartData['sent'] eq 0)">
 <li class="act">
-<div class="btn-yel"><a href="javascript:" class="paybtn" style="color:#FFF; display:block;">立即付款</a></div>
+<div class="btn-yel"><a href="javascript:" class="paybtn" style="color:#FFF; display:block;">立即付款</a></div>&nbsp;
 <div class="btn-gray"><a href="javascript:" onclick="cancleorder();">取消订单</a></div>
 </li>
 </if>
@@ -152,6 +220,7 @@ function cancleorder(){
 		<if condition="$kefu['sc'] eq '1'">
 		<include file="footsrc"/>
 		</if> 
+	</div>
 </body>
 <script type="text/javascript">
 window.shareData = {  

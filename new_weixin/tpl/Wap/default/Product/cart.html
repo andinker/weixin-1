@@ -1,4 +1,71 @@
-<include file="Product:header"/>
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" /><meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="format-detection" content="telephone=no"/>
+<title>{ZF:$metaTitle}</title>
+<script src="{ZF::$staticFilePath}/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="{ZF::$staticFilePath}/js/jquery.lazyload.js" type="text/javascript"></script>
+<script src="{ZF::$staticFilePath}/js/notification.js" type="text/javascript"></script>
+<script src="{ZF::$staticFilePath}/js/swiper.min.js" type="text/javascript"></script>
+<script src="{ZF::$staticFilePath}/js/main.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="{ZF::$staticFilePath}/css/style_touch.css">
+<style type="text/css">
+.m-hd div a.home,.m-hd div a.cat,.m-hd div a.uc,.m-hd div a.cart,.m-hd div.tit{border:none;/*border-right:1px solid #ccc;*/}
+.m-hd div.tit{color:white;}
+.m-hd{border:none;background:#37c3a9;box-shadow:2px 2px 10px #ccc;}
+.m-cart-toal{border-top:1px solid #ccc;}
+.back{background: #f69555;width:50%;line-height: 36px;text-align: center;color: white;display: block;font-weight: bold;border-radius:4px;-webkit-box-shadow: 0 -1px 1px #ccc inset;}
+.m-cart-toal .act a.checkout{background:#ff5366;border-radius:4px;text-shadow: none;-webkit-box-shadow: 0 -1px 1px #ccc inset;}
+.m-cart-toal .act{margin-top: 25px;}
+.m-hd div a.home:after{background: url(/tpl/Wap/default/common/css/product/css/img/home2.png) no-repeat;background-size: contain;}
+.m-hd div a.cart:after {background: url(/tpl/Wap/default/common/css/product/css/img/cart3.png) no-repeat;  background-size: contain;}
+.m-hd div a.uc:after{background: url(/tpl/Wap/default/common/css/product/css/img/user2.png) no-repeat;  background-size: contain;}
+.m-hd div a.cat:after{background: url(/tpl/Wap/default/common/css/product/css/img/caticon2.png) no-repeat;  background-size: contain;}
+</style>
+</head>
+<script>
+$(document).ready(function(){
+$(".m-hd .cat").parent('div').click( function() {
+    var docH=$(document).height();
+  	$('.sub-menu-list').toggle();
+    $(".m-right-pop-bg2").addClass("on").css('min-height',docH);
+});
+$(".m-right-pop-bg2").click( function() {
+    $('.sub-menu-list').hide();
+   $(".m-right-pop-bg2").removeClass("on").removeAttr("style");
+});
+});
+</script>
+<body>
+<div id="top"></div>
+<div id="scnhtm5" class="m-body">
+	<div class="m-detail-mainout">
+		
+		<div class="m-hd">
+		<!-- <div><a href="javascript:history.go(-1);" class="back">返回</a></div> -->
+		<div><a href="{ZF::U('Wap/Product/cats',array('token'=>$_GET['token'], 'wecha_id' => $wecha_id))}" class="home">小区首页</a></div>
+		<div><a href="javascript:void(0);" class="cat">商品分类</a></div>
+		<div class="tit">{ZF:$metaTitle}</div>
+		<div><a href="{ZF::U('Product/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" class="uc">用户中心</a></div>
+		<div><a href="{ZF::U('Product/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" class="cart">购物车<i class="cart_com"><if condition="$totalProductCount neq 0" >{ZF:$totalProductCount}</if></i></a></div>
+		</div>
+		<ul class="sub-menu-list">
+		<li><a href="{ZF::U('Product/products',array('token' => $_GET['token'], 'catid' => 0, 'wecha_id' => $wecha_id))}">全部商品</a></li>
+		<li><a href="{ZF::U('Product/products',array('token' => $_GET['token'], 'catid' => $cat['parentid'], 'wecha_id' => $wecha_id))}">上级分类</a></li>
+		<volist name="cats" id="hostlist" key="i"> 
+		    <php>
+		     if ($hostlist['parentid'] == $catid){
+		    </php>
+		    <li><a href="{ZF::U('Product/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}">{ZF:$hostlist.name}</a></li>
+		    <php>
+		     } 
+		    </php>
+		</volist>
+		</ul>
 <script type="text/javascript">
 if (location.href.indexOf("PHPSESSID")<0) location.href=location.href+"&PHPSESSID={ZF:$cookie}";
 </script>
@@ -62,7 +129,7 @@ if (location.href.indexOf("PHPSESSID")<0) location.href=location.href+"&PHPSESSI
 <!-- <p style="color:#E58B4C;text-align:left;padding:0 10px 1rem;border-bottom:1px dotted #ccc;margin:0 -10px 1rem;font-size:1.2rem;line-height:1.4rem">享受的优惠: 注册名鞋库会员，满百包邮！（货到付款除外）</p> -->
 <p class="check" style="font-size:1.4rem">商品总数:<b id="total_count">{ZF:$totalCount}</b>　商品总额:<b id="total_price">￥{ZF:$totalFee}</b></p>
 <p class="act">
-	<a href="{ZF::U('Product/index',array('token'=>$_GET['token'], 'wecha_id'=>$_GET['wecha_id']))}" class="back">继续购物<i></i></a>
+	<a href="{ZF::U('Product/index',array('token'=>$_GET['token'], 'wecha_id'=>$_GET['wecha_id']))}" class="back">继续购物<i></i></a>&nbsp;
 	<a href="{ZF::U('Product/orderCart',array('token'=>$_GET['token'], 'wecha_id'=>$_GET['wecha_id']))}" class="checkout">下单结算</a>
 </p>
 </div>
@@ -126,6 +193,8 @@ function update_cart(rowid, num, did) {
 		<if condition="$kefu['sc'] eq '1'">
 		<include file="footsrc"/>
 		</if> 
+		
+		</div></div>
 </body>
 <script type="text/javascript">
 window.shareData = {  
@@ -140,4 +209,12 @@ window.shareData = {
         };
 </script>
 {ZF:$shareScript}
+<script type="text/javascript">
+	var win_h=$(window).height();
+	$('.m-detail-mainout').css("min-height",win_h+"px");
+	$(window).resize(function(){
+		var win_h=$(window).height();
+		$('.m-detail-mainout').css("min-height",win_h+"px");
+	})
+</script>
 </html>
