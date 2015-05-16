@@ -222,12 +222,37 @@ $( document ).ready(function() {
 <div>
 	<ul class="nav" style="position:fixed; z-index: 100;font-size:30px;padding:0;cursor: pointer;">
            <li class="active" id="head_menu">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-menu-hamburger" id="menu_open"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-list" id="menu_open"></span></a>
                    
-                    <ul class="dropdown-menu" role="menu" style="height:100%;">
+                    <ul class="dropdown-menu" role="menu" style="height:100%;overflow: scroll;">
                     
                     
                     	<volist name="cats" id="cat">
+							<li>
+								<a href="{ZF::U('Wap/Product/products')}&token={ZF:$cat.token}&wecha_id={ZF:$wecha_id}&catid={ZF:$cat.id}">
+									{ZF:$cat['name']}
+								</a>
+							</li>
+							<li>
+								<a href="{ZF::U('Wap/Product/products')}&token={ZF:$cat.token}&wecha_id={ZF:$wecha_id}&catid={ZF:$cat.id}">
+									{ZF:$cat['name']}
+								</a>
+							</li>
+							<li>
+								<a href="{ZF::U('Wap/Product/products')}&token={ZF:$cat.token}&wecha_id={ZF:$wecha_id}&catid={ZF:$cat.id}">
+									{ZF:$cat['name']}
+								</a>
+							</li>
+							<li>
+								<a href="{ZF::U('Wap/Product/products')}&token={ZF:$cat.token}&wecha_id={ZF:$wecha_id}&catid={ZF:$cat.id}">
+									{ZF:$cat['name']}
+								</a>
+							</li>
+							<li>
+								<a href="{ZF::U('Wap/Product/products')}&token={ZF:$cat.token}&wecha_id={ZF:$wecha_id}&catid={ZF:$cat.id}">
+									{ZF:$cat['name']}
+								</a>
+							</li>
 							<li>
 								<a href="{ZF::U('Wap/Product/products')}&token={ZF:$cat.token}&wecha_id={ZF:$wecha_id}&catid={ZF:$cat.id}">
 									{ZF:$cat['name']}
@@ -311,7 +336,6 @@ $(document).click(function() {
 </script>
 
 <div class="content">
-
 	<php>
 		if( empty($info['content_header'])){
 	</php>
@@ -660,15 +684,6 @@ $(window).resize(function(){
 </script>
 
 
-<script type="text/javascript">
-var w_h=$(window).height();
-$('.dropdown-menu').css("height",w_h+"px");
-	$(window).resize(function(){
-		var w_h=$(window).height();
-		$('.dropdown-menu').css("height",w_h+"px");
-	})
-
-</script>
 
 
 <script type="text/javascript">
@@ -679,6 +694,14 @@ $('.dropdown-menu').css("height",w_h+"px");
 		var hea_h=$('#get_h').height();
 		$('.dropdown-toggle').css("line-height",hea_h+"px");
 	})
+
+	var w_h=$(window).height();
+	$('.dropdown-menu').css("height",w_h-hea_h+1+"px");
+		$(window).resize(function(){
+			var w_h=$(window).height();
+			$('.dropdown-menu').css("height",w_h-hea_h+1+"px");
+		})
+
 </script>
 
 
