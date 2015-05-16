@@ -23,7 +23,7 @@ class UpyunAction extends UserAction{
 		if (!isset($_SESSION['username'])&&!isset($_SESSION['uid'])){
 			//exit('非法操作');
 		}
-		print($this->upload_type);
+		
 		if ($this->upload_type=='upyun'){
 			$bucket = $this->bucket; /// 空间名
 			$form_api_secret = $this->form_api_secret; /// 表单 API 功能的密匙（请访问又拍云管理后台的空间管理页面获取）

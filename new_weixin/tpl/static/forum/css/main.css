@@ -30,6 +30,7 @@ body {
 	-webkit-box-orient: vertical;
 	-webkit-box-align: stretch;
 	position: relative;
+	background-color:#000;
 }
 img {
 	-ms-interpolation-mode: bicubic;
@@ -494,14 +495,14 @@ html,body,.container{
 }
 
 /*******************************************************/
-.list_article>article{
+.list_article>article{ overflow:hidden;
 	font-size:15px;
-	background:#ffffff;
+	background:rgba(255,255,255,0.5);
 	margin:6px;
-	border:1px solid #d7d7d7;
+	border:0px solid #666;
 	border-bottom-color:#a4a4a4;
 	box-shadow:0 1px 3px solid rgba(0,0,0,0.2);
-	/*border-radius: 10px 10px;*/
+	border-radius:5px;
 }
 .list_article>article[data-role="guan"]{
 	background-image:-webkit-gradient(linear, 100 0, 0 100, from(#0F5069), to(transparent), color-stop(50%, #0F5069), color-stop(50%, transparent) );
@@ -521,6 +522,7 @@ html,body,.container{
 	width:40px;
 	height:40px;
 	margin:auto 10px;
+	border:5px solid #FFF;
 }
 .list_article header .head_img img{
 	width:100%;
@@ -536,7 +538,7 @@ html,body,.container{
 	line-height:20px;
 }
 .list_article header p{
-	color:#828282;
+	font-style:italic;
 	line-height:15px;
 }
 .list_article header .icons.icons_edit{
@@ -549,14 +551,14 @@ html,body,.container{
 
 .list_article footer .box{
 	background:#f3f3f3;
-	border-top:1px solid #cccccc;
+	border-top:0px solid #cccccc;
 	height:45px;
 	/*border-radius: 0 0 10px 10px;*/
 }
 .list_article footer .box li{
 	width:25%;
 	vertical-align: middle;
-	border-left: 1px solid #cccccc;
+	border-left: 0px solid #cccccc;
 	
 }
 .list_article footer .box li:first-of-type{
@@ -677,7 +679,7 @@ html,body,.container{
 	line-hegiht:30px;
 }
 .list_article section h6{
-	color:#828282;
+	font-style:italic;
 	font-size:14px;
 	padding:5px 0;
 	font-weight: 100;
@@ -723,16 +725,15 @@ html,body,.container{
 }
 
 /****/
-.list_comment{
-	color:#5d5d5d;
+.list_comment_wrap {
 	margin:10px 5px;
-	background:#ffffff;
-	border:1px solid #d7d7d7;
-	-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.1);
+	overflow: hidden; border-radius:5px;background:rgba(255,255,255,0.7);
+	}
+.list_comment{
 }
 
 .list_comment li{
-	border-top:1px solid #cccccc;
+	border-top:0px solid #cccccc;
 }
 .list_comment li.load_more:nth-last-of-type(n+2){
 	display: none;

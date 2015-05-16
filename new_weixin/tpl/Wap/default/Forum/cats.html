@@ -1,30 +1,37 @@
 <style type="text/css">
-.nav_cat{font-size:16px;font-family:'微软雅黑';min-height:165px;background:white;margin:6px;}
-.nav_cat li{list-style: none;float:left;width:25%;overflow: hidden;height:30px;line-height:30px;}
-.classify{margin:6px;font-size:20px;border-bottom: 1px solid #e0e0e0;padding:5px 0;height:40px;line-height: 40px;}
-.show_m{float:right;padding-right:20px;line-height: 20px;display:block;}
+.nav_cat{font-size:16px;font-family:'微软雅黑';background:white; margin:6px; border-radius:5px;background:rgba(255,255,255,0.5); overflow:hidden;}
+.nav_cat .nav_cat_items { overflow: hidden; line-height:30px; margin:2px;}
+.nav_cat .nav_cat_items li{ list-style: none; float:left; width:25%; overflow: hidden;}
+.nav_cat .nav_cat_items li a { display:block; border-radius:2px; background-color:rgba(255,255,255,0.5); text-align:center; margin:2px; height: 30px; overflow: hidden; }
+.classify{margin:0px 6px;font-size:16px; font-weight:bold; line-height:16px; padding:0 5px; color: #FFF;}
+.show_m{ background-color:#f8f8f8; color:#000;  text-align:center; line-height: 30px; display:none;}
+.nav_cat a { color:#000;}
+.classify a {color: #FFF;}
 </style>
 
-<div class="nav_cat">
 
+
+<div style="margin-top: 10px;">
 	<div class="classify">
 		
-		<span style="float:right;line-height:40px;padding-right: 10px;">
+		<span style="float:right;padding-right: 10px;">
+		     返回 
 			 <if condition="$cat['parentid'] neq 0">
 				    
-					    <a style="color:#ccc;" href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$pcat['id']))}">
+					    <a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$pcat['id']))}">
 					    	{ZF:$pcat['name']}
 					    </a>
 				    
 			<else/>
 				    
-					    <a style="color:#999;" href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>0))}">
+					    <a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>0))}">
 					           	论坛首页
 					    </a>
 				   
 			</if>
 		</span>
 		<span style="padding-left: 5px;">
+		     当前版块：
 			<if condition="$catid neq 0">
 					
 						<a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$cat['id']))}">
@@ -34,80 +41,68 @@
 			<else/>
 				    
 					    <a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>0))}">
-					          	 论坛首页
+					          	 总版块
 					    </a>
 				    
 			</if>
 		</span>
 	</div>	
-	<div style="margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom: 10px;overflow: hidden;">
+</div>
+
+<div class="nav_cat">
+
+	<div class="nav_cat_items">
 		<ul>
 			<li> 
 				<strong>
 					<a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>0))}">
-						论坛首页
+						总版块
 					</a>
 				</strong>
 			</li>
 			<notempty name="cats">
-			<span class="get_l">
-			   <volist name="cats" id="vo" offset="0" length="7">
+			   <volist name="cats" id="vo">
 			      <li class="part_nav">
 				      <a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$vo['id']))}">
 				      	{ZF:$vo.name}
 				      </a>
 			      </li>
 			   </volist>
-			</span>
-				<else/>
-			 	 <li style="color:#ccc">没有子分类</li>
 			</notempty>
-		<div class="nav_more" style="display:none;">
-			<volist name="cats" id="vo"  offset="7">
-				<li class="mo">
-						<a href="{ZF::U('Wap/Forum/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$vo['id']))}">
-						{ZF:$vo['name']}
-						</a> 
-				</li>
-			</volist>
-		</div>
 		</ul>
-		
+        <empty name="cats">
+        	<div style="line-height: 30px; text-align: center;">没有子版块</div>
+        </empty>		
 
 	</div>		
 
 			<div onclick="show_hide()" class="show_m">
 				<strong>
 					<span class="more" style="cursor: pointer;">
-						展开更多>>
+						MORE
 					</span>
 				</strong>
 			</div>		
 </div>
 <script type="text/javascript">
 
-var a=$(".nav_more");
-var x=$(".nav_more>li").height();
-var le=$(".mo").length;
-var all=165+Math.ceil(le/4)*x;
-var y=$(".part_nav").length; 
-//alert(y);
-if(y<=6 && le==0){
-	$(".show_m").css("display","none");
-}
-if(y<=3){
-	$(".nav_cat").css("min-height","105px");
-}
-function show_hide(){
-	if(a.css('display')=='none'){
-		$(".nav_more").show("fast");
-		$(".nav_cat").css("min-height",all+"px");
-		$(".more").text("<<收起");
-	}else{
-		$(".nav_more").hide("fast");
-		$(".nav_cat").css("min-height","165px");
-		$(".more").text("展开更多>>");
-	}
+var nav_cat_items_height = $('.nav_cat_items').height();
+
+if (nav_cat_items_height > 68){
+	$('.show_m').css({display:'block'});
+	$('.nav_cat_items').css({height:'68px'});
+	
 }
 
+function show_hide(){
+	
+	var target_h = null;
+	
+	var h = $('.nav_cat_items').height();
+	
+	if (h == nav_cat_items_height)  target_h = 68;
+	else target_h = nav_cat_items_height;
+	
+	$('.nav_cat_items').animate({height: target_h}, 200 );
+}
 </script>

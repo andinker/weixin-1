@@ -105,12 +105,14 @@
 									</figure>
 								</if>
 										
-								<div style="clear:both"></div>				
-    							<div>
-    								<h5>{ZF:$list.title}</h5><!--发帖标题-->
-								    <div>{ZF::htmlspecialchars_decode($list['content'],ENT_QUOTES)}</div><!--发帖内容-->
-							    </div>
-							    <a href="{ZF::U('Forum/comment',array('tid'=>$list['id'],'wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$catid))}">查看全文</a>
+								<div style="clear:both"></div>	
+								<a style="display: block;" href="{ZF::U('Forum/comment',array('tid'=>$list['id'],'wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token'],'catid'=>$catid))}">			
+	    							<div>
+	    								<h5>{ZF:$list.title}</h5><!--发帖标题-->
+									    <div style="color:#333;">{ZF::htmlspecialchars_decode($list['content'],ENT_QUOTES)}</div><!--发帖内容-->
+								    </div>
+							        <span style="color:#000;">查看全文</span>
+							    </a>
 								
     						</section>
 							
@@ -182,7 +184,7 @@ window.shareData = {
 						success: function(res){
 							if(res == 0){
 								if(js == 0){
-									$('#list_article').append('<article style="display:block" id="noMore"><header style="margin:7px;text-align:center;color:#828282;">没有更多帖子了</header></article>');
+									$('#list_article').append('<article style="display:block" id="noMore"><header style="margin:7px;text-align:center;">没有更多帖子了</header></article>');
 								}
 								js = 1;
 							}else{

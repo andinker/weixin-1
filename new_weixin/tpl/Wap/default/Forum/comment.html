@@ -110,17 +110,16 @@
 		</script>
 	</head>
 	<body onselectstart="return true;" ondragstart="return false;" class="discuss_detail">
-		<include file="cats"/> 
 		<div id="container" class="container" <if condition="$bgurl neq NULL">style="background:url('{ZF:$bgurl}') repeat-y center 0"</if>>
 			<header></header>
 			<div class="body pt_5">
-				<div id="
-				" class="list_article">
+				<include file="cats"/> 
+				<div id="" class="list_article">
 					<article>
 						<section>
 								<h5>{ZF:$topics.title}</h5>
-								<h6>
-									{ZF:$topics.uname}<small>{ZF::date('Y-m-d H:i:s',$topics['createtime'])}</small>
+								<h6 style=" border-left: 5px solid #000; padding:0px 0px 0px 10px ; margin:10px;">
+									作者：{ZF:$topics.uname}<small>{ZF::date('Y-m-d H:i:s',$topics['createtime'])}</small>
 								</h6>
 											<php>
 												if(!empty($topics['photos'])){
@@ -156,36 +155,40 @@
 					</article>
 				</div>
 
-				<div>
-					<ul id="list_comment" class="list_comment">
-						<volist id="comment" name="comment">			
-						<li>
-							<dl class="tbox">
-								<dd>
-									<span class="head_img">
-										<img src="{ZF:$comment.uinfo.portrait|default=STATICS.'/forum/images/face.png'}" onerror="this.src='{ZF::STATICS}/forum/images/face.png';" />
-									</span>
-								</dd>
-								<dd><!-- xx  reply xx -->
-									<h7><if condition="$comment['replyid'] neq NULL">{ZF:$comment.uname} <font style="font-weight:bold;color:blue">回复</font> {ZF:$comment.reuname}<else />{ZF:$comment.uname}</if></h7>
-									<p>{ZF:$comment.content|htmlspecialchars_decode}<if condition="$comment['uid'] eq $_GET['wecha_id']"><span class="icons icons_del" onclick="delComment(this,{ZF:$comment.id});">&nbsp;</span></if></p>
-									<time>
-										{ZF::date('Y-m-d H:i:s',$comment['createtime'])}
-										<span>赞 <if condition="$comment['favourid'] neq NULL">{ZF::count(explode(',',$comment['favourid']))}<else />0</if></span>
-									</time>
-								</dd>
-								<dd>
-									<span class="icons icons_op" onclick="showOperate(true, this, event);">
-										<a href="{ZF::U('Forum/recomment',array('cid'=>$comment['id'],'tid'=>$topics['id'],'reid'=>$comment['uid'],'wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token']))}" class="btn">回复</a>
-										<a href="javascript:commentPraise({ZF:$comment.id},'{ZF:$wecha_id}');" class="btn"><if condition="in_array($wecha_id,explode(',',$comment['favourid']))">取消赞<else />赞</if></a>
-										
-										<a href="javascript:showOperate(false);" class="btn calcel">取消</a>
-									</span>
-								</dd>
-							</dl>
-						</li>
-						</volist>	
-					</ul>
+				<div class="list_comment_wrap">
+				    <notempty name="comment">
+						<ul id="list_comment" class="list_comment">
+							<volist id="comment" name="comment">			
+							<li>
+								<dl class="tbox">
+									<dd>
+										<span class="head_img">
+											<img src="{ZF:$comment.uinfo.portrait|default=STATICS.'/forum/images/face.png'}" onerror="this.src='{ZF::STATICS}/forum/images/face.png';" />
+										</span>
+									</dd>
+									<dd><!-- xx  reply xx -->
+										<h7><if condition="$comment['replyid'] neq NULL">{ZF:$comment.uname} <font style="font-weight:bold;color:blue">回复</font> {ZF:$comment.reuname}<else />{ZF:$comment.uname}</if></h7>
+										<p>{ZF:$comment.content|htmlspecialchars_decode}<if condition="$comment['uid'] eq $_GET['wecha_id']"><span class="icons icons_del" onclick="delComment(this,{ZF:$comment.id});">&nbsp;</span></if></p>
+										<time>
+											{ZF::date('Y-m-d H:i:s',$comment['createtime'])}
+											<span>赞 <if condition="$comment['favourid'] neq NULL">{ZF::count(explode(',',$comment['favourid']))}<else />0</if></span>
+										</time>
+									</dd>
+									<dd>
+										<span class="icons icons_op" onclick="showOperate(true, this, event);">
+											<a href="{ZF::U('Forum/recomment',array('cid'=>$comment['id'],'tid'=>$topics['id'],'reid'=>$comment['uid'],'wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token']))}" class="btn">回复</a>
+											<a href="javascript:commentPraise({ZF:$comment.id},'{ZF:$wecha_id}');" class="btn"><if condition="in_array($wecha_id,explode(',',$comment['favourid']))">取消赞<else />赞</if></a>
+											
+											<a href="javascript:showOperate(false);" class="btn calcel">取消</a>
+										</span>
+									</dd>
+								</dl>
+							</li>
+							</volist>	
+						</ul>
+					<else/>
+						<div style="line-height: 30px; text-align: center;">该贴子目前还没有人发表评论！</div>
+					</notempty>
 			    </div>
 			</div>
 			<footer>
