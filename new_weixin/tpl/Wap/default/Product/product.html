@@ -9,6 +9,10 @@
 <title>{ZF:$metaTitle}</title>
 <script src="{ZF::$staticFilePath}/js/jquery-1.9.1.min.js" type="text/javascript"></script>
 
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.css">
+<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+ 
 <script src="{ZF::$staticFilePath}/js/jquery.lazyload.js" type="text/javascript"></script>
 <script src="{ZF::$staticFilePath}/js/notification.js" type="text/javascript"></script>
 <script src="{ZF::$staticFilePath}/js/swiper.min.js" type="text/javascript"></script>
@@ -37,7 +41,7 @@ $(".m-right-pop-bg2").click( function() {
 	width:100%;
 }
 
-body{font-family: '微软雅黑';}
+body{font-family: '微软雅黑';margin:0;padding: 0;}
 .focusPic img{width:100%;height:auto;}
 //.m-detail-mainout .focusPic .views img{max-height:100%;}
 .m-detail-mainout .focusPic{max-height: 640px;}
@@ -57,12 +61,11 @@ body{font-family: '微软雅黑';}
 .all{margin-bottom: 30px;}
 .m-body{min-width:200px;}
 
-#top_div{ 
-    position:fixed; 
-    bottom:80px; 
-    right:0; 
-    display:none; 
-} 
+#top_div{ position:fixed; bottom:80px; right:0; display:none; } 
+.m-detail-mainout .d-info h1{margin-top:0;}
+ul{margin-bottom:5px;}
+.show{display: inline-block!important;}
+.focusPic{top:-10px;}
 
 </style>
 <body>
@@ -165,7 +168,7 @@ var focusPic = new Swiper('.focusPic .views',{pagination: '.focusPic .tabs',auto
 					<div class="t">数量：</div>
 					<div class="c buynum">
 						<i style="cursor: pointer;" class="numadjust dec" onclick="plus_minus({ZF:$product.id}, -1,{ZF:$product.price})"></i>
-							<input id="buy_num" name="goods[num]" type="text" value="1">
+							<input id="buy_num" name="goods[num]" type="text" value="1" style="line-height: 2rem;">
 						<i style="cursor: pointer;" class="numadjust add" onclick="plus_minus({ZF:$product.id},1,{ZF:$product.price})"></i>
 						<span class="stock">(库存<span id="stock">{ZF:$product.num}</span>)</span>
 					</div>
@@ -195,14 +198,65 @@ var focusPic = new Swiper('.focusPic .views',{pagination: '.focusPic .tabs',auto
 
 	<div class="line"></div>
 	
-	<div class="m-detail-mainout">
+	<!-- <div class="m-detail-mainout">
 		<div class="back_shop" style="height:35px;line-height:35px;font-family: '微软雅黑';font-size:14px;background: url(/tpl/Wap/default/common/css/product/css/img/shop.png) no-repeat;">
 			<a href="{ZF::U('Product/cats',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">
 				<span style="padding-left: 40px;">{ZF:$wxuser.wxname}</span>
 				<span style="float: right;padding-right: 10px;color:#a1a1a1;">进入店铺&nbsp;></span>
 			</a>
 		</div>
-	</div>
+	</div> -->
+	
+	<!--<div class="m-detail-mainout">
+		<div class="back_shop" style="height:70px;line-height:35px;font-family: '微软雅黑';font-size:14px;border-bottom: 1px solid #eee;margin-top:10px;">
+				<div style="width:50px;height:50px;display: inline-block;margin-left: 10px;border:1px solid #ddd;"><img src="{ZF:$wxuser.headerpic}" style="width:100%;height: 100%;"></div>
+				<span style="padding-left: 10px;">{ZF:$wxuser.wxname}</span>
+		</div>
+		<div class="" style="line-height: 35px;margin:15px 10px;overflow: hidden;">
+			<a href="{ZF::U('Product/products',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">
+				<span style="float: left;width:48%;text-align: center;border:1px solid #ddd;border-radius:5px;margin-right: 1%;overflow: hidden">
+					<img alt="" src="/tpl/Wap/default/common/css/product/css/img/menu.png" style="padding-right: 3px;">全部商品
+				</span>
+			</a>
+			<a href="{ZF::U('Product/cats',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">
+				<span style="border:1px solid #ddd;border-radius:5px;float: right;width:48%;text-align: center;overflow: hidden">
+					<img alt="" src="/tpl/Wap/default/common/css/product/css/img/shop3.png" style="padding-right: 3px;">商城首页
+				</span>
+			</a>
+		</div>
+	</div>  -->
+	
+	 <!--  <div class="m-detail-mainout"> 
+		<div class="" style="line-height: 35px;margin:15px 10px;overflow: hidden;">
+			<a href="{ZF::U('Product/products',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">
+				<span style="float: left;width:48%;text-align: center;border:1px solid #ddd;border-radius:5px;margin-right: 1%;overflow: hidden" id="all_goods">
+					<img alt="" src="/tpl/Wap/default/common/css/product/css/img/menu.png" style="padding-right: 3px;">全部商品
+				</span>
+			</a>
+			<a href="{ZF::U('Product/cats',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">
+				<span style="border:1px solid #ddd;border-radius:5px;float: right;width:48%;text-align: center;overflow: hidden" id="go_shop">
+					<img alt="" src="/tpl/Wap/default/common/css/product/css/img/shop3.png" style="padding-right: 3px;">{ZF:$wxuser.wxname}
+				</span>
+			</a>
+		</div>
+	</div> -->
+	
+	<div class="m-detail-mainout"> 
+		<div class="" style="line-height: 35px;margin:0 10px 10px 10px;overflow: hidden;">
+			<div class="col-xs-6" style="text-align:center;padding-left:5px;padding-right:5px;margin-top:10px;">
+				<div style="border:1px solid #ddd;border-radius:5px;overflow: hidden;height:35px;">
+					<img alt="" src="/tpl/Wap/default/common/css/product/css/img/menu.png" style="padding-right: 3px;">
+					全部商品
+				</div>
+			</div>
+			<div class="col-xs-6"  style="text-align:center;padding-left:5px;padding-right:5px;margin-top:10px;">
+				<div style="border:1px solid #ddd;border-radius:5px;overflow: hidden;height:35px;">
+					<img alt="" src="/tpl/Wap/default/common/css/product/css/img/shop3.png" style="padding-right: 3px;">
+					{ZF:$wxuser.wxname}
+				</div>
+			</div> 
+		</div>
+	</div> 
 	
 	<div class="line"></div>
 	
@@ -470,6 +524,8 @@ window.onscroll = function(){
 		var win_width=$('.m-detail-mainout').width();
 		$('.m-detail-mainout .focusPic').css("max-height",win_width+"px");
 	})
+	
+	
 </script>
 
 </html>
