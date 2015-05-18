@@ -91,12 +91,9 @@ img{cursor:pointer;}
 				<p class="mbbh" style="line-height:1.5em; color:red; padding:5px 10px;">说明：此选项仅在分类未单独设置详情模板时，才会生效！</p>
 				<ul class="cateradio2">				
 				<volist name="liststpl" id="listtpl">
-					<eq name="info.tpllistid" value="$listtpl.tplid"> 
-						<li class='{ZF:$listtpl.attr}  active '>
-					</eq>
-	                <neq name="info.tpltypeid" value="$tpl.tplid"> 
-	                     <li class='{ZF:$listtpl.attr}'>
-	                </neq>
+					
+						<li class='{ZF:$listtpl.attr} <eq name="info.tpllistid" value="$listtpl.tplid">  active </eq>'>
+					 
 							<label>
 							<img src="{ZF::RES}/tmplimg/list/{ZF:$listtpl.imgurl}" onclick="javascript:alert('已选择列表{ZF:$listtpl.tplid}')" />
 							<input class="radio2" type="radio" views="{ZF:$listtpl.views}" name="optype2" value="{ZF:$listtpl.tplid}" <eq name="info.tpllistid" value="$listtpl.tplid">checked</eq> /> {ZF:$listtpl.name}
@@ -125,12 +122,14 @@ img{cursor:pointer;}
 			<div class="clr"></div>
 			<ul class="cateradio3">
 			<volist name="contenttpl" id="contpl">
-					<eq name="info.tplcontentid" value="$contpl.tplid"> 
-						<li class='{ZF:$contpl.attr}  active '>
-					</eq>
-	                <neq name="info.tpltypeid" value="$tpl.tplid"> 
-	                     <li class='{ZF:$contpl.attr}'>
-	                </neq>
+					 
+						<eq name="info.tplcontentid" value="$contpl.tplid">  
+							<li class='{ZF:$contpl.attr}  active '>
+						</eq>
+	                    <neq name="info.tplcontentid" value="$contpl.tplid"> 
+	                     	<li class='{ZF:$contpl.attr}'>
+	                    </neq>
+					 
 						<label><img src="{ZF::RES}/tmplimg/detail/{ZF:$contpl.imgurl}" onclick="javascript:alert('已选择详情模板{ZF:$contpl.tplid}')" />
 						<input class="radio3" type="radio" views="{ZF:$contpl.views}"  name="optype3" value="{ZF:$contpl.tplid}" <eq name="info.tplcontentid" value="$contpl.tplid">checked</eq>/>{ZF:$contpl.name}
 						</label>
