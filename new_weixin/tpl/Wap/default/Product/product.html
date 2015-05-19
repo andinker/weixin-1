@@ -47,10 +47,10 @@ body{font-family: '微软雅黑';margin:0;padding: 0;}
 .m-detail-mainout .focusPic{max-height: 640px;}
 .m-detail-mainout .focusPic .views img{max-height:none;}
 .bottom_nav{position: fixed;height:50px;background: #eee;bottom:0;z-index: 100;width:100%;box-shadow:1px 1px 10px #ccc;}
-.line{height:10px;}
+.line{height:10px;background: #f8f8f8;}
 .m-hd a{border-left: none;border:1px solid #e2e2e2;}
 .m-hd{height:50px;border-bottom: none;background:#eee;display: inline-block;width:60px;}
-.m-hd div a.cart:after{width:100%;height: 100%;top:2px;left:0;color:black;background: url(/tpl/Wap/default/common/css/product/css/img/cart2.png) no-repeat;}
+.m-hd div a.cart:after{width:100%;height: 100%;top:0px;left:0;color:black;background: url(/tpl/Wap/default/common/css/product/css/img/cart2.png) no-repeat;background-color: white;}
 .buynow{background:#f69555;color:#fff;font-size:1.4rem;padding:10px 20px;border-radius:5px;}
 .addcart{background:#ff5366;color:#fff;font-size:1.4rem;padding:10px 20px;border-radius:5px;}
 .m-detail-mainout .d-info .price{padding:10px 0;border:none;border-bottom: .1rem solid #eee;font-family: '微软雅黑';}
@@ -67,34 +67,20 @@ ul{margin-bottom:5px;}
 .show{display: inline-block!important;}
 .focusPic{top:-10px;}
 
+.detailinfo a:HOVER {text-decoration: none;color:#333;} 
+ul{margin-bottom: 5px;margin-top:5px;}
+.detailinfo .tabs{border:none;}
+.m-detail-mainout .d-info .i-row .buynum i:after, .m-detail-mainout .d-info .i-row .buynum i.add:before{top:1.2rem;left:.9rem;}
+.m-detail-mainout .d-info .i-row .buynum i {height:3rem;width: 3rem;}
+.m-detail-mainout .d-info .i-row .buynum input{height:3rem;}
+.bottom_nav i.cart_com{box-shadow:0 0 1px #900 inset;text-indent:0;position:absolute;top:0px;right:5px;z-index:1;background:#FF9;color:#966;border-radius:20px;font-size:10px;padding:0px 3px;font-weight:700;}
+
 </style>
 <body>
 <!--  -->
 <div class="all"  name="top">
 <div id="scnhtm5" class="m-body">
 	<div class="m-detail-mainout">
-		<!-- <div class="m-hd">
-		 <!-- <div><a href="javascript:history.go(-1);" class="back">返回</a></div>  -->
-	  	<!--<div><a href="{ZF::U('Wap/Product/cats',array('token'=>$_GET['token'], 'wecha_id' => $wecha_id))}" class="home">小区首页</a></div>
-		<div><a href="javascript:void(0);" class="cat">商品分类</a></div>
-		<div class="tit">{ZF:$metaTitle}</div>
-		<div><a href="{ZF::U('Product/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" class="uc">用户中心</a></div>
-		<div><a href="{ZF::U('Product/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" class="cart">购物车<i class="cart_com"><if condition="$totalProductCount neq 0" >{ZF:$totalProductCount}</if></i></a></div>
-		</div>
-		<ul class="sub-menu-list">
-		<li><a href="{ZF::U('Product/products',array('token' => $_GET['token'], 'catid' => 0, 'wecha_id' => $wecha_id))}">全部商品</a></li>
-		<li><a href="{ZF::U('Product/products',array('token' => $_GET['token'], 'catid' => $cat['parentid'], 'wecha_id' => $wecha_id))}">上级分类</a></li>
-		<volist name="cats" id="hostlist" key="i"> 
-		    <php>
-		     if ($hostlist['parentid'] == $catid){
-		    </php>
-		    <li><a href="{ZF::U('Product/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}">{ZF:$hostlist.name}</a></li>
-		    <php>
-		     } 
-		    </php>
-		</volist>
-		</ul>
-	 -->
 
 <!--轮播--->
 		<div class="focusPic">
@@ -187,84 +173,44 @@ var focusPic = new Swiper('.focusPic .views',{pagination: '.focusPic .tabs',auto
 				</div>
 				</div>
 					<div id="show_msg" style="display:none;" class="error"></div>
-					<!--  <div class="i-row act">
-					<a href="javascript:;" onClick="<empty name="Think.get.wecha_id">toLogin()<else/>QuickBuy()</empty>" class="buynow">立即购买</a>
-					<a href="javascript:;" id="btn_add_cart" class="addcart" onclick="<empty name="Think.get.wecha_id">toLogin()<else/>add_cart()</empty>">加入购物车</a>
-					</div>
-					-->
 			</form>
 		</div>
 	</div>
 
 	<div class="line"></div>
 	
-	<!-- <div class="m-detail-mainout">
-		<div class="back_shop" style="height:35px;line-height:35px;font-family: '微软雅黑';font-size:14px;background: url(/tpl/Wap/default/common/css/product/css/img/shop.png) no-repeat;">
-			<a href="{ZF::U('Product/cats',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">
-				<span style="padding-left: 40px;">{ZF:$wxuser.wxname}</span>
-				<span style="float: right;padding-right: 10px;color:#a1a1a1;">进入店铺&nbsp;></span>
-			</a>
-		</div>
-	</div> -->
 	
-	<!--<div class="m-detail-mainout">
-		<div class="back_shop" style="height:70px;line-height:35px;font-family: '微软雅黑';font-size:14px;border-bottom: 1px solid #eee;margin-top:10px;">
-				<div style="width:50px;height:50px;display: inline-block;margin-left: 10px;border:1px solid #ddd;"><img src="{ZF:$wxuser.headerpic}" style="width:100%;height: 100%;"></div>
-				<span style="padding-left: 10px;">{ZF:$wxuser.wxname}</span>
-		</div>
-		<div class="" style="line-height: 35px;margin:15px 10px;overflow: hidden;">
-			<a href="{ZF::U('Product/products',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">
-				<span style="float: left;width:48%;text-align: center;border:1px solid #ddd;border-radius:5px;margin-right: 1%;overflow: hidden">
-					<img alt="" src="/tpl/Wap/default/common/css/product/css/img/menu.png" style="padding-right: 3px;">全部商品
-				</span>
-			</a>
+	<div class="m-detail-mainout">
+		<div class="back_shop" style="line-height:27px;font-family: '微软雅黑';font-size:14px;margin-top:5px;margin-bottom:5px;">
 			<a href="{ZF::U('Product/cats',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">
-				<span style="border:1px solid #ddd;border-radius:5px;float: right;width:48%;text-align: center;overflow: hidden">
-					<img alt="" src="/tpl/Wap/default/common/css/product/css/img/shop3.png" style="padding-right: 3px;">商城首页
-				</span>
-			</a>
-		</div>
-	</div>  -->
-	
-	 <!--  <div class="m-detail-mainout"> 
-		<div class="" style="line-height: 35px;margin:15px 10px;overflow: hidden;">
-			<a href="{ZF::U('Product/products',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">
-				<span style="float: left;width:48%;text-align: center;border:1px solid #ddd;border-radius:5px;margin-right: 1%;overflow: hidden" id="all_goods">
-					<img alt="" src="/tpl/Wap/default/common/css/product/css/img/menu.png" style="padding-right: 3px;">全部商品
-				</span>
-			</a>
-			<a href="{ZF::U('Product/cats',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">
-				<span style="border:1px solid #ddd;border-radius:5px;float: right;width:48%;text-align: center;overflow: hidden" id="go_shop">
-					<img alt="" src="/tpl/Wap/default/common/css/product/css/img/shop3.png" style="padding-right: 3px;">{ZF:$wxuser.wxname}
-				</span>
-			</a>
-		</div>
-	</div> -->
-	
-	<div class="m-detail-mainout"> 
-		<div class="" style="line-height: 35px;margin:0 10px 10px 10px;overflow: hidden;">
-			<div class="col-xs-6" style="text-align:center;padding-left:5px;padding-right:5px;margin-top:10px;">
-				<div style="border:1px solid #ddd;border-radius:5px;overflow: hidden;height:35px;">
-					<img alt="" src="/tpl/Wap/default/common/css/product/css/img/menu.png" style="padding-right: 3px;">
-					全部商品
+				<div style="width:30px;height:30px;display: inline-block;margin-left: 10px;">
+					<img src="{ZF:$wxuser.headerpic}" style="width:100%;height: 100%;">
 				</div>
-			</div>
-			<div class="col-xs-6"  style="text-align:center;padding-left:5px;padding-right:5px;margin-top:10px;">
-				<div style="border:1px solid #ddd;border-radius:5px;overflow: hidden;height:35px;">
-					<img alt="" src="/tpl/Wap/default/common/css/product/css/img/shop3.png" style="padding-right: 3px;">
-					{ZF:$wxuser.wxname}
-				</div>
-			</div> 
+				<div style="display:inline-block;padding-left: 5px;">{ZF:$wxuser.wxname}</div>
+				<div style="display:inline-block;float: right;padding-right: 10px;color:#666;padding-top:3px;">进入店铺</div>
+			</a>
 		</div>
-	</div> 
-	
+	</div>	
 	<div class="line"></div>
-	
 <div class="m-detail-mainout">
 	<div class="d-info" style="margin: 0;">
 	<div class="detailinfo" style="padding:0;">
-		<ul class="tabs"><li style="color:#ff5366;">图文详情</li></ul>
-		<div class="views"  style="padding:10px;">
+		<a href="#goods_detail">
+			<ul class="tabs">
+				<li style="text-align: left;padding-left: 10px;font-size: 16px;border:none;">图文详情</li>
+				<li style="text-align: right;padding-right: 10px;font-size: 16px;border:none"><span class="glyphicon glyphicon-chevron-right"></span></li>
+			</ul>
+		</a>
+		<div class="line" style="background: #f0f0f0;"></div>
+		<div class="detail_title">
+			<ul class="tabs">
+				<li style="text-align: center;padding-left: 10px;font-size: 14px;width:33%;color:#d91100">商品介绍</li>
+				<li style="text-align: center;padding-left: 10px;font-size: 14px;width:33%"></li>
+				<li style="text-align: center;padding-left: 10px;font-size: 14px;width:33%"></li>
+			</ul>
+		</div>
+		<div class="line" style="height:3px;"></div>
+		<div class="views"  style="padding:10px;"><a name="goods_detail"></a>
 			<div class="warp">
 				<div class="li">
 					<ul class="detail-list">
@@ -288,6 +234,8 @@ var focusPic = new Swiper('.focusPic .views',{pagination: '.focusPic .tabs',auto
 		</div>
 	</div>
 </div>
+
+
 <script type="text/javascript"> 
 //var detailinfo = new Swiper('.detailinfo .views',{pagination: '.detailinfo .tabs',autoplay:false});
 var SysSecond; 
@@ -438,16 +386,19 @@ function toLogin(){
 </div>
 </div>
 <div class="bottom_nav">
-		<div class="m-hd">
-			<div style="padding:7px 10px;">
-				<a href="{ZF::U('Product/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" class="cart" style="border-radius:4px;border-left: none;border:1px solid #e2e2e2;width:37px;height:35px;">购物车<i class="cart_com"><if condition="$totalProductCount neq 0" >{ZF:$totalProductCount}</if></i></a>
-			</div>
-		</div>
-	<div class="i-row act" style="display: inline-block;float:right;line-height: 50px;padding-right: 10px;">
-		<a href="javascript:;" onClick="<empty name="Think.get.wecha_id">toLogin()<else/>QuickBuy()</empty>" class="buynow">立即购买</a>&nbsp;
-		<a href="javascript:;" id="btn_add_cart" class="addcart" onclick="<empty name="Think.get.wecha_id">toLogin()<else/>add_cart()</empty>">加入购物车</a>
-	</div>
-		
+	
+	 	<div style="line-height: 35px;margin-top:7px;">
+		<ul>
+			<a href="{ZF::U('Product/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">
+				<li class=" glyphicon glyphicon-shopping-cart" style="float: left; /*border:1px solid #ccc;padding:8px;border-radius:4px;*/margin-left:10px;font-size:17px;color:#999;text-align:center;"><span style="display: block;font-size:12px;font-family: Helvetica,STHeiti STXihei, Microsoft JhengHei, Microsoft YaHei, Arial;margin-top:2px;color:#666;">购物车</span><i class="cart_com"><if condition="$totalProductCount neq 0" >{ZF:$totalProductCount}</if></i></li>
+			</a>
+			<li style="float: right;margin-right:10px;">
+				<a href="javascript:;" onClick="<empty name="Think.get.wecha_id">toLogin()<else/>QuickBuy()</empty>" class="buynow">立即购买</a>&nbsp;
+			
+				<a href="javascript:;" id="btn_add_cart" class="addcart" onclick="<empty name="Think.get.wecha_id">toLogin()<else/>add_cart()</empty>">加入购物车</a>
+			</li>
+		</ul>
+	</div>	
 </div>
 	
 </body>
