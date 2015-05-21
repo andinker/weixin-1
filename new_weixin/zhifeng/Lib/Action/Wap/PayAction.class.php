@@ -5,11 +5,17 @@ class PayAction extends BaseAction{
 	public $pay_config;
 	public $orders_url;
 	public $wapalipay_config;
+	public $dbalipay_config;
 	public $zfalipay_config;
 	public $wxpay_config;
 	public function _initialize() {
 		parent::_initialize();
 		$this->token = $this->_get('token');
+		if (empty($this->token)){
+			$this->token = session('paytoken');
+		}else{
+			session('paytoken',$this->token);
+		}
 		$this->wecha_id	= $this->_get('wecha_id');
 		$this->orderid	= $this->_get('orderid');
 		$this->order_db = M('product_cart');
@@ -40,6 +46,14 @@ class PayAction extends BaseAction{
 			}
 			$this->order=$order;
 		}
+		//支付宝担保交易配置
+		$pay_config =M('payment')->where(array('token'=>$this->token,'pay_code'=>'dbalipay'))->find();
+		$pay_config = unserialize($pay_config['pay_config']);
+		$dbalipay_config['seller_email'] = trim($pay_config['account']);
+		$dbalipay_config['partner']		= trim($pay_config['pid']);
+		$dbalipay_config['key']			= trim($pay_config['key']);
+		$this->dbalipay_config = $dbalipay_config;
+
 		//手机支付配置
 		$pay_config =M('payment')->where(array('token'=>$this->token,'pay_code'=>'wapalipay'))->find();
 		$pay_config = unserialize($pay_config['pay_config']);
@@ -79,6 +93,131 @@ class PayAction extends BaseAction{
 		$waptenpay_config['partnerKey']=trim($pay_config['partnerKey']);
 		$this->waptenpay_config=$waptenpay_config;
 	}
+	
+	/**
+	 * 支付宝担保交易:支付
+	 */
+	public function dbalipay(){
+		
+		$order = $this->order;
+		
+		include APP_PATH.'Lib/ORG/DBAlipay/Pay/alipay.config.php';
+
+		$alipay_config['partner']		= $this->dbalipay_config['partner'];
+		$alipay_config['seller_email']	= $this->dbalipay_config['seller_email'];
+		$alipay_config['key']			= $this->dbalipay_config['key'];
+		
+		//print_r($alipay_config);
+		
+		include APP_PATH.'Lib/ORG/DBAlipay/Pay/lib/alipay_submit.class.php';
+		
+		/**************************请求参数**************************/
+		
+		//支付类型
+		$payment_type = "1";
+		//必填，不能修改
+		//服务器异步通知页面路径
+		$notify_url = 'http://'.$_SERVER['HTTP_HOST'].'/index.php/Wap/Pay/dbalipay_notify_url';
+		//需http://格式的完整路径，不能加?id=123这类自定义参数
+		
+		//页面跳转同步通知页面路径
+		$return_url = 'http://'.$_SERVER['HTTP_HOST'].'/index.php/Wap/Pay/dbalipay_call_back_url';
+		//需http://格式的完整路径，不能加?id=123这类自定义参数，不能写成http://localhost/
+		
+		//商户订单号
+		$out_trade_no = $order['orderid'];
+		//商户网站订单系统中唯一订单号，必填
+		
+		//订单名称
+		$subject = $order['ordername'];
+		//必填
+		
+		//付款金额
+		$price = $order['price'];
+		//必填
+		
+		//商品数量
+		$quantity = 1;
+		//必填，建议默认为1，不改变值，把一次交易看成是一次下订单而非购买一件商品
+		//物流费用
+		$logistics_fee = "0.00";
+		//必填，即运费
+		//物流类型
+		$logistics_type = "EXPRESS";
+		//必填，三个值可选：EXPRESS（快递）、POST（平邮）、EMS（EMS）
+		//物流支付方式
+		$logistics_payment = "SELLER_PAY";
+		//必填，两个值可选：SELLER_PAY（卖家承担运费）、BUYER_PAY（买家承担运费）
+		//订单描述
+		
+		$body = $order['ordername'];
+		//商品展示地址
+		$show_url = 'http://'.$_SERVER['HTTP_HOST'].U('Wap/Product/myDetail',array('token'=>$this->token,'wecha_id'=>$this->wecha_id,'cartid'=>$order['id']));
+		//需以http://开头的完整路径，如：http://www.商户网站.com/myorder.html
+
+		//收货人姓名
+		$receive_name = $order['truename'];
+		//如：张三
+		
+		//收货人地址
+		$receive_address = $order['address'];
+		//如：XX省XXX市XXX区XXX路XXX小区XXX栋XXX单元XXX号
+		
+		//收货人邮编
+		$receive_zip = '';
+		//如：123456
+		
+		//收货人电话号码
+		$receive_phone = $order['tel'];
+		//如：0571-88158090
+		
+		//收货人手机号码
+		$receive_mobile = $order['tel'];
+		//如：13312341234
+		
+		
+		/************************************************************/
+		
+		//构造要请求的参数数组，无需改动
+		$parameter = array(
+				"service" => "create_partner_trade_by_buyer",
+				"partner" => trim($alipay_config['partner']),
+				"seller_email" => trim($alipay_config['seller_email']),
+				"payment_type"	=> $payment_type,
+				"notify_url"	=> $notify_url,
+				"return_url"	=> $return_url,
+				"out_trade_no"	=> $out_trade_no,
+				"subject"	=> $subject,
+				"price"	=> $price,
+				"quantity"	=> $quantity,
+				"logistics_fee"	=> $logistics_fee,
+				"logistics_type"	=> $logistics_type,
+				"logistics_payment"	=> $logistics_payment,
+				"body"	=> $body,
+				"show_url"	=> $show_url,
+				"receive_name"	=> $receive_name,
+				"receive_address"	=> $receive_address,
+				"receive_zip"	=> $receive_zip,
+				"receive_phone"	=> $receive_phone,
+				"receive_mobile"	=> $receive_mobile,
+				"_input_charset"	=> trim(strtolower($alipay_config['input_charset']))
+		);
+		
+		//建立请求
+		$alipaySubmit = new AlipaySubmit($alipay_config);
+		$html_text = $alipaySubmit->buildRequestForm($parameter,"get", "进入支付宝收银台");
+		echo '正在跳转到支付宝进行支付...<div style="display:none">'.$html_text.'</div>';
+	
+	
+	}
+	
+	/**
+	 * 支付宝担保交易:确认发货
+	 */
+	public function dbalipay_send(){
+		
+	}
+	
 	//手机支付宝
 	public function wapalipay(){
         vendor('Malipay.alipay_submit','','.class.php');
@@ -145,7 +284,7 @@ class PayAction extends BaseAction{
 		//建立请求
 		$alipaySubmit = new AlipaySubmit($alipay_config);
 		$html_text = $alipaySubmit->buildRequestForm($parameter, 'get', '正确为您跳转到支付宝支付界面!');
-		echo $html_text;	
+		echo '正在跳转到支付宝进行支付...<div style="display:none">'.$html_text.'</div>';
 	}
 	//免签支付宝
 	public function zfalipay(){
@@ -204,6 +343,215 @@ class PayAction extends BaseAction{
 		$pay_url=C('site_url')."/wxpay/?g=Wap&m=Wxpay&a=pay&token=".$this->token."&wecha_id=".$this->wecha_id."&orderid=".$this->orderid;
 		header("location:".$pay_url);
 	}
+	
+	/**
+	 * 支付宝担保交易：回跳页面
+	 */
+	public function dbalipay_call_back_url(){
+		
+		include APP_PATH.'Lib/ORG/DBAlipay/Pay/alipay.config.php';
+		
+		$alipay_config['partner']		= $this->dbalipay_config['partner'];
+		$alipay_config['seller_email']	= $this->dbalipay_config['seller_email'];
+		$alipay_config['key']			= $this->dbalipay_config['key'];
+		
+		include APP_PATH.'Lib/ORG/DBAlipay/Pay/lib/alipay_notify.class.php';
+		
+		//计算得出通知验证结果
+		$alipayNotify = new AlipayNotify($alipay_config);
+		$verify_result = $alipayNotify->verifyReturn();
+		if(/*$verify_result*/true) {//验证成功
+			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			//请在这里加上商户的业务逻辑程序代码
+		
+			//——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
+			//获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表
+		
+			//商户订单号
+		
+			$out_trade_no = $_GET['out_trade_no'];
+		
+			//支付宝交易号
+		
+			$trade_no = $_GET['trade_no'];
+		
+			//交易状态
+			$trade_status = $_GET['trade_status'];
+		
+		
+			if($_GET['trade_status'] == 'WAIT_SELLER_SEND_GOODS') {
+				//判断该笔订单是否在商户网站中已经做过处理
+				//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+				//如果有做过处理，不执行商户的业务程序
+				
+				$order_db = $this->order_db;
+				
+				$cartid = $order_db->where(array('orderid'=>$out_trade_no))->getField('id');
+				
+				$back_url = 'http://'.$_SERVER['HTTP_HOST'].U('Wap/Product/myDetail',array('token'=>$this->token,'wecha_id'=>$this->wecha_id,'cartid'=>$cartid));
+				
+				
+				$data['paid'] = 1;
+				$data['payment'] = 'dbalipay';
+				$data['payment_order_id'] = $trade_no;
+				$data['payment_order_status'] = $_GET['trade_status'];
+				
+				$order_db->where(array('orderid'=>$out_trade_no))->save($data);
+				$this->success('支付成功', $back_url);
+				
+				
+			}
+			else {
+				$this->error('支付失败'. "trade_status=".$_GET['trade_status'], $back_url);
+			}
+		
+			//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
+		
+			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		}
+		else {
+			//验证失败
+			//如要调试，请看alipay_notify.php页面的verifyReturn函数
+			echo "验证失败！您的请求不合法。";
+		}
+		
+	}
+	
+	/**
+	 * 支付宝担保交易：异步通知页
+	 */
+	public function dbalipay_notify_url()
+	{
+		include_once(APP_PATH.'Lib/ORG/Weixinpay2/Log_.php');
+		
+		$log_ = new Log_();
+		$log_name=APP_PATH."./../data/dbalipay_notify_url-".date('Y-m-d',time()).".log";//log文件路径
+		
+		$log_->log_result($log_name,"【接收到的notify通知】:\r\n".var_export($_POST,true)."\r\n");
+		
+		include APP_PATH.'Lib/ORG/DBAlipay/Pay/alipay.config.php';
+		
+		$alipay_config['partner']		= $this->dbalipay_config['partner'];
+		$alipay_config['seller_email']	= $this->dbalipay_config['seller_email'];
+		$alipay_config['key']			= $this->dbalipay_config['key'];
+		
+		include APP_PATH.'Lib/ORG/DBAlipay/Pay/lib/alipay_notify.class.php';
+		
+		
+		//计算得出通知验证结果
+		$alipayNotify = new AlipayNotify($alipay_config);
+		$verify_result = $alipayNotify->verifyNotify();
+		
+		if(/*$verify_result*/true) {//验证成功
+			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			//请在这里加上商户的业务逻辑程序代
+		
+		
+			//——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
+		
+			//获取支付宝的通知返回参数，可参考技术文档中服务器异步通知参数列表
+		
+			//商户订单号
+		
+			$out_trade_no = $_POST['out_trade_no'];
+		
+			//支付宝交易号
+		
+			$trade_no = $_POST['trade_no'];
+		
+			//交易状态
+			$trade_status = $_POST['trade_status'];
+		
+			
+			$data['paid'] = 0;
+		
+			if($_POST['trade_status'] == 'WAIT_BUYER_PAY') {
+				//该判断表示买家已在支付宝交易管理中产生了交易记录，但没有付款
+		
+				//判断该笔订单是否在商户网站中已经做过处理
+				//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+				//如果有做过处理，不执行商户的业务程序
+					
+				echo "success";		//请不要修改或删除
+		
+				//调试用，写文本函数记录程序运行情况是否正常
+				//logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
+			}
+			else if($_POST['trade_status'] == 'WAIT_SELLER_SEND_GOODS') {
+				//该判断表示买家已在支付宝交易管理中产生了交易记录且付款成功，但卖家没有发货
+		
+				//判断该笔订单是否在商户网站中已经做过处理
+				$data['paid'] = 1;
+				//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+				//如果有做过处理，不执行商户的业务程序
+					
+				echo "success";		//请不要修改或删除
+		
+				//调试用，写文本函数记录程序运行情况是否正常
+				//logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
+			}
+			else if($_POST['trade_status'] == 'WAIT_BUYER_CONFIRM_GOODS') {
+				//该判断表示卖家已经发了货，但买家还没有做确认收货的操作
+		
+				//判断该笔订单是否在商户网站中已经做过处理
+				$data['paid'] = 1;
+				//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+				//如果有做过处理，不执行商户的业务程序
+					
+				echo "success";		//请不要修改或删除
+		
+				//调试用，写文本函数记录程序运行情况是否正常
+				//logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
+			}
+			else if($_POST['trade_status'] == 'TRADE_FINISHED') {
+				//该判断表示买家已经确认收货，这笔交易完成
+		
+				//判断该笔订单是否在商户网站中已经做过处理
+				$data['paid'] = 1;
+				//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+				//如果有做过处理，不执行商户的业务程序
+					
+				echo "success";		//请不要修改或删除
+		
+				//调试用，写文本函数记录程序运行情况是否正常
+				//logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
+			}
+			else {
+				//其他状态判断
+				echo "success";
+		
+				//调试用，写文本函数记录程序运行情况是否正常
+				//logResult ("这里写入想要调试的代码变量值，或其他运行的结果记录");
+			}
+		
+			//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
+		
+			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
+			$order_db = $this->order_db;
+
+			$data['payment'] = 'dbalipay';
+			$data['payment_order_id'] = $trade_no;
+			$data['payment_order_status'] = $_POST['trade_status'];
+			
+			$order_db->where(array('orderid'=>$out_trade_no))->save($data);
+			
+			$log_->log_result($log_name,"【执行了SQL】:\r\n".$order_db->getLastSql()."，并返回了success给支付宝\r\n");
+			
+		}
+		else {
+			//验证失败
+			echo "fail";
+			$log_->log_result($log_name,"【验证失败】:\r\n 并返回了fail给支付宝 \r\n");
+		
+			//调试用，写文本函数记录程序运行情况是否正常
+			//logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
+		}
+		
+		exit();
+		
+	}
+	
 	public function wapalipay_call_back_url(){
         vendor('Malipay.alipay_notify','','.class.php');
 		$alipay_config=$this->wapalipay_config;

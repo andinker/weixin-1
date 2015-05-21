@@ -39,6 +39,39 @@ class PaymentAction extends UserAction{
 			$this->display();
 		}
 	}
+	
+	
+	/**
+	 * 支付宝担保交易
+	 */
+	public function dbalipay(){
+		$payset = $this->Payment_db->where(array('token'=>$this->token,'pay_code'=>'dbalipay'))->find();
+		$pay_config = unserialize($payset['pay_config']);
+		$config=array();
+		if(IS_POST){
+			$config['pid']=$this->_post('pid');
+			$config['key']=$this->_post('key');
+			$config['account']=$this->_post('account','trim');
+				
+			$row['enabled']= $this->_post('enabled');
+			$row['pay_config']= serialize($config);
+			if ($payset){
+				$where=array('id'=>$payset['id']);
+				$this->Payment_db->where($where)->save($row);
+			}else {
+				$row['pay_code']= 'dbalipay';
+				$row['pay_name']= "支付宝担保交易";
+				$row['token']= $this->token;
+				$this->Payment_db->add($row);
+			}
+			$this->success('设置成功',U('Payment/dbalipay',$where));
+		}else{
+			$this->assign('payset',$payset);
+			$this->assign('pay_config',$pay_config);
+			$this->display();
+		}
+	}
+	
 	//手机支付宝
 	public function wapalipay(){
 		$payset = $this->Payment_db->where(array('token'=>$this->token,'pay_code'=>'wapalipay'))->find();

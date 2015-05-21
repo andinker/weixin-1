@@ -163,7 +163,8 @@ function is_weixin(){
 	}
 }
 function is_alipay(){
-	if ( $("#payment_selector").val() == "zfalipay" ||
+	if ( $("#payment_selector").val() == "dbalipay" ||
+         $("#payment_selector").val() == "zfalipay" ||
 	     $("#payment_selector").val() == "wapalipay" )
 	{
 		//alert("选择了支付宝支付！");
@@ -217,11 +218,9 @@ function is_alipay(){
 </ul>
 </div>
 <div class="m-cart-toal m-checkout-toal" style="line-height: 30px;font-family: '微软雅黑';">
-<p id="price_total" class="check">商品总数：<b>{ZF:$totalCount}</b>　件<br>
-商品原总价：<b>{ZF:$totalFee}</b>　元<br>
-运费：
-<b>{ZF:$mailprice}</b>　元
-<if condition="$totalFee egt $setting['price'] AND $setting['price'] egt 0">
+<p id="price_total" class="check">商品总数：<b>{ZF:$totalCount}</b>件<br>
+商品原总价：<b>{ZF:$totalFee}</b>元<br>
+运费：<b>{ZF:$mailprice}</b>元<if condition="$totalFee egt $setting['price'] AND $setting['price'] egt 0">
    <if condition="$setting['price'] eq 0">
    	 (全场免邮费)
    <else/>
@@ -234,9 +233,9 @@ function is_alipay(){
 
 
 <!-- 优惠金额：0元<br> -->
-您共需支付：<b id="totalmoney"><php>{echo ($totalFee + $mailprice);}</php></b>　元</p>
+您共需支付：<b id="totalmoney"><php>{echo ($totalFee + $mailprice);}</php></b>元</p>
 <if condition="($setting['score'] gt 0) OR ($fans['total_score'] gt 0)">
-<p class="check">您的可用积分：<b>{ZF:$fans['total_score']}</b>　分<br/>
+<p class="check">您的可用积分：<b>{ZF:$fans['total_score']}</b>分<br/>
 使用积分兑换：<input type="text" name="score" style="border: 1px solid #cfcfcf;margin: 0 -1px;font-size: 16px;display: inline-block;text-align: center;height: 22px;width: 50px;border-radius: 0;background: -webkit-gradient(linear, 0 0, 0 100%, from(#e5e5e5),color-stop(0.3, #fff),to(#fff));-webkit-appearance: none;color: #999;" id="score"/>
 <span></span>
 </p>
