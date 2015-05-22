@@ -216,6 +216,113 @@ class PayAction extends BaseAction{
 	 */
 	public function dbalipay_send(){
 		
+		$order = $this->order;
+		
+		include_once(APP_PATH.'Lib/ORG/Weixinpay2/Log_.php');
+		$log_ = new Log_();
+		$log_name=APP_PATH."./../data/dbalipay_send-".date('Y-m-d',time()).".log";//log文件路径
+		
+		include APP_PATH.'Lib/ORG/DBAlipay/Send/alipay.config.php';
+		
+		$alipay_config['partner']		= $this->dbalipay_config['partner'];
+		$alipay_config['seller_email']	= $this->dbalipay_config['seller_email'];
+		$alipay_config['key']			= $this->dbalipay_config['key'];
+		
+		include APP_PATH.'Lib/ORG/DBAlipay/Send/lib/alipay_submit.class.php';
+		
+		$log_->log_result($log_name,"【执行了发货操作，订单数据】:".var_export($order,true)."\r\n");
+		
+		if (empty($order['payment_order_id']) || empty($order['logistics']) || empty($order['logisticsid'])){
+			
+			$log_->log_result($log_name,"【订单数据不全，无法发货】:支付单号、快递公司、快递单号不完整，发货失败！\r\n");
+			
+			$this->error('支付单号、快递公司、快递单号不完整，发货失败！');
+		}
+		
+		
+		
+		/**************************请求参数**************************/
+
+        //支付宝交易号
+        $trade_no = $order['payment_order_id'];
+        //必填
+
+        //物流公司名称
+        $logistics_name = $order['logistics'];
+        //必填
+
+        //物流发货单号
+
+        $invoice_no = $order['logisticsid'];
+        //物流运输类型
+        $transport_type = 'EXPRESS';
+        //三个值可选：POST（平邮）、EXPRESS（快递）、EMS（EMS）
+
+
+		/************************************************************/
+
+		//构造要请求的参数数组，无需改动
+		$parameter = array(
+				"service" => "send_goods_confirm_by_platform",
+				"partner" => trim($alipay_config['partner']),
+				"trade_no"	=> $trade_no,
+				"logistics_name"	=> $logistics_name,
+				"invoice_no"	=> $invoice_no,
+				"transport_type"	=> $transport_type,
+				"_input_charset"	=> trim(strtolower($alipay_config['input_charset']))
+		);
+		
+		//建立请求
+		$alipaySubmit = new AlipaySubmit($alipay_config);
+		$html_text = $alipaySubmit->buildRequestHttp($parameter);
+		//解析XML
+		//注意：该功能PHP5环境及以上支持，需开通curl、SSL等PHP配置环境。建议本地调试时使用PHP开发软件
+		$doc = new DOMDocument();
+		$doc->loadXML($html_text);
+		
+		//请在这里加上商户的业务逻辑程序代码
+		
+		//——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
+		
+		//获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表
+		
+		//解析XML
+		/*
+		if( ! empty($doc->getElementsByTagName( "alipay" )->item(0)->nodeValue) ) {
+			$alipay = $doc->getElementsByTagName( "alipay" )->item(0)->nodeValue;
+			echo htmlentities($alipay);
+		}*/
+		
+		//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
+		
+		$log_->log_result($log_name,"【返回数据】:".$html_text."\r\n");
+		
+		if( ! empty($doc->getElementsByTagName( "is_success" )->item(0)->nodeValue) ) {
+			$status = $doc->getElementsByTagName( "is_success" )->item(0)->nodeValue;
+			if ($status == 'T'){
+				// 成功了
+				$trade_status = $doc->getElementsByTagName( "trade_status" )->item(0)->nodeValue;
+				
+				// 更改订单发货状态
+				$order_db = $this->order_db;
+				
+				$data['payment_order_status'] = $trade_status;
+				$data['sent'] = 1;
+					
+				$order_db->where(array('orderid'=>$order['orderid']))->save($data);
+					
+				$log_->log_result($log_name,"【成功，处理成功数据SQL】:\r\n".$order_db->getLastSql()."\r\n");
+				
+				$this->success('成功！',U('User/Product/orderInfo',array('token'=>$this->token,'id'=>$order['id'])));
+				
+			}else{
+				$log_->log_result($log_name,"【失败了！】:\r\n");
+				$this->error('支付宝端返回状态：失败！');
+			}
+		}else{
+			$log_->log_result($log_name,"【返回数据有问题，发货失败】:\r\n");
+			$this->error('支付宝未能正确响应，发货失败！');
+		}
 	}
 	
 	//手机支付宝
@@ -464,6 +571,7 @@ class PayAction extends BaseAction{
 		
 			
 			$data['paid'] = 0;
+			$data['sent'] = 0;
 		
 			if($_POST['trade_status'] == 'WAIT_BUYER_PAY') {
 				//该判断表示买家已在支付宝交易管理中产生了交易记录，但没有付款
@@ -494,7 +602,7 @@ class PayAction extends BaseAction{
 				//该判断表示卖家已经发了货，但买家还没有做确认收货的操作
 		
 				//判断该笔订单是否在商户网站中已经做过处理
-				$data['paid'] = 1;
+				$data['paid'] = 1;$data['sent'] = 1;
 				//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
 				//如果有做过处理，不执行商户的业务程序
 					
@@ -507,7 +615,7 @@ class PayAction extends BaseAction{
 				//该判断表示买家已经确认收货，这笔交易完成
 		
 				//判断该笔订单是否在商户网站中已经做过处理
-				$data['paid'] = 1;
+				$data['paid'] = 1;$data['sent'] = 1;
 				//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
 				//如果有做过处理，不执行商户的业务程序
 					
@@ -517,6 +625,9 @@ class PayAction extends BaseAction{
 				//logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
 			}
 			else {
+				
+				$log_->log_result($log_name,"【返回了未知状态：】".$_POST['trade_status']);
+						
 				//其他状态判断
 				echo "success";
 		

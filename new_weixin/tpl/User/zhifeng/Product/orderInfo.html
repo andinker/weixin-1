@@ -10,9 +10,19 @@
 <script type="text/javascript" src="{ZF::RES}/js/jquery.min.js"></script>
 <script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
 <script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function($){
+	$('#button_push_alipay').bind('click',function(e){
+		location.href = '{ZF::U('Wap/Pay/dbalipay_send',array('token'=>$token,'orderid'=>$thisOrder['orderid']))}';
+	});
+});
+</script>
+
 </head>
 <body id="nv_member">
 <div style="line-height:200%;padding:10px 20px;">
+订单号：{ZF:$thisOrder.orderid}<br/>
 订购人：{ZF:$thisOrder.truename}&nbsp;&nbsp;电话：{ZF:$thisOrder.tel}&nbsp;&nbsp;
 地址：{ZF:$thisOrder.address}<br>
 总数：{ZF:$thisOrder.total}&nbsp;&nbsp;
@@ -79,7 +89,33 @@ $("#editPrice").bind('click',function(){
 </select>&nbsp;&nbsp;
 <b><span class="red">*</span>发货状态：</b> 
 <select name="sent"><option value="0" <if condition="$thisOrder.sent eq 0">selected</if>>未发货</option><option value="1" <if condition="$thisOrder.sent eq 1">selected</if>>已发货</option></select></td> 
-</tr> 
+</tr>
+
+<if condition="$thisOrder.paid eq 1"> 
+	<tr>
+	<th></th>
+	<td>
+	支付方式：<php>
+		$payment_data = array('zfalipay'=>'支付宝直付（非担保）','wapalipay'=>'手机支付宝（非担保）','dbalipay'=>'支付宝担保交易','wxpay'=>'微信支付','tenpay'=>'财付通','waptenpay'=>'手机财付通');
+		if (isset($payment_data[$thisOrder['payment']])) echo '<span style="color:green; font-weight: bold;">'.$payment_data[$thisOrder['payment']].'</span>';
+	</php>
+	<if condition="$thisOrder.payment_order_id neq ''">
+		<br/>交易号：{ZF:$thisOrder.payment_order_id}
+	</if>
+	<if condition="$thisOrder.payment eq 'dbalipay'">
+		<br/>担保进程：<php>
+					$dbalipay_status = array('WAIT_BUYER_PAY'=>'等待买家付款','WAIT_SELLER_SEND_GOODS'=>'等待卖家发货','WAIT_BUYER_CONFIRM_GOODS'=>'等待买家确认收货','TRADE_FINISHED'=>'交易完成');
+					echo '<span style="color:#FF3300; font-weight: bold;">'.$dbalipay_status[$thisOrder['payment_order_status']].'</span>';
+	     	 </php>
+	     	 
+	     	 <php>if ($thisOrder['payment_order_status'] == 'WAIT_SELLER_SEND_GOODS'){</php>
+	     	     <br/>　　　　　<input type="button" id="button_push_alipay" value="支付宝发货" style="border-radius:3px; border:1px solid #999;" />
+	     	 <php>}</php>
+    </if>
+	</td>
+	</tr>
+</if>
+
 <tr> 
 <th><span class="red">*</span>快递公司：</th>
 <td><input type="text" name="logistics" value="{ZF:$thisOrder.logistics}" class="px" style="width:200px;" /></td> 

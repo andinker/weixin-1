@@ -150,8 +150,49 @@ function is_weixin(){
 <ul class="m-uc-order-v-infobox">
 <p>订单编号：{ZF:$cartData.orderid}</p>
 <li><span class="tit">订单状态：</span>
+<php>if($cartData['paid']){echo '<span style="color:green; font-weight: bold;">已付款</span>';}else{echo '<span style="color:red; font-weight: bold;">未付款</span>';}</php>，
 <php>if($cartData['sent']){echo '<b class="orderStatus">已发货</b>';}else{echo '<b class="orderStatus">待发货</b>';}</php>
 </li>
+
+<php>if($cartData['paid']){</php>
+	<li><span class="tit">支付方式：</span>
+	<php>
+		$payment_data = array('zfalipay'=>'支付宝直付（非担保）','wapalipay'=>'手机支付宝（非担保）','dbalipay'=>'支付宝担保交易','wxpay'=>'微信支付','tenpay'=>'财付通','waptenpay'=>'手机财付通');
+		if (isset($payment_data[$cartData['payment']])) echo '<span style="color:green; font-weight: bold;">'.$payment_data[$cartData['payment']].'</span>';
+	</php>
+	</li>
+
+    <php>if ($cartData['payment_order_id'] != ''){</php>
+    
+	     <li><span class="tit">　交易号：</span>
+	     	 <php>
+					echo '<span style="color:#000;font-size: 10px;">'.$cartData['payment_order_id'].'</span>';
+	     	 </php>
+	     </li>
+    
+    <php>}</php>
+
+    <php>if ($cartData['payment'] == 'dbalipay'){</php>
+    
+	     <li><span class="tit">担保进程：</span>
+	     	 <php>
+					$dbalipay_status = array('WAIT_BUYER_PAY'=>'等待买家付款','WAIT_SELLER_SEND_GOODS'=>'等待卖家发货','WAIT_BUYER_CONFIRM_GOODS'=>'等待买家确认收货','TRADE_FINISHED'=>'交易完成');
+					echo '<span style="color:#FF3300; font-weight: bold;">'.$dbalipay_status[$cartData['payment_order_status']].'</span>';
+	     	 </php>
+	     </li>
+    
+    <php>}</php>
+    
+    <php>if ($cartData['payment_order_status'] == 'WAIT_BUYER_CONFIRM_GOODS'){</php>
+    	     <li><span class="tit">　　　　　</span>
+	     	 <php>
+   				 echo '(我已经收到货，去 <a style="color: #000; font-weight: bold;" target="_blank" href="https://www.alipay.com">支付宝</a> 确认付款)';
+	     	 </php>
+	     </li>
+    <php>}</php>
+
+<php>}</php>
+
 <li>
 <p>下单时间：{ZF:$cartData.time|date="Y-m-d H:i:s",###}</p>
 <p>商品金额：<b>{ZF:$totalFee}元</b></p>
