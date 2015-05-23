@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="{ZF::STATICS}/SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+<script src="http://cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="http://cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.min.css">
 
 <style type="text/css">
 #all{max-width: 800px;margin: 0 auto;padding: 0;}
@@ -18,11 +20,17 @@
 #left_cla li {list-style: none;border-bottom: 1px solid #e0e0e0;height:40px;overflow:hidden;padding-left:5px;padding-right:5px;}
 #left_cla li:last-child{border-bottom:none;}
 .TabbedPanelsContentGroup{overflow:scroll;overflow-x: hidden;padding-left:95px;max-width: 800px;padding-right:5px;}
-.second_cla{text-align: center;line-height:50px;margin-top:15px;padding-left:5px;padding-right:5px;}
-.second_cla img{width:100%;height:100px;overflow: hidden;}
+.second_cla,.third_cla{text-align: center;line-height:50px;margin-top:15px;padding-left:5px;padding-right:5px;}
+.second_cla img,.third_cla img{width:100%;height:100px;overflow: hidden;}
 .cla_name{height:40px;overflow: hidden;}
+#cla_name{border-bottom: 1px solid #eee;}
 .TabbedPanelsTabSelected{background:white; }
-
+#accordion #acc_content{height:auto!important;}
+.ui-accordion .ui-accordion-content{padding: 5px;}
+.ui-widget-content{background:#f8f8f8;}
+.ui-state-default{font-weight: normal;color:#333;border:1px solid #e0e0e0;}
+.ui-state-active{font-weight: bold;border:1px solid #e0e0e0;}
+.ui-widget-content{border:1px solid #e0e0e0;}
 </style>
 
  </head>
@@ -31,15 +39,24 @@ function keyLogin(){
  if (event.keyCode==13)
    document.getElementById("basic-addon2").click(); 
 }
-</script>
+
+/*$(function() {
+   $(".TabbedPanelsContent #accordion").accordion();
+});*/
+  </script>
 <body onkeydown="keyLogin();">
+</head>
+<body>
+ 
+ 
+ 
 
 
 <div id="all" class="container">
 	  
 	
 	<div class="nav_search">
-		<div class="input-group" style="padding:10px 15px 10px 15px;">
+		<div class="input-group" style="padding:10px 5px;">
 			<input type="text" name="keyword" class="form-control" placeholder="请输入您要搜索的商品" aria-describedby="basic-addon2" id="sear_con">
 			<span class="input-group-addon" id="basic-addon2" style="cursor: pointer;" onclick="location.href='/index.php?&g=Wap&m=Product&a=products&token=qbyszj1426650408&wecha_id=&keyword='+document.getElementById('sear_con').value ;"><span class="glyphicon glyphicon-search""></span></span>
 		</div>
@@ -62,30 +79,77 @@ function keyLogin(){
 			<volist name="info" id="info_item">
 				
 					<div class="TabbedPanelsContent" id="{ZF:$info_item.id}">
-					
+					<!-- 
+						<div id="accordion">
+							<volist name="info_item['sub']" id="vo">
+									  <h3 style="margin-top:4px;">{ZF:$vo.name}</h3>
+									  <div id="acc_content">
+									  	<notempty name="vo['sub']">
+									   		<volist name="vo['sub']" id="third">
+													<div class="col-xs-4 third_cla">
+														<if condition="$third['url'] eq ''">
+																<if condition="$third['img'] eq ''">
+																	<div style="width: 100%;height:100px;text-align: center;line-height: 100px;border:1px solid #ccc;color:#999;overflow: hidden;" class="img">暂无图片</div>
+																<else/>
+																	<img src="{ZF:$third.img}" class="img">
+																</if>
+																	<div class="cla_name">{ZF:$third.name}	</div>
+														<else/>
+															<a href="{ZF:$third.url}" style="text-decoration: none;color:black;">
+																<if condition="$third['img'] eq ''">
+																	<div style="width: 100%;height:100px;text-align: center;line-height: 100px;border:1px solid #ccc;color:#999;" class="img">暂无图片</div>
+																<else/>
+																	<img src="{ZF:$third.img}" class="img">
+																</if>
+																	<div class="cla_name">{ZF:$third.name}	</div>
+															</a>
+														</if>
+													</div>
+											</volist>
+											<else/>
+												<div class="col-xs-12" style="text-align: center;">该二级分类下暂无子分类</div>
+									   </notempty> 
+									  </div>
+						  </volist>
+						</div>	
+						-->				
 						<volist name="info_item['sub']" id="vo">
-							<div class="col-xs-4 second_cla">
-								<if condition="$vo['url'] eq ''">
-									<a href="{ZF::U('Wap/Index/goods',array('token'=>$token,'wecha_id'=>$wecha_id,'catid'=>$vo['id']))}" style="text-decoration: none;color:black;">
-										<if condition="$vo['img'] eq ''">
-											<div style="width: 100%;height:100px;text-align: center;line-height: 100px;border:1px solid #ccc;color:#999;" class="img">暂无图片</div>
-										<else/>
-											<img src="{ZF:$vo.img}" class="img">
-										</if>
-											<div class="cla_name">{ZF:$vo.name}	</div>
-									</a>
-								<else/>
-									<a href="{ZF:$vo.url}" style="text-decoration: none;color:black;">
-										<if condition="$vo['img'] eq ''">
-											<div style="width: 100%;height:100px;text-align: center;line-height: 100px;border:1px solid #ccc;color:#999;" class="img">暂无图片</div>
-										<else/>
-											<img src="{ZF:$vo.img}" class="img">
-										</if>
-											<div class="cla_name">{ZF:$vo.name}	</div>
-									</a>
-								</if>	
-							</div>
+
+						
+								<div class="col-xs-12 second_cla" style="text-align: left;margin-top:5px;">
+									<div class="cla_name" id="cla_name" style="padding-left: 5px;">{ZF:$vo.name}</div>
+									<notempty name="vo['sub']">
+										<volist name="vo['sub']" id="third">
+												<div class="col-xs-4 third_cla">
+													<if condition="$third['url'] eq ''">
+													    <a href="{ZF::U('Wap/Index/goods',array('token'=>$token,'wecha_id'=>$wecha_id,'catid'=>$third['id']))}" style="text-decoration: none;color:black;">
+															<if condition="$third['img'] eq ''">
+																<div style="width: 100%;height:100px;text-align: center;line-height: 100px;border:1px solid #ccc;color:#999;" class="img">暂无图片</div>
+															<else/>
+																<img src="{ZF:$third.img}" class="img">
+															</if>
+																<div class="cla_name">{ZF:$third.name}	</div>
+														</a>
+													<else/>
+														<a href="{ZF:$third.url}" style="text-decoration: none;color:black;">
+															<if condition="$third['img'] eq ''">
+																<div style="width: 100%;height:100px;text-align: center;line-height: 100px;border:1px solid #ccc;color:#999;" class="img">暂无图片</div>
+															<else/>
+																<img src="{ZF:$third.img}" class="img">
+															</if>
+																<div class="cla_name">{ZF:$third.name}	</div>
+														</a>
+													</if>
+												</div>
+										</volist>
+									<else/>
+											<div class="col-xs-12" style="text-align: center;border:1px solid #eee;line-height: 40px;margin-top:10px;">该二级分类下暂无子分类</div>
+									</notempty>
+								</div>
+
 						</volist>
+						 
+						
 									
 					</div>
 					
@@ -127,12 +191,12 @@ $(window).resize(function(){
 	$('.content').css("height",h2+"px");	
 	
 })
-</script>
 
+</script>
 <!-- pre>
 <php>
 print_r($info); 
 </php>
-</pre-->
+</pre  -->
 </body>
 </html>

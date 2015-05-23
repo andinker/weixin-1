@@ -24,7 +24,7 @@
         <!-- Mobile Devices Support @end -->
         <link rel="shortcut icon" href="{ZF::RES}/img/favicon.ico" />
     </head>
-    <body onselectstart="return true;" ondragstart="return false;">
+    <body onselectstart="return true;" ondragstart="return false;" style="margin-bottom: 0 !important; ">
    <!--背景音乐-->
 <if condition="$homeInfo['animation'] neq '0'"><include file="Index:anStyle"/></if>
 <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
@@ -34,7 +34,8 @@
 		display:block;
 		background:url('<if condition="$homeInfo.homeurl neq false">{ZF:$homeInfo.homeurl}<else/>{ZF::RES}/images/themes/bg1.jpg</if>') no-repeat 0 0;
 		background-size:100% 100%;
-		margin-bottom: 45px;
+		//margin-bottom: 45px;
+		
 	}
 	.btn_music{left:auto;right:15px;}
 	.top_bar{top:auto;bottom:0;}
@@ -135,5 +136,14 @@
 <include file="Index:styleInclude"/><include file="$cateMenuFileName"/>
 <!-- share -->
 <include file="Index:share" /> 
+<script>
+function SetSize(){
+	var win_h=$(window).height();
+	$('.body').css("min-height",win_h-45+"px");
+}
+SetSize();
+$(window).resize(function(){SetSize();})
+
+</script>
 	</body>
 </html>
