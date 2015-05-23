@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<ul>
+<volist name="goods" id="vo">
+	<li><a href="{ZF::U('Wap/Product/product',array('token'=>$vo['token'],'wecha_id'=>$wecha_id,'id'=>$vo['id']))}">{ZF:$vo.name}</a></li>
+</volist>
+</ul>
+ 
+
+</body>
+</html>

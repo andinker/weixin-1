@@ -74,6 +74,28 @@ class IndexAction extends WapAction{
 		$this->assign('info',$this->info);
 		$this->display($this->tpl['tpltypename']);
 	}
+	
+	/**
+	 * 显示社区类目下的所有商品（所有商家的）
+	 */
+	public function goods(){
+		
+		$goods = array();
+		
+		$community_catid = 0; //默认类目，显示全部的商品
+		
+		if (!empty($_GET['catid'])){
+			$community_catid = intval($_GET['catid']);
+		}
+		
+		$goods = M('Product')->where(array('community_catid'=>$community_catid))->select();
+		
+		$this->assign('goods',$goods);
+		
+		$this->display();
+		
+	}
+	
 	public function index_classify(){
 		
 		$info = array();
