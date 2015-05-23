@@ -334,15 +334,15 @@ $(document).click(function() {
 <!-- <img src="/tpl/Wap/default/common/shop/images/logo_def.png"/> -->
 
 <!-- banner轮播开始 --> 
- 
-<div style=" z-index:97; position:relative;" id="gal_he">
-	<div class="mygallery">
-		<volist name='info[picurls]' id='vo'>     
-				<div class="gallery-cell" urldata="<php>echo $info['piclink'.$i];</php>"><img src="{ZF:$vo}"  id="ban_he"></div>
-		</volist>
-	</div>
-</div>
-
+ <notempty name="info[picurls]">
+	<div style=" z-index:97; position:relative;" id="gal_he">
+		<div class="mygallery">
+			<volist name='info[picurls]' id='vo'>     
+					<div class="gallery-cell" urldata="<php>echo $info['piclink'.$i];</php>"><img src="{ZF:$vo}"  id="ban_he"></div>
+			</volist>
+		</div>
+	</div> 
+</notempty>
 
 <script>
 var myg = $('.mygallery').flickity({ "wrapAround":true,"autoPlay": true,"pageDots": false });

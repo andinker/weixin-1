@@ -9,6 +9,7 @@ class IndexAction extends WapAction{
 	public $token;
 	public $weixinUser;
 	public $homeInfo;
+	public $allClasses;
 	public function _initialize(){
 		parent::_initialize();
 		$where['token']=$this->token;
@@ -27,6 +28,7 @@ class IndexAction extends WapAction{
 		//$info=M('Classify')->where(array('token'=>$this->_get('token'),'status'=>1,'fid'=>0))->order('sorts desc')->select();
 		$allClasses=M('Classify')->where(array('token'=>$this->_get('token'),'status'=>1))->order('sorts desc')->select();
 		$allClasses=$this->convertLinks($allClasses);//加外链等信息
+		$this->allClasses = $allClasses;
 		$info=array();
 		if($allClasses){
 			$classByID=array();
@@ -77,6 +79,7 @@ class IndexAction extends WapAction{
 	public function index_classify(){
 		
 		$info = array();
+		//print_r($this->allClasses);exit();
 		
 		foreach ($this->info as $item){
 			if ($item['navpage_status'] == 1){
@@ -84,9 +87,16 @@ class IndexAction extends WapAction{
 				$subitems = $item['sub'];
 				$item['sub'] = array();
 				
-				foreach ($subitems as $subitem){
+				foreach ($subitems as $key2=>$subitem){
 					if ($subitem['navpage_status'] == 1){
 						array_push($item['sub'], $subitem);
+                        
+						$item['sub'][$key2]['sub'] = array();
+						foreach ($this->allClasses as $allClasses_item){
+							if ($allClasses_item['navpage_status'] == 1 && $allClasses_item['fid'] == $subitem['id']){
+								array_push($item['sub'][$key2]['sub'], $allClasses_item);
+							}
+						}
 					}
 				}
 				 
