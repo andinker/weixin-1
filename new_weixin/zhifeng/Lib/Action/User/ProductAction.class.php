@@ -196,6 +196,39 @@ class ProductAction extends UserAction{
 	        	$attributeData[] = $row;
 	        }
         }
+        
+        
+        // 读取小区号的微站分类
+        	/*     本公众号所属的帐号           */
+            /*     帐号类型如果是小区，则读取本帐号下的第一个公众号的微站分类        */
+            /* 否则查找本帐号的所属小区，再找到该小区的小区帐号，读取该帐号下的第一个公众号的微站分类 */
+            /*  因此，关键是找到一个token，再去读取这个token下的微站分类数据 */
+        $xq_user = null;
+        if ($this->user['account_type'] == 1){
+        	$xq_user = $this->user;
+        }else{
+        	if ($this->user['community_id'] != 0){
+        		$xq_user = M('Users')->where(array('community_id'=>$this->user['community_id'],'account_type'=>1))->find();
+        	}
+        }
+        
+        $wz_category_data = NULL;
+        if (!empty($xq_user)){
+        	$xq_wx = M('Wxuser')->where(array('uid'=>$xq_user['id']))->find();
+        	if (!empty($xq_wx)){
+        		$wz_category_data = M('Classify')->where(array(
+        				'token'=>$xq_wx['token']
+        		))->select();
+        	}
+        }
+        //print_r($xq_user);
+        //print_r($xq_wx);
+        //print_r($wz_category_data);
+        //处理分类的级别显示
+        $wz_category_data = $this->makeLevelClassNames($wz_category_data);
+        
+        $this->assign('wz_cates',$wz_category_data);
+        
 		$this->assign('color', $this->color);
 		$this->assign('attributeData', $attributeData);
 		$this->assign('normsData', $normsData);
@@ -212,6 +245,7 @@ class ProductAction extends UserAction{
 	public function productSave() {
 		$token = isset($_POST['token']) ? htmlspecialchars($_POST['token']) : '';
 		$catid = isset($_POST['catid']) ? intval($_POST['catid']) : 0;
+		$community_catid =  isset($_POST['community_catid']) ? intval($_POST['community_catid']) : 0;
 		$num = isset($_POST['num']) ? intval($_POST['num']) : 0;
 		$pid = isset($_POST['pid']) ? intval($_POST['pid']) : 0;
 		$name = isset($_POST['name']) ? htmlspecialchars($_POST['name']) : '';
@@ -235,7 +269,7 @@ class ProductAction extends UserAction{
 		if (empty($catid)) {
 			exit(json_encode(array('error_code' => true, 'msg' => '商品分类不能为空')));
 		}
-		$data = array('token' => $token, 'num' => $num, 'sort' => $sort, 'catid' => $catid, 'name' => $name, 'price' => $price, 'mailprice' => $mailprice, 'vprice' => $vprice, 'oprice' => $oprice, 'intro' => $intro, 'logourl' => $pic, 'keyword' => $keyword, 'time' => time());
+		$data = array('token' => $token, 'num' => $num, 'sort' => $sort, 'catid' => $catid, 'community_catid'=>$community_catid, 'name' => $name, 'price' => $price, 'mailprice' => $mailprice, 'vprice' => $vprice, 'oprice' => $oprice, 'intro' => $intro, 'logourl' => $pic, 'keyword' => $keyword, 'time' => time());
 		$product = M('Product');
 		if ($pid && $obj = $product->where(array('id' => $pid, 'token' => $token))->find()) {
 			$product->where(array('id' => $pid, 'token' => $token))->save($data);

@@ -54,9 +54,24 @@ afterBlur: function(){this.sync();}
         </td> 
        </tr> 
        <tr> 
-        <th><span class="red">*</span>类别：</th> 
+        <th><span class="red">*</span>商品类别：</th> 
         <td><span class="red">{ZF:$productCatData.name}</span></td> 
        </tr>
+       <tr> 
+        <th><span class="red">*</span>社区类目：</th> 
+        <td>
+               <select name="community_catid" id="community_catid">
+                   <volist name="wz_cates" id="vo">
+                     <option value="{ZF:$vo.id},{ZF:$vo.name}"<php> if ($set['community_catid'] == $vo['id']) echo ' selected="selected"';</php>>{ZF:$vo.name}</option>
+                   </volist>
+               </select>
+                      <br/>选上后，商品可以在社区的商品搜索结果中。
+                      <br/>如果这里没有可选项，原因可能有两个:
+					  <br/>1、本公众号的所属帐号没有选择所在的社区；
+					  <br/>2、或者暂时还没有社区站点数据。
+		</td> 
+       </tr>
+       
        <if condition="empty($productCatData['color']) neq true">
        <tr>
 	       <th>{ZF:$productCatData.color}：</th>
@@ -392,7 +407,8 @@ $(document).ready(function(){
 					norms:JSON.stringify(norms),
 					images:JSON.stringify(images),
 					token:'{ZF:$token}',
-					catid:'{ZF:$catid}'
+					catid:'{ZF:$catid}',
+					community_catid:$("#community_catid").val()
 					};
 		$.post("{ZF::U('Product/productSave')}", data, function(response){
 			if (response.error_code == false) {
