@@ -83,6 +83,8 @@ class IndexAction extends WapAction{
 	public function goods(){
 		
 		$goods = array();
+		$where = array();
+		
 		
 		$community_catid = 0; //默认类目，显示全部的商品
 		
@@ -90,11 +92,34 @@ class IndexAction extends WapAction{
 			$community_catid = intval($_GET['catid']);
 		}
 		
-		$goods = M('Product')->where(array('community_catid'=>$community_catid))->select();
+		//获取所有下级的子分类id
+		
+		$where['community_catid'] = $community_catid;
+		
+		
+		$keyword = ''; // 默认搜索关键字，为空字符串时不搜索
+		
+		if (!empty($_GET['keyword'])){
+			$keyword = strval($_GET['keyword']);
+		}
+		
+		if (!empty($keyword)){
+			$where['name'] = array('like','%'.$keyword.'%');
+		}
+		
+		
+		$goods = M('Product')->where($where)->select();
 		
 		$this->assign('goods',$goods);
 		
 		$this->display();
+		
+	}
+	
+	/**
+	 * 搜索当前小区下的所有商品
+	 */
+	public function search(){
 		
 	}
 	

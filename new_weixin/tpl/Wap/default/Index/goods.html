@@ -3,8 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script src="http://cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="http://cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.min.css">
+<script type="text/javascript">
+$(document).ready(function($){
+	
+	var myserchfun = function(){
+		
+		var refacted_href = location.href;
+		
+		var pattern = /&keyword=([^&=]*)/ig;
+		var refacted_href = refacted_href.replace(pattern,"");
+		
+		refacted_href = refacted_href +"&keyword="+encodeURIComponent($('#keyword').val());
+
+		location.href = refacted_href;
+	}
+	
+	$('#search_btn').bind('click',myserchfun);
+});
+</script>
+
 </head>
 <body>
+
+
+<input type="text" id="keyword" value="{ZF:$Think.get.keyword}" />
+<input type="button" id="search_btn" value="搜索当前类目"/>
+
+
 <ul>
 <volist name="goods" id="vo">
 	<li><a href="{ZF::U('Wap/Product/product',array('token'=>$vo['token'],'wecha_id'=>$wecha_id,'id'=>$vo['id']))}">{ZF:$vo.name}</a></li>
