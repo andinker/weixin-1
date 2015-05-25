@@ -50,7 +50,8 @@ a:hover{text-decoration: none;}
 
 <script type="text/javascript">
 $(document).ready(function($){
-	
+
+	// 搜索
 	var myserchfun = function(){
 		
 		var refacted_href = location.href;
@@ -61,9 +62,20 @@ $(document).ready(function($){
 		refacted_href = refacted_href +"&keyword="+encodeURIComponent($('#keyword').val());
 
 		location.href = refacted_href;
-	}
+	};
 	
 	$('#search_btn').bind('click',myserchfun);
+	
+	
+	// 异步加载
+	$(window).scroll(function(){
+		　　var scrollTop = $(this).scrollTop();
+		　　var scrollHeight = $(document).height();
+		　　var windowHeight = $(this).height();
+		　　if(scrollTop + windowHeight == scrollHeight){
+		　　　　alert("you are in the bottom");
+		　　}
+		});
 });
 </script>
 
