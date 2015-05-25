@@ -11,18 +11,15 @@
 <script src="http://cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="http://cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.min.css">
 
-<link rel="stylesheet" href="{ZF::STATICS}/plugin_mCustomScrollbar/jquery.mCustomScrollbar.min.css"> 
-<script src="{ZF::STATICS}/plugin_mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>
-
 <style type="text/css">
 #all{max-width: 800px;margin: 0 auto;padding: 0;}
 .nav_search{background: #f8f8f8;position:fixed;max-width: 750px;z-index: 1;}
 .content{overflow:hidden;margin-top:50px;max-width: 750px;}
 #left_cla{position:fixed;line-height: 40px;width:90px;background: #f8f8f8;height:100%;overflow:auto;overflow-x: hidden;}
-#left_cla{padding:0px;overflow:scroll;overflow-x: hidden;}
+#left_cla{padding:0px;overflow:auto;overflow-x: hidden;}
 #left_cla li {list-style: none;border-bottom: 1px solid #e0e0e0;height:40px;overflow:hidden;padding-left:5px;padding-right:5px;}
 #left_cla li:last-child{border-bottom:none;}
-.TabbedPanelsContentGroup{overflow:hidden;padding-left:95px;max-width: 800px;padding-right:5px;}
+.TabbedPanelsContentGroup{overflow:auto;overflow-x: hidden;padding-left:95px;max-width: 800px;padding-right:5px;position: relative;}
 .second_cla,.third_cla{text-align: center;line-height:50px;margin-top:15px;padding-left:5px;padding-right:5px;}
 .second_cla img,.third_cla img{width:100%;height:100px;overflow: hidden;}
 .cla_name{height:40px;overflow: hidden;}
@@ -35,13 +32,8 @@
 .ui-state-active{font-weight: bold;border:1px solid #e0e0e0;}
 .ui-widget-content{border:1px solid #e0e0e0;}
 </style>
-<script>
-    (function($){
-        $(window).load(function(){
-            $(".scroll_plugin").mCustomScrollbar({theme:"dark"});
-        });
-    })(jQuery);
-</script>
+
+ </head>
 <script language="JavaScript">
 function keyLogin(){
  if (event.keyCode==13)
@@ -80,14 +72,13 @@ function keyLogin(){
 		</ul>
 		 
 		  
+		  
 		<div class="TabbedPanelsContentGroup">
-			
+				 
 		
 			<volist name="info" id="info_item">
 				
 					<div class="TabbedPanelsContent" id="{ZF:$info_item.id}">
-					
-					<div class="scroll_plugin">
 					<!-- 
 						<div id="accordion">
 							<volist name="info_item['sub']" id="vo">
@@ -157,11 +148,13 @@ function keyLogin(){
 								</div>
 
 						</volist>
-						</div>
+						 
+						
+									
 					</div>
 					
 			</volist>
-			
+				
 		  </div>
 		  
 	</div>
@@ -189,14 +182,12 @@ $(window).resize(function(){
 var h=$('#left_cla').height();
 var h2=h-54;
 $('.TabbedPanelsContentGroup').css("height",h2+"px");
-$('.scroll_plugin').css("height",h2+"px");
 $('.content').css("height",h2+"px");
 $('#left_cla').css("height",h2+"px");
 $(window).resize(function(){
 	var h=$('#left_cla').height();
 	var h2=h-54;
 	$('.TabbedPanelsContentGroup').css("height",h2+"px");
-	$('.scroll_plugin').css("height",h2+"px");
 	$('.content').css("height",h2+"px");	
 	
 })
