@@ -16,9 +16,9 @@
 
 <link href="tpl/Wap/default/common/list3_products/css/glist.css" rel="stylesheet" />
 <script src="tpl/Wap/default/common/list3_products/js/glist.js"></script>
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.css">
-<style type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.css" />
 
+<style type="text/css">
 a:hover{text-decoration: none;}
 .pic img{width:100%};
 .con{display: block;}
@@ -69,13 +69,44 @@ $(document).ready(function($){
 	
 	// 异步加载
 	$(window).scroll(function(){
-		　　var scrollTop = $(this).scrollTop();
-		　　var scrollHeight = $(document).height();
-		　　var windowHeight = $(this).height();
-		　　if(scrollTop + windowHeight == scrollHeight){
-		　　　　alert("you are in the bottom");
-		　　}
-		});
+		
+	　　var scrollTop = $(this).scrollTop();
+	　　var scrollHeight = $(document).height();
+	　　var windowHeight = $(this).height();
+	
+	　　if(scrollTop + windowHeight == scrollHeight){
+			
+			//装配异步加载 url
+			
+			var ajax_url = location.href+"&json=yes&current_page="+(parseInt($('#pageid').val())+1);
+
+			$.getJSON(ajax_url, function(data){
+				
+				if (data == null){
+					
+					$('#canScroll').val('0');
+					$('#show_more').show().html('没有更多数据可以加载！');
+					
+				}else{
+					
+					
+					$.each(data,function(i,item){
+						
+						var append_html = "<div>"+item.name+"</div>"; // 在这里组装单个商品的HTML
+						
+						$('#m_list').append(append_html); 
+						
+					});
+					
+					var newpageid = (parseInt($('#pageid').val())+1);
+					$('#pageid').val(newpageid);
+					
+				}
+
+			});
+			
+	　　}
+	});
 });
 </script>
 
@@ -129,7 +160,7 @@ $(document).ready(function($){
 				</volist>
 			</div>
 			<div class="col-xs-12" style="text-align: center;background:#f1f1f1;">
-				<a class="more" id="show_more" page="2" style="display: none;color:#666;margin-top:10px;margin-bottom: 10px;" href="javascript:void(0);">加载更多</a>
+				<a class="more" id="show_more" page="2" style="color:#666;margin-top:10px;margin-bottom: 10px; line-height: 50px; font-size: 1.5em;" href="javascript:void(0);">加载更多……</a>
 				<input type="hidden" value="1" id="pageid" />
 				<input type="hidden" id="canScroll" value="1" />
 			</div>
@@ -228,7 +259,7 @@ $(function() {
 	});*/
 	
 	
-	/*---------------------加载更多--------------------*/
+	/*---------------------加载更多--------------------*//*
 	var total = {ZF:$count},
 		pagesize = 8,
 		pages = Math.ceil(total / pagesize);
@@ -275,7 +306,7 @@ $(function() {
 			}
 		});
 	}
-});
+});*/
 </script>
 
 		<if condition="$kefu['sc'] eq '1'">

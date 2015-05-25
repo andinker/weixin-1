@@ -108,11 +108,32 @@ class IndexAction extends WapAction{
 		}
 		
 		
-		$goods = M('Product')->where($where)->select();
+		// 异步分页加载
 		
-		$this->assign('goods',$goods);
+		$page_size = 10;
+		$current_page = 1;
 		
-		$this->display();
+		if (!empty($_GET['current_page'])){
+			$current_page = intval($_GET['current_page']);
+		}
+		
+		$limt_offset = ($current_page*$page_size)-$page_size;
+		
+		$goods = M('Product')->where($where)->limit($limt_offset,$page_size)->select();
+		
+		if (!empty($_GET['json'])){
+			
+			echo json_encode($goods);
+			exit();
+			
+		}else{
+			
+			$this->assign('goods',$goods);
+			$this->display();
+			
+		}
+		
+
 		
 	}
 	
