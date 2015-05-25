@@ -160,7 +160,12 @@ $(document).ready(function($){
 				</volist>
 			</div>
 			<div class="col-xs-12" style="text-align: center;background:#f1f1f1;">
-				<a class="more" id="show_more" page="2" style="color:#666;margin-top:10px;margin-bottom: 10px; line-height: 50px; font-size: 1.5em;" href="javascript:void(0);">加载更多……</a>
+				<a class="more" id="show_more" page="2" style="color:#666;margin-top:10px;margin-bottom: 10px; line-height: 50px; font-size: 1.5em;" href="javascript:void(0);"><php>
+				if (count($goods) < $page_size) {
+					echo '加载更多……';
+				}else{
+					echo '没有更多数据可以加载！';
+				}</php></a>
 				<input type="hidden" value="1" id="pageid" />
 				<input type="hidden" id="canScroll" value="1" />
 			</div>

@@ -112,6 +112,7 @@ class IndexAction extends WapAction{
 		
 		$page_size = 10;
 		$current_page = 1;
+
 		
 		if (!empty($_GET['current_page'])){
 			$current_page = intval($_GET['current_page']);
@@ -128,6 +129,7 @@ class IndexAction extends WapAction{
 			
 		}else{
 			
+			$this->assign('page_size',$page_size);
 			$this->assign('goods',$goods);
 			$this->display();
 			
