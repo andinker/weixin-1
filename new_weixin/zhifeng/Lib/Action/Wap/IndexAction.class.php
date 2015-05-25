@@ -129,6 +129,8 @@ class IndexAction extends WapAction{
 			
 		}else{
 			
+			$info = $this->getClassfy();
+			$this->assign('classfy',$info);
 			$this->assign('page_size',$page_size);
 			$this->assign('goods',$goods);
 			$this->display();
@@ -146,21 +148,21 @@ class IndexAction extends WapAction{
 		
 	}
 	
-	public function index_classify(){
+	private function getClassfy(){
 		
 		$info = array();
 		//print_r($this->allClasses);exit();
 		
 		foreach ($this->info as $item){
 			if ($item['navpage_status'] == 1){
-				
+		
 				$subitems = $item['sub'];
 				$item['sub'] = array();
-				
+		
 				foreach ($subitems as $key2=>$subitem){
 					if ($subitem['navpage_status'] == 1){
 						array_push($item['sub'], $subitem);
-                        
+		
 						$item['sub'][$key2]['sub'] = array();
 						foreach ($this->allClasses as $allClasses_item){
 							if ($allClasses_item['navpage_status'] == 1 && $allClasses_item['fid'] == $subitem['id']){
@@ -169,10 +171,17 @@ class IndexAction extends WapAction{
 						}
 					}
 				}
-				 
+					
 				array_push($info, $item);
 			}
 		}
+		
+		return $info;
+	}
+	
+	public function index_classify(){
+		
+		$info = $this->getClassfy();
 		
 		$this->assign('info',$info);
 		$this->display();
