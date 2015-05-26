@@ -84,7 +84,10 @@ class IndexAction extends WapAction{
 		
 		$goods = array();
 		$where = array();
-		
+
+		$shopclassify=M('Classify')->where(array('token'=>$this->_get('token'),'status'=>1,'id'=>$_GET['catid']))->order('sorts desc')->select();
+		$shopclassify=$this->convertLinks($shopclassify);//加外链等信息
+		$this->shopclassify = $shopclassify;
 		
 		$community_catid = 0; //默认类目，显示全部的商品
 		

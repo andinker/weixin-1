@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
-<title></title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<title>{ZF:$wxuser.wxname}</title>
 <script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script> 
 <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -58,7 +58,7 @@ function keyLogin(){
 	<div class="nav_search">
 		<div class="input-group" style="padding:10px 5px;">
 			<input type="text" name="keyword" class="form-control" placeholder="请输入您要搜索的商品" aria-describedby="basic-addon2" id="sear_con">
-			<span class="input-group-addon" id="basic-addon2" style="cursor: pointer;" onclick="location.href='/index.php?&g=Wap&m=Product&a=products&token=qbyszj1426650408&wecha_id=&keyword='+document.getElementById('sear_con').value ;"><span class="glyphicon glyphicon-search""></span></span>
+			<span class="input-group-addon" id="basic-addon2" style="cursor: pointer;" onclick="location.href='/index.php?&g=Wap&m=Index&a=goods&token={ZF:$token}&wecha_id=&keyword='+document.getElementById('sear_con').value ;"><span class="glyphicon glyphicon-search""></span></span>
 		</div>
 	</div>
 	
@@ -117,7 +117,7 @@ function keyLogin(){
 
 						
 								<div class="col-xs-12 second_cla" style="text-align: left;margin-top:5px;">
-									<div class="cla_name" id="cla_name" style="padding-left: 5px;">{ZF:$vo.name}</div>
+									<div class="cla_name" id="cla_name" style="padding-left: 5px;"><a href="{ZF::U('Wap/Index/goods',array('token'=>$token,'catid'=>$vo['id'],'wecha_id'=>$wecha_id))}" style="color:#333;text-decoration: none;">{ZF:$vo.name}</a></div>
 									<notempty name="vo['sub']">
 										<volist name="vo['sub']" id="third">
 												<div class="col-xs-4 third_cla">
