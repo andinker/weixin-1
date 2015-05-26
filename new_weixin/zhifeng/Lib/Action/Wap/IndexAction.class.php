@@ -94,7 +94,16 @@ class IndexAction extends WapAction{
 		
 		//获取所有下级的子分类id
 		
-		$where['community_catid'] = $community_catid;
+		$allChilds = $this->getAllChildIds($community_catid);
+		
+		$catids_str = strval($community_catid);
+		foreach ($allChilds as $child){
+			if (!empty($catids_str)) $catids_str = $catids_str .',';
+			
+			$catids_str = $catids_str . $child;
+		}
+		
+		$where['community_catid'] = array('in',$catids_str); 
 		
 		
 		$keyword = ''; // 默认搜索关键字，为空字符串时不搜索
@@ -869,6 +878,27 @@ class IndexAction extends WapAction{
 	public function strExists($haystack, $needle)
 	{
 		return !(strpos($haystack, $needle) === FALSE);
+	}
+	
+	
+	private function getAllChildIds($pid , $count = 1) {
+		
+		$ids = array ();
+		
+		foreach ( $this->allClasses as $c ) {
+			
+			if ($c['fid'] == $pid){
+				array_push ( $ids, $c ['id'] );
+
+				$mychilds = $this->getAllChildIds ( $c ['id'], ++$count);
+				
+				if (! empty ( $mychilds )) {
+					$ids = array_merge ( $ids, $mychilds );
+				}
+			}
+		}
+		
+		return $ids;
 	}
 	
 	
