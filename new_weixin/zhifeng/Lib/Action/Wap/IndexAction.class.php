@@ -881,7 +881,7 @@ class IndexAction extends WapAction{
 	}
 	
 	
-	private function getAllChildIds($pid , $count = 1) {
+	private function getAllChildIds($pid) {
 		
 		$ids = array ();
 		
@@ -890,7 +890,7 @@ class IndexAction extends WapAction{
 			if ($c['fid'] == $pid){
 				array_push ( $ids, $c ['id'] );
 
-				$mychilds = $this->getAllChildIds ( $c ['id'], ++$count);
+				$mychilds = $this->getAllChildIds ( $c ['id']);
 				
 				if (! empty ( $mychilds )) {
 					$ids = array_merge ( $ids, $mychilds );
