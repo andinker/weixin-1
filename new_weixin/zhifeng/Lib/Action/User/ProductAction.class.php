@@ -217,7 +217,8 @@ class ProductAction extends UserAction{
         	$xq_wx = M('Wxuser')->where(array('uid'=>$xq_user['id']))->find();
         	if (!empty($xq_wx)){
         		$wz_category_data = M('Classify')->where(array(
-        				'token'=>$xq_wx['token']
+        				'token'=>$xq_wx['token'],
+        				'navpage_status'=>1
         		))->select();
         	}
         }
