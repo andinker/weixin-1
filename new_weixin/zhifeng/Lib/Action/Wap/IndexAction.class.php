@@ -139,6 +139,8 @@ class IndexAction extends WapAction{
 		}else{
 			
 			$info = $this->getClassfy();
+			
+			$this->assign('allClasses',$this->allClasses);
 			$this->assign('classfy',$info);
 			$this->assign('page_size',$page_size);
 			$this->assign('goods',$goods);
