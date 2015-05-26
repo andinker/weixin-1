@@ -104,7 +104,7 @@ $(document).ready(function($){
 						var append_html = '<div class="col-xs-6 pro_box"><div style="border:1px solid #ddd;background: white;margin-top:10px;"><span class="pic">' +
 						'<a href="'+goods_url+'">' +
 						'<div class="img_box"><img src="' +item.logourl + '" /></div>' +
-						'</a></span><span class="con"><a class="t" href="'+goods_url+'">' + item.id+item.name + '</a><b>￥'+ item.price +'&nbsp;元</b><del>￥' + item.oprice + '</del></span></div></div>'; // 在这里组装单个商品的HTML
+						'</a></span><span class="con"><a class="t" href="'+goods_url+'">' + item.name + '</a><b>￥'+ item.price +'&nbsp;元</b><del>￥' + item.oprice + '</del></span></div></div>'; // 在这里组装单个商品的HTML
 						
 						$('#m_list').append(append_html); 
 						
