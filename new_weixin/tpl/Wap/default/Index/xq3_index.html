@@ -366,14 +366,25 @@ window.ICON = function () {
                     
                     	<volist name="info" id="vo">
 							  <li class="TabbedPanelsTab" tabindex="0" style="cursor: pointer;padding-left:10px;">
-							  	<a href="{ZF:$vo.url}" style="line-height: 35px;">
-								  	<if condition="$vo['icon'] eq ''">
-								  		<span class="glyphicon glyphicon-list" style="color:#80bd0c;padding-right: 5px;"></span>
-								  	<else/>
-									  	<span class="{ZF:$vo.icon}" style="color:#80bd0c;padding-right: 5px;"></span>
-									</if> 
-									  {ZF:$vo.name}
-								</a>
+								  <if condition="$vo['navpage_status']==0">
+									  	<a href="{ZF:$vo.url}" style="line-height: 35px;">
+										  	<if condition="$vo['icon'] eq ''">
+										  		<span class="glyphicon glyphicon-list" style="color:#80bd0c;padding-right: 5px;"></span>
+										  	<else/>
+											  	<span class="{ZF:$vo.icon}" style="color:#80bd0c;padding-right: 5px;"></span>
+											</if> 
+											  {ZF:$vo.name}
+										</a>
+								  <else/>
+								  		<a href="{ZF::U('Wap/Index/goods',array('token'=>$vo['token'],'catid'=>$vo['id']))}" style="line-height: 35px;">
+										  	<if condition="$vo['icon'] eq ''">
+										  		<span class="glyphicon glyphicon-list" style="color:#80bd0c;padding-right: 5px;"></span>
+										  	<else/>
+											  	<span class="{ZF:$vo.icon}" style="color:#80bd0c;padding-right: 5px;"></span>
+											</if> 
+											  {ZF:$vo.name}
+										</a>
+								  </if>
 							  </li>
 						</volist>
                     </ul>
