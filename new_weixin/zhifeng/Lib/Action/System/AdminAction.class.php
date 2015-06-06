@@ -64,15 +64,24 @@ class AdminAction extends Action{
 	
     // 用户登出
     public function logout() {
+    	
+    	//根据不同调用来源，跳转到不同的页面 
+    	$jump_url = null;
+    	if (empty($_GET['mlogout'])){
+    		$jump_url = U('Home/Index/index');
+    	}else{
+    		$jump_url = U('Home/Index/mlogin');
+    	}
+    	
 		session(null);
 		session_destroy();
 		unset($_SESSION);
         if(session('?'.C('USER_AUTH_KEY'))) {
             session(C('USER_AUTH_KEY'),null);
            
-            redirect(U('Home/Index/index'));
+            redirect($jump_url);
         }else {
-            $this->error('已经登出！',U('Home/Index/index'));
+            $this->error('已经登出！',$jump_url);
         }
     }
 }

@@ -5,6 +5,22 @@ class UsersAction extends BaseAction{
 	}
 
 	public function checklogin(){
+		
+		// 根据不同的登录表单来源 ，初始化不同的跳转地址
+		$url_success = null;
+		$url_error = null;
+		if (empty($_POST['mlogin'])){
+			// 电脑版登录跳转
+			$url_success = U('User/Index/index');
+			$url_error = U('Index/login');
+		}else{
+			// 手机版登录跳转
+			$url_success = U('Muser/Index/index');
+			$url_error = U('Index/mlogin');
+		}
+		
+		
+		
 		$db=D('Users');
 		$where['username']=$this->_post('username','trim');
 		
@@ -48,9 +64,9 @@ class UsersAction extends BaseAction{
 			
 			//
 			$db->where(array('id'=>$res['id']))->save(array('lasttime'=>$now,'lastloginmonth'=>$month,'lastip'=>$_SERVER['REMOTE_ADDR']));//最后登录时间
-			$this->success('登录成功',U('User/Index/index'));
+			$this->success('登录成功',$url_success);
 		}else{
-			$this->error('帐号密码错误',U('Index/login'));
+			$this->error('帐号密码错误',$url_error);
 		}
 	}
 	

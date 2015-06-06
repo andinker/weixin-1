@@ -1,0 +1,18 @@
+<layout name="COMMON/html" />
+
+
+<div>
+您当前选择的公众号是：{ZF:$wecha['wxname']}
+<php>
+//print_r($thisUser);
+//print_r($wecha);
+</php>
+</div>
+
+
+请选择您要管理的公众号：
+<ul>
+<volist name="wxusers" id="vo"> 
+	<li><a href="{ZF::U('Index/wxuser_login',array('id'=>$vo['id'],'token'=>$vo['token']))}">{ZF:$vo.wxname}</a></li>
+</volist>
+</ul>

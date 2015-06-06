@@ -1,0 +1,35 @@
+<layout name="COMMON/html" />
+
+<div>商品管理</div>
+
+
+<div>
+
+	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+		<thead>
+			<tr>
+				<th width="30">序号</th>
+				<th width="100">图片</th>
+				<th>名称</th>
+				<th width="150">操作</th>
+			</tr>
+		</thead>
+		<tbody style="text-align:center;">
+			<volist name="list" id="hostlist"> 
+				<tr>
+					<td>{ZF:$i}</td>
+					<td><if condition="$hostlist['logourl']"><img src="{ZF:$hostlist.logourl}" width="48" style="vertical-align:middle;"/></if></td>
+					<td>{ZF:$hostlist.name}</td>
+					<td class="norightborder"><a href="{ZF::U('Product/product_edit',array('id'=>$hostlist['id'],'token'=>$token,'catid'=>$hostlist['catid']))}">修改</a> <a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('Product/del',array('id'=>$hostlist['id'],'token'=>$token))}');">删除</a></td>
+				</tr>
+			</volist>
+		</tbody>
+	</table>
+
+</div>
+
+
+
+<div class="pages">{ZF:$page}</div>
+
+<br><br><br><br><br><br><br>

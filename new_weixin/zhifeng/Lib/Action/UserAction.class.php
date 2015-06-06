@@ -26,7 +26,7 @@ class UserAction extends BaseAction{
 				$this->error('您的帐号已经到期，请充值后再使用');
 			}
 		}
-		$wecha=M('Wxuser')->field('wxname,weixin,wxid,headerpic')->where(array('token'=>session('token'),'uid'=>session('uid')))->find();
+		$wecha=M('Wxuser')->where(array('token'=>session('token'),'uid'=>session('uid')))->find();
 		$this->assign('wecha',$wecha);
 		$this->token=session('token');
 		$this->assign('token',$this->token);

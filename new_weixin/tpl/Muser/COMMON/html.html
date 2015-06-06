@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>{ZF:$PAGE_TITLE} - {ZF::C('site_name')} - {ZF::C('site_title')}</title>
+<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+
+<php>
+if ( ACTION_NAME != 'mlogin' ){
+</php>
+	<include file="./Tpl/Muser/COMMON/menu.html" />
+<php>
+}
+</php>
+{__CONTENT__} 
+</body>
+</html>
