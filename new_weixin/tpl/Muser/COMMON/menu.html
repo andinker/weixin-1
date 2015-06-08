@@ -1,9 +1,19 @@
 <php>$token = session('token');</php>
-<ul>
-	<li><a href="{ZF::U('Index/index')}">后台首页</a></li>
-	<php>if (!empty($token)){</php>
-		<li><a href="{ZF::U('Product/product_list')}">商品管理</a></li>
-		<li><a href="{ZF::U('Product/order_list')}">订单管理</a></li>
-	<php>}</php>
-	<li><a href="{ZF::U('System/Admin/logout',array('mlogout'=>'yes'))}">退出</a></li>
-</ul>
+<div class="menu_all">
+	<ul>
+		<li><a href="{ZF::U('Index/index')}">后台首页</a></li>
+		
+		<li>{ZF:$wecha['wxname']}</li>
+		
+		<li><a href="{ZF::U('System/Admin/logout',array('mlogout'=>'yes'))}">退出</a></li>
+	</ul>
+</div>
+
+<div class="menu_manage">
+	<ul>
+		<php>if (!empty($token)){</php>
+			<li><a href="{ZF::U('Product/product_list')}">商品管理</a></li>
+			<li><a href="{ZF::U('Product/order_list')}">订单管理</a></li>
+		<php>}</php>
+	</ul>
+</div>

@@ -1,18 +1,42 @@
 <layout name="COMMON/html" />
 
 
-<div>
-您当前选择的公众号是：{ZF:$wecha['wxname']}
+
+<php>if(!$wecha['wxname']==""){</php>
+	<div class="present_name">您当前选择的公众号是：<span>{ZF:$wecha['wxname']}</span></div>
+<php>}</php>
+	
+
 <php>
 //print_r($thisUser);
 //print_r($wecha);
 </php>
-</div>
 
-
-请选择您要管理的公众号：
-<ul>
-<volist name="wxusers" id="vo"> 
-	<li><a href="{ZF::U('Index/wxuser_login',array('id'=>$vo['id'],'token'=>$vo['token']))}">{ZF:$vo.wxname}</a></li>
-</volist>
+<ul class="wxusers_sel">
+	<notempty name="wxusers">
+		<div>请选择您要管理的公众号：</div>
+		<volist name="wxusers" id="vo"> 
+			<li><a href="{ZF::U('Index/wxuser_login',array('id'=>$vo['id'],'token'=>$vo['token']))}">{ZF:$vo.wxname}<span>进入管理</span></a></li>
+		</volist>
+	</notempty>
 </ul>
+<!--<select name="" class="t_aera" style="border:none;width:200px;-webkit-appearance:none;">
+
+    	<option selected="selected">{ZF:$wecha['wxname']}</option>
+    	
+		<volist name="wxusers" id="vo">
+		
+	    	<option>
+		    	<php>
+			    	if($wecha['wxname']!=$vo['wxname']){
+			    </php>
+		    			{ZF:$vo.wxname}
+	    		<php>
+	    			}
+	    		</php>
+	    	
+	    	</option>
+	   
+	    </volist>
+  </select>
+  -->
