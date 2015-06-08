@@ -1,11 +1,29 @@
 <layout name="../../Muser/COMMON/html" />
-<div>手机版用户登录</div>
 
-<form method="post" action="index.php?m=Users&amp;a=checklogin">
-    <input type="hidden" name="mlogin" value="yes">
-	用户名&nbsp;
-	<input class="text" type="text" name="username"><br>
-	密　码&nbsp;
-	<input class="text" type="password" name="password"><br>
-	<input name="submit" type="submit" class="submit sub" value="登  录">
+<div class="title">手机版用户登录</div>
+
+<form method="post" action="index.php?m=Users&amp;a=checklogin" align="center" class="login_form">
+	<table align="center" class="table_box">
+	
+		<tr>
+			<td><input type="hidden" name="mlogin" value="yes"></td>
+		</tr>
+		<tr>
+			<td class="input_name">用户名：</td>
+		</tr>
+		<tr>
+			<td><input class="input_box" type="text" name="username" placeholder="用户名"></td>
+		</tr>
+		<tr>
+			<td class="input_name">密码：</td>
+		</tr>
+		<tr>
+			<td><input class="input_box password" type="password" name="password" placeholder="密码"></td>
+		</tr>
+		<tr style="">
+			<td><input name="submit" type="submit" class="submit sub" value="登  录"></td>
+		</tr>
+		
+	</table>
 </form>
+ 
