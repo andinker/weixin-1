@@ -3,7 +3,27 @@
 	<ul>
 		<li><a href="{ZF::U('Index/index')}">后台首页</a></li>
 		
-		<li>{ZF:$wecha['wxname']}</li>
+		<li>
+			<div class="wxname_selected">
+					<span class="glyphicon glyphicon-chevron-down" style="vertical-align: middle;margin-right:3px;"></span>
+					<php>if($wecha['wxname']==""){</php>
+								请选择
+					<php>}else{</php>
+								{ZF:$wecha.wxname}
+					<php>}</php>
+			</div>
+			<div class="wxname_all">
+				 <volist name="wxusers" id="vo">
+					 	<php>
+						   if($wecha['wxname']!=$vo['wxname']){
+						</php>
+					    		<a href="{ZF::U('Index/wxuser_login',array('id'=>$vo['id'],'token'=>$vo['token']))}"><div class="wxname_one">{ZF:$vo.wxname}</div></a>
+				    	<php>
+				    		}
+				    	</php>
+				</volist>
+			</div>
+		</li>
 		
 		<li><a href="{ZF::U('System/Admin/logout',array('mlogout'=>'yes'))}">退出</a></li>
 	</ul>
