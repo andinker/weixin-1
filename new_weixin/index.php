@@ -23,4 +23,5 @@ define('TMPL_PATH','tpl/');
 define('HTML_PATH','./data/html/');
 define('APP_PATH','./zhifeng/');
 define('CORE','zhifeng/_Core');
+define('SITE_ROOT', dirname(__FILE__)); 
 require(CORE.'/weixin.php');

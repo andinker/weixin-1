@@ -1,0 +1,20 @@
+<layout name="COMMON/html" />
+
+<span>当前设置的图片：</span>
+<empty name="image">
+	<span>还没有设置图片</span>
+<else/>
+	<img style="width:60px;" src="{ZF:$image}">
+</empty>
+
+<div class="imageSelector"></div>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$(".imageSelector").PhonePhotoUpload({
+		PicCount:'1'
+	});
+});
+
+</script>

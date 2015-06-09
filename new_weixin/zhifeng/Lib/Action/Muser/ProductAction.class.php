@@ -1,5 +1,9 @@
 <?php
 class ProductAction extends MuserAction{
+	
+	/**
+	 * 列出某一类别的所有商品，如果没有指定类别，则列出所有商品
+	 */
 	public function product_list() {
 		
 		
@@ -40,6 +44,9 @@ class ProductAction extends MuserAction{
 		$this->display();
 	}
 	
+	/**
+	 *  编辑一个已存在数据库中的商品，或者添加一个新的商品
+	 */
 	public function product_edit(){
 
 		$catid = intval($_GET['catid']);	// 正在编辑或添加的产品的类别ID
@@ -49,7 +56,7 @@ class ProductAction extends MuserAction{
 		if($productCatData = M('Product_cat')->where(array('id' => $catid, 'token' => session('token')))->find()){
 			$this->assign('catData', $productCatData);
 		} else {
-			$this->error("没有选择相应的分类.", U('Store/index'));
+			$this->error("没有选择相应的分类.", U('product_list'));
 		}
 		
 		//读取当前产品类别的 “规格”和“外观”设置，可能会分别都有多条记录，type=0的记录是规格，type=1的记录是外观
@@ -151,13 +158,111 @@ class ProductAction extends MuserAction{
 		$this->assign('productCatData', $productCatData);
 		$this->assign('productDetailData', $pData);
 		$this->assign('catid', $catid);
+		
+		
+		
+		
+		$this->assign('PAGE_TITLE','编辑商品');
 		$this->display();
 		
-	} 
+	}
+	
+	/**
+	 * 为一个已经保存到数据中的商品设置商品设置主图（缩略图）
+	 */
+	public function product_edit_setimage(){
+		
+		$catid = intval($_GET['catid']);	// 正在编辑或添加的产品的类别ID
+		$id = intval($_GET['id']);			// 正在编辑的产品的ID
+		
+		if (empty($catid) || empty($id)) $this->error("参数不正确", U('product_list'));
+		
+		// 读取产品类别的数据记录
+		if($productCatData = M('Product_cat')->where(array('id' => $catid, 'token' => session('token')))->find()){
+			$this->assign('catData', $productCatData);
+		} else {
+			$this->error("没有选择相应的分类.", U('product_list'));
+		}
+		
+		// 读取商品数据
+		$product = M('Product')->where(array('catid' => $catid, 'token' => session('token'), 'id' => $id))->find();
+		$this->assign('image',$product['logourl']);
+		
+		
+		// 图片上传
+		if (IS_POST){
+			
+			// 检查权限
+			if (empty($_SESSION['token'])) {
+				exit(json_encode(array('status'=>'error','msg'=>'你没有权限上传！')));
+			}
+			
+			// 检查数据可靠性
+			if (empty($_POST) || empty($_POST['image0'])){
+				exit(json_encode(array('status'=>'error','msg'=>'检测不到上传数据，可能是因为上传数据的结构不是约定的！')));
+			}
+			
+			// 保存图片数据为文件
+			
+			$upload_data = explode(",", $_POST['image0']);
+			$upload_data = base64_decode($upload_data[1]);
+			
+			$get_image_url_path = null;
+			$upload_dirname = $this->___init_ppc_data_dir($get_image_url_path); // 引用传参
+			$save_image_filename = time().'_'.rand(10000,99999).'.png';
+		
+			$save_status = @file_put_contents($upload_dirname.'/'.$save_image_filename, $upload_data);
+			
+			if (empty($save_status)){
+				exit(json_encode(array('status'=>'error','msg'=>($_POST['image0']).'由于服务器系统的原因，数据没能成功保存！')));
+			}else{
+				// 保存图片文件成功，修改数据库记录
+				M('Product')->where(array('catid' => $catid, 'token' => session('token'), 'id' => $id))->setField('logourl',$get_image_url_path.'/'.$save_image_filename);
+				exit(json_encode(array('status'=>'success')));
+			}
+		}
+		
+		$this->assign('PAGE_TITLE','设置商品缩略图');
+		$this->display();
+	}
+	
+	/**
+	 * 为一个已经保存到数据中的商品添加展示图片
+	 */
+	public function product_edit_uploadphotos(){
+		
+		$catid = intval($_GET['catid']);	// 正在编辑或添加的产品的类别ID
+		$id = intval($_GET['id']);			// 正在编辑的产品的ID
+		
+		if (empty($catid) || empty($id)) $this->error("参数不正确", U('product_list'));
+		
+		// 读取产品类别的数据记录
+		if($productCatData = M('Product_cat')->where(array('id' => $catid, 'token' => session('token')))->find()){
+			$this->assign('catData', $productCatData);
+		} else {
+			$this->error("没有选择相应的分类.", U('product_list'));
+		}
+		
+		// 读取商品数据
+		$product = M('Product')->where(array('catid' => $catid, 'token' => session('token'), 'id' => $id))->find();
+		
+		// 读取产品展示图（在一般情况下是每个产品6张）
+		$productimage = M("Product_image")->where(array('pid' => $id))->select();
+		
+		// 图片上传
+		if (IS_POST){
+			
+		}
+		
+		
+		$this->assign('PAGE_TITLE','添加商品照片');
+		$this->display();
+	}
 	
 	public function order_list() {
 	
 		$this->assign('PAGE_TITLE','订单列表');
 		$this->display();
 	}
+
 }
