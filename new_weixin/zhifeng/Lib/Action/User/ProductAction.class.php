@@ -346,7 +346,7 @@ class ProductAction extends UserAction{
 				$product_image->where(array('id' => $id, 'pid' => $pid))->delete();
 			}
 		}
-		exit(json_encode(array('error_code' => false, 'msg' => '商品操作成功')));
+		exit(json_encode(array('error_code' => false, 'msg' => '商品操作成功','pid'=>$pid)));
 	}
 	
 	/**

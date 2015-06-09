@@ -17,11 +17,20 @@
 
 
 <script type="text/javascript">
+<php>
+if (!empty($_GET['nextstep']) && $_GET['nextstep'] == 'setphotos'){
+</php>
+var PhonePhotoUpload_config = {PicCount:'1',redirectUrl:'{ZF::U('product_edit_uploadphotos',array('id'=>$_GET['id'],'token'=>$_GET['token'],'catid'=>$_GET['catid']))}'};
+<php>
+}else{
+</php>
+var PhonePhotoUpload_config = {PicCount:'1'};
+<php>
+}
+</php>
 
 $(document).ready(function(){
-	$(".imageSelector").PhonePhotoUpload({
-		PicCount:'1'
-	});
+	$(".imageSelector").PhonePhotoUpload(PhonePhotoUpload_config);
 });
 
 </script>
