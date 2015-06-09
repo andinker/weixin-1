@@ -1,6 +1,41 @@
 <layout name="COMMON/html" />
 
-<div class="manage_title">商品管理</div>
+<div class="manage_title">
+	
+	<span>当前分类：</span>
+	<span>
+
+		<empty name="catid">
+			所有分类
+		<else/>
+		
+			<php>
+			 foreach($catData as $cat_row){
+			 	if ($cat_row['id'] == $catid) {
+			 		echo $cat_row['name'];
+		 		}
+			 }
+			</php>
+		
+		</empty>
+		
+		
+		<volist name="catData" id="vo">
+            <a href="{ZF::U('Product/product_list',array('token'=>$token,'catid'=>$vo['id']))}">{ZF:$vo['name']}</a>
+        </volist>
+		
+		
+		<php>
+		    if (!empty($catid)){
+				echo '<a href="'.U('Product/product_edit',array('token'=>$token,'catid'=>$catid)).'">在该分类下添加商品</a>';
+			}else{
+				echo '请选择分类以添加商品';
+			}
+		</php>
+		
+	</span>
+
+</div>
 
 
 <div class="manage_table">

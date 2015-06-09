@@ -9,12 +9,23 @@ class ProductAction extends MuserAction{
 		
 		$catid=intval($_GET['catid']);
 		$catid=$catid==''?0:$catid;
+		
+		// 读取产品类别的数据记录
+		if($productCatData = M('Product_cat')->where(array('token' => session('token')))->select()){
+			$this->assign('catData', $productCatData);
+		}else{
+			$this->assign('catData', null);
+		}
+		
 		$product_model=M('Product');
 		$product_cat_model=M('Product_cat');
+		
 		$where=array('token'=>session('token'));
 		if ($catid){	$where['catid']=$catid;		}
+		
 		$where['dining']=0;
 		$where['groupon']=0;
+		
 		if(IS_POST){
 			$key = $this->_post('searchkey');
 			if(empty($key)){
