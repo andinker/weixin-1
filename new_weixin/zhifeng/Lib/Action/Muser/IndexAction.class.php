@@ -5,17 +5,6 @@ class IndexAction extends MuserAction{
 		
 		$this->assign('PAGE_TITLE','管理后台首页');
 		
-		// 列出用户帐号下的所有公众号
-		$where['uid']=session('uid');
-		$token=session('token');
-
-		
-		$db=M('Wxuser');
-		$wxusers=$db->where($where)->select();
-		
-		$this->assign('wxusers',$wxusers); 
-		$this->assign('token',$token);
-		
 		$this->display();
 		
 	}

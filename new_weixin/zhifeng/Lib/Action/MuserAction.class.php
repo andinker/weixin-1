@@ -9,6 +9,16 @@ class MuserAction  extends UserAction{
 		if (empty($token) && MODULE_NAME != 'Index' && ACTION_NAME != 'index'){
 			$this->redirect(U('Index/index')); 
 		}
+		
+		// 如果已经登录、列出用户帐号下的所有公众号
+		if (session('uid')!=false){
+			$where['uid']=session('uid');
+			$db=M('Wxuser');
+			$wxusers=$db->where($where)->select();
+			$this->assign('wxusers',$wxusers);
+		}
+		
+		
 	}
 	
 	protected function ___init_ppc_data_dir( &$url_path ){

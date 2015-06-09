@@ -248,10 +248,64 @@ class ProductAction extends MuserAction{
 		
 		// 读取产品展示图（在一般情况下是每个产品6张）
 		$productimage = M("Product_image")->where(array('pid' => $id))->select();
+		$this->assign('photos',$productimage);
 		
-		// 图片上传
+		// 照片上传
 		if (IS_POST){
+			// 检查权限
+			if (empty($_SESSION['token'])) {
+				exit(json_encode(array('status'=>'error','msg'=>'你没有权限上传！')));
+			}
+				
+			// 检查数据可靠性
+			if (empty($_POST) || empty($_POST['image0'])){
+				exit(json_encode(array('status'=>'error','msg'=>'检测不到上传数据，可能是因为上传数据的结构不是约定的！')));
+			}
 			
+			$photos = array();
+			
+			foreach ($_POST as $key=>$image){
+			
+				// 保存照片数据为文件
+				$upload_data = explode(",", $image);
+				$upload_data = base64_decode($upload_data[1]);
+					
+				$get_image_url_path = null;
+				$upload_dirname = $this->___init_ppc_data_dir($get_image_url_path); // 引用传参
+				$save_image_filename = time().'_'.$key.'_'.rand(10000,99999).'.png';
+				
+				$save_status = @file_put_contents($upload_dirname.'/'.$save_image_filename, $upload_data);
+				
+				if ($save_status){
+					array_push($photos, $get_image_url_path.'/'.$save_image_filename);
+				}
+			
+			}
+			
+			
+			if (empty($photos)){
+				exit(json_encode(array('status'=>'error','msg'=>'由于服务器系统的原因，数据没能成功保存！')));
+			}else{
+				// 保存照片文件成功，修改数据库记录
+				$add_count = 0;
+				$img_html = '';
+				foreach ($photos as $k=>$v){
+					$photo_data = array('pid'=>$id,'image'=>$v);
+					$add_status = M("Product_image")->add($photo_data);
+					
+					if ($add_status){
+						$add_count++;
+						$img_html = $img_html . '<div class="PhonePhotoUpload_image PhonePhotoUpload_image_'.$add_status.'"><img imageid="'.$add_status.'" src="'.$v.'"></div>'."\n";
+					}
+				}
+				
+				$intro_update_status = M('Product')->where(array('catid' => $catid, 'token' => session('token'), 'id' => $id))->setField('intro',$product['intro'].$img_html);
+				$intro_update_msg = '但是未能把图片插入到商品详情介绍图文中';
+				if ($intro_update_status){
+					$intro_update_msg = '同时已成功把图片插入到商品详情介绍图文中';
+				}
+				exit(json_encode(array('status'=>'success','msg'=>'已经成功保存了'.$add_count.'张照片，'.$intro_update_msg)));
+			}
 		}
 		
 		

@@ -1,1 +1,38 @@
 <layout name="COMMON/html"/>
+
+<div id="uploaded_photos">
+	<span>已上传的商品照片：</span>
+	<empty name="photos">
+		<span>还没有上传商品照片</span>
+	<else/>
+	    <volist name="photos" id="vo">
+		<img style="width:60px;" src="{ZF:$vo.image}">
+		</volist>
+	</empty>
+</div>
+
+<br>
+<div><a href="{ZF::U('product_edit',array('id'=>$_GET['id'],'token'=>$_GET['token'],'catid'=>$_GET['catid']))}">返回编辑该商品的其他信息</a></div>
+<br>
+<div>上传更多照片：(你还可以再上传<span id="photo_upload_limit"></span>张)</div>
+<div class="imageSelector"></div>
+
+
+
+
+<script type="text/javascript">
+var uploaded_photos_limit = 6;
+var uploaded_photos_count = $("#uploaded_photos img").length;
+
+console.log(uploaded_photos_limit-uploaded_photos_count);
+
+$("#photo_upload_limit").text(uploaded_photos_limit-uploaded_photos_count);
+
+$(document).ready(function(){
+	$(".imageSelector").PhonePhotoUpload({
+		ImgSize:'500',
+		PicCount:uploaded_photos_limit-uploaded_photos_count
+	});
+});
+
+</script>
