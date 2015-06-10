@@ -2,11 +2,16 @@
 
 
 <div> 
-
-
-
-
-
+    <php>
+   	if (!empty($_GET['msg']) && $_GET['msg'] == 'end_of_add'){
+    </php>
+    <div style="background:#24C115; color: white; border:1px solid #1C9711; padding: 20px;">
+                 <div> 恭喜！您已完成商品 “{ZF:$set.name}” 的添加过程！</div>
+                 <div><a href="{ZF::U('Product/product_edit',array('token'=>$token,'catid'=>$catid))}">继续在该类别下添加商品</a> 或者 <a href="{ZF::U('Product/product_list',array('token'=>$token))}">添加其他类别的商品</a></div>
+    </div>
+    <php>
+    }
+    </php>
 
 	<div> 
 		<div>商品编辑</div> 
@@ -177,11 +182,42 @@
 			<a href="{ZF::U('product_edit_uploadphotos',array('id'=>$set['id'],'token'=>$token, 'catid' => $catid))}">添加图片</a>
 		</div>
 		<volist name="imageList" id="vo">
-			<div>
-			   <img style="width:60px;" src="{ZF:$vo.image}">
+			<div id="imageList_item_{ZF:$i}">
+			   <img style="width:60px;" src="{ZF:$vo.image}"><span onclick="imageList_item_deletor({ZF:$i},{ZF:$vo.id});">删除</span>
 			   <input type="hidden" name="image{ZF:$i}" value="{ZF:$vo.image}" imageid="{ZF:$vo.id}" id="image{ZF:$i}">
 		    </div>
 		</volist>
+		<script type="text/javascript">
+		function imageList_item_deletor(index,imageid){
+			console.log(index+','+imageid);
+			$.post('{ZF::U('product_edit_deletephoto',array('token'=>$token))}', {imageid:imageid,pid:{ZF:$set['id']},catid:{ZF:$catid}},function(data){
+				
+				if (data.status == "success"){
+					
+					// 删除DOM对象
+					$('#imageList_item_'+index).remove();
+					
+					// 修改intro字段
+					$('#intro').val(data.intro);
+					console.log(data.intro);
+					
+					
+					if (data.msg) alert(data.msg);
+					else alert('删除成功');
+					
+				}else if(data.status == "error"){
+					if (data.msg) alert(data.msg);
+					else alert('删除失败！');
+				}else{
+					if (data.msg) alert(data.msg);
+					else alert('服务器返回了未知状态，无法判断删除结果！');
+				}
+				
+
+			},"json");
+			
+		}
+		</script>
 	</div>
 
 </if>

@@ -198,6 +198,7 @@ class ProductAction extends MuserAction{
 		// 读取商品数据
 		$product = M('Product')->where(array('catid' => $catid, 'token' => session('token'), 'id' => $id))->find();
 		$this->assign('image',$product['logourl']);
+		$this->assign('name',$product['name']);
 		
 		
 		// 图片上传
@@ -228,7 +229,13 @@ class ProductAction extends MuserAction{
 				exit(json_encode(array('status'=>'error','msg'=>($_POST['image0']).'由于服务器系统的原因，数据没能成功保存！')));
 			}else{
 				// 保存图片文件成功，修改数据库记录
+				
+				// 删除旧图片，如果有的话
+				$this->___delete_ppc_file($product['logourl']);
+				
+				// 更新数据库记录
 				M('Product')->where(array('catid' => $catid, 'token' => session('token'), 'id' => $id))->setField('logourl',$get_image_url_path.'/'.$save_image_filename);
+				
 				exit(json_encode(array('status'=>'success')));
 			}
 		}
@@ -256,6 +263,7 @@ class ProductAction extends MuserAction{
 		
 		// 读取商品数据
 		$product = M('Product')->where(array('catid' => $catid, 'token' => session('token'), 'id' => $id))->find();
+		$this->assign('name',$product['name']);
 		
 		// 读取产品展示图（在一般情况下是每个产品6张）
 		$productimage = M("Product_image")->where(array('pid' => $id))->select();
@@ -322,6 +330,50 @@ class ProductAction extends MuserAction{
 		
 		$this->assign('PAGE_TITLE','添加商品照片');
 		$this->display();
+	}
+	
+	/**
+	 * 删除一个展示图
+	 */
+	public function product_edit_deletephoto(){
+		
+		if (IS_POST){
+		
+			$catid = intval($_POST['catid']);	// 正在编辑或添加的产品的类别ID
+			$pid = intval($_POST['pid']);			// 正在编辑的产品的ID
+			$imageid = intval($_POST['imageid']);			// 正在删除的展示数据库ID
+			
+			if (empty($catid) || empty($pid) || empty($imageid)) exit(json_encode(array('status'=>'error','msg'=>'参数不正确')));
+			
+			$product = M('Product')->where(array('catid' => $catid, 'token' => session('token'), 'id' => $id))->find();
+			
+			// 查找是否有该imageid的数据库记录
+			$image = M("Product_image")->where(array('id'=>$imageid,'pid'=>$pid))->find();
+			
+			if (empty($image)){
+				exit(json_encode(array('status'=>'error','msg'=>'在服务器找不到该展示图片')));
+			}else{
+				// 找到了展示图，进行删除
+				$delete_status = M("Product_image")->where(array('id'=>$imageid,'pid'=>$pid))->delete();
+				if ($delete_status) {
+					
+					// 删除文件
+					$this->___delete_ppc_file($image['image']);
+					
+					// 删除商品描述中的IMG标签
+					if (!empty($product)){
+						$description_html = $this->___delete_ppc_htmltags($product['intro']);
+						M('Product')->where(array('catid' => $catid, 'token' => session('token'), 'id' => $id))->setField('intro',$description_html);
+					}
+					
+					exit(json_encode(array('status'=>'success','msg'=>'删除成功','intro'=>$description_html)));
+				}else{
+					exit(json_encode(array('status'=>'error','msg'=>'执行删除操作失败')));
+				}
+			}
+			
+		}
+		
 	}
 	
 	public function order_list() {

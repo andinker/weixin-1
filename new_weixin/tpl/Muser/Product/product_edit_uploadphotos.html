@@ -1,5 +1,10 @@
 <layout name="COMMON/html"/>
 
+<div>为商品“{ZF:$name}”设置展示图</div> 
+<div><a href="{ZF::U('product_edit',array('id'=>$_GET['id'],'token'=>$_GET['token'],'catid'=>$_GET['catid']))}">返回编辑该商品的其他信息</a></div>
+<br>
+
+
 <div id="uploaded_photos">
 	<span>已上传的商品照片：</span>
 	<empty name="photos">
@@ -11,8 +16,8 @@
 	</empty>
 </div>
 
-<br>
-<div><a href="{ZF::U('product_edit',array('id'=>$_GET['id'],'token'=>$_GET['token'],'catid'=>$_GET['catid']))}">返回编辑该商品的其他信息</a></div>
+
+
 <br>
 <div>上传更多照片：(你还可以再上传<span id="photo_upload_limit"></span>张)</div>
 <div class="imageSelector"></div>
@@ -29,9 +34,25 @@ console.log(uploaded_photos_limit-uploaded_photos_count);
 $("#photo_upload_limit").text(uploaded_photos_limit-uploaded_photos_count);
 
 
+<php>
+if (!empty($_GET['nextstep']) && $_GET['nextstep'] == 'show_product'){
+</php>
+var btn_text = '保存展示图，并完成商品添加';
+var jump_url = '{ZF::U('product_edit',array('id'=>$_GET['id'],'token'=>$_GET['token'],'catid'=>$_GET['catid']))}'+'&msg=end_of_add';
+<php>
+}else{
+</php>
+var btn_text = '保存为商品展示图';
+var jump_url = location.href;
+<php>
+}
+</php>
+
 
 $(document).ready(function(){
 	$(".imageSelector").PhonePhotoUpload({
+		BtnText:btn_text,
+		redirectUrl:jump_url,
 		ImgSize:'500',
 		PicCount:uploaded_photos_limit-uploaded_photos_count
 	});

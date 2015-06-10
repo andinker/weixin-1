@@ -55,4 +55,32 @@ class MuserAction  extends UserAction{
 			return $dir_ckeditor_d;
 		}
 	}
+	
+	/**
+	 * 检查一个文件是不是由PhonePhotoUpload插件上传的，如果是，则从磁盘中删除它
+	 * @param string $file_url 文件的http访问url地址，被视为网站绝对路径，类似：/data/Uploads/q/qbyszj1426650408/PhonePhotoUpload/1433908810_image0_63778.png
+	 * @return bool 表示是否执行了删除操作（不管删除是否成功）
+	 */
+	protected function ___delete_ppc_file($file_url) {
+		
+		$keyword = 'PhonePhotoUpload';
+		$status = mb_strpos($file_url, $keyword,0,'UTF-8');
+		
+		if ($status !== false){
+			//找到了关键字，删除该文件
+			@unlink(SITE_ROOT.$file_url);
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	/**
+	 * 从给出的字符串中删除由PhonePhotoUpload插件附加的HTML标签,类似：<div class="PhonePhotoUpload_image PhonePhotoUpload_image_118"><img imageid="118" data-cke-saved-src="/data/Uploads/q/qbyszj1426650408/PhonePhotoUpload/1433908810_image2_19387.png" src="/data/Uploads/q/qbyszj1426650408/PhonePhotoUpload/1433908810_image2_19387.png"></div>
+	 * @param unknown $html
+	 */
+	protected function ___delete_ppc_htmltags($html,$imageid) {
+		$pattern = '#<div class="PhonePhotoUpload_image PhonePhotoUpload_image_'.$imageid.'.*?</div>#is';
+		return preg_replace($pattern,'',$html);
+	}
 }
