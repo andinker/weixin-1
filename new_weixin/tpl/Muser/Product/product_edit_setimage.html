@@ -1,23 +1,30 @@
 <layout name="COMMON/html" />
 
-<div>为商品“{ZF:$name}”设置列表图</div> 
-
-
-<div><a href="{ZF::U('product_edit',array('id'=>$_GET['id'],'token'=>$_GET['token'],'catid'=>$_GET['catid']))}">返回编辑该商品的其他信息</a></div>
-<br>
-
-<span>已设置的图片：</span>
-<empty name="image">
-	<span>还没有设置图片</span>
-<else/>
-	<img style="width:60px;" src="{ZF:$image}">
-</empty>
-
-<br>
-
-<div>设置图片：</div>
-<div class="imageSelector"></div>
-
+<div class="upload_content">
+	<div class="photos_wall">
+		<div class="setting_title">
+			<div>为商品<span>“{ZF:$name}”</span>设置列表图</div> 
+		</div>
+		
+		<div class="back">
+			<a href="{ZF::U('product_edit',array('id'=>$_GET['id'],'token'=>$_GET['token'],'catid'=>$_GET['catid']))}">
+				【返回编辑该商品的其他信息】
+			</a>
+		</div>
+		
+		
+		<empty name="image">
+			<span>还没有设置图片</span>
+		<else/>
+			<div>已设置的图片：</div>
+			<div class="image_box"><img style="width:60px;" src="{ZF:$image}"></div>
+		</empty>
+	</div>	
+		
+		
+	<div>设置图片：</div>
+	<div class="imageSelector"></div>
+</div>
 
 
 

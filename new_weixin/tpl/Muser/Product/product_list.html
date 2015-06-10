@@ -1,14 +1,13 @@
 <layout name="COMMON/html" />
 
-<div class="manage_title">
-	
-	<span>当前分类：</span>
-	<span>
+<div class="manage_classify">
 
+	<div>
+		<span>当前分类：</span>
+		
 		<empty name="catid">
 			所有分类
 		<else/>
-		
 			<php>
 			 foreach($catData as $cat_row){
 			 	if ($cat_row['id'] == $catid) {
@@ -16,28 +15,50 @@
 		 		}
 			 }
 			</php>
-		
 		</empty>
 		
-		
-		<volist name="catData" id="vo">
-            <a href="{ZF::U('Product/product_list',array('token'=>$token,'catid'=>$vo['id']))}">{ZF:$vo['name']}</a>
-        </volist>
-		
-		
-		<php>
-		    if (!empty($catid)){
-				echo '<a href="'.U('Product/product_edit',array('token'=>$token,'catid'=>$catid)).'">在该分类下添加商品</a>';
-			}else{
-				echo '请选择分类以添加商品';
-			}
-		</php>
-		
-	</span>
+	</div>
+	
+	<div class="select_classify">
+		<div class="selected_name">
+			<span>
+				<empty name="catid">
+					请选择分类以添加商品
+				<else/>
+					<php>
+					 foreach($catData as $cat_row){
+					 	if ($cat_row['id'] == $catid) {
+					 		echo $cat_row['name'];
+				 		}
+					 }
+					</php>
+				</empty>
+			</span>
+			<span class="glyphicon glyphicon-chevron-down" style="vertical-align: middle;margin-left:3px;"></span>
+		</div>		
+		<div class="classify_all">
+			<volist name="catData" id="vo">
+				<php>
+					if($vo['id']!=$catid){
+				</php>
+		            <a href="{ZF::U('Product/product_list',array('token'=>$token,'catid'=>$vo['id']))}" style="color:#333;">
+		            	<div class="classify_one">{ZF:$vo['name']}</div>
+		            </a>
+	            <php>}</php>
+	        </volist>
+		</div>
+		<span>
+			<php>
+			    if (!empty($catid)){
+					echo '<a href="'.U('Product/product_edit',array('token'=>$token,'catid'=>$catid)).'">在该分类下添加商品</a>';
+				}
+			</php>
+		</span>
+	</div>
 
 </div>
 
-
+<notempty name="list">
 <div class="manage_table">
 
 	<table border="0" cellspacing="0" cellpadding="0" width="100%">
@@ -62,7 +83,7 @@
 	</table>
 
 </div>
-
+</notempty>
 
 
 <div class="pages">{ZF:$page}</div>

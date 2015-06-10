@@ -1,27 +1,37 @@
 <layout name="COMMON/html"/>
 
-<div>为商品“{ZF:$name}”设置展示图</div> 
-<div><a href="{ZF::U('product_edit',array('id'=>$_GET['id'],'token'=>$_GET['token'],'catid'=>$_GET['catid']))}">返回编辑该商品的其他信息</a></div>
-<br>
+<div class="upload_content">
 
-
-<div id="uploaded_photos">
-	<span>已上传的商品照片：</span>
-	<empty name="photos">
-		<span>还没有上传商品照片</span>
-	<else/>
-	    <volist name="photos" id="vo">
-		<img style="width:60px;" src="{ZF:$vo.image}">
-		</volist>
-	</empty>
+	<div class="photos_wall">
+		<div class="setting_title">
+			为商品<span>“{ZF:$name}”</span>设置展示图
+		</div> 
+		<div class="back">
+			<a href="{ZF::U('product_edit',array('id'=>$_GET['id'],'token'=>$_GET['token'],'catid'=>$_GET['catid']))}">
+				【返回编辑该商品的其他信息】
+			</a>
+		</div>
+		
+		
+		
+		<div id="uploaded_photos">
+		
+			<empty name="photos">
+				<span>还没有上传商品照片</span>
+			<else/>
+				<div>已上传的商品照片：</div>
+			    <volist name="photos" id="vo">
+					<div class="image_box"><img style="width:60px;" src="{ZF:$vo.image}"></div>
+				</volist>
+			</empty>
+			
+		</div>
+		
+		<div>上传更多照片：(你还可以再上传<span id="photo_upload_limit"></span>张)</div>
+	</div>
+	
+	<div class="imageSelector"></div>
 </div>
-
-
-
-<br>
-<div>上传更多照片：(你还可以再上传<span id="photo_upload_limit"></span>张)</div>
-<div class="imageSelector"></div>
-
 
 
 

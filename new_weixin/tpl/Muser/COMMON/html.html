@@ -11,6 +11,7 @@
 body{margin:0;padding:0;font-family:'微软雅黑';font-size: 16px;}
 li{list-style:none;}
 a{text-decoration: none;}
+#think_page_trace_open{display:none;}
 
 .login_form{max-width:350px;margin:0 auto;}
 .title{text-align:center;font-size:18px;;line-height:45px;background:#333;color:white;}
@@ -41,10 +42,14 @@ a{text-decoration: none;}
 .wxusers_sel li a{color:#333;}
 .wxusers_sel li a .select_to_manage{float:right;border:1px solid #ccc;padding:0 10px;border-radius:5px;background:#5ba607;color:white;}
 
-.manage_title{text-align: center;line-height: 40px;border-bottom: 1px solid #eee;}
+.manage_classify{line-height: 40px;border-bottom: 1px solid #eee;text-align:center;}
+.point_out{color:orange;padding-left:5px;}
+.select_classify{}
+.classify_all{display:none;position:absolute;text-align:center;background:rgba(0,0,0,0.6);width:100%;}
+.classify_one{color:white;}
 .manage_table{margin:5px;line-height: 60px;}
 .manage_table .img_box{height:48px;overflow: hidden;}
-.pages{text-align: center;margin-top:15px;}
+.pages{text-align: center;line-height: 40px;margin-bottom:10px;}
 .pages a, .pages span{margin:0 5px 0 0;}
 .table_tr{border-bottom: 1px solid #eee;}
 .table_tr th{text-align: center;}
@@ -53,15 +58,49 @@ a{text-decoration: none;}
 .wxname_all{position:absolute;width:32%;text-align: center;display:none;background:rgba(0,0,0,0.7);}
 .wxname_one{border-bottom:1px solid #ccc;}
 .wxname_selected:hover,.wxname_one:hover{background: #28b779;}
-.wxname_one:last-child{border:none;};
+.wxname_one:last-child{border:none;}
+
+.upload_content{margin:10px;}
+.image_box{height:60px;overflow: hidden;display:inline-block;border:1px solid #eee;}
+.setting_title{font-size:18px;text-align: center;}
+.setting_title span{color:orange;}
+.photos_wall{line-height: 35px;}
+.back{text-align: center;}
 
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
 		//绑定菜单公众号选择的切换
-		$(".wxname_selected").bind("click", function(){
+		$(".wxname_selected").bind("click", function(event){
 			$('.wxname_all').toggle();
+			event.stopPropagation(); 
 		})
+		//绑定分类选项的切换
+		$(".selected_name").bind("click", function(){
+			$('.classify_all').toggle();
+			
+			if($('.classify_all').css("display")=="block"){
+				$('.selected_name').attr("style","background:#333;color:white;");
+			}else{
+				$('.selected_name').attr("style","background:white;color:#333;");
+			}
+			
+			event.stopPropagation(); 
+		})
+		//点击别处隐藏菜单
+		$('body').bind("click", function(){
+			//隐藏公众号选择菜单
+			$('.wxname_all').hide();
+			//隐藏分类选项菜单
+			$('.classify_all').hide();
+			
+			$('.selected_name').attr("style","background:white;color:#333;");
+		})
+		//将分页链接处分两行显示
+		$('.pages a:first-child').before('<br>');
+		//设置body的最小高度
+		var win_he=$(window).height();
+		$('body').css("min-height",win_he-10+"px");
 		
 	})
 </script>
