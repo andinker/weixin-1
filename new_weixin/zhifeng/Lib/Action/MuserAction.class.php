@@ -76,6 +76,13 @@ class MuserAction  extends UserAction{
 	}
 	
 	/**
+	 * 生成PhonePhotoUpload插件上传图片的标签
+	 */
+	protected function ___make_ppc_htmlimgtags( $image_id ,$image_path ){
+		return '<div class="PhonePhotoUpload_image PhonePhotoUpload_image_'.$image_id.'"><img imageid="'.$image_id.'" src="'.$image_path.'"></div>';
+	}
+	
+	/**
 	 * 从给出的字符串中删除由PhonePhotoUpload插件附加的HTML标签,类似：<div class="PhonePhotoUpload_image PhonePhotoUpload_image_118"><img imageid="118" data-cke-saved-src="/data/Uploads/q/qbyszj1426650408/PhonePhotoUpload/1433908810_image2_19387.png" src="/data/Uploads/q/qbyszj1426650408/PhonePhotoUpload/1433908810_image2_19387.png"></div>
 	 * @param unknown $html
 	 */
@@ -83,4 +90,5 @@ class MuserAction  extends UserAction{
 		$pattern = '#<div class="PhonePhotoUpload_image PhonePhotoUpload_image_'.$imageid.'.*?</div>#is';
 		return preg_replace($pattern,'',$html);
 	}
+	
 }

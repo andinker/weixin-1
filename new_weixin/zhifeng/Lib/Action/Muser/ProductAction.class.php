@@ -314,7 +314,7 @@ class ProductAction extends MuserAction{
 					
 					if ($add_status){
 						$add_count++;
-						$img_html = $img_html . '<div class="PhonePhotoUpload_image PhonePhotoUpload_image_'.$add_status.'"><img imageid="'.$add_status.'" src="'.$v.'"></div>'."\n";
+						$img_html = $img_html . $this->___make_ppc_htmlimgtags($add_status, $v);
 					}
 				}
 				
@@ -345,7 +345,7 @@ class ProductAction extends MuserAction{
 			
 			if (empty($catid) || empty($pid) || empty($imageid)) exit(json_encode(array('status'=>'error','msg'=>'参数不正确')));
 			
-			$product = M('Product')->where(array('catid' => $catid, 'token' => session('token'), 'id' => $id))->find();
+			$product = M('Product')->where(array('catid' => $catid, 'token' => session('token'), 'id' => $pid))->find();
 			
 			// 查找是否有该imageid的数据库记录
 			$image = M("Product_image")->where(array('id'=>$imageid,'pid'=>$pid))->find();
@@ -362,8 +362,8 @@ class ProductAction extends MuserAction{
 					
 					// 删除商品描述中的IMG标签
 					if (!empty($product)){
-						$description_html = $this->___delete_ppc_htmltags($product['intro']);
-						M('Product')->where(array('catid' => $catid, 'token' => session('token'), 'id' => $id))->setField('intro',$description_html);
+						$description_html = $this->___delete_ppc_htmltags($product['intro'],$imageid);
+						M('Product')->where(array('catid' => $catid, 'token' => session('token'), 'id' => $pid))->setField('intro',$description_html);
 					}
 					
 					exit(json_encode(array('status'=>'success','msg'=>'删除成功','intro'=>$description_html)));

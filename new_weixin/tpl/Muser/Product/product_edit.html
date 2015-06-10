@@ -189,7 +189,10 @@
 		</volist>
 		<script type="text/javascript">
 		function imageList_item_deletor(index,imageid){
-			console.log(index+','+imageid);
+			//console.log(index+','+imageid);
+			
+			if (!confirm("真的要删除这张展示图吗？")) return false;
+			
 			$.post('{ZF::U('product_edit_deletephoto',array('token'=>$token))}', {imageid:imageid,pid:{ZF:$set['id']},catid:{ZF:$catid}},function(data){
 				
 				if (data.status == "success"){
@@ -199,7 +202,7 @@
 					
 					// 修改intro字段
 					$('#intro').val(data.intro);
-					console.log(data.intro);
+					editor_info.setData(data.intro);
 					
 					
 					if (data.msg) alert(data.msg);
@@ -475,7 +478,7 @@ $(document).ready(function(){
 </script> 
 <script src="{ZF::STATICS}/plugin_ckeditor/ckeditor.js" type="text/javascript"></script>
 <script type="text/javascript">
-
+var editor_info = null;
 // This is a check for the CKEditor class. If not defined, the paths must be checked.
 if ( typeof CKEDITOR == 'undefined' )
 {
@@ -510,8 +513,8 @@ else
 				      { name: 'about' }
 				    ]
 				  };
-			CKEDITOR.inline( this,basicConfig );
-			//var editor_info = CKEDITOR.replace( this,basicConfig );
+			editor_info = CKEDITOR.inline( this,basicConfig );
+			console.log(editor_info);
 			
 		});
 		
