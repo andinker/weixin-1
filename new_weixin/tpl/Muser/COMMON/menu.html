@@ -32,6 +32,7 @@
 <div class="menu_manage">
 	<ul>
 		<php>if (!empty($token)){</php>
+		    <li><a href="{ZF::U('Product/category_list')}">分类管理</a></li>
 			<li><a href="{ZF::U('Product/product_list')}">商品管理</a></li>
 			<li><a href="{ZF::U('Product/order_list')}">订单管理</a></li>
 		<php>}</php>

@@ -1,29 +1,38 @@
 <layout name="../../Muser/COMMON/html" />
 
-<div class="title">手机版用户登录</div>
+<if condition="!isset($_SESSION['uid'])">
 
-<form method="post" action="index.php?m=Users&amp;a=checklogin" align="center" class="login_form">
-	<table align="center" class="table_box">
+	<div class="title">手机版用户登录</div>
 	
-		<tr>
-			<td><input type="hidden" name="mlogin" value="yes"></td>
-		</tr>
-		<tr>
-			<td class="input_name">用户名：</td>
-		</tr>
-		<tr>
-			<td><input class="input_box" type="text" name="username" placeholder="用户名"></td>
-		</tr>
-		<tr>
-			<td class="input_name">密码：</td>
-		</tr>
-		<tr>
-			<td><input class="input_box password" type="password" name="password" placeholder="密码"></td>
-		</tr>
-		<tr style="">
-			<td><input name="submit" type="submit" class="submit sub" value="登  录"></td>
-		</tr>
+	<form method="post" action="index.php?m=Users&amp;a=checklogin" align="center" class="login_form">
+		<table align="center" class="table_box">
 		
-	</table>
-</form>
+			<tr>
+				<td><input type="hidden" name="mlogin" value="yes"></td>
+			</tr>
+			<tr>
+				<td class="input_name">用户名：</td>
+			</tr>
+			<tr>
+				<td><input class="input_box" type="text" name="username" placeholder="用户名"></td>
+			</tr>
+			<tr>
+				<td class="input_name">密码：</td>
+			</tr>
+			<tr>
+				<td><input class="input_box password" type="password" name="password" placeholder="密码"></td>
+			</tr>
+			<tr style="">
+				<td><input name="submit" type="submit" class="submit sub" value="登  录"></td>
+			</tr>
+			
+		</table>
+	</form>
  
+ <else/>
+ 
+ <script type="text/javascript">
+ location.href = '{ZF::U('Muser/Index/index')}';
+ </script>
+ 
+ </if>

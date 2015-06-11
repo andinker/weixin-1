@@ -376,6 +376,52 @@ class ProductAction extends MuserAction{
 		
 	}
 	
+	/**
+	 * 列出当前店铺的所有分类
+	 */
+	public function category_list(){
+		
+		$parentid=intval($_GET['parentid']);
+		$parentid=$parentid==''?0:$parentid;
+		$data=M('Product_cat');
+		$where=array('parentid'=>$parentid,'token'=>session('token'));
+		if(IS_POST){
+			$key = $this->_post('searchkey');
+			if(empty($key)){
+				$this->error("关键词不能为空");
+			}
+			$map['token'] = $this->_get('token');
+			$map['name|des'] = array('like',"%$key%");
+			$list = $data->where($map)->select();
+			$count      = $data->where($map)->count();
+			$Page       = new Page($count,20);
+			$show       = $Page->show();
+		}else{
+			$count      = $data->where($where)->count();
+			$Page       = new Page($count,20);
+			$show       = $Page->show();
+			$list = $data->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+		}
+		$this->assign('page',$show);
+		$this->assign('list',$list);
+		if ($parentid){
+			$parentCat = $data->where(array('id'=>$parentid))->find();
+		}
+		$this->assign('parentCat',$parentCat);
+		$this->assign('parentid',$parentid);
+		
+		$this->assign('PAGE_TITLE','分类列表');
+		$this->display();
+		
+	}
+	
+	/**
+	 * 编辑一个商品分类
+	 */
+	public function category_edit(){
+		
+	}
+	
 	public function order_list() {
 	
 		$this->assign('PAGE_TITLE','订单列表');
