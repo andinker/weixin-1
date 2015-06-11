@@ -420,6 +420,77 @@ class ProductAction extends MuserAction{
 	 */
 	public function category_edit(){
 		
+		$this->assign('PAGE_TITLE','编辑分类');
+		
+		
+		if(IS_POST){
+				
+			$data=D('Product_cat');
+			
+			$catid = $this->_post('id');
+			
+			if (empty($catid)){
+				
+				// 新增数据
+				if($data->create()){
+					if($data->add($_POST)){
+				
+						$this->success('添加成功',U('category_list',array('token'=>session('token'),'parentid'=>$this->_post('parentid'),'dining'=>1)));
+				
+					}else{
+						$this->error('添加失败');
+					}
+				}else{
+					$this->error($data->getError());
+				}
+				
+			}else{
+				
+				// 更新旧数据
+				
+				$where=array('id'=>$catid,'token'=>session('token'));
+				$check=$data->where($where)->find();
+				if($check==false) $this->error('非法操作');
+				
+				if($data->create()){
+					if($data->where($where)->save($_POST)){
+				
+						$this->success('修改成功',U('category_list',array('token'=>session('token'),'parentid'=>$this->_post('parentid'),'dining'=>1)));
+				
+					}else{
+						$this->error('操作失败');
+					}
+				}else{
+					$this->error($data->getError());
+				}
+				
+			}
+				
+		}
+		
+		
+		
+		
+		$id = $this->_get('id');
+		if (!empty($id)){
+			$checkdata = M('Product_cat')->where(array('id'=>$id,'token'=>session('token')))->find();
+			if(empty($checkdata)){
+				$this->error("没有相应记录.您现在可以添加");
+			}
+		}else{
+			$id = 0;
+		}
+			
+		//查询所有分类
+		$catlist =M('product_cat')->where("token='".$this->token."' and id <> '$id'")->select();
+		$this->assign('catlist',$catlist);
+		
+		$this->assign('parentid',$checkdata['parentid']);
+		$this->assign('set',$checkdata);
+		
+		$this->display();
+
+		
 	}
 	
 	public function order_list() {
