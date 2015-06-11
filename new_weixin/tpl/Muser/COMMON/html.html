@@ -60,12 +60,14 @@ a{text-decoration: none;}
 .wxname_selected:hover,.wxname_one:hover{background: #28b779;}
 .wxname_one:last-child{border:none;}
 
-.upload_content{margin:10px;}
+.upload_content{margin:5px 10px;}
 .image_box{height:60px;overflow: hidden;display:inline-block;border:1px solid #eee;}
-.setting_title{font-size:18px;text-align: center;}
+.setting_title{font-size:18px;text-align: center;line-height: 40px;}
 .setting_title span{color:orange;}
 .photos_wall{line-height: 35px;}
-.back{text-align: center;}
+.back{text-align: center;background:#f8f8f8;border-radius:5px;border:1px solid #eee;}
+.back a{color:#666;}
+.show_images{border:1px solid #eee;padding:3px;}
 
 .edit_form{margin:10px;}
 .goods_edit{text-align: center;border-bottom: 1px solid #eee;line-height: 40px;}
@@ -103,27 +105,39 @@ input[type=checkbox]{margin: 0;}
 			$('.wxname_all').toggle();
 			event.stopPropagation(); 
 		})
-		//绑定分类选项的切换
-		$(".selected_name").bind("click", function(){
-			$('.classify_all').toggle();
-			
-			if($('.classify_all').css("display")=="block"){
-				$('.selected_name').attr("style","background:#333;color:white;");
-			}else{
+		//分类下拉的筛选
+		var classify_select_fun=function(){
+			//绑定分类选项的切换
+			$(".selected_name").bind("click", function(){
+				$('.classify_all').toggle();
+				
+				if($('.classify_all').css("display")=="block"){
+					$('.selected_name').attr("style","background:#333;color:white;");
+				}else{
+					$('.selected_name').attr("style","background:white;color:#333;");
+				}
+				
+				event.stopPropagation(); 
+			})
+			//点击别处隐藏菜单
+			$('body').bind("click", function(){
+				//隐藏公众号选择菜单
+				$('.wxname_all').hide();
+				//隐藏分类选项菜单
+				$('.classify_all').hide();
+				
 				$('.selected_name').attr("style","background:white;color:#333;");
-			}
-			
+			})
+		}
+		classify_select_fun();
+		//点击选择分类
+		$(".add_products").bind("click", function(event){
+			alert('请先选择您要添加的商品的分类');
+			$('.classify_all').css("display","block");
+			$('.selected_name').css({"background":"#333","color":"white"})
 			event.stopPropagation(); 
 		})
-		//点击别处隐藏菜单
-		$('body').bind("click", function(){
-			//隐藏公众号选择菜单
-			$('.wxname_all').hide();
-			//隐藏分类选项菜单
-			$('.classify_all').hide();
-			
-			$('.selected_name').attr("style","background:white;color:#333;");
-		})
+		
 		//将分页链接处分两行显示
 		$('.pages a:first-child').before('<br>');
 		//设置body的最小高度

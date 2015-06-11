@@ -1,29 +1,11 @@
 <layout name="COMMON/html" />
 
 <div class="manage_classify">
-
-	<div>
-		<span>当前分类：</span>
-		
-		<empty name="catid">
-			所有分类
-		<else/>
-			<php>
-			 foreach($catData as $cat_row){
-			 	if ($cat_row['id'] == $catid) {
-			 		echo $cat_row['name'];
-		 		}
-			 }
-			</php>
-		</empty>
-		
-	</div>
-	
 	<div class="select_classify">
 		<div class="selected_name">
-			<span>
+			<span>当前分类:
 				<empty name="catid">
-					请选择分类以添加商品
+					所有分类
 				<else/>
 					<php>
 					 foreach($catData as $cat_row){
@@ -51,6 +33,8 @@
 			<php>
 			    if (!empty($catid)){
 					echo '<a href="'.U('Product/product_edit',array('token'=>$token,'catid'=>$catid)).'">在该分类下添加商品</a>';
+				}else{
+					echo '<a class="add_products" href="javascript:void(0);">请选择分类以添加商品</a>';
 				}
 			</php>
 		</span>

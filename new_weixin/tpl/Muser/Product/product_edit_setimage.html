@@ -2,27 +2,29 @@
 
 <div class="upload_content">
 	<div class="photos_wall">
-		<div class="setting_title">
-			<div>为商品<span>“{ZF:$name}”</span>设置列表图</div> 
-		</div>
 		
 		<div class="back">
 			<a href="{ZF::U('product_edit',array('id'=>$_GET['id'],'token'=>$_GET['token'],'catid'=>$_GET['catid']))}">
-				【返回编辑该商品的其他信息】
+				返回编辑该商品的其他信息
 			</a>
 		</div>
 		
+		<div class="setting_title">
+			<div>为商品<span>“{ZF:$name|mb_substr=0,5,'utf-8'}...”</span>设置列表图</div> 
+		</div>
 		
-		<empty name="image">
-			<span>还没有设置图片</span>
-		<else/>
+		<div class="show_images">
 			<div>已设置的图片：</div>
-			<div class="image_box"><img style="width:60px;" src="{ZF:$image}"></div>
-		</empty>
+			<empty name="image">
+				<span>还没有设置图片</span>
+			<else/>
+				<div class="image_box"><img style="width:60px;" src="{ZF:$image}"></div>
+			</empty>
+		</div>
 	</div>	
 		
 		
-	<div>设置图片：</div>
+	<div style="margin-top:10px;">设置图片：</div>
 	<div class="imageSelector"></div>
 </div>
 
