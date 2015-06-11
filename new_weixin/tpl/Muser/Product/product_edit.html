@@ -1,21 +1,33 @@
 <layout name="COMMON/html" />
 
 
-<div> 
-    <php>
-   	if (!empty($_GET['msg']) && $_GET['msg'] == 'end_of_add'){
-    </php>
-    <div style="background:#24C115; color: white; border:1px solid #1C9711; padding: 20px;">
-                 <div> 恭喜！您已完成商品 “{ZF:$set.name}” 的添加过程！</div>
-                 <div><a href="{ZF::U('Product/product_edit',array('token'=>$token,'catid'=>$catid))}">继续在该类别下添加商品</a> 或者 <a href="{ZF::U('Product/product_list',array('token'=>$token))}">添加其他类别的商品</a></div>
-    </div>
-    <php>
-    }
-    </php>
-
-	<div> 
-		<div>商品编辑</div> 
-		<a href="{ZF::U('Product/product_list',array('token'=>$token,'catid'=>$catid))}">返回</a> 
+<div class="edit_content"> 
+	<div>
+	    <php>
+	   	if (!empty($_GET['msg']) && $_GET['msg'] == 'end_of_add'){
+	    </php>
+		    <div style="background:#24C115; color: white; border:1px solid #1C9711; padding:20px 10px;text-align: center;">
+                 <div class="alert_msg">
+	              	<div class="alert_title">恭喜！您已完成商品“{ZF:$set.name}</div>
+	              	<div>”的添加过程！</div>
+				 </div>
+                 <div class="link_todo">
+	                 <a href="{ZF::U('Product/product_edit',array('token'=>$token,'catid'=>$catid))}" class="add_buttom">该分类下添加</a>
+	                  		
+	             </div>
+	             <div class="link_todo">
+	                 <a href="{ZF::U('Product/product_list',array('token'=>$token))}" class="add_buttom">其他分类下添加</a>
+                 </div>
+		    </div>
+	    <php>
+	    }
+	    </php>
+	</div>
+	
+	
+	<div class="goods_edit"> 
+		<div class="edit_title">商品编辑</div> 
+		<a href="{ZF::U('Product/product_list',array('token'=>$token,'catid'=>$catid))}" class="goods_back">返回</a> 
 	</div> 
 	
 	<if condition="$isUpdate eq 1">
@@ -26,228 +38,231 @@
 	
 	
 	
-	<form method="post" action="" id="formID" enctype="multipart/form-data">
+	<form method="post" action="" id="formID" enctype="multipart/form-data" class="edit_form">
 
 
 
-<input type="hidden" name="discount" id="discount" value="{ZF:$set.discount}">
-	
-	
-<div>
-	*名称：
-	<input type="hidden" name="pid" id="pid" value="{ZF:$set.id}">
-	<input type="text" name="name" id="name" value="{ZF:$set.name}" style="width:400px;">
-</div>
-
-
-
-<div>
-*商品类别：
-{ZF:$productCatData.name}
-</div>					
-					
-					
-<div>					
-*社区类目：
-<select name="community_catid" id="community_catid">
-    <volist name="wz_cates" id="vo">
-      <option value="{ZF:$vo.id},{ZF:$vo.name}"<php> if ($set['community_catid'] == $vo['id']) echo ' selected="selected"';</php>>{ZF:$vo.name}</option>
-    </volist>
-</select>
-<br>
-<br/>选上后，商品可以在社区的商品搜索结果中。
-<br/>如果这里没有可选项，原因可能有两个:
-<br/>1、本公众号的所属帐号没有选择所在的社区；
-<br/>2、或者暂时还没有社区站点数据。
-</div>
-	       
-	       
-	       
-<!-- 外观属性  -->
-<if condition="empty($productCatData['color']) neq true">
-<div>
-{ZF:$productCatData.color}：
-<table>
-     <tr>
-      	<volist name="colorData" id="norms" key="i">
-			<td width="130">
-				<input type="checkbox" name="color[]" value="{ZF:$norms.id}" class="color NormItem" id="norms_{ZF:$norms.id}" atr="{ZF:$norms.value}"<if condition="(in_array($norms['id'], $colorList))"> checked="checked"</if>>&nbsp;&nbsp;<label for="norms_{ZF:$norms.id}">{ZF:$norms.value}</label>
-			</td>
-			<if condition="($i%5 eq 0)" ></tr><tr></if>
-		</volist>
-	</tr>
-</table>
-</div>
-</if>
-		       
-		       
-		       
-<!-- 规格属性 -->
-<if condition="empty($productCatData['norms']) neq true">
-<div>
-{ZF:$productCatData.norms}：
-<table>
-	<tr>
- 		<volist name="formatData" id="norms" key="i">
-			<td width="130">
-				<input type="checkbox" name="norms[]" value="{ZF:$norms.id}" class="norms NormItem" id="norms_{ZF:$norms.id}" atr="{ZF:$norms.value}"<if condition="(in_array($norms['id'], $formatList))" > checked="checked"</if>>&nbsp;&nbsp;<label for="norms_{ZF:$norms.id}">{ZF:$norms.value}</label>
-			</td>
-			<if condition="($i%5 eq 0)" ></tr><tr></if>
-		</volist>
-	</tr>
-</table>
-</div>
-</if>
-		       
-
-
-	       
-<!-- 外观与规格的数据显示（相应的价格、会员价、库存） -->
-
-<table id="priceList">
-	<if condition="($productDetailData neq null) ">
-	<tr><th width="130">产品外观</th><th width="130">产品规格</th><th width="130">价格</th><th width="130">会员价</th><th width="130">数量</th></tr>
-       <volist name="productDetailData" id="detail">
-			<input type="hidden" class="editselect" value="{ZF:$detail.id},{ZF:$detail.color},{ZF:$detail.colorName},{ZF:$detail.format},{ZF:$detail.formatName},{ZF:$detail.price},{ZF:$detail.vprice},{ZF:$detail.num}">
-			<tr class="tnorms">
-				<td width="130">{ZF:$detail.colorName}<input type="hidden" value="{ZF:$detail.color}"/></td>
-				<td width="130">{ZF:$detail.formatName}<input type="hidden" value="{ZF:$detail.format}"/></td>
-				<td width="130"><input type="text" class="px" style="width:60px;" value="{ZF:$detail.price}"/></td>
-				<td width="130"><input type="text" class="px" style="width:60px;" value="{ZF:$detail.vprice}"/></td>
-				<td width="130"><input type="text" class="px" style="width:60px;" value="{ZF:$detail.num}"/></td>
-				<td width="130"><input type="hidden" value="{ZF:$detail.id}"/></td>
-			</tr>
-       </volist>
-       </if>
-</table>
-
-		       
-<!-- 自定义属性 -->
-<div>
-<volist name="attributeData" id="attribute">
-	{ZF:$attribute.name}：
-	<input type="text" value="{ZF:$attribute.value}" class="attribute px" style="width:400px;" atr="{ZF:$attribute.name}" id="{ZF:$attribute.id}" aid="{ZF:$attribute.aid}">
-</volist>
-</div>
-
-
-<div>
-*价格：
-<input type="text" id="price" name="price" value="{ZF:$set.price}" class="validate[required, length[0,20]]" style="width:100px;"> 元
-</div>
-
-
-<div>
-*会员价：
-<input type="text" id="vprice" name="vprice" value="{ZF:$set.vprice}" style="width:100px;"> 元
-</div>
-
-<div>
-*原价：
-<input type="text" id="oprice" name="oprice" value="{ZF:$set.oprice}" style="width:100px;"> 元
-</div>
-
-<div>
-库存：
-<input type="text" id="num" name="num" value="{ZF:$set.num}" style="width:100px;">
-</div>
-
-<div>	        
-邮费：
-<input type="text" id="mailprice" name="mailprice" value="{ZF:$set.mailprice}" style="width:100px;">元
-</div>
-
-<div>
-关键词：
-<input type="text" name="keyword" id="keyword" value="{ZF:$set.keyword}" style="width:400px;">
-</div>
-
-<if condition="!empty($_GET['id'])"> <!-- 只在编辑一个商品的情况下，显示上传图片链接 -->
-
-	<div>
+		<input type="hidden" name="discount" id="discount" value="{ZF:$set.discount}">
+		
 		<div>
-			<span>缩略图：</span>
-			<empty name="set.logourl"> 
-				<span>还没有设置图片</span>
-            <else/>
-				<img style="width:60px;" src="{ZF:$set.logourl}">
-        	</empty>
-			<input type="hidden" name="logourl" value="{ZF:$set.logourl}" id="pic">
-			<a href="{ZF::U('product_edit_setimage',array('id'=>$set['id'],'token'=>$token, 'catid' => $catid))}">设置图片</a>
-	</div>
-	
-	<div>
-		<div>
-			<span>展示图片:</span>
-			<a href="{ZF::U('product_edit_uploadphotos',array('id'=>$set['id'],'token'=>$token, 'catid' => $catid))}">添加图片</a>
+			<div class="attr_name"><span class="import_icon">*</span>商品名称：</div>
+			<div class="attr_data">
+				<input type="hidden" name="pid" id="pid" value="{ZF:$set.id}">
+				<input type="text" name="name" id="name" value="{ZF:$set.name}" style="width:200px;">
+			</div>
 		</div>
-		<volist name="imageList" id="vo">
-			<div id="imageList_item_{ZF:$i}">
-			   <img style="width:60px;" src="{ZF:$vo.image}"><span onclick="imageList_item_deletor({ZF:$i},{ZF:$vo.id});">删除</span>
-			   <input type="hidden" name="image{ZF:$i}" value="{ZF:$vo.image}" imageid="{ZF:$vo.id}" id="image{ZF:$i}">
-		    </div>
-		</volist>
-		<script type="text/javascript">
-		function imageList_item_deletor(index,imageid){
-			//console.log(index+','+imageid);
+		
+		<div>
+			<div class="attr_name"><span class="import_icon">*</span>商品类别：</div>
+			<div class="attr_data">{ZF:$productCatData.name}</div>
+		</div>
+		
+		<div>
+			<div class="attr_name"><span class="import_icon">*</span>社区类目：</div>
+			<div class="attr_data">
+				<select name="community_catid" id="community_catid">
+					    <volist name="wz_cates" id="vo">
+					      <option value="{ZF:$vo.id},{ZF:$vo.name}"<php> if ($set['community_catid'] == $vo['id']) echo ' selected="selected"';</php>>{ZF:$vo.name}</option>
+					    </volist>
+					</select>
+			</div>
+			<div>
+				<div class="select_msg">
+					<div>选上后，商品可以在社区的商品搜索结果中。</div>
+					<div>如果这里没有可选项，原因可能有两个:</div>
+					<div style="text-indent: 1em;">1、本公众号的所属帐号没有选择所在的社区；</div>
+					<div style="text-indent: 1em;">2、或者暂时还没有社区站点数据。</div>
+				</div>
+			</div>
+		</div>
+	       
+	       
+		<!-- 外观属性  -->
+		<if condition="empty($productCatData['color']) neq true">
+			<div class="product_data">
+				<div width="80"  class="product_unimportant_name" style="display:inline-block;">
+					{ZF:$productCatData.color}：
+				</div>
+				<volist name="colorData" id="norms" key="i">
+					<div style="display: inline-block;padding-left: 9px;">
+						<input type="checkbox" name="color[]" value="{ZF:$norms.id}" class="color NormItem" id="norms_{ZF:$norms.id}" atr="{ZF:$norms.value}"<if condition="(in_array($norms['id'], $colorList))"> checked="checked"</if>>&nbsp;<label for="norms_{ZF:$norms.id}">{ZF:$norms.value}</label>
+					</div>
+					<if condition="($i%5 eq 0)" ></if>
+				</volist>
+			</div>
+		</if>
+		       
+		       
+		       
+		<!-- 规格属性 -->
+		<if condition="empty($productCatData['norms']) neq true">
+			<div class="product_data">
+				<div width="80"  class="product_unimportant_name" style="display:inline-block;">
+					{ZF:$productCatData.norms}：
+				</div>
+				<volist name="formatData" id="norms" key="i">
+					<div style="display: inline-block;padding-left: 9px;">
+						<input style="vertical-align: middle;" type="checkbox" name="norms[]" value="{ZF:$norms.id}" class="norms NormItem" id="norms_{ZF:$norms.id}" atr="{ZF:$norms.value}"<if condition="(in_array($norms['id'], $formatList))" > checked="checked"</if>>
+						<label for="norms_{ZF:$norms.id}" style="display: inline;vertical-align: middle;padding-left: 3px;">{ZF:$norms.value}</label>
+					</div>
+					<if condition="($i%5 eq 0)" ></tr><tr></if>
+				</volist>
+			</div>
+		</if>
+		       
+
+
+	       
+		<!-- 外观与规格的数据显示（相应的价格、会员价、库存） -->
+		
+			<table id="priceList" style="text-align: center;border:1px solid #eee;margin-bottom: 5px;" class="product_detail_data">
+				<if condition="($productDetailData neq null) ">
+					<tr class="edit_table_tr">
+						<th width="110">外观</th>
+						<th width="110">规格</th>
+						<th width="60">价格</th>
+						<th width="70">会员价</th>
+						<th width="60" style="border-right: 1px solid #eee;">数量</th>
+					</tr>
+			       <volist name="productDetailData" id="detail">
+						<input type="hidden" class="editselect" value="{ZF:$detail.id},{ZF:$detail.color},{ZF:$detail.colorName},{ZF:$detail.format},{ZF:$detail.formatName},{ZF:$detail.price},{ZF:$detail.vprice},{ZF:$detail.num}">
+						<tr class="tnorms">
+							<td width="110"><div style="height:40px;overflow:hidden;">{ZF:$detail.colorName}</div><input type="hidden" value="{ZF:$detail.color}"/></td>
+							<td width="110"><div style="height:40px;overflow:hidden;">{ZF:$detail.formatName}</div><input type="hidden" value="{ZF:$detail.format}"/></td>
+							<td width="60"><input type="text" class="px" style="width:45px;" value="{ZF:$detail.price}"/></td>
+							<td width="70"><input type="text" class="px" style="width:45px;" value="{ZF:$detail.vprice}"/></td>
+							<td width="60"><input type="text" class="px" style="width:45px;" value="{ZF:$detail.num}"/></td>
+							<td><input type="hidden" value="{ZF:$detail.id}"/></td>
+						</tr>
+			       </volist>
+			       </if>
+			</table>
+		
+
+		       
+		<!-- 自定义属性 -->
+		<div>
+			<volist name="attributeData" id="attribute">
+				{ZF:$attribute.name}：
+				<input type="text" value="{ZF:$attribute.value}" class="attribute px" style="width:200px;" atr="{ZF:$attribute.name}" id="{ZF:$attribute.id}" aid="{ZF:$attribute.aid}">
+			</volist>
+		</div>
+		
+		
+		<table class="product_detail_data">
+			<tr>
+				<td><span class="import_icon">*</span>价格：</td>
+				<td><input type="text" id="price" name="price" value="{ZF:$set.price}" class="validate[required, length[0,20]]" style="width:100px;"> 元</td>
+			</tr>
+			<tr>
+				<td><span class="import_icon">*</span>会员价：</td>
+				<td><input type="text" id="vprice" name="vprice" value="{ZF:$set.vprice}" style="width:100px;"> 元</td>
+			</tr>
+			<tr>
+				<td><span class="import_icon">*</span>原价：</td>
+				<td><input type="text" id="oprice" name="oprice" value="{ZF:$set.oprice}" style="width:100px;"> 元</td>
+			</tr>
+			<tr>
+				<td class="product_unimportant_name">库存：</td>
+				<td><input type="text" id="num" name="num" value="{ZF:$set.num}" style="width:100px;"></td>
+			</tr>
+			<tr>
+				<td class="product_unimportant_name">邮费：</td>
+				<td><input type="text" id="mailprice" name="mailprice" value="{ZF:$set.mailprice}" style="width:100px;">元</td>
+			</tr>
+			<tr>
+				<td class="product_unimportant_name">关键词：</td>
+				<td><input type="text" name="keyword" id="keyword" value="{ZF:$set.keyword}" style="width:200px;"></td>
+			</tr>
+		</table>
+
+
+		<if condition="!empty($_GET['id'])"> <!-- 只在编辑一个商品的情况下，显示上传图片链接 -->
+		
+			<div>
+				<div style="margin:5px 0;">
+					<div class="set_img_name">缩略图：</div>
+					<empty name="set.logourl"> 
+						<span style="color:red;">还没有设置图片</span>
+		            <else/>
+						<img style="width:60px;" src="{ZF:$set.logourl}">
+		        	</empty>
+					<input type="hidden" name="logourl" value="{ZF:$set.logourl}" id="pic">&nbsp;
+					<a href="{ZF::U('product_edit_setimage',array('id'=>$set['id'],'token'=>$token, 'catid' => $catid))}">设置图片</a>
+				</div>
 			
-			if (!confirm("真的要删除这张展示图吗？")) return false;
+				<div class="images_show">
+					<div class="product_detail_data">
+						<div class="set_img_name">展示图片:</div>
+						<a href="{ZF::U('product_edit_uploadphotos',array('id'=>$set['id'],'token'=>$token, 'catid' => $catid))}">添加图片</a>
+					</div>
+					
+					<volist name="imageList" id="vo">
+						<div id="imageList_item_{ZF:$i}" class="image_del">
+						   <div class="image_box"><img style="width:60px;" src="{ZF:$vo.image}"></div>&nbsp;<div onclick="imageList_item_deletor({ZF:$i},{ZF:$vo.id});" style="margin-top:5px;">删除</div>
+						   <input type="hidden" name="image{ZF:$i}" value="{ZF:$vo.image}" imageid="{ZF:$vo.id}" id="image{ZF:$i}">
+					    </div>
+					</volist>
+					
+					<script type="text/javascript">
+					function imageList_item_deletor(index,imageid){
+						//console.log(index+','+imageid);
+						
+						if (!confirm("真的要删除这张展示图吗？")) return false;
+						
+						$.post('{ZF::U('product_edit_deletephoto',array('token'=>$token))}', {imageid:imageid,pid:{ZF:$set['id']},catid:{ZF:$catid}},function(data){
+							
+							if (data.status == "success"){
+								
+								// 删除DOM对象
+								$('#imageList_item_'+index).remove();
+								
+								// 修改intro字段
+								$('#intro').val(data.intro);
+								editor_info.setData(data.intro);
+								
+								
+								if (data.msg) alert(data.msg);
+								else alert('删除成功');
+								
+							}else if(data.status == "error"){
+								if (data.msg) alert(data.msg);
+								else alert('删除失败！');
+							}else{
+								if (data.msg) alert(data.msg);
+								else alert('服务器返回了未知状态，无法判断删除结果！');
+							}
+							
 			
-			$.post('{ZF::U('product_edit_deletephoto',array('token'=>$token))}', {imageid:imageid,pid:{ZF:$set['id']},catid:{ZF:$catid}},function(data){
-				
-				if (data.status == "success"){
-					
-					// 删除DOM对象
-					$('#imageList_item_'+index).remove();
-					
-					// 修改intro字段
-					$('#intro').val(data.intro);
-					editor_info.setData(data.intro);
-					
-					
-					if (data.msg) alert(data.msg);
-					else alert('删除成功');
-					
-				}else if(data.status == "error"){
-					if (data.msg) alert(data.msg);
-					else alert('删除失败！');
-				}else{
-					if (data.msg) alert(data.msg);
-					else alert('服务器返回了未知状态，无法判断删除结果！');
-				}
-				
-
-			},"json");
+						},"json");
+						
+					}
+					</script>
+				</div>
+			</div>
 			
-		}
-		</script>
-	</div>
+		</if>
 
-</if>
-
-<div>
-图文详细页内容：
-<div style="border: 1px solid #666;"><textarea class="toedit" name="intro" id="intro" style="width:100%; height:680px">{ZF:$set.intro}</textarea></div>
-</div>
-
-<div>
-	<button type="button" name="button" class="btnGreen" id="save">
-		<if condition="!empty($_GET['id'])">保存<else/>保存并添加图片</if>
-	</button>
-	<a href="{ZF::U('Product/index',array('token'=>$token, 'catid' => $catid))}">取消</a>
-</div>
-
-
+		<div>
+			<div class="goods_detail_content">图文详细页内容：</div>
+			<div class="goods_detail">
+				<textarea class="toedit" name="intro" id="intro" style="width:100%; height:680px">
+					{ZF:$set.intro}
+				</textarea>
+			</div>
+		</div>
+		
+		<div class="goods_submit">
+			<button type="button" name="button" class="btnGreen" id="save">
+				<if condition="!empty($_GET['id'])">保存<else/>保存并添加图片</if>
+			</button>
+			<a href="{ZF::U('Product/index',array('token'=>$token, 'catid' => $catid))}" class="cancel">取消</a>
+		</div>
 
 
 	</form>
 	
 </div>
-
-
-
-
-
 
 
 <script type="text/javascript">
@@ -346,15 +361,15 @@ $(document).ready(function(){
 	//绘制数据
 	function reDrawPriceList(){
 		
-		var HTML = '<tr><th width="130">产品外观</th><th width="130">产品规格</th><th width="130">价格</th><th width="130">会员价</th><th width="130">数量</th></tr>';
+		var HTML = '<tr class="edit_table_tr"><th width="110">外观</th><th width="110">规格</th><th width="60">价格</th><th width="70">会员价</th><th width="60" style="border-right:1px solid #eee;">数量</th></tr>';
 		for (var index in render_data) {
 			HTML = HTML + '<tr class="tnorms">
-								<td width="130">'+render_data[index][2]+'<input type="hidden" value="'+render_data[index][1]+'"/></td>
-								<td width="130">'+render_data[index][4]+'<input type="hidden" value="'+render_data[index][3]+'"/></td>
-								<td width="130"><input type="text" class="px" style="width:60px;" value="'+render_data[index][5]+'"/></td>
-								<td width="130"><input type="text" class="px" style="width:60px;" value="'+render_data[index][6]+'"/></td>
-								<td width="130"><input type="text" class="px" style="width:60px;" value="'+render_data[index][7]+'"/></td>
-								<td width="130"><input type="hidden" value="'+render_data[index][0]+'"/></td>
+								<td width="110"><div style="height:40px;overflow:hidden;">'+render_data[index][2]+'</div><input type="hidden" value="'+render_data[index][1]+'"/></td>
+								<td width="110"><div style="height:40px;overflow:hidden;">'+render_data[index][4]+'</div><input type="hidden" value="'+render_data[index][3]+'"/></td>
+								<td width="60"><input type="text" class="px" style="width:45px;" value="'+render_data[index][5]+'"/></td>
+								<td width="70"><input type="text" class="px" style="width:45px;" value="'+render_data[index][6]+'"/></td>
+								<td width="60"><input type="text" class="px" style="width:45px;" value="'+render_data[index][7]+'"/></td>
+								<td><input type="hidden" value="'+render_data[index][0]+'"/></td>
 						  </tr>';
 		}
 		
