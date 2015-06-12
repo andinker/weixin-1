@@ -1,43 +1,47 @@
 <layout name="COMMON/html" />
 
-<div>
-	<a href="{ZF::U('category_attrs_edit',array('token' => $token, 'catid' => $catid, 'type' => $type))}">
-	新增<span>{ZF:$catData.name}</span>的分类属性</a>
-</div>
-
-<div>
-	<a href="{ZF::U('category_list',array('token' => $token, 'catid' => $catid))}">返回</a>
-</div>
-
-
-
-<table>
-<thead>
-<tr>
-<th>排序</th>
-<th width="160">名称</th>
-<th width="130">值</th>
-<th width="250">操作</th>
-</tr>
-</thead>
-<tbody>
-<tr></tr>
-<volist name="list" id="hostlist"> 
-<tr>
-<td>{ZF:$hostlist.ordid}</td>
-<td>{ZF:$hostlist.name}</td>
-<td>{ZF:$hostlist.value}</td>
-<td class="norightborder">
-	<a href="{ZF::U('category_attrs_edit',array('token' => $token, 'id' => $hostlist['id'], 'catid' => $catid, 'type' => $type))}">修改</a>
-	<a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('category_attrs_delete',array('token' => $token, 'id' => $hostlist['id'], 'catid' => $catid, 'type' => $type))}');">删除</a>
-</td>
-</tr>
-</volist>
-</tbody>
-</table>
+	<div style="overflow: hidden;">
+		<div class="classify_page_title">
+		
+			<a href="{ZF::U('category_list',array('token' => $token, 'catid' => $catid))}" style="line-height: 50px;">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			
+			<a href="{ZF::U('category_attrs_edit',array('token' => $token, 'catid' => $catid, 'type' => $type))}" class="add_btn">
+				新增<span>{ZF:$catData.name}</span>的分类属性
+			</a>
+		
+		</div>
+	</div>
 
 
-<div>{ZF:$page}</div>
+	<table class="attr_edit_table">
+		<thead>
+			<tr>
+				<th width="80">排序</th>
+				<th width="160">名称</th>
+				<th width="150">值</th>
+				<th width="180">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr></tr>
+			<volist name="list" id="hostlist"> 
+			<tr>
+				<td>{ZF:$hostlist.ordid}</td>
+				<td>{ZF:$hostlist.name}</td>
+				<td>{ZF:$hostlist.value}</td>
+				<td class="norightborder">
+					<a href="{ZF::U('category_attrs_edit',array('token' => $token, 'id' => $hostlist['id'], 'catid' => $catid, 'type' => $type))}">修改</a>&nbsp;
+					<a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('category_attrs_delete',array('token' => $token, 'id' => $hostlist['id'], 'catid' => $catid, 'type' => $type))}');">删除</a>
+				</td>
+			</tr>
+			</volist>
+		</tbody>
+	</table>
+
+
+	<div class="pages">{ZF:$page}</div>
 
 <script type="text/javascript">
 function drop_confirm(msg,url){

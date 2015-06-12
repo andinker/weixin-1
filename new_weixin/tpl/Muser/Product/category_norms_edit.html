@@ -1,46 +1,65 @@
 <layout name="COMMON/html" />
 
-  <div class="content">
-  <include file="tabnav"/> 
-   <div class="cLineB"> 
-    <h4><span class="red">{ZF:$catData.name}</span>的<if condition="$type eq 0">规格<else />外观</if>属性</h4> 
-    <a href="{ZF::U('Product/norms',array('token'=>$token,'catid'=>$catid, 'type' => $type))}" class="right  btnGreen" style="margin-top:-27px">返回</a> 
-   </div> 
-   <form class="form" method="post" action="" enctype="multipart/form-data"> 
-    <input type="hidden" name="id" value="{ZF:$set.id}" /> 
-    <div class="msgWrap bgfc"> 
-     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
-      <tbody> 
-     	 <if condition="$type eq 1">
-       <tr> 
-        <th>外观名称：</th> 
-        <td><b>{ZF:$catData.color}</b></td> 
-       </tr>
-       <else />
-       <tr> 
-        <th>规格名称：</th> 
-        <td><strong>{ZF:$catData.norms}</strong></td>
-       </tr>
-	   </if>
-       <tr>
-        <th><span class="red">*</span><if condition="$type eq 1">外观<else />规格</if>值：</th> 
-        <td><input type="text" name="value" value="{ZF:$set.value}" class="px"/></td> 
-       </tr>
-        <tr> 
-        <th>排序：</th>
-        <td><input type="text" name="ordid" value="{ZF:$set.ordid}" class="px" style="width:60px;" /></td> 
-       </tr>
-       <tr>         
-       <th>&nbsp;</th>
-       <td>
-       <input type="hidden" value="{ZF::$type}" name="type" />
-       <input type="hidden" value="{ZF::$catid}" name="catid" />
-       <input type="hidden" value="{ZF::$token}" name="token" />
-       <button type="submit" name="button" class="btnGreen">保存</button> &nbsp; <a href="{ZF::U('Product/norms',array('token' => $token, 'catid' => $catid, 'type' => $type))}" class="btnGray vm">取消</a></td> 
-       </tr> 
-      </tbody> 
-     </table> 
-     </div>
-    
-   </form> 
-  </div> 
+<div class="content">
+	   <include file="tabnav"/> 
+	   
+	   <div style="overflow: hidden;">
+		   <div class="cLineB classify_page_title"> 
+		   
+		   		<a href="{ZF::U('Product/norms',array('token'=>$token,'catid'=>$catid, 'type' => $type))}" class="right  btnGreen">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+				</a> 
+				
+			    <h4 style="text-align: center">
+			    	<span class="red">{ZF:$catData.name}</span>的<if condition="$type eq 0">规格<else />外观</if>属性
+			    </h4> 
+			    
+		   </div>
+	   </div>
+	    
+	   <form class="form cat_edit_form" method="post" action="" enctype="multipart/form-data"> 
+		    <input type="hidden" name="id" value="{ZF:$set.id}" /> 
+		    <div class="msgWrap bgfc"> 
+			     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+				      <tbody> 
+					     <if condition="$type eq 1">
+					       <tr> 
+						        <th class="product_unimportant_name">外观名称：</th> 
+						        <td><b>{ZF:$catData.color}</b></td> 
+					       </tr>
+					     <else />
+					       <tr> 
+						        <th class="product_unimportant_name">规格名称：</th> 
+						        <td><strong>{ZF:$catData.norms}</strong></td>
+					       </tr>
+						 </if>
+					       <tr>
+						        <th><span class="import_icon">*</span><if condition="$type eq 1">外观<else />规格</if>值：</th> 
+						        <td><div><input type="text" name="value" value="{ZF:$set.value}" class="px" style="width:100%;" /></div></td> 
+					       </tr>
+					       <tr> 
+						        <th class="product_unimportant_name">排序：</th>
+						        <td><input type="text" name="ordid" value="{ZF:$set.ordid}" class="px" style="width:60px;" /></td> 
+					       </tr>
+					       <tr> 
+						       <td style="text-align: center;" colspan="2">
+							       <input type="hidden" value="{ZF::$type}" name="type" />
+							       <input type="hidden" value="{ZF::$catid}" name="catid" />
+							       <input type="hidden" value="{ZF::$token}" name="token" />
+							       <button type="submit" name="button" class="btnGreen" style="background:orange;padding:5px 20px;border:none;border-radius:3px;color:white;margin-right:5px;line-height: 25px;margin-top: 5px;">
+							      		 保存
+							       </button>
+							         
+							        <div style="background:#ddd;padding:5px 20px;border-radius:3px;display: inline-block;margin-left:5px;line-height: 25px;margin-top: 5px;">
+								        <a href="{ZF::U('Product/norms',array('token' => $token, 'catid' => $catid, 'type' => $type))}" class="btnGray vm cancel">
+								      		  取消
+								        </a>
+								    </div>
+							   </td> 
+					       </tr> 
+				      </tbody> 
+			     </table> 
+		     </div>
+	    
+	   </form> 
+</div> 

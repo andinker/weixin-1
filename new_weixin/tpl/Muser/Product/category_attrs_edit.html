@@ -1,38 +1,47 @@
 <layout name="COMMON/html" />
 
-  <div class="content">
-
-   <div class="cLineB"> 
-    <h4><span class="red">{ZF:$catData.name}</span>的分类属性</h4> 
-    <a href="{ZF::U('category_attrs_list',array('token'=>$token,'catid'=>$catid, 'type' => $type))}">返回</a> 
-   </div> 
-   <form class="form" method="post" action="" enctype="multipart/form-data"> 
-    <input type="hidden" name="id" value="{ZF:$set.id}" /> 
-    <div class="msgWrap bgfc"> 
-     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
-      <tbody> 
-    <tr> 
-        <th><span class="red">*</span>名称：</th> 
-        <td><input type="text" name="name" value="{ZF:$set.name}" class="px" style="width:400px;" /></td> 
-       </tr>
-       <tr>
-        <th><span class="red">*</span>属性值：</th> 
-        <td><input type="text" name="value" value="{ZF:$set.value}" class="px" style="width:400px;" /></td> 
-       </tr>
-        <tr> 
-        <th>排序：</th>
-        <td><input type="text" name="ordid" value="{ZF:$set.ordid}" class="px" style="width:60px;" /></td> 
-       </tr>
-       <tr>         
-       <th>&nbsp;</th>
-       <td>
-       <input type="hidden" value="{ZF::$catid}" name="catid" />
-       <input type="hidden" value="{ZF::$token}" name="token" />
-       <button type="submit" name="button" class="btnGreen">保存</button></td> 
-       </tr> 
-      </tbody> 
-     </table> 
-     </div>
+<div class="content">
+	
+	<div style="overflow: hidden;">
+	   <div class="cLineB classify_page_title">
+		    <a href="{ZF::U('category_attrs_list',array('token'=>$token,'catid'=>$catid, 'type' => $type))}">
+		    	<span class="glyphicon glyphicon-chevron-left"></span>
+		    </a>  
+		    <h4 style="text-align: center"><span class="red">{ZF:$catData.name}</span>的分类属性</h4> 
+	   </div>
+    </div>
+    
+   <form class="form cat_edit_form" method="post" action="" enctype="multipart/form-data"> 
+   
+	    <input type="hidden" name="id" value="{ZF:$set.id}" /> 
+	    <div class="msgWrap bgfc"> 
+		     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+			      <tbody> 
+				    	<tr> 
+					        <th><span class="import_icon">*</span>名称：</th> 
+					        <td><div><input type="text" name="name" value="{ZF:$set.name}" class="px" style="width:100%;" /></div></td> 
+				       </tr>
+				       <tr>
+					        <th><span class="import_icon">*</span>属性值：</th> 
+					        <td><div><input type="text" name="value" value="{ZF:$set.value}" class="px" style="width:100%;" /></div></td> 
+				       </tr>
+				        <tr> 
+					        <th class="product_unimportant_name">排序：</th>
+					        <td><input type="text" name="ordid" value="{ZF:$set.ordid}" class="px" style="width:60px;" /></td> 
+				       </tr>
+				       <tr> 
+					       <td style="text-align: center;" colspan="2">
+						       <input type="hidden" value="{ZF::$catid}" name="catid" />
+						       <input type="hidden" value="{ZF::$token}" name="token" />
+						       <button type="submit" name="button" class="btnGreen" style="background:orange;padding:5px 20px;border:none;border-radius:3px;color:white;margin-right:5px;line-height: 25px;margin-top: 5px;">
+						       		保存
+						       </button>
+					       </td> 
+				       </tr> 
+			      </tbody> 
+		     </table> 
+	     </div>
     
    </form> 
-  </div> 
+   
+</div> 
