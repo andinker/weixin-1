@@ -35,7 +35,9 @@ class UserAction extends BaseAction{
 		$this->assign('userinfo',$userinfo);
 		if(session('uid')==false){
 			if (MODULE_NAME!='Upyun'){
-				$this->redirect('Home/Index/login');
+				
+				if (GROUP_NAME == 'Muser') $this->redirect('Home/Index/mlogin');
+				else $this->redirect('Home/Index/login');
 			}
 		}
 		/****************upyun*********************/
