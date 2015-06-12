@@ -540,15 +540,188 @@ class ProductAction extends MuserAction{
 	/**
 	 * 管理规格和外观属性
 	 */
-	public function category_norms(){
+	public function category_norms_list(){
+		
+		$type = isset($_GET['type']) ? intval($_GET['type']) : 0;
+		$catid = intval($_GET['catid']);
+		
+		if($checkdata = M('Product_cat')->where(array('id' => $catid, 'token' => session('token')))->find()){
+			$this->assign('catData', $checkdata);
+		} else {
+			$this->error("没有选择相应的分类");
+		}
+		
+		if ($type) $this->assign('PAGE_TITLE','外观属性列表');
+		else $this->assign('PAGE_TITLE','规格属性列表');
+		
+		$data = M('product_norms');
+		$where = array('catid' => $catid, 'type' => $type);
+		$count      = $data->where($where)->count();
+		$Page       = new Page($count,20);
+		$show       = $Page->show();
+		$list = $data->where($where)->limit($Page->firstRow.','.$Page->listRows)->order('ordid asc')->select();
+		$this->assign('page', $show);
+		$this->assign('list', $list);
+		$this->assign('catid', $catid);
+		$this->assign('type', $type);
+		$this->display();
+		
+	}
+	
+	/**
+	 * 编辑一个规格或属性
+	 */
+	public function category_norms_edit(){
+		
+		$type = intval($_REQUEST['type']) ? intval($_REQUEST['type']) : 0;
+		if($data = M('Product_cat')->where(array('id' => $this->_get('catid'), 'token' => session('token')))->find()){
+			$this->assign('catData', $data);
+		} else {
+			$this->error("没有选择相应的分类.", U('index'));
+		}
+		if (IS_POST) {
+			$data = D('product_norms');
+			$id = intval($this->_post('id'));
+			if ($id) {
+				$where = array('id' => $id, 'type' => $type, 'catid' => $this->_get('catid'));
+				$check = $data->where($where)->find();
+				if ($check == false) $this->error('非法操作');
+			}
+			if ($data->create()) {
+				if ($id) {
+					if ($data->where($where)->save($_POST)) {
+						$this->success('修改成功', U('category_norms_list',array('token' => session('token'), 'catid' => $this->_post('catid'), 'type' => $type)));
+					} else {
+						$this->error('操作失败');
+					}
+				} else {
+					if ($data->add($_POST)) {
+						$this->success('添加成功', U('category_norms_list',array('token' => session('token'), 'catid' => $this->_post('catid'), 'type' => $type)));
+					} else {
+						$this->error('操作失败');
+					}
+				}
+			} else {
+				$this->error($data->getError());
+			}
+		} else {
+			$data = M('product_norms')->where(array('id' => $this->_get('id'), 'type' => $type, 'catid' => $this->_get('catid')))->find();
+			//print_r($data);die;
+			$this->assign('catid', $this->_get('catid'));
+			$this->assign('type', $type);
+			$this->assign('token', session('token'));
+			$this->assign('set', $data);
+			$this->display();
+		}
+		
+	}
+	
+	/**
+	 * 删除一个规格或属性
+	 */
+	public function category_norms_delete(){
+		
+		if($this->_get('token') != session('token')){$this->error('非法操作');}
+		$id = intval($this->_get('id'));
+		$catid = intval($this->_get('catid'));
+		$type = intval($this->_get('type'));
+		if(IS_GET){
+			$where = array('id' => $id, 'type' => $type, 'catid' => $catid);
+			$data = M('product_norms');
+			$check = $data->where($where)->find();
+			if($check == false) $this->error('非法操作');
+			if ($back = $data->where($wehre)->delete()) {
+				$this->success('操作成功',U('category_norms_list', array('type' => $type, 'catid' => $check['catid'])));
+			} else {
+				$this->error('操作失败',U('category_norms_list', array('type' => $type, 'catid' => $check['catid'])));
+			}
+		}
 		
 	}
 	
 	/**
 	 * 管理自定义属性
 	 */
-	public function category_attrs(){
-		
+	public function category_attrs_list(){
+		$catid = intval($_GET['catid']);
+		if($checkdata = M('Product_cat')->where(array('id' => $catid, 'token' => session('token')))->find()){
+			$this->assign('catData', $checkdata);
+		} else {
+			$this->error("没有选择相应的分类");
+		}
+		$data = M('Product_attrs');
+		$where = array('catid' => $catid, 'token' => session('token'));
+		$count      = $data->where($where)->count();
+		$Page       = new Page($count,20);
+		$show       = $Page->show();
+		$list = $data->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+		$this->assign('page', $show);
+		$this->assign('list', $list);
+		$this->assign('catid', $catid);
+		$this->display();
+	}
+	/**
+	 * 编辑一个自定义属性
+	 */
+	public function category_attrs_edit(){
+		if($checkdata = M('Product_cat')->where(array('id' => $this->_get('catid'), 'token' => session('token')))->find()){
+			$this->assign('catData', $checkdata);
+		} else {
+			$this->error("没有选择相应的分类");
+		}
+		if (IS_POST) {
+			$data = D('Product_attrs');
+			$id = intval($this->_post('id'));
+			$catid = intval($this->_post('catid'));
+			if ($id) {
+				$where = array('id' => $id, 'token' => session('token'), 'catid' => $catid);
+				$check = $data->where($where)->find();
+				if ($check == false) $this->error('非法操作');
+			}
+			if ($data->create()) {
+				if ($id) {
+					if ($data->where($where)->save($_POST)) {
+						$this->success('修改成功', U('category_attrs_list',array('token' => session('token'), 'catid' => $this->_post('catid'))));
+					} else {
+						$this->error('操作失败');
+					}
+				} else {
+					if ($data->add($_POST)) {
+						$this->success('添加成功', U('category_attrs_list',array('token' => session('token'), 'catid' => $this->_post('catid'))));
+					} else {
+						$this->error('操作失败');
+					}
+				}
+			} else {
+				$this->error($data->getError());
+			}
+		} else {
+			$data = M('Product_attrs')->where(array('id' => $this->_get('id'), 'token' => session('token'), 'catid' => $this->_get('catid')))->find();
+			$this->assign('catid', $this->_get('catid'));
+			$this->assign('token', session('token'));
+			$this->assign('set', $data);
+			$this->display();
+		}
+	}
+	
+	/**
+	 * 删除一个自定义属性
+	 */
+	public function category_attrs_delete(){
+		if($this->_get('token') != session('token')){$this->error('非法操作');}
+		$id = intval($this->_get('id'));
+		$catid = intval($this->_get('catid'));
+		if(IS_GET){
+			$where = array('id' => $id, 'token' => session('token'), 'catid' => $catid);
+			$data = M('Product_attrs');
+			$check = $data->where($where)->find();
+			if($check == false) $this->error('非法操作');
+			if ($back = $data->where($wehre)->delete()) {
+				$this->success('操作成功',U('category_attrs_list', array('token' => session('token'), 'catid' => $catid)));
+			} else {
+				$this->error('操作失败',U('category_attrs_list', array('token' => session('token'), 'catid' => $catid)));
+			}
+		}
 	}
 	
 	public function order_list() {
