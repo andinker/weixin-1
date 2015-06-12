@@ -18,14 +18,15 @@
 		<div id="uploaded_photos" class="show_images">
 		
 			<div>已上传的商品照片：</div>
-			<empty name="photos">
-				<span>还没有上传商品照片</span>
-			<else/>
-			    <volist name="photos" id="vo">
-					<div class="image_box"><img style="width:60px;" src="{ZF:$vo.image}"></div>
-				</volist>
-			</empty>
-			
+			<div style="overflow: hidden;">
+				<empty name="photos">
+					<span>还没有上传商品照片</span>
+				<else/>
+				    <volist name="photos" id="vo">
+						<div class="image_box" style="float:left;margin:0 8px 8px 0;"><img style="width:60px;" src="{ZF:$vo.image}"></div>
+					</volist>
+				</empty>
+			</div>
 		</div>
 		
 		<div>上传更多照片：(你还可以再上传<span id="photo_upload_limit"></span>张)</div>

@@ -141,10 +141,12 @@
 
 		       
 		<!-- 自定义属性 -->
-		<div>
+		<div class="product_detail_data">
 			<volist name="attributeData" id="attribute">
-				{ZF:$attribute.name}：
-				<input type="text" value="{ZF:$attribute.value}" class="attribute px" style="width:200px;" atr="{ZF:$attribute.name}" id="{ZF:$attribute.id}" aid="{ZF:$attribute.aid}">
+				<div>
+					<div class="product_unimportant_name attr_name" style="display:inline-block;">{ZF:$attribute.name}：</div>
+					<input type="text" value="{ZF:$attribute.value}" class="attribute px" style="width:200px;margin-left: 9px;" atr="{ZF:$attribute.name}" id="{ZF:$attribute.id}" aid="{ZF:$attribute.aid}">
+				</div>
 			</volist>
 		</div>
 		
@@ -253,10 +255,10 @@
 		</div>
 		
 		<div class="goods_submit">
-			<button type="button" name="button" class="btnGreen" id="save">
+			<button type="button" name="button" class="btnGreen" id="save" style="background:orange;padding:5px 20px;border:none;border-radius:3px;color:white;margin-right:5px">
 				<if condition="!empty($_GET['id'])">保存<else/>保存并添加图片</if>
 			</button>
-			<a href="{ZF::U('Product/index',array('token'=>$token, 'catid' => $catid))}" class="cancel">取消</a>
+			<div style="background:#ddd;padding:5px 20px;border-radius:3px;display: inline-block;margin-left:5px"><a href="{ZF::U('Product/product_list',array('token'=>$token, 'catid' => $catid))}" class="cancel">取消</a></div>
 		</div>
 
 
