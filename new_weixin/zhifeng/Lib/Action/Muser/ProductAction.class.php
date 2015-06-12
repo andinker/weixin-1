@@ -725,9 +725,173 @@ class ProductAction extends MuserAction{
 	}
 	
 	public function order_list() {
-	
+		
 		$this->assign('PAGE_TITLE','订单列表');
-		$this->display();
+		
+		$product_cart_model=M('product_cart');
+		if (IS_POST){
+			if ($_POST['token']!=$this->_session('token')){
+				exit($_POST['token'].':'.$this->_session('token'));
+			}
+			for ($i=0;$i<40;$i++){
+				if (isset($_POST['id_'.$i])){
+					$thiCartInfo=$product_cart_model->where(array('id'=>intval($_POST['id_'.$i])))->find();
+					if ($thiCartInfo['handled']){
+						$product_cart_model->where(array('id'=>intval($_POST['id_'.$i])))->save(array('handled'=>0));
+					}else {
+						$product_cart_model->where(array('id'=>intval($_POST['id_'.$i])))->save(array('handled'=>1));
+					}
+				}
+			}
+			$this->success('操作成功',U('order_list',array('token'=>session('token'))));
+		}else{
+			$where=array('token'=>$this->_session('token'));
+			$where['dining']=0;
+			$where['groupon']=0;
+			if(IS_POST){
+				$key = $this->_post('searchkey');
+				if(empty($key)){
+					$this->error("关键词不能为空");
+				}
+		
+				$where['truename|address'] = array('like',"%$key%");
+				$orders = $product_cart_model->where($where)->select();
+				$count      = $product_cart_model->where($where)->limit($Page->firstRow.','.$Page->listRows)->count();
+				$Page       = new Page($count,20);
+				$show       = $Page->show();
+			}else {
+				if (isset($_GET['handled'])){
+					$where['handled']=intval($_GET['handled']);
+				}
+				$count      = $product_cart_model->where($where)->count();
+				$Page       = new Page($count,20);
+				$show       = $Page->show();
+				$orders=$product_cart_model->where($where)->order('time DESC')->limit($Page->firstRow.','.$Page->listRows)->select();
+			}
+			$where['handled']=0;
+			$unHandledCount=$product_cart_model->where($where)->count();
+			$this->assign('unhandledCount',$unHandledCount);
+		
+			$this->assign('orders',$orders);
+			$this->assign('page',$show);
+			$this->display();
+		}
+		
+	}
+	
+	public function order_edit() {
+		
+		$this->product_model=M('Product');
+		$this->product_cat_model=M('Product_cat');
+		$product_cart_model=M('product_cart');
+		$thisOrder=$product_cart_model->where(array('id'=>intval($_GET['id'])))->find();
+		//检查权限
+		if (strtolower($thisOrder['token'])!=strtolower($this->_session('token'))){
+			exit();
+		}
+		if (IS_POST){
+			$sent=intval($_POST['sent']);
+			$product_cart_model->where(array('id'=>$_GET['id']))->save(array('paid'=>intval($_POST['paid']),'sent'=>$sent,'logistics'=>$_POST['logistics'],'logisticsid'=>$_POST['logisticsid'],'handled'=>1));
+			/*已付款***/
+			if (intval($_POST['paid'])&&intval($thisOrder['price'])){
+				$member_card_create_db=M('Member_card_create');
+				$wecha_id=$thisOrder['wecha_id'];
+				$userCard=$member_card_create_db->where(array('token'=>$this->token,'wecha_id'=>$wecha_id))->find();
+				$member_card_set_db=M('Member_card_set');
+				$thisCard=$member_card_set_db->where(array('id'=>intval($userCard['cardid'])))->find();
+				$set_exchange = M('Member_card_exchange')->where(array('cardid'=>intval($thisCard['id'])))->find();
+				if($set_exchange){
+					$arr['token']=$this->token;
+					$arr['wecha_id']=$wecha_id;
+					$arr['expense']=$thisOrder['price'];
+					$arr['time']=time();
+					$arr['cat']=99;
+					$arr['staffid']=0;
+					$arr['score']=intval($set_exchange['reward'])*$order['price'];
+					M('Member_card_use_record')->add($arr);
+					$userinfo_db=M('Userinfo');
+					$thisUser = $userinfo_db->where(array('token'=>$thisCard['token'],'wecha_id'=>$arr['wecha_id']))->find();
+					$userArr=array();
+					$userArr['total_score']=$thisUser['total_score']+$arr['score'];
+					$userArr['expensetotal']=$thisUser['expensetotal']+$arr['expense'];
+					$userinfo_db->where(array('token'=>$thisCard['token'],'wecha_id'=>$arr['wecha_id']))->save($userArr);
+				}
+			}
+			if($sent){
+				//短信通知买家
+				$company = D('Company')->where(array('token' => $thisOrder['token'], 'isbranch' => 0))->find();
+				$this->Send_sms($thisOrder['tel'],"您在{$company['name']}商城购买的商品，商家已经给您发货了，请您注意查收");
+				//微信支付发货通知
+				/* 新版微信支付已经取消发货通知接口
+				if($thisOrder['payment']=='wxpay'){
+					import("@.ORG.Weixinpay.WxpayMyExt");
+					$payset = $this->Payment_db->where(array('token'=>$this->token,'pay_code'=>'wxpay'))->find();
+					$pay_config = unserialize($payset['pay_config']);
+					$orderinfo=array(
+							'openid' => $thisOrder['wecha_id'],
+							'transid' => $thisOrder['transaction_id'],
+							'out_trade_no' => $thisOrder['orderid'],
+					);
+					
+					$wxpay_myext=new WxpayMyExt($pay_config,$orderinfo);
+					发送发货通知
+					$result=$wxpay_myext->delivernotify_sent();
+				}*/
+			}
+			$this->success('修改成功',U('Product/orderInfo',array('token'=>session('token'),'id'=>$_GET['id'])));
+		}else {
+			$this->assign('thisOrder',$thisOrder);
+			$carts=unserialize($thisOrder['info']);
+
+			$totalFee=0;
+			$totalCount=0;
+			
+			
+			
+			$data = $this->getCat($carts);
+			if (isset($data[1])) {
+				foreach ($data[1] as $pid => $row) {
+					$totalCount += $row['total'];
+					$totalFee += $row['totalPrice'];
+					$listNum[$pid] = $row['total'];
+				}
+			}
+			$list = $data[0];
+			$this->assign('products', $list);
+			$this->assign('totalFee',$totalFee);
+			$this->assign('totalCount',$totalCount);
+			$this->assign('totalMailprice',$data[2]);
+			$this->display();
+		}
+	}
+	
+	public function order_delete(){
+		
+		$product_model=M('product');
+		$product_cart_model=M('product_cart');
+		$product_cart_list_model=M('product_cart_list');
+		$thisOrder=$product_cart_model->where(array('id'=>intval($_GET['id'])))->find();
+		//检查权限
+		$id=$thisOrder['id'];
+		if ($thisOrder['token']!=$this->_session('token')){
+			exit();
+		}
+		//
+		//删除订单和订单列表
+		$product_cart_model->where(array('id'=>$id))->delete();
+		$product_cart_list_model->where(array('cartid'=>$id))->delete();
+		//商品销量做相应的减少
+		$carts=unserialize($thisOrder['info']);
+		foreach ($carts as $k=>$c){
+			if (is_array($c)){
+				$productid=$k;
+				$price=$c['price'];
+				$count=$c['count'];
+				$product_model->where(array('id'=>$k))->setDec('salecount',$c['count']);
+			}
+		}
+		$this->success('操作成功',$_SERVER['HTTP_REFERER']);
+		
 	}
 
 }

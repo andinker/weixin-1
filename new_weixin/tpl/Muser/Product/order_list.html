@@ -1,2 +1,98 @@
 <layout name="COMMON/html" />
-订单列表
+
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+
+<div>
+订单管理（<a href="{ZF::U('Product/orders',array('token'=>$token,'handled'=>0))}">未处理订单<span style="color:#f00">{ZF:$unhandledCount}</span>个</a>） ({ZF:$page})
+</div>
+
+<div>
+<form method="post" action="">
+<input type="text" id="msgSearchInput" class="txt left" placeholder="输入订购人名字搜索" name="searchkey" value="">
+<input type="hidden" name="ac" value="hotels-list">
+<input type="hidden" name="id" value="9878">
+<input type="hidden" name="wxid" value="gh_423dwjkewad">
+<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS" title="搜索">
+<script>
+function selectall(name) {
+	var checkItems=$('.cbitem');
+	if ($("#check_box").attr('checked')==false) {
+		$.each(checkItems, function(i,val){
+			val.checked=false;
+		});
+		
+	} else {
+		$.each(checkItems, function(i,val){
+			val.checked=true;
+		});
+	}
+}
+</script>
+
+<if condition="($parentid neq  '0') and ($parentid neq '')"><a href="{ZF::U('Product/cats',array('token'=>$token,'parentid'=>$parentCat['parentid']))}" class="btnGreen" style="margin-top:-27px">返回上</a></if>
+</form>
+</div>
+
+
+
+
+
+<form method="post" action="" id="info">
+
+<div onclick="$('#info').submit()">把订单状态设置为已处理</div>
+
+
+<table>
+<thead>
+<tr>
+<th class="select"><input type="checkbox" name="token" value="{ZF:$token}" id="check_box" onclick="$('.cbitem').click();"></th>
+<th>订单号</th>
+<th width="70">姓名</th>
+<th width="80">电话</th>
+<th class="80">数量</th>
+<th width="80">总价</th>
+<th class="160">付款/状态</th>
+<th class="60">状态</th>
+<th width="130">下单时间</th>
+<th width="100" class="norightborder">操作</th>
+</tr>
+</thead>
+<tbody style="text-align:center;">
+<volist name="orders" id="o"> 
+<tr>
+<td><input type="checkbox" value="{ZF:$o.id}" class="cbitem" name="id_{ZF:$i}"></td>
+<td>{ZF:$o.orderid}</td>
+<td>{ZF:$o.truename} <if condition="$isDining eq 1"><span style="color:#f60">[<if condition="$o.diningtype eq 1">点餐<elseif condition="$o.diningtype eq 2" />外卖<elseif condition="$o.diningtype eq 3" />预定<else /></if>]</span></if></td>
+<td>{ZF:$o.tel}</td>
+<td>{ZF:$o.total}</td>
+<td>{ZF:$o.price}元</td>
+<td><if condition="$o.paid eq 1"><span style="color:green">已付款</span><else/><span style="color:red">未付款</span></if> / <if condition="$o.sent eq 1"><span style="color:green">已发货</span><else/><span style="color:red">未发货</span></if></td>
+<td><if condition="$o.handled eq 1"><span style="color:green">已处理</span><else/><span style="color:red">未处理</span></if></td>
+<td>{ZF:$o.time|date="Y-m-d H:i:s",###}</td> 
+<td class="norightborder"><a href="{ZF::U('order_edit',array('token'=>$token,'id'=>$o['id']))}">详细</a> <a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('order_delete',array('token'=>$token,'id'=>$o['id']))}');">删除</a></td>
+</tr>
+</volist>
+</tbody>
+</table>
+</form>
+<script>
+
+function showIntroDetail(id){
+	art.dialog.open("{ZF::U('order_edit',array('token'=>$token))}&id="+id,{lock:false,title:'订单详情',width:700,height:420,yesText:'关闭',background: '#000',opacity: 1});
+}
+</script>
+</div>
+
+
+
+<div>{ZF:$page}</div>
+
+
+<script type="text/javascript">
+function drop_confirm(msg,url){
+	if (!confirm(msg)) return false;
+	
+	location.href = url;
+}
+</script>
