@@ -37,8 +37,8 @@
 			</div>
 			
 			<div>
-			图片：
-			<input type="text" name="logourl" value="{ZF:$set.logourl}" class="px" id="pic" style="width:400px;" /> <a href="###" onclick="upyunPicUpload('pic',700,700,'{ZF:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic')">预览</a>
+			图片：<empty name="set.logourl">没有设置图片<else/><img src="{ZF:$set.logourl}" style="width:60px;"></empty>
+			<input type="hidden" name="logourl" value="{ZF:$set.logourl}" id="pic">
 			</div>
 	
 			<div>

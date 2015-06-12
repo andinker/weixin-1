@@ -16,23 +16,24 @@
 	<div>
 
 		<volist name="list" id="sortlist"> 
+            <div id="category_{ZF:$sortlist['id']}">
+            
+				<div><h5>{ZF:$sortlist.name}</h5></div>
+				<div>上级分类:<if condition="($parentid)"><a href="{ZF::U('category_list',array('token'=>$token,'parentid'=>$parentCat['parentid']))}">{ZF:$parentCat['name']}</a><else />无上级分类</if></div>
+			    <div><a href="{ZF::U('category_list',array('parentid'=>$sortlist['id'],'token'=>$token))}">子分类</a></div>
+			    <div>
+			    	<a href="{ZF::U('product_list',array('token'=>$token,'catid'=>$sortlist['id']))}">商品管理</a> 
+			    	<if condition="($sortlist['norms'])"><a href="{ZF::U('category_norms',array('token'=>$token,'catid'=>$sortlist['id'],'type'=>'0'))}">{ZF:$sortlist.norms}管理</a></if>
+					<if condition="($sortlist['color'])"><a href="{ZF::U('category_norms',array('token'=>$token,'catid'=>$sortlist['id'],'type'=>'1'))}">{ZF:$sortlist.color}管理</a></if>
+					<a href="{ZF::U('category_attrs',array('token'=>$token,'catid'=>$sortlist['id']))}">属性管理</a>
+				</div>
+	
+	             <div>
+					<a href="{ZF::U('category_edit',array('token'=>$token,'id'=>$sortlist['id']))}">修改</a>
+					<span onclick="return delete_category({ZF:$sortlist['id']});">删除</span>
+	             </div>
 
-			<div><h5>{ZF:$sortlist.name}</h5></div>
-			<div>上级分类:<if condition="($parentid)"><a href="{ZF::U('category_list',array('token'=>$token,'parentid'=>$parentCat['parentid']))}">{ZF:$parentCat['name']}</a><else />无上级分类</if></div>
-		    <div><a href="{ZF::U('category_list',array('parentid'=>$sortlist['id'],'token'=>$token))}">子分类</a></div>
-		    <div>
-		    	<a href="{ZF::U('product_list',array('token'=>$token,'catid'=>$sortlist['id']))}">商品管理</a> 
-		    	<if condition="($sortlist['norms'])"><a href="{ZF::U('Product/norms',array('token'=>$token,'catid'=>$sortlist['id'],'type'=>'0'))}">{ZF:$sortlist.norms}管理</a></if>
-				<if condition="($sortlist['color'])"><a href="{ZF::U('Product/norms',array('token'=>$token,'catid'=>$sortlist['id'],'type'=>'1'))}">{ZF:$sortlist.color}管理</a></if>
-				<a href="{ZF::U('Product/attrs',array('token'=>$token,'catid'=>$sortlist['id']))}">属性管理</a></td>
-
-             <div>
-				<a href="{ZF::U('category_edit',array('token'=>$token,'id'=>$sortlist['id']))}">修改</a>
-				<span style="cursor:pointer;" onclick="setExp({ZF:$sortlist['id']},'{ZF:$sortlist.name}')">批量改运费</span>&nbsp;
-				<a href="javascript: return confirm('您确定要删除吗?', '{ZF::U('Product/catDel',array('id'=>$sortlist['id'],'token'=>$token))}');">删除</a>
-             </div>
-
-
+			</div>
 		</volist>
 
 	</div>
@@ -41,6 +42,33 @@
 	<div>{ZF:$page}</div>
 
 </div>
+
+<script type="text/javascript">
+function delete_category( cid ){
+	if (!confirm('您确定要删除吗?')) return false;
+	
+	var delete_url = '{ZF::U('category_delete')}';
+	
+	$.post(delete_url,{id:cid,token:'{ZF:$token}'},function(data){
+		if (data.status == 'success'){
+			
+			// 服务器删除成功，删除DOM对象
+			$('#category_'+cid).remove();
+			console.log('#category_'+cid);
+			
+			if (data.msg) alert(data.msg);
+			else alert('删除成功！');
+			
+		}else if (data.status == 'error'){
+			if (data.msg) alert(data.msg);
+			else alert('删除失败！');
+		}else{
+			alert('服务器返回了未知状态，无法判断结果！');
+		}
+	},'json');
+	
+}
+</script>
 
 <script type="text/javascript">
 function setExp( cid , cname ){

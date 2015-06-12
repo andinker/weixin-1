@@ -433,7 +433,7 @@ class ProductAction extends MuserAction{
 				
 				// 新增数据
 				if($data->create()){
-					if($data->add($_POST)){
+					if($data->add()){
 				
 						$this->success('添加成功',U('category_list',array('token'=>session('token'),'parentid'=>$this->_post('parentid'),'dining'=>1)));
 				
@@ -466,30 +466,88 @@ class ProductAction extends MuserAction{
 				
 			}
 				
-		}
-		
-		
-		
-		
-		$id = $this->_get('id');
-		if (!empty($id)){
-			$checkdata = M('Product_cat')->where(array('id'=>$id,'token'=>session('token')))->find();
-			if(empty($checkdata)){
-				$this->error("没有相应记录.您现在可以添加");
-			}
 		}else{
-			$id = 0;
-		}
+		
+		
+			$id = $this->_get('id');
+			if (!empty($id)){
+				// 编辑分类
+				$checkdata = M('Product_cat')->where(array('id'=>$id,'token'=>session('token')))->find();
+				if(empty($checkdata)){ // 要编辑的分类数据不存在
+					$this->error("没有相应记录.您现在可以添加");
+				}
+				$parentid=$checkdata['parentid'];
+			}else{
+				// 新增分类
+				$id = 0;
+				$parentid=$this->_get('parentid');
+			}
+				
+			//查询所有分类
+			$catlist =M('product_cat')->where("token='".$this->token."' and id <> '$id'")->select();
+			$this->assign('catlist',$catlist);
 			
-		//查询所有分类
-		$catlist =M('product_cat')->where("token='".$this->token."' and id <> '$id'")->select();
-		$this->assign('catlist',$catlist);
+			$this->assign('parentid',$parentid);
+			$this->assign('set',$checkdata);
+			
+			$this->display();
 		
-		$this->assign('parentid',$checkdata['parentid']);
-		$this->assign('set',$checkdata);
+		}
 		
-		$this->display();
+	}
+	
+	/**
+	 * 删除一个商品分类（AJAX）
+	 */
+	public function category_delete(){
 
+		
+		if(IS_POST){
+			
+			if($this->_post('token')!=session('token')){
+				exit(json_encode(array('status'=>'error','msg'=>'非法操作')));
+			}
+			
+			$id = $this->_post('id');
+			
+			$where=array('id'=>$id,'token'=>session('token'));
+			
+			$data=M('Product_cat');
+			$check=$data->where($where)->find();
+			if($check==false)  exit(json_encode(array('status'=>'error','msg'=>'要删除的数据不存在')));
+			
+			$check2=$data->where(array('parentid'=>$id))->find();
+			if(!empty($check2))  exit(json_encode(array('status'=>'error','msg'=>'本分类下存在子分类，请先删除这些子分类')));
+			
+			
+			$product_model=M('Product');
+			$productsOfCat=$product_model->where(array('catid'=>$id))->select();
+			if (count($productsOfCat)){
+				exit(json_encode(array('status'=>'error','msg'=>'本分类下有商品，请先删除商品，才能该删除分类')));
+			}
+			
+			
+			$back=$data->where($wehre)->delete();
+			if($back==true){
+				exit(json_encode(array('status'=>'success','msg'=>'操作成功')));
+			}else{
+				exit(json_encode(array('status'=>'error','msg'=>'数据服务没有正确响应')));
+			}
+			
+		}
+	}
+	
+	/**
+	 * 管理规格和外观属性
+	 */
+	public function category_norms(){
+		
+	}
+	
+	/**
+	 * 管理自定义属性
+	 */
+	public function category_attrs(){
 		
 	}
 	
