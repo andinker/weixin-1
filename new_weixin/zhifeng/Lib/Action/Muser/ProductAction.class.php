@@ -392,6 +392,8 @@ class ProductAction extends MuserAction{
 			$where=array('id'=>$id,'token'=>session('token'));
 			$check=$product_model->where($where)->find();
 			if($check==false)   $this->error('非法操作');
+			
+			$this->delete_product_resource($id);
 		
 			$back=$product_model->where($wehre)->delete();
 			if($back==true){

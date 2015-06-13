@@ -91,4 +91,34 @@ class MuserAction  extends UserAction{
 		return preg_replace($pattern,'',$html);
 	}
 	
+	/**
+	 * 删除一个商品的相关资源，如PPC图片、规格或外观属性值、商品展示图的数据库记录。
+	 * 紧记：此方法必需在删除商品主记录之前调用。
+	 * @param int $pid 商品的ID
+	 */
+	protected function delete_product_resource($pid) {
+	
+		// 读取商品主记录
+		$product = M('Product')->where(array('id'=>$pid))->find();
+		if (empty($product)) exit('发生了致命的错误，试图删除一个不存在的商品的资源数据！');
+	
+		// 删除主图（如果是PPC图）
+		$this->___delete_ppc_file($product['logourl']);
+	
+		// 删除展示图（如果是PPC图）
+		$product_images = M('Product_image')->where(array('pid'=>$product['id']))->select();
+		foreach ($product_images as $image){
+			$this->___delete_ppc_file($image['image']);
+		}
+		
+		// 删除展示图数据库记录
+		M('Product_image')->where(array('pid'=>$product['id']))->delete();
+	
+		// 删除商品的规格和外观属性值的数据库记录
+		M('Product_detail')->where(array('pid'=>$product['id']))->delete();
+	
+		// 删除商品自定议属性值的数据库记录
+		M('Product_attribute')->where(array('pid'=>$product['id']))->delete();
+	
+	}
 }
