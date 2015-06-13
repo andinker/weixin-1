@@ -8,7 +8,7 @@
 <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 <script src="http://www.itcocoa.com/PhonePhotoUpload/PhonePhotoUpload.js"></script>
 <style type="text/css">
-body{margin:0;padding:0;font-family:'微软雅黑';font-size: 16px;}
+body{margin:0;padding:0;font-family:'微软雅黑';font-size: 16px;max-width:800px;margin:0 auto;}
 li{list-style:none;}
 a{text-decoration: none;}
 #think_page_trace_open{display:none;}
@@ -117,6 +117,16 @@ input[type=checkbox]{margin: 0;}
 .attr_edit_table th{text-align: center;}
 .add_btn{float: right!important;color:white;background: orange;padding:0 10px;margin:5px 0;border-radius:3px;}
 
+.button_style{background:orange;padding:5px 20px;border:none;border-radius:3px;color:white;line-height: 25px;margin-top: 5px;}
+.order_detail_table tr{border-top:1px solid #eee;}
+.order_detail_table tr:first-child{border-top:none;}
+.order_table{width:100%;line-height: 35px;}
+.order_table th{background: #eee;}
+.order_table tr,.order_table tr th{text-align: center;}
+.input_search_form{text-align: center;padding:10px 5px 5px 5px;width:100%;float:left;}
+.search_box{height:30px;padding-left:5px;width:80%;border: none;border:1px solid #ccc;border-right: none;border-radius:3px 0 0 3px;line-height:28px;float:left;}
+.search_btn{height:30px;border: none;border:1px solid #ccc;border-left: none;border-radius:0 3px 3px 0;width:20%;float:right;background:#ccc;color:#333;line-height:26px;  }
+
 
 
 </style>
@@ -125,6 +135,10 @@ input[type=checkbox]{margin: 0;}
 		//绑定菜单公众号选择的切换
 		$(".wxname_selected").bind("click", function(event){
 			$('.wxname_all').toggle();
+			$('.selected_name').bind("click", function(){
+				//隐藏公众号选择菜单
+				$('.wxname_all').hide();
+			})
 			event.stopPropagation(); 
 		})
 		//分类下拉的筛选
@@ -132,6 +146,13 @@ input[type=checkbox]{margin: 0;}
 			//绑定分类选项的切换
 			$(".selected_name").bind("click", function(){
 				$('.classify_all').toggle();
+				
+				$('.wxname_selected').bind("click", function(){
+					//隐藏公众号选择菜单
+					$('.classify_all').hide();
+					
+					$('.selected_name').attr("style","background:white;color:#333;");
+				})
 				
 				if($('.classify_all').css("display")=="block"){
 					$('.selected_name').attr("style","background:#333;color:white;");
@@ -154,9 +175,16 @@ input[type=checkbox]{margin: 0;}
 		classify_select_fun();
 		//点击选择分类
 		$(".add_products").bind("click", function(event){
+			$('.wxname_all').hide();
 			alert('请先选择您要添加的商品的分类');
 			$('.classify_all').css("display","block");
 			$('.selected_name').css({"background":"#333","color":"white"})
+			$('.wxname_selected').bind("click", function(){
+					//隐藏公众号选择菜单
+					$('.classify_all').hide();
+					
+					$('.selected_name').attr("style","background:white;color:#333;");
+				})
 			event.stopPropagation(); 
 		})
 		

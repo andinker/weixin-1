@@ -9,18 +9,24 @@ $(document).ready(function($){
 </script>
 
 
-<div style="line-height:200%;padding:10px 20px;">
-订单号：{ZF:$thisOrder.orderid}<br/>
-订购人：{ZF:$thisOrder.truename}&nbsp;&nbsp;电话：{ZF:$thisOrder.tel}&nbsp;&nbsp;
-地址：{ZF:$thisOrder.address}<br>
-总数：{ZF:$thisOrder.total}&nbsp;&nbsp;
-下单时间：{ZF:$thisOrder.time|date="Y-m-d H:i:s",###}&nbsp;&nbsp;
-总价：<span id="price_span" style="color:#f30;font-size:16px;font-weight:bold">{ZF:$thisOrder.price}</span>元
-<span style="cursor:pointer; font-size:16px; color:red;<if condition="$thisOrder.paid eq 1">display:none;</if>" id="toEditPrice">修改</span>
-<span id="editPricePanel" style="display:none;">
-	<input type="text" id="editPriceValue" style="width:50px;" value=""/>
-	<input type="button" id="editPrice" value="修改"/>
-</span>
+	<div style="line-height:200%;padding:10px 20px;border-bottom: 1px solid #eee;">
+		<div>订单号：{ZF:$thisOrder.orderid}</div>
+		<div>下单时间：{ZF:$thisOrder.time|date="Y-m-d H:i:s",###}</div>
+		<div>姓名：{ZF:$thisOrder.truename}</div>
+		<div>电话：{ZF:$thisOrder.tel}</div>
+		<div>地址：{ZF:$thisOrder.address}</div>
+		<div>总数：{ZF:$thisOrder.total}</div>
+		<div>
+			总价：<span id="price_span" style="color:#f30;font-size:16px;font-weight:bold">{ZF:$thisOrder.price}</span>元&nbsp;
+			
+			<div style="text-align: right;display: inline-block;">
+				<span style="cursor:pointer; font-size:16px; color:red;<if condition="$thisOrder.paid eq 1">display:none;</if>" id="toEditPrice">修改价格</span>
+			</div>
+			<span id="editPricePanel" style="display:none;line-height: 25px;">
+				<input type="text" id="editPriceValue" style="width:50px;" value=""/>
+				<input type="button" id="editPrice" value="修改"/>
+			</span>
+		</div>
 
 <script type="text/javascript">
 $("#toEditPrice").bind('click',function(){
@@ -63,65 +69,85 @@ $("#editPrice").bind('click',function(){
 });
 </script>
 
-</div>
-<form class="form" method="post" id="form" action=""> 
-<input type="hidden" name="id" value="{ZF:$thisOrder.id}" />
-<div class="bgfc" style="padding:0 10px;"> 
-<table class="userinfoArea" style="margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
-<tbody> 
-<tr> 
-<th><span class="red">*</span>支付状态：</th> 
-<td><select name="paid">
-<option value="0" <if condition="$thisOrder.paid eq 0">selected</if>>未付款</option>
-<option value="1" <if condition="$thisOrder.paid eq 1">selected</if>>已付款</option>
-</select>&nbsp;&nbsp;
-<b><span class="red">*</span>发货状态：</b> 
-<select name="sent"><option value="0" <if condition="$thisOrder.sent eq 0">selected</if>>未发货</option><option value="1" <if condition="$thisOrder.sent eq 1">selected</if>>已发货</option></select></td> 
-</tr>
-
-<if condition="$thisOrder.paid eq 1"> 
-	<tr>
-	<th></th>
-	<td>
-	支付方式：<php>
-		$payment_data = array('zfalipay'=>'支付宝直付（非担保）','wapalipay'=>'手机支付宝（非担保）','dbalipay'=>'支付宝担保交易','wxpay'=>'微信支付','tenpay'=>'财付通','waptenpay'=>'手机财付通');
-		if (isset($payment_data[$thisOrder['payment']])) echo '<span style="color:green; font-weight: bold;">'.$payment_data[$thisOrder['payment']].'</span>';
-	</php>
-	<if condition="$thisOrder.payment_order_id neq ''">
-		<br/>交易号：{ZF:$thisOrder.payment_order_id}
-	</if>
-	<if condition="$thisOrder.payment eq 'dbalipay'">
-		<br/>担保进程：<php>
-					$dbalipay_status = array('WAIT_BUYER_PAY'=>'等待买家付款','WAIT_SELLER_SEND_GOODS'=>'等待卖家发货','WAIT_BUYER_CONFIRM_GOODS'=>'等待买家确认收货','TRADE_FINISHED'=>'交易完成');
-					echo '<span style="color:#FF3300; font-weight: bold;">'.$dbalipay_status[$thisOrder['payment_order_status']].'</span>';
-	     	 </php>
-	     	 
-	     	 <php>if ($thisOrder['payment_order_status'] == 'WAIT_SELLER_SEND_GOODS'){</php>
-	     	     <br/>　　　　　<input type="button" id="button_push_alipay" value="支付宝发货" style="border-radius:3px; border:1px solid #999;" />
-	     	 <php>}</php>
-    </if>
-	</td>
-	</tr>
-</if>
-
-<tr> 
-<th><span class="red">*</span>快递公司：</th>
-<td><input type="text" name="logistics" value="{ZF:$thisOrder.logistics}" class="px" style="width:200px;" /></td> 
-</tr>
-<tr> 
-<th><span class="red">*</span>快递单号：</th>
-<td><input type="text" name="logisticsid" value="{ZF:$thisOrder.logisticsid}" class="px" style="width:200px;" /> <input type="button" class="btnGreen" value="查询快递" onclick="showExpWindow(<empty name="thisOrder['logisticsid']">0<else/>{ZF:$thisOrder.logisticsid}</empty>)"> </td> 
-</tr>
-
-<tr>         
-<th>&nbsp;</th>
-<td>
-<button type="submit" name="button" class="btnGreen">保存</button> </td> 
-</tr> 
-</tbody> 
-</table> 
- </div>
-</form>
+	</div>
+	<form class="form cat_edit_form" method="post" id="form" action=""> 
+		<input type="hidden" name="id" value="{ZF:$thisOrder.id}" />
+		<div class="bgfc" style=" "> 
+			<table class="userinfoArea" style="margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+				<tbody> 
+					<tr> 
+						<th width="100">
+							<span class="import_icon">*</span>支付状态：
+						</th> 
+						<td>
+							<select name="paid" style="line-height: 25px;">
+								<option value="0" <if condition="$thisOrder.paid eq 0">selected</if>>未付款</option>
+								<option value="1" <if condition="$thisOrder.paid eq 1">selected</if>>已付款</option>
+							</select>&nbsp;&nbsp;
+					</tr>
+					<tr>		
+						<th width="100"><span class="import_icon">*</span>发货状态：</th>
+						<td>
+							<select name="sent" style="line-height: 25px;">
+								<option value="0" <if condition="$thisOrder.sent eq 0">selected</if>>未发货</option>
+								<option value="1" <if condition="$thisOrder.sent eq 1">selected</if>>已发货</option>
+							</select>
+						</td> 
+					</tr>
+					
+					<if condition="$thisOrder.paid eq 1"> 
+						<tr>
+							<td colspan="2" class="product_unimportant_name">
+								支付方式：<php>
+									$payment_data = array('zfalipay'=>'支付宝直付（非担保）','wapalipay'=>'手机支付宝（非担保）','dbalipay'=>'支付宝担保交易','wxpay'=>'微信支付','tenpay'=>'财付通','waptenpay'=>'手机财付通');
+									if (isset($payment_data[$thisOrder['payment']])) echo '<span style="color:green; font-weight: bold;">'.$payment_data[$thisOrder['payment']].'</span>';
+								</php>
+								<if condition="$thisOrder.payment_order_id neq ''">
+									<br/>交易号：{ZF:$thisOrder.payment_order_id}
+								</if>
+								<if condition="$thisOrder.payment eq 'dbalipay'">
+									<br/>担保进程：<php>
+												$dbalipay_status = array('WAIT_BUYER_PAY'=>'等待买家付款','WAIT_SELLER_SEND_GOODS'=>'等待卖家发货','WAIT_BUYER_CONFIRM_GOODS'=>'等待买家确认收货','TRADE_FINISHED'=>'交易完成');
+												echo '<span style="color:#FF3300; font-weight: bold;">'.$dbalipay_status[$thisOrder['payment_order_status']].'</span>';
+								     	 </php>
+								     	 
+								     	 <php>if ($thisOrder['payment_order_status'] == 'WAIT_SELLER_SEND_GOODS'){</php>
+								     	     <br/>　　　　　<input type="button" id="button_push_alipay" value="支付宝发货" style="border-radius:3px; border:1px solid #999;" />
+								     	 <php>}</php>
+							    </if>
+							</td>
+						</tr>
+					</if>
+				</tbody>
+			</table>
+			
+			<div style="border:1px solid #eee;padding:5px;">		
+				<table class="userinfoArea" style="margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+					<tbody>
+						<tr> 
+							<th><div style="width:100px;"><span class="import_icon">*</span>快递公司：</div></th>
+							<td><div><input type="text" name="logistics" value="{ZF:$thisOrder.logistics}" class="px" style="width:100%;" /></div></td> 
+						</tr>
+						
+						<tr> 
+							<th><span class="import_icon">*</span>快递单号：</th>
+							<td>
+								<div><input type="text" name="logisticsid" value="{ZF:$thisOrder.logisticsid}" class="px" style="width:100%;" /></div> 
+							</td> 
+						</tr>
+						<tr>
+							<td colspan="2" style="text-align: center;">
+								<input type="button" class="btnGreen" value="查询快递" onclick="showExpWindow(<empty name="thisOrder['logisticsid']">0<else/>{ZF:$thisOrder.logisticsid}</empty>)"> 
+							</td>
+						</tr>
+					</tbody> 
+				</table> 
+			</div>
+			<div style="text-align: center;">
+				<button type="submit" name="button" class="btnGreen button_style">保存</button> 
+			</div>
+		 </div>
+	</form>
 
 
 <script>
@@ -131,67 +157,65 @@ function showExpWindow(expNo){
 	//art.dialog.open("http://m.kuaidi100.com/result.jsp?com=&nu="+expNo,{lock:false,title:expNo+'快递详情',width:700,height:420,yesText:'关闭',background: '#000',opacity: 1});
 }
 </script>
-<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
-<thead>
-<tr>
-<th width="120" align="center" style="text-align:center">缩略图</th>
-<th align="center" style="text-align:center">名称</th>
-<th width="160" align="center" style="text-align:center">详情</th>
-<th width="80" align="center" style="text-align:center">单价（元）</th>
-<th width="100" align="center" style="text-align:center">单件邮费（元）</th>
-</tr>
-</thead>
-<tbody>
-<tr></tr>
-<php>
-$goods_count = 0;
-$price_count = 0;
-</php>
-<volist name="products" id="o"> 
-<tr>
-<td align="center"><img src="{ZF:$o.logourl}"  width="100"/></td>
-<td align="center">{ZF:$o.name}</td>
-<td align="center"><if condition="empty($o['detail']) neq true">
-<volist name="o['detail']" id="row">
-{ZF:$o.colorTitle}<if condition="empty($row['colorName']) neq true">：{ZF:$row.colorName}<br></if>
-{ZF:$o.formatTitle}<if condition="empty($row['formatName']) neq true">：{ZF:$row.formatName}<br></if>
-数量：{ZF:$row.count}<br/>
-<php>$goods_count = $goods_count+$row['count'];</php>
-</volist>
-<else/>
-数量：{ZF:$o.count}<br/>
-<php>$goods_count = $goods_count+$o['count'];</php>
-</if></td>
-<td align="center">
-	<if condition="empty($o['detail']) neq true">
-    <volist name="o['detail']" id="row">
-    单价：￥{ZF:$row.price}，会员价：<font color="red">￥{ZF:$row.vprice}</font><br/>  <php>$price_count = $price_count +($row['vprice']*$row['count']);</php>
-    </volist>
-    <else/>
-    ￥{ZF:$o.price}<br/>  <php>$price_count = $price_count + ($o['price']*$o['count']);</php>
-    </if>
-</td>
-<td align="center">￥{ZF:$o.mailprice}</td>
-</tr>
-</volist>
-<tr class="total">
-   <th colspan="2">小计：</th>
-   <th><php>echo $goods_count;</php> 件</th>
-   <th><php>echo $price_count;</php> 元</th>
-   <th><php>echo $totalMailprice;</php> 元</th>
-</tr>
-<tr class="total">
-   <th colspan="3">总计：(该总计会因为商品设置改动了运费而与订单总价不一致)</th>
-   <th colspan="2"><php>echo $totalMailprice+$price_count;</php> 元</th>
-</tr>
-</tbody>
-</table>
+	
+	<div style="width:100%;padding:10px;">
+		<table style="width:100%;line-height: 30px;" class="order_detail_table">
+			<php>
+				$goods_count = 0;
+				$price_count = 0;
+			</php>
+			<volist name="products" id="o"> 
+				<tr>
+					<td>
+						<div style="width:100%;">
+							<img src="{ZF:$o.logourl}"  width="100"/>
+						</div>
+					</td>
+					<td style="padding:5px;">
+						<div style="height:30px;overflow: hidden;">
+							<b>名称：</b>{ZF:$o.name}
+						</div>
+						<div>
+							<if condition="empty($o['detail']) neq true">
+							    <volist name="o['detail']" id="row">
+							   		 <div class="attr_manage"><b>单价：</b><font color="red">￥{ZF:$row.price}</font></div>
+									 <div class="attr_manage"><b>会员价：</b><font color="red">￥{ZF:$row.vprice}</font><br/>  <php>$price_count = $price_count +($row['vprice']*$row['count']);</php></div>
+							    </volist>
+						    <else/>
+								<div class="attr_manage"><b>单价：</b><font color="red">￥{ZF:$o.price}</font><br/>  <php>$price_count = $price_count + ($o['price']*$o['count']);</php></div>
+						    </if>
+						</div>
+						<div>
+							<div class="attr_manage"><b>邮费：</b><font color="red">￥{ZF:$o.mailprice}</font></div>
+						</div>
+						<div>
+							<if condition="empty($o['detail']) neq true">
+								<volist name="o['detail']" id="row">
+								
+									<div class="attr_manage"><b>{ZF:$o.colorTitle}</b><if condition="empty($row['colorName']) neq true">：{ZF:$row.colorName}</if></div>
+									
+									<div class="attr_manage"><b>{ZF:$o.formatTitle}</b><if condition="empty($row['formatName']) neq true">：{ZF:$row.formatName}</if></div>
+									
+									<div class="attr_manage"><b>数量：</b>{ZF:$row.count}<php>$goods_count = $goods_count+$row['count'];</php></div>
+								</volist>
+							<else/>
+								<b>数量：</b>{ZF:$o.count}
+								<php>$goods_count = $goods_count+$o['count'];</php>
+							</if>	
+						</div>
+					</td>
+				</tr>
+			</volist>
+		</table>
+	</div>
 <style type="text/css">
-tr.total th { text-align:center; line-height:30px; background-color:black; color:white; border:1px solid #FFF;}
+//tr.total th { text-align:center; line-height:30px; background-color:black; color:white; border:1px solid #FFF;}
 </style>
-<br><br><br><br>
+<br>
+<!--
 <pre>
 <php>
 //print_r($products);
 </php>
+  -->
 </pre>
