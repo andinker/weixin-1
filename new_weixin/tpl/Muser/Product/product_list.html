@@ -60,7 +60,7 @@
 					<td>{ZF:$i}</td>
 					<td><if condition="$hostlist['logourl']"><div class="img_box"><img src="{ZF:$hostlist.logourl}" width="48" style="vertical-align:middle;"/></div></if></td>
 					<td>{ZF:$hostlist.name|mb_substr=0,5,'utf-8'}</td>
-					<td class="norightborder"><a href="{ZF::U('Product/product_edit',array('id'=>$hostlist['id'],'token'=>$token,'catid'=>$hostlist['catid']))}" style="padding-right: 5px;">修改</a>|<a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('Product/del',array('id'=>$hostlist['id'],'token'=>$token))}');" style="padding-left: 5px;">删除</a></td>
+					<td class="norightborder"><a href="{ZF::U('Product/product_edit',array('id'=>$hostlist['id'],'token'=>$token,'catid'=>$hostlist['catid']))}" style="padding-right: 5px;">修改</a>|<a href="javascript:drop_confirm('您确定要删除吗?', '{ZF::U('product_delete',array('id'=>$hostlist['id'],'token'=>$token))}');" style="padding-left: 5px;">删除</a></td>
 				</tr>
 			</volist>
 		</tbody>
@@ -73,3 +73,10 @@
 <div class="pages">{ZF:$page}</div>
 
 
+<script type="text/javascript">
+function drop_confirm(msg,url){
+	if (!confirm(msg)) return false;
+	
+	location.href = url;
+}
+</script>

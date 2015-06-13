@@ -377,6 +377,35 @@ class ProductAction extends MuserAction{
 	}
 	
 	/**
+	 * 删除一个商品
+	 */
+	public function product_delete(){
+		
+		$product_model=M('Product');
+		if($this->_get('token')!=session('token')){$this->error('非法操作');}
+		
+		$id = $this->_get('id');
+		
+		if(IS_GET){
+			
+			// 确认是否存在该数据
+			$where=array('id'=>$id,'token'=>session('token'));
+			$check=$product_model->where($where)->find();
+			if($check==false)   $this->error('非法操作');
+		
+			$back=$product_model->where($wehre)->delete();
+			if($back==true){
+				$keyword_model=M('Keyword');
+				$keyword_model->where(array('token'=>session('token'),'pid'=>$id,'module'=>'Product'))->delete();
+				$this->success('操作成功',U('product_list',array('token'=>session('token'))));
+			}else{
+				$this->error('服务器繁忙,请稍后再试',U('product_list',array('token'=>session('token'))));
+			}
+		}
+		
+	}
+	
+	/**
 	 * 列出当前店铺的所有分类
 	 */
 	public function category_list(){
@@ -838,7 +867,7 @@ class ProductAction extends MuserAction{
 					$result=$wxpay_myext->delivernotify_sent();
 				}*/
 			}
-			$this->success('修改成功',U('Product/orderInfo',array('token'=>session('token'),'id'=>$_GET['id'])));
+			$this->success('修改成功',U('order_list',array('token'=>session('token'),'id'=>$_GET['id'])));
 		}else {
 			$this->assign('thisOrder',$thisOrder);
 			$carts=unserialize($thisOrder['info']);
