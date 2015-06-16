@@ -56,61 +56,90 @@ class ProductAction extends MuserAction{
 	}
 	
 	/**
-	 *  编辑一个已存在数据库中的商品，或者添加一个新的商品
+	 *  1. (编辑模式)编辑一个已存在数据库中的商品，或者添加一个新的商品
+	 *  2. (导入模式)从其他店铺复印一个商品到自己的店铺，这时候$GET[mode]为import，$GET[id]是其他店铺的商品id。不能复制自己店铺的商品到自己的店铺。
 	 */
 	public function product_edit(){
 
+		$IS_IMPORT_MODE = false;
+		if ($_GET['mode']=='import') { // 是导入模式
+			$IS_IMPORT_MODE = true;
+			$this->assign('IS_IMPORT_MODE',$IS_IMPORT_MODE);
+		}
+		
 		$catid = intval($_GET['catid']);	// 正在编辑或添加的产品的类别ID
 		$id = intval($_GET['id']);			// 正在编辑的产品的ID
 		
-		// 读取产品类别的数据记录
-		if($productCatData = M('Product_cat')->where(array('id' => $catid, 'token' => session('token')))->find()){
-			$this->assign('catData', $productCatData);
-		} else {
-			$this->error("没有选择相应的分类.", U('product_list'));
+		if ($IS_IMPORT_MODE){ // ********  是    导入模式************
+			
+			// 读取自己店铺的所有类别数据
+			if($productCatData = M('Product_cat')->where(array('token' => session('token')))->select()){
+				$this->assign('catData', $productCatData);
+			} else {
+				$this->error("你的店铺还没有创建商品分类,无法导入商品数据！", U('product_list'));
+			}
+			
+		}else{ // *************  不是    导入模式************
+			
+			// 读取产品类别的数据记录
+			if($productCatData = M('Product_cat')->where(array('id' => $catid, 'token' => session('token')))->find()){
+				$this->assign('catData', $productCatData);
+			} else {
+				$this->error("没有选择相应的分类.", U('product_list'));
+			}
+			
+			//读取当前产品类别的 “规格”和“外观”设置，可能会分别都有多条记录，type=0的记录是规格，type=1的记录是外观
+			$normsData = M("Product_norms")->where(array('catid' => $catid))->select();
+			$colorData = $formatData = array();
+			foreach ($normsData as $row) {
+				if ($row['type']) {
+					$colorData[] = $row;
+				} else {
+					$formatData[] = $row;
+				}
+				$normsList[$row['id']] = $row['value'];
+			}
 		}
 		
-		//读取当前产品类别的 “规格”和“外观”设置，可能会分别都有多条记录，type=0的记录是规格，type=1的记录是外观
-		$normsData = M("Product_norms")->where(array('catid' => $catid))->select();
-		$colorData = $formatData = array();
-		foreach ($normsData as $row) {
-			if ($row['type']) {
-				$colorData[] = $row;
-			} else {
-				$formatData[] = $row;
-			}
-			$normsList[$row['id']] = $row['value'];
-		}
+		
 		
 		// 如果是编辑已经存在数据，那么根据产品ID查找数据库记录
-		if ($id && ($product = M('Product')->where(array('catid' => $catid, 'token' => session('token'), 'id' => $id))->find())) {
+		if ($IS_IMPORT_MODE){
+			$get_product_where = array('id' => $id);
+		}else{
+			$get_product_where = array('catid' => $catid, 'token' => session('token'), 'id' => $id);
+		}
+		
+		if ($id && ($product = M('Product')->where($get_product_where)->find())) {
 			
-			// 读取产品的自定义属性值
-			$attributeData = M("Product_attribute")->where(array('pid' => $id))->select();
-			// 读取产品的，不同的 “规格”和“外观”组合下的，“价格”、“会员价”、“库存”数据
-			$productDetailData = M("Product_detail")->where(array('pid' => $id))->select();
+			$colorList = $formatList = $pData = array();
+			$attributeData = null;
+			$productDetailData = null;
+			
+			if (!$IS_IMPORT_MODE){ // *********   导入模式下不需要分类的属性数据    ***********
+				// 读取产品的自定义属性值
+				$attributeData = M("Product_attribute")->where(array('pid' => $id))->select();
+				// 读取产品的，不同的 “规格”和“外观”组合下的，“价格”、“会员价”、“库存”数据
+				$productDetailData = M("Product_detail")->where(array('pid' => $id))->select();
+				
+				foreach ($productDetailData as $p) {
+					$p['formatName'] = $normsList[$p['format']];
+					$p['colorName'] = $normsList[$p['color']];
+					$formatList[] = $p['format'];
+					$colorList[] = $p['color'];
+					$pData[] = $p;
+				}
+			}
 			
 			// 读取产品展示图（在一般情况下是每个产品6张）
 			$productimage = M("Product_image")->where(array('pid' => $id))->select();
-			
-			
-			$colorList = $formatList = $pData = array();
-			foreach ($productDetailData as $p) {
-				$p['formatName'] = $normsList[$p['format']];
-				$p['colorName'] = $normsList[$p['color']];
-				$formatList[] = $p['format'];
-				$colorList[] = $p['color'];
-				$pData[] = $p;
-			}
+		
 			
 			$this->assign('set', $product);
 			$this->assign('formatList', $formatList);
 			$this->assign('colorList', $colorList);
 			$this->assign('imageList', $productimage);
 			
-			//print_r($formatList);
-			//print_r($colorList); 
-			//print_r($pData);
 			
 			
 		} else { // 编辑新数据			

@@ -47,14 +47,22 @@
 		<div>
 			<div class="attr_name"><span class="import_icon">*</span>商品名称：</div>
 			<div class="attr_data">
-				<input type="hidden" name="pid" id="pid" value="{ZF:$set.id}">
+				<input type="hidden" name="pid" id="pid" value="<if condition="$IS_IMPORT_MODE eq false">{ZF:$set.id}</if>">
 				<input type="text" name="name" id="name" value="{ZF:$set.name}" style="width:200px;">
 			</div>
 		</div>
 		
 		<div>
 			<div class="attr_name"><span class="import_icon">*</span>商品类别：</div>
-			<div class="attr_data">{ZF:$productCatData.name}</div>
+			<if condition="$IS_IMPORT_MODE eq false">
+				<div class="attr_data">{ZF:$productCatData.name}</div>
+			<else/>
+					<select name="catid" id="catid">
+					    <volist name="productCatData" id="vo">
+					      <option value="{ZF:$vo.id},{ZF:$vo.name}">{ZF:$vo.name}</option>
+					    </volist>
+					</select>
+			</if>
 		</div>
 		
 		<div>
