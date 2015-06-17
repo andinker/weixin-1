@@ -196,6 +196,7 @@ input[type=checkbox]{margin: 0;}
 		
 	})
 </script>
+
 </head>
 <body>
 
@@ -210,6 +211,11 @@ if ( ACTION_NAME != 'mlogin' ){
 
 {__CONTENT__} 
 
-
+<script type="text/javascript">
+$('img').bind('error',function(){
+	$(this).after('<div style="color:red; border:1px solid #EEE; padding:20px 10px; margin:10px auto;">图片加载失败，可能图片已经被上传者删除！</div>');
+	$(this).remove();
+});
+</script>
 </body>
 </html>

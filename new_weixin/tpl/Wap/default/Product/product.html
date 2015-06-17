@@ -180,8 +180,6 @@ var focusPic = new Swiper('.focusPic .views',{pagination: '.focusPic .tabs',auto
 
 	<div class="line"></div>
 	
-	<div><a href="{ZF::U('Muser/Product/product_edit',array('id'=>$product['id'],'mode'=>'import'))}">复制到我的店铺</a></div>
-	
 	<div class="m-detail-mainout">
 		<div class="back_shop" style="line-height:27px;font-family: '微软雅黑';font-size:14px;margin-top:5px;margin-bottom:5px;">
 			<a href="{ZF::U('Product/cats',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">
@@ -398,6 +396,14 @@ function toLogin(){
 				<a href="javascript:;" onClick="<empty name="Think.get.wecha_id">toLogin()<else/>QuickBuy()</empty>" class="buynow">立即购买</a>&nbsp;
 			
 				<a href="javascript:;" id="btn_add_cart" class="addcart" onclick="<empty name="Think.get.wecha_id">toLogin()<else/>add_cart()</empty>">加入购物车</a>
+				
+					<php>
+					$session_token = session('token');
+					if (!empty($session_token)){
+					</php>
+						&nbsp;<a href="{ZF::U('Muser/Product/product_edit',array('id'=>$product['id'],'catid'=>$product['catid'],'mode'=>'import'))}" class="buynow">代理商品</a>
+					<php>}</php>
+					
 			</li>
 		</ul>
 	</div>	

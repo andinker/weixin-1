@@ -166,13 +166,13 @@ class ProductAction extends MuserAction{
 			$xq_user = $this->user;
 		}else{
 			if ($this->user['community_id'] != 0){
-				$xq_user = M('Users')->where(array('community_id'=>$this->user['community_id'],'account_type'=>1))->find();
+				$xq_user = M('Users')->where(array('community_id'=>$this->user['community_id'],'account_type'=>1))->find();  
 			}
 		}
 		
 		$wz_category_data = NULL;
 		if (!empty($xq_user)){
-			$xq_wx = M('Wxuser')->where(array('uid'=>$xq_user['id']))->find();
+			$xq_wx = M('Wxuser')->where(array('uid'=>$xq_user['id']))->order('createtime asc')->find();
 			if (!empty($xq_wx)){
 				$wz_category_data = M('Classify')->where(array(
 						'token'=>$xq_wx['token'],

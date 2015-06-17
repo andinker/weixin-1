@@ -137,9 +137,9 @@
 						<tr class="tnorms">
 							<td width="110"><div style="height:40px;overflow:hidden;">{ZF:$detail.colorName}</div><input type="hidden" value="{ZF:$detail.color}"/></td>
 							<td width="110"><div style="height:40px;overflow:hidden;">{ZF:$detail.formatName}</div><input type="hidden" value="{ZF:$detail.format}"/></td>
-							<td width="60"><input type="text" class="px" style="width:45px;" value="{ZF:$detail.price}"/></td>
-							<td width="70"><input type="text" class="px" style="width:45px;" value="{ZF:$detail.vprice}"/></td>
-							<td width="60"><input type="text" class="px" style="width:45px;" value="{ZF:$detail.num}"/></td>
+							<td width="60"><input type="text" class="px price_value" style="width:45px;" value="{ZF:$detail.price}"/></td>
+							<td width="70"><input type="text" class="px vprice_value" style="width:45px;" value="{ZF:$detail.vprice}"/></td>
+							<td width="60"><input type="text" class="px num_value" style="width:45px;" value="{ZF:$detail.num}"/></td>
 							<td><input type="hidden" value="{ZF:$detail.id}"/></td>
 						</tr>
 			       </volist>
@@ -162,11 +162,16 @@
 		<table class="product_detail_data">
 			<tr>
 				<td><span class="import_icon">*</span>价格：</td>
-				<td><input type="text" id="price" name="price" value="{ZF:$set.price}" class="validate[required, length[0,20]]" style="width:100px;"> 元</td>
+				<td><input type="text" id="price" name="price" value="{ZF:$set.price}" class="validate[required, length[0,20]]" style="width:100px;"> 元
+				     <input type="button" id="copier_price" style="line-height:20px;" value="复制到属性列表">
+				</td>
+
 			</tr>
 			<tr>
 				<td><span class="import_icon">*</span>会员价：</td>
-				<td><input type="text" id="vprice" name="vprice" value="{ZF:$set.vprice}" style="width:100px;"> 元</td>
+				<td><input type="text" id="vprice" name="vprice" value="{ZF:$set.vprice}" style="width:100px;"> 元
+				     <input type="button" id="copier_vprice" style="line-height:20px;" value="复制到属性列表">
+				</td>
 			</tr>
 			<tr>
 				<td><span class="import_icon">*</span>原价：</td>
@@ -174,7 +179,9 @@
 			</tr>
 			<tr>
 				<td class="product_unimportant_name">库存：</td>
-				<td><input type="text" id="num" name="num" value="{ZF:$set.num}" style="width:100px;"></td>
+				<td><input type="text" id="num" name="num" value="{ZF:$set.num}" style="width:100px;"> 件
+				     <input type="button" id="copier_num" style="line-height:20px;" value="复制到属性列表">
+				</td>
 			</tr>
 			<tr>
 				<td class="product_unimportant_name">邮费：</td>
@@ -185,6 +192,27 @@
 				<td><input type="text" name="keyword" id="keyword" value="{ZF:$set.keyword}" style="width:200px;"></td>
 			</tr>
 		</table>
+		
+		<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('#copier_price').bind('click',function(){
+				var price = $('#price').val();
+				$('.price_value').val(price);
+			});
+			
+			$('#copier_vprice').bind('click',function(){
+				var vprice = $('#vprice').val();
+				$('.vprice_value').val(vprice);
+			});
+						
+			$('#copier_num').bind('click',function(){
+				var num = $('#num').val();
+				$('.num_value').val(num);
+			});
+			
+		});
+		</script>
 
 
 		<if condition="!empty($_GET['id'])"> <!-- 只在编辑一个商品的情况下，显示上传图片链接 -->
@@ -198,19 +226,23 @@
 						<img style="width:60px;" src="{ZF:$set.logourl}">
 		        	</empty>
 					<input type="hidden" name="logourl" value="{ZF:$set.logourl}" id="pic">&nbsp;
-					<a href="{ZF::U('product_edit_setimage',array('id'=>$set['id'],'token'=>$token, 'catid' => $catid))}">设置图片</a>
+					<if condition="$IS_IMPORT_MODE eq false">
+						<a href="{ZF::U('product_edit_setimage',array('id'=>$set['id'],'token'=>$token, 'catid' => $catid))}">设置图片</a>
+					</if>
 				</div>
 			
 				<div class="images_show">
 					<div class="product_detail_data">
 						<div class="set_img_name">展示图片:</div>
-						<a href="{ZF::U('product_edit_uploadphotos',array('id'=>$set['id'],'token'=>$token, 'catid' => $catid))}">添加图片</a>
+						<if condition="$IS_IMPORT_MODE eq false">
+							<a href="{ZF::U('product_edit_uploadphotos',array('id'=>$set['id'],'token'=>$token, 'catid' => $catid))}">添加图片</a>
+						</if>
 					</div>
 					
 					<volist name="imageList" id="vo">
 						<div id="imageList_item_{ZF:$i}" class="image_del">
-						   <div class="image_box"><img style="width:60px;" src="{ZF:$vo.image}"></div>&nbsp;<div onclick="imageList_item_deletor({ZF:$i},{ZF:$vo.id});" style="margin-top:5px;">删除</div>
-						   <input type="hidden" name="image{ZF:$i}" value="{ZF:$vo.image}" imageid="{ZF:$vo.id}" id="image{ZF:$i}">
+						   <div class="image_box"><img style="width:60px;" src="{ZF:$vo.image}"></div>&nbsp;<if condition="$IS_IMPORT_MODE eq false"><div onclick="imageList_item_deletor({ZF:$i},{ZF:$vo.id});" style="margin-top:5px;">删除</div></if>
+						   <input type="hidden" name="image{ZF:$i}" value="{ZF:$vo.image}" imageid="<if condition="$IS_IMPORT_MODE eq false">{ZF:$vo.id}</if>" id="image{ZF:$i}">
 					    </div>
 					</volist>
 					
@@ -373,9 +405,9 @@ $(document).ready(function(){
 			HTML = HTML + '<tr class="tnorms">
 								<td width="110"><div style="height:40px;overflow:hidden;">'+render_data[index][2]+'</div><input type="hidden" value="'+render_data[index][1]+'"/></td>
 								<td width="110"><div style="height:40px;overflow:hidden;">'+render_data[index][4]+'</div><input type="hidden" value="'+render_data[index][3]+'"/></td>
-								<td width="60"><input type="text" class="px" style="width:45px;" value="'+render_data[index][5]+'"/></td>
-								<td width="70"><input type="text" class="px" style="width:45px;" value="'+render_data[index][6]+'"/></td>
-								<td width="60"><input type="text" class="px" style="width:45px;" value="'+render_data[index][7]+'"/></td>
+								<td width="60"><input type="text" class="px price_value" style="width:45px;" value="'+render_data[index][5]+'"/></td>
+								<td width="70"><input type="text" class="px vprice_value" style="width:45px;" value="'+render_data[index][6]+'"/></td>
+								<td width="60"><input type="text" class="px num_value" style="width:45px;" value="'+render_data[index][7]+'"/></td>
 								<td><input type="hidden" value="'+render_data[index][0]+'"/></td>
 						  </tr>';
 		}
@@ -436,12 +468,24 @@ $(document).ready(function(){
 		var image4 = $("#image4").val();
 		var image5 = $("#image5").val();
 		var image6 = $("#image6").val();
+		var image7 = $("#image7").val();
+		var image8 = $("#image8").val();
+		var image9 = $("#image9").val();
+		var image10 = $("#image10").val();
+		var image11 = $("#image11").val();
+		var image12 = $("#image12").val();
 		var imageid1 = parseInt($("#image1").attr('imageid'));
 		var imageid2 = parseInt($("#image2").attr('imageid'));
 		var imageid3 = parseInt($("#image3").attr('imageid'));
 		var imageid4 = parseInt($("#image4").attr('imageid'));
 		var imageid5 = parseInt($("#image5").attr('imageid'));
 		var imageid6 = parseInt($("#image6").attr('imageid'));
+		var imageid7 = parseInt($("#image7").attr('imageid'));
+		var imageid8 = parseInt($("#image8").attr('imageid'));
+		var imageid9 = parseInt($("#image9").attr('imageid'));
+		var imageid10 = parseInt($("#image10").attr('imageid'));
+		var imageid11 = parseInt($("#image11").attr('imageid'));
+		var imageid12 = parseInt($("#image12").attr('imageid'));
 		var images = [];
 		images[0] = {'id':imageid1, 'image':image1};
 		images[1] = {'id':imageid2, 'image':image2};
@@ -449,6 +493,12 @@ $(document).ready(function(){
 		images[3] = {'id':imageid4, 'image':image4};
 		images[4] = {'id':imageid5, 'image':image5};
 		images[5] = {'id':imageid6, 'image':image6};
+		images[6] = {'id':imageid7, 'image':image7};
+		images[7] = {'id':imageid8, 'image':image8};
+		images[8] = {'id':imageid9, 'image':image9};
+		images[9] = {'id':imageid10, 'image':image10};
+		images[10] = {'id':imageid11, 'image':image11};
+		images[11] = {'id':imageid12, 'image':image12};
 		
 		var data = {pid:$("#pid").val(),
 					name:name,
@@ -464,8 +514,10 @@ $(document).ready(function(){
 					norms:JSON.stringify(norms),
 					images:JSON.stringify(images),
 					token:'{ZF:$token}',
-					catid:'{ZF:$catid}',
-					community_catid:$("#community_catid").val()
+					catid:<if condition="$IS_IMPORT_MODE eq false">'{ZF:$catid}'<else/>$("#catid").val()</if>,
+					community_catid:$("#community_catid").val()<if condition="$IS_IMPORT_MODE eq true">,
+					import_catid:{ZF:$catid}
+					</if>
 					};
 		
 		
@@ -473,15 +525,26 @@ $(document).ready(function(){
 		
 		$.post("{ZF::U('User/Product/productSave')}", data, function(response){
 			if (response.error_code == false) {
-				alert('保存成功：'+response.msg);
-				if ($('#pid').val() == ''){
-					// 新增数据
-					console.log(response);
-					location.href='{ZF::U('product_edit_setimage',array('token'=>$token, 'catid' => $catid))}'+'&id='+response.pid+'&nextstep=setphotos';
-				}else{
-					// 编辑老数据
-					location.href=location.href;
-				}
+				
+				
+				<if condition="$IS_IMPORT_MODE eq true">
+				
+					alert('商品已成功导入到你的店铺！');
+					history.back()
+				
+				<else/>
+				
+					alert('保存成功：'+response.msg);
+					if ($('#pid').val() == ''){
+						// 新增数据
+						console.log(response);
+						location.href='{ZF::U('product_edit_setimage',array('token'=>$token, 'catid' => $catid))}'+'&id='+response.pid+'&nextstep=setphotos';
+					}else{
+						// 编辑老数据
+						location.href=location.href;
+					}
+				
+				</if>
 				
 			} else {
 				console.log(response);

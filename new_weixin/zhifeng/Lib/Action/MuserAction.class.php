@@ -57,7 +57,7 @@ class MuserAction  extends UserAction{
 	}
 	
 	/**
-	 * 检查一个文件是不是由PhonePhotoUpload插件上传的，如果是，则从磁盘中删除它
+	 * 检查一个文件是不是由PhonePhotoUpload插件上传的，如果是，则从磁盘中删除它；只能删除自己上传的图片，这个是通过检查url中的token与session中的token是否一致来实现。
 	 * @param string $file_url 文件的http访问url地址，被视为网站绝对路径，类似：/data/Uploads/q/qbyszj1426650408/PhonePhotoUpload/1433908810_image0_63778.png
 	 * @return bool 表示是否执行了删除操作（不管删除是否成功）
 	 */
@@ -65,11 +65,16 @@ class MuserAction  extends UserAction{
 		
 		$keyword = 'PhonePhotoUpload';
 		$status = mb_strpos($file_url, $keyword,0,'UTF-8');
+		$token_status = mb_strpos($file_url, $this->token,0,'UTF-8');
 		
 		if ($status !== false){
-			//找到了关键字，删除该文件
-			@unlink(SITE_ROOT.$file_url);
-			return true;
+			//找到了关键字
+			if ($token_status !== false){//token检查成功，删除该文件
+				@unlink(SITE_ROOT.$file_url);
+				return true;
+			}else{
+				return false;
+			}
 		}else{
 			return false;
 		}

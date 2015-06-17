@@ -214,7 +214,7 @@ class ProductAction extends UserAction{
         
         $wz_category_data = NULL;
         if (!empty($xq_user)){
-        	$xq_wx = M('Wxuser')->where(array('uid'=>$xq_user['id']))->find();
+        	$xq_wx = M('Wxuser')->where(array('uid'=>$xq_user['id']))->order('createtime asc')->find();
         	if (!empty($xq_wx)){
         		$wz_category_data = M('Classify')->where(array(
         				'token'=>$xq_wx['token'],
@@ -244,6 +244,7 @@ class ProductAction extends UserAction{
 	 * 增加商品
 	 */
 	public function productSave() {
+		
 		$token = isset($_POST['token']) ? htmlspecialchars($_POST['token']) : '';
 		$catid = isset($_POST['catid']) ? intval($_POST['catid']) : 0;
 		$community_catid =  isset($_POST['community_catid']) ? intval($_POST['community_catid']) : 0;
@@ -261,6 +262,7 @@ class ProductAction extends UserAction{
 		$norms = isset($_POST['norms']) ? htmlspecialchars_decode($_POST['norms']) : '';
 		$images = isset($_POST['images']) ? htmlspecialchars_decode($_POST['images']) : '';
 		$sort = isset($_POST['sort']) ? intval($_POST['sort']) : 100;
+		
 		if ($token != session('token')) {
 			exit(json_encode(array('error_code' => true, 'msg' => '不合法的数据')));
 		}
@@ -270,6 +272,83 @@ class ProductAction extends UserAction{
 		if (empty($catid)) {
 			exit(json_encode(array('error_code' => true, 'msg' => '商品分类不能为空')));
 		}
+		
+		
+		
+		if (!empty($_POST['import_catid'])){
+			$catid_data = M('Product_cat')->where(array('id'=>$catid))->find();
+			$source_cat = M('Product_cat')->where(array('id'=>$_POST['import_catid']))->find();
+			if (empty($source_cat) || empty($catid_data)){
+				exit(json_encode(array('error_code' => true, 'msg' => '指定的分类数据不存在！')));
+			}else{
+				
+				// 复制分类中的规格、外观名称（如果本店分类已设置有值，将不复制）
+				if (empty($catid_data['norms'])){
+					M('Product_cat')->where(array('id'=>$catid))->setField('norms',$source_cat['norms']);
+				}
+				if (empty($catid_data['color'])){
+					M('Product_cat')->where(array('id'=>$catid))->setField('color',$source_cat['color']);
+				}
+				
+				//  复制分类中的规格、外观选项数据（如果本店分类已设置有相同名称的选项，将不复制）
+				// 读取
+				$source_norms = M('Product_norms')->where(array('catid'=>$_POST['import_catid']))->select();
+				$target_norms = M('Product_norms')->where(array('catid'=>$catid))->select();
+				// 复制
+				if (!empty($source_norms)){
+					foreach ($source_norms as $source_norms_item){
+						
+						$has_item = false;
+						
+						foreach ($target_norms as $target_norms_item){
+							if ($source_norms_item['value'] == $target_norms_item['value']) $has_item = true; // 本店分类已设置有相同名称的选项
+						}
+						
+						if (!$has_item){
+							M('Product_norms')->add(array(
+									'type'	=>$source_norms_item['type'],
+									'catid'	=>$catid,
+									'value'	=>$source_norms_item['value'],
+									'ordid'	=>0
+							));
+						}
+						
+					}
+				}
+				
+				// 复制自定义属性选项（如果本店分类已设置有相同名称的选项，将不复制）
+				$source_attrs = M('Product_attrs')->where(array('catid'=>$_POST['import_catid']))->select();
+				$target_attrs = M('Product_attrs')->where(array('catid'=>$catid))->select();
+				
+				if (!empty($source_attrs)){
+					foreach ($source_attrs as $source_attrs_item){
+				
+						$has_item = false;
+				
+						foreach ($target_attrs as $target_attrs_item){
+							if ($source_attrs_item['name'] == $target_attrs_item['name']) $has_item = true; // 本店分类已设置有相同名称的选项
+						}
+				
+						if (!$has_item){
+							M('Product_attrs')->add(array(
+									'token'	=>$token,
+									'catid'	=>$catid,
+									'name'	=>$source_attrs_item['name'],
+									'value'	=>$source_attrs_item['value'],
+									'tyle'	=>0
+							));
+						}
+				
+					}
+				}
+				
+				
+			}
+			
+		}
+		
+		
+		
 		$data = array('token' => $token, 'num' => $num, 'sort' => $sort, 'catid' => $catid, 'community_catid'=>$community_catid, 'name' => $name, 'price' => $price, 'mailprice' => $mailprice, 'vprice' => $vprice, 'oprice' => $oprice, 'intro' => $intro, 'logourl' => $pic, 'keyword' => $keyword, 'time' => time());
 		$product = M('Product');
 		if ($pid && $obj = $product->where(array('id' => $pid, 'token' => $token))->find()) {
@@ -284,6 +363,9 @@ class ProductAction extends UserAction{
 			$pid = $product->add($data);
 			M('keyword')->add(array('keyword'=>$keyword,'pid'=>$pid,'token'=>$token,'module'=>'Product'));
 		}
+		
+		
+		
 		if (empty($pid)) {
 			exit(json_encode(array('error_code' => false, 'msg' => '商品添加出错了')));
 		}

@@ -125,9 +125,9 @@ afterBlur: function(){this.sync();}
 				       <tr class="tnorms">
 					       <td width="130">{ZF:$detail.colorName}<input type="hidden" value="{ZF:$detail.color}"/></td>
 					       <td width="130">{ZF:$detail.formatName}<input type="hidden" value="{ZF:$detail.format}"/></td>
-					       <td width="130"><input type="text" class="px" style="width:60px;" value="{ZF:$detail.price}"/></td>
-					       <td width="130"><input type="text" class="px" style="width:60px;" value="{ZF:$detail.vprice}"/></td>
-					       <td width="130"><input type="text" class="px" style="width:60px;" value="{ZF:$detail.num}"/></td>
+					       <td width="130"><input type="text" class="px price_value" style="width:60px;" value="{ZF:$detail.price}"/></td>
+					       <td width="130"><input type="text" class="px vprice_value" style="width:60px;" value="{ZF:$detail.vprice}"/></td>
+					       <td width="130"><input type="text" class="px num_value" style="width:60px;" value="{ZF:$detail.num}"/></td>
 					       <td width="130"><input type="hidden" value="{ZF:$detail.id}"/></td>
 				       </tr>
 			        </volist>
@@ -145,11 +145,11 @@ afterBlur: function(){this.sync();}
        </volist>
        <tr> 
         <th><span class="red">*</span>价格：</th>
-        <td><input type="text" id="price" name="price" value="{ZF:$set.price}" class="validate[required, length[0,20]] px" style="width:100px;" /> 元</td> 
+        <td><input type="text" id="price" name="price" value="{ZF:$set.price}" class="validate[required, length[0,20]] px" style="width:100px;" /> 元 <input type="button" id="copier_price" style="line-height:20px;" value="复制到属性列表"></td> 
        </tr>
        <tr> 
         <th><span class="red">*</span>会员价：</th> 
-        <td><input type="text" id="vprice" name="vprice" value="{ZF:$set.vprice}" class="px" style="width:100px;" /> 元</td> 
+        <td><input type="text" id="vprice" name="vprice" value="{ZF:$set.vprice}" class="px" style="width:100px;" /> 元 <input type="button" id="copier_vprice" style="line-height:20px;" value="复制到属性列表"></td> 
        </tr>
        <tr> 
         <th><span class="red">*</span>原价：</th> 
@@ -157,8 +157,28 @@ afterBlur: function(){this.sync();}
        </tr>
        <tr> 
         <th>库存：</th> 
-        <td><input type="text" id="num" name="num" value="{ZF:$set.num}" class="px" style="width:100px;" /></td> 
+        <td><input type="text" id="num" name="num" value="{ZF:$set.num}" class="px" style="width:100px;" /> 件 <input type="button" id="copier_num" style="line-height:20px;" value="复制到属性列表"></td> 
        </tr>
+       		<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('#copier_price').bind('click',function(){
+				var price = $('#price').val();
+				$('.price_value').val(price);
+			});
+			
+			$('#copier_vprice').bind('click',function(){
+				var vprice = $('#vprice').val();
+				$('.vprice_value').val(vprice);
+			});
+						
+			$('#copier_num').bind('click',function(){
+				var num = $('#num').val();
+				$('.num_value').val(num);
+			});
+			
+		});
+		</script>
        <tr> 
         <th>邮费：</th> 
         <td><input type="text" id="mailprice" name="mailprice" value="{ZF:$set.mailprice}" class="px" style="width:100px;" /> 元</td> 
@@ -171,6 +191,7 @@ afterBlur: function(){this.sync();}
         <th>缩略图：</th>
         <td><input type="text" name="logourl" value="{ZF:$set.logourl}" class="px" id="pic" style="width:400px;" />  <a href="###" onclick="upyunPicUpload('pic',700,700,'{ZF:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic')">预览</a></td> 
        </tr>
+       
        <tr> 
         <th>展示图片一：</th>
         <td><input type="text" name="image1" value="{ZF:$imageList[0].image}" imageid="{ZF:$imageList[0].id}" class="px" id="image1" style="width:400px;" />  <a href="###" onclick="upyunPicUpload('image1',700,700,'{ZF:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('image1')">预览</a></td> 
@@ -195,6 +216,33 @@ afterBlur: function(){this.sync();}
         <th>展示图片六：</th>
         <td><input type="text" name="image6" value="{ZF:$imageList[5].image}" imageid="{ZF:$imageList[5].id}" class="px" id="image6" style="width:400px;" />  <a href="###" onclick="upyunPicUpload('image6',700,700,'{ZF:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('image6')">预览</a></td> 
        </tr>
+       
+       <tr> 
+        <th>展示图片七：</th>
+        <td><input type="text" name="image7" value="{ZF:$imageList[6].image}" imageid="{ZF:$imageList[6].id}" class="px" id="image7" style="width:400px;" />  <a href="###" onclick="upyunPicUpload('image7',700,700,'{ZF:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('image7')">预览</a></td> 
+       </tr>
+       <tr> 
+        <th>展示图片八：</th>
+        <td><input type="text" name="image8" value="{ZF:$imageList[7].image}" imageid="{ZF:$imageList[7].id}" class="px" id="image8" style="width:400px;" />  <a href="###" onclick="upyunPicUpload('image8',700,700,'{ZF:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('image8')">预览</a></td> 
+       </tr>
+       <tr> 
+        <th>展示图片九：</th>
+        <td><input type="text" name="image9" value="{ZF:$imageList[8].image}" imageid="{ZF:$imageList[8].id}" class="px" id="image9" style="width:400px;" />  <a href="###" onclick="upyunPicUpload('image9',700,700,'{ZF:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('image9')">预览</a></td> 
+       </tr>
+       <tr> 
+        <th>展示图片十：</th>
+        <td><input type="text" name="image10" value="{ZF:$imageList[9].image}" imageid="{ZF:$imageList[9].id}" class="px" id="image10" style="width:400px;" />  <a href="###" onclick="upyunPicUpload('image10',700,700,'{ZF:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('image10')">预览</a></td> 
+       </tr>
+       <tr> 
+        <th>展示图片十一：</th>
+        <td><input type="text" name="image11" value="{ZF:$imageList[10].image}" imageid="{ZF:$imageList[10].id}" class="px" id="image11" style="width:400px;" />  <a href="###" onclick="upyunPicUpload('image11',700,700,'{ZF:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('image11')">预览</a></td> 
+       </tr>
+       <tr> 
+        <th>展示图片十二：</th>
+        <td><input type="text" name="image12" value="{ZF:$imageList[11].image}" imageid="{ZF:$imageList[11].id}" class="px" id="image12" style="width:400px;" />  <a href="###" onclick="upyunPicUpload('image12',700,700,'{ZF:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('image12')">预览</a></td> 
+       </tr>
+       
+       
        <TR>
           <TH valign="top"><label for="info">图文详细页内容：</label></TH>
           <TD><textarea class="toedit" name="intro" id="intro"  rows="5" style="width:590px;height:360px">{ZF:$set.intro}</textarea></TD>
@@ -302,16 +350,16 @@ $(document).ready(function(){
 			if (oldselect[index] != null && oldselect[index] != '') {
 				html += '<tr class="tnorms"><td width="130">' + oldselect[index][2] + '<input type="hidden" value="' + oldselect[index][1] + '"/></td>';
 				html += '<td width="130">' + oldselect[index][4] + '<input type="hidden" value="' + oldselect[index][3] + '"/></td>';
-				html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + oldselect[index][5] + '"/></td>';
-				html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + oldselect[index][6] + '"/></td>';
-				html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + oldselect[index][7] + '"/></td>';
+				html += '<td width="130"><input type="text" class="px price_value" style="width:60px;" value="' + oldselect[index][5] + '"/></td>';
+				html += '<td width="130"><input type="text" class="px vprice_value" style="width:60px;" value="' + oldselect[index][6] + '"/></td>';
+				html += '<td width="130"><input type="text" class="px num_value" style="width:60px;" value="' + oldselect[index][7] + '"/></td>';
 				html += '<td><input type="hidden" value="' + oldselect[index][0] + '"/></td></tr>';
 			} else {
 				html += '<tr class="tnorms"><td width="130">' + selectValue[index][2] + '<input type="hidden" value="' + selectValue[index][1] + '"/></td>';
 				html += '<td width="130">' + selectValue[index][4] + '<input type="hidden" value="' + selectValue[index][3] + '"/></td>';
-				html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + selectValue[index][5] + '"/></td>';
-				html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + selectValue[index][6] + '"/></td>';
-				html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + selectValue[index][7] + '"/></td>';
+				html += '<td width="130"><input type="text" class="px price_value" style="width:60px;" value="' + selectValue[index][5] + '"/></td>';
+				html += '<td width="130"><input type="text" class="px vprice_value" style="width:60px;" value="' + selectValue[index][6] + '"/></td>';
+				html += '<td width="130"><input type="text" class="px num_value" style="width:60px;" value="' + selectValue[index][7] + '"/></td>';
 				html += '<td><input type="hidden" value="' + selectValue[index][0] + '"/></td></tr>';
 			}
 			//html += selectValue[index];
@@ -380,12 +428,24 @@ $(document).ready(function(){
 		var image4 = $("#image4").val();
 		var image5 = $("#image5").val();
 		var image6 = $("#image6").val();
+		var image7 = $("#image7").val();
+		var image8 = $("#image8").val();
+		var image9 = $("#image9").val();
+		var image10 = $("#image10").val();
+		var image11 = $("#image11").val();
+		var image12 = $("#image12").val();
 		var imageid1 = parseInt($("#image1").attr('imageid'));
 		var imageid2 = parseInt($("#image2").attr('imageid'));
 		var imageid3 = parseInt($("#image3").attr('imageid'));
 		var imageid4 = parseInt($("#image4").attr('imageid'));
 		var imageid5 = parseInt($("#image5").attr('imageid'));
 		var imageid6 = parseInt($("#image6").attr('imageid'));
+		var imageid7 = parseInt($("#image7").attr('imageid'));
+		var imageid8 = parseInt($("#image8").attr('imageid'));
+		var imageid9 = parseInt($("#image9").attr('imageid'));
+		var imageid10 = parseInt($("#image10").attr('imageid'));
+		var imageid11 = parseInt($("#image11").attr('imageid'));
+		var imageid12 = parseInt($("#image12").attr('imageid'));
 		var images = [];
 		images[0] = {'id':imageid1, 'image':image1};
 		images[1] = {'id':imageid2, 'image':image2};
@@ -393,6 +453,12 @@ $(document).ready(function(){
 		images[3] = {'id':imageid4, 'image':image4};
 		images[4] = {'id':imageid5, 'image':image5};
 		images[5] = {'id':imageid6, 'image':image6};
+		images[6] = {'id':imageid7, 'image':image7};
+		images[7] = {'id':imageid8, 'image':image8};
+		images[8] = {'id':imageid9, 'image':image9};
+		images[9] = {'id':imageid10, 'image':image10};
+		images[10] = {'id':imageid11, 'image':image11};
+		images[11] = {'id':imageid12, 'image':image12};
 		var data = {pid:$("#pid").val(),
 					name:name,
 					num:num,
