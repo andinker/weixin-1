@@ -208,8 +208,20 @@ function showExpWindow(expNo){
 			</volist>
 		</table>
 	</div>
+	<table style="width:100%;">
+		<tr class="total">
+		   <th colspan="2">小计：</th>
+		   <th><php>echo $goods_count;</php> 件</th>
+		   <th width="50"><php>echo $price_count;</php> 元</th>
+		   <th width="50"><php>echo $totalMailprice;</php> 元</th>
+		</tr>
+		<tr class="total">
+		   <th colspan="3">总计：(该总计会因为商品设置改动了运费而与订单总价不一致)</th>
+		   <th colspan="2"><php>echo $totalMailprice+$price_count;</php> 元</th>
+		</tr>
+	</table>
 <style type="text/css">
-//tr.total th { text-align:center; line-height:30px; background-color:black; color:white; border:1px solid #FFF;}
+tr.total th { text-align:center; line-height:30px; background-color:black; color:white; border:1px solid #FFF;}
 </style>
 <br>
 <!--
