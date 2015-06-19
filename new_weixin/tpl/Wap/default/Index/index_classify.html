@@ -14,12 +14,12 @@
 <style type="text/css">
 #all{max-width: 800px;margin: 0 auto;padding: 0;}
 .nav_search{background: #f8f8f8;position:fixed;max-width: 750px;z-index: 1;}
-.content{overflow:hidden;margin-top:50px;max-width: 750px;}
+.content{overflow:hidden;margin-top:54px;max-width: 750px;}
 #left_cla{position:fixed;line-height: 40px;width:90px;background: #f8f8f8;height:100%;overflow:auto;overflow-x: hidden;}
 #left_cla{padding:0px;overflow:auto;overflow-x: hidden;}
 #left_cla li {list-style: none;border-bottom: 1px solid #e0e0e0;height:40px;overflow:hidden;padding-left:5px;padding-right:5px;}
 #left_cla li:last-child{border-bottom:none;}
-.TabbedPanelsContentGroup{overflow:auto;overflow-x: hidden;padding-left:95px;max-width: 800px;padding-right:5px;position: relative;}
+.TabbedPanelsContentGroup{overflow:auto;overflow-x: hidden;margin-left:95px;max-width: 800px;padding-right:5px;position: relative;}
 .second_cla,.third_cla{text-align: center;line-height:50px;margin-top:15px;padding-left:5px;padding-right:5px;}
 .second_cla img,.third_cla img{width:100%;height:100px;overflow: hidden;}
 .cla_name{height:40px;overflow: hidden;}
@@ -65,7 +65,7 @@ function keyLogin(){
 
 	<div id="TabbedPanels1" class="content">
 		
-		<ul class="TabbedPanelsTabGroup" style="z-index: 3;" id="left_cla">
+		<ul class="TabbedPanelsTabGroup" style="z-index: 0;" id="left_cla">
 			<volist name="info" id="vo">
 				  <li class="TabbedPanelsTab" tabindex="0" style="cursor: pointer;">{ZF:$vo.name}</li>
 			</volist>
@@ -191,6 +191,12 @@ $(window).resize(function(){
 	$('.content').css("height",h2+"px");	
 	
 })
+
+//设置左边导航的位置移动
+$("#left_cla li").click(function(){
+	var menu_left_position=($(this).index())*40;
+	$('#left_cla').scrollTop(-menu_left_position); 
+});
 
 </script>
 <!-- pre>

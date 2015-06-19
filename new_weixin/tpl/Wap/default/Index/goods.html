@@ -106,7 +106,15 @@ $(document).ready(function($){
 						'<div class="img_box"><img src="' +item.logourl + '" /></div>' +
 						'</a></span><span class="con"><a class="t" href="'+goods_url+'">' + item.name + '</a><b>￥'+ item.price +'&nbsp;元</b><del>￥' + item.oprice + '</del></span></div></div>'; // 在这里组装单个商品的HTML
 						
-						$('#m_list').append(append_html); 
+						$('#m_list').append(append_html);
+						
+						$(document).ready(function(){
+							/*开始！设置列表模板的高度*/
+							
+							limit_img_box();
+							
+							/*结束！设置列表模板的高度*/
+						})
 						
 					});
 					
@@ -255,11 +263,14 @@ $(document).ready(function($){
 <script type="text/javascript">
 
 /*开始！设置列表模板的高度*/
-var img_h=$('.pro_box img').width();
-$('.img_box').css("height",img_h+"px");
-$(window).resize(function(){
-	var img_h=$('.pro_box img').width();
+var limit_img_box=function(){
+	var img_h=$('.img_box').width();
 	$('.img_box').css("height",img_h+"px");
+}
+limit_img_box();
+
+$(window).resize(function(){
+	limit_img_box();
 })
 /*结束！设置列表模板的高度*/
 
@@ -317,6 +328,8 @@ function Show_Hidden(order_by){
     	order_by.style.display='block';
     }
 }
+
+
 
 </script>
 </body>

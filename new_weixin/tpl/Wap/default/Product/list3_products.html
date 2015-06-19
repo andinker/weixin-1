@@ -258,11 +258,14 @@ a:hover{text-decoration: none;}
 <script type="text/javascript">
 
 /*开始！设置列表模板的高度*/
-var img_h=$('.pro_box img').width();
-$('.img_box').css("height",img_h+"px");
-$(window).resize(function(){
-	var img_h=$('.pro_box img').width();
+var limit_img_box=function(){
+	var img_h=$('.img_box').width();
 	$('.img_box').css("height",img_h+"px");
+}
+limit_img_box();
+
+$(window).resize(function(){
+	limit_img_box();
 })
 /*结束！设置列表模板的高度*/
 
@@ -360,6 +363,15 @@ $(function() {
 							'</a></span><span class="con"><a class="t" href="' + com_link + '&id=' + y.id + '">' + y.id+y.name + '</a><b>￥'+ y.price +'&nbsp;元</b><del>￥' + y.oprice + '</del></span></div></div>';
 						});
 						$('#m_list').append(_tmp_html); 
+						
+							
+						/*开始！设置列表模板的高度*/
+							
+						limit_img_box();
+					
+						/*结束！设置列表模板的高度*/
+				
+						
 					}
 				});
 			}
