@@ -1,0 +1,79 @@
+<layout name="common/html" />
+
+<div class="container">
+
+	<div class="Public-content clearfix">
+		
+		<div class="login_title">
+			<h3 class="Public-h1">登陆</h3>
+		</div>
+		
+		<div class="Public-box clearfix" style="min-height:450px;">
+			
+			<FORM style="min-width:600px;" class=login method=post action=index.php?m=Users&amp;a=checklogin>
+			
+				<TABLE height=320 align="center" cellspacing="15">
+					<TBODY>
+						<TR>
+							<TD width=115 rowspan="6">&nbsp;</TD>
+							<TD width=413 height="21">&nbsp;</TD>
+							<TD rowSpan=6 width=258>
+								<IMG alt="" src="./tpl/Home/abiza/common/images/erwei_big.jpg" width=200 height=200 >
+							</TD>
+							<TD rowSpan=6 width=99>&nbsp;</TD>
+						</TR>
+						<TR>
+							<TD height="56">
+								用户名&nbsp;&nbsp;
+								<input class="text" type="text" name="username" />
+							</TD>
+						</TR>
+						<TR>
+							<TD height="56">
+								密　码&nbsp;&nbsp;
+								<input class="text" type="password" name="password" />
+							</TD>
+						</TR>
+						<TR>
+							<TD height="36">
+								<P>
+									<input name="submit" type="submit" class="submit sub" value="登  录" style="padding:6px 50px;margin-left:55px;"  />
+								</P>
+							</TD>
+						</TR>
+						<TR>
+							<TD height="100" class="table_td">
+								<p>
+									测试账号：<font style="color:#ff0000">itcocoa</font> ； 密码：<font style="color:#ff0000">itcocoa</font> ；
+								</p>
+                                <p>
+									帐号审核：
+								</p>
+								<p>
+									自助审核方法：关注右侧官方微信号
+									（右侧扫一扫）
+								</p>
+								<p>
+									在微信中输入：审核+注册的用户名（不含+号）如：审核weixin
+								</p>
+								<p>
+									人工审核方法：客服QQ：{ZF::C('site_qq')}，联系审核
+								</p>
+								<p>
+									<a href="{ZF::U('mlogin')}">手机版后台登录</a> 
+								</p>
+							</TD>
+						</TR>
+					</TBODY>
+				</TABLE>
+				
+				<INPUT value=3e9fde7441cc55bf46afe7f8361af205_c700381a595ea906f05ae5636574d102 type=hidden name=__hash__>
+				<input type="hidden" name="__hash__" value="3e9fde7441cc55bf46afe7f8361af205_fdaa3abcec1d9c172fb1560e9236a331"/>
+				</p>
+			</FORM>
+							
+		</div>
+		
+	</div>
+
+</div>
