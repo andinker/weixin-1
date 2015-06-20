@@ -73,7 +73,8 @@
 		//设置左边导航的位置移动
 		 $("#left_cla li").click(function(){
 		 	var menu_left_position=($(this).index())*40;
-		 	$('#left_cla').scrollTop(menu_left_position); 
+
+		 	$('#left_cla').animate({scrollTop:menu_left_position},"slow"); 
 		 });
 		 
 		 
