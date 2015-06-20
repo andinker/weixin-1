@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="{ZF::RES}/css/flickity.min.css"/>
 <script type="text/javascript" src="{ZF::RES}/js/flickity.pkgd.min.js"></script>
 <script type="text/javascript" src="{ZF::RES}/js/setsize.js"></script>
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
 <script>
 	$(function(){
 		$('.gallery').LimitSize();
@@ -193,8 +195,9 @@ a,a:hover{text-decoration: none;}
 //.navbar-nav>li{padding-top:3px; }
 //.navbar-nav>li:hover{background: #d12435;}
 .dropdown-menu>li>a:hover{background: none;color:white;}
-ul.dropdown-menu {background: rgba(0,0,0,.7);box-shadow: none;border-radius:0;}
-ul.dropdown-menu >li >a{color:#9a9a9a;}
+ul.dropdown-menu {background: rgba(0,0,0,.7);box-shadow: none;border-radius:0;margin:0;padding:0}
+ul.dropdown-menu li{}
+ul.dropdown-menu >li >a{color:#9a9a9a;padding-top:5px;padding-bottom: 5px}
 .navbar-nav>li>.dropdown-menu{margin-top:1px;}
 //.dropdown-toggle {background: white!important;}
 .navbar-nav>li>a{padding-left:10px;padding-right: 10px;}
