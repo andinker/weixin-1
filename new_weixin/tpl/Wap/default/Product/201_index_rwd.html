@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <title>{ZF:$metaTitle}</title>
-<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
 <meta name="format-detection" content="telephone=no">
@@ -624,16 +624,22 @@ $(document).ready(function(){
 	})
 	
 	var control_head=function(){
-
-		$("img").load(function(){
-			
 		
+		var control_head_check=function(){
 			var hea_h=$('#get_h').height();
 			$('.dropdown-toggle').css("height",hea_h+"px");
 			$('.dropdown-toggle').css("line-height",hea_h+"px");
 			
 			var w_h=$(window).height();
 			$('.dropdown-menu').css("height",w_h-hea_h+1+"px");
+		}
+		
+		control_head_check();
+		
+		$("img").load(function(){
+			
+			control_head_check();
+			
 		
 		})
 		

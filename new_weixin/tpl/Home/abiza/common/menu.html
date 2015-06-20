@@ -1,0 +1,85 @@
+<div class="menu_top">
+	<div class="container">
+		<ul>
+			<if condition="!isset($_SESSION['uid'])">
+				<li><a href="{ZF::U('Index/login')}"><span class="glyphicon glyphicon-pencil" style="font-size: 10px;padding-right:5px;"></span>登录</a></li>
+				<li style="border-right:1px solid #3a3a3a;"><a href="{ZF::U('Index/reg')}"><span class="glyphicon glyphicon-off"style="font-size: 10px;padding-right:5px;"></span>注册</a></li>
+			<else/>
+				<li><a href="{ZF::U('User/Index/index')}"><span class="glyphicon glyphicon-pencil" style="font-size: 10px;padding-right:5px;"></span>管理中心</a></li>
+				<li style="border-right:1px solid #3a3a3a;"><a href="/#" onClick="Javascript:window.open('{ZF::U('System/Admin/logout')}','_blank')" ><span class="glyphicon glyphicon-off"style="font-size: 10px;padding-right:5px;"></span>退出</a></li>
+			</if>
+		</ul>
+	</div>
+</div>
+<div class="menu">
+	<div class="container">
+		<nav class="navbar navbar-default" style="background: none;border: none;margin-bottom: 0;">
+		  <div class="container-fluid" style="padding-right:0;">
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="margin:15px;margin-left: 0;">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="{ZF::C('site_url')}" style="padding:0;height:auto;">
+					<!--  <h3 style="color: #d12435;font-weight:600;font-family: britannic;margin-top:20px;/*padding-left: 17px;*/margin-bottom: 0;">
+						<!--  Abiza<span style="padding-left: 5px;color: #9a9a9a;font-size: 20px;">亚商圈</span> -->
+						<!--<span style="padding-left: 5px;font-size: 30px;">亚商圈</span>
+						<span style="  font-family: Arial;padding-left: 5px;color: #ddd;font-size: 18px;">ASIA BUSINESS</span>
+					</h3>-->
+					<!--  
+					<h3 style="color: #d12435;font-weight:600;margin-top:15px;/*padding-left: 17px;*/margin-bottom: 0;">
+						<div style="padding-left: 5px;font-size: 40px;font-family:'华文行楷';color:#0c0b0b;display:inline-block;float:left;">亚商圈</div>
+						<div style="font-family: Arial;padding-left: 15px;color: #ddd;font-size: 18px;color:#9d9c9c;display:inline-block;padding-top:3px;">
+							<span style="font-weight: 700">A.B.A</span><br>
+							<span style="font-size:9px;font-family: Arial;  font-weight: 100;">ASIA SKY BUSINESS ASSOCIATION</span>
+						</div>
+					</h3>
+					-->
+						<img border="0" src="{ZF::RES}/images/logo.png"/>
+					
+					<!-- 
+					<h5 style="color:#9a9a9a;font-weight: 300;padding-left: 30px;  font-family:britannic;font-size: 16px;margin-top:5px;">www.abiza.cn</h5>
+			 		 -->
+			 </a>
+		    </div>
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-right:0;">
+		      <ul class="nav navbar-nav" style="float:right;">
+		        <li>
+		        	<div style="height:3px;width: 100%;">
+		        		<div class="hover_animate" style="width:0%;background: #d12435;height:3px;margin:0 auto;"></div>
+		        	</div>
+		        	<a href="{ZF::C('site_url')}" /* style="background: white;*/">首页 </a>
+		        </li>
+		        <li class="dropdown">
+		          <div style="height:3px;width: 100%;">
+		        		<div class="hover_animate" style="width:0%;background: #d12435;height:3px;margin:0 auto;"></div>
+		          </div>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">关于我们 <span class="glyphicon glyphicon-menu-down" style="float: right;padding-top: 3px;font-size: 8px;padding-left: 5px;"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="{ZF::U('Home/Index/about')}">关于我们</a></li>
+		            <li><a href="#">菜单一</a></li>
+		          </ul>
+		        </li>
+		        <!-- <li><a href="{ZF::U('Home/Index/about')}" >关于我们</a></li> -->
+		        <li class="dropdown">
+		          <div style="height:3px;width: 100%;">
+		        		<div class="hover_animate" style="width:0%;background: #d12435;height:3px;margin:0 auto;"></div>
+		          </div>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">帮助中心 <span class="glyphicon glyphicon-menu-down" style="float: right;padding-top: 3px;font-size: 8px;padding-left: 5px;"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="#">菜单一</a></li>
+		            <li><a href="#">菜单一</a></li>
+		            <li><a href="#">菜单一</a></li>
+		            <li><a href="#">菜单一</a></li>
+		            <li><a href="#">菜单一</a></li>
+		          </ul>
+		        </li>
+		        <!--  <li <eq name="ACTION_NAME" value="help">class="menuon"</eq>><a href="{ZF::U('Home/Index/help')}">帮助中心</a></li>-->
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+	</div>
+</div> 
