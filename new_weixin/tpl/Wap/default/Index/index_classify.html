@@ -7,7 +7,7 @@
 <script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script> 
 <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="{ZF::STATICS}/SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+<script src="{ZF::STATICS}/SpryAssets/Change_plugin.js" type="text/javascript"></script>
 <script src="http://cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="http://cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.min.css">
 
@@ -31,19 +31,54 @@
 .ui-state-default{font-weight: normal;color:#333;border:1px solid #e0e0e0;}
 .ui-state-active{font-weight: bold;border:1px solid #e0e0e0;}
 .ui-widget-content{border:1px solid #e0e0e0;}
+.menu_hide{display: none;}
+.menu_active{background:white;}
+
+
+
+
+
 </style>
 
  </head>
 <script language="JavaScript">
-function keyLogin(){
- if (event.keyCode==13)
-   document.getElementById("basic-addon2").click(); 
-}
-
-/*$(function() {
-   $(".TabbedPanelsContent #accordion").accordion();
-});*/
-  </script>
+	//搜索框按钮按确定可跳转
+	function keyLogin(){
+	 if (event.keyCode==13)
+	   document.getElementById("basic-addon2").click(); 
+	}
+	//导入可选择菜单控件
+	$(function(){
+		$('.menu_select').MenuSelect();
+	})
+	
+	 $(document).ready(function(){
+		 //选择菜单
+		 $("#left_cla li:first-child").addClass("menu_active");
+		 $(".menu_content_detail:first-child").removeClass("menu_hide");
+		 
+		 //设置图片高度与宽度一样
+		 var set_img_h=function(){
+			 var img_h=$(".img").width();
+			 $(".img").css("height",img_h+"px");
+			 $(".img").css("line-height",img_h+"px");
+		 }
+		 
+		 set_img_h();
+		 
+		 $(window).resize(function(){
+			 set_img_h();
+		 });
+		 
+		//设置左边导航的位置移动
+		 $("#left_cla li").click(function(){
+		 	var menu_left_position=($(this).index())*40;
+		 	$('#left_cla').scrollTop(menu_left_position); 
+		 });
+		 
+		 
+	 })
+</script>
 <body onkeydown="keyLogin();">
 </head>
 <body>
@@ -62,143 +97,86 @@ function keyLogin(){
 		</div>
 	</div>
 	
-
-	<div id="TabbedPanels1" class="content">
+	
+	<div class="menu_select">
+	
+		<div class="menu_title">
+			<ul style="z-index: 0;" id="left_cla">
+				<volist name="info" id="vo">
+					  <li style="cursor: pointer;">{ZF:$vo.name}</li>
+				</volist>
+			</ul>
+		</div>
 		
-		<ul class="TabbedPanelsTabGroup" style="z-index: 0;" id="left_cla">
-			<volist name="info" id="vo">
-				  <li class="TabbedPanelsTab" tabindex="0" style="cursor: pointer;">{ZF:$vo.name}</li>
-			</volist>
-		</ul>
-		 
-		  
-		  
-		<div class="TabbedPanelsContentGroup">
-				 
-		
+		<div class="menu_content" style="margin-top:54px;margin-left:90px;overflow: hidden;">
+	
 			<volist name="info" id="info_item">
+			
+				<div class="menu_content_detail menu_hide">
 				
-					<div class="TabbedPanelsContent" id="{ZF:$info_item.id}">
-					<!-- 
-						<div id="accordion">
-							<volist name="info_item['sub']" id="vo">
-									  <h3 style="margin-top:4px;">{ZF:$vo.name}</h3>
-									  <div id="acc_content">
-									  	<notempty name="vo['sub']">
-									   		<volist name="vo['sub']" id="third">
-													<div class="col-xs-4 third_cla">
-														<if condition="$third['url'] eq ''">
-																<if condition="$third['img'] eq ''">
-																	<div style="width: 100%;height:100px;text-align: center;line-height: 100px;border:1px solid #ccc;color:#999;overflow: hidden;" class="img">暂无图片</div>
-																<else/>
-																	<img src="{ZF:$third.img}" class="img">
-																</if>
-																	<div class="cla_name">{ZF:$third.name}	</div>
-														<else/>
-															<a href="{ZF:$third.url}" style="text-decoration: none;color:black;">
-																<if condition="$third['img'] eq ''">
-																	<div style="width: 100%;height:100px;text-align: center;line-height: 100px;border:1px solid #ccc;color:#999;" class="img">暂无图片</div>
-																<else/>
-																	<img src="{ZF:$third.img}" class="img">
-																</if>
-																	<div class="cla_name">{ZF:$third.name}	</div>
-															</a>
-														</if>
-													</div>
-											</volist>
-											<else/>
-												<div class="col-xs-12" style="text-align: center;">该二级分类下暂无子分类</div>
-									   </notempty> 
-									  </div>
-						  </volist>
-						</div>	
-						-->				
+					<notempty name="info_item['sub']">
 						<volist name="info_item['sub']" id="vo">
-
 						
-								<div class="col-xs-12 second_cla" style="text-align: left;margin-top:5px;">
-									<div class="cla_name" id="cla_name" style="padding-left: 5px;"><a href="{ZF::U('Wap/Index/goods',array('token'=>$token,'catid'=>$vo['id'],'wecha_id'=>$wecha_id))}" style="color:#333;text-decoration: none;">{ZF:$vo.name}</a></div>
-									<notempty name="vo['sub']">
-										<volist name="vo['sub']" id="third">
-												<div class="col-xs-4 third_cla">
-													<if condition="$third['url'] eq ''">
-													    <a href="{ZF::U('Wap/Index/goods',array('token'=>$token,'wecha_id'=>$wecha_id,'catid'=>$third['id']))}" style="text-decoration: none;color:black;">
-															<if condition="$third['img'] eq ''">
-																<div style="width: 100%;height:100px;text-align: center;line-height: 100px;border:1px solid #ccc;color:#999;" class="img">暂无图片</div>
-															<else/>
-																<img src="{ZF:$third.img}" class="img">
-															</if>
-																<div class="cla_name">{ZF:$third.name}	</div>
-														</a>
-													<else/>
-														<a href="{ZF:$third.url}" style="text-decoration: none;color:black;">
-															<if condition="$third['img'] eq ''">
-																<div style="width: 100%;height:100px;text-align: center;line-height: 100px;border:1px solid #ccc;color:#999;" class="img">暂无图片</div>
-															<else/>
-																<img src="{ZF:$third.img}" class="img">
-															</if>
-																<div class="cla_name">{ZF:$third.name}	</div>
-														</a>
-													</if>
-												</div>
-										</volist>
-									<else/>
-											<div class="col-xs-12" style="text-align: center;border:1px solid #eee;line-height: 40px;margin-top:10px;">该二级分类下暂无子分类</div>
-									</notempty>
+							<div class="col-xs-12 second_cla " style="text-align: left;margin-top:0;">
+							
+								<div class="cla_name" id="cla_name" style="padding-left: 5px;">
+									<a href="{ZF::U('Wap/Index/goods',array('token'=>$token,'catid'=>$vo['id'],'wecha_id'=>$wecha_id))}" style="color:#333;text-decoration: none;">
+										{ZF:$vo.name}
+									</a>
 								</div>
-
-						</volist>
-						 
-						
+								
+								<notempty name="vo['sub']">
+								
+									<volist name="vo['sub']" id="third">
+											<div class="col-xs-4 third_cla">
+												<if condition="$third['url'] eq ''">
+												    <a href="{ZF::U('Wap/Index/goods',array('token'=>$token,'wecha_id'=>$wecha_id,'catid'=>$third['id']))}" style="text-decoration: none;color:black;">
+														<if condition="$third['img'] eq ''">
+															<div style="width: 100%;height:100px;text-align: center;line-height: 100px;border:1px solid #ccc;color:#999;" class="img">暂无图片</div>
+														<else/>
+															<img src="{ZF:$third.img}" class="img">
+														</if>
+															<div class="cla_name">{ZF:$third.name}	</div>
+													</a>
+												<else/>
+													<a href="{ZF:$third.url}" style="text-decoration: none;color:black;">
+														<if condition="$third['img'] eq ''">
+															<div style="width: 100%;height:100px;text-align: center;line-height: 100px;border:1px solid #ccc;color:#999;" class="img">暂无图片</div>
+														<else/>
+															<img src="{ZF:$third.img}" class="img">
+														</if>
+															<div class="cla_name">{ZF:$third.name}	</div>
+													</a>
+												</if>
+											</div>
+									</volist>
 									
-					</div>
-					
-			</volist>
+								<else/>
+								
+									<div class="col-xs-12" style="text-align: center;border:1px solid #eee;line-height: 40px;margin-top:10px;">该二级分类下暂无子分类</div>
+								
+								</notempty>
+								
+							</div>
+		
+						</volist>
+					<else/>
+						<div style="padding:0 10px;">
+							<div class="col-xs-12" style="text-align: center;border:1px solid #eee;line-height: 40px;margin-top:10px;">该分类下暂无子分类</div>
+						</div>
+					</notempty>
 				
-		  </div>
-		  
-	</div>
+				</div>
+				
+			</volist>
+		
+		</div>
+		
+	</div>	
+	
 	
 </div>
 
-<script type="text/javascript">
-var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
-</script>
-
-<script type="text/javascript">
-var img_h=$(".img").width();
-$(".img").css("height",img_h+"px");
-$(".img").css("line-height",img_h+"px");
-
-$(window).resize(function(){
-	var img_h=$(".img").width();
-	$(".img").css("height",img_h+"px");
-	$(".img").css("line-height",img_h+"px");
-	});
-
-</script> 
-
-<script type="text/javascript">
-var h=$('#left_cla').height();
-var h2=h-54;
-$('.TabbedPanelsContentGroup').css("height",h2+"px");
-$('.content').css("height",h2+"px");
-$('#left_cla').css("height",h2+"px");
-$(window).resize(function(){
-	var h=$('#left_cla').height();
-	var h2=h-54;
-	$('.TabbedPanelsContentGroup').css("height",h2+"px");
-	$('.content').css("height",h2+"px");	
-	
-})
-
-//设置左边导航的位置移动
-/*$("#left_cla li").click(function(){
-	var menu_left_position=($(this).index())*40;
-	$('#left_cla').scrollTop(-menu_left_position); 
-});
-*/
-</script>
 <!-- pre>
 <php>
 print_r($info); 
