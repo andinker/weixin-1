@@ -121,7 +121,7 @@ afterBlur: function(){this.sync();}
 					<if condition="($productDetailData neq null) ">
 					<tr><th width="130">产品外观</th><th width="130">产品规格</th><th width="130">价格</th><th width="130">会员价</th><th width="130">数量</th></tr>
 			        <volist name="productDetailData" id="detail">
-			           <input type="hidden" class="editselect" value="{ZF:$detail.id},{ZF:$detail.color},{ZF:$detail.colorName},{ZF:$detail.format},{ZF:$detail.formatName},{ZF:$detail.price},{ZF:$detail.num}"/>
+			           <input type="hidden" class="editselect" value="{ZF:$detail.id},{ZF:$detail.color},{ZF:$detail.colorName},{ZF:$detail.format},{ZF:$detail.formatName},{ZF:$detail.price},{ZF:$detail.vprice},{ZF:$detail.num}"/>
 				       <tr class="tnorms">
 					       <td width="130">{ZF:$detail.colorName}<input type="hidden" value="{ZF:$detail.color}"/></td>
 					       <td width="130">{ZF:$detail.formatName}<input type="hidden" value="{ZF:$detail.format}"/></td>
