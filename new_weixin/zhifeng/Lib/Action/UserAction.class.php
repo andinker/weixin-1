@@ -98,7 +98,7 @@ class UserAction extends BaseAction{
 	
 		$mark = '';
 		for ($i=0;$i<$level;$i++){
-			$mark = '- - - - '.$mark;
+			$mark = '　　'.$mark;
 		}
 	
 	

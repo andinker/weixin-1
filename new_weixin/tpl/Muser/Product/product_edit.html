@@ -66,20 +66,6 @@
 				</if>
 			</div>
 		
-			<div>
-			<div class="attr_name"><span class="import_icon">*</span>社区类目：</div>
-			<div class="attr_data">
-					<select name="community_catid" id="community_catid">
-					    <volist name="wz_cates" id="vo">
-					      <option style="text-align: left;" value="{ZF:$vo.id},{ZF:$vo.name}"<php> if ($set['community_catid'] == $vo['id']) echo ' selected="selected"';</php>>{ZF:$vo.name}</option>
-					    </volist>
-					</select>
-					<script type="text/javascript">
-					  $(function() {
-					    $( "#community_catid" ).selectmenu();
-					  });
-					</script>
-			</div>
 			
 			<div>
 				<div class="attr_name"><span class="import_icon">*</span>社区类目：</div>
@@ -88,7 +74,7 @@
 						    <volist name="wz_cates" id="vo">
 						      <option value="{ZF:$vo.id},{ZF:$vo.name}"<php> if ($set['community_catid'] == $vo['id']) echo ' selected="selected"';</php>>{ZF:$vo.name}</option>
 						    </volist>
-						</select>
+					</select>
 				</div>
 				<div>
 					<div class="select_msg">
