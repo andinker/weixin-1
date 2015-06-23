@@ -401,15 +401,26 @@ window.ICON = function () {
 				<span style="padding-left:5px;"><img src="tpl/Wap/default/common/Index/xq3/search.png" width="15px" height="15px" ></span>
 		  </span>
 		  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" style="border-left:none;border:none;box-shadow: none;" placeholder="请输入您要搜索的商品" aria-describedby="basic-addon2" id="sear_con">
-		  <span class="input-group-addon" id="basic-addon2" style="cursor: pointer;margin-left:20px;border:none;border-radius:0 6px 6px 0;border-shadow:1px 1px #ddd;background:#80bd0c;color:white;"  onclick="location.href='/index.php?&g=Wap&m=Product&a=products&token=qbyszj1426650408&wecha_id=&keyword='+document.getElementById('sear_con').value ;">搜索</span>
+		  <span class="input-group-addon search_btn_action" id="basic-addon2" style="cursor: pointer;margin-left:20px;border:none;border-radius:0 6px 6px 0;border-shadow:1px 1px #ddd;background:#80bd0c;color:white;">搜索</span>
 		</div>
 	</div>
 	
 </div>
 
-
-
+<?php
+$token = $_GET['token'];
+?>
 <script type="text/javascript">
+
+//搜索
+var searchfun=function(){
+	
+	var token= '<?php echo $token; ?>';
+	location.href='/index.php?&g=Wap&m=Product&a=products&token='+token+'&keyword='+document.getElementById('sear_con').value ;
+}
+
+$('.search_btn_action').bind("click",searchfun);
+
 /*
 var menu = $(".dropdown-menu");
 
