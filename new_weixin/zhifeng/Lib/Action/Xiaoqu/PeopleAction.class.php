@@ -10,19 +10,31 @@ class PeopleAction extends XiaoquAction {
 		//检查提交 
 		$error = '';
 		if (IS_POST){
-			$db = D('People');
-			if ($rs = $db->create()){
-				if ($id = $db->add()){
-					//自动登录
-					//$error = $error.''.$id;
-					// 发送帐号信息到手机短信
-					$this->sendSMS(array($_POST['phone']),'您刚刚完成了注册，你的登录密码是'.$_POST['password'].'，请妥善保管。', $err);
-					$this->login($id);
-				}else{
-					$error = $db->getDbError();
-				}
+			
+			$code = session('code');
+			$post_code = trim($_POST['code']);
+			
+			if ( $code != $_POST['code'] || empty($post_code) ){
+				
+				$error = '手机验证码不正确';
+				
 			}else{
-				$error = $db->getError();
+			
+				$db = D('People');
+				if ($rs = $db->create()){
+					if ($id = $db->add()){
+						//自动登录
+						//$error = $error.''.$id;
+						// 发送帐号信息到手机短信
+						$this->sendSMS(array($_POST['phone']),'您刚刚完成了注册，你的登录密码是'.$_POST['password'].'，请妥善保管。', $err);
+						$this->login($id);
+					}else{
+						$error = $db->getDbError();
+					}
+				}else{
+					$error = $db->getError();
+				}
+			
 			}
 		}
 		

@@ -19,7 +19,9 @@ class PeopleModel extends Model{
 	);
 	
 	public function getName(){
-		return '手机用户'.$_POST['phone'];
+		$name = trim($_POST['name']);
+		if (empty($name)) return '手机用户'.mt_rand(100000,999999);
+		return $name; 
 	}
 	
 	Public function getdatatime(){

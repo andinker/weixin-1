@@ -15,13 +15,17 @@
 <form method="post"> 
 	<div class="container" id="page_box">
 		<div class="page">
+		    <div class="page-msg">
+				<div class="col-xs-3 page-msg-name">昵　称</div>
+				<div class="col-xs-9 page-msg_input"><input type="text" name="name" id="name" placeholder="给自己起个名字吧" style="border:none;width:100%;height: 42px;"></div>
+			</div>
 			<div class="page-msg">
 				<div class="col-xs-3 page-msg-name">手机号</div>
-				<div class="col-xs-9 page-msg_input"><input type="tel" name="phone" id="phone" placeholder="请用手机号码登录" style="border:none;width:100%;height: 42px;"></div>
+				<div class="col-xs-9 page-msg_input"><input type="tel" name="phone" id="phone" placeholder="手机号码将用于登录" style="border:none;width:100%;height: 42px;"></div>
 			</div>
 			<div class="page-msg">
 				<div class="col-xs-3 page-msg-name">验证码</div>
-				<div class="col-xs-5 page-msg_input"><input type="text" name="code" onchange="checkcode(this.value);" placeholder="请输入验证码" height="40px" style="border:none;width:100%;height: 42px;"></div>
+				<div class="col-xs-5 page-msg_input"><input type="text" name="code" onchange="checkcode(this.value);" placeholder="请输入手机收到的验证码 ->" height="40px" style="border:none;width:100%;height: 42px;"></div>
 				<div class="col-xs-4" style="line-height: 42px;padding-left:5px;padding-right: 0px;text-align: right;background: white;height:42px;overflow: hidden;"><input type="button" id="getcode_btn" value="获取验证码" style="color:white;font-size:14px;height:42px;border: none;background: #ea9093;padding-left:5px;padding-right: 5px;text-align: center;"></div>
 			</div>
 			<!--  <div class="alert_msg">
