@@ -562,6 +562,9 @@ class IndexAction extends WapAction{
 		$this->display($tpldata['tplcontentname']);
 	}
 	
+	/**
+	 * 保存图文评论
+	 */
 	public function save_comment(){ 
 		
 		$this->checked_login();
@@ -592,6 +595,44 @@ class IndexAction extends WapAction{
 			}else{
 				$this->error('发表评论失败！');
 			}
+		}
+		
+	}
+	
+	/**
+	 * 删除图文评论
+	 */
+	public function delete_comment(){
+		
+		//$this->checked_login();
+		
+		$comment_id = intval($_GET['id']);
+		$people = session('people');
+		
+		if (empty($comment_id)) {
+			$this->error('无效的参数');
+		}
+
+		
+		$db = M('Img_comment');
+		$comment = $db->where(array('id'=>$comment_id))->find();
+		
+
+		if (!empty($comment)){
+			print_r($comment);echo '----------------------------';
+			if ( $people['id'] != $comment['uid'] ) {
+				$this->error('您没有权限删除该数据！');
+			}else{
+				//删除评论
+				$status = $db->where(array('id'=>$comment_id))->delete();
+				echo $db->getLastSql();exit();
+				/*
+				 if ($status ==1 ) $this->success('评论删除成功！');
+				 else $this->error('评论删除失败！');*/
+			}
+		}else{
+			print_r($comment);echo '=======================';
+			$this->error('找不到该数据');
 		}
 		
 	}

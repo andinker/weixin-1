@@ -53,8 +53,10 @@ a:hover{text-decoration: none;}
 </style>
 
 <script type="text/javascript">
-$(document).ready(function($){
 
+
+$(document).ready(function($){
+	$('#pageid').val(1);console.log($('#pageid').val());
 	// 搜索
 	var myserchfun = function(){
 		
@@ -82,7 +84,7 @@ $(document).ready(function($){
 			
 			//装配异步加载 url
 			
-			var ajax_url = location.href+"&json=yes&current_page="+(parseInt($('#pageid').val())+1);
+			var ajax_url = location.href+"&json=yes&current_page="+(parseInt($('#pageid').val())+1); console.log(ajax_url);
 			$.getJSON(ajax_url, function(data){
 				
 				if (data == null){
