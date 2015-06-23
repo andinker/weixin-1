@@ -416,7 +416,7 @@ $token = $_GET['token'];
 var searchfun=function(){
 	
 	var token= '<?php echo $token; ?>';
-	location.href='/index.php?&g=Wap&m=Product&a=products&token='+token+'&keyword='+document.getElementById('sear_con').value ;
+	location.href='/index.php?&g=Wap&m=Index&a=goods&token='+token+'&keyword='+document.getElementById('sear_con').value ;
 }
 
 $('.search_btn_action').bind("click",searchfun);
