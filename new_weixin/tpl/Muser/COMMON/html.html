@@ -8,7 +8,7 @@
 <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 <script src="http://www.itcocoa.com/PhonePhotoUpload/PhonePhotoUpload.js"></script>
 <style type="text/css">
-body{margin:0;padding:0;font-family:'微软雅黑';font-size: 16px;max-width:800px;margin:0 auto;}
+body{margin:0;padding:0;font-family:'微软雅黑';font-size: 16px;max-width:800px;margin:0 auto;background: #f9f9f9;}
 li{list-style:none;}
 a{text-decoration: none;}
 #think_page_trace_open{display:none;}
@@ -29,7 +29,7 @@ a{text-decoration: none;}
 .menu_manage li{padding-left: 15px;}
 .menu_manage li a{padding-right:15px;color:white;border-right:1px solid #eee;}
 .menu_manage li:last-child a{border:none;}
-.present_name{padding:10px;}
+.present_name{padding:10px;text-align: center;font-size: 18px;margin-top:15px; }
 .present_name span{color:orange;}
 .menu_all ul,.menu_manage ul{padding:0;margin:0;overflow: hidden;}
 .menu_all ul{padding:0 10px;}
@@ -40,10 +40,14 @@ a{text-decoration: none;}
 .menu_all ul li:last-child{text-align: right;}
 
 .wxusers_sel{margin:0;padding:0;}
-.wxusers_sel li{line-height: 30px;border-bottom: 1px solid #eee;padding:10px;}
-.wxusers_sel .select_name{margin:10px;}
+.wxusers_sel li{line-height: 60px;padding:0 10px;overflow: hidden;}
+.wxusers_sel .select_name{margin:0 10px;line-height: 60px;}
 .wxusers_sel li a{color:#333;}
-.wxusers_sel li a .select_to_manage{float:right;border:1px solid #ccc;padding:0 10px;border-radius:5px;background:#5ba607;color:white;}
+.wxusers_sel li a .select_to_manage{float:right;line-height: 60px;font-size: 12px;color:#d3d3d7;}
+.wxuser_name{border-bottom:1px solid #eee;padding-right: 0;}
+.wxusers_sel li:last-child .wxuser_name{border:none;}
+.wxusers_sel li:last-child{border-bottom:2px solid #eee;}
+.wxusers_sel li:first-child{border-top:2px solid #eee;}
 
 .manage_classify{line-height: 40px;border-bottom: 1px solid #eee;text-align:center;}
 .point_out{color:orange;padding-left:5px;}
@@ -58,7 +62,7 @@ a{text-decoration: none;}
 .table_tr th{text-align: center;}
 
 .wxname_selected{overflow: hidden;height:50px;}
-.wxname_all{position:absolute;width:32%;text-align: center;display:none;background:rgba(0,0,0,0.7);}
+.wxname_all{position:absolute;width:32%;text-align: center;display:none;background:rgba(0,0,0,0.7);z-index:10;}
 .wxname_one{border-bottom:1px solid #ccc;}
 .wxname_selected:hover,.wxname_one:hover{background: #28b779;}
 .wxname_one:last-child{border:none;}
@@ -109,7 +113,9 @@ input[type=checkbox]{margin: 0;}
 
 .page_title{line-height: 30px;border-bottom:1px solid #eee;text-align: center;}
 .attr_manage{display: inline-block;margin:0 2px;}
-.pre_classify{color:#666;}
+.attr_manage_btn{padding: 0 10px;border-radius: 5px;background-color: #37c3a9;margin:5px;width:40%;text-align: center;font-size: 15px;line-height: 30px;}
+.attr_manage_btn a{color:white!important;}
+.pre_classify{color:#666;text-align: center;}
 .classify_table{width:100%;}
 .classify_table tr td div a{color:#333;} 
 .classify_table tr th{border-right: 1px solid #eee;}
@@ -137,6 +143,10 @@ input[type=checkbox]{margin: 0;}
 .search_btn{height:30px;border: none;border:1px solid #ccc;border-left: none;border-radius:0 3px 3px 0;width:20%;float:right;background:#ccc;color:#333;line-height:26px;  }
 
 .imageSelector div:FIRST-CHILD {max-width: 780px;}
+
+.attr_all{position:absolute;background: rgba(0,0,0,.7);}
+.attr_all div a{color:white!important;}
+//.attr_selected:hover{background:#28b779;}
 
 </style>
 <script type="text/javascript">
@@ -203,6 +213,28 @@ input[type=checkbox]{margin: 0;}
 		var win_he=$(window).height();
 		$('body').css("min-height",win_he-10+"px");
 		
+		
+		var attr_select_fun=function(){
+			$(".attr_selected").bind("click", function(){
+				$(this).next().toggle();
+				if($(this).next().css("display")=="block"){
+					$(this).css("background","#37c3a9");
+				}else{
+					$(this).css("background","#f9f9f9");
+				}
+			})
+			
+		}
+		attr_select_fun();
+		
+		var control_w=function(){
+			var cla_table_middle_w=$('.classify_first_td').width();
+			$('.attr_all').css("width",cla_table_middle_w+"px");
+		}
+		control_w();
+		$(window).resize(function(){
+			control_w();
+		})
 	})
 </script>
 

@@ -3,22 +3,39 @@
 
 
 <php>if(!$wecha['wxname']==""){</php>
+
 	<div class="present_name">您当前选择的公众号是：<span>{ZF:$wecha['wxname']}</span></div>
-<php>}</php>
+	<div style="font-size: 14px;color:#999;padding:15px;"><span><span style="color:orange;">注：</span>您可在顶部导航切换公众号进行管理，如需对当前公众号进行管理，可点击以上管理选项进行管理</span></div>
 	
+<php>}else{</php>
 
-<php>
+	<ul class="wxusers_sel">
+		<notempty name="wxusers">
+			<div style="background: #f9f9f9;"><div class="select_name">请选择您要管理的公众号：</div></div>
+			<div style="background: white;">
+				<volist name="wxusers" id="vo"> 
+					<li>
+						<a href="{ZF::U('Index/wxuser_login',array('id'=>$vo['id'],'token'=>$vo['token']))}">
+							<div class="col-xs-2" style="padding: 0;text-align: center;">
+								<img src="{ZF:$vo['headerpic']}" style="width:40px;height: 40px;">
+							</div>
+							<div class="col-xs-10 wxuser_name">
+								{ZF:$vo.wxname}
+								<span class="select_to_manage glyphicon glyphicon-menu-right"></span>
+							</div>
+						</a>
+					</li>
+				</volist>
+			</div>
+		</notempty>
+	</ul>
+	
+<php>}</php>
+<!--  
+<pre>
+ <php>
 //print_r($thisUser);
-//print_r($wecha);
+print_r($wecha);
 </php>
-
-<ul class="wxusers_sel">
-	<notempty name="wxusers">
-		<div class="select_name">请选择您要管理的公众号：</div>
-		<volist name="wxusers" id="vo"> 
-			<li><a href="{ZF::U('Index/wxuser_login',array('id'=>$vo['id'],'token'=>$vo['token']))}">{ZF:$vo.wxname}<span class="select_to_manage">进入管理</span></a></li>
-		</volist>
-	</notempty>
-</ul>
-
- 
+</pre>
+-->
