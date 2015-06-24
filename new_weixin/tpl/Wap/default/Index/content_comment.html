@@ -82,7 +82,7 @@ box-shadow:0px 0px 10px rgba(20%,20%,40%,0.2);
 	    <else/>
 			<volist name="comments" id="vo">
 			    <div class="content_comment_commentitem">
-			         <p class="content_comment_commentitem_title">「{ZF:$vo['name']}」 {ZF:$vo.createtime}<php>if ( !empty($people) && $people['id'] == $vo['uid']) {</php>&nbsp;<a style="color: red;" href="{ZF::U('delete_comment',array('id'=>$vo['id']))}">删除</a><php>}</php></p>
+			         <p class="content_comment_commentitem_title">「{ZF:$vo['name']}」 {ZF:$vo.createtime}<php>if ( !empty($people) && $people['id'] == $vo['uid']) {</php>&nbsp;<a style="color: red;" href="{ZF::U('delete_comment',array('id'=>$vo['id'],'wecha_id'=>$wecha_id,'token'=>$token,'re'=>urlencode($_SERVER['REQUEST_URI'])))}">删除</a><php>}</php></p>
 			         <p class="content_comment_commentitem_content">{ZF:$vo.content}</p>
 			    </div>
 			</volist>

@@ -604,7 +604,7 @@ class IndexAction extends WapAction{
 	 */
 	public function delete_comment(){
 		
-		//$this->checked_login();
+		$this->checked_login();
 		
 		$comment_id = intval($_GET['id']);
 		$people = session('people');
@@ -619,19 +619,18 @@ class IndexAction extends WapAction{
 		
 
 		if (!empty($comment)){
-			print_r($comment);echo '----------------------------';
+			
 			if ( $people['id'] != $comment['uid'] ) {
 				$this->error('您没有权限删除该数据！');
 			}else{
 				//删除评论
 				$status = $db->where(array('id'=>$comment_id))->delete();
-				echo $db->getLastSql();exit();
-				/*
-				 if ($status ==1 ) $this->success('评论删除成功！');
-				 else $this->error('评论删除失败！');*/
+
+				if ($status ==1 ) $this->success('评论删除成功！');
+				else $this->error('评论删除失败！');
+				
 			}
 		}else{
-			print_r($comment);echo '=======================';
 			$this->error('找不到该数据');
 		}
 		
