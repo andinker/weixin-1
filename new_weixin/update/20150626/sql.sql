@@ -1,0 +1,2 @@
+/* 添加微站模板edit_site1，此模板有2个自定义编辑区模块 */
+INSERT INTO `weixin_test`.`zfwx_tmpls` (`id`, `tplid`, `name`, `views`, `type`, `imgurl`, `info`, `attr`, `status`, `sort`) VALUES (NULL, 'edit_site1', '编辑型网站模板1', 'site_edit_mould', '1', 'edit_site1.png', '此模板由“网站内容编辑器”、“幻灯片播放区”以及“广告栏编辑区”三个部分组成，其中，“幻灯片编辑区”是在网站管理后台的“幻灯片设置”模块中设置，“网站内容编辑区”以及“广告栏编辑区”则是在后台“首页内容管理”模块中设置，“网站内容编辑区”是在“用户自定义图文内容”编辑器中编辑，而“广告栏编辑区”则是在“广告栏一”编辑器中编辑', 'edit_site', '1', '255')
