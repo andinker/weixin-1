@@ -4,46 +4,65 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>{ZF:$tpl['wxname']}</title>
 <base href="." />
-<meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no,inital-scale=1.0">
+<meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no,initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no">
-<link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/zf/wz.css" />
-</head>
-<body>   <!--背景音乐-->
 
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/zf/wz.css" />
+
+</head>
+
+<body>   
+
+<!--背景音乐-->
 <if condition="$homeInfo['animation'] neq '0'"><include file="Index:anStyle"/></if>
 <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
 
-	<div id="cate5">
-		<ul class="mainmenu">
-			<volist name="info" id="vo">
-			<li><a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url}</if>">
-				<div class="menubtn">
-					<div class="menumesg">
-						<div class="menuimg">
-							<div class="menuimg2">
-								<img src="{ZF:$vo.img}" />
+<div id="cate5">
+
+	<ul class="mainmenu">
+	
+		<volist name="info" id="vo">
+			<li>
+				<a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url}</if>">
+					<div class="menubtn">
+						<div class="menumesg">
+						
+							<div class="menuimg">
+								<div class="menuimg2">
+									<img src="{ZF:$vo.img}" style="width:100%;"/>
+								</div>
 							</div>
+							
+							<div class="menutitle">{ZF:$vo.name}</div>
+							
+							<div class="menutext">{ZF:$vo.info}</div>
+							
 						</div>
-						<div class="menutitle">{ZF:$vo.name}</div>
-						<div class="menutext">{ZF:$vo.info}</div>
 					</div>
-				</div>
-			</a></li>
-			</volist>   
-			<div class="clr"></div>
-		</ul>
-	</div>
+				</a>
+			</li>
+		</volist>  
+		 
+		<div class="clr"></div>
 		
-	<div class="copyright">
-		<if condition="$iscopyright eq 1">
-©{ZF:$homeInfo.copyright}
-<else/>
-©{ZF:$siteCopyright}
-</if>
-	</div>  <include file="Index:styleInclude"/><include file="$cateMenuFileName"/>
+	</ul>
+	
+</div>
+		
+<div class="copyright">
+	<if condition="$iscopyright eq 1">
+		©{ZF:$homeInfo.copyright}
+	<else/>
+		©{ZF:$siteCopyright}
+	</if>
+</div>  
+
+<include file="Index:styleInclude"/>
+<include file="$cateMenuFileName"/>
 <!-- share -->
 <include file="Index:share" /> 
+
 </body>
 </html>

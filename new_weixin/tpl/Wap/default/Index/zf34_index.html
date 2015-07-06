@@ -2,87 +2,137 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>{ZF:$tpl['wxname']}</title>
-<meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no,inital-scale=1.0">
+<meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no,initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no">
+<META name="GENERATOR" content="MSHTML 9.00.8112.16446">
+
 <link href="{ZF::RES}/Index/zf/34/w55.css" rel="stylesheet" type="text/css" />
 <link href="{ZF::RES}/Index/zf/34/wcommon.css" rel="stylesheet" type="text/css" />
 <link href="{ZF::RES}/Index/public/css/iscroll.css" rel="stylesheet" type="text/css" />
+
 <SCRIPT type=text/javascript src="{ZF::STATICS}/jquery.min.js"></SCRIPT>
 <SCRIPT type=text/javascript src="{ZF::RES}/Index/public/js/iscroll.js"></SCRIPT>
+
 <script type="text/javascript">
-            var myScroll;
-            function loaded() {
-                myScroll = new iScroll('wrapper', {
-                    snap: true,
-                    momentum: false,
-                    hScrollbar: false,
-                    onScrollEnd: function () {
-                        document.querySelector('#indicator > li.active').className = '';
-                        document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-                    }
-                });
+    var myScroll;
+    function loaded() {
+        myScroll = new iScroll('wrapper', {
+            snap: true,
+            momentum: false,
+            hScrollbar: false,
+            onScrollEnd: function () {
+                document.querySelector('#indicator > li.active').className = '';
+                document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
             }
-            document.addEventListener('DOMContentLoaded', loaded, false);
+        });
+    }
+    document.addEventListener('DOMContentLoaded', loaded, false);
 </script>
-<META name="GENERATOR" content="MSHTML 9.00.8112.16446"></HEAD>
+
+</HEAD>
+
 <BODY id="cate16">
-   <!--背景音乐-->
+
+<!--背景音乐-->
 <if condition="$homeInfo['animation'] neq '0'"><include file="Index:anStyle"/></if>
 <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
-<!---轮播------>
- <div class="mainbg">
-    <img src="<if condition="$homeInfo.homeurl neq false">{ZF:$homeInfo.homeurl}<else/>{ZF::RES}/images/themes/bg1.jpg</if> "/>
-        </div>
-<DIV class=clr></DIV></DIV><!-----底部菜单-------------------->
-<DIV id="scroll_nav" class="bottom_nav">
-<UL class="cateul">
-<volist name="info" id="vo">
-  <LI><A href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url}</if>">
-  <DIV class="menubtn">
-  <DIV class="menuimg"><IMG src="{ZF:$vo.img}"></DIV>
-  <DIV class="menutitle">{ZF:$vo.name}</DIV></DIV></A>
-  </LI>
-</volist> 
-  <DIV class="clr"></DIV><A class="pre" href="javascript:;"><IMG src="{ZF::RES}/images/themes/prev.png"></A><A 
-  class="next" href="javascript:;"><IMG 
-src="{ZF::RES}/images/themes/next.png"></A></UL></DIV>
-<SCRIPT>$(function(){
-		$(".pre").click(function(){
-			$(".cateul").animate({marginLeft:"0"});
-			})
-		$(".next").click(function(){
-			$(".cateul").animate({marginLeft:"-100%"});
-			})
-		})
-	</SCRIPT>
 
- <script>
-            var count = document.getElementById("thelist").getElementsByTagName("img").length;	
-            for(i=0;i<count;i++){
-                document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
-            }
-            document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
-            setInterval(function(){
-                myScroll.scrollToPage('next', 0,400,count);
-            },3500 );
-            window.onresize = function(){ 
-                for(i=0;i<count;i++){
-                    document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
-                }
-                document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
-            } 
-        </script>
-<div class="copyright">
-<if condition="$iscopyright eq 1">
-©{ZF:$homeInfo.copyright}
-<else/>
-©{ZF:$siteCopyright}
-</if>
+<!--背景图片-->
+<php>
+	echo '<script type="text/javascript">var flashbg = new Array();';
+	$i = 0;
+	foreach($flashbg as $flashbg_item){
+		echo 'flashbg['.$i.'] = "'.$flashbg_item['img'].'";';
+		$i++;
+	}
+	
+	echo '</script>';
+</php>
+<script type="text/javascript">
+
+var currnt_bg_index = 0;
+
+function swap(){
+	
+	if ( (currnt_bg_index+1) == flashbg.length ){
+		currnt_bg_index = 0;
+	}else{
+		currnt_bg_index++;
+	}
+	
+	$('.mainbg img').attr('src',flashbg[currnt_bg_index]); 
+	
+}
+if(!flashbg.length==0){
+	setInterval("swap()",1000);
+}
+</script>
+
+<!---轮播------>
+<div class="mainbg">
+   <img src="{ZF::RES}/images/themes/bg1.jpg" style="height:100%;"/>
+</div>
+
+<DIV class=clr></DIV>
+
+<!-----底部菜单-------------------->
+<DIV id="scroll_nav" class="bottom_nav" style="bottom:90px;">
+
+	<UL class="cateul">
+	
+		  <volist name="info" id="vo">
+			  <LI>
+				  <A href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url}</if>">
+					  <DIV class="menubtn">
+						  <DIV class="menuimg">
+						  	<IMG src="{ZF:$vo.img}">
+						  </DIV>
+						  <DIV class="menutitle">
+						  	{ZF:$vo.name}
+						  </DIV>
+					  </DIV>
+				  </A>
+			  </LI>
+		  </volist> 
+		  
+		  <DIV class="clr"></DIV>
+		  
+		  <A class="pre" href="javascript:;" style="padding-top:20px;">
+		  	<IMG src="{ZF::RES}/images/themes/prev.png">
+		  </A>
+		  <A class="next" href="javascript:;" style="padding-top:20px;">
+		  	<IMG src="{ZF::RES}/images/themes/next.png">
+		  </A>
+		  
+	</UL>
+	
+</DIV>
+
+<SCRIPT>
+$(function(){
+	$(".pre").click(function(){
+		$(".cateul").animate({marginLeft:"0"});
+		})
+	$(".next").click(function(){
+		$(".cateul").animate({marginLeft:"-100%"});
+		})
+})
+</SCRIPT>
+
+<div class="copyright" style="bottom:60px;">
+	<if condition="$iscopyright eq 1">
+		©{ZF:$homeInfo.copyright}
+	<else/>
+		©{ZF:$siteCopyright}
+	</if>
 </div> 
-<include file="Index:styleInclude"/><include file="$cateMenuFileName"/>
+
+<include file="Index:styleInclude"/>
+<include file="$cateMenuFileName"/>
 <!-- share -->
 <include file="Index:share" /> 
+
 </BODY>
 </HTML>

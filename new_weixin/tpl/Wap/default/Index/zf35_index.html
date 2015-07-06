@@ -29,26 +29,28 @@
    <!--背景音乐-->
 <if condition="$homeInfo['animation'] neq '0'"><include file="Index:anStyle"/></if>
 <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
-<DIV class=banner>
-<DIV style="OVERFLOW: hidden" id=wrapper>
-<DIV id=scroller>
-<UL id=thelist>
-<volist name="flash" id="so">
-<LI><P></P><IMG src="{ZF:$so.img}"></LI>
-</volist>  
-  </UL>
-  </DIV>
-</DIV>
-<DIV id=nav>
-<DIV id=prev onClick="myScroll.scrollToPage('prev', 0,400,2);return false">← prev </DIV>
-<UL id=indicator>
-<volist name="flash" id="so">
-<LI>{ZF:$i}</LI>  
-</volist>	
-	</UL>
-<DIV id=next onClick="myScroll.scrollToPage('next', 0);return false">next → </DIV>
-</DIV>
-<DIV class=clr></DIV></DIV>
+	<DIV class=banner>
+	<DIV style="OVERFLOW: hidden" id=wrapper>
+	<DIV id=scroller>
+	<UL id=thelist>
+	<volist name="flash" id="so">
+	<LI><P></P><IMG src="{ZF:$so.img}"></LI>
+	</volist>  
+	  </UL>
+	  </DIV>
+	</DIV>
+	<DIV id=nav>
+	<DIV id=prev onClick="myScroll.scrollToPage('prev', 0,400,2);return false">← prev </DIV>
+	<UL id=indicator>
+	<volist name="flash" id="so">
+	<LI>{ZF:$i}</LI>  
+	</volist>	
+		</UL>
+	<DIV id=next onClick="myScroll.scrollToPage('next', 0);return false">next → </DIV>
+	</DIV>
+	<DIV class=clr></DIV></DIV>
+
+
 <UL class=cateul>
 <volist name="info" id="vo">
 	<LI class=li1><A href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url}</if>">
