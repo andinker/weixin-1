@@ -1,70 +1,85 @@
 ﻿<layout name="common/html" />
 
 <div class="container">
-	<div class="Public-content clearfix">
+
+	<div class="Public-content clearfix" style="box-shadow: 1px 1px 5px 0;">
+	
 		<div class="Public">
 		
 			<div class="login_title">
+			
 				<h1 class="Public-h1">注册</h1>
+				
 			</div>
 			
 			<div class="Public-box clearfix">
+			
 				<div class="reg-wrapper2 container">
+				
 					<form id="regform" class="form-horizontal col-md-12" action="/index.php?m=Users&amp;a=checkreg" method="post">
+					
 					  <div class="control-group">
-					    <label class="control-label" for="username">用户名</label>
-					    <div class="controls" >
-					      <input type="text" name="username" id="username" onClick="javascript:_gaq.push(['_trackPageview','/home/reg/virtual/Username']);">
-					      <div class="help_msg"><span class="maroon">*</span><span class="help-inline">长度为6~16位字符，可以为“数字/字母/中划线/下划线”组成</span></div>
-					    </div>
+						    <label class="control-label" for="username">用户名</label>
+						    <div class="controls" >
+						      <input type="text" name="username" id="username" onClick="javascript:_gaq.push(['_trackPageview','/home/reg/virtual/Username']);">
+						    </div>
 					  </div>
-					  <div class="control-group">
-					    <label class="control-label" for="password">用户密码</label>
-					    <div class="controls">
-					      <input type="password" name="password" id="password" onClick="javascript:_gaq.push(['_trackPageview','/home/reg/virtual/Password']);">
-					      <div class="help_msg"><span class="maroon">*</span><span class="help-inline">长度为6~16位字符</span></div>
-					    </div>
-					  </div>
-					  <div class="control-group">
-					    <label class="control-label" for="repassword">重复密码</label>
-					    <div class="controls">
-					      <input type="password" name="repassword" id="repassword" onClick="javascript:_gaq.push(['_trackPageview','/home/reg/virtual/Password']);">
-					    </div>
-					  </div>		  
-			
-			
-			
-					  <div class="control-group">
-					    <label class="control-label" for="username">帐号类型</label>
-					    <div class="controls" >
-				                       <select class="region_ctrl" name="account_type"  style=" width:167px;">
-					                           <option value="0">商家号</option>
-					                           <option value="1">小区号</option>
-					                   </select>
-					      <div class="help_msg"><span class="maroon">*</span><span class="help-inline">每个小区只能申请一个小区号，申请小区号需要等待审核</span></div>
-					    </div>
-					  </div>
+					  <div class="help_msg"><span class="maroon">*</span><span class="help-inline">长度为6~16位字符，可以为“数字/字母/中划线/下划线”组成</span></div>
 					  
+					  <br>
+					  
+					  
+					  <div class="control-group">
+						    <label class="control-label" for="password">用户密码</label>
+						    <div class="controls">
+						      <input type="password" name="password" id="password" onClick="javascript:_gaq.push(['_trackPageview','/home/reg/virtual/Password']);">
+						    </div>
+					  </div>
+					  <div class="help_msg"><span class="maroon">*</span><span class="help-inline">长度为6~16位字符</span></div>
+					  
+					  <br>
+					  
+					  
+					  <div class="control-group">
+						    <label class="control-label" for="repassword">重复密码</label>
+						    <div class="controls">
+						      <input type="password" name="repassword" id="repassword" onClick="javascript:_gaq.push(['_trackPageview','/home/reg/virtual/Password']);">
+						    </div>
+					  </div>	
+					  
+					  <br>
+					  	  
 			
 					  <div class="control-group">
-					    <label class="control-label" for="username">所在小区</label>
-					    <div class="controls" >
-					      
+						    <label class="control-label" for="username">帐号类型</label>
+						    <div class="controls" >
+					                       <select class="region_ctrl" name="account_type"  style=" width:167px;">
+						                           <option value="0">商家号</option>
+						                           <option value="1">社区号</option>
+						                   </select>
+						    </div>
+					  </div>
+					  <div class="help_msg"><span class="maroon">*</span><span class="help-inline">每个社区只能申请一个社区号，申请社区号需要等待审核</span></div>
+					  
+					  <div class="control-group">
+					  
+						    <label class="control-label" for="username">所在社区</label>
+						    
+						    <div class="controls" >
 			                                                                   
-				                   <select class="region_ctrl" name="province" id="province" onChange="items_filter(this)"  style=" width:167px;margin-bottom:30px;">
-				                   </select>
+				                   <select class="region_ctrl" name="province" id="province" onChange="items_filter(this)"  style=" width:167px;margin-bottom:30px;"></select>
 			                       <span class="region-msg">省
 			                       
 			                           <div class="help_msg">
 					                           <span class="maroon">*</span> 没有找到我的省份？
-					                         	<span onClick="addItem( '添加省份','province', 0 );" style="color:#FF6600; cursor:pointer;">点击添加</span>
+					                         <span onClick="addItem( '添加省份','province', 0 );" style="color:#FF6600; cursor:pointer;">点击添加</span>
 			                           </div>
 			                           
 			                       </span>
+			                       
 			                           <br/>
 				                   
-				                   <select class="region_ctrl" name="city" id="city" onChange="items_filter(this)" style=" width:167px;margin-bottom:30px;">
-				                   </select>
+				                   <select class="region_ctrl" name="city" id="city" onChange="items_filter(this)" style=" width:167px;margin-bottom:30px;"></select>
 			                       <span class="region-msg">市
 			                       
 			                       		 <div class="help_msg">
@@ -73,10 +88,10 @@
 			                       		</div>
 			                       
 			                       </span>
+			                       
 			                       <br/>
 				                   
-				                   <select class="region_ctrl" name="district" id="district" onChange="items_filter(this)" style=" width:167px;margin-bottom:30px;">
-				                   </select>
+				                   <select class="region_ctrl" name="district" id="district" onChange="items_filter(this)" style=" width:167px;margin-bottom:30px;"></select>
 			                       <span class="region-msg">区/县/镇
 			                       
 			                       		 <div class="help_msg">
@@ -85,24 +100,34 @@
 				                   		</div>
 				                   
 				                   </span>
+				                   
 			                       <br/>
 				                   
-				                   <select class="region_ctrl" name="community" id="community" style="width:167px;margin-bottom:30px;">
-				                   </select>
-			                       <span class="region-msg">小区
+				                   <select class="region_ctrl" name="community" id="community" style="width:167px;margin-bottom:30px;"></select>
+			                       <span class="region-msg">社区
 			                       
 			                       		 <div class="help_msg">
-					                           <span class="maroon">*</span> 没有找到我的小区？
+					                           <span class="maroon">*</span> 没有找到我的社区？
 					                           <span onClick="addItem( '添加社区','community', $('#district').val() );" style="color:#FF6600;cursor:pointer;">点击添加</span>
 				                   		</div>
 				                   
 				                   </span>
+				                   
 			                       <br/>
 					     		 
-					     		  <div class="help_msg">
-					     		 		<span class="maroon" style="color:#FF0000;">*</span><strong><span class="help-inline" style="padding-left:10px;">此项为必填项，用户如果在上面选项找不到自己的小区，可点击后面的提示语进行手动添加</span></strong>
-					    		  </div>
-					    </div>
+					    	</div>
+					    	
+			     		  	<div class="help_msg">
+			     		 		<span class="maroon" style="color:#FF0000;">*</span>
+			     		 		<strong>
+				     		 		<span class="help-inline" style="padding-left:10px;">
+				     		 			此项为必填项，用户如果在上面选项找不到自己的社区，可点击后面的提示语进行手动添加,
+				     		 		</span>
+			     		 		</strong>
+			    		  	</div>
+			    		  	<div style="padding:5px;">省、市、区的选择为自己所在的真实地理位置，社区模块可以是现实中的一个社区，也可以是网上虚拟的一个社区，如‘广州金碧新城小区’，‘亚天皮具城’</div>
+					    		  
+					 
 					  </div>
 			
 			
@@ -190,30 +215,43 @@
 			
 			
 					  <if condition="C('reg_needmp')">
-					   <div class="control-group">
-					    <label class="control-label" for="tel">手机号</label>
-					    <div class="controls">
-					      <input type="text" name="tel" id="tel" >
-					       <div class="help_msg"><span class="maroon">*</span><span class="help-inline">手机号将与支付及优惠相关，请填写正确的手机号</span></div>
-					    </div>
-					  </div>
+						   <div class="control-group">
+							    <label class="control-label" for="tel">手机号</label>
+							    <div class="controls">
+							      <input type="text" name="tel" id="tel" >
+							    </div>
+						  </div>
+						  <div class="help_msg"><span class="maroon">*</span><span class="help-inline">手机号将与支付及优惠相关，请填写正确的手机号</span></div>
 					  </if>
+					  
+					  <br>
+					  
+					  
 					  <div class="control-group">
-					    <label class="control-label" for="email">邮箱</label>
-					    <div class="controls">
-					      <input type="text" name="email" id="email" onClick="javascript:_gaq.push(['_trackPageview','/home/reg/virtual/Mail']);">
-					       <div class="help_msg"><span class="maroon">*</span><span class="help-inline">邮箱将与支付及优惠相关，请填写正确的邮箱</span></div>
-					    </div>
+						    <label class="control-label" for="email">邮箱</label>
+						    <div class="controls">
+							      <input type="text" name="email" id="email" onClick="javascript:_gaq.push(['_trackPageview','/home/reg/virtual/Mail']);">
+						    </div>
 					  </div>
-					  <div class="control-group" style="text-align: center;">
-					  	<div class="controls">
-						    <button type="submit" id="reg-btn" class="btn-register" style="padding:0 30px;">注册</button>
-					  	</div>
+					  <div class="help_msg"><span class="maroon">*</span><span class="help-inline">邮箱将与支付及优惠相关，请填写正确的邮箱</span></div>
+					  
+					  <br>
+					  
+					  
+					  <div class="control-group" style="text-align: center;display: block;">
+						  	<div class="controls">
+							    <button type="submit" id="reg-btn" class="btn-register" style="padding:0 30px;">注册</button>
+						  	</div>
 					  </div>
+					  
 					</form>
+					
 				</div>
+				
 			</div>
 			
 		</div>
+		
 	</div>
+	
 </div>
