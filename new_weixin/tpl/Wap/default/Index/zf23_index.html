@@ -15,7 +15,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/zf/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/zf/common_reset.css" media="all" />
 <link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/zf/reset.css" media="all" />
 <link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/zf/23/home-32.css" media="all" />
 
@@ -27,6 +27,10 @@
 <script type="text/javascript" src="{ZF::RES}/src/template/swipe.js"></script>
 
 <title>{ZF:$tpl.wxname}</title>
+
+<style type="text/css">
+.top_bar .top_menu>li>a{line-height: 0!important;}
+</style>
 
 </head>
 <body onselectstart="return true;" ondragstart="return false;">
