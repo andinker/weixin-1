@@ -56,7 +56,7 @@ function iframeload(){
 					  <a href="{ZF::U('Function/info',array('id'=>$vo['id'],'token'=>$vo['token']))}" class="btnGreens" >功能管理</a>
 					  <else/><a href="{ZF::U('Index/ajaxopen',array('id'=>$vo['id'],'token'=>$vo['token']))}"  onclick="return ajaxopen(this.href)" class="btnGreens" >进入管理</a>
 					  </if>
-					  <a href="{ZF::U('Home/Index/help',array('id'=>$vo['id'],'token'=>$vo['token']))}" class="btnGreens" target="_blank">API接口</a>
+					  <a href="{ZF::U('Home/Index/help1',array('id'=>$vo['id'],'token'=>$vo['token']))}#bd" class="btnGreens" target="_blank">API接口</a>
 					  </TD>
 					</TR>
                   </volist>
