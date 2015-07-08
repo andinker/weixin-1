@@ -1,0 +1,168 @@
+<layout name="common/html" />
+
+<script type="text/javascript">
+$(function () {
+    $("a").click(function () {
+        var rel = $(this).attr("rel");
+        if (rel) {
+            var pos = $(rel).offset().top;
+            $("html,body").animate({ scrollTop: pos }, 800);
+        }
+    })
+})
+</script>
+<div class="slide_menu">
+   <ul style="margin-top:100%;">
+   	  <li><a href="javascript:void()" rel="#tq">2.1 城市天气</a></li>
+      <li><a href="javascript:void()" rel="#bk">2.2 百度百科</a></li>
+      <li><a href="javascript:void()" rel="#fy">2.3 即时翻译</a></li>
+      <li><a href="javascript:void()" rel="#gp">2.4 股票查询</a></li>
+      <li><a href="javascript:void()" rel="#kd">2.5 快递查询</a></li>
+      <li><a href="javascript:void()" rel="#hc">2.6 火车查询</a></li>
+      <li><a href="javascript:void()" rel="#hb">2.7 航班查询</a></li>
+      <li><a href="javascript:void()" rel="#xz">2.8 星座密语</a></li>
+   </ul> 
+</div>
+
+<div class="slide_menu_toggle">
+	<div class="glyphicon glyphicon-menu-left" style="font-size: 30px;line-height: 50px;text-align: center;color:white;"></div>
+</div>
+
+<div class="shop_title">
+	<div class="container">
+		<h2>微服务</h2>
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="tq">1.城市天气</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+       <p>城市天气是运用于微信公众平台上让用户随时随地查询天气情况的一种功能，更能方便用户的出行。</p>
+       <h4>使用方法：</h4>
+       <p> 1、开通城市天气服务，在状态栏选择“ON”即可；</p>
+       <p>2、用户只需输入“所在的城市+天气“，就能查询到所在城市的天气情况。</p>		  
+	</div>		                    	
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="bk">2. 百度百科</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+         <p>百度百科利用微信为用户提供一个创造性的移动互联网平台，充分调动互联网所有用户的力量，汇聚上亿用户的头脑智慧，积极进行交流和分享，同时实现与搜索引擎的完美结合，从不同的层次上满足用户对信息的需求。</p>
+         <h4>使用方法：</h4>
+         <p>1、开通百度百科服务，在状态栏选择“ON”即可；</p>
+         <p>2、用户只需输入“百科查询内容“，如”百科姚明“，就能查询到姚明的所有相关资料。</p>
+	</div>		                    	
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="fy">3.即时翻译</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+         <p>百度百科利用微信为用户提供一个创造性的移动互联网平台，充分调动互联网所有用户的力量，汇聚上亿用户的头脑智慧，积极进行交流和分享，同时实现与搜索引擎的完美结合，从不同的层次上满足用户对信息的需求。</p>
+         <h4>使用方法：</h4>
+         <p>1、开通百度百科服务，在状态栏选择“ON”即可；</p>
+         <p>2、用户只需输入“百科查询内容“，如”百科姚明“，就能查询到姚明的所有相关资料。</p>
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="gp">4.股票查询</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+        <p>股票查询是一款基于微信平台查询股票最动态的软件，能够方便用户理财。</p>
+        <h4>使用方法：</h4>
+        <p>1、股票查询是一款基于微信平台查询股票最动态的软件，能够方便用户理财。</p>
+        <p>2、用户只需输入"股票+数字代码 或 股票+字母缩写"，如“股票payh、股票000001”，就可以查询到股票的最新动态。</p>
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="kd">5.快递查询</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+        <p>快递用户通过进入到快递查询公众账号，持快递公司邮单号，对包裹快递过程进行跟踪查询。</p>
+        <h4>使用方法：</h4>
+        <p>1、开通快递查询服务，在状态栏选择“ON”即可；</p>
+        <p>2、用户只需输入“ 快递单号”，如”查申通快递222222“，就可以查询到快递的最新动态。</p>
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="hc">6.火车查询</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+       <p>火车查询是一款基于微信平台的火车查询工具，用户可以通过火车查询公众平台随时随地查询火车班次时刻表。</p>
+       <h4>使用方法：</h4>
+       <p>1、开通火车查询服务，在状态栏选择“ON”即可；</p>
+       <p>2、用户只需输入“ 火车车次”，如“ 火车T109“，就可以查询到火车的最新动态。</p>
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="hb">7.航班查询</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+        <p>航班查询是一款基于微信平台的为用户提供实时航班查询的服务，用户可以通过航班查询公众平台随时随地查询到航班的最新动态。</p>
+        <h4>使用方法：</h4>
+        <p>1、开通航班查询服务，在状态栏选择“ON”即可；</p>
+        <p>2、用户只需输入“ 航班班次”，如“航班ca1386“，就可以查询到航班的最新动态。</p>
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="xz">8.星座密语</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+        <p>星座密语是一款基于微信平台的为用户提供星座查询的服务，用户可以通过星座密语公众平台随时随地查询到星座的最新动态。</p>
+        <h4>使用方法：</h4>
+        <p>1、开通星座密语服务，在状态栏选择“ON”即可；</p>
+        <p>2、用户只需输入“ 星座”，如“射手座“，就可以查询到射手座相关的星座信息。</p>
+	</div>
+</div>
+<a href="#" class="gototop">
+	<span class="glyphicon glyphicon-arrow-up" style="color:#333;font-size:12px;"></span>
+</a>
+
+

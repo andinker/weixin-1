@@ -109,7 +109,43 @@
 		$('#know_more').bind("click",function(){
 			$('#more_content').show();
 			$(this).hide();
-		})
+		});
+		
+		//帮助中心右边标题按钮
+		var help_slide_menu=function(){
+			
+			$('.slide_menu_toggle').hover(
+					
+				function(){ 
+					$(this).hide();
+					$(this).siblings(".slide_menu").animate({right:'0',}); 
+				    $('.slide_menu').hover(
+			    		function(){  
+							$(this).animate({right:'0',});
+							$('.slide_menu_toggle').hide();
+						},
+						function(){ 
+							$(this).animate({right:'-160px',},"fast");
+							$('.slide_menu_toggle').show();
+						}
+				    );
+				     
+					if($('.slide_menu').css("right")=="0"){
+						$('.slide_menu_toggle').hide();
+				    }
+				    
+				},
+				function(){ 
+					$(this).hide();
+					
+				}
+				
+			);
+			
+		};
+		help_slide_menu();
+		
+		
 		
 	})
 	
@@ -212,6 +248,19 @@ a.intro_more{padding:7px 0;}
 a.intro_more:hover{background: white;color:#d12435;}
 
 .box-content{padding-left: 30px;}
+
+.sec_title{line-height:35px;margin-top:10px;}
+.sec_title ul li{border-bottom:1px solid #f8f8f8;}
+.sec_title img{max-width: 90%;}
+.sec_title a{color:#333;}
+
+.slide_menu{position:fixed;right:-160px;width:160px;line-height:35px;height:100%;background:rgba(0,0,0,.7);top:0; overflow: scroll;}
+.slide_menu ul{margin:0;padding:10px;}
+.slide_menu a{color:white;}
+.slide_menu_toggle{background:rgba(0,0,0,.5);height:50px;width:30px;position:fixed;top:50%;right: 0;}
+.gototop{position: fixed ! important;border-radius:15px; border:1px solid #ccc; box-shadow:2px 2px 2px #999;height:30px; width:30px; right:15px;background:#fff; bottom:50px;text-align:center;line-height:30px; text-decoration:none; color:#F00;}
+.sec_title h4{font-weight: 600;}
+
 
 </style>
 </head>

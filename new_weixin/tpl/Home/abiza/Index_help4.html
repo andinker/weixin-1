@@ -1,0 +1,139 @@
+<layout name="common/html" />
+
+<script type="text/javascript">
+$(function () {
+    $("a").click(function () {
+        var rel = $(this).attr("rel");
+        if (rel) {
+            var pos = $(rel).offset().top;
+            $("html,body").animate({ scrollTop: pos }, 800);
+        }
+    })
+})
+</script>
+<div class="slide_menu">
+   <ul style="margin-top:100%;"> 
+   	  <li><a href="javascript:void()" rel="#sz">4.1 会员卡设置</a></li>
+      <li><a href="javascript:void()" rel="#sy">4.2 会员卡使用</a></li>
+      <li><a href="javascript:void()" rel="#hygl">4.3 会员管理</a></li>
+      <li><a href="javascript:void()" rel="#gl">4.4 消费管理</a></li>
+      <li><a href="javascript:void()" rel="#tj">4.5 数据统计</a></li> 
+   </ul> 
+</div>
+
+<div class="slide_menu_toggle">
+	<div class="glyphicon glyphicon-menu-left" style="font-size: 30px;line-height: 50px;text-align: center;color:white;"></div>
+</div>
+
+<div class="shop_title">
+	<div class="container">
+		<h2>微会员</h2>
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="sz">1.会员卡设置</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+        <p>会员卡设置主要设置商家信息、会员卡片设计、特权管理等。</p>
+        <h5>商家信息：</h5>
+        <img src="../tpl/User/zhifeng/common/img/hyk.png">
+        <p>商家名称：商家的名称</p>
+        <p>触发关键词：用户输入触发会员卡的关键词。</p>
+        <p>填写商家所在地区、商家类别、商家详细地址、联系方式。注商家地址和联系方式将会显示在会员卡首页。</p>
+        <p>商家兑奖密码是当会员在使用特权的时候，商家不便用电脑操作后台去使用SN码，可以直接输入密码即可兑奖。</p>
+        <p>设置后点击下一步，进入会员卡设计页面。</p>
+        
+        <p>{ZF::C('site_name')}强大的会员卡自定义功能，极大的方便了商家进行会员卡设计。</p>
+        <p>填写会员卡名称，会显示在会员卡左上角，不填将不显示。</p>
+        <p>会员卡名称颜色可以根据会员卡背景不同进行设置。</p>
+        <p>会员卡背景可以调用{ZF::C('site_name')}系统后台模板，目前{ZF::C('site_name')}支持23种会员卡模板，供商家调用。</p>
+        <p>如果商家对{ZF::C('site_name')}提供的模板不满意，可以上传自己设计的背景，注意尺寸尽量为534*318</p>
+        <p>填写图文消息封面，用来在关键词出发时显示。</p>
+        <p>会员卡图标：即商家LOGO，注意尺寸，且是透明的PNG或者GIF图片。</p>
+        <p>卡号文字颜色，根据会员卡背景设置会员卡号颜色。</p>
+        <p>首页提示文字：即首页图文消息封面简介。</p>
+        <p>以上都设置好，点击提交，整个会员卡页面设计完成。</p>
+        <p>会员卡特权：会员卡页面设计好后，如果对会员有相关特权，可以再添加会员卡特权。</p>
+        <p>点击特权管理 添加会员卡特权</p>
+        <p><img src="../tpl/User/zhifeng/common/img/hyk2.png"></p>
+        <p>添加特权、编辑特权内容。</p>
+        <p><img src="../tpl/User/zhifeng/common/img/hyk3.png"></p>
+        <p>标题即是特权标题。</p>
+        <p>正文内容：特权详细内容。</p>
+        <p>可使用次数：表示会员卡使用的次数。</p>
+        <p>时间设置：是会员特权有效期。填好后创建特权。</p>
+        <p>特权的状态分三种：未开始、进行中、已结束、只有在进行中的特权才会显示在会员卡首页产。</p>
+        <p>以上都设置好后整个会员卡设置完成。</p>
+	</div>		                    	
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="sy">2. 会员卡使用</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+        <p>用户能过自定义菜单或者通过关键词触发进入会员卡界面。</p>
+        <p>用户通过向商家出示会员卡，然后点击会员卡相应特权，进入会员特权消费界面。</p>
+        <img src="../tpl/User/zhifeng/common/img/hyk1.jpg">
+        <p>点击立即使用，生成一个特权SN码，这时候如果商家有电脑，可以通过商家后台查找SN码，点击立即使用，消费掉这个SN码，并且输入消费金额，特权消费完成。</p>
+        <p>如果商家不方便用电脑操作，可以直接在用户手机里输入消费金额、商家兑奖密码（在后台设置），也可完成此特权的消费。</p>
+        <p><img src="../tpl/User/zhifeng/common/img/hyk2.jpg"/></p>
+	</div>		                    	
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="hygl">3.会员管理</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+         <p>用户第一次关注公众号后，若非会员，需要进行开卡，填写会员资料，点击提交即完成开卡操作。</p>
+         <p>会员管理可以查看相应会员信息，对会员进行操作。</p>
+         <img src="../tpl/User/zhifeng/common/img/gl1.png">
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="gl">4.消费管理</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+         <p>用户第一次关注公众号后，若非会员，需要进行开卡，填写会员资料，点击提交即完成开卡操作。</p>
+         <p>会员管理可以查看相应会员信息，对会员进行操作。</p>
+         <img src="../tpl/User/zhifeng/common/img/gl1.png">
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="tj">5.数据统计</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+       <p>统计最近一个月新增会员趋势图、最近一月总请求数趋势图。</p>
+       <img src="../tpl/User/zhifeng/common/img/tj1.png">
+	</div>
+</div>
+<a href="#" class="gototop">
+	<span class="glyphicon glyphicon-arrow-up" style="color:#333;font-size:12px;"></span>
+</a>

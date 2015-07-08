@@ -1,0 +1,219 @@
+<layout name="common/html" />
+
+<script type="text/javascript">
+$(function () {
+    $("a").click(function () {
+        var rel = $(this).attr("rel");
+        if (rel) {
+            var pos = $(rel).offset().top;
+            $("html,body").animate({ scrollTop: pos }, 800);
+        }
+    })
+})
+</script>
+<div class="slide_menu">
+   <ul style="margin-top:100%;">
+       <li><a href="javascript:void()" rel="#zc">3.1 如何注册微信公众号</a></li>
+       <li><a href="javascript:void()" rel="#pt">3.2 如何注册{ZF::C('site_name')}平台</a></li>
+       <li><a href="javascript:void()" rel="#zh">3.3 如何添加公众号</a></li>
+       <li><a href="javascript:void()" rel="#cs">3.4 账户信息参数详解</a></li>
+       <li><a href="javascript:void()" rel="#yy">3.5 运营图表</a></li>
+       <li><a href="javascript:void()" rel="#hf">3.6 关注时回复</a></li>
+       <li><a href="javascript:void()" rel="#wb">3.7 文本回复</a></li>
+       <li><a href="javascript:void()" rel="#tw">3.8 图文回复</a></li>
+       <li><a href="javascript:void()" rel="#cd">3.9 自定义菜单</a></li>
+   </ul> 
+</div>
+
+<div class="slide_menu_toggle">
+	<div class="glyphicon glyphicon-menu-left" style="font-size: 30px;line-height: 50px;text-align: center;color:white;"></div>
+</div>
+
+<div class="shop_title">
+	<div class="container">
+		<h2>基础建设</h2>
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="zc">1.如何注册微信公众号？</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+         <p>登录mp.weixin.qq.com，点击注册填写相关信息即可申请微信公众号，微信公众号只能在PC端登录，不能用手机端，公众号分服务号和订阅号，企业可申请服务号，个人、自媒体申请订阅号，服务号每个月限制群发一条，而订阅号每天可发送一次，但消息会折叠起来放在一个订阅号的消息盒子里，服务号仍然是放在聊天列表。</p>
+         <p><img src="../tpl/User/zhifeng/common/img/zhuce.png"></p>
+	</div>		                    	
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="pt">2. 如何注册{ZF::C('site_name')}平台？</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+         <p>直接网址输入{ZF::C('site_url')}或者百度输入{ZF::C('site_name')}，点击进入{ZF::C('site_name')}官方网站，点击免费试用填写用户名、密码、手机、邮箱、QQ即可进行在线注册，前期邀请码开放，后期功能稳定则需要邀请码，所以大家珍惜机会，赶紧注册。</p>
+         <p><img src="../tpl/User/zhifeng/common/img/zfzhuce.png"></p>
+	</div>		                    	
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="zh">3.如何添加公众号？</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+       <p>{ZF::C('site_name')}平台对不同版本添加公众号的数量作相应的限制，除了黄金版可以同时添加3个公众号，试用版、标准版、增强版都只能添加一个公众号。添加点击公众号按钮，进入添加公众号界面，如果有什么问题都可以随时咨询微助手。</p>
+       <p><img src="../tpl/User/zhifeng/common/img/zh1.png"></p>
+       <p><img src="../tpl/User/zhifeng/common/img/zh2.png"></p>
+       <p>1、公众号名称与微信公众平台公众号名称保持一致。</p>
+       <p>2、公众号原始id，这个很重要，公众平台进行通讯就靠这个ID，所以不能填错，如果在填的时候遇到问题可以点不懂就问我或者直接联系在线客服。</p>
+       <p>a. 登录微信公众平台mp.weixin.qq.com，点设置，查看帐号信息</p>
+       <p><img src="../tpl/User/zhifeng/common/img/zh3.gif"></p>
+       <h5>3、点击二维码图片保存到电脑桌面，查看图片的名称gh_开头的就是原始公众号，如：gh_3e468dea019b 提别提示：不是gh_3e468dea019b_430,是gh_3e468dea019b，一定要把_430去掉，gh_3e468dea019b才是正确的。</h5>
+        <p><img src="../tpl/User/zhifeng/common/img/zh4.gif"></p>
+        <h5>4、微信号：公众号的英文名称，这个是唯一的。</h5>
+        <h5>5、图文统计代码：用来统计图文浏览的相关数据，目前是可以添加第三方统计平台，如百度统计、CNZZ，后期{ZF::C('site_name')}会加入对图文的统计。填好表单如下：</h5>
+         <p><img src="../tpl/User/zhifeng/common/img/zh5.png"></p>
+         <p>点击保存，提示将接口地址和TOKEN绑定到腾讯公众平台;</p>
+         <p><img src="../tpl/User/zhifeng/common/img/zh6.png"></p>
+         <h5>6、绑定URL和TOKEN。</h5>
+         <p>a. 登录微信公众平台mp.weixin.qq.com(注意需提前注册好公众号)</p>
+         <p>b. 点击高级功能，进入开发模式。（注：如果没有高级功能说明你注册的账号还在审核中，审核通过后会有高级功能）</p>
+         <p>c. 开启开发模式（注：开启开发模式编辑模式则不能用，两者只能选其一）</p>
+         <p><img src="../tpl/User/zhifeng/common/img/zh7.png"></p>
+         <p>d. 填写接口URL和对应TOKEN，点击提交。如果提示提交成功，说明公众号绑定成功，如果出现服务器无法正确响应TOKEN验证，说明URL或者TOKEN有问题，请仔细检查。如果遇到问题可以随时咨询{ZF::C('site_name')}客服。</p>
+         <p><img src="../tpl/User/zhifeng/common/img/zh8.png"></p>
+         <p>在公众号绑定完URL和TOKEN，整个添加公众号的操作完毕，可以看到如下界面。</p>
+         <p><img src="../tpl/User/zhifeng/common/img/zh9.png"></p>
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="cs">4.账户信息参数详解</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+   	   <p><img src="../tpl/User/zhifeng/common/img/cs1.png"></p>
+       <p><strong>套餐有效期 ： </strong>指套餐到期的时间，套餐结束后公众号将会被冻洁，所有功能将不能使用。</p>
+       <p><strong>文本自定义：</strong>文本自定义是指回复设置里面关键词回复里定义文本回复的条数。</p>
+       <p><strong>图文自定义：</strong>图文自定义是指回复设置里面关键词回复里定义图语言回复的条数。</p>
+       <p><strong>语音自定义：</strong>语音自定义是指回复设置里面关键词回复里定义语音回复的条数。</p>
+       <p><strong>请求数：</strong>请求是指粉丝通过公众号发起一次互动，比如输入一个关键词、发送一个位置都记为一次请求。不同版本请求数不一样，黄金版不限请求数。</p>
+       <p><strong>请求数剩余：</strong>指当月还剩下的请求数。</p>
+       <p><strong>总请求数：</strong>指从账号创建到现在总的请求数。</p>
+       <p><strong>本月请求数：</strong>指本月内总的请求数。</p>
+       <p><strong>每月可请求总数：</strong>指每月限制的请求总数，黄金版不限。</p>
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="yy">5.运营图表</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+        <p>目前{ZF::C('site_name')}主要是统计公众号每天文本、图文、语音请求数和总的请求数：</p>
+    	<p><img src="../tpl/User/zhifeng/common/img/yy1.png"></p>
+        <p>每天公众号新增关注数、取消关注数及净增长数。</p>
+        <p><img src="../tpl/User/zhifeng/common/img/yy2.png"></p>
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="hf">6.关注时回复</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+		<p><strong>关注时回复：</strong>指粉丝关注微信公众号后推送的第一条信息，可以是文本，也可以是图文，如果需要图文回复，点击切换到图文模式。</p>
+		<p><img src="../tpl/User/zhifeng/common/img/hf2.png"></p>
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="wb">7.文本回复</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+       <p>文本回复指添加关键后回复的内容是文本。点击添加按钮</p>
+       <p><img src="../tpl/User/zhifeng/common/img/mr1.png"></p>
+       <p> 如上示例：定义了关键词你好，当用户在公众号发送“你好”的时候，将会回复“哈哈”</p>
+       <p> 如果想定义多个关键词用空格隔开，如：你好 在吗 哈哈</p>
+       <p> 匹配类型分完全匹配和包含匹配，考虑到包括匹配出现的情况太多，目前只支持完全匹配。</p>
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="tw">8.图文回复</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+        <p>点击添加图文按钮进入图文编辑页面</p>
+        <p><img src="../tpl/User/zhifeng/common/img/tw1.png"></p>
+        <p>填写触发关键词，图文标题、图文简介，上传图文封面。</p>
+     
+        <p>添加完之后点击保存，即完成图文回复创建。</p>
+        <p>下面是回复效果展示，我们在民营医疗那些事公众号输入关键词”营销”“{ZF::C('site_name')}资源” “{ZF::C('site_name')}团队测试一下效果。</p>
+        <p><img src="../tpl/User/zhifeng/common/img/tw5.png" width="206" height="360"><img src="../tpl/User/zhifeng/common/img/tw6.png"  width="206" height="360"><img src="../tpl/User/zhifeng/common/img/tw7.png"  width="206" height="360"></p>
+        <p>注：图文回复是整个{ZF::C('site_name')}平台的素材库，里面定义的内容在微官网里会用到，所在在定义前最好创建好分类，之前在微官网里就可以直接显示。</p>
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="cd">9.自定义菜单</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+        <p>自定义菜单是企业微信公众号消息框底部的导航菜单，可以很方便用户进行交互，相当于一个轻量级的APP。</p>
+        <p>目前自定义菜单只对服务号开放，服务号认证需要企业认证，所以如果是订阅号这个功能是用不了的，如果服务号还没有申请自定义菜单，可以点击-高级功能-开发模式，会有一栏会话界面自定义菜单，点击申请就可以了，申请成功后的界面如下：</p>
+
+        <p><img src="../tpl/User/zhifeng/common/img/cd1.png"></p>
+        <p><img src="../tpl/User/zhifeng/common/img/cd1.png"></p>
+        <p>将AppId 和AppSecret填写在{ZF::C('site_name')}平台自定义菜单-授权设置 应用ID和应用密匙里</p>
+        <p><img src="../tpl/User/zhifeng/common/img/cd3.png"></p>
+        <p><strong> 菜单设置:</strong>自定义菜单目前限制只能3个一级菜单，5个二级菜单，{ZF::C('site_name')}后台也对添加菜单作了相应的限制，只允许同时启用三个一级菜单，五个二级菜单。 并且只有保存主菜单后才能添加子菜单。</p>
+        <p><img src="../tpl/User/zhifeng/common/img/cd4.png"></p>
+        <p><strong>主菜单</strong>名称就是显示在消息框的一级菜单，触发关键词表示点击这个菜单后触发的关键词，这个关键词需提前在回复设置里定义好，可以是文字回复、也可以是图文回复、还可以是活动关键词等。勾选启用表示当前菜单会被显示。</p>
+        <p><strong>添加二级菜单</strong>，直接点击一级菜单后面的+即可以创建二级菜单，二级菜单只能同时启用5个。</p>
+        <p><strong>显示顺序</strong>表示菜单的显示的先后顺序，数字越小越排在前面。点击保存，保存自定义菜单设置，注意这时候并未生成自定义菜单，需要点生成自定义菜单。</p>
+       <p> 如果出现以下情况：</p>
+       
+       <p> 说明没有填写自定义菜单的appid，这个需要去微信公众平台去申请，而且必须要服务号。申请后好填在授权设置里。</p>
+       <p>生成自定义菜单后会在24小时内生效，如果想立即生效，取消关注后重新关注就可以看到了。</p>
+	</div>
+</div>
+<a href="#" class="gototop">
+	<span class="glyphicon glyphicon-arrow-up" style="color:#333;font-size:12px;"></span>
+</a>
