@@ -31,8 +31,45 @@
 <if condition="$homeInfo['animation'] neq '0'"><include file="Index:anStyle"/></if>
 <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
 
+<notempty name="flash">
+    <div style=" margin:0px auto; max-width: 1140px; z-index:97; position:relative;" id="gal_he">
+        <div class="mygallery">
+            <volist name="flash" id="so">
+
+                    <div class="gallery-cell clickcell" urldata="{ZF:$so.url}" >
+                        <img src="{ZF:$so.img}" width="100%"/>
+
+                    </div>
+            </volist> 
+        </div>
+    </div>
+</notempty>
+<script>
+var myg = $('.mygallery').flickity({ "wrapAround":true,"autoPlay": true,"pageDots": true,"prevNextButtons": false });
 
 
+myg.on( 'staticClick', function( event, pointer, cellElement, cellIndex ) {
+	if ( !cellElement ) {
+	    return;
+	  }
+
+	  location.href = $( cellElement ).attr('urldata');
+
+})
+
+</script>
+
+<script type="text/javascript">
+$('.nav_bottom').flickity({
+	freeScroll: true,
+    contain: true,
+    // disable previous & next buttons and dots
+    prevNextButtons: false,
+    pageDots: false,
+    cellAlign: 'left',
+	});
+</script>
+<!-- 
 <notempty name="flash">
 	<div class="gallery js-flickity">
 		<volist name="flash" id="so">
@@ -42,7 +79,7 @@
 		</volist>
 	</div>
 </notempty>
-
+ -->
 
 <div id=cate10>
 
@@ -75,6 +112,16 @@
 	<include file="Index:share" /> 
 
 </div>
-
+<script type="text/javascript">
+var con_size=function(){
+	var gal_w=$('.mygallery img').width();
+	$(".gallery-cell").css("height",gal_w*1/2+"px");
+	$("#gal_he div").css("height",gal_w*1/2+"px");
+};
+con_size();
+$(window).resize(function(){
+	con_size();
+});
+</script>
 </BODY>
 </HTML>
