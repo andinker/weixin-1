@@ -8,31 +8,51 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no">
+
 <link href="{ZF::RES}/css/yl/news.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.pub_time{font-size:14px;color:#999;}
+.content{padding:5px;}
+</style>
+
 </head>
+
 <body id="news">
+
 <div class="content">
+	
+	<h3 style="font-size:20px;"><strong>{ZF:$res.title}</strong></h3>
+			    
+	<div class="pub_time">{ZF:$res.createtime|date="Y-m-d",###}</div>
+	
 	<eq name="res.showpic" value="1">
-	<div class="showpic"><img src="{ZF:$res.pic}" /></div> 
+		<div class="showpic"><img src="{ZF:$res.pic}" /></div> 
 	</eq>
+	
 	<php>echo htmlspecialchars_decode($res['info'])</php>
+	
 </div>
 
 <!--share digg-->
 <include file="Index:Digg"/>
 
-    <include file="Index:content_comment" />
+<include file="Index:content_comment" />
 
 <a class="footer" href="#news" target="_self"><span class="top">回顶部</span></a>
+
 <eq name="copyright" value="0">
-<div class="copyright"  >
-<php>echo htmlspecialchars_decode(C('copyright'))</php>
-</div>
+	<div class="copyright"  >
+		<php>echo htmlspecialchars_decode(C('copyright'))</php>
+	</div>
 </eq>
+
 <div style="display:none"><php>echo htmlspecialchars_decode($tpl['tongji'])</php></div>
 
-<include file="Index:styleInclude"/><include file="$cateMenuFileName"/>
+<include file="Index:styleInclude"/>
+<include file="$cateMenuFileName"/>
 <!-- share -->
 <include file="Index:content_share" />
+
 </body>
 </html>

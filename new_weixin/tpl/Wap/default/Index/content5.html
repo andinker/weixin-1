@@ -4,8 +4,9 @@
 <meta charset="utf-8" />
 <link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/public/css/template/weimob-ui-1-1.css" media="all" />
 <link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/public/css/template/common.css" media="all" />
-<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/peak-1.css" media="all" />
+
 <script type="text/javascript" src="{ZF::RES}/Index/public/js/jQuery.js"></script>
+
 <title>{ZF:$res.title} - {ZF:$tpl.wxname}</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta name="keywords" content="{ZF::C('keyword')}" />
@@ -20,66 +21,109 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <!-- apple devices fullscreen -->
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
 <!-- Mobile Devices Support @end -->
 <link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+
 <style>
-img {
-	width:100%!important;
-}
+
+body{background: #efefef;}
+.weimob-content img {width:100%!important;}
+.recommend{margin:10px;padding:10px;border: 0px solid #D1D1D1;  border-radius: 5px;background-color: #FFFFFF;font-size:14px;}
+.recommend li{border-top: 1px solid #ddd;padding:5px;height:30px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap !important;  background: url("tpl/Wap/default/common/css/yl/img/ico-next.png") no-repeat scroll right center transparent;background-size: 7px;}
+.recommend label{line-height: 35px;font-size:16px;}
+.recommend li>a{color:#535353;white-space: nowrap;padding-right:20px;}
+.recommend .more {border: 1px solid #E0E0E0;-moz-border-radius: 26px;border-radius: 26px;cursor: pointer;background-color: #FFFFFF;margin: 10px 0;padding: 10px;text-align: center;display: block;}
+footer{height: auto;margin-top:0;}
+.footer{-webkit-border-radius: 5px; -moz-border-radius: 5px;border-radius: 5px;cursor: pointer;background: none repeat scroll 0 0 #ffffff;border: 1px solid #DDDDDD;box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);-moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);-webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);padding: 10px 0 6px 0;text-align: center;display: block;}
+.top{background: url("tpl/Wap/default/common/css/yl/img/newstop.png") no-repeat scroll left center transparent;background-size: 11px auto;display: block;margin: 0 auto;text-indent: 15px;width: 85px;}
+.content_wrap{margin:10px;padding:5px 10px;border-radius:5px;background:white;}
+.pub_time{color:#999;}
+
 </style>
+
 </head>
+
 <body onselectstart="return true;" ondragstart="return false;">
+
 <link rel="stylesheet" type="text/css" href="{ZF::STATICS}/font-awesome/font-awesome.css?v=2013-08-17" media="all" />
+
 <div class="weimob-page" style="display:block;">
-<div class="top_bar">
-    <nav>
-      <ul class="top_menu">
-        <li onClick="window.history.go(-1);"><span class="icon-chevron-sign-left"></span></li>
-		<li onclick="location.href='{ZF::U('Index/index',array('token'=>$tpl['token']))}'"><span class="icon-home"></span></li>
-		<li><a href="tel:<if condition="$homeInfo.dianhua neq false">{ZF:$homeInfo.dianhua}<else/>没有留电话</if>"><span class="icon-phone"></span></a></li>
-		<li onclick="$('#menu_font').toggleClass('hidden');"><span class="icon-list-ul"></span>
-			<ul id="menu_font" class="menu_font hidden" onclick="$('#menu_font').toggleClass('hidden');">
-			<volist name="info" id="vo">
-				<li><a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url|htmlspecialchars_decode}</if>" class="icon-smile">
-				{ZF:$vo.name}</a></li>
-			</volist>
-			</ul>
-		</li>
-      </ul>
-    </nav>
+
+	<div class="top_bar">
+	    <nav>
+	      <ul class="top_menu">
+	        <li onClick="window.history.go(-1);"><span class="icon-chevron-sign-left"></span></li>
+			<li onclick="location.href='{ZF::U('Index/index',array('token'=>$tpl['token']))}'"><span class="icon-home"></span></li>
+			<li><a href="tel:<if condition="$homeInfo.dianhua neq false">{ZF:$homeInfo.dianhua}<else/>没有留电话</if>"><span class="icon-phone"></span></a></li>
+			<li onclick="$('#menu_font').toggleClass('hidden');"><span class="icon-list-ul"></span>
+				<ul id="menu_font" class="menu_font hidden" onclick="$('#menu_font').toggleClass('hidden');">
+					<volist name="info" id="vo">
+						<li><a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url|htmlspecialchars_decode}</if>" class="icon-smile">
+						{ZF:$vo.name}</a></li>
+					</volist>
+				</ul>
+			</li>
+	      </ul>
+	    </nav>
+	</div>
+
+	<div class="weimob-content">
+	
+		<div class="content_wrap">
+	
+			<h3 style="margin: 5px 0;">{ZF:$res.title}</h3>
+			
+			<div class="pub_time">{ZF:$res.createtime|date="y-m-d",###}</div>
+			
+			<div><img src="{ZF:$res.pic}" style="width:100%;"/></div>
+			
+			<article>
+				<div class="para" style="margin-bottom:14px;text-indent:30px;font-family:arial, 宋体, sans-serif;font-size:14px;line-height:24px;white-space:normal;background-color:#FFFFFF;"> {ZF:$res.info|htmlspecialchars_decode} <br />
+			</article>
+			
+		</div>
+		
+	    <article class="recommend">
+	    
+		      <label>推荐阅读</label>
+		      
+		      <ul>
+		        <volist name="lists" id="lo">
+		          <li><a href="{ZF::U('Index/content',array('token'=>$lo['token'],'id'=>$lo['id'],'wecha_id'=>$wecha_id,'weiwin'=>'mp.weixin.qq.com'))}">{ZF:$lo.title}</a></li>
+		        </volist>
+		      </ul>
+	      
+	      	 <a class="more" href="{ZF::U('Index/lists',array('token'=>$res['token'],'classid'=>$res['classid']))}">更多精彩内容</a>
+	      
+	    </article>
+	    
+	    <!--share digg-->
+		<include file="Index:Digg"/>
+	
+	    <include file="Index:content_comment" />
+		
+		<!-- 
+		<div style="padding-bottom:0!important;"> <a href="javascript:window.scrollTo(0,0);" style="font-size:12px;margin:5px auto;display:block;color:#fff;text-align:center;line-height:35px;background:#333;margin-bottom:-10px;">返回顶部</a></div>
+		 -->
+	</div>
+	<div style="margin:10px;">
+		<a class="footer" href="javascript:window.scrollTo(0,0);" target="_self"><span class="top">回顶部</span></a>
+	</div>
+  
 </div>
-<div class="weimob-content">
-  <h3>{ZF:$res.title}</h3>
-  <div class="pub_time">{ZF:$res.createtime|date="y-m-d",###}</div>
-  <div><img src="{ZF:$res.pic}" style="width:100%;"/></div>
-  <article>
-  <div class="para" style="margin-bottom:14px;text-indent:30px;font-family:arial, 宋体, sans-serif;font-size:14px;line-height:24px;white-space:normal;background-color:#FFFFFF;"> {ZF:$res.info|htmlspecialchars_decode} <br />
-    </article>
-    
-<!--share digg-->
-<include file="Index:Digg"/>
-    <article class="recommend">
-      <label>往期回顾</label>
-      <ul>
-        <volist name="lists" id="lo">
-          <li><a href="{ZF::U('Index/content',array('token'=>$lo['token'],'id'=>$lo['id'],'wecha_id'=>$wecha_id,'weiwin'=>'mp.weixin.qq.com'))}">{ZF:$lo.title}</a></li>
-        </volist>
-      </ul>
-    </article>
 
-    <include file="Index:content_comment" />
-
-
-<div style="padding-bottom:0!important;"> <a href="javascript:window.scrollTo(0,0);" style="font-size:12px;margin:5px auto;display:block;color:#fff;text-align:center;line-height:35px;background:#333;margin-bottom:-10px;">返回顶部</a></div>
-  </div>
-</div>
 <footer>
-  <div class="weimob-copyright"> <a href="/index.php?g=Wap&m=Index&a=index&token={ZF:$gtoken}&wecha_id={ZF:$wecha_id}&weiwin=mp.weixin.qq.com">© {ZF:$tpl.wxname} - 版权所有</a> </div>
-  <span class="weimob-support" style="display:none;">{ZF::C('site_name')}</span> </footer>
+	<div class="weimob-copyright"> <a href="/index.php?g=Wap&m=Index&a=index&token={ZF:$gtoken}&wecha_id={ZF:$wecha_id}&weiwin=mp.weixin.qq.com">© {ZF:$tpl.wxname} - 版权所有</a> </div>
+	<span class="weimob-support" style="display:none;">{ZF::C('site_name')}</span> 
+</footer>
+
 <div mark="stat_code" style="width:0px; height:0px; display:none;">{ZF:$home.stat_code|htmlspecialchars_decode} </div>
 
 <include file="Index:styleInclude"/>
+
 <!-- share -->
 <include file="Index:content_share" />
+ 
 </body>
 </html>
