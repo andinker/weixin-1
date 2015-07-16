@@ -3,53 +3,85 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>{ZF:$tpl.wxname}</title>
-<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no">
 <meta charset="utf-8">
+
 <link href="{ZF::RES}/Index/136/cate.css" rel="stylesheet" type="text/css" />
 
+<style type="text/css">
+body .mainmenu li div img{height: 100%;}
+</style>
 
 </head>
 
-<body>
-<!--引导动画-->
-    <notempty name="indexanimation"><include file="Index:anStyle"/></notempty>
-    <!--背景音乐-->
-    <if condition="$homeInfo['musicurl'] neq false">
-<include file="Index:music"/>
-</if>
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	var control_size=function(){
+		var imgbox_w=$('ul.mainmenu li:first-child .menubtn .menuimg').width();
+		var li_imgbox_w=$('ul.mainmenu li:nth-child(7n+2) .menubtn .menuimg').width();
+		$('ul.mainmenu li .menubtn .menuimg').css("height",li_imgbox_w+"px");
+		$('ul.mainmenu li:nth-child(7n+1) .menubtn .menuimg').css("height",imgbox_w+"px");
+		$('ul.mainmenu li:nth-child(7n+6) .menubtn .menuimg').css("height",imgbox_w+"px");
+		$('ul.mainmenu li:nth-child(7n+7) .menubtn .menuimg').css("height",imgbox_w+"px");
+	};
+	control_size();
+	$(window).resize(function(){
+		control_size();
+	})
+})
+</script>
 
- <div id="insert1" ></div>
+<body>
+
+<!--引导动画-->
+<notempty name="indexanimation"><include file="Index:anStyle"/></notempty>
+
+<!--背景音乐-->
+<if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
+
+<div id="insert1" ></div>
+
 <ul class="mainmenu">
 
    <volist name="info" id="vo">
-   
-	<li>
-		<div class="menubtn">
-			<a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url|htmlspecialchars_decode}</if>">
-				<div class="menuimg"><img src="{ZF:$vo.img}" /><p class="menutitle">{ZF:$vo.name}</p></div>
-			
-		</a>
-		</div>
-		
-	</li>
+		<li>
+			<div class="menubtn">
+				<a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url|htmlspecialchars_decode}</if>">
+					<div class="menuimg">
+						<php>if(!$vo['img']==""){</php>
+							<img src="{ZF:$vo.img}" />
+						<php>}else{</php>
+							<img src="{ZF:$vo.img}" style="visibility: hidden;" />	
+							<p class="menutitle">{ZF:$vo.name}</p>
+						<php>}</php>
+					</div>
+				</a>
+			</div>
+		</li>
    </volist>
  	
-<div class="clr"></div>
+	<div class="clr"></div>
+	
 </ul>
 
-
  <div id="insert2" ></div>
+ 
 <div class="copyright">
-<if condition="$iscopyright eq 1">
-{ZF:$homeInfo.copyright}
-<else/>
-{ZF:$siteCopyright}
-</if>
-</div>  <include file="Index:styleInclude"/><include file="$cateMenuFileName"/> 
+	<if condition="$iscopyright eq 1">
+		{ZF:$homeInfo.copyright}
+	<else/>
+		{ZF:$siteCopyright}
+	</if>
+</div>
+  
+<include file="Index:styleInclude"/>
+<include file="$cateMenuFileName"/> 
 <!-- share -->
 <include file="Index:share" />
- </body>
+
+</body>
 </html>

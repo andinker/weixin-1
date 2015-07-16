@@ -3,36 +3,40 @@
 <head>
 <title>{ZF:$tpl.wxname}</title>
 
-<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
 <meta name="format-detection" content="telephone=no">
 <meta charset="utf-8">
 <link href="{ZF::RES}/Index/90/cate.css" rel="stylesheet" type="text/css" />
- <link href="{ZF::RES}/Index/public/css/iscroll.css" rel="stylesheet" type="text/css" />
-<style>
- 
- 
-</style>
+<link href="{ZF::RES}/Index/public/css/iscroll.css" rel="stylesheet" type="text/css" />
+
 <script src="{ZF::RES}/Index/public/js/iscroll.js" type="text/javascript"></script>
+
 <script type="text/javascript">
-var myScroll;
-
-function loaded() {
-myScroll = new iScroll('wrapper', {
-snap: true,
-momentum: false,
-hScrollbar: false,
-onScrollEnd: function () {
-document.querySelector('#indicator > li.active').className = '';
-document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-}
- });
- 
-}
-
-document.addEventListener('DOMContentLoaded', loaded, false);
+	var myScroll;
+	
+	function loaded() {
+	myScroll = new iScroll('wrapper', {
+	snap: true,
+	momentum: false,
+	hScrollbar: false,
+	onScrollEnd: function () {
+	document.querySelector('#indicator > li.active').className = '';
+	document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+	}
+	 });
+	 
+	}
+	
+	document.addEventListener('DOMContentLoaded', loaded, false);
 </script>
+
+<style type="text/css">
+body {background: url(/tpl/static/tpl/190/images/12_line.gif) repeat;}
+body .mainmenu li a b{background: url(/tpl/static/tpl/190/images/jt2.png) no-repeat;}
+body .mainmenu li a i{height:24px;}
+</style>
  
 </head>
 <body>

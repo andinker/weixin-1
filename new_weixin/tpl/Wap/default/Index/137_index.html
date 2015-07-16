@@ -10,80 +10,104 @@
 <meta charset="utf-8">
 <link href="{ZF::RES}/css/yl/news.css" rel="stylesheet" type="text/css" />
 
+<style>
+#listhome1{max-width: initial;min-width: 0;}
+.todayList li .img{margin: 0 10px 10px 0;height:50px;background: #ddd;} 
+.todayList li a{overflow: hidden;padding: 10px 10px 11px 8px;}
+.todayList li p.onlyheight{height: 30px;padding-top: 10px;}
+</style>
+
 </head>
+
 <script>
-window.onload = function ()
-{
-var oWin = document.getElementById("win");
-var oLay = document.getElementById("overlay");	
-var oClose = document.getElementById("close");
-
-oLay.onclick = function ()
-{
-oLay.style.display = "none";
-oWin.style.display = "none"	
-}
-};
+	window.onload = function ()
+	{
+	var oWin = document.getElementById("win");
+	var oLay = document.getElementById("overlay");	
+	var oClose = document.getElementById("close");
+	
+	oLay.onclick = function ()
+	{
+	oLay.style.display = "none";
+	oWin.style.display = "none"	
+	}
+	};
 </script>
-<body id="listhome1">
-	<!--引导动画-->
-    <notempty name="indexanimation"><include file="Index:anStyle"/></notempty>
-    <!--背景音乐-->
-    <if condition="$homeInfo['musicurl'] neq false">
-<include file="Index:music"/>
-<style> .btn_music {left:auto;right: 15px;} </style>
-</if>
-<div id="ui-header">
-<div class="fixed">
 
-<a class="ui-btn-left_pre" href="javascript:history.go(-1)"></a>
-<a class="ui-btn-right" href="{ZF::U('Index/index',array('token'=>$tpl['token']))}"></a>
+<body id="listhome1">
+
+<!--引导动画-->
+<notempty name="indexanimation"><include file="Index:anStyle"/></notempty>
+
+<!--背景音乐-->
+<if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/><style> .btn_music {left:auto;right: 15px;} </style></if>
+
+<div id="ui-header">
+	<div class="fixed">
+		<a class="ui-btn-left_pre" href="javascript:history.go(-1)"></a>
+		<a class="ui-btn-right" href="{ZF::U('Index/index',array('token'=>$tpl['token']))}"></a>
+	</div>
 </div>
-</div>
+
 <div id="overlay"></div>
 
 <div class="Listpage">
-<div class="top46"></div>
+
+	<div class="top46"></div>
+	
     <div id="todayList">
-<ul  class="todayList">
-   <volist name="info" id="vo">   
-	<li>
-		<if condition="$vo['url']">
-		<a href="{ZF:$vo.url}">
-		<else />
-		<a href="{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}">
-		</if>
-		<div class="img"><img src="{ZF:$vo.img}"></div>
-		<h2>{ZF:$vo.name}</h2>
-		<p class="onlyheight">{ZF:$vo.info}</p>
-		<div class="commentNum"></div>
-		</a>
-	</li>
- </volist>
+		<ul  class="todayList">
+   			<volist name="info" id="vo">   
+				<li>
+					<if condition="$vo['url']">
+						<a href="{ZF:$vo.url}">
+					<else />
+						<a href="{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}">
+					</if>
+							<h2>{ZF:$vo.name}</h2>
+							<div class="img">
+								<php>if(!$vo['img']==""){</php>
+									<img src="{ZF:$vo.img}">
+								<php>}</php>	
+							</div>
+							<p class="onlyheight">{ZF:$vo.info}</p>
+							<div class="commentNum"></div>
+						</a>
+				</li>
+ 			</volist>
+		</ul>
+	</div>
+	
+	<section id="Page_wrapper">
 
-</ul>
+		<div id="pNavDemo" class="c-pnav-con"></div>
+		
+		<script>
+			function dourl(url){
+				location.href= url;
+			}
+		</script>
+		
+		<div style="display:none"> </div>
+
+		<div style="display:none">{ZF:$tpl.tongji|htmlspecialchars_decode}</div>
+
+		<div class="copyright">
+			<if condition="$iscopyright eq 1">
+				{ZF:$homeInfo.copyright}
+			<else/>
+				{ZF:$siteCopyright}
+			</if>
+		</div> 
+		
+		<include file="Index:styleInclude"/>
+		<include file="$cateMenuFileName"/>
+		<!-- share -->
+		<include file="Index:share" />
+	
+	</section>
+
 </div>
-<section id="Page_wrapper">
-<div id="pNavDemo" class="c-pnav-con">
 
-</div>
-<script>
-function dourl(url){
-location.href= url;
-}
-</script>
-<div style="display:none"> </div>
-<div style="display:none">{ZF:$tpl.tongji|htmlspecialchars_decode}</div>
-
-  <div class="copyright">
-<if condition="$iscopyright eq 1">
-{ZF:$homeInfo.copyright}
-<else/>
-{ZF:$siteCopyright}
-</if>
-</div> 
-<include file="Index:styleInclude"/><include file="$cateMenuFileName"/>
-<!-- share -->
-<include file="Index:share" />
 </body>
 </html>

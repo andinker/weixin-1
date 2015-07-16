@@ -68,32 +68,40 @@
 	        </div>
 	        
 	        <div class="clist clist1 swiper-container">
-	            <div class="swiper-wrapper" style="width: 100%">
-	                <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 100%;">
-			            <ul>
-				            <volist name="vo['sub']" id="res">
-				                <li>
-				                    
-				                    <a href="<if condition="$res['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$res['id'],'token'=>$res['token']))}<else/>{ZF:$res.url|htmlspecialchars_decode}</if>">
-				                    
-					                    <div>
-					                        <img src="{ZF:$res.img}">
-					                    </div>
-				                    
-				                        <span>{ZF:$res.name}</span>
-				                        
-				                    </a>
-				                    
-				                </li>
-				            </volist>
-			            </ul>
+	            <notempty name="vo['sub']">
+		            <div class="swiper-wrapper" style="width: 100%">
+		                <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 100%;">
+				            <ul>
+					            <volist name="vo['sub']" id="res">
+					                <li>
+					                    
+					                    <a href="<if condition="$res['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$res['id'],'token'=>$res['token']))}<else/>{ZF:$res.url|htmlspecialchars_decode}</if>">
+					                 
+						                    <div>
+						                       <php>if(!$res['img']==""){</php>
+						                        	<img src="{ZF:$res.img}">
+						                        <php>}else{</php>
+						                        	<div style="line-height:60px;font-size:13px;color:#aaa;">暂无图片</div>
+						                        <php>}</php>
+						                    </div>
+					                    
+					                        <span>{ZF:$res.name}</span>
+					                        
+					                    </a>
+					                    
+					                </li>
+					            </volist>
+				            </ul>
+			            </div>
+	                </div>
+		            <!--     
+		            <div class="cpager">
+		            	<span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span>
 		            </div>
-                </div>
-	                
-	            <div class="cpager">
-	            	<span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span>
-	            </div>
-	            
+		            --> 
+		        <else/>
+		        	<div style="padding:10px 0;color:#aaa;">该分类暂无子分类</div>
+		        </notempty>  
 	        </div>
 	        
 	    </div>
