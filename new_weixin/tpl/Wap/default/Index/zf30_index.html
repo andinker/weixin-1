@@ -40,7 +40,7 @@
 		    	<li id="m<php>echo $ii;</php>">
 		           <a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url}</if>">
 						<div>
-		                    <span  class="icon" style="background:url({ZF:$vo.img}) 0 center no-repeat;background-size:50px 34px;"><em></em></span>
+		                    <span  class="icon" style="background:url({ZF:$vo.img}) 0 center no-repeat;background-size:50px 50px;"><em></em></span>
 		                    <span class="title"> {ZF:$vo.name}</span> 
 		                </div>
 		           </a>
@@ -57,7 +57,7 @@
 <div id="insert2"></div>
 <div style="display:none"> </div>
 
-<div class="copyright">
+<div class="copyright" style="padding:15px 0;">
 	<if condition="$iscopyright eq 1">
 		©{ZF:$homeInfo.copyright}
 	<else/>
@@ -67,7 +67,7 @@
 
 <div style="display:none">{ZF:$tpl.tongji|htmlspecialchars_decode}</div>
 
-<include file="Index:styleInclude"/>
+<!-- <include file="Index:styleInclude"/> -->
 <include file="$cateMenuFileName"/>
 <!-- share -->
 <include file="Index:share" /> 

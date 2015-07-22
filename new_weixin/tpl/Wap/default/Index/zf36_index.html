@@ -21,6 +21,9 @@
 .flickity-prev-next-button{display: none;}
 .gallery-cell {width: 100%;}
 .flickity-page-dots{bottom:5px;}
+#cate7 LI.li0 .menubtn{margin: 0 auto;}
+#cate7 .cateul LI{width: 33%;}
+#cate7{width: auto;}
 
 </style>
 
@@ -78,7 +81,13 @@ $('.nav_bottom').flickity({
 			<LI class=li0>
 				<A href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url}</if>">
 					<DIV class=menubtn>
-						<DIV class=menuimg><IMG src="{ZF:$vo.img}"></DIV>
+						<DIV class=menuimg>
+							<php>if(!$vo['img']==""){</php>
+								<IMG src="{ZF:$vo.img}">
+							<php>}else{</php>
+								<IMG src="{ZF:$vo.img}" style="visibility: hidden;">
+							<php>}</php>	
+						</DIV>
 						<DIV class=menutitle>{ZF:$vo.name}</DIV>
 					</DIV>
 				</A>

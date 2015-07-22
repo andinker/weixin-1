@@ -18,8 +18,19 @@
 <script type="text/javascript" src="{ZF::RES}/Index/public/js/zepto.js"></script>
 <script type="text/javascript" src="{ZF::RES}/Index/public/js/swipe.js"></script>
 
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="{ZF::STATICS}/plugin_flickity/flickity.min.css"/>
+<script type="text/javascript" src="{ZF::STATICS}/plugin_flickity/flickity.pkgd.min.js"></script>
+
 <style type="text/css">
+
 .list_ul dt{left:0; width: 100%;text-overflow: ellipsis;text-align: left;white-space: nowrap;overflow: hidden;top:5px;}
+
+.flickity-prev-next-button{display: none;}
+.gallery-cell {width: 100%;}
+.flickity-page-dots{bottom:5px;right:0;text-align: right;padding-right: 10px;}
+.body{min-width: 0;max-width: inherit;}
+
 </style>
 
 </head>
@@ -35,37 +46,44 @@
 <div class="body">
 
 	<!--幻灯片管理-->
-    <div style="-webkit-transform:translate3d(0,0,0);">
-        <div id="banner_box" class="box_swipe" style="visibility: visible;">
-            <ul style="list-style: none; width: 1350px; transition: 500ms; -webkit-transition: 500ms; -webkit-transform: translate3d(-900px, 0, 0);">
-                <volist name="flash" id="so">
-                	<li style="width: 450px; display: table-cell; vertical-align: top;">
-                    	<a href="{ZF:$so.url}">
-                        	<img src="{ZF:$so.img}"  style="width:100%;">
-                    	</a>
-                    </li>
-                 </volist>       
-            </ul>
-            <ol>
-                <li class=""></li>
-                <li class="on"></li>
-                <li class=""></li>
-           </ol>
-        </div>
-    </div>
-    
+	<notempty name="flash">
+	    <div style=" margin:0px auto; max-width: 1140px; z-index:97; position:relative;" id="gal_he">
+	        <div class="mygallery">
+	            <volist name="flash" id="so">
+	
+	                    <div class="gallery-cell clickcell" urldata="{ZF:$so.url}" >
+	                        <img src="{ZF:$so.img}" width="100%"/>
+	
+	                    </div>
+	            </volist> 
+	        </div>
+	    </div>
+	</notempty>
 	<script>
-        $(function(){
-            new Swipe(document.getElementById('banner_box'), {
-                speed:500,
-                auto:3000,
-                callback: function(){
-                    var lis = $(this.element).next("ol").children();
-                    lis.removeClass("on").eq(this.index).addClass("on");
-                }
-            });
-        });
-    </script>
+	var myg = $('.mygallery').flickity({ "wrapAround":true,"autoPlay": true,"pageDots": true,"prevNextButtons": false });
+	
+	
+	myg.on( 'staticClick', function( event, pointer, cellElement, cellIndex ) {
+		if ( !cellElement ) {
+		    return;
+		  }
+	
+		  location.href = $( cellElement ).attr('urldata');
+	
+	})
+	
+	</script>
+	
+	<script type="text/javascript">
+	$('.nav_bottom').flickity({
+		freeScroll: true,
+	    contain: true,
+	    // disable previous & next buttons and dots
+	    prevNextButtons: false,
+	    pageDots: false,
+	    cellAlign: 'left',
+		});
+	</script>
     
  	<section>
  	
@@ -273,6 +291,22 @@
 <include file="$cateMenuFileName"/>
 <!-- share -->
 <include file="Index:share" />
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var con_size=function(){
+		var gal_w=$('.mygallery img:first-child').height();
+		$(".gallery-cell").css("height",gal_w+"px");
+		$("#gal_he div").css("height",gal_w+"px");
+		
+	};
+	con_size();
+	$(window).resize(function(){
+		con_size();
+	});
+	
+})
+</script>
 
 </body>
 </html>

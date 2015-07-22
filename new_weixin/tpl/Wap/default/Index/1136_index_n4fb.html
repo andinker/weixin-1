@@ -16,7 +16,6 @@ body .mainmenu li div img{height: 100%;}
 </style>
 
 </head>
-
 <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -34,6 +33,28 @@ $(document).ready(function(){
 	})
 })
 </script>
+
+<php>if($tpl['color_id']==0){</php>
+	<script>$(document).ready(function(){$('body').css("background-color","#151515");})</script>
+<php>}</php>
+<php>if($tpl['color_id']==1){</php>
+	<script>$(document).ready(function(){$('body').css("background-color","rgba(0, 0, 0, 0.5)");})</script>
+<php>}</php>
+<php>if($tpl['color_id']==2){</php>
+	<script>$(document).ready(function(){$('body').css("background-color","rgba(11, 106, 207, 0.47)");})</script>
+<php>}</php>
+<php>if($tpl['color_id']==3){</php>
+	<script>$(document).ready(function(){$('body').css("background-color","rgba(159, 133, 96, 0.45)");})</script>
+<php>}</php>
+<php>if($tpl['color_id']==4){</php>
+	<script>$(document).ready(function(){$('body').css("background-color","rgba(255, 152, 0, 0.5)");})</script>
+<php>}</php>
+<php>if($tpl['color_id']==5){</php>
+	<script>$(document).ready(function(){$('body').css("background-color","rgba(140, 92, 210, 0.5)");})</script>
+<php>}</php>
+<php>if($tpl['color_id']==6){</php>
+	<script>$(document).ready(function(){$('body').css("background-color","rgba(8, 177, 45, 0.4)");})</script>
+<php>}</php>
 
 <body>
 
@@ -55,9 +76,9 @@ $(document).ready(function(){
 						<php>if(!$vo['img']==""){</php>
 							<img src="{ZF:$vo.img}" />
 						<php>}else{</php>
-							<img src="{ZF:$vo.img}" style="visibility: hidden;" />	
-							<p class="menutitle">{ZF:$vo.name}</p>
-						<php>}</php>
+							<img src="{ZF:$vo.img}" style="visibility: hidden;" />
+						<php>}</php>	
+						<p class="menutitle">{ZF:$vo.name}</p>
 					</div>
 				</a>
 			</div>

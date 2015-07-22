@@ -135,7 +135,7 @@ a{text-decoration:none;}
 				 
 				<div style="background-image:url({ZF:$vo.img});background-repeat:no-repeat;background-size:45px 45px;">
 					<a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url}</if>">
-						<span class="icon"><em></em></span>	<span class="title">{ZF:$vo.name}</span>
+						<span class="icon"><em></em></span>	<span class="title" style="overflow: hidden;display: block;text-overflow: ellipsis;">{ZF:$vo.name}</span>
 					</a>
 				</div>
 				
@@ -145,7 +145,7 @@ a{text-decoration:none;}
 
 </div>
 
-<div class="copyright" style="text-align:center;  position: fixed;width: 100%;bottom: 50px;">
+<div class="copyright" style="text-align:center;padding:10px 0">
 
 	<if condition="$iscopyright eq 1">
 		©{ZF:$homeInfo.copyright}
@@ -154,7 +154,7 @@ a{text-decoration:none;}
 	</if>
 </div> 
  
-<include file="Index:styleInclude"/>
+<!-- <include file="Index:styleInclude"/> -->
 <include file="$cateMenuFileName"/>
 <!-- share -->
 <include file="Index:share" /> 

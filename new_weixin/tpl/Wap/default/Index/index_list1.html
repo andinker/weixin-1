@@ -10,11 +10,9 @@
 
 <link href="{ZF::RES}/Index/diyColorCss/cate24_0.css" rel="stylesheet" type="text/css" /> 
 <link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/public/css/reset.css" media="all"> 
-<link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/public/css/iscroll.css" media="all">
 
 <script type="text/javascript" src="{ZF::RES}/Index/public/js/jQuery.js"></script>
 <script type="text/javascript" src="{ZF::RES}/Index/public/js/jquery.min.js"></script> 
-<script type="text/javascript" src="{ZF::RES}/Index/public/js/iscroll.js"></script>
 <script type="text/javascript" src="{ZF::RES}/Index/public/js/swipe.js"></script>
 <script type="text/javascript" src="{ZF::RES}/Index/public/js/zepto.js"></script>
 
@@ -33,23 +31,6 @@
 <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
 
 <link rel="stylesheet" type="text/css" href="{ZF::RES}/css/124/font-awesome.css" media="all">
-
-<script type="text/javascript">
-    var myScroll;
-    function loaded() {
-        myScroll = new iScroll('wrapper', {
-            snap: true,
-            momentum: false,
-            hScrollbar: false,
-            onScrollEnd: function() {
-                document.querySelector('#indicator > li.active').className = '';
-                document.querySelector('#indicator > li:nth-child(' + (this.currPageX + 1) + ')').className = 'active';
-            }
-        });
-    }
-    document.addEventListener('DOMContentLoaded', loaded, false);
-</script>
-
 
 <div class="body">
 	

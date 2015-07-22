@@ -58,11 +58,12 @@
 </script>
 
 <style type="text/css">
-body .mainmenu li:nth-child(10n+4) a{min-height: 65px;}
+//body .mainmenu li:nth-child(10n+4) a{min-height: 65px;}
 body .mainmenu li:nth-child(10n+4) img{width: 100%;height: 100%;}
 body .mainmenu li:nth-child(10n+5) a img{margin-top: 5px;}
 body .mainmenu li:nth-child(10n+5) a{padding:0;}
 body .mainmenu li:nth-child(10n+5) a{height:auto;}
+body .mainmenu li:nth-child(10n+10) a {background: #9933fa;}
 </style>
 
 </head>
@@ -162,15 +163,15 @@ $(document).ready(function(){
 	var control_size=function(){
 		var img_w=$('body .mainmenu li:nth-child(10n+4) a').width();
 		$('body .mainmenu li:nth-child(10n+4) a').css("height",img_w*1/3+"px");
-		$('body .mainmenu li:nth-child(10n+5) a').css("padding-top",(img_w*1/3-65)/2+"px");
-		$('body .mainmenu li:nth-child(10n+5) a').css("padding-bottom",(img_w*1/3-65)/2+"px");
-		//alert($('body .mainmenu li:nth-child(10n+5)').height());
-		//alert($('body .mainmenu li:nth-child(10n+4)').height());
+		$('body .mainmenu li:nth-child(10n+5) a').css("height",img_w*1/3+"px");
+		$('body .mainmenu li:nth-child(10n+5) a img').css("margin-top",(img_w*1/3-60)/2+"px");
 	};
 	control_size();
 	$(window).resize(function(){
 		control_size();
 	})
+	//alert($('body .mainmenu li:nth-child(10n+5)').height());
+	//alert($('body .mainmenu li:nth-child(10n+4)').height());
 })
 </script>
 

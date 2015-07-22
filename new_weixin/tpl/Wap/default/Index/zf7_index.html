@@ -118,7 +118,9 @@ a{text-decoration:none;}
 				<a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url}</if>">
 					
 					<div class="img">
-						<img src="{ZF:$vo.img}" />
+						<php>if(!$vo['img']==""){</php>
+							<img src="{ZF:$vo.img}" />
+						<php>}</php>
 					</div>
 					
 					<h2>{ZF:$vo.name}</h2>

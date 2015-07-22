@@ -56,9 +56,9 @@
 	<!--幻灯片管理-->
     <div style="-webkit-transform:translate3d(0,0,0);">
         <div id="banner_box" class="box_swipe" style="visibility: visible;">
-            <ul style="list-style: none; width: {ZF:$num*433}px; transition: 0ms; -webkit-transition: 0ms; -webkit-transform: translate3d(0px, 0, 0);">
+            <ul style="list-style: none;/* width: {ZF:$num*433}px;*/ transition: 0ms; -webkit-transition: 0ms; -webkit-transform: translate3d(0px, 0, 0);">
             	<volist name="flash" id="so">
-	                <li style="width: 433px; display: table-cell; vertical-align: top;">
+	                <li style="display: table-cell; vertical-align: top;">
 	                    <a href="{ZF:$so.url}">
 	                        <img src="{ZF:$so.img}"  style="width:100%;">
 	                    </a>

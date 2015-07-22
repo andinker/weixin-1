@@ -21,12 +21,14 @@
 .gallery-cell {width: 100%;}
 .flickity-page-dots{bottom: 5px;} 
 #cate10 UL{margin:0 auto;margin-top:5px;}
+#cate5 .mainmenu{width: auto;max-width: 1140px;}
+.menuimg{margin: 0 auto;}
 
 </style>
 
 </HEAD>
 
-<BODY style="margin-bottom:50!important;">
+<BODY style="margin-bottom:50!important;background: #f3eaff">
 
 <!--背景音乐-->
 <if condition="$homeInfo['animation'] neq '0'"><include file="Index:anStyle"/></if>
@@ -39,7 +41,6 @@
 
                     <div class="gallery-cell clickcell" urldata="{ZF:$so.url}" >
                         <img src="{ZF:$so.img}" width="100%"/>
-
                     </div>
             </volist> 
         </div>
@@ -78,7 +79,11 @@ $('.nav_bottom').flickity({
 			<LI class=li0>
 				<A href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url}</if>">
 					<DIV class=menubtn>
-						<DIV class=menuimg><IMG src="{ZF:$vo.img}"> </DIV>
+						<DIV class=menuimg>
+							<php>if(!$vo['img']==""){</php>
+							<IMG src="{ZF:$vo.img}">
+							<php>}</php> 
+						</DIV>
 						<DIV class=menutitle>{ZF:$vo.name}</DIV>
 					</DIV>
 				</A>

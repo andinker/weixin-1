@@ -29,19 +29,43 @@
 
 <style type="text/css">
 
-.body{max-width:640px;margin:auto;min-height:100%;background-color:#f4f4f4;position:relative;background-size:100% 100%;background-image:url("{ZF::RES}/images/themes/bg1.jpg");}
+.body{padding:0;max-width:640px;margin:auto;min-height:100%;background-color:#f4f4f4;/*position:relative;background-size:100% 100%;background-image:url("{ZF::RES}/images/themes/bg1.jpg");*/}
 .btn_music{left:auto;right:15px;}
 .top_bar{top:auto;bottom:0;}
 .list_font{margin: 20px 10px;}
 //.top_bar .top_menu>li>a{line-height: 0!important;}
+.classify_menu{display: block;overflow: hidden;position: absolute;top: 0;z-index: 5;width:100%;}
+footer{bottom:10px;z-index: 2;} 
 
 </style>
 
 <title>{ZF:$tpl.wxname}</title>
 
+<link href="{ZF::RES}/Index/public/css/iscroll.css" rel="stylesheet" type="text/css" />
+<script src="{ZF::RES}/Index/public/js/iscroll.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var myScroll;
+	
+	function loaded() {
+	myScroll = new iScroll('wrapper', {
+	snap: true,
+	momentum: false,
+	hScrollbar: false,
+	onScrollEnd: function () {
+	document.querySelector('#indicator > li.active').className = '';
+	document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+	}
+	 });
+	 
+	 
+	}
+	
+	document.addEventListener('DOMContentLoaded', loaded, false);
+</script>
+
 </head>
 
-<body onselectstart="return true;" ondragstart="return false;">
+<body onselectstart="return true;" ondragstart="return false;" class="classify_body">
 <!--背景音乐-->
 <if condition="$homeInfo['animation'] neq '0'"><include file="Index:anStyle"/></if>
 <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
@@ -49,40 +73,39 @@
 
 <div class="body">
 
-	<php>
-		echo '<script type="text/javascript">var flashbg = new Array();';
-		$i = 0;
-		foreach($flashbg as $flashbg_item){
-			echo 'flashbg['.$i.'] = "'.$flashbg_item['img'].'";';
-			$i++;
-		}
+	<div class="banner">
+
+		<div id="wrapper">
+			<div id="scroller">
+				<ul id="thelist">
+					<notempty name="flashbg">
+						<volist name="flashbg" id="so">              
+						    <li>
+						    	<img src="{ZF:$so.img}">
+						    </li>
+						</volist>
+					<else/>
+						<li><img src="{ZF::RES}/images/themes/bg1.jpg"></li>
+					</notempty>
+				</ul>
+			</div>
+		</div>
 		
-		echo '</script>';
-	</php>
-
-
-	<script type="text/javascript">
+		<div id="nav" style="display: none;" >
+			<div id="prev" onClick="myScroll.scrollToPage('prev', 0,400,2);return false">&larr; prev</div>
+			<ul id="indicator">
+				<volist name="flashbg" id="so">
+				    <li <if condition="$i eq 1">class="active"</if> ></li>
+				</volist>
+			</ul>
+			<div id="next" onClick="myScroll.scrollToPage('next', 0,400,2);return false">next &rarr;</div>
+		</div>
+		
+		<div class="clr"></div>
 	
-	var currnt_bg_index = 0;
-	
-	function swap(){
-		
-		if ( (currnt_bg_index+1) == flashbg.length ){
-			currnt_bg_index = 0;
-		}else{
-			currnt_bg_index++;
-		}
-		
-		$('.body').css('background-image','url('+flashbg[currnt_bg_index]+')'); 
-		
-		
-	}
-	if(!flashbg.length==0){
-		setInterval("swap()",1000);
-	}
-	</script>
+	</div>
 
-	<section> 
+	<section class="classify_menu"> 
 	 
 		<div class="logo">
 			<img src="<if condition="$homeInfo['logo'] neq false">{ZF:$homeInfo['logo']}<else/>{ZF::RES}/images/themes/huifu.jpg</if>" style="height:50px;" />
@@ -93,7 +116,7 @@
 				<li>
 					<a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url|htmlspecialchars_decode}</if>">
 						<div><span class="{ZF:$vo.icon}"></span></div>
-						<div><p>{ZF:$vo.name}</p></div>
+						<div><p style="height: 30px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">{ZF:$vo.name}</p></div>
 					</a>
 				</li>
 			</volist>
@@ -170,11 +193,49 @@
 						 
 </footer>
 
+<script>
+	var count = document.getElementById("thelist").getElementsByTagName("img").length;  
+	
+	var count2 = document.getElementsByClassName("menuimg").length;
+	for(i=0;i<count;i++){
+	 document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+	
+	}
+	document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+	
+	 setInterval(function(){
+	myScroll.scrollToPage('next', 0,400,count);
+	},3500 );
+	window.onresize = function(){ 
+	for(i=0;i<count;i++){
+	document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+	
+	}
+	 document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+	} 
+
+</script>
+
 <div mark="stat_code" style="width:0px; height:0px; display:none;"></div>
-<include file="Index:styleInclude"/>
+<!--<include file="Index:styleInclude"/>  -->
 <include file="$cateMenuFileName"/>
 <!-- share -->
 <include file="Index:share" /> 
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var bg_size=function(){
+		var w_h=$('.classify_menu').height()+80;
+		var window_w=$(window).height();
+		$('#thelist img').css("min-height",w_h+"px");
+		$('#thelist img').css("height",window_w+"px");
+	};
+	bg_size();
+	$(window).ready(function(){
+		bg_size();
+	})
+})
+</script>
 
 </body>
 </html>

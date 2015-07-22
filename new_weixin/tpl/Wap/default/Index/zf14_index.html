@@ -15,24 +15,19 @@
 <script src="{ZF::RES}/Index/public/js/idangerous.swiper.js" type="text/javascript"></script>
 <script src="{ZF::RES}/Index/public/js/iscroll.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-	var myScroll;
-	
-	function loaded() {
-		myScroll = new iScroll('wrapper', {
-		snap: true,
-		momentum: false,
-		hScrollbar: false,
-		onScrollEnd: function () {
-		document.querySelector('#indicator > li.active').className ='';
-		document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-		}
-		 });
-	 
-	}
-	document.addEventListener('DOMContentLoaded', loaded, false);
-</script>
- 
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="{ZF::STATICS}/plugin_flickity/flickity.min.css"/>
+<script type="text/javascript" src="{ZF::STATICS}/plugin_flickity/flickity.pkgd.min.js"></script>
+
+<style type="text/css">
+
+.flickity-prev-next-button{display: none;}
+.gallery-cell {width: 100%;}
+.flickity-page-dots{bottom:5px;right:0;text-align: right;padding-right: 10px;}
+.body{min-width: 0;max-width: inherit;}
+
+</style>
+
 </head>
 
 <if condition="$homeInfo['animation'] neq '0'"><include file="Index:anStyle"/></if>
@@ -40,37 +35,44 @@
 
 <body id="cate23">
 
-<div class="banner">
+<notempty name="flash">
+    <div style=" margin:0px auto;z-index:97; position:relative;" id="gal_he">
+        <div class="mygallery">
+            <volist name="flash" id="so">
 
-	<div id="wrapper">
-		<div id="scroller">
-			<ul id="thelist">
-				<volist name="flash" id="so">
-					<li><p>{ZF:$so.info}</p><a href="{ZF:$so.url}"><img src="{ZF:$so.img}" /></a></li>
-				</volist>
-			</ul>
-		</div>
-	</div>
-	
-	<div id="nav">
-	
-		<div id="prev" onclick="myScroll.scrollToPage('prev', 0,400,2);return false">&larr; prev</div>
-		
-		<ul id="indicator">
-		            
-			<li class="active"  >1</li>
-			 
-			<li>2</li>
-		 
-		</ul>
-		
-		<div id="next" onclick="myScroll.scrollToPage('next', 0,400,2);return false">next &rarr;</div>
-	
-	</div>
-	
-    <div class="clr"></div>
-    
-</div>
+                    <div class="gallery-cell clickcell" urldata="{ZF:$so.url}" >
+                        <img src="{ZF:$so.img}" width="100%"/>
+
+                    </div>
+            </volist> 
+        </div>
+    </div>
+</notempty>
+<script>
+var myg = $('.mygallery').flickity({ "wrapAround":true,"autoPlay": true,"pageDots": true,"prevNextButtons": false });
+
+
+myg.on( 'staticClick', function( event, pointer, cellElement, cellIndex ) {
+	if ( !cellElement ) {
+	    return;
+	  }
+
+	  location.href = $( cellElement ).attr('urldata');
+
+})
+
+</script>
+
+<script type="text/javascript">
+$('.nav_bottom').flickity({
+	freeScroll: true,
+    contain: true,
+    // disable previous & next buttons and dots
+    prevNextButtons: false,
+    pageDots: false,
+    cellAlign: 'left',
+	});
+</script>
 
 <div id="insert1" ></div>
  
@@ -224,6 +226,22 @@ document.getElementById("thelist").getElementsByTagName("img").item(i).style.css
 <include file="$cateMenuFileName"/>
 <!-- share -->
 <include file="Index:share" />
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var con_size=function(){
+		var gal_w=$('.mygallery img:first-child').height();
+		$(".gallery-cell").css("height",gal_w+"px");
+		$("#gal_he div").css("height",gal_w+"px");
+		
+	};
+	con_size();
+	$(window).resize(function(){
+		con_size();
+	});
+	
+})
+</script>
 
 </body>
 </html>
