@@ -35,6 +35,18 @@ li .mbtip {display: none;}
 				<li><a onclick="selectTag('tagContent1',this)" href="javascript:void(0)">2. 商城列表页显示效果</a> </li>
 				<div class="clr"></div>
 			</ul>
+			
+			<php>if($info['shoptpltypeid']==0){</php>
+				<script>
+					$(document).ready(function(){
+						$('#tagContent0 .cateradio li:last-child').addClass("active");
+						var myurl='index.php?g=User&m=Shoptmpls&a=add&style='+$('#tagContent0 .cateradio li:last-child .radio').val()+'&views='+$('#tagContent0 .cateradio li:last-child .radio').attr('views')+'&r='+Math.random(); 
+						$.ajax({url:myurl,async:false});
+						//console.log(myurl);
+					})
+				</script>
+			<php>}</php>
+		
 			<div id="tagContent">
 				<div class="tagContent selectTag" id="tagContent0">
 					<fieldset>

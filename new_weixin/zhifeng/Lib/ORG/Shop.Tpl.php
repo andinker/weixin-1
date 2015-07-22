@@ -1,7 +1,15 @@
 <?php
 
 	$shoptpl = array(
-	
+		array(
+				'tplid'=>200,
+				'name'=>'商城默认模板',
+				'views'=>'114_index_rwd',
+				'imgurl'=>'rwd_cate03.png',
+				'info'=>'',
+				'attr'=>'',
+				'sort'=>0,
+		),//此为默认模板，tplid不可改动或者重复
 		array(
 			'tplid'=>1,
 			'name'=>'商城模板1',

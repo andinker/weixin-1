@@ -1,0 +1,249 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<title>{ZF:$metaTitle}</title>
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+<meta name="format-detection" content="telephone=no">
+<meta charset="utf-8">
+ <!-- Bootstrap CDN -->
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script> 
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.css">
+<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  
+ <link rel="stylesheet" type="text/css" href="{ZF::STATICS}/shop_menu/css/reset.css">
+<link rel="stylesheet" type="text/css" href="{ZF::STATICS}/shop_menu/css/reboot.css">
+<link rel="stylesheet" type="text/css" href="{ZF::STATICS}/shop_menu/css/main.css">
+<link rel="stylesheet" type="text/css" href="{ZF::STATICS}/shop_menu/css/media.css">
+<script src="{ZF::STATICS}/shop_menu/js/jquery.min.js"></script>
+<script src="{ZF::STATICS}/shop_menu/js/jquery-ui.min.js"></script>
+<script src="{ZF::STATICS}/shop_menu/js/jquery.simplesidebar.js"></script>
+ 
+<link rel="stylesheet" href="{ZF::STATICS}/plugin_flickity/flickity.min.css"/>
+<script type="text/javascript" src="{ZF::STATICS}/plugin_flickity/flickity.pkgd.min.js"></script>
+<style type="text/css">
+body { font-family:"微软雅黑";color:white;background:#eee; }
+#iframe_screen{background:#fff;position:absolute;width:100%;height:100%;left:0;top:0;z-index:300000;overflow:hidden;}
+.gallery-cell {width: 100%;background-color:{ZF:$info.background_color};}
+.gallery-cell img{ width:100%;}
+.cat_name{padding-left:5px;padding-right:5px;text-align:center;font-size:16px;background:#f8f8f8;color:#333;background: {ZF:$info.menu_background_color};/*box-shadow:2px 2px 10px 0px rgba(0,0,0,0.1);*/color:{ZF:$info.menu_font_color};overflow: hidden;height:40px;line-height: 40px;}
+#nav { padding:5px 15px 5px 15px;margin:0px 0px 0px 10px;}
+#nav>ul{padding-left:0;margin-left:0;}
+li{list-style: none;}
+#copyright { line-height:30px;}
+#tool_bar { padding:15px 0; background-color:#f7f5f5; /*border-bottom:1px solid #EAEAEA;*/}
+.nav>li>a{padding:5px 10px;}
+.row .product{padding-bottom:20px;padding-left: 15px;padding-right: 15px;}
+.row .product img{box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.1);}
+.title{height:30px;background:white;height:35px;font-size:1em;margin-bottom:20px;border-radius:2px;line-height:35px;padding-left:10px;}
+.goods_box { margin-bottom:10px;border-radius:2px;padding:0 5px;}
+.goods_box a { display:block; background-color:#FFF; box-shadow:2px 2px 10px 0px rgba(0,0,0,0.1);border-radius:2px;}
+.goods_box_img { overflow:hidden;border-radius:2px;}
+.goods_box_title, .goods_box_price { height:35px; line-height:25px; font-size:13px; overflow:hidden; background-color:#FFF; padding:0px 5px;}
+.goods_box_title { padding-top: 10px; color:#000;  text-overflow: ellipsis;white-space: nowrap;}
+.goods_box_price { padding-bottom:10px; color: orange;border-radius:2px;  font-weight: bold;}
+.goods_box_price span { display:inline-block; margin-left:10px; font-size:8px; text-decoration:line-through; color:#666;  font-weight: normal;}
+.goods_box img { width:100%;}
+.content_middle img{width:100%;}
+.logo img{text-align:center;width:100%;}
+.font-setting{color:{ZF:$info.font_color};}
+.menu_font-setting{color:{ZF:$info.menu_font_color};}
+.all_bg{background-image:url({ZF:$info.background_img});}
+.sidebar li:hover {background-color: {ZF:$info.menu_font_color};color:{ZF:$info.menu_background_color};font-weight:bold;}
+.nav_more{background: {ZF:$info.menu_background_color};text-align: center;color:{ZF:$info.menu_font_color};line-height: 30px;display:none;}
+.flickity-prev-next-button{display: none;}
+.flickity-page-dots{bottom: 0;background-color: rgba(0,0,0,.4);padding: 3px 0;}
+.flickity-page-dots .dot{width: 7px;height: 7px;margin: 0 4px;}
+body{color:#333;}
+.bottom_menu{background:#2B2D30;  position: fixed;z-index: 99;bottom: 0;width: 100%;height:40px;padding:0 10px;}
+.bottom_menu .nav_item{float:left;width: 17%;}
+.bottom_menu .nav_item_center{width: 32%;}
+.nav_item a{display: block;background-position: center center;background-size: contain;background-repeat: no-repeat;height:40px;}
+.bottom_menu .nav_item_center a{background-color: #f90;height: 50px;width: 50px;margin: 0 auto;margin-top: -10px;border-radius: 100%;border: 5px solid #292929;}
+</style>
+</head>
+
+<body>
+
+<!-- banner轮播开始 --> 
+<notempty name="info[picurls]">
+	<div style=" z-index:97; position:relative;" id="gal_he">
+		<div class="mygallery">
+			<volist name='info[picurls]' id='vo'>     
+					<div class="gallery-cell" urldata="<php>echo $info['piclink'.$i];</php>"><img src="{ZF:$vo}"  id="ban_he"></div>
+			</volist>
+		</div>
+	</div>
+</notempty>
+<script>
+var myg = $('.mygallery').flickity({ "wrapAround":true,"autoPlay": true,"pageDots": true });
+
+
+myg.on( 'staticClick', function( event, pointer, cellElement, cellIndex ) {
+	if ( !cellElement ) {
+	    return;
+	  }
+
+	  location.href = $( cellElement ).attr('urldata');
+
+})
+
+</script>
+ 
+<div class="container">
+     <div class="row" style="padding:10px 5px 0;">
+		<volist name="cats" id="cat">
+
+		    <php>
+		    if ( !empty($products[$cat['id']]) ){ 
+		    </php>
+
+		          <volist name="products[ $cat['id'] ]" id="pro">
+			          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 goods_box" style="border-radius:2px;">
+			               <a href="{ZF::U('Wap/Product/product')}&token={ZF:$pro.token}&wecha_id={ZF:$wecha_id}&id={ZF:$pro.id}">
+			                  <div class="goods_box_img"><img src="{ZF:$pro.logourl}"></div>
+			                  <div class="goods_box_title">{ZF:$pro.name}</div>
+			                  <div class="goods_box_price">￥{ZF:$pro.price}元<span>￥{ZF:$pro.oprice}元</span></div>
+			               </a>
+			          </div>
+		          </volist>
+	
+			<php>}</php>
+	
+		</volist>
+     </div>
+	 <div class="row" style="padding:0 10px;line-height: 30px;">
+	 	<div class="col-xs-12" style="background: white;background: white;text-align: center;border-radius: 2px;font-size: 15px;">
+	 		<a href="{ZF::U('Wap/Product/products')}&token={ZF:$pro.token}&catid=0&wecha_id={ZF:$wecha_id}">查看更多</a>
+	 	</div>
+	 </div>
+</div>
+<!-- 产品列表 结束-->
+
+<div class="all_bg"  style="margin:10px 0 30px;">
+
+	 <!-- 底部开始 -->
+	<div id="copyright" style="text-align:center;color:#aaa;" class="font-setting">
+		<div class="container">
+			<if condition="$iscopyright eq 1">
+			    {ZF:$homeInfo.copyright}
+			<else/>
+			    {ZF:$siteCopyright}
+			</if>
+		</div>
+	</div> 
+	<!-- 底部结束 -->
+
+</div>
+
+<div class="bottom_menu">
+	<li class="nav_item"><a href="{ZF::U('Product/cats',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" style="background-image: url(/tpl/Wap/default/common/shop/images/home.png);"></a></li>
+	<li class="nav_item"><a href="" style="background-image: url(/tpl/Wap/default/common/shop/images/recommend.png);"></a></li>
+	<li class="nav_item nav_item_center"><a href="{ZF::U('Product/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" style="background-image: url(/tpl/Wap/default/common/shop/images/cart.png);"></a></li>
+	<li class="nav_item"><a href="" style="background-image: url(/tpl/Wap/default/common/shop/images/activity.png);"></a></li>
+	<li class="nav_item"><a href="{ZF::U('Xiaoqu/People/home',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" style="background-image: url(/tpl/Wap/default/common/shop/images/user.png);"></a></li>
+</div>
+
+
+	<if condition="ACTION_NAME eq 'index'">
+
+		<script type="text/javascript">
+
+			window.shareData = {  
+
+					"moduleName":"Index",
+
+					"moduleID": '0',
+
+					"imgUrl": "{ZF:$homeInfo.picurl}", 
+
+					"timeLineLink": "{ZF::C('site_url')}{ZF::U(Index/ACTION_NAME,array('token'=>$_GET['token']))}",
+
+					"sendFriendLink": "{ZF::C('site_url')}{ZF::U(Index/ACTION_NAME,array('token'=>$_GET['token']))}",
+
+					"weiboLink": "{ZF::C('site_url')}{ZF::U(Index/ACTION_NAME,array('token'=>$_GET['token']))}",
+
+					"tTitle": "{ZF:$homeInfo.title}",
+
+					"tContent": "{ZF:$homeInfo.info}"
+
+				};
+
+		</script>
+
+	<else />
+
+		<script type="text/javascript">
+
+			window.shareData = {  
+
+				"moduleName":"Index",
+
+				"moduleID": '1',
+
+				"imgUrl": "{ZF:$homeInfo.picurl}", 
+
+				"timeLineLink": "{ZF::C('site_url')}{ZF::U(Index/ACTION_NAME,array('token'=>$_GET['token'],'classid'=>$_GET['classid']))}",
+
+				"sendFriendLink": "{ZF::C('site_url')}{ZF::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token'],'classid'=>$_GET['classid']))}",
+
+				"weiboLink": "{ZF::C('site_url')}{ZF::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token'],'classid'=>$_GET['classid']))}",
+
+				"tTitle": "{ZF:$homeInfo.title}",
+
+				"tContent": "{ZF:$homeInfo.info}"
+
+			};
+
+		</script>	
+
+	
+
+	</if>
+
+{ZF:$shareScript}
+
+ <!--chat-->
+
+<if condition="$kefu['sc'] eq '1'">
+<include file="footsrc"/>
+</if> 
+
+<pre>
+<php>
+/*print_r($cats);
+print_r($products);
+print_r($info);*/
+</php>
+</pre>
+
+
+</body>
+
+
+<script type="text/javascript">
+
+var gal_w=$('.mygallery').width();
+
+$('.gallary_cell').css("height",gal_w*1/2+"px");
+$("#gal_he div").css("height",gal_w*1/2+"px");
+
+
+var img_w=$(".goods_box").width();
+$(".goods_box_img").css("height",img_w+"px");
+
+$(window).resize(function(){
+	var gal_w=$('.mygallery').width();
+	$('.gallary_cell').css("height",gal_w*1/2+"px");
+	$("#gal_he div").css("height",gal_w*1/2+"px");
+
+
+	var img_w=$(".goods_box").width();
+	$(".goods_box_img").css("height",img_w+"px");
+});
+
+
+</script>
+</html>
