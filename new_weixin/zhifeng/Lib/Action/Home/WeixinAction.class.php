@@ -1430,14 +1430,14 @@ class WeixinAction extends Action{
     }
     function geci($n){
         $name=implode('',$n);
-        @$str='http://api.ajaxsns.com/api.php?key=free&appid=0&msg=' . urlencode('歌词' . $name);
+        @$str='http://api.qingyunke.com/api.php?key=free&appid=0&msg=' . urlencode('歌词' . $name);
         $json=json_decode(file_get_contents($str));
         $str=str_replace('{br}',"\n",$json->content);
         return str_replace('mzxing_com','zhifengkeji_com',$str);
     }
     function yuming($n){
         $name=implode('',$n);
-        @$str='http://api.ajaxsns.com/api.php?key=free&appid=0&msg=' . urlencode('域名' . $name);
+        @$str='http://api.qingyunke.com/api.php?key=free&appid=0&msg=' . urlencode('域名' . $name);
         $json=json_decode(file_get_contents($str));
         $str=str_replace('{br}',"\n",$json->content);
         return str_replace('mzxing_com','zhifengkeji_com',$str);
@@ -1458,7 +1458,7 @@ class WeixinAction extends Action{
 
     function shouji($n){
         $name=implode('',$n);
-        @$str='http://api.ajaxsns.com/api.php?key=free&appid=0&msg=' . urlencode('归属' . $name);
+        @$str='http://api.qingyunke.com/api.php?key=free&appid=0&msg=' . urlencode('归属' . $name);
         $json=json_decode(file_get_contents($str));
         $str=str_replace('{br}',"\n",$json->content);
         $str=str_replace('小薇',$this->my,str_replace('提示：',$this->my . '提醒您:',str_replace('{br}',"\n",$str)));
@@ -1641,7 +1641,7 @@ class WeixinAction extends Action{
     }
     function xiaohua(){
         $name=implode('',$n);
-        @$str='http://api.ajaxsns.com/api.php?key=free&appid=0&msg=' . urlencode('笑话' . $name);
+        @$str='http://api.qingyunke.com/api.php?key=free&appid=0&msg=' . urlencode('笑话' . $name);
         $json=json_decode(file_get_contents($str));
         $str=str_replace('{br}',"\n",$json->content);
         if(!$str){
@@ -1668,7 +1668,7 @@ class WeixinAction extends Action{
         }elseif ($name=='网站' || $name=='官网' || $name=='网址' || $name=='3g网址') {
             return "【" . C('site_name') . "】\n" . C('site_name') . "\n【" . C('site_name') . "服务宗旨】\n化繁为简,让菜鸟也能使用强大的系统!";
         }
-        $str='http://api.ajaxsns.com/api.php?key=free&appid=0&msg=' . urlencode($name);
+        $str='http://api.qingyunke.com/api.php?key=free&appid=0&msg=' . urlencode($name);
         $json=json_decode(file_get_contents($str));
         $str=str_replace('淫','人',str_replace('提示：',$this->my . '提醒您:',str_replace('{br}',"\n",$json->content)));
         if(!$str){
