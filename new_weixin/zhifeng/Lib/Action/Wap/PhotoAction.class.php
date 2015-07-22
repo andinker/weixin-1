@@ -1,11 +1,21 @@
 <?php
 class PhotoAction extends BaseAction{
 	public function index(){
+		$token=$this->_get('token');
+		$reply_info_db=M('Reply_info');
+		$config=$reply_info_db->where(array('token'=>$token,'infotype'=>'album'))->find();
+		if ($config){
+			$headpic=$config['picurl'];
+		}else {
+			$headpic=__ROOT__.'/tpl/Wap/default/common/css/Photo/banner.jpg';
+		}
+		$this->assign('headpic',$headpic);
+		
 		$agent = $_SERVER['HTTP_USER_AGENT']; 
 		if(!strpos($agent,"MicroMessenger")) {
 			//echo '此功能只能在微信浏览器中使用';exit;
 		}
-		$token=$this->_get('token');
+		
 		if($token==false){
 			echo '数据不存在';exit;
 		}

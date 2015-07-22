@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>{ZF:$info.title}</title>
-<meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no,inital-scale=1.0">
+<meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no,initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no">
@@ -19,6 +19,13 @@ instance = PhotoSwipe.attach( window.document.querySelectorAll('#Gallery a'), op
 }, false);
 }(window, window.Code.PhotoSwipe));
 </script>
+
+<style type="text/css">
+#Gallery li{width: 50%;position: static!important;float: left;box-shadow:none;border:none;padding:0;background: none;}
+#main{padding: 5px;}
+#Gallery li a{padding: 8px;display: block;border-radius: 2px;margin: 5px;background-color: #ffffff;}
+</style>
+
 </head>
 
 <body id="photo">
