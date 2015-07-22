@@ -27,10 +27,21 @@
 			'name'=>'商城列表模板3',
 			'views'=>'list3_products',
 			'imgurl'=>'list_3.png',
-			'info'=>'添加了菜单的3D效果',
+			'info'=>'添加了菜单的3D效果，图片列表式',
 			'attr'=>'',
 			'sort'=>3,
 		),
+			
+		array(
+				'tplid'=>4,
+				'name'=>'商城列表模板4',
+				'views'=>'list4_products',
+				'imgurl'=>'list_4.png',
+				'info'=>'添加了菜单的3D效果，图文详情式',
+				'attr'=>'',
+				'sort'=>3,
+		),
+			
 	);
 	
 return $shoplisttpl;
