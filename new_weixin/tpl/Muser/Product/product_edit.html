@@ -1,6 +1,11 @@
 <layout name="COMMON/html" />
 
 
+<script type="text/javascript">
+/*$(document).ready(function($){
+    $(".selectoptions").BetterPhoneSelect();
+});   */ 
+</script>
 <div class="edit_content"> 
 	<div>
 	    <php>
@@ -69,6 +74,14 @@
 			
 			<div>
 				<div class="attr_name"><span class="import_icon">*</span>社区类目：</div>
+				<!-- <div class="attr_data">
+					<select name="community_catid" id="community_catid" class="selectoptions">
+						    <volist name="wz_cates" id="vo">
+						      <option value="{ZF:$vo.id}"<php> if ($set['community_catid'] == $vo['id']) echo ' selected="selected"';</php>>{ZF:$vo.name}</option>
+						    </volist>
+					</select>
+				</div>
+				 -->
 				<div class="attr_data">
 					<select name="community_catid" id="community_catid">
 						    <volist name="wz_cates" id="vo">
@@ -76,6 +89,7 @@
 						    </volist>
 					</select>
 				</div>
+				
 				<div>
 					<div class="select_msg">
 						<div>选上后，商品可以在社区的商品搜索结果中。</div>
