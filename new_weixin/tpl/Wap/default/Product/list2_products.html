@@ -1,8 +1,23 @@
 <include file="header"/>
+
+<script type="text/javascript">
+
+var control_img_size=function(){
+	var img_box_w=$('.m-list li .pic').width();
+	$('.m-list li .pic').css("height",img_box_w+"px");
+};
+$(document).ready(function(){
+	control_img_size();
+	$(window).resize(function(){
+		control_img_size();
+	})
+})
+</script>
+ 
 <style type="text/css">
 .m-select {display: box;display: -webkit-box;display: -moz-box;width:100%;}
-.m-list{transition:all 500ms ease 0s;-webkit-transition:all 500ms ease 0s;font-size:1.4rem}
-.m-list li{border:none;max-height:180px;margin:1% 0 0 1%;max-width:300px;width:43%;display:inline-block;}
+.m-list{transition:all 500ms ease 0s;-webkit-transition:all 500ms ease 0s;font-size:1.4rem;overflow: hidden;}
+.m-list li{border:none;max-height:none;margin:1% 0 0 1%;max-width:300px;width:43%;display:inline-block;float:left;}
 .m-list li span{display:block;max-height:90px;overflow:hidden;text-align:center;margin:0 auto;}
 .m-list li .pic{width:auto;margin-right:auto;max-height:100%;}
 .m-list li .pic img{width:100%;height:auto;}
@@ -10,6 +25,7 @@
 .m-list li .con .t{display:block;max-height:38px;overflow:hidden;margin-bottom:7px;line-height:1.4em}
 .m-list li .con b{color:#c00;font-size:1.6rem;margin-right:.8rem}
 .m-list li .con del{color:#999}
+.m-list li .con .t{text-overflow:ellipsis;white-space: nowrap;overflow: hidden;  margin-top: 7px;}
 </style>
 <form id="search_form" name="search_form" action="" method="post">
 	<div class="m-l-search">
@@ -43,7 +59,7 @@
 	</li>
 </volist>
 </ul>
-<a class="more" id="show_more" page="2" style="display: none;" href="javascript:void(0);">加载更多</a>
+<div style="text-align: center;"><a class="more" id="show_more" page="2" style="display: none;" href="javascript:void(0);">加载更多</a></div>
 <input type="hidden" value="1" id="pageid" />
 <input type="hidden" id="canScroll" value="1" />
 <script type="text/javascript">
@@ -118,6 +134,8 @@ $(function() {
 							'</a></span><span class="con"><a class="t" href="' + com_link + '&id=' + y.id + '">' + y.name + '</a><b>￥'+ y.price +'&nbsp;元</b><del>￥' + y.oprice + '</del></span></li>';
 						});
 						$('#m_list').append(_tmp_html);
+						
+						control_img_size();
 					}
 				});
 			}
@@ -126,9 +144,8 @@ $(function() {
 });
 </script>
 
-		<if condition="$kefu['sc'] eq '1'">
-		<include file="footsrc"/>
-		</if> 
+<if condition="$kefu['sc'] eq '1'"><include file="footsrc"/></if>
+
 </body>
 <script type="text/javascript">
 window.shareData = {  

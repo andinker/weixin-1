@@ -91,7 +91,7 @@ a:hover{text-decoration: none;}
 								<a  style="display: block;overflow: hidden;" href="{ZF::U('Product/product',array('token' => $_GET['token'], 'id' => $hostlist['id'], 'wecha_id' => $_GET['wecha_id']))}">
 									<b>￥{ZF:$hostlist.price}</b><del>￥{ZF:$hostlist.oprice}</del>
 									<span style="display:block;overflow: hidden;">库存：{ZF:$hostlist.num} </span>
-									<span style="display:block;overflow: hidden;">邮费：<if condition="$hostlist.mailprice neq 0">{ZF:$hostlist.mailprice}<else/>包邮</if></span>
+									<span style="display:block;overflow: hidden;">邮费：<if condition="$hostlist.mailprice neq 0">￥{ZF:$hostlist.mailprice}<else/>包邮</if></span>
 								</a>
 							</span>
 						</div>
@@ -228,7 +228,7 @@ $(function() {
 					data : {'page' : _page, 'inajax' : 1},
 					url :  b_url + '&order=' + order + '&method=' + _get_method + '&pagesize='+pagesize,
 					dataType : "json",
-					success : function(RES) {
+					success : function(RES) {console.log(RES);
 						$('#canScroll').attr('value',1);
 						$('#show_more').hide().html('加载更多');
 						data = RES.products;
@@ -238,14 +238,33 @@ $(function() {
 						_page = $('#show_more').attr('page');
 						var _tmp_html = '';
 						$.each(data, function(x, y) {
-							_tmp_html +=    '<div class="col-xs-12 pro_box"><div style="padding:10px;overflow: hidden;border:1px solid #ddd;background: white;margin-top:5px;"><span class="pic">' +
-							'<a href="' + com_link + '&id=' + y.id + '">' +
-							'<div class="img_box"><img src="' +y.logourl + '" /></div>' +
-							'</a></span><span class="con"><a class="t" href="' + com_link + '&id=' + y.id + '">' + y.id+y.name + '</a><a style="display: block;overflow: hidden;" href="' + com_link + '&id=' + y.id + '"><b>￥'+ y.price +'&nbsp;元</b><del>￥' + y.oprice + '</del></a></span></div></div>';
+							var mail_price=y.mailprice;
+							if(mail_price==0){
+								mail_price="包邮";
+							}else{
+								mail_price="￥"+y.mailprice;
+							}
+							_tmp_html += '<div class="col-xs-12 pro_box">'+
+											'<div style="padding:10px;overflow: hidden;border:1px solid #ddd;background: white;margin-top:5px;">'+
+												'<span class="pic">' +
+													'<a href="' + com_link + '&id=' + y.id + '">' +
+														'<div class="img_box"><img src="' +y.logourl + '" /></div>' +
+													'</a>'+
+												'</span>'+
+												'<span class="con">'+
+													'<a class="t" href="' + com_link + '&id=' + y.id + '">' +y.name + '</a>'+
+													'<a style="display: block;overflow: hidden;" href="' + com_link + '&id=' + y.id + '">'+
+														'<b>￥'+ y.price +'&nbsp;元</b>'+
+														'<del>￥' + y.oprice + '</del>'+
+														'<span style="display:block;overflow: hidden;">库存：'+y.num+'</span>'+
+														'<span style="display:block;overflow: hidden;">邮费：'+mail_price+'</span>'+
+													'</a>'+
+												'</span>'+
+											'</div>'+
+										'</div>';
 						});
 						$('#m_list').append(_tmp_html); 
 						
-							
 						/*开始！设置列表模板的高度
 							
 						limit_img_box();

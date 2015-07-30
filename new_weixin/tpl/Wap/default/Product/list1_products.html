@@ -1,11 +1,7 @@
 <include file="header"/>
 <style type="text/css">
-.m-select {
-display: box;
-display: -webkit-box;
-display: -moz-box;
-width:100%;
-}
+.m-select {display: box;display: -webkit-box;display: -moz-box;width:100%;}
+.m-list li .con .t{text-overflow: ellipsis;white-space: nowrap;  overflow: hidden;}
 </style>
 <form id="search_form" name="search_form" action="" method="post">
 	<div class="m-l-search">
@@ -36,7 +32,7 @@ width:100%;
 			<a class="t" href="{ZF::U('Product/product',array('token' => $_GET['token'], 'id' => $hostlist['id'], 'wecha_id' => $_GET['wecha_id']))}">{ZF:$hostlist.name}</a>
 			<b>￥{ZF:$hostlist.price}</b><del>￥{ZF:$hostlist.oprice}</del>
 			<span style="display:inline-black">库存：{ZF:$hostlist.num} </span>
-			<span style="display:inline-black">邮费：<if condition="$hostlist.mailprice neq 0">{ZF:$hostlist.mailprice}<else/>包邮</if></span>
+			<span style="display:inline-black">邮费：<if condition="$hostlist.mailprice neq 0">￥{ZF:$hostlist.mailprice}<else/>包邮</if></span>
 		</span>
 	</li>
 </volist>
@@ -99,8 +95,11 @@ $(function() {
 					type : "GET",
 					data : {'page' : _page, 'inajax' : 1},
 					url :  b_url + '&order=' + order + '&method=' + _get_method + '&pagesize='+pagesize,
+					error:function(a,b,c){
+						console.log(a);console.log(b);console.log(c);
+						},
 					dataType : "json",
-					success : function(RES) {
+					success : function(RES) {console.log(RES);
 						$('#canScroll').attr('value',1);
 						$('#show_more').hide().html('加载更多');
 						data = RES.products;
@@ -110,10 +109,26 @@ $(function() {
 						_page = $('#show_more').attr('page');
 						var _tmp_html = '';
 						$.each(data, function(x, y) {
-							_tmp_html +=    '<li><span class="pic">' +
-							'<a href="' + com_link + '&id=' + y.id + '">' +
-							'<img src="' +y.logourl + '" />' +
-							'</a></span><span class="con"><a class="t" href="' + com_link + '&id=' + y.id + '">' + y.name + '</a><b>￥'+ y.price +'&nbsp;元</b><del>￥' + y.oprice + '</del></span></li>';
+							var mail_price=y.mailprice;
+							if(mail_price==0){
+								mail_price="包邮";
+							}else{
+								mail_price="￥"+y.mailprice;
+							}
+							_tmp_html +='<li>'+
+											'<span class="pic">' +
+												'<a href="' + com_link + '&id=' + y.id + '">' +
+													'<img src="' +y.logourl + '" />' +
+												'</a>'+
+											'</span>'+
+											'<span class="con">'+
+												'<a class="t" href="' + com_link + '&id=' + y.id + '">' + y.name + '</a>'+
+												'<b>￥'+ y.price +'&nbsp;元</b>'+
+												'<del>￥' + y.oprice + '</del>'+
+												'<span style="display:inline-black">库存：'+y.num+'</span>'+
+												'<span style="display:inline-black">邮费：'+mail_price+'</span>'+
+											'</span>'+
+										'</li>';
 						});
 						$('#m_list').append(_tmp_html);
 					}
