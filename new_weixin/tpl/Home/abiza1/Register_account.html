@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+
+<form action="{ZF::U('Users/checkreg')}" method="post" id="form_register">
+
+	<div><label>用户名<input type="text" name="username" id="input_username"></label><span id="span_msg_username"></span></div>
+	
+	<div><label>密码<input type="text" name="password" id="input_password"></label><span id="span_msg_password"></span></div>
+	
+	<div><input type="text" name="password_confirm" id="input_password_confirm"><span id="span_msg_password_confirm"></span></div>
+	
+	<div><input type="submit" id="submit_btn" value="注册"></div>
+
+</form>
+
+
+<script type="text/javascript">
+$(document).ready(function($){
+	$("#form_register").bind("submit",function(e){
+		
+		var returnState = true;
+		
+		
+		var bakup_text = $("#submit_btn").val();
+		$("#submit_btn").attr("disabled",true);
+		$("#submit_btn").val("请稍候...");
+		
+		var do_right = '<span style="color:green;">填写正确！</span>';
+		var mk_error_text = function ( text ){
+			return '<span style="color:red;">'+text+'</span>';
+		};
+		
+		
+		if ( $("#input_username").val().trim() == "" ) {
+			$("#span_msg_username").html(mk_error_text("用户名必须填写！"));
+			returnState = false;
+		}else{
+			$("#span_msg_username").html(do_right);
+		}
+		
+		if ( $("#input_password").val().trim() == "" ) {
+			$("#span_msg_password").html(mk_error_text("密码必须填写！"));
+			returnState = false;
+		}else{
+			$("#span_msg_password").html(do_right);
+		}
+
+		if ( $("#input_password_confirm").val() != $("#input_password").val() ) {
+			$("#span_msg_password_confirm").html(mk_error_text("两次填写的密码必须一致！"));
+			returnState = false;
+		}else{
+			$("#span_msg_password_confirm").html(do_right);
+		}
+		
+		
+		if (!returnState){
+			$("#submit_btn").attr("disabled",false);
+			$("#submit_btn").val(bakup_text);
+		}
+		
+		// AJAX 注册
+		if (returnState){
+			$.ajax({
+				
+			});
+		}
+		
+		return false;
+		
+	});
+});
+</script>
+
+
+</body>
+</html>
