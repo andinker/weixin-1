@@ -1,0 +1,42 @@
+<layout name="common/html" />
+
+<style type="text/css">
+.menu_top ul{padding: 0 10px;}
+.menu_top ul li:FIRST-CHILD {display: none;}
+.footer{color:#3a3838;font-size: 13px;background: none;margin-top:62px;}
+</style>
+
+<div class="container reg_page">
+	<div class="col-md-6 reg_left">
+		<img src="/tpl/Home/abiza1/common/images/reg_left.png">
+	</div>
+	<div class="col-md-6">
+		<form id="regform" class="form" action="" method="post">
+			<div>
+				<div class="input_title" for="username">用户名</div>
+			    <div class="input_text" >
+			      <input type="text" name="username" id="username" class="user_name">
+			    </div>
+			</div>
+			<div>   
+			    <div class="input_title" for="password">用户密码</div>
+			    <div class="input_text">
+			      <input type="password" name="password" id="password" class="password_input">
+			    </div>
+			</div> 
+			<div>  
+			    <div class="input_title" for="repassword">请确认密码</div>
+			    <div class="input_text">
+			      <input type="password" name="repassword" id="repassword" class="password_input">
+			    </div>
+			</div> 
+			<div class="item">
+				<input name="" type="checkbox" value="" style="margin: 4px 5px 8px 0;" />
+				<a href="">我已阅读并且同意亚商圈的使用条款</a>
+			</div>
+			<div class="item">
+				<button type="submit" id="reg-btn" class="btn-register">注册</button>
+			</div>     
+		</form>
+	</div>	
+</div>

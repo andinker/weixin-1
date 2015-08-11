@@ -1,6 +1,6 @@
 <?php 
  return array(
    'TMPL_FILE_DEPR'=>'_',
-   'DEFAULT_THEME' => 'abiza',     
+   'DEFAULT_THEME' => 'abiza1',     
    );
 ?>

@@ -1,0 +1,100 @@
+<layout name="common/html" />
+
+<script type="text/javascript">
+$(function () {
+    $("a").click(function () {
+        var rel = $(this).attr("rel");
+        if (rel) {
+            var pos = $(rel).offset().top;
+            $("html,body").animate({ scrollTop: pos }, 800);
+        }
+    })
+})
+</script>
+<div class="slide_menu">
+   <ul style="margin-top:100%;">
+      <li><a href="javascript:void()" rel="#yhq">5.1 优惠券</a></li>
+      <li><a href="javascript:void()" rel="#ggk">5.2 刮刮卡</a></li>
+      <li><a href="javascript:void()" rel="#dzp">5.3 大转盘</a></li>
+   </ul> 
+</div>
+
+<div class="slide_menu_toggle">
+	<div class="glyphicon glyphicon-menu-left" style="font-size: 30px;line-height: 50px;text-align: center;color:white;"></div>
+</div>
+
+<div class="shop_title">
+	<div class="container">
+		<h2>微活动</h2>
+	</div>
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="yhq">1.优惠券</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+       <p>优惠券是用于微信上与顾客互动的一种营销方式，不仅可以展现自己的产品，更能让顾客在使用此项功能时感受到更多的乐趣。</p>
+       <h5>使用方法：</h5>
+       <p>1、新建优惠券活动；</p>
+       <p>2、填写活动开始的内容；</p>
+       <p>3、填写活动结束的内容；</p>
+       <p>4、设置奖项，设定活动时间、中奖几率、触发关键词和相应的奖品，确定设置后系统会根据设定的中奖几率产生相应的SN码，保存活动；</p>
+       <p>5、设置活动开始；（点击开始活动后，就不能再修改活动奖项，但可以修改其他活动内容,活动开启会自动生成SN码，也就是兑奖码）</p>
+       <p>6、设置活动结束；（你设置的活动结束时间到了会自动结束活动，你也可以时间没有到直接结束活动）</p>
+       <p>7、兑奖，查看活动粉丝中奖详情；（点击SN码管理查看详情）通过设置SN码状态，可以将一等奖先不放出！要内部人员中奖，只要对着公众号，输入：刮奖 SN码 即可！</p>
+       <p>8、删除活动（最好是在最后兑奖时间过了，再删除活动）</p>　
+       <p>
+	       <img src="../tpl/User/zhifeng/common/img/yhq1.png" width="240" height="360">&nbsp;
+	       <img src="../tpl/User/zhifeng/common/img/yhq2.png" width="240" height="360">&nbsp;&nbsp;
+	       <img src="../tpl/User/zhifeng/common/img/yhq3.png" width="240" height="360">
+       </p>		  
+	</div>		                    	
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="ggk">2. 刮刮卡</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+       <p>该模块可为商家提供刮刮卡抽奖服务，全网第一个可以通过微信玩刮刮卡，用户通过手机屏幕进行刮奖的游戏！</p>
+       <h5>使用方法：</h5>
+       <p>1、设置抽奖前需要先编辑一条图文消息，提前一天或者当天推送给所有粉丝，告知在某个时间段发某个关键词可以参与刮奖；</p>
+       <p>2、进入抽奖设置，设定活动时间、中奖几率、触发关键词和相应的奖品，确定设置后系统会根据设定的中奖几率产生相应的SN码；</p>
+       <p>3、活动设定后，在规定时间到时，网友发送关键词如“我要抽奖”，就会发送给他一张刮刮卡，粉丝通过屏幕进行刮奖，中奖后会得到一个SN码，网友到店时向商家出示SN码，商家根据系统产生的SN码进行比对，确认无误后即可兑换奖品。</p>
+       <p>
+	       <img src="../tpl/User/zhifeng/common/img/ggk1.png" width="240" height="360">&nbsp;&nbsp;
+	       <img src="../tpl/User/zhifeng/common/img/ggk2.png" width="240" height="360">&nbsp;&nbsp;
+	       <img src="../tpl/User/zhifeng/common/img/ggk3.png" width="240" height="360">
+       </p>
+	</div>		                    	
+</div>
+
+<div class="container">
+	<div class="content_title">
+		<div class="container">
+			<h3><a id="dzp">3.大转盘</a></h3>
+		</div>
+	</div>
+</div>
+<div class="container sec_title">
+	<div style="text-indent: 2em;">
+      <p>该模块可为商家提供转盘抽奖服务，商家通过设置活动时间，预计参加抽奖人数，相应奖项和触发关键词，由网友在线参与抽奖。</p>
+      <h5>使用方法：</h5>
+      <p>1、设置抽奖前需要先编辑一条图文消息，提前一天或者当天推送给所有粉丝，告知在某个时间段发某个关键词可以参与抽奖；
+      <p>2、进入抽奖设置，设定活动的类别，设定活动的预热时间，已经活动的开始和结束时间，设置活动回复关键词“我要抽奖”，确定设置后系统会根据设定的中奖几率产生相应的SN码；</p>
+      <p>3、活动设定后，在规定时间到时，网友发送关键词如“我要抽奖”，就可以参与三次转盘，中奖后会得到一个SN码，网友到店时向商家出示SN码，商家根据系统产生的SN码进行比对，确认无误后即可兑换奖品。</p>
+      <p><img src="../tpl/User/zhifeng/common/img/dzp1.jpg" ></p>
+	</div>
+</div>
+<a href="#" class="gototop">
+	<span class="glyphicon glyphicon-arrow-up" style="color:#333;font-size:12px;"></span>
+</a>
