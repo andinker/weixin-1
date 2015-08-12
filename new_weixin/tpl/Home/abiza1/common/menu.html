@@ -3,7 +3,7 @@
 		<div class="container">
 			<ul>
 				<if condition="!isset($_SESSION['uid'])">
-					<li><a href="{ZF::U('Index/reg')}">注册</a></li>
+					<li><a href="{ZF::U('Register/index')}">注册</a></li>
 					<li><a href="{ZF::U('Index/login')}">登录</a></li>
 				<else/>
 					<li><a href="{ZF::U('User/Index/index')}">管理中心</a></li>
@@ -24,7 +24,7 @@
 			        <span class="icon-bar"></span>
 			      </button>
 			      <a class="navbar-brand" href="{ZF::C('site_url')}" style="padding:0;height:auto;">
-							<img border="0" src="{ZF::RES}/images/logo2.png" height="32px;" style="margin-top:8px;"/>				
+							<img border="0" src="{ZF::RES}/images/logo.png"/>				
 				  </a>
 			    </div>
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-right:0;">
@@ -33,7 +33,7 @@
 			        	<a href="{ZF::C('site_url')}">首页 </a>
 			        </li>
 			        <li>
-		        		<a href="{ZF::U('Index/reg')}">商家入驻</a>
+		        		<a href="{ZF::U('Register/index')}">商家入驻</a>
 			        </li>
 			        <li>
 			        	<a href="">社区运营商</a>
@@ -49,27 +49,6 @@
 			    </div>
 			  </div>
 			</nav>
-			<!--<div style="float:left;">
-				<img border="0" src="{ZF::RES}/images/logo.png"/>
-			</div>
-			<ul class="menu_title">
-				<li>
-		        	<a href="{ZF::C('site_url')}">首页 </a>
-		        </li>
-		        <li>
-	        		<a href="{ZF::U('Index/reg')}">商家入驻</a>
-		        </li>
-		        <li>
-		        	<a href="">社区运营商</a>
-		        </li>
-		        <li>
-		        	<a href="{ZF::U('Home/Index/about')}">商圈</a>
-		        </li>
-		        
-		        <li>
-			         <a href="{ZF::U('Home/Index/help_menu')}">帮助文档</a>
-		        </li>
-			</ul>-->
 		</div>
 	</div> 
 </div>

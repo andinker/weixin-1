@@ -1,54 +1,38 @@
 <layout name="common/html" />
 
-<div class="container" style="padding-left: 0;padding-right:0;">
+<style type="text/css">
+.menu_top ul{padding: 0 10px;}
+.menu_top ul li:LAST-CHILD {display: none;}
+.footer{color:#3a3838;font-size: 13px;background: none;margin-top:62px;}
+</style>
 
-	<div class="Public-content clearfix">
-		
-		<div class="Public-box clearfix" style="min-height:450px;">
-			
-			<FORM style="padding-top:20px;" class=login method=post action=index.php?m=Users&amp;a=checklogin>
-			
-				<TABLE height=320 align="center" cellspacing="15">
-					<TBODY>
-						<TR>
-							<TD height="46" style="margin-top:20px;">
-								用户名&nbsp;&nbsp;
-								<input class="text" type="text" name="username" />
-							</TD>
-						</TR>
-						<TR>
-							<TD height="46">
-								密　码&nbsp;&nbsp;
-								<input class="text" type="password" name="password" />
-							</TD>
-						</TR>
-						<TR>
-							<TD height="36">
-								<P>
-									<input name="submit" type="submit" class="submit sub" value="登  录" style="padding:6px 50px;margin-left:55px;"  />
-								</P>
-							</TD>
-						</TR>
-						<TR>
-							<TD height="100" class="table_td" style="text-align:center;">
-								<p>
-									测试账号：<font style="color:#ff0000">itcocoa</font> ； 密码：<font style="color:#ff0000">itcocoa</font> 
-								</p>
-								<p>
-									<a href="{ZF::U('mlogin')}">手机版后台登录</a> 
-								</p>
-							</TD>
-						</TR>
-					</TBODY>
-				</TABLE>
-				
-				<INPUT value=3e9fde7441cc55bf46afe7f8361af205_c700381a595ea906f05ae5636574d102 type=hidden name=__hash__>
-				<input type="hidden" name="__hash__" value="3e9fde7441cc55bf46afe7f8361af205_fdaa3abcec1d9c172fb1560e9236a331"/>
-				</p>
-			</FORM>
-							
-		</div>
-		
+<div class="container page_margin">
+	<div class="col-md-6 reg_left">
+		<img src="/tpl/Home/abiza1/common/images/reg_left.png">
 	</div>
-
+	<div class="col-md-6" style="text-align: center;margin-top: 50px;">
+		<form class=login method=post action=index.php?m=Users&amp;a=checklogin>
+			<div>
+				<div class="input_title" for="username">用户名</div>
+			    <div class="input_text" >
+			      <input class="text user_name" type="text" name="username"/>
+			    </div>
+			</div>
+			<div>   
+			    <div class="input_title" for="password">密码</div>
+			    <div class="input_text">
+			      <input class="text password_input" type="password" name="password"/>
+			    </div>
+			</div> 
+			<div class="item">
+				<a href="{ZF::U('mlogin')}">手机版后台登录</a>
+			</div>
+			<div class="item">
+				<button type="submit" id="reg-btn" class="btn-register">登录</button>
+				<!--<input name="submit" type="submit" class="submit sub" value="登  录" style="padding:6px 50px;margin-left:55px;"  />  -->
+			</div> 
+			<INPUT value=3e9fde7441cc55bf46afe7f8361af205_c700381a595ea906f05ae5636574d102 type=hidden name=__hash__>
+			<input type="hidden" name="__hash__" value="3e9fde7441cc55bf46afe7f8361af205_fdaa3abcec1d9c172fb1560e9236a331"/>    
+		</form>
+	</div>	
 </div>
