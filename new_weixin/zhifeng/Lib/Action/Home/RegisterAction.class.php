@@ -12,13 +12,14 @@ class RegisterAction extends BaseAction{
 	 * 注册帐号
 	 */
 	public function accountAction() {
+		
 		$this->display();
 	}
 	
 	/**
 	 * 填写必要信息
 	 */
-	public function infomationAction() {
+	public function informationAction() {
 		;
 	}
 	

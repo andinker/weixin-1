@@ -13,9 +13,9 @@ class UsersModel extends Model{
 		array('username','','用户名称已经存在！',1,'unique',1), // 新增修改时候验证username字段是否唯一
 		array('email','email','邮箱格式不正确'),
 		array('email','','邮箱已经存在！',1,'unique',1),
-	    array('community_id','checkIt','你所选择的社区已经存在小区号，每个社区只能存在一个小区号，该小区现在只能申请商家号',1,'callback',self::MODEL_BOTH),
-		array('community_id','require','必须选择您所在的社区！',1,'',self::MODEL_BOTH),
-		array('account_type','require','必须选择要申请的帐号类型！',1,'',self::MODEL_BOTH) 
+	    array('community_id','checkIt','你所选择的社区已经存在小区号，每个社区只能存在一个小区号，该小区现在只能申请商家号',self::EXISTS_VALIDATE,'callback',self::MODEL_BOTH),
+		//array('community_id','require','必须选择您所在的社区！',1,'',self::MODEL_BOTH),
+		array('account_type','require','必须选择要申请的帐号类型！',1,'',self::MODEL_BOTH)
 	);
 	
 	protected $_auto = array (

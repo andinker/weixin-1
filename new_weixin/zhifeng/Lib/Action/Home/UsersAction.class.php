@@ -71,7 +71,17 @@ class UsersAction extends BaseAction{
 	}
 	
 	public function checkreg(){
+		
+		$IS_AJAX = false;
+		if (IS_POST){
+			if ($_POST['ajax'] = 'yes') $IS_AJAX = true;
+		} 
+		
+		
 		$db=D('Users');
+		
+		$state = true;
+		
 		if($db->create()){
 			/*echo '<pre>';
 			print_r($_POST);
@@ -101,16 +111,43 @@ class UsersAction extends BaseAction{
 				session('userGropInfo',$info);
 			
 			
-			
+				ob_start();
 				$body="感谢您注册<a href=".C('site_url').">".C('site_name')."</a>:</br>会员名：".$_POST['username']."<br/>密码：".substr_replace($_POST['password'],'****',3)." 出于安全考虑，仅显示前3位密码！<br/>若在使用中发现问题，请前往<a href=".C('site_url').">".C('site_url')."</a>";
 			    $this->regSendEmail(C('email_server'),C('email_port'),C('email_user'),C('email_pwd'),"[".C('site_name')."]账号中心",'欢迎注册'.C('site_name'),$body,$_POST['email']);
-				$this->success('注册成功',U('User/Index/index'));
+				ob_clean();
 			}else{
-				$this->error('注册失败',U('Index/reg'));
+				$state = false;
 			}
 		}else{
-			$this->error($db->getError(),U('Index/reg'));
+			$state = false;
 		}
+		
+		
+		if ($IS_AJAX) {
+			
+			if ($state){
+				exit(json_encode(array(
+						'state'=>$state,
+						'msg'=>'注册成功',
+				)));
+			}else{
+				exit(json_encode(array(
+						'state'=>$state,
+						'msg'=>'注册失败,'.$db->getError(),
+						'new_hash'=>$_SESSION['__hash__'],
+				)));
+			}
+			
+		}else{
+			
+			if ($state){
+				$this->success('注册成功',U('User/Index/index'));
+			}else{
+				$this->error('注册失败,'.$db->getError(),U('Index/reg'));
+			}
+			
+		}
+		
 	}
 	
 	public function regSendEmail($host,$port,$emailuser,$emailpassword,$FromName='管理员',$Subject,$body,$to_email){
