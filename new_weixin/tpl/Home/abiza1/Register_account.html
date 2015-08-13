@@ -1,30 +1,129 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
-</head>
-<body>
+<layout name="common/html" />
 
-<div id="register_success_panel" style="display: none;"><div id="register_success_panel_content"></div><div id="register_success_panel_close">确定</div></div>
+<style type="text/css">
+.menu_top ul{padding: 0 10px;}
+.menu_top ul li:FIRST-CHILD {display: none;}
+.footer{color:#3a3838;font-size: 13px;background: none;margin-top:62px;}
+</style>
 
-<form action="{ZF::U('Users/checkreg')}" method="post" id="form_register">
-
-	<div><label>用户名<input type="text" name="username" id="input_username"></label><span id="span_msg_username"></span></div>
+<div class="container">
+	<div class="steps_process">
+		<div class="all_steps_num">
+			<div class="col-xs-3">
+				<div class="step_process_in">1</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="step_process">2</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="step_process">3</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="step_process">√</div>
+			</div>
+		</div>
+	</div>
 	
-	<div><label>密码<input type="text" name="password" id="input_password"></label><span id="span_msg_password"></span></div>
+	<div class="steps_name_process">
+		<div class="all_steps_name">
+			<div class="col-xs-3">
+				<div class="process_name_in">注册账号</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="process_name">填写商家信息</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="process_name">选择社区门户</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="process_name">入驻成功</div>
+			</div>
+		</div>
+	</div>
 	
-	<div><input type="text" name="password_confirm" id="input_password_confirm"><span id="span_msg_password_confirm"></span></div>
+	<h1 style="color:#fe6813;text-align: center;font-size: 35px;margin-top:65px;">
+		<span style="font-size: 30px;">Step1</span>
+		注册账号
+	</h1>
 	
-	<div><label>Email<input type="text" name="email" id="input_email"></label><span id="span_msg_email"></span></div>
 	
-	<div id="submited_rs_msg"></div>
 	
-	<div><input type="submit" id="submit_btn" value="注册"></div>
-
-</form>
-
+	<div id="register_success_panel" style="display: none;"><div id="register_success_panel_content"></div><div id="register_success_panel_close">确定</div></div>
+	
+	<form action="{ZF::U('Users/checkreg')}" method="post" id="form_register" class="form">
+	
+	<div class="table_box">
+		<table class="reg_table">
+			<tr>
+				<td>用户名：</td>
+				<td><input type="text" name="username" id="input_username" class="user_name"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span id="span_msg_username"></span></td>
+			</tr>
+			<tr>
+				<td>密码：</td>
+				<td><input type="password" name="password" id="input_password" class="password_input"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span id="span_msg_password"></span></span></td>
+			</tr>
+			<tr>
+				<td>确认密码：</td>
+				<td><input type="password" name="password_confirm" id="input_password_confirm" class="password_input"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span id="span_msg_password_confirm"></span></td>
+			</tr>
+			<tr>
+				<td>Email：</td>
+				<td><input type="text" name="username" id="input_username"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span id="span_msg_email"></span></td>
+			</tr>
+			<tr>
+				<td colspan="2"><div id="submited_rs_msg"></div></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" id="submit_btn" value="注册" class="submit_btn"></td>
+			</tr>
+		</table>
+		</div>
+		
+		<!--  
+		<div class="col-xs-12">
+			<label>用户名<input type="text" name="username" id="input_username"></label>
+			<span id="span_msg_username"></span>
+		</div>
+		
+		
+		<div class="col-xs-12">
+			<label>密码<input type="text" name="password" id="input_password"></label>
+			<span id="span_msg_password"></span>
+		</div>
+		
+		
+		<div class="col-xs-12">
+			<input type="text" name="password_confirm" id="input_password_confirm">
+			<span id="span_msg_password_confirm"></span>
+		</div>
+		
+		
+		<div class="col-xs-12">
+			<label>Email<input type="text" name="email" id="input_email"></label>
+			<span id="span_msg_email"></span>
+		</div>
+		
+		<div id="submited_rs_msg"></div>
+		
+		<div class="col-xs-12">
+			<input type="submit" id="submit_btn" value="注册">
+		</div>
+	-->
+	</form>
+</div>
 
 <script type="text/javascript">
 $(document).ready(function($){
