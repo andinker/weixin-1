@@ -169,6 +169,13 @@ class IndexAction extends WapAction{
 		
 		foreach($childCategorys as $k=>$row){ 
 			
+			$acticles = M('Img')->where(array(
+					'token'=>$this->token,
+					'classid'=>$row['id']
+			))->limit(0,10)->select();
+				
+			$childCategorys[$k]['articles'] = $acticles;
+			
 			$sub_childCategorys = $this->getChildCategorys($row['id']);   // 递归，调用自己
 	
 			if (!empty($sub_childCategorys)) { // 有子分类
@@ -436,18 +443,6 @@ class IndexAction extends WapAction{
 		
 		$categorys = array();
 		$categorys = $this->getChildCategorys(0); // 这里会得到所有的分类，并且是按上下级结构嵌套的
-		
-		
-		foreach ($categorys as $k => $category){
-			
-			$acticles = $db->where(array(
-					'token'=>$this->token,
-					'classid'=>$category['id']
-			))->limit(0,10)->select();
-			
-			$categorys[$k]['articles'] = $acticles;
-			
-		}
 		
 		
 		$this->assign('categorys',$categorys);
