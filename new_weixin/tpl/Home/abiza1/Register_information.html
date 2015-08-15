@@ -1,28 +1,121 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
-</head>
-<body>
+<layout name="common/html" />
 
+<style type="text/css">
+.menu_top ul{padding: 0 10px;}
+.menu_top ul li:FIRST-CHILD {display: none;}
+.footer{color:#3a3838;font-size: 13px;background: none;margin-top:62px;}
+</style>
 
-<div id="information_success_panel" style="display: none;"><div id="information_success_panel_content"></div><div id="information_success_panel_close">确定</div></div>
-
-
-<form action="{ZF::U('information')}" method="post" id="form_information">
-
-	<div><label>企业全称<input type="text" name="enterprise_name" id="input_enterprise_name"></label><span id="span_msg_enterprise_name"></span></div>
-	<div><label>网站名称<input type="text" name="site_name" id="input_site_name"></label><span id="span_msg_site_name"></span></div>
-	<div><label>联系人<input type="text" name="people_name" id="input_people_name"></label><span id="span_msg_people_name"></span></div>
-	<div><label>电话<input type="text" name="tel" id="input_tel"></label><span id="span_msg_tel"></span></div>
-	<div><label>通信地址<input type="text" name="address" id="input_address"></label><span id="span_msg_address"></span></div>
+<div class="container">
+	<div class="steps_process">
+		<div class="all_steps_num">
+			<div class="col-xs-3">
+				<div class="step_process_in">1</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="step_process_in"">2</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="step_process">3</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="step_process">√</div>
+			</div>
+		</div>
+	</div>
 	
-	<div id="submited_rs_msg"></div>
-	<div><input type="submit" id="submit_btn" value="保存"></div>
+	<div class="steps_name_process">
+		<div class="all_steps_name">
+			<div class="col-xs-3">
+				<div class="process_name_in">注册账号</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="process_name_in">填写商家信息</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="process_name">选择社区门户</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="process_name">入驻成功</div>
+			</div>
+		</div>
+	</div>
 	
-</form>
+	<h1 style="color:#fe6813;text-align: center;font-size: 35px;margin-top:45px;">
+		<span style="font-size: 30px;">Step2</span>
+		填写商家信息
+	</h1>
+	
+
+	<div id="information_success_panel" style="overflow-y: scroll;display: none; position: fixed;width: 100%;height: 100%;background-color: rgba(0,0,0,.7);left: 0;top: 0;">
+		
+		<div class="alert_box" style=" width: 80%;margin: 0 auto;background-color: white;text-align: center;padding: 20px;margin-top: 100px;border: 8px solid #ccc;border-radius: 5px;max-width: 700px;">
+		
+			<div id="information_success_panel_content"></div>
+			<div id="information_success_panel_close">确定</div>
+		
+		</div>
+		
+	</div>
+
+
+	<form action="{ZF::U('information')}" method="post" id="form_information" class="form">
+	
+				<div class="table_box">
+			 <table class="reg_table">
+				<tr>
+					<td>企业全称</td>
+					<td><input type="text" name="enterprise_name" id="input_enterprise_name" placeholder="营业执照上的完整企业名称"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="return_msg"><span id="span_msg_enterprise_name"></span></td>
+				</tr>
+				<tr>
+					<td>网站名称</td>
+					<td><input type="text" name="site_name" id="input_site_name" placeholder="将作网站的全局标题显示"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="return_msg"><span id="span_msg_site_name"></span></td>
+				</tr>
+				<tr>
+					<td>联系人</td>
+					<td><input type="text" name="people_name" id="input_people_name" placeholder="网站内容的负责"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="return_msg"><span id="span_msg_people_name"></span></td>
+				</tr>
+				<tr>
+					<td>电话</td>
+					<td><input type="text" name="tel" id="input_tel" placeholder="用于与联系人沟通的电话号码，手机或座机"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="return_msg"><span id="span_msg_tel"></span></td>
+				</tr>
+				<tr>
+					<td>通信地址</td>
+					<td><input type="text" name="address" id="input_address" placeholder="用于接收重要信件"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="return_msg"><span id="span_msg_address"></span></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="return_msg" style="padding-top: 10px;"><div id="submited_rs_msg"></div></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" id="submit_btn" value="保存"  class="submit_btn"></td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</div>
+
 
 <script type="text/javascript">
 $(document).ready(function($){
