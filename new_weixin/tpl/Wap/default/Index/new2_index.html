@@ -101,7 +101,7 @@ body{background: #eee; }
 		<div class="ofh">
 		
 			<ul>
-				<for start="1" end="count($info)">
+				<for start="1" end="count($categorys)">
 					<li <if condition="$i == 1">class="on"</if>></li>
 				</for>
 			</ul>
@@ -109,7 +109,7 @@ body{background: #eee; }
 			<ul>
 				<div id="nav_uls_" style=" max-width:75px">
 					<ol>
-						<volist name="info" id="vo">
+						<volist name="categorys" id="vo">
 							<li><a id="{ZF:$i-1}" href="javascript:swiper_2.slide({ZF:$i-1});"  <if condition="$i == 1">class="on"</if>>{ZF:$vo.name}</a></li>
 						</volist>
 					</ol>
@@ -118,18 +118,41 @@ body{background: #eee; }
 	     
 		</div>
 	</nav> 
- 
+	
 	<div id="list_uls" class="list_uls box_swipe">
 		<ul style="margin-top:40px;" id="swipe_board">
-			<volist name="artinfo" id="vo">
+			
+			<php>
+		
+				/*function print_categorys ($categorys){
+		
+		     		foreach($categorys as $k=>$category){
+		     			// echo $k.':'.$category['name'].'<br>';// 在这里输出该分类要显示的一切 
+		     			
+		    
+
+			     		if (!empty($category['sub'])){
+			     			print_categorys ($category['sub']);
+			     		}
+		     		}
+		     
+                }
+                    
+                print_categorys($categorys);*/
+                
+            </php>
+
+		
+		
+			<volist name="categorys" id="vo">
 				<li>
 					<dl><!--  
 						<php>if(!$vo['img']==""){</php>
 							<div style="height:168px;overflow: hidden;"><img  class="catebanner" src="{ZF:$vo.img}"/></div>
 						<php>}</php>-->
-						<volist name="vo['article']" id="res">
+						  <volist name="vo['articles']" id="res">
 							 <dd>
-								<a style="overflow: hidden" href="<if condition="$res['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$res['id'],'token'=>$vo['token']))}<else/>{ZF:$res.url|htmlspecialchars_decode}</if>">
+								<a style="overflow: hidden" href="<if condition="$res['url'] eq ''">{ZF::U('Wap/Index/content',array('id'=>$res['id'],'classid'=>$res['classid'],'token'=>$vo['token']))}<else/>{ZF:$res.url|htmlspecialchars_decode}</if>">
 									<img src="{ZF:$res.pic}" />
 									<div class="boxtext">
 										<label>{ZF:$res.title}</label>
@@ -137,10 +160,19 @@ body{background: #eee; }
 									<!-- <span></span> -->
 								</a>
 							 </dd>
-						</volist>
+						</volist> 
+						<div style="text-align: center;padding: 8px 5px;background-color: white;margin: 5px;"> 
+							<a href="{ZF::U('Wap/Index/lists',array('classid'=>$res['classid'],'token'=>$vo['token']))}" style="color:#666;">
+								查看更多
+							</a>
+						</div> 
 					</dl>
 				</li>
 		    </volist>
+		    
+		    
+		    
+		    
 		</ul>
 	</div>
 
@@ -173,8 +205,8 @@ body{background: #eee; }
 <pre>
 <php>
 //print_r($artinfo);
-echo '----------------------------';
-print_r($categorys);
+//echo '----------------------------';
+//print_r($categorys);
 </php>
 </pre>
 <br></br>

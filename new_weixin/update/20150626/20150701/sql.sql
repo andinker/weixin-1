@@ -1,0 +1,1 @@
+INSERT INTO `zfwx_tmpls` (`id`, `tplid`, `name`, `views`, `type`, `imgurl`, `info`, `attr`, `status`, `sort`) VALUES (NULL, 'index_list', '首页列表模板1', 'index_list1', '1', 'index_list1.png', '不支持更换颜色风格', 'bgs focu lis', '1', '255');
