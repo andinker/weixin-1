@@ -156,6 +156,41 @@ class IndexAction extends WapAction{
 	}
 	
 	/**
+	 * 获取某个分类id的所有子分类数据
+	 */
+	private function getChildCategorys($fid){
+	
+		$childCategorys = array();
+	
+		/*所有fid为 $fid 的记录 */
+			
+		$childCategorys = M('Classify')->where(array('token'=>$this->token,'fid'=>$fid))->select();
+			
+		$allArticles=M('Img')->where(array('token'=>$this->token))->order('uptatetime DESC')->select();
+
+		
+		foreach($childCategorys as $k=>$row){ 
+			
+			$sub_childCategorys = $this->getChildCategorys($row['id']);   // 递归，调用自己
+	
+			if (!empty($sub_childCategorys)) { // 有子分类
+					
+				$childCategorys[$k]['sub'] = $sub_childCategorys;
+					
+			}
+			 
+			$childCategorys[$k]['article']=$allArticles ;
+			 
+		 
+		 
+	
+		}
+	
+		return $childCategorys;
+	
+	}
+	
+	/**
 	 * 搜索当前小区下的所有商品
 	 */
 	public function search(){
@@ -364,9 +399,58 @@ class IndexAction extends WapAction{
 		$where['classid']=$indexContent['announcements_class_id'];
 		$announcements = $db->where($where)->order('uptatetime DESC')->select();
 		
-		//print_r($announcements);
+		//获取所有文章
+		$allArticles=$db->where(array('token'=>$this->token))->order('uptatetime DESC')->select();
+		$allClasses=M('Classify')->where(array('token'=>$this->_get('token'),'status'=>1))->order('sorts desc')->select();
+		$allClasses=$this->convertLinks($allClasses);//加外链等信息
+		$this->allClasses = $allClasses;
+		$artinfo=array();
+		if($allClasses){
+			$classByID=array();
+			$firstGradeCatCount=0;
+			foreach($allClasses as $c){
+				$classByID[$c['id']]=$c;
+				if($c['fid']==0){
+					$c['article']=array();
+					$c['sub']=array();
+					$artinfo[$c['id']]=$c;
+					$firstGradeCatCount++;
+				}
+			}
+			
+			foreach($allClasses as $c){
+				foreach ($allArticles as $art){
+					 
+					if($c['id']==$art['classid']){
+						 
+						array_push($artinfo[$c['id']]['article'],$art);
+					}
+				}
+			}
+			
+			foreach($allClasses as $c){
+				if($c['fid']>0&&$artinfo[$c['fid']]){
+					array_push($artinfo[$c['fid']]['sub'],$c);
+				}
+			}
+				
+			 
+		}
+		
+		$this->assign('artinfo',$artinfo);
+		
+		$categorys = array();
+		
+		
+		$categorys = $this->getChildCategorys(0); // 这里会得到所有的分类，并且是按上下级结构嵌套的
+		
+		
+		$this->assign('categorys',$categorys);
+		
+		
 		$this->assign('announcements',$announcements);
 		
+		$this->assign('articles',$articles);
 			
 		$this->assign('token',$this->token);
 		$this->assign('wecha_id',$this->wecha_id);

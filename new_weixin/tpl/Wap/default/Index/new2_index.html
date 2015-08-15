@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{ZF:$tpl.wxname}</title>
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta charset="utf-8">
+
+<link href="{ZF::RES}/Index/135/cate.css" rel="stylesheet" type="text/css" />
+<link href="{ZF::RES}/Index/public/css/iscroll.css" rel="stylesheet" type="text/css" />
+
+<script src="{ZF::RES}/Index/public/js/jquery.min.js" type="text/javascript"></script>
+<script src="{ZF::RES}/Index/public/js/swipe.js" type="text/javascript"></script>
+<script src="{ZF::RES}/Index/public/js/iscroll.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+	var myScroll;
+	
+	function loaded() {
+	myScroll = new iScroll('wrapper', {
+	snap: true,
+	momentum: false,
+	hScrollbar: false,
+	onScrollEnd: function () {
+	document.querySelector('#indicator > li.active').className = '';
+	document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+	}
+	 });
+	 
+	 
+	}
+	
+	document.addEventListener('DOMContentLoaded', loaded, false);
+</script>
+
+<script>
+$(function(){
+	window.swiper_2 = new Swipe(document.getElementById('list_uls'), {
+		speed:500,
+        // auto:3000,
+		callback: function(){
+			var lis = $(".nav_for_list_ul ul:first-of-type li");
+            lis.removeClass("on").eq(this.index).addClass("on");
+            var las = $(".nav_for_list_ul ul:nth-of-type(2) a");
+            las.removeClass("on").eq(this.index).addClass("on");
+
+            var index=(this.index-1)*$("#nav_uls_ li").width();
+               
+			var arr = document.getElementById('nav_uls_').getElementsByTagName('a');
+			for(var i = 0,len = arr.length;i<len;i++){
+				if(arr[i].className == 'on'){
+				
+					$('.nav_for_list_ul ul:nth-of-type(2) ').animate({scrollLeft: index,scrollRight:index}, 400);
+				
+				}
+			}	
+		}
+	});
+}); 
+   
+</script>
+
+<style type="text/css">
+body{background: #eee; }
+.list_uls dl{min-height: 450px;}
+.list_uls dl dd a img{width:80px;height:80px;}
+.list_uls dl dd{height:90px;}
+.nav_for_list_ul{background: white;position: fixed;z-index: 2;width: 100%;}
+.nav_for_list_ul ul:nth-of-type(2){height: 40px; overflow-x: scroll;}
+.nav_for_list_ul ul:nth-of-type(2) li{  width: 80px;overflow: hidden;}
+.nav_for_list_ul ul:nth-of-type(2) li a{height: 40px;line-height: 40px;}
+.nav_for_list_ul ul:nth-of-type(2) li a.on{border-bottom: 3px solid red;color: red;height: 37px;line-height: 40px;}
+.list_uls dl dd{background: white;  margin: 5px;}
+.list_uls dl dd a label{font-weight: normal;font-size: 16px;height: 65px;text-overflow:initial;white-space:initial;margin: 2px 0 0 8px;}
+
+.nav_for_list_ul ul:nth-of-type(2)::-webkit-scrollbar {height:0px;}
+ 
+</style>
+
+</head>
+
+<body style="margin-bottom:0px !important;">
+
+<!--引导动画-->
+<notempty name="indexanimation"><include file="Index:anStyle"/></notempty>
+
+<!--背景音乐-->
+<if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
+
+
+<span class="gradient_h_wbw"></span>
+
+<section>
+	<nav class="nav_for_list_ul" style="box-shadow:0px 0px 1px 1px #ccc;"> 
+  
+		<div class="ofh">
+		
+			<ul>
+				<for start="1" end="count($info)">
+					<li <if condition="$i == 1">class="on"</if>></li>
+				</for>
+			</ul>
+		  
+			<ul>
+				<div id="nav_uls_" style=" max-width:75px">
+					<ol>
+						<volist name="info" id="vo">
+							<li><a id="{ZF:$i-1}" href="javascript:swiper_2.slide({ZF:$i-1});"  <if condition="$i == 1">class="on"</if>>{ZF:$vo.name}</a></li>
+						</volist>
+					</ol>
+				</div>
+			</ul>
+	     
+		</div>
+	</nav> 
+ 
+	<div id="list_uls" class="list_uls box_swipe">
+		<ul style="margin-top:40px;" id="swipe_board">
+			<volist name="artinfo" id="vo">
+				<li>
+					<dl><!--  
+						<php>if(!$vo['img']==""){</php>
+							<div style="height:168px;overflow: hidden;"><img  class="catebanner" src="{ZF:$vo.img}"/></div>
+						<php>}</php>-->
+						<volist name="vo['article']" id="res">
+							 <dd>
+								<a style="overflow: hidden" href="<if condition="$res['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$res['id'],'token'=>$vo['token']))}<else/>{ZF:$res.url|htmlspecialchars_decode}</if>">
+									<img src="{ZF:$res.pic}" />
+									<div class="boxtext">
+										<label>{ZF:$res.title}</label>
+									</div>
+									<!-- <span></span> -->
+								</a>
+							 </dd>
+						</volist>
+					</dl>
+				</li>
+		    </volist>
+		</ul>
+	</div>
+
+</section>
+
+
+<script>
+
+	 $('#nav_uls_ ol li').bind("click",function(){
+		var index=($(this).index()-1)*$(this).width();
+		$(this).parents('ul').animate({scrollLeft: index,scrollRight:index}, 400);
+	 })
+	 
+</script> 
+
+<div id="insert2" ></div>
+
+<div class="copyright">
+	<if condition="$iscopyright eq 1">
+		{ZF:$homeInfo.copyright}
+	<else/>
+		{ZF:$siteCopyright}
+	</if>
+</div>  
+
+<include file="Index:styleInclude"/>
+<include file="$cateMenuFileName"/> 
+<!-- share -->
+<include file="Index:share" />
+<pre>
+<php>
+//print_r($artinfo);
+echo '----------------------------';
+print_r($categorys);
+</php>
+</pre>
+<br></br>
+<br></br>
+</body>
+</html>
