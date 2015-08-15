@@ -165,8 +165,6 @@ class IndexAction extends WapAction{
 		/*所有fid为 $fid 的记录 */
 			
 		$childCategorys = M('Classify')->where(array('token'=>$this->token,'fid'=>$fid))->select();
-			
-		$allArticles=M('Img')->where(array('token'=>$this->token))->order('uptatetime DESC')->select();
 
 		
 		foreach($childCategorys as $k=>$row){ 
@@ -178,12 +176,6 @@ class IndexAction extends WapAction{
 				$childCategorys[$k]['sub'] = $sub_childCategorys;
 					
 			}
-			 
-			$childCategorys[$k]['article']=$allArticles ;
-			 
-		 
-		 
-	
 		}
 	
 		return $childCategorys;
@@ -399,6 +391,7 @@ class IndexAction extends WapAction{
 		$where['classid']=$indexContent['announcements_class_id'];
 		$announcements = $db->where($where)->order('uptatetime DESC')->select();
 		
+		/*
 		//获取所有文章
 		$allArticles=$db->where(array('token'=>$this->token))->order('uptatetime DESC')->select();
 		$allClasses=M('Classify')->where(array('token'=>$this->_get('token'),'status'=>1))->order('sorts desc')->select();
@@ -438,11 +431,23 @@ class IndexAction extends WapAction{
 		}
 		
 		$this->assign('artinfo',$artinfo);
+		*/
+		
 		
 		$categorys = array();
-		
-		
 		$categorys = $this->getChildCategorys(0); // 这里会得到所有的分类，并且是按上下级结构嵌套的
+		
+		
+		foreach ($categorys as $k => $category){
+			
+			$acticles = $db->where(array(
+					'token'=>$this->token,
+					'classid'=>$category['id']
+			))->limit(0,10)->select();
+			
+			$categorys[$k]['articles'] = $acticles;
+			
+		}
 		
 		
 		$this->assign('categorys',$categorys);
