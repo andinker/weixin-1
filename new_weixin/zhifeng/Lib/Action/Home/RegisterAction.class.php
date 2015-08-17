@@ -21,6 +21,8 @@ class RegisterAction extends BaseAction{
 	 */
 	public function information() {
 		
+		C('TOKEN_ON',false);
+		
 		// 必须先登录才可以访问
 		$uid_session = session('uid');
 		if (empty($uid_session)) throw new ThinkException("非法访问！");
@@ -90,8 +92,9 @@ class RegisterAction extends BaseAction{
 							'city'=>$tokenvalue,//市
 							'qq'=>time().'@yourdomain.com',//公众号邮箱
 							'wxfans'=>0,//粉丝数
-							'type'=>6,//公众号内容类型
 					);
+					
+					$_POST['type'] = '6,购物';
 					
 					if($db->create($data)===false){
 						
@@ -105,12 +108,12 @@ class RegisterAction extends BaseAction{
 						if(!$id){
 							
 							$state = false;
-							$msg = '保存店铺数据时出错:'.$db->getError();;
+							$msg = '保存店铺数据时出错:'.$db->getError().$db->getLastSql().$db->getDbError();
 							
 						}else{
 							
 							M('Users')->field('wechat_card_num')->where(array('id'=>session('uid')))->setInc('wechat_card_num');
-							$this->addfc();
+							$this->addfc($tokenvalue);
 							
 							// 初始化公司信息(门店信息)
 							$company_model=M('Company');
@@ -142,20 +145,22 @@ class RegisterAction extends BaseAction{
 									//'qrcode'=>'',
 							);
 							
-							if (!$thisCompany){
+							if ($thisCompany){
 								
 								// 更新已有数据
-								if (!$company_model->where(array('id'=>$thisCompany['id']))->save($company_data)){
+								$company_model_savers = $company_model->where(array('id'=>$thisCompany['id']))->save($company_data);
+								if ($company_model_savers == false){
 									$state = false;
-									$msg = '更新公司数据时出错：'.$company_model->getError();
+									$msg = '更新公司数据时出错：'.$company_model->getError().$company_model->getLastSql().$company_model->getDbError().var_export($thisCompany,true);
 								}
 								
 							}else {
 								
 								// 新增数据 
-								if(!$company_model->add($company_data)){
+								$company_model_addrs = $company_model->add($company_data);
+								if($company_model_addrs == false){
 									$state = false;
-									$msg = '新增公司数据时出错：'.$company_model->getError();
+									$msg = '新增公司数据时出错：'.$company_model->getError().$company_model->getLastSql().$company_model->getDbError();
 								}
 							}
 							
@@ -164,12 +169,9 @@ class RegisterAction extends BaseAction{
 				}
 			}
 			
-
-			
 			exit(json_encode(array(
 					'state'=>$state,
 					'msg'=>$msg,
-					'new_hash'=>$_SESSION['__hash__']
 			)));
 			
 		}else{
@@ -181,24 +183,75 @@ class RegisterAction extends BaseAction{
 	 * 选择社区
 	 */
 	public function community() {
-		;
+		
+		// 必须先登录才可以访问
+		$uid_session = session('uid');
+		if (empty($uid_session)) throw new ThinkException("非法访问！");
+		
+		if ( IS_POST && isset($_POST['ajax']) && $_POST['ajax'] == 'yes' ){
+			
+			$state = true;
+			$msg = '保存成功！';
+			
+			if ( !isset($_POST['community']) || empty($_POST['community']) ){
+				$state = false;
+				$msg = '处理失败:还没有选择社区！';
+			}else{
+				
+				// 保存社区
+				$db = M("Users");
+				$save_rs = $db->where(array("id"=>$uid_session))->save(array(
+						'community_id'=>intval($_POST['community'])
+				));
+				
+				if (!$save_rs){
+					$state = false;
+					$msg = '处理失败:'.$db->getError().$db->getDbError();
+				}
+				
+			}
+			
+			exit(json_encode(array(
+					'state'=>$state,
+					'msg'=>$msg,
+			)));
+			
+			
+		}else{
+			
+			//读取省、市、区、小区数据表进行显示
+			$where = array('status'=>1);
+			$province_data 	= M('region_province')->where($where)->select();
+			$city_data     	= M('region_city')->where($where)->select();
+			$district_data 	= M('region_district')->where($where)->select();
+			$community_data = M('region_community')->where($where)->select();
+			
+			$this->assign('province_data'	,$province_data);
+			$this->assign('city_data'		,$city_data);
+			$this->assign('district_data'	,$district_data);
+			$this->assign('community_data'	,$community_data);
+			
+			$this->display();
+			
+		}
+		
 	}
 	
 	/**
 	 * 完成注册
 	 */
 	public function done() {
-		;
+		$this->display();
 	}
 	
 	/**
 	 * 初始化公众号能够使用的功能
 	 * Copy From Lib/Action/User/IndexAction.class.php
 	 */
-	private function addfc(){
+	private function addfc($tokenvalue){
 		$token_open=M('Token_open');
 		$open['uid']=session('uid');
-		$open['token']=$_POST['token'];
+		$open['token']=$tokenvalue;
 		$gid=session('gid');
 		$fun=M('Function')->field('funname,gid,isserve')->where('`gid` <= '.$gid)->select();
 		foreach($fun as $key=>$vo){

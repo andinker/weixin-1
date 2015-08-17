@@ -194,7 +194,7 @@ $(document).ready(function($){
 		}
 		
 		// AJAX 注册
-		if (returnState){
+		if (returnState){ //console.log($("input[name='__hash__']").val());
 			$.ajax($("#form_information").attr("action"),{
 				cache:false,
 				type: "POST",
@@ -224,8 +224,6 @@ $(document).ready(function($){
 				    	 	
 							$("#submit_btn").attr("disabled",false);
 							$("#submit_btn").val(bakup_text);
-							
-							$("input[name='__hash__']").val(rs.new_hash);
 					     }
 				     },
 			   	error:function(XMLHttpRequest, textStatus, errorThrown){
