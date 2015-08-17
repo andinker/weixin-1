@@ -169,10 +169,14 @@ class IndexAction extends WapAction{
 		
 		foreach($childCategorys as $k=>$row){ 
 			
-			$acticles = M('Img')->where(array(
+			// 查找当前分类下的所有子分类ID
+			$img_db = M('Img');
+			$acticles = $img_db->where(array(
 					'token'=>$this->token,
-					'classid'=>$row['id']
-			))->limit(0,10)->select();
+					'classid'=>array('in',$row['id'].','.implode(',', $this->getAllChildIds($row['id'])))
+			))->limit(0,20)->select();
+			
+			//echo $img_db->getLastSql();
 				
 			$childCategorys[$k]['articles'] = $acticles;
 			
@@ -188,6 +192,10 @@ class IndexAction extends WapAction{
 		return $childCategorys;
 	
 	}
+	
+	
+	
+	
 	
 	/**
 	 * 搜索当前小区下的所有商品
