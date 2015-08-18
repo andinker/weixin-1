@@ -1,4 +1,58 @@
 <layout name="common/html" />
 
+<style type="text/css">
+.menu_top ul{padding: 0 10px;}
+.menu_top ul li:FIRST-CHILD {display: none;}
+.footer{color:#3a3838;font-size: 13px;background: none;margin-top:62px;}
+</style>
 
-入驻成功！
+<div class="container">
+	<div class="steps_process">
+		<div class="all_steps_num">
+			<div class="col-xs-3">
+				<div class="step_process_in">1</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="step_process">2</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="step_process">3</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="step_process">√</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="steps_name_process">
+		<div class="all_steps_name">
+			<div class="col-xs-3">
+				<div class="process_name_in">注册账号</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="process_name">填写商家信息</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="process_name">选择社区门户</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="process_name">入驻成功</div>
+			</div>
+		</div>
+	</div>
+	
+	<h1 style="color:#fe6813;text-align: center;font-size: 53px;margin-top:80px;margin-bottom:45px;">
+		 入驻成功！
+	</h1>
+	
+	<div class="done_msg">
+		<p>至此，您已经成功入驻了亚商圈平台!</p>
+		<p>现在您已经拥有一个登录帐号，请您务必保管好它。</p>
+		
+		<h2 style="margin-top:50px;margin-bottom:44px;">接下来应该做什么？</h2>
+		
+		<p>1. <a href="{ZF::U('Index/login')}">登录</a> 网站管理后台，上传商品<a href="{ZF::U('Home/Index/help_menu')}">（ How to ? ）</a> 。</p>
+		<p>2. 查看 <a href="{ZF::U('Home/Index/help_menu')}">帮助文档</a> ，以获得更多了解</p>
+	</div>
+	
+</div>

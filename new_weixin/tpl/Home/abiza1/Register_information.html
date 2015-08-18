@@ -52,7 +52,7 @@
 		<div class="alert_box" style=" width: 80%;margin: 0 auto;background-color: white;text-align: center;padding: 20px;margin-top: 100px;border: 8px solid #ccc;border-radius: 5px;max-width: 700px;">
 		
 			<div id="information_success_panel_content"></div>
-			<div id="information_success_panel_close">确定</div>
+			<div id="information_success_panel_close" class="sure">确定</div>
 		
 		</div>
 		
@@ -125,11 +125,11 @@ $(document).ready(function($){
 		$("#information_success_panel").css("display","block");
 		$("#information_success_panel_content").html(
 				"<h4>已成功保存了您的信息！</h4>"+
-				"<p>企业全称："+$("#input_enterprise_name").val()+"</p>"+
-				"<p>网站名称："+$("#input_site_name").val()+"</p>"+
-				"<p>联系人："+$("#input_people_name").val()+"</p>"+
-				"<p>电话："+$("#input_tel").val()+"</p>"+
-				"<p>通信地址："+$("#input_address").val()+"</p>"
+				"<p style='color:red;font-size:14px;'>企业全称："+$("#input_enterprise_name").val()+"</p>"+
+				"<p style='color:red;font-size:14px;'>网站名称："+$("#input_site_name").val()+"</p>"+
+				"<p style='color:red;font-size:14px;'>联系人："+$("#input_people_name").val()+"</p>"+
+				"<p style='color:red;font-size:14px;'>电话："+$("#input_tel").val()+"</p>"+
+				"<p style='color:red;font-size:14px;'>通信地址："+$("#input_address").val()+"</p>"
 				);
 		$("#information_success_panel_close").bind("click",func);
 	};
