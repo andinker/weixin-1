@@ -3,8 +3,15 @@
 <style type="text/css">
 .menu_top ul{padding: 0 10px;}
 .menu_top ul li:LAST-CHILD {display: none;}
-.footer{color:#3a3838;font-size: 13px;background: none;margin-top:62px;}
+.footer{margin-top:62px;}
 </style>
+
+<script src="//cdn.bootcss.com/device.js/0.2.7/device.min.js"></script>
+<script type="text/javascript">
+    if(device.mobile()){
+        window.location = "{ZF::U('mlogin')}";  
+    }
+</script>
 
 <div class="container page_margin">
 	<div class="col-md-6 reg_left">

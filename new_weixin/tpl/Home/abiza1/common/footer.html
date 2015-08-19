@@ -1,4 +1,14 @@
 <div class="footer">
- 	 <p>联系电话：{ZF::C('site_tel')}&nbsp;&nbsp;&nbsp;客服QQ：{ZF::C('site_qq')}&nbsp;&nbsp;&nbsp;邮箱：{ZF::C('site_email')}</p>
- 	 <p style="margin-top:29px;">{ZF::C('ipc')}  {ZF::base64_decode(C('tongji'))}  </p>
+	<div class="container">
+		<div class="col-sm-6 footer_left">
+			<!-- <p>联系电话：{ZF::C('site_tel')}</p> -->
+			<div class="footer_contact">
+				<p>客服QQ：{ZF::C('site_qq')}</p>
+				<p>邮箱：{ZF::C('site_email')}</p>
+			</div>
+		</div>
+		<div class="col-sm-6 footer_right">
+			<p>{ZF::C('ipc')}  {ZF::base64_decode(C('tongji'))}  </p>
+		</div>
+	</div>
 </div>

@@ -4,6 +4,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title> {ZF::C('site_title')} {ZF::C('site_name')}</title>
+<script src="//cdn.bootcss.com/device.js/0.2.7/device.min.js"></script>
+<script type="text/javascript">
+    if(device.mobile()){
+        window.location = "{ZF::U('Muser/Index/index')}";  
+    }
+</script>
 <link type="text/css" rel="stylesheet" href="{ZF::RES}/css/frame.css" />
 <script type="text/javascript" src="{ZF::RES}/js/jquery-1.7.2.min.js"></script>
 <link type="text/css" rel="stylesheet" href="{ZF::RES}/css/bootstrap.css" />
