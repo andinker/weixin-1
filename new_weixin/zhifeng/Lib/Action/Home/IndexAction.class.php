@@ -83,4 +83,13 @@ class IndexAction extends BaseAction{
 		
 		$this->display(); 
 	}
+	
+	public function login() {
+		
+		$uid = session('uid');
+		
+		if (!empty($uid)) $this->redirect('User/Index/index');
+		
+		$this->display();
+	}
 }
