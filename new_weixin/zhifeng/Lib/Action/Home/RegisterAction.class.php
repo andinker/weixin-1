@@ -261,4 +261,11 @@ class RegisterAction extends BaseAction{
 		$token_open->data($open)->add();
 	}
 	
+	/**
+	 * 社区运营商申请页面
+	 */
+	public function applyforoperator() {
+		;
+	}
+	
 }
