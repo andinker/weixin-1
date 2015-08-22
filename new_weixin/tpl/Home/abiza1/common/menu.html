@@ -24,7 +24,7 @@
 			        <span class="icon-bar"></span>
 			      </button>
 			      <a class="navbar-brand" href="{ZF::C('site_url')}" style="padding:0;height:auto;">
-							<img border="0" src="{ZF::RES}/images/logo.png" style="width:146px;"/>				
+							<img border="0" src="{ZF::RES}/images/logo.svg"/>	
 				  </a>
 			    </div>
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding:0;border:none;">
@@ -36,10 +36,10 @@
 		        		<a href="{ZF::U('Register/index')}">商家入驻</a>
 			        </li>
 			        <li>
-			        	<a href="">社区运营商</a>
+			        	<a href="#" id="unopen_first">社区运营商</a>
 			        </li>
 			        <li>
-			        	<a href="">商圈</a>
+			        	<a href="#" id="unopen_second">商圈</a>
 			        </li>
 			        
 			        <li>
@@ -52,3 +52,19 @@
 		</div>
 	</div> 
 </div>
+
+<script type="text/javascript">
+$(document).ready(function($){
+	var alert_tips=function(){
+		$('#unopen_first').bind("click",function(){
+			alert('即将开放，敬请期待！');	
+			$(this).css("color","white");
+		})
+		$('#unopen_second').bind("click",function(){
+			alert('即将开放，敬请期待！');	
+			$(this).css("color","white");
+		})
+	};
+	alert_tips();
+})
+</script>

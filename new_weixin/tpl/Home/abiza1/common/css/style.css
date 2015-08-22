@@ -109,10 +109,11 @@ div.step_adv p.p1{color:#575555;font-size: 20px;margin-top: 19px;}
 .maroon{color:red;margin-left:5px;}
 .help_msg{display: inline-block;}
 
-.shop_title{background: #921925;  padding: 10px 0 25px 0;}
+/*.shop_title{background: #921925;  padding: 10px 0 25px 0;}
 .shop_title h2{color:white;line-height: 40px;}
 .content_title{border-bottom:1px solid #eee;font-weight: 600;}
 .content_text{text-indent: 2em;margin-top:20px;}
+*/
 
 .navbar-default .navbar-nav>.open>a{background:none;}
 .navbar-default .navbar-nav>.open>a:hover{background:none;}
@@ -128,10 +129,11 @@ a.intro_more:hover{background: white;color:#d12435;}
 
 .box-content{padding-left: 30px;}
 
-.sec_title{line-height:35px;margin-top:10px;}
+/*.sec_title{line-height:35px;margin-top:10px;}
 .sec_title ul li{border-bottom:1px solid #f8f8f8;}
 .sec_title img{max-width: 90%;}
 .sec_title a{color:#333;}
+*/
 
 .slide_menu{position:fixed;right:-160px;width:160px;line-height:35px;height:100%;background:rgba(0,0,0,.7);top:0; overflow: scroll;}
 .slide_menu ul{margin:0;padding:10px;}
@@ -210,6 +212,19 @@ a.intro_more:hover{background: white;color:#d12435;}
 .done_msg .done_extend{max-width: 420px;margin: 0 auto;}
 .done_msg .done_extend p{text-align: left;}
 
+/*help*/
+.help_page{margin-bottom:100px;}
+.help_all_box{overflow:hidden;}
+.help_all_box .help_single_box{margin-top:75px;}
+.help_all_box .help_title{text-align:center;}
+.help_all_box .help_title img{max-height: 95px;max-width: 100%;}
+.help_all_box .help_title h2{font-size:16px;color:#fe6813;}
+.help_all_box .help_ques{text-align:left;max-width: 300px;margin: 0 auto;margin-top: 35px;overflow: hidden;}
+.help_all_box .help_ques ul{margin:0;line-height: 35px;padding-left: 20px;}
+.help_all_box .help_ques ul li{list-style: initial;}
+.help_all_box .help_ques ul li a{color:#333333;font-size:13px;}
+.help_all_box .help_ques div{padding:0;}
+
 
 /* 适应平板 */ 
 @media screen and (min-width: 768px) and (max-width:992px){
@@ -277,9 +292,18 @@ a.intro_more:hover{background: white;color:#d12435;}
 	.footer .footer_left{line-height: 21px;border-right:1px solid #1a1a1a;}
 	.footer .footer_right{line-height: 42px;}
 	
+	
+	.help_all_box .help_title h2{font-size:15px;}
+	.help_all_box .help_ques ul li a{font-size:12px;}
+	
 }
 /* 适应小屏幕（手机）  */ 
 @media screen and (max-width: 768px) {
+	.navbar-default .navbar-nav>li:nth-child(1)>a:hover{padding:3px 35px!important;}
+	.navbar-default .navbar-nav>li:nth-child(2)>a:hover{padding:3px 35px!important;}
+	.navbar-default .navbar-nav>li:nth-child(3)>a:hover{padding:3px 35px!important;}
+	.navbar-default .navbar-nav>li:nth-child(4)>a:hover{padding:3px 35px!important;}
+	.navbar-default .navbar-nav>li:nth-child(5)>a:hover{padding:3px 35px!important;}
 	.left_banner{margin-top:0;}
 	.web_box img{max-width:78px;}
 	.left_banner .web_box .web_name{font-size:9px;}
@@ -382,4 +406,21 @@ a.intro_more:hover{background: white;color:#d12435;}
 	.footer .footer_left .footer_contact{max-width: initial;}
 	.footer .footer_right{text-align:left;line-height:31px;padding:0;}
 	.footer p{font-size: 12px;}
+	
+	.help_all_box .help_ques{max-width: 320px;padding:0 5px;}
+	.help_all_box:nth-child(1) .help_single_box:nth-child(1) .help_ques{max-width: 200px;}
+	.help_all_box:nth-child(1) .help_single_box:nth-child(2) .help_ques{max-width: 200px;}
+	.help_all_box:nth-child(1) .help_single_box:nth-child(3) .help_ques{max-width: 250px;}
+	.help_all_box:nth-child(2) .help_single_box:nth-child(1) .help_ques{max-width: 280px;}
+	.help_all_box:nth-child(2) .help_single_box:nth-child(2) .help_ques{max-width: 280px;}
+	.help_all_box .help_single_box{margin-top: 26px;}
+	.help_all_box .help_title img{max-height: 70px;}
+	.help_all_box .help_title h2{font-size: 14px;}
+	.help_all_box .help_ques ul li{line-height: initial;padding-bottom: 15px;}
+	.help_all_box .help_ques ul li a{font-size: 13px;}
+	.help_all_box .help_ques ul li a:hover{color:#fe6813;}
+	.help_page,.help_all_box,.help_single_box,.help_ques div{padding:0;}
+	.help_all_box .help_ques ul{margin:0;line-height: 35px;padding-left: 25px;}
+	.help_page{margin-bottom: 40px;}
+	.navbar-brand>img{width: 113px;}
 }
