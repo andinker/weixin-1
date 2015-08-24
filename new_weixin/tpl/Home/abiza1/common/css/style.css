@@ -296,6 +296,8 @@ a.intro_more:hover{background: white;color:#d12435;}
 	.help_all_box .help_title h2{font-size:15px;}
 	.help_all_box .help_ques ul li a{font-size:12px;}
 	
+	.apply_page{}
+	
 }
 /* 适应小屏幕（手机）  */ 
 @media screen and (max-width: 768px) {

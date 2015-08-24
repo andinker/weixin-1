@@ -1,31 +1,55 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<layout name="common/html" />
 
+<style>
 
+</style>
 
+<div class="apply_page">
 
+	<div class="container">
+	
+	</div>
+	
+</div>
 
-<form method="post">
+<div class="container">
 
-<div><label>公司：<input type="text" name="company" id="input_company"></label></div>
-<div><label>负责人：<input type="text" name="company" id="input_company"></label></div>
-<div><label>电话：<input type="text" name="company" id="input_company"></label></div>
-<div><label>公司：<input type="text" name="company" id="input_company"></label></div>
-<div><label>公司：<input type="text" name="company" id="input_company"></label></div>
-<div><label>公司：<input type="text" name="company" id="input_company"></label></div>
-<div><label>公司：<input type="text" name="company" id="input_company"></label></div>
+	<div class="">
+		<table class="reg_table" style="max-width: 550px;margin: 0 auto;">
+			<tr>
+				<td>企业</td>
+				<td><input type="text" name="" id="" placeholder="公司名称"></td>
+			</tr>
+			<tr>
+				<td>负责人</td>
+				<td><input type="text" name="" id="" placeholder="项目负责人"></td>
+			</tr>
+			<tr>
+				<td>电话</td>
+				<td><input type="text" name="" id="" placeholder="项目负责人的联系电话"></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><input type="text" name="" id="" placeholder="用于接收重要信件"></td>
+			</tr>
+			<tr>
+				<td>地域</td>
+				<td style="line-height: 30px;">
+					<select name="province" id="province" onChange="items_filter(this)"></select>&nbsp; 
+					<select name="city" id="city" onChange="items_filter(this)"></select> &nbsp; 
+					<select name="district" id="district" onChange="items_filter(this)"></select> &nbsp; 
+				</td>
+			</tr>
+			<tr>
+				<td>社区门户</td>
+				<td><select name="community" id="community"></select><span id="span_msg_community"></span></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" id="submit_btn" value="发送申请"  class="submit_btn"></td>
+			</tr>
+		</table>
+			
+	</div>
 
-
-</form>
-
-
-
-
-
-</body>
-</html>
+</div>
