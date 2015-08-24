@@ -12,25 +12,38 @@
 	
 </div>
 
-<div class="container">
 
+	<div id="applyforoperator_success_panel" style="overflow-y: scroll;display: none; position: fixed;width: 100%;height: 100%;background-color: rgba(0,0,0,.7);left: 0;top: 0;">
+		
+		<div class="alert_box" style=" width: 80%;margin: 0 auto;background-color: white;text-align: center;padding: 20px;margin-top: 100px;border: 8px solid #ccc;border-radius: 5px;max-width: 700px;">
+		
+			<div id="applyforoperator_success_panel_content"></div>
+			<div id="applyforoperator_success_panel_close" class="sure">确定</div>
+		
+		</div>
+		
+	</div>
+
+
+<div class="container">
+<form action="{ZF::U('applyforoperator')}" method="post" id="form_applyforoperator">
 	<div class="">
 		<table class="reg_table" style="max-width: 550px;margin: 0 auto;">
 			<tr>
 				<td>企业</td>
-				<td><input type="text" name="" id="" placeholder="公司名称"></td>
+				<td><input type="text" name="company" id="input_company" placeholder="公司名称"><span id="span_msg_company"></span></td>
 			</tr>
 			<tr>
 				<td>负责人</td>
-				<td><input type="text" name="" id="" placeholder="项目负责人"></td>
+				<td><input type="text" name="principal" id="input_principal" placeholder="项目负责人"><span id="span_msg_principal"></span></td>
 			</tr>
 			<tr>
 				<td>电话</td>
-				<td><input type="text" name="" id="" placeholder="项目负责人的联系电话"></td>
+				<td><input type="text" name="tel" id="input_tel" placeholder="项目负责人的联系电话"><span id="span_msg_tel"></span></td>
 			</tr>
 			<tr>
 				<td>Email</td>
-				<td><input type="text" name="" id="" placeholder="用于接收重要信件"></td>
+				<td><input type="text" name="email" id="input_email" placeholder="用于接收重要信件"><span id="span_msg_email"></span></td>
 			</tr>
 			<tr>
 				<td>地域</td>
@@ -40,9 +53,33 @@
 					<select name="district" id="district" onChange="items_filter(this)"></select> &nbsp; 
 				</td>
 			</tr>
+				<tr>
+					<td></td>
+					<td>
+						<div class="msg_tips">
+							找不到我的所在地？<span class="be_block">我来添加 
+							<span onClick="addItem( '添加省份','province', 0 );" style="color:#FF6600; cursor:pointer;">省份</span> / 
+							<span onClick="addItem( '添加城市','city', $('#province').val() );" style="color:#FF6600;cursor:pointer;">城市</span> / 
+							<span onClick="addItem( '添加政区','district', $('#city').val() );" style="color:#FF6600;cursor:pointer;">政区</span></span>
+						</div>
+					</td>
+				</tr>
 			<tr>
 				<td>社区门户</td>
 				<td><select name="community" id="community"></select><span id="span_msg_community"></span></td>
+			</tr>
+				<tr>
+					<td></td>
+					<td>
+						<div class="msg_tips">
+							没看到我所在的社区？
+							<span onClick="addItem( '添加社区','community', $('#district').val() );" style="color:#FF6600;cursor:pointer;">我来添加</span>
+						</div>
+					</td>
+				</tr>
+			<tr>
+				<td>附言</td>
+				<td><textarea name="msg" id="textarea_msg" placeholder="如果您有其他想告诉我们的说话，可以写在这里。"></textarea><span id="span_msg_msg"></span></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -51,5 +88,216 @@
 		</table>
 			
 	</div>
-
+</form>
 </div>
+
+
+
+<script>
+
+/*  提交表单  */
+$(document).ready(function($){
+	
+	var show_success_panel = function(func){
+		$("#form_applyforoperator").css("display","none");
+		$("#applyforoperator_success_panel").css("display","block");
+		$("#applyforoperator_success_panel_content").html(
+				"<h4>我们已经收到您的申请信息！</h4>"+
+				"<p style='color:red;font-size:14px;'>我们的业务人员会在第一时间内与您联系！您也可以拨打我们的业务联系电话：020-36335641</p>"
+				);
+		$("#community_success_panel_close").bind("click",func);
+	};
+	
+	$("#form_applyforoperator").bind("submit",function(e){
+		
+		var returnState = true;
+		
+		
+		var bakup_text = $("#submit_btn").val();
+		$("#submit_btn").attr("disabled",true);
+		$("#submit_btn").val("请稍候...");
+		
+		var do_right = '<span style="color:green;">填写正确！</span>';
+		var mk_error_text = function ( text ){
+			return '<span style="color:red;">'+text+'</span>';
+		};
+		
+		
+		if ( $.trim($("#input_company").val()) == "" ) {
+			$("#span_msg_company").html(mk_error_text("公司名必须填写！"));
+			returnState = false;
+		}else{
+			$("#span_msg_company").html(do_right);
+		}
+
+		
+		if ( $.trim($("#input_principal").val()) == "" ) {
+			$("#span_msg_principal").html(mk_error_text("负责人必须填写！"));
+			returnState = false;
+		}else{
+			$("#span_msg_principal").html(do_right);
+		}
+
+		
+		if ( $.trim($("#input_tel").val()) == "" ) {
+			$("#span_msg_tel").html(mk_error_text("电话必须填写！"));
+			returnState = false;
+		}else{
+			$("#span_msg_tel").html(do_right);
+		}
+		
+		if ( $.trim($("#input_email").val()) == "" ) {
+			$("#span_msg_email").html(mk_error_text("Email必须填写！"));
+			returnState = false;
+		}else{
+			$("#span_msg_email").html(do_right);
+		}
+		
+		if ( $.trim($("#textarea_msg").val()) == "" ) {
+			$("#span_msg_msg").html(mk_error_text("附言必须填写！"));
+			returnState = false;
+		}else{
+			$("#span_msg_msg").html(do_right);
+		}
+		
+		if ( $.trim($("#community").val()) == "" ) {
+			$("#span_msg_community").html(mk_error_text("请先选择一个社区！如果列表中没有选项，可以点击“我来添加”自行填写一个。"));
+			returnState = false;
+		}else{
+			$("#span_msg_community").html(do_right);
+		}
+
+
+		if (!returnState){
+			$("#submit_btn").attr("disabled",false);
+			$("#submit_btn").val(bakup_text);
+		}
+		
+		// AJAX 注册
+		if (returnState){ //console.log($("input[name='__hash__']").val());
+			$.ajax($("#form_information").attr("action"),{
+				cache:false,
+				type: "POST",
+				dataType:"json",
+				data: {
+					ajax:"yes",
+					community:$.trim($("#community").val()),
+					__hash__:$("input[name='__hash__']").val()
+					},
+				success: function(rs){
+					     console.log(rs);
+					     if (rs.state){
+
+					    	 // 注册成功提示
+					    	 show_success_panel(function(){
+					    		 // 用户关闭了提示窗
+					    		 location.href = '/';
+					    	 });
+					    	 
+					     }else{
+					    	 
+				    	 	$("#submited_rs_msg").html(mk_error_text(rs.msg));
+				    	 	
+							$("#submit_btn").attr("disabled",false);
+							$("#submit_btn").val(bakup_text);
+					     }
+				     },
+			   	error:function(XMLHttpRequest, textStatus, errorThrown){
+			   		console.log(XMLHttpRequest);
+			   		console.log(textStatus);
+			   		console.log(errorThrown);
+					$("#submit_btn").attr("disabled",false);
+					$("#submit_btn").val(bakup_text);
+					   }
+			});
+		}
+		
+		return false;
+		
+	});
+});
+
+</script>
+
+
+			<script type="text/javascript">
+			
+			
+				var data = {province:{ZF::json_encode($province_data)},
+						city:{ZF::json_encode($city_data)},
+						district:{ZF::json_encode($district_data)},
+						community:{ZF::json_encode($community_data)}}
+			
+			
+			
+			function items_filter( select ){
+				
+				var autoload_select_id = null;
+				var autoload_data = null;
+				
+				switch ($(select).attr("id")){
+					case "province":
+						autoload_select_id = "city";
+						autoload_data = data.city;
+						break;
+					case "city":
+						autoload_select_id = "district";
+						autoload_data = data.district;
+						break;	
+					case "district":
+						autoload_select_id = "community";
+						autoload_data = data.community;
+						break;
+				}
+				
+				$("#"+autoload_select_id).empty();
+				$(autoload_data).each(function (i){
+					
+					var p_id = null;
+					switch ($(select).attr("id")){
+						case "province":
+							p_id = this.province_id;
+							break;
+						case "city":
+							p_id = this.city_id;
+							break;	
+						case "district":
+							p_id = this.district_id;
+							break;
+					}
+					
+					if ( $(select).find("option:selected").val() == p_id ) 
+					$("#"+autoload_select_id).append("<option value='"+this.id+"'>"+this.name+"</option>");
+					
+				});
+				
+				if (autoload_select_id != "community")
+				items_filter( $("#"+autoload_select_id)[0] );
+				
+			}
+			
+			// 区域数据 初始化显示
+			$(data.province).each(function (i){
+				$("#province").append("<option value='"+this.id+"'>"+this.name+"</option>");
+			});
+			
+			$("#province").change();
+			
+			
+			
+			
+			function addItem( title,type, p_id ){
+			
+				//art.dialog.data('goodslist_id',goodslist_id);
+				//art.dialog.data('call_back',call_back);
+				art.dialog.open('{ZF::U('Home/Region/addregionitem')}&type='+type+'&pid='+p_id, {
+					title: title,
+					width: '100%',
+				    height: '100%',
+				    left: '0%',
+				    top: '0%',
+				    fixed: true,
+				    resize: false,
+				    drag: false});
+			}
+			</script>
