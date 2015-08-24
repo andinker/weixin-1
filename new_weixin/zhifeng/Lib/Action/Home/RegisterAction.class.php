@@ -265,6 +265,7 @@ class RegisterAction extends BaseAction{
 	 * 社区运营商申请页面
 	 */
 	public function applyforoperator() {
+		// 保存数据库 或者发送邮件 
 		;
 	}
 	
