@@ -153,13 +153,6 @@ $(document).ready(function($){
 			$("#span_msg_email").html(do_right);
 		}
 		
-		if ( $.trim($("#textarea_msg").val()) == "" ) {
-			$("#span_msg_msg").html(mk_error_text("附言必须填写！"));
-			returnState = false;
-		}else{
-			$("#span_msg_msg").html(do_right);
-		}
-		
 		if ( $.trim($("#community").val()) == "" ) {
 			$("#span_msg_community").html(mk_error_text("请先选择一个社区！如果列表中没有选项，可以点击“我来添加”自行填写一个。"));
 			returnState = false;
@@ -181,6 +174,11 @@ $(document).ready(function($){
 				dataType:"json",
 				data: {
 					ajax:"yes",
+					company:$("#input_company").val(),
+					principal:$("#input_principal").val(),
+					tel:$("#input_tel").val(),
+					email:$("#input_email").val(),
+					msg:$("#textarea_msg").val(),
 					community:$.trim($("#community").val()),
 					__hash__:$("input[name='__hash__']").val()
 					},

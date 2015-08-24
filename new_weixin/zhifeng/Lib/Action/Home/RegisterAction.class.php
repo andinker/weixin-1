@@ -271,7 +271,27 @@ class RegisterAction extends BaseAction{
 			$state = true;
 			$msg = '保存成功！';
 			
-			if ( !isset($_POST['community']) || empty($_POST['community']) ){
+			// 验证数据
+			$company = trim($_POST['company']);
+			$principal = trim($_POST['principal']);
+			$tel = trim($_POST['tel']);
+			$email = trim($_POST['email']);
+			$msg = trim($_POST['msg']);
+			$community = trim($_POST['community']);
+			
+			if (empty($company)) {
+				$state = false;
+				$msg = '处理失败:还没有填写公司名字！';
+			}elseif (empty($principal)) {
+				$state = false;
+				$msg = '处理失败:还没有填写项目负责人！';
+			}elseif (empty($tel)) {
+				$state = false;
+				$msg = '处理失败:还没有填写项目负责人联系电话！';
+			}elseif (empty($email)) {
+				$state = false;
+				$msg = '处理失败:还没有填写电子邮件！';
+			}elseif (empty($community)){
 				$state = false;
 				$msg = '处理失败:还没有选择社区！';
 			}else{
