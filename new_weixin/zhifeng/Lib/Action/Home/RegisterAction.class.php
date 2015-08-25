@@ -266,7 +266,72 @@ class RegisterAction extends BaseAction{
 	 */
 	public function applyforoperator() {
 		// 保存数据库 或者发送邮件 
-		;
+			if ( IS_POST && isset($_POST['ajax']) && $_POST['ajax'] == 'yes' ){
+			
+			$state = true;
+			$msg = '保存成功！';
+			
+			// 验证数据
+			$company = trim($_POST['company']);
+			$principal = trim($_POST['principal']);
+			$tel = trim($_POST['tel']);
+			$email = trim($_POST['email']);
+			$msg = trim($_POST['msg']);
+			$community = trim($_POST['community']);
+			
+			if (empty($company)) {
+				$state = false;
+				$msg = '处理失败:还没有填写公司名字！';
+			}elseif (empty($principal)) {
+				$state = false;
+				$msg = '处理失败:还没有填写项目负责人！';
+			}elseif (empty($tel)) {
+				$state = false;
+				$msg = '处理失败:还没有填写项目负责人联系电话！';
+			}elseif (empty($email)) {
+				$state = false;
+				$msg = '处理失败:还没有填写电子邮件！';
+			}elseif (empty($community)){
+				$state = false;
+				$msg = '处理失败:还没有选择社区！';
+			}else{
+				
+				// 保存社区
+				$db = M("Users");
+				$save_rs = $db->where(array("id"=>$uid_session))->save(array(
+						'community_id'=>intval($_POST['community'])
+				));
+				
+				if (!$save_rs){
+					$state = false;
+					$msg = '处理失败:'.$db->getError().$db->getDbError();
+				}
+				
+			}
+			
+			exit(json_encode(array(
+					'state'=>$state,
+					'msg'=>$msg,
+			)));
+			
+			
+		}else{
+			
+			//读取省、市、区、小区数据表进行显示
+			$where = array('status'=>1);
+			$province_data 	= M('region_province')->where($where)->select();
+			$city_data     	= M('region_city')->where($where)->select();
+			$district_data 	= M('region_district')->where($where)->select();
+			$community_data = M('region_community')->where($where)->select();
+			
+			$this->assign('province_data'	,$province_data);
+			$this->assign('city_data'		,$city_data);
+			$this->assign('district_data'	,$district_data);
+			$this->assign('community_data'	,$community_data);
+			
+			$this->display();
+			
+		}
 	}
 	
 }
