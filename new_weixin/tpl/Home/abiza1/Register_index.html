@@ -2,9 +2,10 @@
 
 <style type="text/css">
 body{background: #ff6912;}
+.page{padding-bottom:40px;}
 .menu_top ul{padding: 0 10px;}
 .menu_top ul li:FIRST-CHILD {display: none;}
-.footer{margin-top:62px;}
+.footer{margin-top:0!important;}
 .navbar-default .navbar-nav>li:nth-child(2)>a{background-color: white;color: #fe6813;box-shadow: 0px 0px 10px 0px rgba(0,0,0,.2);
 											  font-size:14px!important;padding:3px 14px!important;}
 @media screen and (max-width: 768px) {
@@ -134,7 +135,6 @@ body{background: #ff6912;}
 	<p><input type="button" name="start_register" id="button_start_register" value="马上入驻" class="reg_btn"></p>
 	
 </div>
-
 <script type="text/javascript">
 $(document).ready(function($){
 	
@@ -151,6 +151,11 @@ $(document).ready(function($){
 	 //设置协议尺寸
 	 var setSize=function(){
 		 var win_w=$(window).width();
+		 var win_h=$(window).height();
+		 var menu_h=$('.menu_all').height();
+		 var foot_h=$('.footer_wrap').height();
+		 var page_min_h=win_h-menu_h-foot_h;
+		 $('.page').css("min-height",page_min_h+"px");
 		 var box_w=$('#protocol').width();
 		 var margin_bet=(win_w-box_w)/2;
 		 if(win_w>1140){

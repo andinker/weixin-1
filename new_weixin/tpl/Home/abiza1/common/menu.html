@@ -36,7 +36,7 @@
 		        		<a href="{ZF::U('Register/index')}">商家入驻</a>
 			        </li>
 			        <li>
-			        	<a href="#" id="unopen_first">社区运营商</a>
+			        	<a href="{ZF::U('Register/applyforoperator')}">社区运营商</a>
 			        </li>
 			        <li>
 			        	<a href="#" id="unopen_second">商圈</a>
@@ -56,10 +56,6 @@
 <script type="text/javascript">
 $(document).ready(function($){
 	var alert_tips=function(){
-		$('#unopen_first').bind("click",function(){
-			alert('即将开放，敬请期待！');	
-			$(this).css("color","white");
-		})
 		$('#unopen_second').bind("click",function(){
 			alert('即将开放，敬请期待！');	
 			$(this).css("color","white");

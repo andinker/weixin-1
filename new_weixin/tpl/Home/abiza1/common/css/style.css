@@ -230,6 +230,16 @@ a.intro_more:hover{background: white;color:#d12435;}
 .apply_page h1{margin-top:68px;margin-bottom:58px;}
 .apply_page p{margin-bottom:20px;}
 .apply_page{padding-bottom:70px;}
+.apply_table{margin-top:25px;}
+.apply_page .reg_table{line-height: 70px;}
+.apply_table .differ_tr{line-height:20px;margin:0;}
+.apply_table .differ_td{color:#868383;margin-bottom:20px;margin-top:5px;padding-top: 23px;}
+.apply_table .leave_msg{padding-top:23px;padding-right: 30px;line-height:30px;}
+.apply_table .leave_msg textarea{max-width: 370px;width: 100%;}
+tr.select_box{line-height: 25px;}
+tr.select_box td{padding-top: 30px;}
+.submit_tr{line-height:150px;}
+.apply_table .reg_table tr td.apply_tips{text-align: center;line-height: 25px;}
 
 
 /* 适应平板 */ 
@@ -302,7 +312,13 @@ a.intro_more:hover{background: white;color:#d12435;}
 	.help_all_box .help_title h2{font-size:15px;}
 	.help_all_box .help_ques ul li a{font-size:12px;}
 	
-	.apply_page{}
+	.apply_page h1{margin-top:35px;margin-bottom:23px;font-size:26px;}
+	.apply_page p{margin-bottom:12px;font-size:11px;}
+	.apply_page{padding-bottom:25px;}
+	.apply_table .differ_td{padding-top: 18px;margin-bottom:15px;}
+	.apply_table .leave_msg{padding-top:18px;}
+	.submit_tr{line-height:120px;}
+	tr.select_box td{padding-top: 21px;}
 	
 }
 /* 适应小屏幕（手机）  */ 
@@ -381,7 +397,7 @@ a.intro_more:hover{background: white;color:#d12435;}
 	.reg_title span{font-size: 20px;padding-right: 30px;}
 	.reg_table{line-height: 65px;}
 	.submit_btn{margin-top: 0;}
-	.reg_table input{line-height: 30px;}
+	.reg_table input{line-height: 32px;}
 	.form{margin-top: 15px;}
 	.reg_table tr td:last-child{padding-right: 20px;}
 	.submit_btn{font-size:18px;}
@@ -431,4 +447,14 @@ a.intro_more:hover{background: white;color:#d12435;}
 	.help_all_box .help_ques ul{margin:0;line-height: 35px;padding-left: 25px;}
 	.help_page{margin-bottom: 40px;}
 	.navbar-brand>img{width: 113px;}
+	
+	.apply_page h1{margin-top:32px;margin-bottom:26px;font-size:19px;}
+	.apply_page p{margin-bottom:12px;font-size:12px;}
+	.apply_page{padding-bottom:20px;text-align:center;}
+	.apply_table .differ_td{padding-top: 13px;margin-bottom:10px;}
+	.apply_table .leave_msg{padding-top:13px;}
+	.submit_tr{line-height:80px;}
+	.apply_table .reg_table tr td:first-child{width: 65px;}
+	tr.select_box td{padding-top: 16px;}
+	.apply_table .reg_table select{height: 28px;}
 }

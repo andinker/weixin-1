@@ -16,51 +16,69 @@
 </div>
 
 
-	<div id="applyforoperator_success_panel" style="overflow-y: scroll;display: none; position: fixed;width: 100%;height: 100%;background-color: rgba(0,0,0,.7);left: 0;top: 0;">
-		
-		<div class="alert_box" style=" width: 80%;margin: 0 auto;background-color: white;text-align: center;padding: 20px;margin-top: 100px;border: 8px solid #ccc;border-radius: 5px;max-width: 700px;">
-		
-			<div id="applyforoperator_success_panel_content"></div>
-			<div id="applyforoperator_success_panel_close" class="sure">确定</div>
-		
-		</div>
-		
+<div id="applyforoperator_success_panel" style="overflow-y: scroll;display: none; position: fixed;width: 100%;height: 100%;background-color: rgba(0,0,0,.7);left: 0;top: 0;">
+	
+	<div class="alert_box" style=" width: 80%;margin: 0 auto;background-color: white;text-align: center;padding: 20px;margin-top: 100px;border: 8px solid #ccc;border-radius: 5px;max-width: 700px;">
+	
+		<div id="applyforoperator_success_panel_content"></div>
+		<div id="applyforoperator_success_panel_close" class="sure">确定</div>
+	
 	</div>
+	
+</div>
 
 
 <div class="container">
-<form action="{ZF::U('applyforoperator')}" method="post" id="form_applyforoperator">
-	<div class="">
+
+	<form action="{ZF::U('applyforoperator')}" method="post" id="form_applyforoperator">
 	
-		<table class="reg_table" style="max-width: 550px;margin: 0 auto;">
-			<tr>
-				<td>企业</td>
-				<td><input type="text" name="company" id="input_company" placeholder="公司名称"><span id="span_msg_company"></span></td>
-			</tr>
-			<tr>
-				<td>负责人</td>
-				<td><input type="text" name="principal" id="input_principal" placeholder="项目负责人"><span id="span_msg_principal"></span></td>
-			</tr>
-			<tr>
-				<td>电话</td>
-				<td><input type="text" name="tel" id="input_tel" placeholder="项目负责人的联系电话"><span id="span_msg_tel"></span></td>
-			</tr>
-			<tr>
-				<td>Email</td>
-				<td><input type="text" name="email" id="input_email" placeholder="用于接收重要信件"><span id="span_msg_email"></span></td>
-			</tr>
-			<tr>
-				<td>地域</td>
-				<td style="line-height: 30px;">
-					<select name="province" id="province" onChange="items_filter(this)"></select>&nbsp; 
-					<select name="city" id="city" onChange="items_filter(this)"></select> &nbsp; 
-					<select name="district" id="district" onChange="items_filter(this)"></select> &nbsp; 
-				</td>
-			</tr>
+		<div class="apply_table">
+		
+			<table class="reg_table" style="max-width: 550px;margin: 0 auto;">
+				<tr>
+					<td>企业</td>
+					<td><input type="text" name="company" id="input_company" placeholder="公司名称"></td>
+				</tr>
 				<tr>
 					<td></td>
+					<td class="apply_tips"><span id="span_msg_company"></span></td>
+				</tr>
+				<tr>
+					<td>负责人</td>
+					<td><input type="text" name="principal" id="input_principal" placeholder="项目负责人"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="apply_tips"><span id="span_msg_principal"></span></td>
+				</tr>
+				<tr>
+					<td>电话</td>
+					<td><input type="text" name="tel" id="input_tel" placeholder="项目负责人的联系电话"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="apply_tips"><span id="span_msg_tel"></span></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type="text" name="email" id="input_email" placeholder="用于接收重要信件"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="apply_tips"><span id="span_msg_email"></span></td>
+				</tr>
+				<tr class="select_box">
+					<td>地域</td>
+					<td class="differ_td">
+						<select name="province" id="province" onChange="items_filter(this)"></select>&nbsp; 
+						<select name="city" id="city" onChange="items_filter(this)"></select> &nbsp; 
+						<select name="district" id="district" onChange="items_filter(this)"></select> &nbsp;  
+					</td>
+				</tr>
+				<tr class="differ_tr">
+					<td></td>
 					<td>
-						<div class="msg_tips">
+						<div class="differ_td" style="padding-top: 0;">
 							找不到我的所在地？<span class="be_block">我来添加 
 							<span onClick="addItem( '添加省份','province', 0 );" style="color:#FF6600; cursor:pointer;">省份</span> / 
 							<span onClick="addItem( '添加城市','city', $('#province').val() );" style="color:#FF6600;cursor:pointer;">城市</span> / 
@@ -68,31 +86,42 @@
 						</div>
 					</td>
 				</tr>
-			<tr>
-				<td>社区门户</td>
-				<td><select name="community" id="community"></select><span id="span_msg_community"></span></td>
-			</tr>
-				<tr>
+				<tr class="select_box">
+					<td>社区门户</td>
+					<td class="differ_td msg_tips">
+						<select name="community" id="community" style="min-width:160px;"></select>
+						
+					</td>
+				</tr>
+				<tr class="differ_tr">
 					<td></td>
 					<td>
-						<div class="msg_tips">
+						<div class="differ_td" style="padding-top: 0;">
 							没看到我所在的社区？
-							<span onClick="addItem( '添加社区','community', $('#district').val() );" style="color:#FF6600;cursor:pointer;">我来添加</span>
+							<span onClick="addItem( '添加社区','community', $('#district').val() );" style="color:#FF6600;cursor:pointer;" class="be_block">我来添加</span>
 						</div>
 					</td>
 				</tr>
-			<tr>
-				<td>附言</td>
-				<td><textarea name="msg" id="textarea_msg" placeholder="如果您有其他想告诉我们的说话，可以写在这里。"></textarea><span id="span_msg_msg"></span></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" id="submit_btn" value="发送申请"  class="submit_btn"></td>
-			</tr>
-		</table>
-			
-	</div>
-</form>
+				<tr>
+					<td colspan="2" class="apply_tips"><span id="span_msg_community"></span></td>
+				</tr>
+				<tr>
+					<td>附言</td>
+					<td class="leave_msg"><textarea name="msg" id="textarea_msg" placeholder="如果您有其他想告诉我们的说话，可以写在这里。"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="apply_tips"><span id="span_msg_msg"></span></td>
+				</tr>
+				<tr class="submit_tr">
+					<td></td>
+					<td><input type="submit" id="submit_btn" value="发送申请"  class="submit_btn"></td>
+				</tr>
+			</table>
+				
+		</div>
+		
+	</form>
+	
 </div>
 
 
@@ -109,7 +138,7 @@ $(document).ready(function($){
 				"<h4>我们已经收到您的申请信息！</h4>"+
 				"<p style='color:red;font-size:14px;'>我们的业务人员会在第一时间内与您联系！您也可以拨打我们的业务联系电话：020-36335641</p>"
 				);
-		$("#community_success_panel_close").bind("click",func);
+		$("#applyforoperator_success_panel_close").bind("click",func);
 	};
 	
 	$("#form_applyforoperator").bind("submit",function(e){
