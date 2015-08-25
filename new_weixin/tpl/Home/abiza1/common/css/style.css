@@ -225,6 +225,12 @@ a.intro_more:hover{background: white;color:#d12435;}
 .help_all_box .help_ques ul li a{color:#333333;font-size:13px;}
 .help_all_box .help_ques div{padding:0;}
 
+.apply_page{background:url("/tpl/Home/abiza1/common/images/apply_bg.jpg"); 
+		    background-repeat: no-repeat;background-position:top center;background-size:auto  100%;color:#fdfdfd;}
+.apply_page h1{margin-top:68px;margin-bottom:58px;}
+.apply_page p{margin-bottom:20px;}
+.apply_page{padding-bottom:70px;}
+
 
 /* 适应平板 */ 
 @media screen and (min-width: 768px) and (max-width:992px){
