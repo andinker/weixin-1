@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+
+<volist name="ListData" id="vo">
+
+	<div id="apply_{ZF:$vo.id}">
+	
+		企业：{ZF:$vo.company}<br>
+		负责人：{ZF:$vo.principal}<br>
+		联系电话：{ZF:$vo.tel}<br>
+		Email:{ZF:$vo.email}<br>
+		希望经营的社区：{ZF:$vo.community}<br>
+		附言：{ZF:$vo.msg}<br>
+		申请时间：{ZF:$vo.submit_time|date='Y-m-d H:i:s',###}<br>
+		处理时间：{ZF:$vo.process_time}<br>
+		处理状态：<span id="apply_status_{ZF:$vo.id}"><php>
+						if (empty($vo['status'])) echo '未处理';
+						else echo '已处理';
+		</php></span><br>
+		操作：
+		<php>
+				if (!empty($vo['status'])){
+					echo '<input type="button" onclick="deleteApply(this,'.$vo['id'].');" value="删除">';
+				}else{
+					echo '<input type="button" onclick="processApply(this,'.$vo['id'].');" value="标为已处理">';
+				}
+		</php>
+		
+	</div>
+
+</volist>
+
+
+<script>
+
+function deleteApply(btn,applyID){
+	setBtn(btn,false);
+	$.ajax("{ZF::U('delete')}",make_ajax_options(applyID,function(data){
+		//成功处理
+		if (data.state){
+			deleteApplyDOM(applyID);
+		}else{
+			alert("处理失败！");
+		}
+	}));
+	
+}
+
+function processApply(btn,applyID){
+	setBtn(btn,false);
+	$.ajax("{ZF::U('setStatus')}",make_ajax_options(applyID,function(data){
+		//成功处理
+		if (data.state){
+			setStatus(applyID);
+			$(btn).remove();
+		}else{
+			alert("处理失败！");
+		}
+	}));
+}
+
+function make_ajax_options(applyID,func){
+	return {
+		cache:false,
+		type: "POST",
+		dataType:"json",
+		data:{id:applyID,ajax:"yes"},
+		success:func,
+	};
+}
+
+function deleteApplyDOM(applyID){
+	$("#apply_"+applyID).remove();
+}
+
+function setStatus(applyID){
+	$("#apply_status_"+applyID).html("已处理");
+}
+
+function setBtn(btn,status){
+	
+	if (status) $(btn).attr("disabled",false);
+	else{
+		$(btn).attr("disabled",true);
+		$(btn).val("正在处理……");
+	}
+}
+</script>
+
+
+</body>
+</html>

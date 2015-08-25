@@ -296,10 +296,17 @@ class RegisterAction extends BaseAction{
 				$msg = '处理失败:还没有选择社区！';
 			}else{
 				
-				// 保存社区
-				$db = M("Users");
-				$save_rs = $db->where(array("id"=>$uid_session))->save(array(
-						'community_id'=>intval($_POST['community'])
+				// 把申请信息保存到数据库
+				$db = M("Applyforoperator");
+				$save_rs = $db->add(array(
+						'company'=>$company,
+						'principal'=>$principal,
+						'tel'=>$tel,
+						'email'=>$email,
+						'msg'=>$msg,
+						'community'=>intval($community),
+						'submit_time'=>time(),
+						'status'=>0,
 				));
 				
 				if (!$save_rs){
