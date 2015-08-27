@@ -37,7 +37,7 @@ body{padding: 0;margin: 0;font-family: Microsoft Yahei;font-size:14px;}
 			<td>{ZF:$vo.community}</td>
 			<td>{ZF:$vo.msg}</td>
 			<td>{ZF:$vo.submit_time|date='Y-m-d H:i:s',###}</td>
-			<td>
+			<td><span id="apply_process_time_{ZF:$vo.id}">
 				<php>
 					if(!$vo['process_time']==""){
 				</php>
@@ -45,6 +45,7 @@ body{padding: 0;margin: 0;font-family: Microsoft Yahei;font-size:14px;}
 				<php>
 					}
 				</php>
+				</span>
 			</td>
 			<td  id="apply_status_{ZF:$vo.id}">
 				<php>
@@ -85,7 +86,7 @@ function processApply(btn,applyID){
 	$.ajax("{ZF::U('setStatus')}",make_ajax_options(applyID,function(data){
 		//成功处理
 		if (data.state){
-			setStatus(applyID);
+			setStatus(applyID,data.time);
 			$(btn).remove();
 		}else{
 			alert("处理失败！");
@@ -107,7 +108,8 @@ function deleteApplyDOM(applyID){
 	$("#apply_"+applyID).remove();
 }
 
-function setStatus(applyID){
+function setStatus(applyID,time){
+	$("#apply_process_time_"+applyID).html(time);
 	$("#apply_status_"+applyID).html("已处理");
 }
 
