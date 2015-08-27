@@ -191,7 +191,7 @@ a.intro_more:hover{background: white;color:#d12435;}
 .reg_title{color:#fe6813;text-align: center;font-size: 35px;margin-top:45px;}
 .reg_title span{font-size: 30px;}
 .reg_table{width:100%;line-height: 80px;}
-.reg_table input{line-height: 35px;width:100%;max-width:370px;border:1px solid #b4b4b4;padding: 0px 5px;}
+.reg_table input{line-height: 35px;width:100%;max-width:370px;border:1px solid #b4b4b4;padding: 0px 5px;min-height:35px;}
 .reg_table tr td:first-child{width:80px;text-align:right;font-size: 15px;color: #585656;}
 .reg_table tr td:last-child{padding-left:10px;padding-right: 40px;}
 .table_box{max-width: 440px;margin: 0 auto;}
@@ -237,7 +237,7 @@ a.intro_more:hover{background: white;color:#d12435;}
 .apply_table .differ_tr{line-height:20px;margin:0;}
 .apply_table .differ_td{color:#868383;margin-bottom:20px;margin-top:5px;padding-top: 23px;}
 .apply_table .leave_msg{padding-top:23px;padding-right: 30px;line-height:30px;}
-.apply_table .leave_msg textarea{max-width: 370px;width: 100%;}
+.apply_table .leave_msg textarea{max-width: 370px;width: 100%;min-height:66px;}
 tr.select_box{line-height: 25px;}
 tr.select_box td{padding-top: 30px;}
 .submit_tr{line-height:150px;}
