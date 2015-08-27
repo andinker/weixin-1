@@ -2,40 +2,60 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>社区运营管理审核</title>
 <script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<style type="text/css">
+body{padding: 0;margin: 0;font-family: Microsoft Yahei;font-size:14px;}
+.manage_table{line-height: 30px;text-align: center;}
+.manage_table tr:nth-child(2n-1){background: #f9f9f9;}
+.manage_table tr:nth-child(1){height:50px;}	
+.manage_table tr th{font-size:15px;}
+.manage_table tr td{padding: 2px;border-top: 1px solid #ddd;}
+</style>
 </head>
 <body>
 
-<volist name="ListData" id="vo">
-
-	<div id="apply_{ZF:$vo.id}">
-	
-		企业：{ZF:$vo.company}<br>
-		负责人：{ZF:$vo.principal}<br>
-		联系电话：{ZF:$vo.tel}<br>
-		Email:{ZF:$vo.email}<br>
-		希望经营的社区：{ZF:$vo.community}<br>
-		附言：{ZF:$vo.msg}<br>
-		申请时间：{ZF:$vo.submit_time|date='Y-m-d H:i:s',###}<br>
-		处理时间：{ZF:$vo.process_time}<br>
-		处理状态：<span id="apply_status_{ZF:$vo.id}"><php>
-						if (empty($vo['status'])) echo '未处理';
-						else echo '已处理';
-		</php></span><br>
-		操作：
-		<php>
-				if (!empty($vo['status'])){
-					echo '<input type="button" onclick="deleteApply(this,'.$vo['id'].');" value="删除">';
-				}else{
-					echo '<input type="button" onclick="processApply(this,'.$vo['id'].');" value="标为已处理">';
-				}
-		</php>
-		
-	</div>
-
-</volist>
-
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="manage_table">
+	<tr>
+		<th width="10%">企业</th>
+		<th width="8%">负责人</th>
+		<th width="8%">联系电话</th>
+		<th width="10%">Email</th>
+		<th width="10%">希望经营的社区</th>
+		<th width="18%">附言</th>
+		<th width="10%">申请时间</th>
+		<th width="10%">处理时间</th>
+		<th width="8%">处理状态</th>
+		<th width="8%">操作</th>
+	</tr>
+	<volist name="ListData" id="vo">
+		<tr id="apply_{ZF:$vo.id}">
+			<td>{ZF:$vo.company}</td>
+			<td>{ZF:$vo.principal}</td>
+			<td>{ZF:$vo.tel}</td>
+			<td>{ZF:$vo.email}</td>
+			<td>{ZF:$vo.community}</td>
+			<td>{ZF:$vo.msg}</td>
+			<td>{ZF:$vo.submit_time|date='Y-m-d H:i:s',###}</td>
+			<td>{ZF:$vo.process_time|date='Y-m-d H:i:s',###}</td>
+			<td  id="apply_status_{ZF:$vo.id}">
+				<php>
+					if (empty($vo['status'])) echo '未处理';
+					else echo '已处理';
+				</php>
+			</td>
+			<td>
+				<php>
+					if (!empty($vo['status'])){
+						echo '<input type="button" onclick="deleteApply(this,'.$vo['id'].');" value="删除">';
+					}else{
+						echo '<input type="button" onclick="processApply(this,'.$vo['id'].');" value="标为已处理">';
+					}
+				</php>
+			</td>
+		</tr>
+	</volist>
+</table>
 
 <script>
 
