@@ -99,7 +99,34 @@
 
 </head>
 <body>
+
+<div class="version_tips">
+	您正在使用的<span>浏览器版本太低</span>，导致网页显示错乱，建议安装
+	<a href="http://rj.baidu.com/soft/detail/14744.html"><span> Chrome </span></a>或
+	<a href="http://www.firefox.com.cn/about/spread/"><span> Firefox </span></a>浏览器。
+	<img src="/tpl/Home/abiza1/common/images/close.png" width="15px" style="z-index: 3;position:absolute;right:10px;top:5px;cursor: pointer;">
+</div>
+
 <include file="./tpl/Home/abiza1/common/menu.html" />
+
+
+<script type="text/javascript">
+var tips_h=$('.version_tips').height();
+if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion .split(";")[1].replace(/[ ]/g,"")=="MSIE6.0" || navigator.appVersion .split(";")[1].replace(/[ ]/g,"")=="MSIE7.0" || navigator.appVersion .split(";")[1].replace(/[ ]/g,"")=="MSIE8.0") { 
+
+	$('.version_tips').css("display","block");
+	$('.menu_all').css("margin-top",tips_h+6+"px");
+	$(window).resize(function(){
+		var tips_h=$('.version_tips').height();
+		$('.menu_all').css("margin-top",tips_h+6+"px");
+	})
+	$('.version_tips img').bind("click",function(){
+		$('.version_tips').hide();
+		$('.menu_all').css("margin-top","0px");
+	})
+}
+</script> 
+
 
 {__CONTENT__}
 <include file="./tpl/Home/abiza1/common/footer.html" /> 

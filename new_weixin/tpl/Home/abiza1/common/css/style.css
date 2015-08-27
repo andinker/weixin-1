@@ -2,6 +2,8 @@ body{margin:0;padding:0;font-family:'微软雅黑',tahoma,'黑体';}
 .container{max-width: 1170px;/*padding-left:25px;padding-right:25px;*/margin:0 auto;}
 li{list-style:none;}
 a,a:hover{text-decoration: none;}
+.version_tips{padding:3px 30px 3px 10px;color:#666;display:none;font-size:12px;position:fixed;top:0;z-index:3;width:100%;background:#f0efef;}
+.version_tips span{color:#fe6813;}
 
 .menu_all{background: #fe6813;box-shadow:0px 2px 10px 0 rgba(0, 0, 0, 0.1);position: relative;
 		  /*zoom: 1;filter: progid:DXImageTransform.Microsoft.Shadow(Color=#333, Strength=1, Direction=-5);*/} 
