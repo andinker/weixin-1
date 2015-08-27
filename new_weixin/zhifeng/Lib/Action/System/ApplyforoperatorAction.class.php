@@ -19,10 +19,11 @@ class ApplyforoperatorAction extends Action{
 		
 		$state = true;
 		$msg = '保存成功！';
+		$time = time();
 		
 		if ( IS_POST && isset($_POST['ajax']) && $_POST['ajax'] == 'yes' ){
 			$db = M('Applyforoperator');
-			$rs = $db->where(array('id'=>$_POST['id']))->setField('status',1);
+			$rs = $db->where(array('id'=>$_POST['id']))->setField(array('status'=>1,'process_time'=>$time));
 			
 			if (!$rs){
 				$state = false;
@@ -36,6 +37,7 @@ class ApplyforoperatorAction extends Action{
 		exit(json_encode(array(
 				'state'=>$state,
 				'msg'=>$msg,
+				'time'=>date('Y-m-d H:i:s',$time)
 		)));
 	}
 	
