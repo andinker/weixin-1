@@ -1,6 +1,5 @@
 <FilesMatch "\.(bak|inc|lib|sh|tpl|lbi|dwt)$">
-    order deny,allow
-    deny from all
+Require all granted
 </FilesMatch>
 
 RewriteEngine On
