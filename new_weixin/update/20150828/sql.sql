@@ -1,0 +1,1 @@
+INSERT INTO `zfwx_tmpls` (`id`, `tplid`, `name`, `views`, `type`, `imgurl`, `info`, `attr`, `status`, `sort`) VALUES (NULL, 'new3', '轮播背景模板', 'new3_index', '1', 'new3_index.png', '支持更换背景，背景可轮播滑动，', 'bg thumb slip', '1', '255');
