@@ -568,16 +568,19 @@ class IndexAction extends WapAction{
 					$res[$key]['url'] = U('Index/content',array('id'=>$val['id'],'classid'=>$val['classid'],'token'=>$where['token'],'wecha_id'=>$this->wecha_id));
 				}
 				$res[$key]['info'] = strip_tags(htmlspecialchars_decode(mb_substr($val['text'],0,10,'utf-8')));
+				$txt_content=str_replace("\r\n","<br>",$val['text']);
+				$res[$key]['info_full'] = mb_substr($txt_content,0,200,'utf-8');
 			}	
 			$this->assign('res',$res);//list模板数据
 			if(empty($info['tpid'])){	
 				$this->assign('info',$classlist);//分类列表信息
 				$tpllistname=$tpldata['tpllistname'];
+				$this->assign('info_full',$classlist);
 			}else{						
 				$this->assign('info',$res);//index模板数据
 				$tpllistname=$tpldata['tpltypename'];
+				$this->assign('info_full',$res);//index模板数据 
 			}
-
 			$this->assign('thisClassInfo',$info);
 		}		
 		$flashNum=count($flash);
