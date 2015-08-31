@@ -1,0 +1,300 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>{ZF:$tpl.wxname}</title>
+<base href="." />
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+
+<link href="{ZF::RES}/Index/public/css/iscroll.css" rel="stylesheet" type="text/css" />
+<link href="{ZF::RES}/Index/new3/cate_new3.css" rel="stylesheet" type="text/css" />
+<!--  <link rel="stylesheet" type="text/css" href="{ZF::RES}/Index/public/css/iscroll.css" media="all"> -->
+<script type="text/javascript" src="{ZF::RES}/Index/public/js/iscroll.js"></script>
+
+<link rel="stylesheet" type="text/css" href="{ZF::STATICS}/font-awesome/font-awesome.css" media="all" />
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+
+<style>
+#cate_new3 .mainmenu li:last-of-type {margin-bottom: 0;}
+#cate_new3 .mainmenu {margin: 50px auto;/*可修改菜单距离顶部的高度*/bottom: auto;top:0;} 
+</style>
+
+
+<script type="text/javascript">
+	var myScroll;
+	
+	function loaded() {
+	myScroll = new iScroll('wrapper', {
+	snap: true,
+	momentum: false,
+	hScrollbar: false,
+	onScrollEnd: function () {
+	document.querySelector('#indicator > li.active').className = '';
+	document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+	}
+	 });
+	 
+	 
+	}
+	
+	document.addEventListener('DOMContentLoaded', loaded, false);
+</script>
+
+</head>
+
+<body id="cate_new3">
+<!--引导动画-->
+
+<notempty name="indexanimation"><include file="Index:anStyle"/></notempty>
+
+<div style="background-color:{ZF:$homeInfo.plugmenucolor}" class="logo">
+	<img src="{ZF:$wxuser.headerpic}">
+</div>
+
+
+<div style="position: absolute;top: 10px;left: 5px;">
+	<a href="{ZF::U('Wap/Index/index')}&token={ZF:$token}" class="logo_icon">
+		<img src="{ZF::RES}/img/new3/icon_home.png" style="max-width: 25px;">
+	</a>
+</div>
+<div style="position: absolute;top: 10px;right: 5px;">
+	<a href="tel:{ZF:$homeinfo.dianhua}" class="logo_icon">
+		<img src="{ZF::RES}/img/new3/icon_call.png" style="max-width: 25px;">
+	</a>
+</div>
+
+<!-- 背景切换start -->
+ 
+
+    <div id="wrapper" style="overflow-y:scroll;margin-bottom:32px;">
+	    <div id="scroller" style="width: {ZF:$num*260}px; -webkit-transition: 0ms; transition: 0ms; -webkit-transform: translate3d(-496.5535668722837px, 0px, 0px) scale(1);">
+		    <ul id="thelist">
+			    <volist name="flashbg" id="so">
+				    <li>
+				        <p>{ZF:$so.info}</p>
+				        <img src="{ZF:$so.img}" style="width: 260px;">
+				    </li>
+			    </volist>
+		    </ul>
+	    </div>
+    </div>
+    
+    <div id="nav" style='width:100%;' align="center" >
+		<div id="prev" onclick="myScroll.scrollToPage(&#39;prev&#39;, 0,400,3);return false">← prev</div>
+		<ul id="indicator" >
+		 	<volist name="flashbg" id="so">
+		        <li <if condition="$i eq 1">class="active"</if> ></li>
+		    </volist>
+		</ul>
+		<div id="next" onclick="myScroll.scrollToPage(&#39;next&#39;, 0,400,3);return false">next →</div>
+	</div>
+
+    <div class="clr"></div>
+       
+<div class="menu_top">
+	<ul>
+		<volist name="info" id="vo" offset="0" length="1">
+			<li>
+				<a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url|htmlspecialchars_decode}</if>">
+					
+					<php>
+						if($vo['icon']==""){
+					</php>
+							<div style="height:50px;"><img src="{ZF::RES}/img/new3/icon_01.png" style="max-width: 46px;padding-top: 10px;"></div>
+					<php>
+						}else{
+					</php>
+						<div class="menu_icon">
+							<span class="{ZF:$vo.icon}"></span>
+						</div>
+					<php>
+						}
+					</php>
+					
+					<div class="menu_name">{ZF:$vo.name}</div>
+					
+				</a>
+			</li>
+		</volist>
+		<volist name="info" id="vo" offset="1" length="1">
+			<li>
+				<a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url|htmlspecialchars_decode}</if>">
+					
+					<php>
+						if($vo['icon']==""){
+					</php>
+							<div style="height:50px;"><img src="{ZF::RES}/img/new3/icon_02.png" style="max-width: 46px;padding-top: 10px;"></div>
+					<php>
+						}else{
+					</php>
+						<div class="menu_icon">
+							<span class="{ZF:$vo.icon}"></span>
+						</div>
+					<php>
+						}
+					</php>
+					
+					<div class="menu_name">{ZF:$vo.name}</div>
+					
+				</a>
+			</li>
+		</volist>
+		<volist name="info" id="vo" offset="2" length="1">
+			<li>
+				<a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url|htmlspecialchars_decode}</if>">
+					
+					<php>
+						if($vo['icon']==""){
+					</php>
+							<div style="height:50px;"><img src="{ZF::RES}/img/new3/icon_03.png" style="max-width: 46px;padding-top: 10px;"></div>
+					<php>
+						}else{
+					</php>
+						<div class="menu_icon">
+							<span class="{ZF:$vo.icon}"></span>
+						</div>
+					<php>
+						}
+					</php>
+					
+					<div class="menu_name">{ZF:$vo.name}</div>
+					
+				</a>
+			</li>
+		</volist>
+		<volist name="info" id="vo" offset="3" length="1">
+			<li>
+				<a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url|htmlspecialchars_decode}</if>">
+					
+					<php>
+						if($vo['icon']==""){
+					</php>
+							<div style="height:50px;"><img src="{ZF::RES}/img/new3/icon_04.png" style="max-width: 46px;padding-top: 10px;"></div>
+					<php>
+						}else{
+					</php>
+						<div class="menu_icon">
+							<span class="{ZF:$vo.icon}"></span>
+						</div>
+					<php>
+						}
+					</php>
+					
+					<div class="menu_name">{ZF:$vo.name}</div>
+					
+				</a>
+			</li>
+		</volist>
+		<volist name="info" id="vo" offset="4" length="1">
+			<li>
+				<a href="<if condition="$vo['url'] eq ''">{ZF::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{ZF:$vo.url|htmlspecialchars_decode}</if>">
+					
+					<php>
+						if($vo['icon']==""){
+					</php>
+							<div style="height:50px;"><img src="{ZF::RES}/img/new3/icon_05.png" style="max-height: 36px;padding-top: 8px;"></div>
+					<php>
+						}else{
+					</php>
+						<div class="menu_icon">
+							<span class="{ZF:$vo.icon}"></span>
+						</div>
+					<php>
+						}
+					</php>
+					
+					<div class="menu_name">{ZF:$vo.name}</div>
+					
+				</a>
+			</li>
+		</volist>
+	</ul>
+</div>
+
+<div class="menu_bottom">
+	<ul>
+		<volist name="info" id="vo" offset="5">
+			<li>
+				<div class="menu_wrap">
+					<div class="img_box">
+						<php>if(!$vo['img']==""){</php>
+							<img src="{ZF:$vo.img}" width="100%">
+						<php>}else{</php>
+							<img src="{ZF::RES}/img/new3/no_pic.png" width="100%">
+						<php>}</php>
+					</div>
+				</div>
+			</li>
+		</volist>
+	</ul>
+</div>
+
+<script>
+	var count = document.getElementById("thelist").getElementsByTagName("img").length;
+	
+	var count2 = document.getElementsByClassName("menuimg").length;
+	for(i=0;i<count;i++){
+	 document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+	
+	}
+	document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+	
+	 setInterval(function(){
+	myScroll.scrollToPage('next', 0,400,count);
+	},3500 );
+	window.onresize = function(){
+	for(i=0;i<count;i++){
+	document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+	
+	}
+	 document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+	}
+
+</script>
+
+<div class="copyright">
+	<if condition="$iscopyright eq 1">
+		{ZF:$homeInfo.copyright}
+	<else/>
+		{ZF:$siteCopyright}
+	</if>
+</div>  
+
+<include file="Index:styleInclude"/>
+<!--  <include file="$cateMenuFileName"/>-->
+<!-- share -->
+<include file="Index:share" />
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var control_size=function(){
+		var win_w=$(window).width();
+		
+		var menu_bottom_w=win_w*0.46;
+		$('.menu_bottom .menu_wrap .img_box').css("height",menu_bottom_w/2+"px");
+		$('.menu_bottom .menu_wrap .img_box').css("width",menu_bottom_w+"px");
+		
+		var	logo_w=$('.logo').width();
+		$('.logo').css("height",logo_w/5+"px");
+		
+		/*var	footer_h=$('.copyright').height()+16;
+		$('#cate_new3 .menu_bottom').css("margin-bottom",footer_h+36+"px");
+		$('#scroller ul').css("margin-bottom",footer_h+"px");*/
+		
+		
+	};
+	control_size();
+	$(window).resize(function(){
+		control_size();
+	})
+	
+	
+})
+</script>
+
+
+</body>
+</html>
