@@ -70,7 +70,7 @@ body{background: #eee; }
 .list_uls dl{min-height: 450px;}
 .list_uls dl dd a img{width:80px;height:80px;}
 .list_uls dl dd{height:90px;}
-.nav_for_list_ul{background: white;position: fixed;z-index: 2;width: 100%;}
+.nav_for_list_ul{background: white;position:absolute;z-index: 2;width: 100%;}
 .nav_for_list_ul ul:nth-of-type(2){height: 40px; overflow-x: scroll;}
 .nav_for_list_ul ul:nth-of-type(2) li{  width: 80px;overflow: hidden;}
 .nav_for_list_ul ul:nth-of-type(2) li a{height: 40px;line-height: 40px;}
@@ -93,7 +93,13 @@ body{background: #eee; }
 <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
 
 
-<span class="gradient_h_wbw"></span>
+ 
+
+<div style="max-height:80px;text-align: center;overflow: hidden;background-color:{ZF:$homeInfo.plugmenucolor}">
+	<img src="{ZF:$wxuser.headerpic}" style="max-height: 80px;max-width: 100%;">
+</div>
+
+<!-- <span class="gradient_h_wbw"></span> -->
 
 <section>
 	<nav class="nav_for_list_ul" style="box-shadow:0px 0px 1px 1px #ccc;"> 
@@ -122,28 +128,6 @@ body{background: #eee; }
 	<div id="list_uls" class="list_uls box_swipe">
 		<ul style="margin-top:40px;" id="swipe_board">
 			
-			<php>
-		
-				/*function print_categorys ($categorys){
-		
-		     		foreach($categorys as $k=>$category){
-		     			// echo $k.':'.$category['name'].'<br>';// 在这里输出该分类要显示的一切 
-		     			
-		    
-
-			     		if (!empty($category['sub'])){
-			     			print_categorys ($category['sub']);
-			     		}
-		     		}
-		     
-                }
-                    
-                print_categorys($categorys);*/
-                
-            </php>
-
-		
-		
 			<volist name="categorys" id="vo">
 				<li>
 					<dl><!--  
@@ -169,10 +153,7 @@ body{background: #eee; }
 					</dl>
 				</li>
 		    </volist>
-		    
-		    
-		    
-		    
+		
 		</ul>
 	</div>
 
@@ -202,14 +183,5 @@ body{background: #eee; }
 <include file="$cateMenuFileName"/> 
 <!-- share -->
 <include file="Index:share" />
-<pre>
-<php>
-//print_r($artinfo);
-//echo '----------------------------';
-//print_r($categorys);
-</php>
-</pre>
-<br></br>
-<br></br>
 </body>
 </html>
