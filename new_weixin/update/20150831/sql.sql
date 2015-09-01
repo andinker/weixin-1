@@ -1,0 +1,1 @@
+INSERT INTO `zfwx_tmpls` (`id`, `tplid`, `name`, `views`, `type`, `imgurl`, `info`, `attr`, `status`, `sort`) VALUES (NULL, 'new4', '模板4_1', 'new4_index', '1', 'new4_index.png', '列表式图片模版，缩略图建议使用150*150或近似尺寸比例的图片。', 'thumb focu bgs lis', '1', '4');
