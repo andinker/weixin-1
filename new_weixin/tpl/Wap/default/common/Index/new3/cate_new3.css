@@ -17,27 +17,19 @@ a {color:#000000;text-decoration: none;}
 #scroller li p {display: none;}
 #indicator {position: fixed;left: 0;text-align: center;bottom: 110px;margin: 0;width: 100%;}
 #indicator > li {display: inline-block;float:none;}
-#cate_new3 .mainbg{ position:fixed;z-index:1;width: 100%;}
-#cate_new3 .mainbg img{width:100%;}
-#cate_new3 .mainmenu {z-index:20;color: #FFF;position: fixed;margin: 0px auto;bottom: 0;width: 100%;}
-#cate_new3 .mainmenu ul {display: block;margin: 0px 15%;}
-#cate_new3 .mainmenu li {display: block;width:50%;float:left;}
-#cate_new3 .mainmenu li:last-of-type {margin-bottom: 85px;}
-#cate_new3 .mainmenu li a {display:block;background-color:rgba(255, 255, 255, 0.5);padding:8px 10px;margin:0 3px 3px 0;font-size:14px;
-						color: #000000;text-decoration: none;text-align: center;border-radius: 3px;}
+
 #cate_new3 .menu_top{z-index: 1;position: absolute;top:40%;width:100%;height:80px;background: #ffff00;}
 #cate_new3 .menu_top ul li{float:left;width:20%;text-align:center;}
 #cate_new3 .menu_top ul li a{border-right: solid 1px #9b9e40;height: 81px;display: block;}
 #cate_new3 .menu_top ul li a .menu_icon{background: <php>echo $color[$numb];</php>;border-radius:50px;height:50px;width:50px;margin:0 auto;}
 #cate_new3 .menu_top ul li a .menu_icon span{text-align:center;padding:10px;line-height: 50px;font-size:29px;color:black;}
 #cate_new3 .menu_top ul li a .menu_name{font-size:14px;color:black;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
-#cate_new3 .menu_bottom{position: absolute;top: 55%;z-index: 1;margin-bottom: 50px;}
+#cate_new3 .menu_bottom{position: absolute;top: 54%;z-index: 1;margin-bottom: 50px;}
 #cate_new3 .menu_bottom ul li{float:left;width:50%;text-align:center;}
 #cate_new3 .menu_bottom ul li .menu_wrap{width:92%;background:white;margin:0 auto;margin-top:10px;overflow: hidden;padding: 3px;
 										 border-radius: 2px;}
 #cate_new3 .menu_bottom ul li .menu_wrap .img_box{overflow: hidden;}
-#cate_new3 .menu_bottom ul li .menu_wrap .img_box img{min-height: 100%;}
-.copyright{background-color: #1d1d1d;color: white;}
+#cate_new3 .menu_bottom ul li .menu_wrap .img_box img{min-height: 100%;} 
 .copyright{z-index: 1;}
 #indicator{display: none;}
 .logo_icon{-moz-box-shadow: inset 0px 1px 0px 0px #8c8c8c;-webkit-box-shadow: inset 0px 1px 0px 0px #8c8c8c;

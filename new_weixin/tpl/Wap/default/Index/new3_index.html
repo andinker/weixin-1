@@ -16,13 +16,7 @@
 
 <link rel="stylesheet" type="text/css" href="{ZF::STATICS}/font-awesome/font-awesome.css" media="all" />
 <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-
-<style>
-#cate_new3 .mainmenu li:last-of-type {margin-bottom: 0;}
-#cate_new3 .mainmenu {margin: 50px auto;/*可修改菜单距离顶部的高度*/bottom: auto;top:0;} 
-</style>
-
-
+ 
 <script type="text/javascript">
 	var myScroll;
 	
@@ -55,12 +49,12 @@
 </div>
 
 
-<div style="position: absolute;top: 10px;left: 5px;">
+<div style="position: absolute;top: 20px;left: 5px;">
 	<a href="{ZF::U('Wap/Index/index')}&token={ZF:$token}" class="logo_icon">
 		<img src="{ZF::RES}/img/new3/icon_home.png" style="max-width: 25px;">
 	</a>
 </div>
-<div style="position: absolute;top: 10px;right: 5px;">
+<div style="position: absolute;top: 20px;right: 5px;">
 	<a href="tel:{ZF:$homeinfo.dianhua}" class="logo_icon">
 		<img src="{ZF::RES}/img/new3/icon_call.png" style="max-width: 25px;">
 	</a>
@@ -264,7 +258,7 @@
 </div>  
 
 <include file="Index:styleInclude"/>
-<!--  <include file="$cateMenuFileName"/>-->
+<include file="$cateMenuFileName"/>
 <!-- share -->
 <include file="Index:share" />
 
