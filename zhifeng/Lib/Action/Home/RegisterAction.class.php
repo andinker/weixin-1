@@ -5,6 +5,9 @@ class RegisterAction extends BaseAction{
 	 * 阅读协议
 	 */
 	public function index() {
+		$this->assign('PAGE_TITLE','免费推广，马上入驻');
+		$this->assign('PAGE_KEYWORDS',' ');
+		$this->assign('PAGE_DESCRIPTION',' ');
 		$this->display();
 	}
 	
@@ -12,6 +15,9 @@ class RegisterAction extends BaseAction{
 	 * 注册帐号
 	 */
 	public function account() {
+		$this->assign('PAGE_TITLE','注册账号');
+		$this->assign('PAGE_KEYWORDS',' ');
+		$this->assign('PAGE_DESCRIPTION',' ');
 		
 		$this->display();
 	}
@@ -20,6 +26,9 @@ class RegisterAction extends BaseAction{
 	 * 填写必要信息
 	 */
 	public function information() {
+		$this->assign('PAGE_TITLE','商家信息');
+		$this->assign('PAGE_KEYWORDS',' ');
+		$this->assign('PAGE_DESCRIPTION',' ');
 		
 		C('TOKEN_ON',false);
 		
@@ -183,6 +192,9 @@ class RegisterAction extends BaseAction{
 	 * 选择社区
 	 */
 	public function community() {
+		$this->assign('PAGE_TITLE','社区门户');
+		$this->assign('PAGE_KEYWORDS',' ');
+		$this->assign('PAGE_DESCRIPTION',' ');
 		
 		// 必须先登录才可以访问
 		$uid_session = session('uid');
@@ -241,6 +253,9 @@ class RegisterAction extends BaseAction{
 	 * 完成注册
 	 */
 	public function done() {
+		$this->assign('PAGE_TITLE','成功入驻');
+		$this->assign('PAGE_KEYWORDS',' ');
+		$this->assign('PAGE_DESCRIPTION',' ');
 		$this->display();
 	}
 	
@@ -265,6 +280,10 @@ class RegisterAction extends BaseAction{
 	 * 社区运营商申请页面
 	 */
 	public function applyforoperator() {
+		$this->assign('PAGE_TITLE','社区运营，社区门户网站，运营商申请');
+		$this->assign('PAGE_KEYWORDS','申请运营商管理、门户网站建设、社区管理');
+		$this->assign('PAGE_DESCRIPTION','申请社区运营商资格，拥有大量商家资源，低成本建设社区门户网站');
+		
 		// 保存数据库 或者发送邮件 
 			if ( IS_POST && isset($_POST['ajax']) && $_POST['ajax'] == 'yes' ){
 			

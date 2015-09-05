@@ -4,6 +4,8 @@ class IndexAction extends BaseAction{
 	public function index(){
 	    
 		$this->assign('PAGE_TITLE','');
+		$this->assign('PAGE_KEYWORDS','');
+		$this->assign('PAGE_DESCRIPTION','');
 		
 		if ( strpos($_SERVER['SCRIPT_NAME'],'/wxpay/index.php') === false ){ 
 			$this->display();
@@ -12,6 +14,14 @@ class IndexAction extends BaseAction{
 			R('Wap/Wxpay/notify_url');
 		}
 	}
+	
+	public function help_menu(){
+		$this->assign('PAGE_TITLE','亚商圈简介，服务');
+		$this->assign('PAGE_KEYWORDS','亚商圈简介，服务，帮助文档，网站了解');
+		$this->assign('PAGE_DESCRIPTION','亚商圈是免费的智能建站平台，手把手教您建、使用，提供更多高级的微信网站管理服务');
+		$this->display();
+	}
+	
 	public function price(){
 		//遍历功能列表
 		$group=M('User_group')->field('id,name,price')->where('status=1')->select();
@@ -87,6 +97,7 @@ class IndexAction extends BaseAction{
 	}
 	
 	public function login() {
+		$this->assign('PAGE_TITLE','登录');
 		
 		$uid = session('uid');
 		
