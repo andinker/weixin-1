@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">  
+
+<title>{ZF:$test_var}|| {ZF::C('site_name')}——{ZF::C('site_title')}</title>
+<meta name="keywords" content="智能建站，网站建设，微信营销、开发，微信推广">
+<meta name="description" content="亚商圈是一个智能的建站平台，占领所有的用户入口，集微信公众号、手机APP、电脑网站、手机网站于一体，轻松、免费建设网站不是梦">
+
+<link rel="icon" href="/favicon.ico">
+<link rel="shortcut icon" href="/favicon.ico">
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+<link href="/tpl/Home/abiza1/common/css/style.css" rel="stylesheet">
+<script src="{ZF::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{ZF::STATICS}/artDialog/plugins/iframeTools.js"></script>
+
+<script>
+	$(document).ready(function(){
+		
+		//判断导航菜单图标出现的时候设置菜单的css样式
+		var menu_show=function(){
+			if($('.navbar-toggle').css("display")!="none"){
+				$('.navbar-nav').css("float","left");
+				$('.navbar-nav').css("width","100%");
+				$('.navbar-nav>li>a').css("padding","3px 35px");
+				$('.navbar-nav>li').css("padding","0");
+				$('.dropdown-menu').css("background","white");
+				//$('.navbar-nav>li').css("width","auto");
+				$('.navbar-nav>li').css("text-align","left");
+				$('.navbar-default .navbar-nav>li>a').css("font-size","14px");
+			}else{
+				$('.navbar-nav').css("float","right");
+				$('.navbar-nav').css("width","auto");
+				$('.navbar-nav>li>a').css("padding","3px 10px");
+				$('.navbar-nav>li').css("padding","11px 16px 19px");
+				$('.navbar-nav>li').css("padding-right","0");
+				//$('.navbar-nav>li>a:last-child').css("padding-right","0");
+				$('.dropdown-menu').css("background","rgba(0,0,0,.7)");
+				//$('.navbar-nav>li').css("width","95px");
+				$('.navbar-nav>li').css("text-align","center");
+				$('.navbar-default .navbar-nav>li>a').css("font-size","16px");
+			}
+		}
+		menu_show();
+		$(window).resize(function(){
+			menu_show();
+		})
+		
+		//帮助中心右边标题按钮
+		var help_slide_menu=function(){
+			
+			$('.slide_menu_toggle').hover(
+					
+				function(){ 
+					$(this).hide();
+					$(this).siblings(".slide_menu").animate({right:'0',}); 
+				    $('.slide_menu').hover(
+			    		function(){  
+							$(this).animate({right:'0',});
+							$('.slide_menu_toggle').hide();
+						},
+						function(){ 
+							$(this).animate({right:'-160px',},"fast");
+							$('.slide_menu_toggle').show();
+						}
+				    );
+				     
+					if($('.slide_menu').css("right")=="0"){
+						$('.slide_menu_toggle').hide();
+				    }
+				    
+				},
+				function(){ 
+					$(this).hide();
+					
+				}
+				
+			);
+			
+			$('.navbar-default .navbar-toggle').hover(
+				
+					function(){
+						$(this).css("background","none");	
+					},
+					function(){
+						$(this).css("background","none");
+					}
+					
+			);
+			
+			
+		};
+		help_slide_menu();
+		
+		
+		
+	})
+	
+</script>
+
+</head>
+<body>
+<div class="version_tips">
+	您正在使用的<span>浏览器版本太低</span>，导致网页显示错乱，建议安装
+	<a href="http://rj.baidu.com/soft/detail/14744.html"><span> Chrome </span></a>或
+	<a href="http://www.firefox.com.cn/about/spread/"><span> Firefox </span></a>浏览器。
+	<img src="/tpl/Home/abiza1/common/images/close.png" width="15px" style="z-index: 3;position:absolute;right:10px;top:5px;cursor: pointer;">
+</div>
+
+<include file="./tpl/Home/abiza1/common/menu.html" />
+
+
+<script type="text/javascript">
+var tips_h=$('.version_tips').height();
+if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion .split(";")[1].replace(/[ ]/g,"")=="MSIE6.0" || navigator.appVersion .split(";")[1].replace(/[ ]/g,"")=="MSIE7.0" || navigator.appVersion .split(";")[1].replace(/[ ]/g,"")=="MSIE8.0") { 
+
+	$('.version_tips').css("display","block");
+	$('.menu_all').css("margin-top",tips_h+6+"px");
+	$(window).resize(function(){
+		var tips_h=$('.version_tips').height();
+		$('.menu_all').css("margin-top",tips_h+6+"px");
+	})
+	$('.version_tips img').bind("click",function(){
+		$('.version_tips').hide();
+		$('.menu_all').css("margin-top","0px");
+	})
+}
+</script> 
+
+
+{__CONTENT__}
+<include file="./tpl/Home/abiza1/common/footer.html" /> 
+</body>
+</html>
