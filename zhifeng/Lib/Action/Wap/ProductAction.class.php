@@ -251,18 +251,32 @@ class ProductAction extends WapAction {
 		);
 		$order = isset ( $_GET ['order'] ) && in_array ( $_GET ['order'], $orders ) ? $_GET ['order'] : 'time';
 		$start = ($page - 1) * $pageSize;
-		$start ++;
+		//$start ++;
 		$products = $this->product_model->where ( $where )->order ( "sort ASC, " . $order . ' ' . $method )->limit ( $start . ',' . $pageSize )->select ();
-		$str = '{"products":[';
+		
+		$returnVar = array();
 		if ($products) {
-			$comma = '';
 			foreach ( $products as $p ) {
-				$str .= $comma . '{"id":"' . $p ['id'] . '","catid":"' . $p ['catid'] . '","storeid":"' . $p ['storeid'] . '","name":"' . $p ['name'] . '","price":"' . $p ['price'] . '","token":"' . $p ['token'] . '","keyword":"' . $p ['keyword'] . '","salecount":"' . $p ['salecount'] . '","logourl":"' . $p ['logourl'] . '","time":"' . $p ['time'] . '","oprice":"' . $p ['oprice'] . '"}';
-				$comma = ',';
+				array_push($returnVar,array(
+						'id'=>$p ['id'],
+						'catid'=>$p ['catid'],
+						'storeid'=>$p ['storeid'],
+						'name'=>$p ['name'],
+						'price'=>$p ['price'],
+						'token'=>$p ['token'],
+						'keyword'=>$p ['keyword'],
+						'salecount'=> $p ['salecount'],
+						'logourl'=> $p ['logourl'],
+						'time'=>$p ['time'],
+						'oprice'=> $p ['oprice'],
+						'num'=>$p['num'],
+						'mailprice'=>$p['mailprice'],
+				));
 			}
 		}
-		$str .= ']}';
-		$this->show ( $str );
+		
+		
+		$this->show ( json_encode(array('products'=>$returnVar)) );
 	}
 	public function product() {
 		$id = isset ( $_GET ['id'] ) ? intval ( $_GET ['id'] ) : 0;
