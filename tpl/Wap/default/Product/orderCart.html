@@ -83,9 +83,9 @@ if (location.href.indexOf("PHPSESSID")<0) location.href=location.href+"&PHPSESSI
 	</div>
 	<div class="m-ck-module">
 		<h1>付款方式</h1>
-		<ul id="payment_mode" class="rd">
-			<li>
-			<select id="payment_selector" name="payment" style="width: 100%;border: none;border-radius: 0.5em;padding: 5px; line-height:2em;">
+		<ul id="payment_mode" class="rd" style="-webkit-box-shadow:none;">
+			<li style="line-height:2em;">
+			<select id="payment_selector" name="payment" style="width: 100%;border-radius: 0.5em;padding: 5px; line-height:30px;height: 30px;">
 				<if condition="$payment">
 				<volist id="v" name="payment">
 					<option value="{ZF:$v.pay_code}" style="line-height: 50px;">{ZF:$v.pay_name}</option> 
