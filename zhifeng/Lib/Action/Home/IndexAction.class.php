@@ -2,7 +2,9 @@
 class IndexAction extends BaseAction{
 	//关注回复
 	public function index(){
-		$this->assign('test_var','testing layout vars');
+	    
+		$this->assign('PAGE_TITLE','');
+		
 		if ( strpos($_SERVER['SCRIPT_NAME'],'/wxpay/index.php') === false ){ 
 			$this->display();
 		}else{

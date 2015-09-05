@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">  
 
-<title>{ZF:$test_var}|| {ZF::C('site_name')}——{ZF::C('site_title')}</title>
+<title><notempty name="PAGE_TITLE">{ZF:$PAGE_TITLE} - </notempty>{ZF::C('site_name')}<empty name="PAGE_TITLE"> — {ZF::C('site_title')}</empty></title>
 <meta name="keywords" content="智能建站，网站建设，微信营销、开发，微信推广">
 <meta name="description" content="亚商圈是一个智能的建站平台，占领所有的用户入口，集微信公众号、手机APP、电脑网站、手机网站于一体，轻松、免费建设网站不是梦">
 
