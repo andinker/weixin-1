@@ -2,9 +2,13 @@
 
 
 <script type="text/javascript">
-/*$(document).ready(function($){
-    $(".selectoptions").BetterPhoneSelect();
-});   */ 
+$(document).ready(function($){
+    $(".selectoptions").BetterPhoneSelect({
+    	FontColor:'white',//设置文字颜色
+		BackgroundColor:"black",//设置背景颜色
+		FontSize:"18px",//设置文字大小
+    });
+}); 
 </script>
 <div class="edit_content"> 
 	<div>
@@ -63,9 +67,9 @@
 				<if condition="$IS_IMPORT_MODE eq false">
 					<div class="attr_data">{ZF:$productCatData.name}</div>
 				<else/>
-					<select name="catid" id="catid" style=" max-width: 200px;">
+					<select name="catid" id="catid" style=" max-width: 200px;"> 
 					    <volist name="productCatData" id="vo">
-					      <option value="{ZF:$vo.id}">{ZF:$vo.name}</option>
+					      <option value="{ZF:$vo.id},{ZF:$vo.name}">{ZF:$vo.name}</option>
 					    </volist>
 					</select>
 				</if>
@@ -74,22 +78,21 @@
 			
 			<div>
 				<div class="attr_name"><span class="import_icon">*</span>社区类目：</div>
-				<!-- <div class="attr_data">
+				 <div class="attr_data">
 					<select name="community_catid" id="community_catid" class="selectoptions">
 						    <volist name="wz_cates" id="vo">
-						      <option value="{ZF:$vo.id}"<php> if ($set['community_catid'] == $vo['id']) echo ' selected="selected"';</php>>{ZF:$vo.name}</option>
+						      <option value="{ZF:$vo.id},{ZF:$vo.name}"<php> if ($set['community_catid'] == $vo['id']) echo ' selected="selected"';</php>>{ZF:$vo.name}</option>
 						    </volist>
 					</select>
 				</div>
-				 -->
-				<div class="attr_data">
+				<!--<div class="attr_data">
 					<select name="community_catid" id="community_catid">
 						    <volist name="wz_cates" id="vo">
 						      <option value="{ZF:$vo.id},{ZF:$vo.name}"<php> if ($set['community_catid'] == $vo['id']) echo ' selected="selected"';</php>>{ZF:$vo.name}</option>
 						    </volist>
 					</select>
 				</div>
-				
+				-->
 				<div>
 					<div class="select_msg">
 						<div>选上后，商品可以在社区的商品搜索结果中。</div>
