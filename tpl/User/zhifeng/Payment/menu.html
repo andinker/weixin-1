@@ -1,6 +1,7 @@
 <!--tab start-->
 <div class="tab">
 <ul>
+<li class='<if condition="ACTION_NAME EQ 'easypay'">current</if> tabli' id="tab1"><a href="{ZF::U('Payment/easypay')}">亚天易支付(无需申请)</a></li>
 <li class='<if condition="ACTION_NAME EQ 'index'">current</if> tabli' id="tab1"><a href="{ZF::U('Payment/index')}">微信支付</a></li>
 <li class='<if condition="ACTION_NAME EQ 'dbalipay'">current</if> tabli' id="tab2"><a href="{ZF::U('Payment/dbalipay')}">支付宝担保交易</a></li>
 <li class='<if condition="ACTION_NAME EQ 'wapalipay'">current</if> tabli' id="tab3"><a href="{ZF::U('Payment/wapalipay')}">手机支付宝</a></li>

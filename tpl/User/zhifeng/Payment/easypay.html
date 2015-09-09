@@ -1,0 +1,18 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{ZF::RES}/css/cymain.css" />
+
+<div class="content" style="" >
+
+<div class="cLineB">
+  <h4>支付接口配置</h4>
+ </div>
+<include file="Payment:menu"/>        
+<div class="msgWrap bgfc" style="margin-top:10px;">
+
+<iframe src="http://easypay.itcocoa.com/merchant/login?a={ZF:$urltype_encrypted_token}&b={ZF:$urltype_encrypted_ip}" width="100%" style="height:10000px;" frameborder="0"></iframe>
+
+
+</div> 
+</div>
+
+<include file="Public:footer"/>

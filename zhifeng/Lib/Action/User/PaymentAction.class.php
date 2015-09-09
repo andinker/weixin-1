@@ -9,6 +9,36 @@ class PaymentAction extends UserAction{
 			exit();
 		}
 	}
+	
+	/**
+	 * 易支付
+	 */
+	public function easypay(){
+	    
+	    // 加密商家id，用于登录easypay商家后台
+	    $file = 'file://'.SITE_ROOT.'/data/easypay/rsa_public_key.pem'; //echo $file.'<br>';
+	    $pu_key = openssl_pkey_get_public($file);
+	    
+	    if (file_exists($file) && $pu_key){
+	        
+	        //echo $this->token;
+	        openssl_public_encrypt($this->token,$encrypted_token,$pu_key);
+	        $urltype_encrypted_token = urlencode(base64_encode($encrypted_token));
+	        
+	        //echo $_SERVER[REMOTE_ADDR];
+	        openssl_public_encrypt($_SERVER[REMOTE_ADDR],$encrypted_ip,$pu_key);
+	        $urltype_encrypted_ip = urlencode(base64_encode($encrypted_ip));
+	        
+	        $this->assign('urltype_encrypted_token',$urltype_encrypted_token);
+	        $this->assign('urltype_encrypted_ip',$urltype_encrypted_ip);
+	        
+	        $this->display();
+	    }else{
+	        exit('数据加密时出错：公钥不存在或无效！');
+	    }
+	    
+	}
+	
 	//微信支付
 	public function index(){
 		$payset = $this->Payment_db->where(array('token'=>$this->token,'pay_code'=>'wxpay'))->find();
