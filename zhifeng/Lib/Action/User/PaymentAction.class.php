@@ -26,7 +26,7 @@ class PaymentAction extends UserAction{
 	        $urltype_encrypted_token = urlencode(base64_encode($encrypted_token));
 	        
 	        //echo $_SERVER[REMOTE_ADDR];
-	        openssl_public_encrypt($_SERVER[REMOTE_ADDR],$encrypted_ip,$pu_key);
+	        openssl_public_encrypt(/*$_SERVER[REMOTE_ADDR]*/'127.0.0.1',$encrypted_ip,$pu_key);
 	        $urltype_encrypted_ip = urlencode(base64_encode($encrypted_ip));
 	        
 	        $this->assign('urltype_encrypted_token',$urltype_encrypted_token);
