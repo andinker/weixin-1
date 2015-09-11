@@ -77,6 +77,7 @@ $(".m-right-pop-bg2").click( function() {
 
 <div class="paylists"  id="paylists" onclick="document.getElementById('paylists').style.display='';">
     <ul>
+    	<li><a onclick="return checkWXB(this);" href="{ZF::U('Pay/easypay',array('token'=>$token,'wecha_id'=>$wecha_id,'orderid'=>$cartData['orderid']))}">支付宝(亚天担保)</a></li>
     <volist name="payment" id="pay">
         <li>
         <a onclick="return checkWXB(this);" href="{ZF::U('Pay/'.$pay['pay_code'],array('token'=>$token,'wecha_id'=>$wecha_id,'orderid'=>$cartData['orderid']))}">{ZF:$pay.pay_name}</a></li>

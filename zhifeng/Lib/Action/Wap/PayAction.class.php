@@ -95,6 +95,51 @@ class PayAction extends BaseAction{
 	}
 	
 	/**
+	 * 亚天易支付(支付宝)
+	 */
+	public function easypay(){
+	    
+	    // 跳转到easypay付款网关
+	    $data = array();
+	    $data['merchant'] = $this->token;
+	    $data['trade'] = $this->order['orderid'];
+	    $data['price'] = $this->order['price'];
+	    $data['notify_url'] = 'http://www.abiza.cn/';
+	    $data['redirect_url'] = 'http://www.abiza.cn/';
+	    
+	    
+	    // 生成MD5签名
+	    $apikey = 'sdjfldg456lsdfkjsdfkjsk%^';
+	    
+	    // sort the params
+	    ksort($data);
+	    reset($data);
+	    
+	    $sign_string_data = '';
+	    foreach ($data as $k=>$v){
+	        if ($k != 'sign'){
+	            if (!empty($sign_string_data)) $sign_string_data = $sign_string_data.'&';
+	            $sign_string_data = $sign_string_data.$k.'='.$v;
+	        }
+	    }
+	    
+	    $data['sign'] = md5($sign_string_data.'&apikey='.$apikey);
+	    
+	    // 发起GET请求
+	    $get_url = 'http://www.easypay.com/cashier?'.
+	               'merchant='.urlencode($data['merchant']).
+	               '&trade='.urlencode($data['trade']).
+	               '&price='.urlencode($data['price']).
+	               '&redirect_url='.urlencode($data['notify_url']).
+	               '&notify_url='.urlencode($data['redirect_url']).
+	               '&sign='.urlencode($data['sign']);
+	    
+	    header('Location: '.$get_url);
+	    
+	}
+	
+	
+	/**
 	 * 支付宝担保交易:支付
 	 */
 	public function dbalipay(){
